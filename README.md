@@ -1,6 +1,6 @@
 # Lakshyam 🌱
 
-A cosy 2D financial-literacy game for Class 11–12 students. Make a small budget, handle a surprise, and explore how a different choice changes your story.
+A cosy 2D financial-literacy game for Class 11–12 students, designed for laptops. Press Play, enter a village, and visit your home to budget, handle a surprise, and explore how a different choice changes your story.
 
 ## Run locally
 
@@ -21,6 +21,16 @@ npm run preview  # Serve the production bundle for local verification
 
 Deploy as a static Vite site: build command `npm run build`, output directory `dist`. Fonts, illustrations, and icons are bundled; gameplay makes no external requests.
 
+## Village controls
+
+- Click **Play** on the title screen to enter the village.
+- Click **Your home** or **Open my jars** to divide the allowance. The budgeting and story screens open inside an in-game panel.
+- Click the ground to move your character around the village path.
+- Click **Ammamma** or the **Kirana shop** for dialogue. Shopping is not implemented in this chapter.
+- Press **Escape** or the panel's close button to return to the village. Your current choices stay intact.
+- Use the top-right controls for help, fullscreen, or the title screen. **Continue** returns to the same session.
+- Designed and tested for laptop windows at 1024×768, 1280×720, and 1366×768. Mobile is outside the current scope.
+
 ## First playable chapter
 
 1. Allocate a ₹2,000 monthly allowance across everyday needs, little joys, emergency savings, and a laptop goal. Use − and + to move ₹100 at a time. Cover at least ₹800 in essentials.
@@ -35,11 +45,20 @@ The starting budget is editable, not a recommended allocation. All amounts are f
 
 - `src/game.js`: pure financial rules and constants; UI-independent.
 - `src/game.test.js`: Node test suite, including fund-conservation checks over every allowed budget.
-- `src/main.jsx`: illustrated scene, four jars, repair choices, results, comparison, and keyboard-accessible help dialog.
-- `src/styles.css`: responsive styles, jar animations, and reduced-motion support.
+- `src/main.jsx`: title/village navigation, in-game panels, four jars, repair choices, results, and comparison.
+- `src/World.jsx`: village artwork, character, building interactions, and title screen.
+- `src/game-scene.css`: full-window village, HUD, scene animation, and in-game panels.
+- `src/styles.css`: shared jar and story styles. Scene styles take precedence in the laptop game.
 - `public/favicon.svg`: sprout mark.
 
-Browser validation covered both payment routes, replay, allocation constraints, keyboard dismissal of help, reset, and horizontal overflow at 320, 390, and 768px widths.
+## Browser checks
+
+```bash
+npx playwright install chromium  # One-time browser installation for developers
+npm run test:e2e
+```
+
+The browser suite checks Play → village → jars, movement, dialogue, preserving a budget when leaving a room, title/Continue, both repair routes, replay, budget constraints, Escape behavior, and laptop viewport layouts. It starts its own Vite server on port 5180. To use an existing Chromium installation in a cloud machine, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to that browser's executable path.
 
 ## Team workflow
 

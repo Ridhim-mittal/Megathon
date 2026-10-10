@@ -19,7 +19,9 @@ import {
   X,
   BookOpen,
   Sun,
-  Leaf,
+  Home,
+  Maximize,
+  Minimize,
 } from "lucide-react";
 import {
   ALLOWANCE,
@@ -36,6 +38,8 @@ import {
 import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/manrope";
 import "./styles.css";
+import "./game-scene.css";
+import { World, TitleScreen, Character } from "./World.jsx";
 
 const jars = [
   {
@@ -76,85 +80,6 @@ const jars = [
   },
 ];
 
-function Village() {
-  return (
-    <svg className="village" viewBox="0 0 560 230" aria-hidden="true">
-      <circle cx="455" cy="49" r="27" fill="#edcf88" />
-      <g fill="#fffdf5" opacity=".9">
-        <path d="M72 51c-5-19 25-25 30-10 17-8 29 4 25 13H72Z" />
-        <path d="M336 36c-3-14 17-20 24-8 15-7 24 6 20 12h-44Z" />
-      </g>
-      <path
-        d="M0 179Q80 115 170 171Q300 111 410 160Q507 127 560 170V230H0Z"
-        fill="#d7dfb9"
-      />
-      <path d="M0 207Q130 157 280 195Q411 155 560 192V230H0Z" fill="#baca9c" />
-      <path
-        d="M308 230Q279 191 311 168"
-        fill="none"
-        stroke="#f2e5c4"
-        strokeWidth="32"
-      />
-      <g stroke="#7e8970" strokeWidth="3" strokeLinejoin="round">
-        <path d="M156 111h100v88H156Z" fill="#f6e6b8" />
-        <path d="m144 115 61-51 63 51Z" fill="#be7c63" />
-        <path d="M194 152q13-11 26 0v47h-26Z" fill="#91aca0" />
-        <path d="M168 132h17v21h-17Zm58 0h17v21h-17Z" fill="#fff9df" />
-        <path d="M377 133h89v65h-89Z" fill="#f5d7b9" />
-        <path d="m365 136 57-41 58 41Z" fill="#81988a" />
-        <path d="M394 160h20v23h-20Z" fill="#fff9df" />
-        <path d="M443 169v30" strokeWidth="17" />
-      </g>
-      <g stroke="#7c8964" strokeWidth="5">
-        <path d="M99 120v81M502 111v80" />
-      </g>
-      <g fill="#8fa77b">
-        <ellipse cx="98" cy="114" rx="31" ry="44" />
-        <ellipse cx="502" cy="100" rx="27" ry="39" />
-      </g>
-      <g fill="#e5bd89">
-        <circle cx="87" cy="105" r="4" />
-        <circle cx="110" cy="121" r="4" />
-        <circle cx="496" cy="90" r="4" />
-      </g>
-      <g transform="translate(308 130)">
-        <ellipse cx="0" cy="74" rx="23" ry="5" fill="#93a77f" />
-        <path
-          d="M-11 53v17m22-17v17"
-          stroke="#555c55"
-          strokeWidth="8"
-          strokeLinecap="round"
-        />
-        <path d="M-17 53v-21q17-15 34 0v21" fill="#c38c72" />
-        <circle cy="15" r="19" fill="#bd8667" />
-        <path
-          d="M-19 15Q-25-14 0-9Q25-10 20 18L10 3Q-5 12-19 9"
-          fill="#484741"
-        />
-        <circle cx="-6" cy="17" r="1.8" fill="#484741" />
-        <circle cx="7" cy="17" r="1.8" fill="#484741" />
-        <path
-          d="M-3 25q4 3 7-1"
-          fill="none"
-          stroke="#684e43"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        <path
-          d="m-18 35-9 16m45-16 8 13"
-          stroke="#bd8667"
-          strokeWidth="7"
-          strokeLinecap="round"
-        />
-      </g>
-      <g fill="#f7efd6">
-        <path d="m46 206 3-8 3 8Zm423 9 3-8 3 8Z" />
-        <circle cx="132" cy="212" r="3" />
-        <circle cx="353" cy="212" r="3" />
-      </g>
-    </svg>
-  );
-}
 function Jar({ item, value, remaining, onChange }) {
   const Icon = item.icon;
   return (
@@ -261,6 +186,15 @@ function Summary({ result, title, second = false }) {
   );
 }
 function App() {
+  const [screen, setScreen] = useState("title");
+  const [started, setStarted] = useState(false);
+  const [roomOpen, setRoomOpen] = useState(false);
+  const [avatar, setAvatar] = useState({ x: 45, y: 73 });
+  const [conversation, setConversation] = useState("welcome");
+  const [fullscreen, setFullscreen] = useState(false);
+  const [displayNotice, setDisplayNotice] = useState("");
+  const gameDialog = useRef(null);
+  const homeButton = useRef(null);
   const [phase, setPhase] = useState("budget");
   const [budget, setBudget] = useState({ ...INITIAL_BUDGET });
   const [first, setFirst] = useState(null);
@@ -271,7 +205,42 @@ function App() {
   const guideTrigger = useRef(null);
   useEffect(() => {
     heading.current?.focus();
-  }, [phase]);
+  }, [phase, roomOpen]);
+  useEffect(() => {
+    if (roomOpen) {
+      gameDialog.current?.showModal();
+      heading.current?.focus();
+    } else if (gameDialog.current?.open) gameDialog.current.close();
+  }, [roomOpen]);
+  useEffect(() => {
+    const sync = () => setFullscreen(Boolean(document.fullscreenElement));
+    document.addEventListener("fullscreenchange", sync);
+    return () => document.removeEventListener("fullscreenchange", sync);
+  }, []);
+  function openRoom() {
+    setAvatar({ x: 28, y: 64 });
+    setRoomOpen(true);
+  }
+  function closeRoom() {
+    setRoomOpen(false);
+    homeButton.current?.focus();
+  }
+  async function toggleFullscreen() {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+      setDisplayNotice("");
+    } catch {
+      setDisplayNotice(
+        "Fullscreen is unavailable here. You can keep playing in this window.",
+      );
+    }
+  }
+  function play() {
+    setStarted(true);
+    setScreen("village");
+  }
+
   useEffect(() => {
     if (showGuide) guide.current?.showModal();
     else if (guide.current?.open) guide.current.close();
@@ -313,84 +282,172 @@ function App() {
   }
   return (
     <>
-      <header className="site-header">
-        <a className="wordmark" href="/" aria-label="Lakshyam home">
-          <span className="brand-symbol">
-            <Sprout size={26} />
-          </span>
-          lakshyam<span className="brand-dot">.</span>
-        </a>
-        <span className="brand-tagline">Little choices. Bigger dreams.</span>
-        <button
-          ref={guideTrigger}
-          className="quiet-button"
-          onClick={() => setShowGuide(true)}
-        >
-          <BookOpen size={17} />
-          <span>How to play</span>
-        </button>
-      </header>
-      <main>
-        <div className="chapter-line">
+      <div className="game-shell">
+        <World
+          title={screen === "title"}
+          onHome={openRoom}
+          onGranny={() => setConversation("granny")}
+          onShop={() => setConversation("shop")}
+          avatar={avatar}
+          onWalk={setAvatar}
+          homeRef={homeButton}
+        />
+        {screen === "title" ? (
+          <TitleScreen
+            onPlay={play}
+            onHelp={() => setShowGuide(true)}
+            continuing={started}
+          />
+        ) : (
+          <>
+            <header className="game-hud">
+              <div className="village-name">
+                <span className="hud-sprout">
+                  <Sprout size={25} />
+                </span>
+                <div>
+                  <strong>Our little village</strong>
+                  <span>
+                    <Sun size={12} /> MONTH 1 · A NEW BEGINNING
+                  </span>
+                </div>
+              </div>
+              <div className="hud-right">
+                <div className="wallet">
+                  <span className="wallet-coin">₹</span>
+                  <div>
+                    <small>MONTHLY ALLOWANCE</small>
+                    <strong>{money(ALLOWANCE)}</strong>
+                  </div>
+                </div>
+                <button
+                  className="hud-button"
+                  aria-label="How to play"
+                  title="How to play"
+                  ref={guideTrigger}
+                  onClick={() => setShowGuide(true)}
+                >
+                  <BookOpen size={20} />
+                </button>
+                <button
+                  className="hud-button"
+                  aria-label={
+                    fullscreen ? "Exit fullscreen" : "Enter fullscreen"
+                  }
+                  title="Fullscreen"
+                  onClick={toggleFullscreen}
+                >
+                  {fullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
+                </button>
+                <button
+                  className="hud-button"
+                  aria-label="Return to title screen"
+                  title="Title screen"
+                  onClick={() => setScreen("title")}
+                >
+                  <ArrowLeft size={20} />
+                </button>
+              </div>
+            </header>
+            <aside className="quest-card">
+              <span className="quest-star">✦</span>
+              <div>
+                <span>YOUR FIRST LITTLE QUEST</span>
+                <strong>
+                  {phase === "budget"
+                    ? "Give every rupee a home"
+                    : phase === "event"
+                      ? "A little bump in the road"
+                      : "Every choice tells a story"}
+                </strong>
+                <p>
+                  {phase === "budget"
+                    ? "Visit your home to divide your ₹2,000."
+                    : "Visit your home to continue your chapter."}
+                </p>
+              </div>
+            </aside>
+            <div className="dream-hud">
+              <Laptop size={19} />
+              <div>
+                <span>MY DREAM · A COLLEGE LAPTOP</span>
+                <strong>
+                  {money(
+                    phase === "result" || phase === "compare"
+                      ? result.goalLeft
+                      : budget.goal,
+                  )}{" "}
+                  <small>/ {money(GOAL)}</small>
+                </strong>
+              </div>
+              <div className="dream-progress">
+                <i
+                  style={{
+                    width: `${((phase === "result" || phase === "compare" ? result.goalLeft : budget.goal) / GOAL) * 100}%`,
+                  }}
+                />
+              </div>
+            </div>
+            <div className="village-dialogue" aria-live="polite">
+              <div className="dialogue-portrait">
+                <Character granny />
+              </div>
+              <div className="dialogue-copy">
+                <span>
+                  {conversation === "shop" ? "THE KIRANA SHOP" : "AMMAMMA"}
+                </span>
+                <p>
+                  {conversation === "shop"
+                    ? "The shop can wait, kanna. Let’s make a plan for your money first. Your four little jars are waiting at home."
+                    : conversation === "granny"
+                      ? "Some for today, some for a little happiness, and some for tomorrow. That’s how a little dream starts growing."
+                      : "A new month, kanna! You have ₹2,000 and a big dream. Come home—let’s find a place for every rupee."}
+                </p>
+              </div>
+              <button className="dialogue-action" onClick={openRoom}>
+                {phase === "budget" ? "Open my jars" : "Continue my story"}
+                <ArrowRight size={17} />
+              </button>
+            </div>
+            <div className="world-controls">
+              <span>CLICK THE GROUND TO WALK</span>
+              <span>✦</span>
+              <span>CLICK YOUR HOME TO PLAY</span>
+            </div>
+            {displayNotice && (
+              <p className="display-notice" role="status">
+                {displayNotice}
+              </p>
+            )}
+          </>
+        )}
+      </div>
+      <dialog
+        className="game-panel"
+        ref={gameDialog}
+        onCancel={closeRoom}
+        onClose={() => {
+          if (roomOpen) closeRoom();
+        }}
+        aria-label="Your first chapter"
+      >
+        <div className="game-panel-header">
           <span>
-            <span className="chapter-dot" /> CHAPTER 01{" "}
-            <span className="chapter-divider">/</span> THE FIRST LITTLE STEP
+            <Home size={17} />
+            {phase === "budget"
+              ? "HOME · YOUR LITTLE MONEY CORNER"
+              : phase === "event"
+                ? "THE VILLAGE · LIFE HAPPENS"
+                : "HOME · YOUR STORY SO FAR"}
           </span>
-          <span className="time-label">
-            <Sun size={15} /> A month in your shoes
-          </span>
+          <button
+            className="panel-close"
+            aria-label="Back to village"
+            onClick={closeRoom}
+          >
+            <X size={20} />
+          </button>
         </div>
-        <section className="story-banner">
-          <div className="story-copy">
-            <span className="eyebrow">A LITTLE LIFE. A BIG DREAM.</span>
-            <h1>
-              Big dreams start
-              <br />
-              with little jars<span>.</span>
-            </h1>
-            <p>
-              You’re in Class 12. A college laptop is on your wish list.
-              <br className="desktop-break" /> Let’s make your first ₹2,000
-              count.
-            </p>
-            <div className="persona-chip">
-              <span className="tiny-avatar">✿</span> You, 17 <span>·</span>{" "}
-              Telangana <span>·</span> Month 1
-            </div>
-          </div>
-          <Village />
-        </section>
-        <section className="goal-strip" aria-label="Your savings goal">
-          <div className="goal-icon">
-            <Laptop size={23} />
-          </div>
-          <div className="goal-label">
-            <span>THE DREAM WE’RE SAVING FOR</span>
-            <strong>A laptop. A world of possibilities.</strong>
-          </div>
-          <div className="goal-progress">
-            <div>
-              <span>
-                {phase === "result" || phase === "compare"
-                  ? money(result.goalLeft)
-                  : money(budget.goal)}{" "}
-                <small>/ {money(GOAL)}</small>
-              </span>
-              <span>
-                {phase === "result" || phase === "compare"
-                  ? "saved this month"
-                  : "planned this month"}
-              </span>
-            </div>
-            <div className="progress-track">
-              <div
-                style={{
-                  width: `${((phase === "result" || phase === "compare" ? result.goalLeft : budget.goal) / GOAL) * 100}%`,
-                }}
-              />
-            </div>
-          </div>
-        </section>
         <nav className="steps" aria-label="Chapter progress">
           {["Make a little plan", "Life happens", "See your story"].map(
             (label, i) => (
@@ -669,13 +726,7 @@ function App() {
             </div>
           </section>
         )}
-        <footer>
-          <span>
-            <Leaf size={14} /> Grow a little wiser, one choice at a time.
-          </span>
-          <span>A small simulation, not financial advice.</span>
-        </footer>
-      </main>
+      </dialog>
       <dialog
         ref={guide}
         onCancel={closeGuide}
@@ -695,6 +746,7 @@ function App() {
         <h2>Four jars. One big dream.</h2>
         <ol>
           <li>
+            Click Play, then click your home in the village to open your jars.
             Split your ₹2,000 monthly allowance. Cover at least ₹800 of
             essentials.
           </li>

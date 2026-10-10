@@ -57,4 +57,4 @@ same time. These rules exist to keep us out of merge-conflict hell. Follow them 
 | Infra, docs, integration | root, `docs/` | TODO |
 
 ## Project overview
-Lakshyam is a 2D financial-literacy browser game for Class 11–12 students. React + Vite render an illustrated budgeting scene; pure functions in `src/game.js` calculate a fixed bicycle repair and a fair parallel-life comparison. `src/main.jsx` owns the chapter UI, and `src/styles.css` owns responsive visuals. There is no backend or API key requirement. See README.md for scope and teaching assumptions.
+Lakshyam is a 2D financial-literacy browser game for Class 11–12 students. React + Vite render an illustrated budgeting scene; pure functions in `src/game.js` calculate a fixed bicycle repair and a fair parallel-life comparison. `src/main.jsx` owns the chapter UI; `src/World.jsx` owns the title screen and interactive village; `src/game-scene.css` styles the laptop game scene. Shared jar and story visuals live in `src/styles.css`. Browser checks run with `npm run test:e2e` after installing Playwright Chromium. There is no backend or API key requirement. See README.md for scope and teaching assumptions.

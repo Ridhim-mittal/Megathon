@@ -46,3 +46,7 @@ Thumbs.db
 # Logs / coverage
 *.log
 coverage/
+
+# Browser test output
+/test-results/
+/playwright-report/
