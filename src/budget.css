@@ -1,0 +1,319 @@
+/* The money plan: Ammamma's bubble, the coin pouch, the split bar and jars that catch coins.
+   Loaded after dialog.css. */
+
+.budget-fun {
+  --accent: #5f9e46;
+  --accent-soft: #e6f3d8;
+  --accent-ink: #3b6b28;
+}
+.budget-top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+}
+.budget-granny {
+  position: relative;
+  width: 76px;
+  height: 92px;
+  display: grid;
+  place-items: end center;
+  animation: actor-in 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+.budget-granny::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.budget-granny .pixel-portrait {
+  position: relative;
+  animation: actor-idle 1.6s steps(2, jump-none) infinite;
+}
+.budget-granny .pixel-portrait canvas {
+  width: 56px;
+  height: 84px;
+}
+.budget-bubble {
+  margin-top: 0;
+  padding: 10px 16px 11px;
+}
+.budget-bubble::before,
+.budget-bubble::after {
+  top: 22px;
+}
+.game-window .budget-bubble h2 {
+  font-size: 21px;
+}
+.budget-bubble p {
+  margin-top: 4px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #5a4a36;
+}
+
+/* the pouch: what is left to place */
+.pouch {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  min-width: 132px;
+  padding: 8px 14px 9px;
+  border-radius: 14px;
+  border: 3px solid #e6c757;
+  background: #fff4c8;
+  color: #7a5d10;
+  box-shadow: 0 4px 0 #d9b544;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+.pouch-icon {
+  width: 40px;
+  height: 40px;
+  margin-top: -26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff1b0, #f2c84b 55%, #d29a2a);
+  border: 3px solid #b07d1f;
+  color: #7a5414;
+}
+.pouch strong {
+  font-family: var(--vn-font);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+.pouch > span:not([class]) {
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.pouch.has-money .pouch-icon {
+  animation: pouch-wiggle 2.4s ease-in-out infinite;
+}
+.pouch.empty {
+  background: #e6f3d8;
+  border-color: #8fbd6e;
+  color: #3b6b28;
+  box-shadow: 0 4px 0 #7aa95c;
+}
+.pouch.empty .pouch-icon {
+  background: #5f9e46;
+  border-color: #2f4a26;
+  color: #fffbe8;
+  animation: stamp 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+.pouch.puff-a strong {
+  animation: num-pop-a 0.3s ease;
+}
+.pouch.puff-b strong {
+  animation: num-pop-b 0.3s ease;
+}
+.pouch .vn-sparkles i:nth-child(1) { left: 6px; top: 8px; }
+.pouch .vn-sparkles i:nth-child(2) { right: 4px; top: -6px; }
+.pouch .vn-sparkles i:nth-child(3) { right: 12px; top: 46px; }
+
+/* the split bar */
+.split-bar {
+  display: flex;
+  height: 22px;
+  margin: 16px 0 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 3px solid var(--px-wood);
+  background: #f1e6c9;
+  box-shadow: 0 3px 0 rgba(40, 25, 10, 0.25);
+}
+.split-seg {
+  flex-basis: 0;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  background: #eebd91;
+  transition: flex-grow 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.split-seg + .split-seg {
+  border-left: 2px solid #fffdf3;
+}
+.split-seg.pink { background: #e7a39b; }
+.split-seg.green { background: #a9c88e; }
+.split-seg.purple { background: #b7a6d8; }
+.split-seg.blue { background: #95bcd8; }
+.split-seg.left {
+  background: repeating-linear-gradient(45deg, #fff4c8 0 6px, #f6e3a0 6px 12px);
+}
+.split-seg b {
+  font-size: 11px;
+  font-weight: 800;
+  color: #4a3b2e;
+}
+
+/* jars */
+.budget-fun .jar-grid {
+  gap: 12px;
+}
+.game-window .budget-fun .jar-card {
+  padding: 12px 12px 10px;
+  border: 3px solid color-mix(in srgb, var(--jar) 55%, white);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--jar) 45%, white);
+  border-radius: 14px;
+  transition: border-color 0.2s;
+}
+.budget-fun .jar-card:hover {
+  border-color: var(--jar);
+}
+.budget-fun .jar-heading {
+  align-items: flex-start;
+}
+.budget-fun .jar-heading h3 {
+  font-size: 15px;
+}
+.budget-fun .jar-note {
+  margin-top: 1px;
+  min-height: 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #8f8a78;
+}
+.budget-fun .jar-illustration {
+  transform: scale(0.74);
+  margin: -14px auto -24px;
+}
+.budget-fun .jar-card.bump-a .jar-glass {
+  animation: jar-wiggle-a 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.budget-fun .jar-card.bump-b .jar-glass {
+  animation: jar-wiggle-b 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.budget-fun .jar-card:is(.bump-a, .bump-b) .jar-face > i {
+  height: 3px;
+  margin-top: 2px;
+  transition: height 0.2s;
+}
+.coin-drop {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 30px;
+  width: 30px;
+  height: 30px;
+  margin-left: -15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 800;
+  color: #7a5414;
+  background: radial-gradient(circle at 35% 30%, #fff1b0, #f2c84b 55%, #d29a2a);
+  border: 2px solid #b07d1f;
+  pointer-events: none;
+}
+.coin-drop.in {
+  animation: coin-fall 0.6s cubic-bezier(0.5, 0, 0.8, 0.6) both;
+}
+.coin-drop.out {
+  animation: coin-hop 0.6s cubic-bezier(0.2, 0.8, 0.4, 1) both;
+}
+.budget-fun .stepper {
+  border-width: 2px;
+  border-radius: 12px;
+}
+.budget-fun .stepper button {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 2px solid color-mix(in srgb, var(--jar) 60%, white);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--jar) 60%, white);
+  transition: transform 0.1s;
+}
+.budget-fun .stepper button:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+.budget-fun .stepper output {
+  font-family: var(--vn-font);
+  font-size: 18px;
+  font-weight: 800;
+}
+.jar-min {
+  margin-top: 6px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #a08a62;
+}
+.jar-card.is-warn {
+  border-color: #df9476 !important;
+}
+.jar-card.is-warn .jar-min {
+  color: #b5482c;
+}
+.budget-tip {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12.5px;
+  color: #8a6f45;
+}
+
+.budget-actions {
+  margin-top: 14px;
+}
+.budget-repeat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #8a7a5a;
+}
+.budget-fun .primary-button.ready {
+  animation: ready-pulse 1.8s ease-in-out infinite;
+}
+
+@media (max-width: 760px) {
+  .budget-top {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .pouch {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 14px;
+  }
+}
+
+@keyframes pouch-wiggle {
+  0%, 80%, 100% { transform: rotate(0); }
+  85% { transform: rotate(-12deg); }
+  90% { transform: rotate(10deg); }
+  95% { transform: rotate(-6deg); }
+}
+@keyframes num-pop-a {
+  50% { transform: scale(1.18); }
+}
+@keyframes num-pop-b {
+  50% { transform: scale(1.18); }
+}
+@keyframes jar-wiggle-a {
+  30% { transform: rotate(-6deg) scale(1.04, 0.96); }
+  65% { transform: rotate(4deg); }
+}
+@keyframes jar-wiggle-b {
+  30% { transform: rotate(6deg) scale(1.04, 0.96); }
+  65% { transform: rotate(-4deg); }
+}
+@keyframes coin-fall {
+  0% { opacity: 0; transform: translateY(-70px) rotate(-30deg); }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(40px) rotate(20deg); }
+}
+@keyframes coin-hop {
+  0% { opacity: 1; transform: translateY(30px); }
+  100% { opacity: 0; transform: translateY(-80px) rotate(40deg); }
+}
+@keyframes ready-pulse {
+  0%, 100% { box-shadow: 0 4px 0 var(--px-green-dark), 0 0 0 0 rgba(95, 158, 70, 0.45); }
+  50% { box-shadow: 0 4px 0 var(--px-green-dark), 0 0 0 8px rgba(95, 158, 70, 0); }
+}

@@ -11,6 +11,8 @@ import "./game-scene.css";
 import "./life.css";
 import "./pixel.css";
 import "./dialog.css";
+import "./storybook.css";
+import "./budget.css";
 import { App } from "./screens/App.jsx";
 
 createRoot(document.getElementById("root")).render(
