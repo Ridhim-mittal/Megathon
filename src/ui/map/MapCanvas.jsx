@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { LOOKS, drawCharacter, drawMarker, renderVillage } from "./art.js";
+import { LOOKS, drawAmbient, drawCharacter, drawMarker, renderVillage } from "./art.js";
 import { drawGuide } from "./guide.js";
 import { H, PLACES, START, TILE, W, findPath, placeAt, placeById, placeByEntrance, walkable } from "./village.js";
 
@@ -230,6 +230,7 @@ export function MapCanvas({ avatar = "boy", stage = "child", markers = {}, label
     ctx.fillRect(0, 0, v.w, v.h);
     const layer = layers[Math.floor(now / 600) % 2];
     ctx.drawImage(layer, -v.camX, -v.camY);
+    drawAmbient(ctx, now, v.camX, v.camY);
 
     // Markers over places with events.
     for (const place of PLACES) {
