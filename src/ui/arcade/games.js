@@ -14,6 +14,8 @@ export const GAMES = [
   { id: "snowball", place: "bank", seconds: 40 },
   // Endless: runs until a crash with an expired policy. Its logic lives in InsuranceRush.jsx.
   { id: "insuranceRush", place: null, seconds: null },
+  // Six "months" with summaries in between. Its logic lives in SwipeBazaar.jsx.
+  { id: "swipeBazaar", place: null, seconds: null },
 ];
 export const gameById = Object.fromEntries(GAMES.map((g) => [g.id, g]));
 export const gameAtPlace = (place) => GAMES.find((g) => g.place === place) ?? null;
@@ -278,5 +280,6 @@ export function result(s) {
   if (s.id === "jarDash") return { score: s.score, caught: s.caught, spent: s.spent };
   if (s.id === "scamSmash") return { score: s.score, blocked: s.blocked, passed: s.passed, mistakes: s.mistakes };
   if (s.id === "insuranceRush") return { score: s.score, distance: s.distance, claims: s.claims, renewals: s.renewals };
+  if (s.id === "swipeBazaar") return { score: s.score, saved: s.saved, extraPaid: s.extraPaid, needsMissed: s.needsMissed, emisLeft: s.emisLeft };
   return { score: s.value, added: s.added, interest: s.interest, lost: s.lost, shielded: s.shielded };
 }

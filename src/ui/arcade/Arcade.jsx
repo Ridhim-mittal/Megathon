@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, CarFront, Gamepad2, Heart, Lightbulb, PiggyBank, RotateCcw, ShieldBan, Snowflake, Star, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, CarFront, Gamepad2, Heart, Lightbulb, PiggyBank, RotateCcw, ShieldBan, ShoppingBag, Snowflake, Star, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -7,10 +7,12 @@ import { FIELD, GAMES, ballRadius, createGame, gameById, laneY, result, stepGame
 import { nextAd, wantsInterstitial } from "./ads.js";
 import { AdBanner, AdInterstitial, ScamSite } from "./ScamAds.jsx";
 import { InsuranceRush } from "./InsuranceRush.jsx";
+import { SwipeBazaar, SwipeBazaarIntro } from "./SwipeBazaar.jsx";
+import { SWIPE_CONFIG } from "./swipeBazaarConfig.js";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
-export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront };
-const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000] };
+export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, swipeBazaar: ShoppingBag };
+const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], swipeBazaar: SWIPE_CONFIG.stars };
 export const starsFor = (id, score) => STARS[id].filter((x) => score >= x).length;
 
 // A list of the three games (the phone's Arcade app).
@@ -146,7 +148,9 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
 
       {stage === "intro" && gameId === "snowball" && <SnowballIntro best={best} startRef={start} onStart={begin} />}
 
-      {stage === "intro" && gameId !== "snowball" && (
+      {stage === "intro" && gameId === "swipeBazaar" && <SwipeBazaarIntro best={best} startRef={start} onStart={begin} />}
+
+      {stage === "intro" && gameId !== "snowball" && gameId !== "swipeBazaar" && (
         <div className="arcade-intro">
           <span className="arcade-icon huge" aria-hidden="true">
             <Icon size={64} />
@@ -170,6 +174,8 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
             <ScamSmash key={round} running={stage === "play"} onEnd={finish} />
           ) : gameId === "insuranceRush" ? (
             <InsuranceRush key={round} running={stage === "play"} onEnd={finish} />
+          ) : gameId === "swipeBazaar" ? (
+            <SwipeBazaar key={round} running={stage === "play"} onEnd={finish} />
           ) : (
             <CanvasGame key={round} gameId={gameId} running={stage === "play"} onEnd={finish} />
           )}
@@ -190,10 +196,10 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
           </p>
           <ul className="arcade-chips">
             {Object.entries(final)
-              .filter(([k, v]) => k !== "score" && k !== "isNew" && !(["shielded", "claims", "renewals"].includes(k) && !v))
+              .filter(([k, v]) => k !== "score" && k !== "isNew" && !(["shielded", "claims", "renewals", "emisLeft"].includes(k) && !v))
               .map(([k, v]) => (
                 <li key={k} className={`chip-${k}`}>
-                  {t(`arcade.stat.${k}`, { n: v })}
+                  {t(`arcade.stat.${k}`, { n: typeof v === "number" ? v.toLocaleString("en-IN") : v })}
                 </li>
               ))}
           </ul>
