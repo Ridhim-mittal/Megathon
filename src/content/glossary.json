@@ -1,309 +1,634 @@
 {
   "budget": {
     "name": { "en": "budget", "hi": "बजट", "te": "బడ్జెట్" },
-    "short": { "en": "A plan for every rupee before you spend it." }
+    "short": {
+      "en": "A plan for every rupee before you spend it.",
+      "hi": "खर्च करने से पहले हर रुपये का प्लान।",
+      "te": "ఖర్చు చేసే ముందు ప్రతి రూపాయికి ఒక ప్లాన్."
+    }
   },
   "needs": {
     "name": { "en": "needs", "hi": "ज़रूरतें", "te": "అవసరాలు" },
-    "short": { "en": "Things you must have: food, school, bus fare, medicine." }
+    "short": {
+      "en": "Things you must have: food, school, bus fare, medicine.",
+      "hi": "जिनके बिना काम नहीं चलता: खाना, स्कूल, बस किराया, दवा।",
+      "te": "లేకుండా గడవనివి: తిండి, స్కూల్, బస్ ఛార్జీ, మందులు."
+    }
   },
   "wants": {
     "name": { "en": "wants", "hi": "इच्छाएँ", "te": "కోరికలు" },
-    "short": { "en": "Things that make life nicer but can wait: snacks, games, new clothes." }
+    "short": {
+      "en": "Things that make life nicer but can wait: snacks, games, new clothes.",
+      "hi": "जो ज़िंदगी अच्छी बनाएँ पर रुक सकें: नाश्ता, गेम, नए कपड़े।",
+      "te": "జీవితాన్ని బాగు చేసేవి కానీ ఆగగలిగేవి: స్నాక్స్, గేమ్స్, కొత్త బట్టలు."
+    }
   },
   "gullak": {
     "name": { "en": "piggy bank (gullak)", "hi": "गुल्लक", "te": "హుండీ" },
-    "short": { "en": "A box or pot at home for saving coins. Safe from spending, not from rats or thieves." }
+    "short": {
+      "en": "A box or pot at home for saving coins. Safe from spending, not from rats or thieves.",
+      "hi": "सिक्के बचाने का घर का डिब्बा या मटका। खर्च से सुरक्षित, चूहों या चोरों से नहीं।",
+      "te": "నాణేలు దాచే ఇంటి డబ్బా లేదా కుండ. ఖర్చు నుంచి భద్రం, ఎలుకలు, దొంగల నుంచి కాదు."
+    }
   },
   "inflation": {
     "name": { "en": "inflation", "hi": "महंगाई", "te": "ధరల పెరుగుదల" },
-    "short": { "en": "Prices going up over time. In this game, about 6% a year." }
+    "short": {
+      "en": "Prices going up over time. In this game, about 6% a year.",
+      "hi": "समय के साथ कीमतें बढ़ना। इस गेम में लगभग 6% सालाना।",
+      "te": "కాలంతో ధరలు పెరగడం. ఈ గేమ్‌లో ఏడాదికి సుమారు 6%."
+    }
   },
   "interest": {
     "name": { "en": "interest", "hi": "ब्याज", "te": "వడ్డీ" },
-    "short": { "en": "The price of money. You earn it when you save. You pay it when you borrow." }
+    "short": {
+      "en": "The price of money. You earn it when you save. You pay it when you borrow.",
+      "hi": "पैसे की कीमत। बचत पर मिलता है, उधार पर देना पड़ता है।",
+      "te": "డబ్బు ధర. పొదుపు చేస్తే వస్తుంది, అప్పు చేస్తే కట్టాలి."
+    }
   },
   "simple_interest": {
     "name": { "en": "simple interest", "hi": "साधारण ब्याज", "te": "సాధారణ వడ్డీ" },
-    "short": { "en": "Interest only on the amount you started with." }
+    "short": {
+      "en": "Interest only on the amount you started with.",
+      "hi": "सिर्फ़ शुरुआती रकम पर ब्याज।",
+      "te": "మొదటి మొత్తంపై మాత్రమే వడ్డీ."
+    }
   },
   "chakravaddi": {
     "name": { "en": "compound interest", "hi": "चक्रवृद्धि ब्याज", "te": "చక్రవడ్డీ" },
-    "short": { "en": "Interest on interest. Great for savings, dangerous for debts." }
+    "short": {
+      "en": "Interest on interest. Great for savings, dangerous for debts.",
+      "hi": "ब्याज पर ब्याज। बचत के लिए बढ़िया, कर्ज़ के लिए खतरनाक।",
+      "te": "వడ్డీ మీద వడ్డీ. పొదుపుకు మంచిది, అప్పుకు ప్రమాదం."
+    }
   },
   "minor_account": {
-    "name": { "en": "minor's savings account" },
-    "short": { "en": "A bank account for a child, opened with a parent or guardian. Many have zero minimum balance." }
+    "name": { "en": "minor's savings account", "hi": "नाबालिग बचत खाता", "te": "మైనర్ సేవింగ్స్ ఖాతా" },
+    "short": {
+      "en": "A bank account for a child, opened with a parent or guardian. Many have zero minimum balance.",
+      "hi": "बच्चे का बैंक खाता, माता-पिता या अभिभावक के साथ। कई में न्यूनतम बैलेंस ज़ीरो।",
+      "te": "పిల్లల బ్యాంక్ ఖాతా, తల్లిదండ్రులు లేదా సంరక్షకులతో. చాలావాటికి కనీస బ్యాలెన్స్ సున్నా."
+    }
   },
   "jan_dhan": {
     "name": { "en": "Jan Dhan account", "hi": "जन धन खाता", "te": "జన్ ధన్ ఖాతా" },
-    "short": { "en": "A government zero-balance bank account, with a RuPay card and accident cover." }
+    "short": {
+      "en": "A government zero-balance bank account, with a RuPay card and accident cover.",
+      "hi": "सरकार का ज़ीरो बैलेंस बैंक खाता, RuPay कार्ड और दुर्घटना कवर के साथ।",
+      "te": "ప్రభుత్వ జీరో బ్యాలెన్స్ బ్యాంక్ ఖాతా, RuPay కార్డు, ప్రమాద బీమాతో."
+    }
   },
   "bank_mitra": {
     "name": { "en": "Bank Mitra", "hi": "बैंक मित्र", "te": "బ్యాంక్ మిత్ర" },
-    "short": { "en": "A village banking agent who opens accounts and handles deposits for a bank." }
+    "short": {
+      "en": "A village banking agent who opens accounts and handles deposits for a bank.",
+      "hi": "गाँव का बैंक एजेंट जो बैंक के लिए खाते खोलता है और पैसे जमा करता है।",
+      "te": "బ్యాంక్ తరఫున ఖాతాలు తెరిచి, డిపాజిట్లు తీసుకునే ఊరి బ్యాంకింగ్ ఏజెంట్."
+    }
   },
   "khata": {
     "name": { "en": "shop credit book (khata)", "hi": "उधार खाता", "te": "ఖాతా పుస్తకం" },
-    "short": { "en": "The shop's notebook of what you owe. Easy to start, easy to forget, never forgets you." }
+    "short": {
+      "en": "The shop's notebook of what you owe. Easy to start, easy to forget, never forgets you.",
+      "hi": "दुकान की बही जिसमें आपका उधार लिखा है। शुरू करना आसान, भूलना आसान, पर वह आपको कभी नहीं भूलती।",
+      "te": "మీరు ఎంత బాకీ ఉన్నారో రాసే కొట్టు పుస్తకం. మొదలుపెట్టడం సులువు, మర్చిపోవడం సులువు, అది మాత్రం మిమ్మల్ని మర్చిపోదు."
+    }
   },
   "otp": {
-    "name": { "en": "OTP" },
-    "short": { "en": "One-time password sent by SMS. It is a key to your money. Never share it." }
+    "name": { "en": "OTP", "hi": "OTP", "te": "OTP" },
+    "short": {
+      "en": "One-time password sent by SMS. It is a key to your money. Never share it.",
+      "hi": "SMS से आने वाला एक बार का पासवर्ड। यह आपके पैसे की चाबी है। कभी न बताएँ।",
+      "te": "SMSలో వచ్చే ఒకసారి పాస్‌వర్డ్. ఇది మీ డబ్బుకు తాళం. ఎప్పుడూ చెప్పకండి."
+    }
   },
   "pin": {
-    "name": { "en": "PIN" },
-    "short": { "en": "Your secret number for UPI or ATM. Only needed to send money, never to receive it." }
+    "name": { "en": "PIN", "hi": "PIN", "te": "PIN" },
+    "short": {
+      "en": "Your secret number for UPI or ATM. Only needed to send money, never to receive it.",
+      "hi": "UPI या ATM का आपका गुप्त नंबर। सिर्फ़ पैसा भेजने में लगता है, लेने में कभी नहीं।",
+      "te": "UPI లేదా ATM రహస్య నంబర్. డబ్బు పంపడానికే, తీసుకోవడానికి ఎప్పుడూ కాదు."
+    }
   },
-  "upi": { "name": { "en": "UPI" }, "short": { "en": "A way to send money from your phone using a UPI ID or QR code." } },
+  "upi": {
+    "name": { "en": "UPI", "hi": "UPI", "te": "UPI" },
+    "short": {
+      "en": "A way to send money from your phone using a UPI ID or QR code.",
+      "hi": "UPI ID या QR कोड से फ़ोन से पैसे भेजने का तरीका।",
+      "te": "UPI ID లేదా QR కోడ్‌తో ఫోన్ నుంచి డబ్బు పంపే విధానం."
+    }
+  },
   "collect_request": {
-    "name": { "en": "collect request" },
-    "short": { "en": "A UPI request asking YOU to pay. Entering your PIN sends money away." }
+    "name": { "en": "collect request", "hi": "कलेक्ट रिक्वेस्ट", "te": "కలెక్ట్ రిక్వెస్ట్" },
+    "short": {
+      "en": "A UPI request asking YOU to pay. Entering your PIN sends money away.",
+      "hi": "UPI रिक्वेस्ट जो आपसे पैसे माँगती है। PIN डाला तो पैसा चला जाता है।",
+      "te": "మిమ్మల్నే చెల్లించమనే UPI రిక్వెస్ట్. PIN వేస్తే డబ్బు వెళ్లిపోతుంది."
+    }
   },
   "qr_code": {
-    "name": { "en": "QR code" },
-    "short": { "en": "A square code you scan to pay. Scanning to \"receive\" money is a common trick." }
+    "name": { "en": "QR code", "hi": "QR कोड", "te": "QR కోడ్" },
+    "short": {
+      "en": "A square code you scan to pay. Scanning to \"receive\" money is a common trick.",
+      "hi": "चौकोर कोड जिसे स्कैन करके भुगतान करते हैं। \"पैसे लेने\" के लिए स्कैन कराना आम ठगी है।",
+      "te": "చెల్లించడానికి స్కాన్ చేసే చతురస్ర కోడ్. \"డబ్బు తీసుకోవడానికి\" స్కాన్ చేయమనడం సాధారణ మోసం."
+    }
   },
   "emi": {
     "name": { "en": "EMI", "hi": "किस्त (EMI)", "te": "వాయిదా (EMI)" },
-    "short": { "en": "Equated monthly instalment: the same payment every month until a loan is paid off." }
+    "short": {
+      "en": "Equated monthly instalment: the same payment every month until a loan is paid off.",
+      "hi": "समान मासिक किस्त: कर्ज़ खत्म होने तक हर महीने एक जैसी रकम।",
+      "te": "సమాన నెలవారీ వాయిదా: అప్పు తీరే వరకు ప్రతి నెలా ఒకే మొత్తం."
+    }
   },
   "bnpl": {
-    "name": { "en": "buy now, pay later" },
-    "short": { "en": "A shop loan split into EMIs. Often has fees and high late charges." }
+    "name": { "en": "buy now, pay later", "hi": "अभी खरीदें, बाद में चुकाएँ", "te": "ఇప్పుడు కొను, తర్వాత కట్టు" },
+    "short": {
+      "en": "A shop loan split into EMIs. Often has fees and high late charges.",
+      "hi": "दुकान का कर्ज़ जो EMI में बँटता है। अक्सर फ़ीस और भारी लेट चार्ज होते हैं।",
+      "te": "EMIలుగా విభజించే షాప్ అప్పు. తరచూ ఫీజులు, ఎక్కువ లేట్ ఛార్జీలు."
+    }
   },
   "processing_fee": {
-    "name": { "en": "processing fee" },
-    "short": { "en": "A one-time charge for giving you a loan. Add it to the real cost." }
+    "name": { "en": "processing fee", "hi": "प्रोसेसिंग फ़ीस", "te": "ప్రాసెసింగ్ ఫీజు" },
+    "short": {
+      "en": "A one-time charge for giving you a loan. Add it to the real cost.",
+      "hi": "कर्ज़ देने की एक बार की फ़ीस। असली कीमत में इसे जोड़ें।",
+      "te": "అప్పు ఇచ్చినందుకు ఒక్కసారి వేసే ఛార్జీ. అసలు ఖర్చులో కలపండి."
+    }
   },
   "opportunity_cost": {
-    "name": { "en": "opportunity cost" },
-    "short": { "en": "The best thing you give up when you choose something else." }
+    "name": { "en": "opportunity cost", "hi": "अवसर लागत", "te": "అవకాశ వ్యయం" },
+    "short": {
+      "en": "The best thing you give up when you choose something else.",
+      "hi": "कुछ और चुनने पर छोड़ी गई सबसे अच्छी चीज़।",
+      "te": "వేరొకటి ఎంచుకున్నప్పుడు వదులుకున్న మంచి అవకాశం."
+    }
   },
   "betting_app": {
-    "name": { "en": "betting app" },
-    "short": { "en": "An app where you bet money on games or matches. The app wins over time. Many are illegal." }
+    "name": { "en": "betting app", "hi": "सट्टे का ऐप", "te": "బెట్టింగ్ యాప్" },
+    "short": {
+      "en": "An app where you bet money on games or matches. The app wins over time. Many are illegal.",
+      "hi": "ऐप जिसमें खेल या मैच पर पैसा लगाते हैं। समय के साथ ऐप जीतता है। कई अवैध हैं।",
+      "te": "ఆటలు, మ్యాచ్‌లపై డబ్బు పందెం కాసే యాప్. కాలక్రమంలో యాపే గెలుస్తుంది. చాలా అక్రమం."
+    }
   },
   "education_loan": {
     "name": { "en": "education loan", "hi": "शिक्षा ऋण", "te": "విద్యా రుణం" },
-    "short": { "en": "A bank loan for study. Repayment usually starts after the course ends." }
+    "short": {
+      "en": "A bank loan for study. Repayment usually starts after the course ends.",
+      "hi": "पढ़ाई के लिए बैंक कर्ज़। चुकाना आमतौर पर कोर्स खत्म होने के बाद शुरू होता है।",
+      "te": "చదువుకు బ్యాంక్ రుణం. సాధారణంగా కోర్సు అయ్యాక తిరిగి కట్టడం మొదలవుతుంది."
+    }
   },
   "good_debt": {
-    "name": { "en": "good debt vs bad debt" },
-    "short": { "en": "Good debt helps you earn more later. Bad debt pays for things that lose value." }
+    "name": { "en": "good debt vs bad debt", "hi": "अच्छा कर्ज़ बनाम बुरा कर्ज़", "te": "మంచి అప్పు vs చెడ్డ అప్పు" },
+    "short": {
+      "en": "Good debt helps you earn more later. Bad debt pays for things that lose value.",
+      "hi": "अच्छा कर्ज़ आगे ज़्यादा कमाने में मदद करता है। बुरा कर्ज़ घटती कीमत वाली चीज़ों के लिए।",
+      "te": "మంచి అప్పు తర్వాత ఎక్కువ సంపాదించడానికి సహాయపడుతుంది. చెడ్డ అప్పు విలువ తగ్గే వస్తువులకు."
+    }
   },
   "iti": {
-    "name": { "en": "ITI course" },
-    "short": { "en": "Industrial Training Institute: 1–2 year government skill courses, like electrician or fitter." }
+    "name": { "en": "ITI course", "hi": "ITI कोर्स", "te": "ITI కోర్సు" },
+    "short": {
+      "en": "Industrial Training Institute: 1–2 year government skill courses, like electrician or fitter.",
+      "hi": "औद्योगिक प्रशिक्षण संस्थान: 1–2 साल के सरकारी हुनर कोर्स, जैसे इलेक्ट्रीशियन या फ़िटर।",
+      "te": "ఇండస్ట్రియల్ ట్రైనింగ్ ఇన్‌స్టిట్యూట్: 1–2 ఏళ్ల ప్రభుత్వ నైపుణ్య కోర్సులు, ఎలక్ట్రీషియన్, ఫిట్టర్ లాంటివి."
+    }
   },
   "payslip": {
     "name": { "en": "payslip", "hi": "वेतन पर्ची", "te": "జీతం స్లిప్" },
-    "short": { "en": "A paper showing your pay, what was added and what was cut, each month." }
+    "short": {
+      "en": "A paper showing your pay, what was added and what was cut, each month.",
+      "hi": "हर महीने आपकी तनख्वाह, जोड़ और कटौती दिखाने वाला कागज़।",
+      "te": "ప్రతి నెలా మీ జీతం, కలిపినవి, కోసినవి చూపించే కాగితం."
+    }
   },
   "pf": {
     "name": { "en": "provident fund (PF)", "hi": "भविष्य निधि (PF)", "te": "భవిష్య నిధి (PF)" },
-    "short": { "en": "Retirement savings: 12% of your basic pay, matched by your employer." }
+    "short": {
+      "en": "Retirement savings: 12% of your basic pay, matched by your employer.",
+      "hi": "रिटायरमेंट की बचत: बेसिक का 12%, और उतना ही कंपनी से।",
+      "te": "రిటైర్మెంట్ పొదుపు: బేసిక్ జీతంలో 12%, అంతే కంపెనీ నుంచి."
+    }
   },
   "pan": {
-    "name": { "en": "PAN card" },
-    "short": { "en": "A 10-character tax ID. Needed for bank accounts, salaries and big purchases." }
+    "name": { "en": "PAN card", "hi": "PAN कार्ड", "te": "PAN కార్డు" },
+    "short": {
+      "en": "A 10-character tax ID. Needed for bank accounts, salaries and big purchases.",
+      "hi": "10 अक्षरों वाला टैक्स ID। बैंक खाते, तनख्वाह और बड़ी खरीदारी के लिए ज़रूरी।",
+      "te": "10 అక్షరాల ట్యాక్స్ ID. బ్యాంక్ ఖాతాలు, జీతాలు, పెద్ద కొనుగోళ్లకు కావాలి."
+    }
   },
   "income_tax": {
     "name": { "en": "income tax", "hi": "आयकर", "te": "ఆదాయపు పన్ను" },
-    "short": { "en": "Tax on earnings above a yearly limit. Most first jobs fall below it." }
+    "short": {
+      "en": "Tax on earnings above a yearly limit. Most first jobs fall below it.",
+      "hi": "एक सालाना सीमा से ऊपर की कमाई पर टैक्स। ज़्यादातर पहली नौकरियाँ उससे नीचे होती हैं।",
+      "te": "ఏడాది పరిమితి దాటిన సంపాదనపై పన్ను. చాలా మొదటి ఉద్యోగాలు దాని కంటే తక్కువే."
+    }
   },
   "emergency_fund": {
     "name": { "en": "emergency fund", "hi": "आपातकालीन फंड", "te": "అత్యవసర నిధి" },
-    "short": { "en": "3–6 months of expenses kept safe and easy to reach." }
+    "short": {
+      "en": "3–6 months of expenses kept safe and easy to reach.",
+      "hi": "3–6 महीने का खर्च, सुरक्षित और आसानी से मिलने वाली जगह।",
+      "te": "3–6 నెలల ఖర్చు, భద్రంగా, సులువుగా అందేలా."
+    }
   },
   "sahukar": {
     "name": { "en": "moneylender (sahukar)", "hi": "साहूकार", "te": "వడ్డీ వ్యాపారి" },
-    "short": { "en": "A private lender. Fast and easy, but usually very costly, and often in rates per month." }
+    "short": {
+      "en": "A private lender. Fast and easy, but usually very costly, and often in rates per month.",
+      "hi": "निजी उधार देने वाला। जल्दी और आसान, पर आमतौर पर बहुत महँगा, और अक्सर मासिक दर में।",
+      "te": "ప్రైవేట్ అప్పు ఇచ్చేవాడు. త్వరగా, సులువుగా, కానీ సాధారణంగా చాలా ఖరీదు, తరచూ నెలవారీ రేటులో."
+    }
   },
   "loan_app": {
-    "name": { "en": "instant loan app" },
-    "short": { "en": "Phone apps that lend in minutes. Many charge huge fees; illegal ones harass borrowers." }
+    "name": { "en": "instant loan app", "hi": "इंस्टेंट लोन ऐप", "te": "ఇన్‌స్టంట్ లోన్ యాప్" },
+    "short": {
+      "en": "Phone apps that lend in minutes. Many charge huge fees; illegal ones harass borrowers.",
+      "hi": "मिनटों में कर्ज़ देने वाले फ़ोन ऐप। कई भारी फ़ीस लेते हैं; अवैध ऐप कर्ज़दारों को परेशान करते हैं।",
+      "te": "నిమిషాల్లో అప్పు ఇచ్చే ఫోన్ యాప్‌లు. చాలా భారీ ఫీజులు వేస్తాయి; అక్రమ యాప్‌లు వేధిస్తాయి."
+    }
   },
   "credit_card": {
-    "name": { "en": "credit card" },
-    "short": { "en": "Borrowing for a month free. Pay only the minimum and interest runs at 36–42% a year." }
+    "name": { "en": "credit card", "hi": "क्रेडिट कार्ड", "te": "క్రెడిట్ కార్డు" },
+    "short": {
+      "en": "Borrowing for a month free. Pay only the minimum and interest runs at 36–42% a year.",
+      "hi": "एक महीने के लिए मुफ़्त उधार। सिर्फ़ मिनिमम चुकाया तो 36–42% सालाना ब्याज।",
+      "te": "ఒక నెల ఉచిత అప్పు. కనీస మొత్తమే కడితే ఏడాదికి 36–42% వడ్డీ."
+    }
   },
   "credit_score": {
-    "name": { "en": "credit score" },
-    "short": { "en": "A number from 300 to 900 showing how well you repay. Banks check it before lending." }
+    "name": { "en": "credit score", "hi": "क्रेडिट स्कोर", "te": "క్రెడిట్ స్కోర్" },
+    "short": {
+      "en": "A number from 300 to 900 showing how well you repay. Banks check it before lending.",
+      "hi": "300 से 900 तक का नंबर, जो बताता है आप कितना अच्छा चुकाते हैं। बैंक कर्ज़ से पहले देखते हैं।",
+      "te": "మీరు ఎంత బాగా తిరిగి కడతారో చూపించే 300 నుంచి 900 నంబర్. అప్పు ఇచ్చే ముందు బ్యాంకులు చూస్తాయి."
+    }
   },
   "shg": {
     "name": { "en": "self-help group (SHG)", "hi": "स्वयं सहायता समूह", "te": "పొదుపు సంఘం" },
-    "short": { "en": "10–20 women who save together each month and lend to members at low interest." }
+    "short": {
+      "en": "10–20 women who save together each month and lend to members at low interest.",
+      "hi": "10–20 महिलाएँ जो हर महीने साथ बचत करती हैं और सदस्यों को कम ब्याज पर उधार देती हैं।",
+      "te": "ప్రతి నెలా కలిసి పొదుపు చేసి, సభ్యులకు తక్కువ వడ్డీకి అప్పు ఇచ్చే 10–20 మంది మహిళలు."
+    }
   },
   "gold_loan": {
     "name": { "en": "gold loan", "hi": "सोने पर कर्ज़", "te": "బంగారు రుణం" },
-    "short": { "en": "A loan against your gold jewellery. Cheaper than a sahukar, but you can lose the gold." }
+    "short": {
+      "en": "A loan against your gold jewellery. Cheaper than a sahukar, but you can lose the gold.",
+      "hi": "सोने के गहनों पर कर्ज़। साहूकार से सस्ता, पर सोना जा सकता है।",
+      "te": "బంగారు నగలపై అప్పు. వడ్డీ వ్యాపారి కంటే చౌక, కానీ బంగారం పోవచ్చు."
+    }
   },
   "kcc": {
-    "name": { "en": "Kisan Credit Card (KCC)" },
-    "short": { "en": "A low-interest bank loan for farming costs, about 7% a year, less if repaid on time." }
+    "name": { "en": "Kisan Credit Card (KCC)", "hi": "किसान क्रेडिट कार्ड (KCC)", "te": "కిసాన్ క్రెడిట్ కార్డు (KCC)" },
+    "short": {
+      "en": "A low-interest bank loan for farming costs, about 7% a year, less if repaid on time.",
+      "hi": "खेती के खर्च के लिए कम ब्याज वाला बैंक कर्ज़, लगभग 7% सालाना, समय पर चुकाने पर और कम।",
+      "te": "వ్యవసాయ ఖర్చులకు తక్కువ వడ్డీ బ్యాంక్ రుణం, ఏడాదికి సుమారు 7%, సమయానికి కడితే ఇంకా తక్కువ."
+    }
   },
   "mudra": {
-    "name": { "en": "Mudra loan" },
-    "short": { "en": "A government-backed bank loan for small businesses, without collateral." }
+    "name": { "en": "Mudra loan", "hi": "मुद्रा लोन", "te": "ముద్ర లోన్" },
+    "short": {
+      "en": "A government-backed bank loan for small businesses, without collateral.",
+      "hi": "छोटे कारोबार के लिए सरकार समर्थित बैंक कर्ज़, बिना गिरवी।",
+      "te": "చిన్న వ్యాపారాలకు ప్రభుత్వ మద్దతున్న బ్యాంక్ రుణం, తాకట్టు లేకుండా."
+    }
   },
   "money_mule": {
-    "name": { "en": "money mule" },
-    "short": { "en": "Someone whose bank account is used to move stolen money. It is a crime, even for \"commission\"." }
+    "name": { "en": "money mule", "hi": "मनी म्यूल", "te": "మనీ మ్యూల్" },
+    "short": {
+      "en": "Someone whose bank account is used to move stolen money. It is a crime, even for \"commission\".",
+      "hi": "जिसके बैंक खाते से चोरी का पैसा घुमाया जाता है। \"कमीशन\" के लिए भी यह अपराध है।",
+      "te": "దొంగ డబ్బు తరలించడానికి ఖాతా వాడబడే వ్యక్తి. \"కమిషన్\" కోసమైనా ఇది నేరం."
+    }
   },
   "helpline_1930": {
-    "name": { "en": "1930 helpline" },
-    "short": { "en": "The national cyber-crime helpline. Call 1930 fast if you are cheated online." }
+    "name": { "en": "1930 helpline", "hi": "1930 हेल्पलाइन", "te": "1930 హెల్ప్‌లైన్" },
+    "short": {
+      "en": "The national cyber-crime helpline. Call 1930 fast if you are cheated online.",
+      "hi": "राष्ट्रीय साइबर अपराध हेल्पलाइन। ऑनलाइन ठगी हो तो तुरंत 1930 पर कॉल करें।",
+      "te": "జాతీయ సైబర్ క్రైమ్ హెల్ప్‌లైన్. ఆన్‌లైన్‌లో మోసపోతే వెంటనే 1930కి కాల్ చేయండి."
+    }
   },
   "insurance": {
     "name": { "en": "insurance", "hi": "बीमा", "te": "బీమా" },
-    "short": { "en": "You pay a small fixed amount. If something bad happens, the insurer pays the big bill." }
+    "short": {
+      "en": "You pay a small fixed amount. If something bad happens, the insurer pays the big bill.",
+      "hi": "आप एक छोटी तय रकम देते हैं। कुछ बुरा हुआ तो बड़ा बिल बीमा कंपनी भरती है।",
+      "te": "మీరు చిన్న స్థిర మొత్తం కడతారు. చెడు జరిగితే పెద్ద బిల్లు బీమా కంపెనీ కడుతుంది."
+    }
   },
-  "premium": { "name": { "en": "premium" }, "short": { "en": "The amount you pay for insurance, monthly or yearly." } },
+  "premium": {
+    "name": { "en": "premium", "hi": "प्रीमियम", "te": "ప్రీమియం" },
+    "short": {
+      "en": "The amount you pay for insurance, monthly or yearly.",
+      "hi": "बीमा के लिए दी जाने वाली रकम, महीने या साल में।",
+      "te": "బీమాకు కట్టే మొత్తం, నెలకు లేదా ఏడాదికి."
+    }
+  },
   "term_insurance": {
-    "name": { "en": "term life insurance" },
-    "short": { "en": "Pure life cover for a fixed period. Low premium, big cover, no money back." }
+    "name": { "en": "term life insurance", "hi": "टर्म जीवन बीमा", "te": "టర్మ్ జీవిత బీమా" },
+    "short": {
+      "en": "Pure life cover for a fixed period. Low premium, big cover, no money back.",
+      "hi": "तय अवधि के लिए सिर्फ़ जीवन कवर। कम प्रीमियम, बड़ा कवर, पैसा वापस नहीं।",
+      "te": "నిర్ణీత కాలానికి జీవిత బీమా మాత్రమే. తక్కువ ప్రీమియం, పెద్ద బీమా, డబ్బు వెనక్కి రాదు."
+    }
   },
   "pmsby": {
-    "name": { "en": "PMSBY (accident cover)" },
-    "short": { "en": "Pradhan Mantri Suraksha Bima Yojana: ₹2 lakh accident cover for ₹20 a year." }
+    "name": { "en": "PMSBY (accident cover)", "hi": "PMSBY (दुर्घटना कवर)", "te": "PMSBY (ప్రమాద బీమా)" },
+    "short": {
+      "en": "Pradhan Mantri Suraksha Bima Yojana: ₹2 lakh accident cover for ₹20 a year.",
+      "hi": "प्रधानमंत्री सुरक्षा बीमा योजना: ₹20 सालाना में ₹2 लाख का दुर्घटना कवर।",
+      "te": "ప్రధానమంత్రి సురక్ష బీమా యోజన: ఏడాదికి ₹20కి ₹2 లక్షల ప్రమాద బీమా."
+    }
   },
   "pmjjby": {
-    "name": { "en": "PMJJBY (life cover)" },
-    "short": { "en": "Pradhan Mantri Jeevan Jyoti Bima Yojana: ₹2 lakh life cover for ₹436 a year." }
+    "name": { "en": "PMJJBY (life cover)", "hi": "PMJJBY (जीवन कवर)", "te": "PMJJBY (జీవిత బీమా)" },
+    "short": {
+      "en": "Pradhan Mantri Jeevan Jyoti Bima Yojana: ₹2 lakh life cover for ₹436 a year.",
+      "hi": "प्रधानमंत्री जीवन ज्योति बीमा योजना: ₹436 सालाना में ₹2 लाख का जीवन कवर।",
+      "te": "ప్రధానమంత్రి జీవన్ జ్యోతి బీమా యోజన: ఏడాదికి ₹436కి ₹2 లక్షల జీవిత బీమా."
+    }
   },
   "ayushman": {
-    "name": { "en": "Ayushman Bharat (PM-JAY)" },
-    "short": { "en": "Free hospital cover up to ₹5 lakh a year for eligible families." }
+    "name": { "en": "Ayushman Bharat (PM-JAY)", "hi": "आयुष्मान भारत (PM-JAY)", "te": "ఆయుష్మాన్ భారత్ (PM-JAY)" },
+    "short": {
+      "en": "Free hospital cover up to ₹5 lakh a year for eligible families.",
+      "hi": "पात्र परिवारों के लिए साल में ₹5 लाख तक मुफ़्त अस्पताल कवर।",
+      "te": "అర్హత ఉన్న కుటుంబాలకు ఏడాదికి ₹5 లక్షల వరకు ఉచిత ఆసుపత్రి బీమా."
+    }
   },
   "aarogyasri": {
-    "name": { "en": "Aarogyasri" },
-    "short": { "en": "Telangana's free health scheme for eligible families at listed hospitals." }
+    "name": { "en": "Aarogyasri", "hi": "आरोग्यश्री", "te": "ఆరోగ్యశ్రీ" },
+    "short": {
+      "en": "Telangana's free health scheme for eligible families at listed hospitals.",
+      "hi": "तेलंगाना की मुफ़्त स्वास्थ्य योजना, पात्र परिवारों के लिए, लिस्टेड अस्पतालों में।",
+      "te": "అర్హత ఉన్న కుటుంబాలకు జాబితాలోని ఆసుపత్రుల్లో తెలంగాణ ఉచిత ఆరోగ్య పథకం."
+    }
   },
   "pmfby": {
-    "name": { "en": "crop insurance (PMFBY)" },
-    "short": { "en": "Pradhan Mantri Fasal Bima Yojana: farmers pay about 2% of cover; pays out when crops fail." }
+    "name": { "en": "crop insurance (PMFBY)", "hi": "फ़सल बीमा (PMFBY)", "te": "పంట బీమా (PMFBY)" },
+    "short": {
+      "en": "Pradhan Mantri Fasal Bima Yojana: farmers pay about 2% of cover; pays out when crops fail.",
+      "hi": "प्रधानमंत्री फ़सल बीमा योजना: किसान कवर का लगभग 2% देते हैं; फ़सल खराब होने पर भुगतान।",
+      "te": "ప్రధానమంత్రి ఫసల్ బీమా యోజన: రైతులు బీమాలో సుమారు 2% కడతారు; పంట పోతే చెల్లిస్తుంది."
+    }
   },
   "pm_kisan": {
-    "name": { "en": "PM-KISAN" },
-    "short": { "en": "₹6,000 a year from the government to farmers who own land, in three parts." }
+    "name": { "en": "PM-KISAN", "hi": "PM-किसान", "te": "PM-కిసాన్" },
+    "short": {
+      "en": "₹6,000 a year from the government to farmers who own land, in three parts.",
+      "hi": "ज़मीन वाले किसानों को सरकार से ₹6,000 सालाना, तीन किस्तों में।",
+      "te": "భూమి ఉన్న రైతులకు ప్రభుత్వం నుంచి ఏడాదికి ₹6,000, మూడు విడతల్లో."
+    }
   },
   "fd": {
-    "name": { "en": "fixed deposit (FD)" },
-    "short": { "en": "Money locked in a bank for a fixed time at a fixed rate, about 6–7% a year." }
+    "name": { "en": "fixed deposit (FD)", "hi": "सावधि जमा (FD)", "te": "ఫిక్స్‌డ్ డిపాజిట్ (FD)" },
+    "short": {
+      "en": "Money locked in a bank for a fixed time at a fixed rate, about 6–7% a year.",
+      "hi": "तय समय और तय दर पर बैंक में बंद पैसा, लगभग 6–7% सालाना।",
+      "te": "నిర్ణీత కాలం, నిర్ణీత రేటుకు బ్యాంక్‌లో లాక్ చేసిన డబ్బు, ఏడాదికి సుమారు 6–7%."
+    }
   },
   "rd": {
-    "name": { "en": "recurring deposit (RD)" },
-    "short": { "en": "Save the same amount in the bank every month at a fixed rate." }
+    "name": { "en": "recurring deposit (RD)", "hi": "आवर्ती जमा (RD)", "te": "రికరింగ్ డిపాజిట్ (RD)" },
+    "short": {
+      "en": "Save the same amount in the bank every month at a fixed rate.",
+      "hi": "हर महीने तय दर पर बैंक में एक जैसी रकम बचाएँ।",
+      "te": "ప్రతి నెలా నిర్ణీత రేటుకు బ్యాంక్‌లో ఒకే మొత్తం పొదుపు."
+    }
   },
   "ppf": {
-    "name": { "en": "Public Provident Fund (PPF)" },
-    "short": { "en": "A 15-year government savings scheme, about 7% a year, tax-free." }
+    "name": { "en": "Public Provident Fund (PPF)", "hi": "पब्लिक प्रॉविडेंट फंड (PPF)", "te": "పబ్లిక్ ప్రావిడెంట్ ఫండ్ (PPF)" },
+    "short": {
+      "en": "A 15-year government savings scheme, about 7% a year, tax-free.",
+      "hi": "15 साल की सरकारी बचत योजना, लगभग 7% सालाना, टैक्स-फ़्री।",
+      "te": "15 ఏళ్ల ప్రభుత్వ పొదుపు పథకం, ఏడాదికి సుమారు 7%, పన్ను లేదు."
+    }
   },
   "sukanya": {
-    "name": { "en": "Sukanya Samriddhi" },
-    "short": { "en": "A government savings scheme for a girl child's future, with a good fixed rate." }
+    "name": { "en": "Sukanya Samriddhi", "hi": "सुकन्या समृद्धि", "te": "సుకన్య సమృద్ధి" },
+    "short": {
+      "en": "A government savings scheme for a girl child's future, with a good fixed rate.",
+      "hi": "बेटी के भविष्य के लिए सरकारी बचत योजना, अच्छी तय दर के साथ।",
+      "te": "ఆడపిల్ల భవిష్యత్తు కోసం మంచి స్థిర రేటుతో ప్రభుత్వ పొదుపు పథకం."
+    }
   },
   "sip": {
-    "name": { "en": "SIP" },
-    "short": { "en": "Systematic investment plan: putting a fixed amount into a fund every month." }
+    "name": { "en": "SIP", "hi": "SIP", "te": "SIP" },
+    "short": {
+      "en": "Systematic investment plan: putting a fixed amount into a fund every month.",
+      "hi": "सिस्टमैटिक इन्वेस्टमेंट प्लान: हर महीने फंड में तय रकम डालना।",
+      "te": "సిస్టమాటిక్ ఇన్వెస్ట్‌మెంట్ ప్లాన్: ప్రతి నెలా ఫండ్‌లో స్థిర మొత్తం వేయడం."
+    }
   },
   "index_fund": {
-    "name": { "en": "index fund" },
-    "short": { "en": "A low-cost fund that buys a little of many big companies. It swings, but spreads risk." }
+    "name": { "en": "index fund", "hi": "इंडेक्स फंड", "te": "ఇండెక్స్ ఫండ్" },
+    "short": {
+      "en": "A low-cost fund that buys a little of many big companies. It swings, but spreads risk.",
+      "hi": "कम खर्च वाला फंड जो कई बड़ी कंपनियों का थोड़ा-थोड़ा खरीदता है। ऊपर-नीचे होता है, पर जोखिम फैलाता है।",
+      "te": "చాలా పెద్ద కంపెనీల్లో కొంచెం కొంచెం కొనే తక్కువ ఖర్చు ఫండ్. ఊగుతుంది, కానీ రిస్క్‌ను పంచుతుంది."
+    }
   },
   "diversification": {
-    "name": { "en": "diversification" },
-    "short": { "en": "Not keeping all your eggs in one basket. Spread money across different things." }
+    "name": { "en": "diversification", "hi": "विविधता", "te": "వైవిధ్యం" },
+    "short": {
+      "en": "Not keeping all your eggs in one basket. Spread money across different things.",
+      "hi": "सारे अंडे एक टोकरी में न रखना। पैसा अलग-अलग चीज़ों में फैलाएँ।",
+      "te": "అన్ని గుడ్లు ఒకే బుట్టలో పెట్టకపోవడం. డబ్బును వేర్వేరు వాటిలో పెట్టండి."
+    }
   },
   "commission": {
-    "name": { "en": "commission" },
-    "short": { "en": "What a seller earns for selling you something. Bigger commission, bigger push." }
+    "name": { "en": "commission", "hi": "कमीशन", "te": "కమిషన్" },
+    "short": {
+      "en": "What a seller earns for selling you something. Bigger commission, bigger push.",
+      "hi": "आपको कुछ बेचकर विक्रेता की कमाई। बड़ा कमीशन, बड़ा दबाव।",
+      "te": "మీకు అమ్మినందుకు అమ్మేవాడి సంపాదన. ఎక్కువ కమిషన్, ఎక్కువ ఒత్తిడి."
+    }
   },
   "mixed_plan": {
-    "name": { "en": "insurance-cum-investment plan" },
-    "short": { "en": "A policy that mixes cover and savings. Usually low cover, high fees, long lock-in." }
+    "name": { "en": "insurance-cum-investment plan", "hi": "बीमा-सह-निवेश प्लान", "te": "బీమా-పెట్టుబడి ప్లాన్" },
+    "short": {
+      "en": "A policy that mixes cover and savings. Usually low cover, high fees, long lock-in.",
+      "hi": "कवर और बचत मिलाने वाली पॉलिसी। आमतौर पर कम कवर, ज़्यादा फ़ीस, लंबा लॉक-इन।",
+      "te": "బీమా, పొదుపు కలిపిన పాలసీ. సాధారణంగా తక్కువ బీమా, ఎక్కువ ఫీజు, ఎక్కువ లాక్-ఇన్."
+    }
   },
   "chit": {
     "name": { "en": "chit fund", "hi": "कमेटी", "te": "చిట్టీ" },
-    "short": { "en": "A group pools money monthly; each month one member takes the pot. Use only registered chits." }
+    "short": {
+      "en": "A group pools money monthly; each month one member takes the pot. Use only registered chits.",
+      "hi": "एक समूह हर महीने पैसा मिलाता है; हर महीने एक सदस्य पूरा पैसा लेता है। सिर्फ़ रजिस्टर्ड कमेटी चुनें।",
+      "te": "ఒక గుంపు ప్రతి నెలా డబ్బు కలుపుతుంది; ప్రతి నెలా ఒక సభ్యుడు మొత్తం తీసుకుంటాడు. రిజిస్టర్ అయిన చిట్టీలే ఎంచుకోండి."
+    }
   },
   "ponzi": {
-    "name": { "en": "Ponzi scheme" },
-    "short": { "en": "A fake scheme that pays old members with new members' money, until it collapses." }
+    "name": { "en": "Ponzi scheme", "hi": "पोंज़ी स्कीम", "te": "పోంజీ స్కీమ్" },
+    "short": {
+      "en": "A fake scheme that pays old members with new members' money, until it collapses.",
+      "hi": "नकली योजना जो पुराने सदस्यों को नए सदस्यों के पैसे से देती है, जब तक ढह न जाए।",
+      "te": "పాత సభ్యులకు కొత్త సభ్యుల డబ్బుతో ఇచ్చే నకిలీ పథకం, కూలిపోయే వరకు."
+    }
   },
   "digital_arrest": {
-    "name": { "en": "\"digital arrest\" scam" },
-    "short": { "en": "Fake police on a video call demanding money. Real police never arrest over a call." }
+    "name": { "en": "\"digital arrest\" scam", "hi": "\"डिजिटल अरेस्ट\" ठगी", "te": "\"డిజిటల్ అరెస్ట్\" మోసం" },
+    "short": {
+      "en": "Fake police on a video call demanding money. Real police never arrest over a call.",
+      "hi": "वीडियो कॉल पर नकली पुलिस पैसे माँगती है। असली पुलिस कॉल पर गिरफ़्तार नहीं करती।",
+      "te": "వీడియో కాల్‌లో నకిలీ పోలీసులు డబ్బు అడుగుతారు. నిజమైన పోలీసులు కాల్‌లో అరెస్ట్ చేయరు."
+    }
   },
   "hawala": {
     "name": { "en": "hawala (hundi)", "hi": "हवाला", "te": "హవాలా" },
-    "short": { "en": "Moving cash outside banks, without records. Illegal, and carriers get caught first." }
+    "short": {
+      "en": "Moving cash outside banks, without records. Illegal, and carriers get caught first.",
+      "hi": "बैंक के बाहर, बिना रिकॉर्ड पैसा भेजना। अवैध है, और ढोने वाले सबसे पहले पकड़े जाते हैं।",
+      "te": "బ్యాంకుల బయట, రికార్డు లేకుండా నగదు తరలించడం. అక్రమం, మోసేవాళ్లే ముందు దొరుకుతారు."
+    }
   },
   "pahani": {
     "name": { "en": "pahani (land record)", "hi": "भूमि रिकॉर्ड (पहानी)", "te": "పహాణీ" },
-    "short": { "en": "The official record of who owns and farms a piece of land." }
+    "short": {
+      "en": "The official record of who owns and farms a piece of land.",
+      "hi": "ज़मीन का मालिक और खेती करने वाला कौन है, इसका सरकारी रिकॉर्ड।",
+      "te": "ఒక భూమికి యజమాని ఎవరు, సాగు ఎవరు చేస్తున్నారో చెప్పే అధికారిక రికార్డు."
+    }
   },
   "encumbrance": {
-    "name": { "en": "encumbrance certificate (EC)" },
-    "short": { "en": "A paper from the registration office showing if land is already sold, mortgaged or disputed." }
+    "name": { "en": "encumbrance certificate (EC)", "hi": "भार प्रमाणपत्र (EC)", "te": "ఈసీ (భారపత్రం)" },
+    "short": {
+      "en": "A paper from the registration office showing if land is already sold, mortgaged or disputed.",
+      "hi": "रजिस्ट्री दफ़्तर का कागज़ जो बताता है कि ज़मीन पहले से बिकी, गिरवी या विवाद में तो नहीं।",
+      "te": "భూమి ఇప్పటికే అమ్మారా, తాకట్టులో ఉందా, వివాదంలో ఉందా చూపించే రిజిస్ట్రేషన్ ఆఫీస్ కాగితం."
+    }
   },
   "sale_deed": {
     "name": { "en": "sale deed", "hi": "बैनामा" },
-    "short": { "en": "The registered paper that transfers land from seller to buyer." }
+    "short": {
+      "en": "The registered paper that transfers land from seller to buyer.",
+      "hi": "रजिस्टर्ड कागज़ जिससे ज़मीन बेचने वाले से खरीदने वाले के नाम होती है।",
+      "te": "భూమిని అమ్మేవాడి నుంచి కొనేవాడికి బదిలీ చేసే రిజిస్టర్డ్ కాగితం."
+    }
   },
   "down_payment": {
-    "name": { "en": "down payment" },
-    "short": { "en": "The part of a big purchase you pay yourself. The rest is the loan." }
+    "name": { "en": "down payment", "hi": "डाउन पेमेंट", "te": "డౌన్ పేమెంట్" },
+    "short": {
+      "en": "The part of a big purchase you pay yourself. The rest is the loan.",
+      "hi": "बड़ी खरीदारी का वह हिस्सा जो आप खुद देते हैं। बाकी कर्ज़ होता है।",
+      "te": "పెద్ద కొనుగోలులో మీరే కట్టే భాగం. మిగతాది అప్పు."
+    }
   },
   "apy": {
-    "name": { "en": "Atal Pension Yojana (APY)" },
-    "short": { "en": "A government pension scheme: ₹1,000–₹5,000 a month from age 60, for small monthly payments." }
+    "name": { "en": "Atal Pension Yojana (APY)", "hi": "अटल पेंशन योजना (APY)", "te": "అటల్ పెన్షన్ యోజన (APY)" },
+    "short": {
+      "en": "A government pension scheme: ₹1,000–₹5,000 a month from age 60, for small monthly payments.",
+      "hi": "सरकारी पेंशन योजना: छोटी मासिक किस्तों पर 60 साल से ₹1,000–₹5,000 महीना।",
+      "te": "ప్రభుత్వ పెన్షన్ పథకం: చిన్న నెల వాయిదాలకు 60 ఏళ్ల నుంచి నెలకు ₹1,000–₹5,000."
+    }
   },
   "nps": {
-    "name": { "en": "National Pension System (NPS)" },
-    "short": { "en": "A long-term government-run pension account. You choose how much to add." }
+    "name": { "en": "National Pension System (NPS)", "hi": "नेशनल पेंशन सिस्टम (NPS)", "te": "నేషనల్ పెన్షన్ సిస్టమ్ (NPS)" },
+    "short": {
+      "en": "A long-term government-run pension account. You choose how much to add.",
+      "hi": "सरकार द्वारा चलाया लंबी अवधि का पेंशन खाता। कितना डालना है, आप तय करते हैं।",
+      "te": "ప్రభుత్వం నడిపే దీర్ఘకాల పెన్షన్ ఖాతా. ఎంత వేయాలో మీరే నిర్ణయిస్తారు."
+    }
   },
   "nominee": {
-    "name": { "en": "nominee" },
-    "short": { "en": "The person who receives your account or policy money if something happens to you." }
+    "name": { "en": "nominee", "hi": "नॉमिनी", "te": "నామినీ" },
+    "short": {
+      "en": "The person who receives your account or policy money if something happens to you.",
+      "hi": "वह व्यक्ति जिसे आपको कुछ होने पर खाते या पॉलिसी का पैसा मिलता है।",
+      "te": "మీకు ఏదైనా జరిగితే ఖాతా లేదా పాలసీ డబ్బు పొందే వ్యక్తి."
+    }
   },
   "kyc": {
-    "name": { "en": "KYC" },
-    "short": { "en": "Know Your Customer: ID papers the bank keeps. Update it at the branch, never through a link." }
+    "name": { "en": "KYC", "hi": "KYC", "te": "KYC" },
+    "short": {
+      "en": "Know Your Customer: ID papers the bank keeps. Update it at the branch, never through a link.",
+      "hi": "नो योर कस्टमर: बैंक के पास रखे पहचान के कागज़। ब्रांच में अपडेट करें, लिंक से कभी नहीं।",
+      "te": "నో యువర్ కస్టమర్: బ్యాంక్ దగ్గర ఉండే గుర్తింపు పత్రాలు. బ్రాంచ్‌లో అప్‌డేట్ చేయండి, లింక్ ద్వారా ఎప్పుడూ కాదు."
+    }
   },
   "kalyana_lakshmi": {
-    "name": { "en": "Kalyana Lakshmi" },
-    "short": { "en": "Telangana's marriage help scheme for eligible families, paid to the bride's mother." }
+    "name": { "en": "Kalyana Lakshmi", "hi": "कल्याण लक्ष्मी", "te": "కళ్యాణ లక్ష్మి" },
+    "short": {
+      "en": "Telangana's marriage help scheme for eligible families, paid to the bride's mother.",
+      "hi": "पात्र परिवारों के लिए तेलंगाना की शादी सहायता योजना, दुल्हन की माँ को दी जाती है।",
+      "te": "అర్హత ఉన్న కుటుంబాలకు తెలంగాణ పెళ్లి సహాయ పథకం, వధువు తల్లికి ఇస్తారు."
+    }
   },
-  "net_worth": { "name": { "en": "net worth" }, "short": { "en": "Everything you own minus everything you owe." } },
+  "net_worth": {
+    "name": { "en": "net worth", "hi": "कुल संपत्ति", "te": "నికర విలువ" },
+    "short": {
+      "en": "Everything you own minus everything you owe.",
+      "hi": "आपके पास जो कुछ है, उसमें से जो कुछ देना है वह घटाएँ।",
+      "te": "మీ దగ్గర ఉన్నదంతా, మీరు బాకీ ఉన్నదంతా తీసేస్తే."
+    }
+  },
   "share": {
     "name": { "en": "share", "hi": "शेयर", "te": "షేర్" },
-    "short": { "en": "A tiny piece of a company. Its price goes up and down with the business." }
+    "short": {
+      "en": "A tiny piece of a company. Its price goes up and down with the business.",
+      "hi": "कंपनी का छोटा सा हिस्सा। कारोबार के साथ इसकी कीमत ऊपर-नीचे होती है।",
+      "te": "కంపెనీలో చిన్న భాగం. వ్యాపారంతో పాటు దీని ధర మారుతుంది."
+    }
   },
   "mutual_fund": {
     "name": { "en": "mutual fund", "hi": "म्यूचुअल फंड", "te": "మ్యూచువల్ ఫండ్" },
-    "short": { "en": "Many people's money pooled and spread across many shares or bonds by a fund manager." }
+    "short": {
+      "en": "Many people's money pooled and spread across many shares or bonds by a fund manager.",
+      "hi": "कई लोगों का पैसा, जिसे फंड मैनेजर कई शेयरों या बॉन्ड में फैलाता है।",
+      "te": "చాలామంది డబ్బు, ఫండ్ మేనేజర్ దాన్ని చాలా షేర్లలో లేదా బాండ్లలో పంచుతాడు."
+    }
   },
   "nav": {
-    "name": { "en": "NAV" },
-    "short": { "en": "Net asset value: the price of one unit of a fund today. Your money ÷ NAV = units." }
+    "name": { "en": "NAV", "hi": "NAV", "te": "NAV" },
+    "short": {
+      "en": "Net asset value: the price of one unit of a fund today. Your money ÷ NAV = units.",
+      "hi": "नेट एसेट वैल्यू: आज फंड की एक यूनिट की कीमत। आपका पैसा ÷ NAV = यूनिट।",
+      "te": "నెట్ అసెట్ వాల్యూ: ఈ రోజు ఫండ్‌లో ఒక యూనిట్ ధర. మీ డబ్బు ÷ NAV = యూనిట్లు."
+    }
   },
   "expense_ratio": {
     "name": { "en": "expense ratio", "hi": "एक्सपेंस रेशियो", "te": "ఎక్స్‌పెన్స్ రేషియో" },
-    "short": { "en": "The yearly fee a fund takes from your money, like 0.2% or 1.8%." }
+    "short": {
+      "en": "The yearly fee a fund takes from your money, like 0.2% or 1.8%.",
+      "hi": "फंड आपके पैसे से हर साल जो फ़ीस लेता है, जैसे 0.2% या 1.8%।",
+      "te": "ఫండ్ మీ డబ్బు నుంచి ఏడాదికి తీసుకునే ఫీజు, 0.2% లేదా 1.8% లాగా."
+    }
   },
   "debt_fund": {
     "name": { "en": "debt fund", "hi": "डेट फंड", "te": "డెట్ ఫండ్" },
-    "short": { "en": "A fund that lends money for interest. Steadier than shares, but not guaranteed." }
+    "short": {
+      "en": "A fund that lends money for interest. Steadier than shares, but not guaranteed.",
+      "hi": "फंड जो ब्याज पर पैसा उधार देता है। शेयरों से स्थिर, पर गारंटी नहीं।",
+      "te": "వడ్డీకి అప్పు ఇచ్చే ఫండ్. షేర్ల కంటే స్థిరం, కానీ హామీ లేదు."
+    }
   },
   "brokerage": {
     "name": { "en": "brokerage", "hi": "ब्रोकरेज", "te": "బ్రోకరేజ్" },
-    "short": { "en": "The fee for each share trade. In this game, ₹20 a trade." }
+    "short": {
+      "en": "The fee for each share trade. In this game, ₹20 a trade.",
+      "hi": "हर शेयर सौदे की फ़ीस। इस गेम में हर सौदे पर ₹20।",
+      "te": "ప్రతి షేర్ లావాదేవీ ఫీజు. ఈ గేమ్‌లో ప్రతి లావాదేవీకి ₹20."
+    }
   },
   "demat": {
     "name": { "en": "demat account", "hi": "डीमैट खाता", "te": "డీమ్యాట్ ఖాతా" },
-    "short": { "en": "An account that holds your shares electronically, in your own name." }
+    "short": {
+      "en": "An account that holds your shares electronically, in your own name.",
+      "hi": "खाता जो आपके शेयर आपके नाम पर इलेक्ट्रॉनिक रूप में रखता है।",
+      "te": "మీ షేర్లను మీ పేరు మీద ఎలక్ట్రానిక్‌గా ఉంచే ఖాతా."
+    }
   }
 }
