@@ -1,12 +1,5 @@
-import React, { useRef } from "react";
-import {
-  ArrowRight,
-  Home,
-  MessageCircle,
-  Play,
-  Sprout,
-  Sun,
-} from "lucide-react";
+import React from "react";
+import { MessageCircle } from "lucide-react";
 
 export function Character({ granny = false }) {
   return (
@@ -231,40 +224,14 @@ function Shop({ x, y }) {
   );
 }
 
-export function World({
-  title = false,
-  onHome,
-  onGranny,
-  onShop,
-  avatar,
-  onWalk,
-  homeRef,
-}) {
-  const surface = useRef(null);
+export function World({ mode = "scene", dream = null, onGranny, playerAge = 11, scene = "" }) {
   const w = 1200,
     h = 800;
   const home = { x: 333, y: 385 };
   const shop = { x: 887, y: 355 };
-  function walk(event) {
-    if (title || event.target.closest("button")) return;
-    const rect = surface.current.getBoundingClientRect();
-    onWalk({
-      x: Math.max(
-        10,
-        Math.min(90, ((event.clientX - rect.left) / rect.width) * 100),
-      ),
-      y: Math.max(
-        64,
-        Math.min(77, ((event.clientY - rect.top) / rect.height) * 100),
-      ),
-    });
-  }
+  const title = mode === "title";
   return (
-    <div
-      className={`world ${title ? "world-title" : ""}`}
-      ref={surface}
-      onPointerDown={walk}
-    >
+    <div className={`world world-${mode} ${scene ? `scene-${scene}` : ""}`}>
       <svg
         className="world-art"
         viewBox={`0 0 ${w} ${h}`}
@@ -455,6 +422,7 @@ export function World({
             </g>
           );
         })}
+        {dream && <DreamSite goalId={dream.goalId} pct={dream.pct} x={168} y={612} />}
         <g
           className="birds"
           stroke="#718e7b"
@@ -467,42 +435,9 @@ export function World({
           />
         </g>
       </svg>
-      {!title && (
+      {mode === "life" && (
         <>
-          <button
-            ref={homeRef}
-            className="place-hotspot home-hotspot"
-            style={{
-              left: `${(home.x / w) * 100}%`,
-              top: `${((home.y - 35) / h) * 100}%`,
-            }}
-            onClick={onHome}
-            aria-label="Go home and divide your money"
-          >
-            <span className="quest-marker">!</span>
-            <span className="building-hitbox" />
-            <span className="place-label">
-              <Home size={15} />
-              Your home
-              <ArrowRight size={14} />
-            </span>
-          </button>
-          <button
-            className="place-hotspot shop-hotspot"
-            style={{
-              left: `${(shop.x / w) * 100}%`,
-              top: `${((shop.y + 80) / h) * 100}%`,
-            }}
-            onClick={onShop}
-          >
-            <span className="place-label">Kirana shop</span>
-          </button>
-          <button
-            className="granny-hotspot"
-            style={{ left: "58%", top: "60%" }}
-            onClick={onGranny}
-            aria-label="Talk to Ammamma"
-          >
+          <button className="granny-hotspot life-granny" onClick={onGranny} aria-label="Ammamma">
             <Character granny />
             <span>
               <MessageCircle size={14} />
@@ -510,67 +445,194 @@ export function World({
             </span>
           </button>
           <div
-            className="player-character"
-            style={{ left: `${avatar.x}%`, top: `${avatar.y}%` }}
+            className="player-character life-player"
+            aria-hidden="true"
+            style={{ "--grow": 0.78 + Math.min(1, (playerAge - 11) / 9) * 0.28 }}
           >
-            <span className="player-arrow">▼</span>
             <Character />
-            <span className="player-tag">YOU</span>
           </div>
           <div className="butterfly butterfly-one" aria-hidden="true">
             <i />
             <b />
           </div>
-          <div className="butterfly butterfly-two" aria-hidden="true">
-            <i />
-            <b />
-          </div>
         </>
+      )}
+      {!title && mode !== "life" && (
+        <div className="butterfly butterfly-two" aria-hidden="true">
+          <i />
+          <b />
+        </div>
       )}
     </div>
   );
 }
 
-export function TitleScreen({ onPlay, onHelp, continuing }) {
+// The dream, growing in the village as it is funded: an empty plot at 0%, finished at 100%.
+const STAGE_AT = [0, 25, 50, 75, 100];
+
+export function DreamSite({ goalId, pct, x, y }) {
+  const stage = STAGE_AT.filter((p) => pct >= p).length - 1;
+  const Art = DREAM_ART[goalId] ?? DREAM_ART.house;
   return (
-    <div className="title-screen">
-      <div className="title-vignette" />
-      <div className="title-content">
-        <div className="title-kicker">
-          <span /> A LITTLE LIFE. A BIG DREAM. <span />
-        </div>
-        <div className="title-sprout">
-          <Sprout size={43} />
-        </div>
-        <h1>
-          lakshyam<span>.</span>
-        </h1>
-        <p className="title-tagline">Every little choice grows a story.</p>
-        <div className="title-rule">✦</div>
-        <p className="title-description">
-          A cosy village. Four little jars.
-          <br />
-          And a world of possibilities waiting for you.
-        </p>
-        <button
-          className="play-button"
-          aria-label={continuing ? "Continue" : "Play"}
-          onClick={onPlay}
-        >
-          <Play size={23} fill="currentColor" />
-          {continuing ? "Continue" : "Play"}
-          <span>
-            <ArrowRight size={20} />
-          </span>
-        </button>
-        <button className="title-help" onClick={onHelp}>
-          First time here? How to play
-        </button>
-      </div>
-      <span className="title-bottom">
-        <Sun size={14} /> Made of little moments & big dreams
-      </span>
-      <span className="title-version">CHAPTER ONE</span>
-    </div>
+    <g transform={`translate(${x} ${y})`} className={`dream-site dream-stage-${stage}`}>
+      <ellipse cy="38" rx="92" ry="20" fill="#c9b07e" opacity=".55" />
+      <ellipse cy="38" rx="92" ry="20" fill="none" stroke="#b39966" strokeWidth="2" strokeDasharray="6 5" />
+      <g key={stage} className="dream-art">
+        <Art s={stage} />
+      </g>
+      {stage === 4 && (
+        <g className="dream-sparkles" fill="#f6e3a0">
+          <path d="M-70-70l4 9 9 4-9 4-4 9-4-9-9-4 9-4Z" />
+          <path d="M72-90l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" />
+          <path d="M5-128l3 6 6 3-6 3-3 6-3-6-6-3 6-3Z" />
+        </g>
+      )}
+    </g>
   );
 }
+
+const stroke = { stroke: "#7d6448", strokeWidth: 2.5, strokeLinejoin: "round" };
+
+const DREAM_ART = {
+  house: ({ s }) => (
+    <>
+      {s === 0 && (
+        <g {...stroke}>
+          <path d="M-60 30v-30M60 30v-30M-60 0H60" fill="none" />
+          <rect x="-30" y="10" width="34" height="18" fill="#c8775a" />
+          <rect x="-20" y="-4" width="18" height="14" fill="#d48a6b" />
+        </g>
+      )}
+      {s >= 1 && <rect x="-72" y="22" width="144" height="16" rx="2" fill="#bdb6a6" {...stroke} />}
+      {s === 1 && <path d="M-66 22v-22h50v22M16 22v-22h50v22" fill="#d48a6b" {...stroke} />}
+      {s >= 2 && <rect x="-64" y="-40" width="128" height="62" fill={s === 4 ? "#f3e2b3" : "#d79a7c"} {...stroke} />}
+      {s === 2 && <path d="M-64-26H64M-64-12H64M-64 4H64" stroke="#b97a5f" strokeWidth="1.5" />}
+      {s >= 2 && <rect x="-14" y="-12" width="28" height="34" fill={s === 4 ? "#5f8fa6" : "#8a6a52"} {...stroke} />}
+      {s >= 2 && <rect x="-50" y="-26" width="22" height="18" fill="#fff0b8" {...stroke} />}
+      {s >= 2 && <rect x="28" y="-26" width="22" height="18" fill="#fff0b8" {...stroke} />}
+      {s >= 3 && <rect x="-74" y="-52" width="148" height="14" rx="2" fill="#c9c3b3" {...stroke} />}
+      {s === 3 && <path d="M80 38V-60M92 38V-60M80-40h12M80-10h12M80 20h12" stroke="#a78756" strokeWidth="3" />}
+      {s === 4 && (
+        <>
+          <path d="M-74-58q37 14 74 0q37 14 74 0" fill="none" stroke="#c4705a" strokeWidth="2" />
+          <g fill="#e7a43f">
+            <path d="M-55-56l5 10 5-10Z" />
+            <path d="M-20-50l5 10 5-10Z" />
+            <path d="M15-50l5 10 5-10Z" />
+            <path d="M50-56l5 10 5-10Z" />
+          </g>
+          <circle cx="-74" cy="28" r="9" fill="#87a264" />
+          <circle cx="76" cy="28" r="9" fill="#87a264" />
+          <circle cx="-74" cy="24" r="3.5" fill="#e6a28d" />
+          <circle cx="76" cy="24" r="3.5" fill="#e6a28d" />
+        </>
+      )}
+    </>
+  ),
+  business: ({ s }) => (
+    <>
+      {s === 0 && <rect x="-18" y="8" width="36" height="26" fill="#c9a06c" {...stroke} />}
+      {s >= 1 && <path d="M-60 36v-86M60 36v-86M-60-50H60" fill="none" stroke="#9c7a4f" strokeWidth="5" />}
+      {s >= 2 && <rect x="-54" y="0" width="108" height="36" fill="#d6a679" {...stroke} />}
+      {s >= 2 && <path d="M-50-10h100M-50-28h100" stroke="#a78756" strokeWidth="4" />}
+      {s >= 2 && (
+        <g fill="#e7b85d">
+          <rect x="-42" y="-24" width="12" height="14" rx="2" />
+          <rect x="-22" y="-26" width="10" height="16" rx="2" fill="#86a266" />
+          <rect x="18" y="-24" width="14" height="14" rx="2" fill="#d47b62" />
+        </g>
+      )}
+      {s >= 3 && (
+        <g>
+          <path d="M-72-50h144l-10 22h-124Z" fill="#f2e4c0" {...stroke} />
+          {[-62, -38, -14, 10, 34].map((px) => (
+            <path key={px} d={`M${px}-50h12l-2 22h-12Z`} fill="#c4705a" />
+          ))}
+        </g>
+      )}
+      {s === 4 && (
+        <g>
+          <rect x="-40" y="-80" width="80" height="24" rx="4" fill="#5c7a55" {...stroke} />
+          <path d="M-8-74l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z" fill="#f6e3a0" />
+          <path d="M-72-50q18 10 36 0t36 0 36 0 36 0" fill="none" stroke="#f0c34d" strokeWidth="2" strokeDasharray="2 5" />
+        </g>
+      )}
+    </>
+  ),
+  vehicle: ({ s }) => (
+    <>
+      {s === 0 && <circle cx="0" cy="22" r="16" fill="#4f4c48" stroke="#2f2d2a" strokeWidth="4" />}
+      {s >= 1 && (
+        <g>
+          <path d="M-56 22H62" stroke="#5a5650" strokeWidth="6" />
+          {[-44, 46].map((cx) => (
+            <g key={cx}>
+              <circle cx={cx} cy="24" r="14" fill="#3f3c39" />
+              <circle cx={cx} cy="24" r="5" fill="#bcb6a8" />
+            </g>
+          ))}
+        </g>
+      )}
+      {s >= 2 && <path d="M-60 12v-34q0-14 18-14h40v48ZM-2 12V-12h62v24Z" fill={s === 4 ? "#f0c34d" : "#a9b0a8"} {...stroke} />}
+      {s >= 3 && <path d="M-64-38q30-26 62-6v8h-62Z" fill={s === 4 ? "#4f7a58" : "#7f8b7d"} {...stroke} />}
+      {s >= 3 && <rect x="-50" y="-26" width="22" height="16" rx="3" fill="#d6ecf0" {...stroke} />}
+      {s === 4 && (
+        <g>
+          <path d="M-60-38q30 10 58 0" fill="none" stroke="#e6893f" strokeWidth="3" strokeDasharray="3 3" />
+          <circle cx="-60" cy="0" r="4" fill="#fff3be" />
+          <path d="M6-6h48" stroke="#c4705a" strokeWidth="3" />
+        </g>
+      )}
+    </>
+  ),
+  education: ({ s }) => (
+    <>
+      {s === 0 && (
+        <g {...stroke}>
+          <rect x="-24" y="18" width="48" height="10" fill="#c4705a" />
+          <rect x="-20" y="8" width="42" height="10" fill="#7f9fbf" />
+          <rect x="-16" y="-2" width="36" height="10" fill="#e7b85d" />
+        </g>
+      )}
+      {s >= 1 && <rect x="-70" y="24" width="140" height="14" fill="#bdb6a6" {...stroke} />}
+      {s >= 2 && <rect x="-60" y="-34" width="120" height="58" fill="#f2e7cf" {...stroke} />}
+      {s >= 2 && [-44, -16, 12, 40].map((px) => <rect key={px} x={px} y="-22" width="14" height="18" fill="#bcd3dc" {...stroke} />)}
+      {s >= 3 && <path d="M-72-34L0-74 72-34Z" fill="#c4705a" {...stroke} />}
+      {s >= 3 && <circle cx="0" cy="-48" r="8" fill="#fff3be" {...stroke} />}
+      {s === 4 && (
+        <g className="grad-cap">
+          <path d="M-30-100l30-12 30 12-30 12Z" fill="#3e4a5c" />
+          <path d="M-18-95v10q18 8 36 0v-10" fill="#3e4a5c" />
+          <path d="M28-100v14" stroke="#e7b85d" strokeWidth="2" />
+          <circle cx="28" cy="-85" r="3" fill="#e7b85d" />
+        </g>
+      )}
+    </>
+  ),
+  parents: ({ s }) => (
+    <>
+      <path d={`M60 36v-${18 + s * 14}`} stroke="#8e7550" strokeWidth={4 + s} strokeLinecap="round" />
+      <circle cx="60" cy={18 - s * 14} r={8 + s * 9} fill="#87a96b" />
+      {s >= 3 && <circle cx="48" cy={12 - s * 12} r={10 + s * 4} fill="#9ebb7d" />}
+      {s >= 1 && (
+        <g {...stroke}>
+          <rect x="-56" y="6" width="80" height="14" rx="3" fill="#d6a679" />
+          <path d="M-52 20v14M20 20v14" />
+          <path d="M-54 8l76 10M-54 18l76-10" stroke="#f2e4c0" strokeWidth="1.5" />
+        </g>
+      )}
+      {s >= 2 && <path d="M-72 34v-82M30 34v-82" stroke="#9c7a4f" strokeWidth="5" />}
+      {s >= 3 && <path d="M-82-50h124l-10-16h-104Z" fill="#c4705a" {...stroke} />}
+      {s === 4 && (
+        <g>
+          <circle cx="-34" cy="-8" r="9" fill="#bf8968" />
+          <path d="M-43-10q9-12 18 0" fill="#e1ddd1" />
+          <rect x="-42" y="0" width="16" height="10" rx="4" fill="#ad829f" />
+          <circle cx="-6" cy="-8" r="9" fill="#a8724f" />
+          <path d="M-15-11q9-10 18 0" fill="#e7c46d" />
+          <rect x="-14" y="0" width="16" height="10" rx="4" fill="#efe9d9" />
+        </g>
+      )}
+    </>
+  ),
+};
