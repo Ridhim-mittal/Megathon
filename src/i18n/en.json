@@ -111,11 +111,31 @@
     "mentor": "Some for today, some for a little joy, and some for tomorrow. That is how a dream grows, kanna.",
     "yearly": "{amount} a year",
     "jar": {
-      "needs": { "label": "Needs", "note": "Food, school, bus, rent", "hint": "Keep at least {amount} here." },
-      "wants": { "label": "Little joys", "note": "Spend it in the shop", "hint": "A little joy belongs in life." },
-      "emergency": { "label": "Just in case", "note": "For life's surprises", "hint": "Shocks hit this jar first." },
-      "goal": { "label": "My dream", "note": "Toward your big dream", "hint": "Small savings, big dream." },
-      "invest": { "label": "Invest", "note": "Grows over time", "hint": "Time matters more than amount." }
+      "needs": {
+        "label": "Needs",
+        "note": "Food, school, bus, rent",
+        "hint": "Keep at least {amount} here."
+      },
+      "wants": {
+        "label": "Little joys",
+        "note": "Spend it in the shop",
+        "hint": "A little joy belongs in life."
+      },
+      "emergency": {
+        "label": "Just in case",
+        "note": "For life's surprises",
+        "hint": "Shocks hit this jar first."
+      },
+      "goal": {
+        "label": "My dream",
+        "note": "Toward your big dream",
+        "hint": "Small savings, big dream."
+      },
+      "invest": {
+        "label": "Invest",
+        "note": "Grows over time",
+        "hint": "Time matters more than amount."
+      }
     }
   },
   "products": {
@@ -345,7 +365,8 @@
     "storyteller": "Who was telling this story?",
     "reveal": "Reveal",
     "stats": "Dream {pct}% · Net worth {netWorth} · Debt {debt}",
-    "next": "See my Gyaan report"
+    "next": "See my Gyaan report",
+    "rival": "Meanwhile, {name}'s life"
   },
   "report": {
     "eyebrow": "YOUR GYAAN REPORT",

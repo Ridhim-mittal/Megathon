@@ -8,7 +8,7 @@ import { TopControls } from "../ui/Hud.jsx";
 import { GOAL_ICONS } from "./DreamScreen.jsx";
 
 export function EndingScreen({ life, settings, onNext, onMenu }) {
-  const { t, pick, rich, money } = useT();
+  const { t, pick, rich, money, castName } = useT();
   const ending = select.ending(life);
   const [revealed, setRevealed] = useState(false);
   const goal = goals().find((g) => g.id === life.goalId);
@@ -30,7 +30,10 @@ export function EndingScreen({ life, settings, onNext, onMenu }) {
             </p>
           </div>
         </div>
-        {ending.text && <p className="ending-text">{rich(ending.text)}</p>}
+        {/* secure_no_dream text describes a safety net; with no_safety_net its own text replaces it. */}
+        {ending.text && !(ending.modifiers.includes("no_safety_net") && ending.modifierTexts?.no_safety_net) && (
+          <p className="ending-text">{rich(ending.text)}</p>
+        )}
         {ending.modifiers.map((m) => (
           <section key={m} className={`ending-modifier mod-${m}`}>
             <h2>
@@ -43,7 +46,7 @@ export function EndingScreen({ life, settings, onNext, onMenu }) {
           <details className="rival">
             <summary>
               <Portrait role={rival.roleId ?? "friend"} age={36} />
-              {rich({ en: `{cast:${rival.roleId ?? "friend"}}` })}
+              {t("ending.rival", { name: castName(rival.roleId ?? "friend") })}
             </summary>
             <ol>
               {rival.milestones.map((m) => (
