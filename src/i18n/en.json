@@ -984,7 +984,8 @@
       "mistakes": "🙈 {n} real messages blocked",
       "added": "🪙 Coins ₹{n}",
       "interest": "📈 Growth ₹{n}",
-      "lost": "🛍️ Sales took ₹{n}"
+      "lost": "🛍️ Traps took ₹{n}",
+      "shielded": "☂️ Insurance saved you {n}×"
     },
     "games": {
       "jarDash": {
@@ -1004,7 +1005,7 @@
       "snowball": {
         "name": "Savings Snowball",
         "tag": "Roll it bigger",
-        "goal": "Roll your savings ball, collect coins and dodge the SALE! signs.",
+        "goal": "Roll your savings ball, grab coins and dodge the money traps.",
         "how": "Change lanes with the arrow keys or the mouse.",
         "lesson": "Savings grow on their own growth. Breaking them early for a sale costs the most."
       }
@@ -1024,6 +1025,54 @@
       "busTime": "🚌 Bus leaves at 7:30",
       "bankReal": "🏦 Branch shut on Sunday"
     },
+    "snow": {
+      "lead": "Roll your savings snowball down the hill. Grab coins to make it bigger, and dodge the money traps!",
+      "step1": "Change lanes with ↑ ↓ or the mouse",
+      "step2": "Every second your ball earns 4% on what it holds, so it grows faster as it gets bigger",
+      "step3": "Dodge the traps: each one breaks off a piece",
+      "grab": "Grab",
+      "dodge": "Dodge",
+      "stars": "3 stars: {a} · {b} · {c}",
+      "items": {
+        "coin": {
+          "name": "Coins",
+          "effect": "+₹10 to +₹50"
+        },
+        "gold": {
+          "name": "Gold bars",
+          "effect": "+₹100"
+        },
+        "shield": {
+          "name": "Insurance umbrella",
+          "effect": "Blocks the next trap"
+        },
+        "sale": {
+          "name": "SALE!",
+          "effect": "−⅓ of your ball"
+        },
+        "phone": {
+          "name": "Shiny new phone",
+          "effect": "−⅕"
+        },
+        "fee": {
+          "name": "Late fee",
+          "effect": "−₹30"
+        },
+        "emi": {
+          "name": "\"No-cost\" EMI",
+          "effect": "−¼"
+        },
+        "scam": {
+          "name": "\"You won!\" scam",
+          "effect": "−½!"
+        },
+        "shark": {
+          "name": "Loan shark",
+          "effect": "−40%, and it jumps lanes"
+        }
+      }
+    },
+    "snowMenu": "Mini-game: Savings Snowball",
     "ads": {
       "label": "Advertisement",
       "sponsored": "Ad · Sponsored",

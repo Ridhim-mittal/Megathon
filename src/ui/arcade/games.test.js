@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FIELD, GAMES, SNOWBALL, createGame, gameAtPlace, laneY, result, stepGame } from "./games.js";
+import { FIELD, GAMES, SNOWBALL, SNOW_TRAPS, createGame, gameAtPlace, laneY, result, stepGame } from "./games.js";
 
 function rng(seed = 1) {
   let x = seed >>> 0;
@@ -66,11 +66,28 @@ test("snowball: interest grows on what the ball holds, and SALE signs cut a thir
   const dodge = result(
     play("snowball", (st) => {
       const near = st.things.filter((t) => t.x > 60 && t.x < 200);
-      const bad = new Set(near.filter((t) => t.kind === "sale").map((t) => t.lane));
+      const bad = new Set(near.filter((t) => SNOW_TRAPS[t.kind]).map((t) => t.lane));
       const good = near.find((t) => t.kind === "coin" && !bad.has(t.lane));
       const target = good ? good.lane : [0, 1, 2].find((l) => !bad.has(l)) ?? st.lane;
       return { up: target < st.lane, down: target > st.lane };
     }, 6),
   );
   assert.ok(dodge.interest > 0 && dodge.score > SNOWBALL.start);
+});
+
+test("snowball: the insurance umbrella blocks the next trap; a late fee is flat", () => {
+  const s = createGame("snowball", rng(7));
+  s.spawnIn = 999;
+  s.tickIn = 999;
+  s.things = [{ x: 82, lane: s.lane, kind: "shield", value: 0 }];
+  stepGame(s, 1 / 60, {});
+  assert.ok(s.shield > 0);
+  const before = s.value;
+  s.things = [{ x: 82, lane: s.lane, kind: "scam", value: 0 }];
+  stepGame(s, 1 / 60, {});
+  assert.equal(s.value, before, "the umbrella took the hit");
+  assert.equal(s.shielded, 1);
+  s.things = [{ x: 82, lane: s.lane, kind: "fee", value: 0 }];
+  stepGame(s, 1 / 60, {});
+  assert.equal(s.value, before - SNOW_TRAPS.fee.flat);
 });
