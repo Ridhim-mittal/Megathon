@@ -6,6 +6,7 @@ import wants from "./wants.json" with { type: "json" };
 import documents from "./documents.json" with { type: "json" };
 import quiz from "./quiz.json" with { type: "json" };
 import faq from "./faq.json" with { type: "json" };
+import gyaan from "./gyaan.json" with { type: "json" };
 import sahukar from "./minigames/sahukar.json" with { type: "json" };
 
 import village from "./storylines/village/storyline.json" with { type: "json" };
@@ -38,4 +39,4 @@ const storylines = {
   city: { ...city, cards: [], endings: {} },
 };
 
-export { lessons, glossary, goals, wants, documents, quiz, faq, minigames, storylines };
+export { lessons, glossary, goals, wants, documents, quiz, faq, gyaan, minigames, storylines };
