@@ -271,6 +271,12 @@
       "missed": "There was a problem in the papers. Nobody caught it… yet.",
       "clean": "The papers were clean."
     },
+    "react": {
+      "good": "Smart move!",
+      "risky": "Hmm, risky…",
+      "bad": "Ouch!",
+      "neutral": "Fair enough"
+    },
     "delayed": {
       "title": "Done! It seems to have worked.",
       "note": "Nothing has changed… for now. Keep an eye on your phone's messages."
