@@ -1,9 +1,10 @@
 import React from "react";
-import { Calculator, Play, Sparkles, Sprout, Sun } from "lucide-react";
+import { Calculator, Gamepad2, Play, Sparkles, Sprout, Sun } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 import { HeroPicker } from "../ui/HeroPicker.jsx";
 import { InterestRace } from "../ui/games/InterestRace.jsx";
+import { ArcadeGame, ArcadeMenu } from "../ui/arcade/Arcade.jsx";
 import { PixelPortrait } from "../ui/PixelPortrait.jsx";
 
 // Continue and Start a new life sit side by side, the same size. A new life asks for your look and
@@ -11,6 +12,7 @@ import { PixelPortrait } from "../ui/PixelPortrait.jsx";
 export function TitleScreen({ canContinue, onPlay, onNew, onHelp, settings, picking, onPicking, hero }) {
   const { t } = useT();
   const [playing, setPlaying] = React.useState(false);
+  const [arcade, setArcade] = React.useState(null); // null | "menu" | a game id
   return (
     <div className="title-screen">
       <div className="title-vignette" />
@@ -58,6 +60,9 @@ export function TitleScreen({ canContinue, onPlay, onNew, onHelp, settings, pick
         <button className="title-game" onClick={() => setPlaying(true)}>
           <Calculator size={16} aria-hidden="true" /> {t("interest.menu")}
         </button>
+        <button className="title-game" onClick={() => setArcade("menu")}>
+          <Gamepad2 size={16} aria-hidden="true" /> {t("arcade.title")}
+        </button>
         <button className="title-help" onClick={onHelp}>
           {t("app.howToPlay")}
         </button>
@@ -66,6 +71,17 @@ export function TitleScreen({ canContinue, onPlay, onNew, onHelp, settings, pick
         <Sun size={14} /> {t("app.made")}
       </span>
       <span className="title-version">{t("app.chapter")}</span>
+      {arcade && (
+        <div className="dialog-layer title-arcade">
+          <section className="game-window window-arcade">
+            {arcade === "menu" ? (
+              <ArcadeMenu onPick={setArcade} onClose={() => setArcade(null)} />
+            ) : (
+              <ArcadeGame key={arcade} gameId={arcade} onBack={() => setArcade("menu")} onClose={() => setArcade(null)} />
+            )}
+          </section>
+        </div>
+      )}
       {playing && <InterestRace mode="practice" avatar={hero?.avatar ?? "boy"} onClose={() => setPlaying(false)} />}
       {picking && <HeroPicker initialAvatar={hero?.pickAvatar} initialName={hero?.pickName} onClose={() => onPicking(false)} onDone={onNew} />}
     </div>
