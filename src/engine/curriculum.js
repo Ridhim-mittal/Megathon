@@ -89,7 +89,16 @@ export const PRODUCTS = [
   "insurance_crop",
   "insurance_accident",
   "pension",
+  "mf_debt",
+  "mf_active",
+  "stock_kisan",
+  "stock_chai",
+  "stock_spark",
+  "stock_power",
 ];
+// Market instruments the phone's invest app trades (sip_index is the index fund).
+export const MUTUAL_FUNDS = ["sip_index", "mf_debt", "mf_active"];
+export const STOCKS = ["stock_kisan", "stock_chai", "stock_spark", "stock_power"];
 export const INSURANCE_PRODUCTS = [
   "insurance_health",
   "insurance_term",
@@ -97,7 +106,7 @@ export const INSURANCE_PRODUCTS = [
   "insurance_accident",
 ];
 // Products the invest jar can flow into each year.
-export const INVESTABLE = ["fd", "rd", "ppf", "sip_index", "gold", "chit", "pension"];
+export const INVESTABLE = ["fd", "rd", "ppf", "sip_index", "mf_debt", "mf_active", "gold", "chit", "pension"];
 
 export const LOAN_SOURCES = [
   "family",
@@ -142,4 +151,4 @@ export const ENDINGS = [
 ];
 export const ENDING_MODIFIERS = ["wrong_path", "no_safety_net"];
 
-export const PHASES = ["intro", "budget", "shop", "card", "outcome", "minigame", "yearEnd", "ending"];
+export const PHASES = ["intro", "budget", "shop", "map", "card", "outcome", "minigame", "yearEnd", "chapterEnd", "ending"];

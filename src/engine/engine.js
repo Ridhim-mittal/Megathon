@@ -6,17 +6,22 @@
 
 import { ASSUMPTIONS } from "./assumptions.js";
 import {
+  CURRICULUM,
   END_AGE,
   INVESTABLE,
   JARS,
   LESSON_IDS,
+  MUTUAL_FUNDS,
   START_AGE,
+  STOCKS,
   stageOf,
 } from "./curriculum.js";
+import { CHAPTERS, locationOf } from "./locations.js";
 import { buildQueue, crisisCandidates, groupOf, indexContent, planLife, resolveSlot } from "./deck.js";
 import { addMeter, applyEffects, roundToStep } from "./effects.js";
 import {
   addEvent,
+  closePenaltyRate,
   depositInto,
   flow,
   highInterestDebt,
@@ -27,6 +32,7 @@ import {
   payPremiums,
   productsValue,
   quoteLoan,
+  repayLoan,
   runLoansForYear,
   savingsTotal,
   totalDebt,
@@ -157,7 +163,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     }
     s.budget = full;
     s.year.budget = { ...full, investIn: s.investIn };
-    s.phase = "shop";
+    s.phase = s.mode === "chapters" ? "map" : "shop";
   }
 
   // ---------- the year loop ----------
@@ -251,9 +257,14 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     s.budget = fitBudget(s, s.budget, s.year.rules);
     s.budgetDirty = false;
 
+    s.current = null;
+    // Chapter mode: the chapter, not the year, decides what happens next.
+    if (s.mode === "chapters") {
+      s.queue = [];
+      return;
+    }
     s.queue = buildQueue(A, idx, s, makeRandom(s));
     checkCrisis(s);
-    s.current = null;
     s.phase = "budget";
   }
 
@@ -262,13 +273,14 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     if (!s.drawn.includes(card.id)) s.drawn.push(card.id);
     const group = groupOf(card.id);
     if (!s.drawnGroups.includes(group)) s.drawnGroups.push(group);
-    if (card.kind === "lesson") s.lessonCards[card.lesson] = { cardId: card.id, age: s.age };
+    const storyAge = resolved.age ?? s.age;
+    if (card.kind === "lesson") s.lessonCards[card.lesson] = { cardId: card.id, age: storyAge };
     if (resolved.crisisFlag && !s.flags.includes(resolved.crisisFlag)) s.flags.push(resolved.crisisFlag);
     let echoFrom = null;
     if (resolved.origin) {
       const o = resolved.origin;
       const echo = s.echoes.find((e) => e.cardId === o.cardId && e.choiceId === o.choiceId && e.firedAge == null);
-      if (echo) echo.firedAge = s.age;
+      if (echo) echo.firedAge = storyAge;
       echoFrom = { age: o.age, cardId: o.cardId, choiceId: o.choiceId, doc: o.doc ?? null, hint: echo?.hint ?? null, level: echo?.level ?? null };
     }
     if (card.document && !s.docs[card.document]) {
@@ -276,7 +288,16 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       const variant = pack?.variants?.length ? makeRandom(s).weighted(pack.variants) : null;
       s.docs[card.document] = { variant: variant?.id ?? null, opened: false, flagged: [], verified: false, rewarded: [] };
     }
-    s.current = { cardId: card.id, slot: slot.type, crisisFlag: resolved.crisisFlag ?? null, echoFrom, glasses: false, chosen: null };
+    s.current = {
+      cardId: card.id,
+      slot: slot.type,
+      slotKey: slot.key ?? null,
+      age: resolved.age ?? null,
+      crisisFlag: resolved.crisisFlag ?? null,
+      echoFrom,
+      glasses: false,
+      chosen: null,
+    };
     s.phase = "card";
   }
 
@@ -517,6 +538,209 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     };
   }
 
+  // ---------- chapter mode ----------
+  // A life is five chapters (one per stage). A chapter's events wait at places on the map; the
+  // player lives them in any order. The money clock moves a year forward as a share of the
+  // chapter's required events is done, and the rest of the chapter's years pass at its end.
+
+  const hasPhone = (s) => s.flags.includes(A.chapters.phoneFlag) || s.flags.includes("has_smartphone");
+
+  function startChapter(s) {
+    const ch = CHAPTERS.find((c) => c.id === s.stage);
+    s.chapter = {
+      id: ch.id,
+      from: ch.from,
+      to: ch.to,
+      slots: [],
+      seq: 0,
+      startNetWorth: s.year?.startNetWorth ?? netWorth(s),
+      startDebt: s.year?.startDebt ?? totalDebt(s),
+      startMeters: { ...s.meters },
+      startDream: computeDream(s).pct,
+      years: [],
+      phoneGift: false,
+      summary: null,
+    };
+    if (ch.id === A.chapters.phoneGiftStage && !hasPhone(s)) {
+      s.flags.push(A.chapters.phoneFlag);
+      s.chapter.phoneGift = true;
+      addEvent(s, { type: "phoneGift" });
+    }
+    buildChapterSlots(s);
+    s.current = null;
+    s.phase = "budget";
+  }
+
+  function addChapterSlot(s, slot, card) {
+    const location =
+      slot.location ??
+      (card.kind === "teachback" && !["child", "teen"].includes(s.stage) ? "home" : locationOf(card, { hasPhone: hasPhone(s) }));
+    s.chapter.slots.push({ ...slot, key: `${s.chapter.id}-${s.chapter.seq++}`, cardId: card?.id ?? null, location, done: false });
+  }
+
+  // Resolve a slot as if it were the given age (cards check their age range).
+  function resolveAt(s, slot, age, random) {
+    const real = s.age;
+    s.age = age;
+    try {
+      return resolveSlot(A, idx, s, slot, random);
+    } finally {
+      s.age = real;
+    }
+  }
+
+  function buildChapterSlots(s) {
+    const ch = s.chapter;
+    const random = makeRandom(s);
+    for (let age = ch.from; age <= ch.to; age++) {
+      for (const lesson of CURRICULUM) {
+        if (s.plan.lessons[lesson.id] !== age) continue;
+        const r = resolveAt(s, { type: "lesson", lesson: lesson.id }, age, random);
+        if (r) addChapterSlot(s, { type: "lesson", lesson: lesson.id, plannedAge: age, required: true }, r.card);
+      }
+      for (const [group, plannedAge] of Object.entries(s.plan.crossroads)) {
+        if (plannedAge !== age || s.drawnGroups.includes(group)) continue;
+        const r = resolveAt(s, { type: "crossroads", group }, age, random);
+        if (r) {
+          s.drawnGroups.push(group);
+          addChapterSlot(s, { type: "crossroads", group, plannedAge: age, required: true }, r.card);
+        }
+      }
+    }
+    for (let i = 0; i < (A.chapters.fillers[ch.id] ?? 0); i++) {
+      const age = random.int(ch.from, ch.to);
+      const r = resolveAt(s, { type: "filler" }, age, random);
+      if (!r) continue;
+      s.drawn.push(r.card.id);
+      s.drawnGroups.push(groupOf(r.card.id));
+      addChapterSlot(s, { type: "filler", plannedAge: age, required: false }, r.card);
+    }
+    absorbScheduled(s);
+    const mg = s.plan.minigame;
+    if (mg && mg.age >= ch.from && mg.age <= ch.to && !s.minigames[mg.id])
+      addChapterSlot(s, { type: "minigame", id: mg.id, plannedAge: mg.age, required: false, location: "sahukar" }, null);
+  }
+
+  // Consequences scheduled inside this chapter become events on the map.
+  function absorbScheduled(s) {
+    const ch = s.chapter;
+    const keep = [];
+    for (const e of s.scheduled) {
+      const card = cardById(s, e.card);
+      if (e.age > ch.to || !card) {
+        if (card) keep.push(e);
+        continue;
+      }
+      addChapterSlot(s, { type: "scheduled", plannedAge: Math.max(e.age, ch.from), origin: e.origin, unlessFlag: e.unlessFlag, required: true }, card);
+    }
+    s.scheduled = keep;
+    for (const q of s.queue) {
+      const card = q.type === "scheduled" ? cardById(s, q.card) : null;
+      if (card) addChapterSlot(s, { type: "scheduled", plannedAge: s.current?.age ?? s.age, origin: q.origin, unlessFlag: q.unlessFlag, required: true }, card);
+    }
+    s.queue = [];
+  }
+
+  function chapterCrisis(s) {
+    if (s.chapter.slots.some((x) => x.type === "crisis" && !x.done)) return;
+    for (const meter of ["joy", "family"]) {
+      const v = s.meters[meter];
+      const extreme = v <= 0 ? "low" : v >= 100 ? "high" : null;
+      if (!extreme) continue;
+      const key = `${meter}_${extreme}`;
+      const last = s.crisisLog[key];
+      if (last != null && s.age - last < A.crisis.cooldownYears) continue;
+      const r = resolveAt(s, { type: "crisis", key }, s.age, makeRandom(s));
+      if (!r) continue;
+      s.crisisLog[key] = s.age;
+      addChapterSlot(s, { type: "crisis", crisis: key, crisisFlag: r.crisisFlag, plannedAge: s.age, required: true, location: "home" }, r.card);
+      return;
+    }
+  }
+
+  function nextSlotAt(s, location) {
+    return s.chapter.slots
+      .filter((x) => !x.done && x.location === location)
+      .sort((a, b) => Number(b.required) - Number(a.required) || a.plannedAge - b.plannedAge)[0];
+  }
+
+  // Start a slot. Returns false if it vanished (its unlessFlag is now set).
+  function playSlot(s, slot) {
+    if (slot.type === "minigame") {
+      s.current = { cardId: null, slot: "minigame", slotKey: slot.key, age: slot.plannedAge };
+      s.phase = "minigame";
+      return true;
+    }
+    if (slot.unlessFlag && s.flags.includes(slot.unlessFlag)) {
+      slot.done = true;
+      slot.skipped = true;
+      return false;
+    }
+    if (slot.crisisFlag && !s.flags.includes(slot.crisisFlag)) s.flags.push(slot.crisisFlag);
+    const card = cardById(s, slot.cardId);
+    presentCard(s, { card, origin: slot.origin, crisisFlag: slot.crisisFlag, age: slot.plannedAge }, slot);
+    return true;
+  }
+
+  function finishSlot(s) {
+    const slot = s.chapter.slots.find((x) => x.key === s.current?.slotKey);
+    if (slot) slot.done = true;
+    if (slot?.type === "minigame" && !s.minigames[slot.id]) s.minigames[slot.id] = { age: s.age, score: 0, skipped: true };
+    s.current = null;
+    s.phase = "map";
+    advanceClock(s);
+    chapterCrisis(s);
+  }
+
+  function recordYear(s) {
+    const y = s.year.summary;
+    s.chapter.years.push({ age: y.age, headline: y.headline, netWorthChange: y.netWorthChange, habitEcho: y.habitEcho, inflation: y.inflation });
+  }
+
+  // One year passes inside a chapter: settle it, then start the next with the same jar split.
+  function passYear(s) {
+    endYear(s);
+    recordYear(s);
+    beginYear(s, false);
+    commitBudget(s, s.budget);
+    s.phase = "map";
+  }
+
+  function advanceClock(s) {
+    const ch = s.chapter;
+    const req = ch.slots.filter((x) => x.required);
+    const done = req.filter((x) => x.done).length;
+    const span = ch.to - ch.from + 1;
+    const target = Math.min(ch.to, ch.from + Math.floor((done / Math.max(1, req.length)) * span));
+    while (s.age < target) passYear(s);
+  }
+
+  function chapterSummary(s) {
+    const ch = s.chapter;
+    const nw = netWorth(s);
+    return {
+      id: ch.id,
+      from: ch.from,
+      to: ch.to,
+      netWorth: nw,
+      netWorthChange: nw - ch.startNetWorth,
+      debt: totalDebt(s),
+      debtChange: totalDebt(s) - ch.startDebt,
+      savings: savingsTotal(s) - s.money.cash,
+      investments: productsValue(s, ["fd", "rd", "ppf", "sip_index", "mf_debt", "mf_active", "gold", "chit", "pension", ...STOCKS]),
+      dream: computeDream(s),
+      dreamChange: computeDream(s).pct - ch.startDream,
+      meters: { ...s.meters },
+      meterChanges: Object.fromEntries(Object.keys(s.meters).map((m) => [m, s.meters[m] - ch.startMeters[m]])),
+      years: [...ch.years],
+      lessons: ch.slots.filter((x) => x.type === "lesson").map((x) => ({ lesson: x.lesson, status: s.lessons[x.lesson] })),
+      market: {
+        index: Object.fromEntries(Array.from({ length: ch.to - ch.from + 1 }, (_, i) => [ch.from + i, s.world.returns.sip_index[ch.from + i]])),
+        badNews: Object.fromEntries(Object.entries(s.world.badNews ?? {}).filter(([a]) => a >= ch.from && a <= ch.to)),
+      },
+    };
+  }
+
   // ---------- action handlers: return an error message, or nothing on success ----------
 
   const freeGyaan = (s, amount) => {
@@ -547,6 +771,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       switch (s.phase) {
         case "intro":
           beginYear(s, true);
+          if (s.mode === "chapters") startChapter(s);
           return;
         case "budget": {
           const check = checkBudget(s, s.budget);
@@ -560,12 +785,31 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
         case "card":
           return "Choose an option first.";
         case "outcome":
+          if (s.mode === "chapters") {
+            finishSlot(s);
+            return;
+          }
           s.current = null;
           checkCrisis(s);
           drawNext(s);
           return;
         case "minigame":
+          if (s.mode === "chapters") {
+            finishSlot(s);
+            return;
+          }
           endYear(s);
+          return;
+        case "map":
+          return "Walk to a place, or finish the chapter at home.";
+        case "chapterEnd":
+          if (s.age >= END_AGE) {
+            s.ending = decideEnding(s);
+            s.phase = "ending";
+          } else {
+            beginYear(s, false);
+            startChapter(s);
+          }
           return;
         case "yearEnd":
           if (s.age >= END_AGE) {
@@ -590,7 +834,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     },
 
     BUY_WANT(s, { itemId }) {
-      if (s.phase !== "shop") return "The shop is closed right now.";
+      if (s.phase !== "shop" && !(s.mode === "chapters" && s.phase === "map")) return "The shop is closed right now.";
       const item = idx.wantsById[itemId];
       if (!item || item.stage !== s.stage) return "That item is not in the shop.";
       if (s.year.bought.includes(itemId)) return "Already bought this year.";
@@ -604,6 +848,10 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       const out = [{ type: "want", itemId, price, joy: item.joy ?? 0 }];
       if (item.effects) applyEffects(A, s, item.effects, out, { origin: { age: s.age, cardId: `want:${itemId}`, choiceId: "buy" }, step: A.budget.step[s.stage] });
       if (item.echo) s.echoes.push({ age: s.age, cardId: `want:${itemId}`, choiceId: "buy", level: item.echo.level ?? 1, hint: item.echo.hint ?? null, firedAge: null });
+      if (/phone/i.test(itemId) && !hasPhone(s)) {
+        s.flags.push(A.chapters.phoneFlag);
+        addEvent(s, { type: "phoneBought", itemId });
+      }
       s.lastPurchase = { itemId, price, movements: out };
     },
 
@@ -618,7 +866,8 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       const choice = (card.choices ?? []).find((c) => c.id === choiceId);
       if (!choice) return `No choice "${choiceId}" on this card.`;
       const before = { netWorth: netWorth(s), cash: s.money.cash, debt: totalDebt(s), gyaan: s.meters.gyaan };
-      const origin = { age: s.age, cardId: card.id, choiceId };
+      const storyAge = s.current.age ?? s.age;
+      const origin = { age: storyAge, cardId: card.id, choiceId };
       const out = [];
       applyEffects(A, s, choice.effects, out, { origin, step: A.budget.step[s.stage] });
 
@@ -635,7 +884,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
         doc = { id: card.document, variant: variant?.id ?? null, problem, caught, opened: Boolean(d?.opened), wentAhead: goesAhead, consequence: null };
         if (problem && goesAhead && !caught && variant?.consequence?.card) {
           const c = variant.consequence;
-          const age = s.age + Math.max(0, Math.round(c.inYears ?? 1));
+          const age = storyAge + Math.max(0, Math.round(c.inYears ?? 1));
           s.scheduled.push({ age, card: c.card, unlessFlag: c.unlessFlag ?? null, origin: { ...origin, doc: card.document } });
           doc.consequence = { card: c.card, age };
         }
@@ -655,12 +904,12 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
         s.year.lessons.push(lessonChange);
       }
 
-      if (choice.echo) s.echoes.push({ age: s.age, cardId: card.id, choiceId, level: choice.echo.level ?? 1, hint: choice.echo.hint ?? null, firedAge: null });
+      if (choice.echo) s.echoes.push({ age: storyAge, cardId: card.id, choiceId, level: choice.echo.level ?? 1, hint: choice.echo.hint ?? null, firedAge: null });
       if (s.current.crisisFlag) s.flags = s.flags.filter((f) => f !== s.current.crisisFlag);
 
       const decision = {
         index: s.history.length,
-        age: s.age,
+        age: storyAge,
         cardId: card.id,
         choiceId,
         kind: card.kind,
@@ -691,6 +940,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       };
       s.current.chosen = choiceId;
       s.phase = "outcome";
+      if (s.mode === "chapters") absorbScheduled(s);
     },
 
     USE_GLASSES(s) {
@@ -756,7 +1006,94 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       const next = lesson ?? (prev === "unseen" ? "seen" : prev);
       s.lessons[L] = next;
       if (prev !== next) s.year.lessons.push({ lesson: L, from: prev, to: next });
+      if (s.mode === "chapters") finishSlot(s);
+      else endYear(s);
+    },
+
+    // ---------- chapter mode ----------
+
+    VISIT(s, { location }) {
+      if (s.mode !== "chapters" || s.phase !== "map") return "There is nowhere to go right now.";
+      for (;;) {
+        const slot = nextSlotAt(s, location);
+        if (!slot) return "Nothing is happening here right now.";
+        if (playSlot(s, slot)) return;
+      }
+    },
+
+    END_CHAPTER(s) {
+      if (s.mode !== "chapters" || s.phase !== "map") return "You can only finish a chapter from the map.";
+      const left = s.chapter.slots.filter((x) => x.required && !x.done).length;
+      if (left) return `${left} event${left === 1 ? "" : "s"} still waiting in this chapter.`;
+      while (s.age < s.chapter.to) passYear(s);
       endYear(s);
+      recordYear(s);
+      s.chapter.summary = chapterSummary(s);
+      s.chapterLog.push(s.chapter.summary);
+      s.current = null;
+      s.phase = "chapterEnd";
+    },
+
+    // Buy (amount > 0, from cash) or sell (amount < 0, into cash) a fund, stock or deposit.
+    TRADE(s, { product, amount }) {
+      if (s.mode !== "chapters" || s.phase !== "map") return "Trading happens on your phone, on the map.";
+      const x = Math.round(Number(amount));
+      if (!Number.isFinite(x) || x === 0) return "Enter an amount.";
+      const isMarket = MUTUAL_FUNDS.includes(product) || STOCKS.includes(product);
+      if (!isMarket && !["fd", "rd", "ppf", "gold", "bank"].includes(product)) return `You cannot trade "${product}" here.`;
+      if (!hasPhone(s)) return "You need a phone for this.";
+      if (isMarket && s.age < A.market.minAge) return `Investing in the market needs a PAN and KYC: wait until ${A.market.minAge}.`;
+      if (!isMarket && product !== "bank" && !s.money.products.bank) return "Open a bank account first.";
+      const fee = STOCKS.includes(product) ? A.market.brokerage : 0;
+      if (x > 0) {
+        if (x + fee > s.money.cash) return `Not enough cash (₹${s.money.cash}).`;
+        s.money.cash -= x + fee;
+        if (fee) flow(s, "fees", -fee);
+        const { spread } = depositInto(A, s, product, x);
+        s.lastTrade = { product, amount: x, fee: fee + spread, side: "buy" };
+        return;
+      }
+      const h = s.money.products[product];
+      if (!h || h.value <= 0) return "You hold none of this.";
+      const gross = Math.min(-x, h.value);
+      const penalty = Math.round(gross * closePenaltyRate(A, s, product));
+      const cost = Math.min(gross - penalty, fee);
+      h.value -= gross;
+      h.invested = Math.max(0, Math.round(h.invested * (h.value / (h.value + gross))));
+      if (h.value <= 0) delete s.money.products[product];
+      s.money.cash += gross - penalty - cost;
+      if (penalty) flow(s, "penalties", -penalty);
+      if (cost) flow(s, "fees", -cost);
+      s.lastTrade = { product, amount: -gross, fee: penalty + cost, side: "sell" };
+    },
+
+    // Move money between cash, the emergency and dream jars, and the bank account.
+    MOVE_MONEY(s, { from, to, amount }) {
+      if (s.mode !== "chapters" || s.phase !== "map") return "Move money from your phone, on the map.";
+      const accounts = ["cash", "emergency", "goal", "bank"];
+      if (!accounts.includes(from) || !accounts.includes(to) || from === to) return "Pick two different places.";
+      const x = Math.round(Number(amount));
+      if (!(x > 0)) return "Enter an amount.";
+      if ((from === "bank" || to === "bank") && !s.money.products.bank) return "Open a bank account first.";
+      const get = (k) => (k === "cash" ? s.money.cash : k === "bank" ? s.money.products.bank.value : s.money.jars[k]);
+      const add = (k, v) => {
+        if (k === "cash") s.money.cash += v;
+        else if (k === "bank") s.money.products.bank.value += v;
+        else s.money.jars[k] += v;
+      };
+      if (get(from) < x) return "Not enough there.";
+      add(from, -x);
+      add(to, x);
+    },
+
+    // Prepay a loan (by its id) from cash and savings.
+    REPAY(s, { loanId, amount }) {
+      if (s.mode !== "chapters" || s.phase !== "map") return "Repay from your phone, on the map.";
+      if (!s.loans.some((l) => l.id === loanId)) return "No such loan.";
+      const out = [];
+      repayLoan(A, s, { loan: loanId, amount: amount ?? "all" }, out);
+      if (!out[0]?.paid) return "Nothing could be repaid.";
+      s.lastTrade = { loanId, amount: out[0].paid, side: "repay" };
     },
 
     ASKED_MENTOR(s) {
@@ -770,14 +1107,19 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
 
   // ---------- public API ----------
 
-  function createLife({ storylineId = "village", goalId = "house", seed = Date.now(), playerName = "" } = {}) {
+  function createLife({ storylineId = "village", goalId = "house", seed = Date.now(), playerName = "", mode = "years", avatar = null } = {}) {
     const sl = content?.storylines?.[storylineId];
     if (!sl || !idx.pools[storylineId]) throw new Error(`Unknown storyline "${storylineId}".`);
     if (!(goalId in A.goals)) throw new Error(`Unknown goal "${goalId}".`);
     const seedNum = typeof seed === "number" && Number.isFinite(seed) ? seed >>> 0 : hashSeed(seed);
     const s = {
       v: 1,
-      params: { storylineId, goalId, seed, playerName },
+      params: { storylineId, goalId, seed, playerName, mode, avatar },
+      mode: mode === "chapters" ? "chapters" : "years",
+      avatar,
+      chapter: null,
+      chapterLog: [],
+      lastTrade: null,
       seed: seedNum,
       rng: hashSeed(seedNum, "plan"),
       storylineId,
@@ -870,7 +1212,18 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     return s;
   }
 
-  const SIDE_ACTIONS = new Set(["OPEN_DOCUMENT", "FLAG_LINE", "VERIFY_DOCUMENT", "USE_GLASSES", "BUY_WANT", "ASKED_MENTOR", "USED_GLOSSARY"]);
+  const SIDE_ACTIONS = new Set([
+    "OPEN_DOCUMENT",
+    "FLAG_LINE",
+    "VERIFY_DOCUMENT",
+    "USE_GLASSES",
+    "BUY_WANT",
+    "ASKED_MENTOR",
+    "USED_GLOSSARY",
+    "TRADE",
+    "MOVE_MONEY",
+    "REPAY",
+  ]);
 
   // Parallel Life: the same seed with one decision changed. Everything before that decision is
   // replayed exactly; after it, cards that still appear keep the original choice (or their
@@ -917,6 +1270,18 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
         const choices = card.choices ?? [];
         const pick = choices.find((c) => c.id === want) ?? choices.find((c) => c.default) ?? choices[0];
         action = { type: "CHOOSE", choiceId: pick.id };
+      } else if (s.phase === "map") {
+        // Walk where the player walked, while those places still have events; then anywhere
+        // with an event left; then finish the chapter.
+        const pending = (loc) => s.chapter.slots.some((x) => !x.done && x.location === loc);
+        const orig = rest.find((e) => !e.used && e.action.type === "VISIT" && pending(e.action.location));
+        if (orig) {
+          orig.used = true;
+          action = orig.action;
+        } else {
+          const next = s.chapter.slots.filter((x) => !x.done && x.required).sort((a, b) => a.plannedAge - b.plannedAge)[0];
+          action = next ? { type: "VISIT", location: next.location } : { type: "END_CHAPTER" };
+        }
       } else if (s.phase === "minigame") {
         const orig = rest.find((e) => !e.used && e.action.type === "MINIGAME_RESULT" && e.action.id === s.plan.minigame.id);
         if (orig) {

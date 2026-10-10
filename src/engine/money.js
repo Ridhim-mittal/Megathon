@@ -9,7 +9,7 @@
 
 import { INSURANCE_PRODUCTS, INVESTABLE } from "./curriculum.js";
 
-const LIQUID_PRODUCTS = ["bank", "fd", "rd", "chit", "gold", "sip_index"];
+const LIQUID_PRODUCTS = ["bank", "fd", "rd", "chit", "gold", "sip_index", "mf_debt", "mf_active", "stock_kisan", "stock_chai", "stock_spark", "stock_power"];
 const round = (x) => Math.round(Number(x) || 0);
 
 // ---------- ledger ----------
