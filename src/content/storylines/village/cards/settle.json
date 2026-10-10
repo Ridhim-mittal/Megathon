@@ -1,0 +1,432 @@
+[
+  {
+    "id": "village.settle.big_purchase.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L23",
+    "ages": [31, 33],
+    "weight": 1,
+    "speaker": "banker",
+    "title": { "en": "Pre-approved!" },
+    "text": { "en": "A bank SMS: \"Congratulations! You are pre-approved for a loan for your full dream. EMI only half your salary!\" {cast:banker} raises an eyebrow." },
+    "clarity": [
+      {
+        "phrase": { "en": "You are pre-approved for a loan" },
+        "truth": { "en": "Pre-approved means the bank wants to lend. It doesn't mean you can afford it." },
+        "lesson": "L23"
+      },
+      {
+        "phrase": { "en": "EMI only half your salary!" },
+        "truth": { "en": "Keep all EMIs under 30–40% of take-home pay. Half leaves no room for a bad month." },
+        "lesson": "L23"
+      }
+    ],
+    "document": "doc.loan_agreement",
+    "choices": [
+      {
+        "id": "down_payment",
+        "label": { "en": "Save a 30% down payment first, then borrow the rest" },
+        "quality": "good",
+        "default": true,
+        "effects": { "flags": { "add": ["saving_down_payment"] }, "gyaan": 3 },
+        "outcome": { "en": "On ₹26,000 pay, a smaller loan means an EMI near ₹5,300: about 20% of your pay." },
+        "why": { "en": "A bigger [[down_payment]] means a smaller loan, a smaller EMI and less interest." }
+      },
+      {
+        "id": "full_loan",
+        "label": { "en": "Take the full loan now" },
+        "quality": "bad",
+        "effects": { "flags": { "add": ["wants_full_loan"] }, "meters": { "joy": 4 } },
+        "echo": { "level": 3, "hint": { "en": "Half your pay, for years, whatever happens." } },
+        "outcome": { "en": "An EMI of ₹13,000 on ₹26,000 pay leaves ₹13,000 for food, family, fuel and surprises." },
+        "why": { "en": "An EMI that is too big turns any small shock into a missed payment." }
+      },
+      {
+        "id": "empty_fund",
+        "label": { "en": "Pay cash, using the emergency fund too" },
+        "quality": "risky",
+        "effects": { "flags": { "add": ["wants_cash_purchase"] } },
+        "echo": { "level": 2, "hint": { "en": "No debt. No cushion either." } },
+        "outcome": { "en": "No loan at all, but ₹0 for emergencies. One ₹40,000 hospital bill would mean the sahukar." },
+        "why": { "en": "Avoiding debt is good, but never spend the emergency fund on the dream." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.tin_box.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L23",
+    "ages": [32, 34],
+    "weight": 1,
+    "speaker": "mentor",
+    "title": { "en": "The tin box" },
+    "text": { "en": "Ammamma gives you an old tin box. Inside: Thatha's papers, and a thumbprint on a sale deed. \"It wasn't the rains, kanna. It was me.\"" },
+    "choices": [
+      {
+        "id": "listen",
+        "label": { "en": "Sit with her and listen" },
+        "quality": "good",
+        "default": true,
+        "effects": { "flags": { "add": ["knows_wound"] }, "meters": { "family": 10 }, "glasses": 1 },
+        "outcome": { "en": "She fell ill. Thatha borrowed ₹15,000 at ₹3 per ₹100 a month. In four years it was over ₹60,000." },
+        "why": { "en": "No insurance, no savings, compound debt, and a paper nobody could read. That's how the land went." }
+      },
+      {
+        "id": "learn_records",
+        "label": { "en": "Ask her to teach you to read old land records" },
+        "quality": "good",
+        "effects": { "flags": { "add": ["knows_wound"] }, "meters": { "family": 6 }, "gyaan": 4, "glasses": 2 },
+        "outcome": { "en": "Two evenings with the [[pahani]] and the [[sale_deed]]. Survey No. 212. Thatha's land. Remember that number." },
+        "why": { "en": "She learnt to read so she'd never sign blind again. Now you can't either." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.dream_papers.a",
+    "storyline": "village",
+    "kind": "crossroads",
+    "lesson": "L23",
+    "ages": [34, 35],
+    "weight": 1,
+    "speaker": "tempter",
+    "title": { "en": "Crossroads: Survey No. 212" },
+    "text": { "en": "{cast:tempter}, now a \"property consultant\", offers a plot: Survey No. 212. \"Clear title, 100% safe. Own finance, no bank papers. It will double in two years and pay for your dream!\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Clear title, 100% safe." },
+        "truth": { "en": "Only an [[encumbrance]] certificate and the [[pahani]] can show that. Ask for both." },
+        "lesson": "L23"
+      },
+      {
+        "phrase": { "en": "Own finance, no bank papers." },
+        "truth": { "en": "A private loan at sahukar rates, with no bank checking the land for you." },
+        "lesson": "L23"
+      },
+      {
+        "phrase": { "en": "It will double in two years" },
+        "truth": { "en": "Nobody can promise land prices. Doubling in two years is about 41% a year." },
+        "lesson": "L22"
+      }
+    ],
+    "document": "doc.plot_sale",
+    "choices": [
+      {
+        "id": "verify_bank",
+        "label": { "en": "Read every paper with Ammamma's glasses, get the EC, use a bank loan only for the gap" },
+        "quality": "good",
+        "default": true,
+        "effects": { "loan": { "source": "home", "principal": 200000, "months": 120 }, "flags": { "add": ["checked_plot", "dream_bank_loan"] }, "gyaan": 3 },
+        "outcome": { "en": "₹2 lakh at about 9% for 10 years: EMI about ₹2,530. The bank also checks the land, a second pair of glasses." },
+        "why": { "en": "Verified papers and a fair loan protect the dream. A bank loan comes with a legal check too." }
+      },
+      {
+        "id": "prakash_finance",
+        "label": { "en": "Take Prakash's deal and his own finance" },
+        "quality": "bad",
+        "effects": {
+          "loan": { "source": "moneylender", "principal": 200000, "months": 36 },
+          "flags": { "add": ["dream_prakash"] },
+          "schedule": [{ "inYears": 1, "card": "village.settle.plot_dispute.a", "unlessFlag": "checked_plot" }]
+        },
+        "echo": { "level": 3, "hint": { "en": "Thatha signed fast too." } },
+        "outcome": { "en": "₹2 lakh at 36% for 3 years: EMI about ₹9,160. You signed in ten minutes." },
+        "why": { "en": "Fast deals skip the checks that protect you. The same trap, a generation later." }
+      },
+      {
+        "id": "buy_back",
+        "label": { "en": "Buy Thatha's land back, but only through the registration office, with verified papers" },
+        "quality": "good",
+        "effects": { "loan": { "source": "home", "principal": 250000, "months": 180 }, "flags": { "add": ["checked_plot", "bought_back_212"] }, "meters": { "family": 12, "joy": 6 }, "gyaan": 2 },
+        "outcome": { "en": "₹2.5 lakh at about 9% for 15 years: EMI about ₹2,540. Ammamma holds the new deed with both hands." },
+        "why": { "en": "Emotion is allowed in a big purchase. Skipping checks is not." }
+      },
+      {
+        "id": "wait_save",
+        "label": { "en": "Walk away and save two more years, no loan" },
+        "quality": "neutral",
+        "effects": { "flags": { "add": ["dream_waited", "checked_plot"] } },
+        "outcome": { "en": "Two more years of saving. Prices rise about 12% meanwhile, but you owe nobody anything." },
+        "why": { "en": "Waiting is safe, but inflation keeps moving the target." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.pension_nominee.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L24",
+    "ages": [33, 36],
+    "weight": 1,
+    "speaker": "banker",
+    "title": { "en": "Kavitha akka's checklist" },
+    "text": { "en": "{cast:banker} reads out your file: no pension, no [[nominee]] on any account, [[kyc]] ten years old. \"And Amma and Nanna have no old-age plan, right?\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "no pension" },
+        "truth": { "en": "An [[apy]] pension of ₹5,000 a month from 60 costs about ₹750 a month if you join at 33." },
+        "lesson": "L24"
+      }
+    ],
+    "choices": [
+      {
+        "id": "do_it_all",
+        "label": { "en": "Join APY, add nominees, update KYC, and help Amma and Nanna apply for the old-age pension" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "pension", "amount": 750 }, "flags": { "add": ["nominee_set", "kyc_updated", "parents_pension"] }, "meters": { "family": 6 }, "gyaan": 3 },
+        "outcome": { "en": "About ₹750 a month for a ₹5,000 pension at 60. Nominees on 4 accounts. Amma's first pension: ₹2,016 a month." },
+        "why": { "en": "Planning ahead protects people who depend on you, now and after you." }
+      },
+      {
+        "id": "later",
+        "label": { "en": "Later. I'm still young" },
+        "quality": "risky",
+        "effects": { "meters": { "joy": 1 } },
+        "echo": { "level": 2, "hint": { "en": "Later gets more expensive every birthday." } },
+        "outcome": { "en": "Join at 38 instead, and the same pension costs about ₹1,200 a month." },
+        "why": { "en": "The later you join a pension scheme, the more you pay for the same pension." }
+      },
+      {
+        "id": "skip_nominee",
+        "label": { "en": "Pension yes, nominees no. Everyone knows it's mine" },
+        "quality": "risky",
+        "effects": { "open": { "product": "pension", "amount": 750 } },
+        "outcome": { "en": "Without a nominee, a family can wait 6–12 months and pay lawyers to claim your money." },
+        "why": { "en": "A nominee takes two minutes to add and saves your family months." }
+      }
+    ]
+  },
+
+  {
+    "id": "village.settle.plot_dispute.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L23",
+    "ages": [33, 36],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "Someone else's plot" },
+    "text": { "en": "A stranger arrives with a court notice. He bought Survey No. 212 two years before you. There was no [[encumbrance]] certificate in your papers." },
+    "choices": [
+      {
+        "id": "lawyer_police",
+        "label": { "en": "Get a lawyer and file a cheating case against the seller" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -20000, "meters": { "health": -5, "joy": -6 }, "gyaan": 3 },
+        "outcome": { "en": "₹20,000 in lawyer fees. After a long case, the seller is ordered to repay you in parts." },
+        "why": { "en": "An EC costs a few hundred rupees and an hour. A dispute costs years." }
+      },
+      {
+        "id": "settle_quietly",
+        "label": { "en": "Pay the stranger to go away" },
+        "quality": "bad",
+        "effects": { "cash": -50000, "meters": { "family": -5 } },
+        "outcome": { "en": "₹50,000 more, and still no clean title. The problem is only sleeping." },
+        "why": { "en": "Paying around a bad title never fixes it. Only the records do." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.fake_seller.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L23",
+    "ages": [33, 36],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "The seller wasn't the owner" },
+    "text": { "en": "The real owner of the plot lives in Mumbai. The \"seller\" used a forged power of attorney. Your sale deed is void." },
+    "choices": [
+      {
+        "id": "complain",
+        "label": { "en": "File a police complaint and a civil case" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -15000, "meters": { "health": -5, "joy": -8 }, "gyaan": 3 },
+        "outcome": { "en": "₹15,000 in fees. Police trace the forger. Some money returns, slowly." },
+        "why": { "en": "Always check that the seller's name matches the pahani and the EC. Verify any power of attorney." }
+      },
+      {
+        "id": "give_up",
+        "label": { "en": "Give up and move on" },
+        "quality": "neutral",
+        "effects": { "meters": { "joy": -10 } },
+        "outcome": { "en": "The plot money is gone. The loan EMI is not." }
+      }
+    ]
+  },
+
+  {
+    "id": "village.settle.nanna_surgery.a",
+    "storyline": "village",
+    "kind": "calamity",
+    "lesson": "L20",
+    "ages": [31, 36],
+    "weight": 1,
+    "speaker": "mother",
+    "title": { "en": "Nanna's heart" },
+    "text": { "en": "Nanna needs heart surgery. A private hospital quotes ₹1.5 lakh. A listed hospital accepts the [[ayushman]] and [[aarogyasri]] cards." },
+    "choices": [
+      {
+        "id": "health_card",
+        "label": { "en": "Go to the listed hospital with the health card" },
+        "quality": "good",
+        "default": true,
+        "effects": { "shock": { "kind": "health", "cost": 15000 }, "meters": { "family": 6 } },
+        "outcome": { "en": "The surgery is covered. You pay ₹15,000 for travel, food and medicines. Nanna jokes with the nurses." }
+      },
+      {
+        "id": "private",
+        "label": { "en": "Private hospital, whatever it costs" },
+        "quality": "risky",
+        "effects": { "shock": { "kind": "health", "cost": 150000 }, "meters": { "family": 4 } },
+        "echo": { "level": 2, "hint": { "en": "Free cover existed. Nobody checked." } },
+        "outcome": { "en": "₹1.5 lakh. Your savings go first, then the loans." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.trading_app.a",
+    "storyline": "village",
+    "kind": "scam",
+    "lesson": "L22",
+    "ages": [28, 34],
+    "weight": 1,
+    "speaker": "headline",
+    "title": { "en": "Stock Masters VIP group" },
+    "text": { "en": "A WhatsApp group shows daily 300% profits. Their app says your ₹20,000 is now ₹80,000. \"Pay 20% tax to withdraw.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Their app says your ₹20,000 is now ₹80,000." },
+        "truth": { "en": "Fake trading apps show fake numbers. The money was never invested." },
+        "lesson": "L22"
+      },
+      {
+        "phrase": { "en": "\"Pay 20% tax to withdraw.\"" },
+        "truth": { "en": "Real platforms deduct charges themselves. A \"pay to withdraw\" request is the final trap." },
+        "lesson": "L22"
+      }
+    ],
+    "choices": [
+      {
+        "id": "report",
+        "label": { "en": "Stop, report on 1930, and leave the group" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -20000, "gyaan": 3 },
+        "outcome": { "en": "The ₹20,000 is gone, but you don't add ₹16,000 more. Police freeze part of the gang's accounts." }
+      },
+      {
+        "id": "pay_tax",
+        "label": { "en": "Pay the ₹16,000 \"tax\" to get the ₹80,000" },
+        "quality": "bad",
+        "effects": { "cash": -36000, "meters": { "joy": -8, "health": -4 } },
+        "echo": { "level": 3, "hint": { "en": "Next they'll ask for a \"release fee\"." } },
+        "outcome": { "en": "₹36,000 gone in total. The app disappears from your phone. The group is deleted." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.chintu_shop.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L14",
+    "ages": [31, 36],
+    "weight": 2,
+    "speaker": "friend",
+    "title": { "en": "Chintu's comeback" },
+    "text": { "en": "{cast:friend} wants to open a mobile repair stall. \"Lend me ₹50,000, mama. No paper needed between us. Trust me, this time it's different.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "No paper needed between us." },
+        "truth": { "en": "Paper protects friendships too. A written note with dates avoids fights later." },
+        "lesson": "L14"
+      }
+    ],
+    "choices": [
+      {
+        "id": "mudra_help",
+        "label": { "en": "Help him apply for a Mudra loan instead" },
+        "quality": "good",
+        "default": true,
+        "effects": { "meters": { "family": 4, "joy": 4 }, "gyaan": 2 },
+        "outcome": { "en": "A ₹50,000 Mudra loan at about 10%: EMI near ₹1,600. His stall opens. This time it IS different." },
+        "why": { "en": "The right loan from the right lender builds his credit and keeps your friendship." }
+      },
+      {
+        "id": "lend_cash",
+        "label": { "en": "Lend him ₹50,000, no paper" },
+        "quality": "risky",
+        "effects": { "cash": -50000, "meters": { "joy": 3 } },
+        "echo": { "level": 1, "hint": { "en": "Money between friends needs dates." } },
+        "outcome": { "en": "He repays ₹30,000 in two years. The other ₹20,000 becomes an awkward topic." }
+      },
+      {
+        "id": "refuse",
+        "label": { "en": "Say no" },
+        "quality": "neutral",
+        "effects": { "meters": { "joy": -3 } },
+        "outcome": { "en": "He sulks for a month. Then he finds a Mudra loan himself. ₹0 risk for you." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.ammamma_rd.a",
+    "storyline": "village",
+    "kind": "windfall",
+    "lesson": "L02",
+    "ages": [31, 36],
+    "weight": 1,
+    "speaker": "mentor",
+    "title": { "en": "Ammamma's secret RD" },
+    "text": { "en": "Ammamma hands you a passbook. \"₹200 a month for 15 years, kanna. For your dream.\" It says ₹60,700." },
+    "choices": [
+      {
+        "id": "dream",
+        "label": { "en": "Put it all in the dream jar" },
+        "quality": "good",
+        "default": true,
+        "effects": { "jar": { "goal": 60700 }, "meters": { "family": 8, "joy": 6 } },
+        "outcome": { "en": "₹200 a month, never missed, became ₹60,700. Ammamma pretends she's not crying." }
+      },
+      {
+        "id": "her_trip",
+        "label": { "en": "Use part of it to take her on her first trip" },
+        "quality": "good",
+        "effects": { "jar": { "goal": 45700 }, "meters": { "family": 10, "joy": 9 } },
+        "outcome": { "en": "₹15,000 for her first train journey, to the sea. ₹45,700 into the dream jar." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.chinni_wedding.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L18",
+    "ages": [31, 35],
+    "weight": 1,
+    "speaker": "sibling",
+    "title": { "en": "Chinni's wedding" },
+    "text": { "en": "{cast:sibling} is getting married! Relatives want 1,000 guests. Chinni wants 200, and \"no loans, please\". Kavitha akka mentions [[kalyana_lakshmi]]." },
+    "choices": [
+      {
+        "id": "simple",
+        "label": { "en": "A warm wedding for 200, within savings" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -60000, "meters": { "family": 8, "joy": 8 } },
+        "outcome": { "en": "₹60,000, no loans. Bujji wears flowers. Chinni says it's exactly what she wanted." }
+      },
+      {
+        "id": "grand",
+        "label": { "en": "1,000 guests, whatever it takes" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "moneylender", "principal": 250000, "months": 24 }, "meters": { "family": 6, "joy": 6 } },
+        "echo": { "level": 3, "hint": { "en": "One day of feasting, two years of EMIs." } },
+        "outcome": { "en": "₹2.5 lakh at 36% for one day. Chinni pays part of the EMI herself, quietly." }
+      }
+    ]
+  }
+]
