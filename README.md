@@ -26,12 +26,13 @@ Deploy as a static Vite site: build command `npm run build`, output directory `d
 
 1. **Play** (or **Start a new life**) → pick your look and name in "Who are you?" → choose a language → choose your life (the village; the city is "coming soon") → meet your family → choose your dream.
 2. **Each chapter** opens with a title card, then your jar split (needs first) for its years.
-3. **Follow the objective** (top of the screen): it says what to do and where. A gold trail and arrow lead to the place; walk with the arrow keys or WASD and press **Enter** at the door, or press **Go to …** to walk there. Each scene is a story card: press **1–4** or click to choose; **Why?** explains every outcome with numbers, and **Learn more** opens the Gyaan lesson.
+3. **Follow the objective** (top of the screen): it says what to do and where. A gold trail and arrow lead to the place; walk with the arrow keys or WASD and press **Enter** at the door, or press **Go to …** to walk there. Each scene is a story card: press **1–4** or click to choose; **Why?** explains every outcome with numbers, and **Learn more** opens the Gyaan lesson as a few picture slides (big idea, key points, a step-by-step example, a myth card to flip, a calculator and a quick quiz).
 4. **Race the clock:** some scenes are urgent (a red objective and countdown: report a fraud in the golden hour, rush to the hospital). Some choices must be made before a timer runs out, like a scammer shouting for an OTP.
 5. **STOP warnings:** before a very bad choice (sharing an OTP, a loan app, becoming a money mule, a Ponzi scheme) the screen flashes STOP with Ammamma's warning. You can think again, or go ahead and live with it. Choices locked by earlier decisions show a 🔒 and why; a red banner warns when debt gets dangerous.
 6. **Evidence:** seeing through scams (recording the call, checking SEBI registration, photographing a fake certificate) adds to your evidence file. In the last chapter it decides whether Lucky Prakash is caught.
 7. **Flowcharts:** each chapter ends with its outcome and a Detroit-style flowchart: your path lit, branches from earlier lives shown, the rest locked. Open the current chapter's flowchart from the objective panel any time.
-8. **The phone** arrives in college (press **P**): messages (some scenes arrive here), the bank and the invest app (index, debt and active mutual funds and four shares, from age 18). The **Exchange** app is a practice stock market: a live order book with simulated traders, market and limit orders, and seven missions that teach the spread, queues, slippage and how news moves prices (practice money only). Updates also pop up on the map without opening the phone. At 36: your **story ending**, the money ending, your **Gyaan report**, **Parallel Life** and the **ending gallery**.
+8. **Mini-games:** places marked 🎮 (the post office, the village square and the bank) host one-minute arcade games: **Jar Dash** (catch coins, dodge impulse buys), **Scam Smash** (block scam messages, let real ones through) and **Savings Snowball** (roll a savings ball that earns on itself; SALE! signs break it). Each ends with stars and a one-line lesson; best scores are kept in this browser. They are also in the phone's **Arcade** app.
+9. **The phone** arrives in college (press **P**): messages (some scenes arrive here), the bank and the invest app (index, debt and active mutual funds and four shares, from age 18). The **Exchange** app is a practice stock market: a live order book with simulated traders, market and limit orders, and seven missions that teach the spread, queues, slippage and how news moves prices (practice money only). Updates also pop up on the map without opening the phone. At 36: your **story ending**, the money ending, your **Gyaan report**, **Parallel Life** and the **ending gallery**.
 
 The top bar switches language and sound at any time. Sound is on by default: the background music ("Sunlight on the Well", `public/audio/`) starts with the first tap or key press. Progress is saved in this browser's `localStorage` only; `?seed=demo` gives a fixed, rehearsed life. All numbers are illustrative teaching assumptions, not advice.
 
@@ -45,10 +46,11 @@ The top bar switches language and sound at any time. Sound is on by default: the
 - `src/ui/PhoneLite.jsx`, `src/ui/GyaanLite.jsx`: the in-game phone and the lesson reader.
 - `src/ui/exchange/`: the phone's practice stock exchange: `orderbook.js` (matching engine and simulated traders, tested in `orderbook.test.js`) and `StockExchange.jsx`.
 - `src/ui/Notifications.jsx`: phone notifications over the map.
+- `src/ui/arcade/`: the mini-games: `games.js` (pure game logic, tested in `games.test.js`) and `Arcade.jsx` (title card, countdown, canvas and Scam Smash grid, result).
 - `src/ui/`: shared components (HUD, jars, portraits, document viewer, Ask Ammamma, rich text).
 - `src/i18n/`: UI strings in `en.json`, `hi.json`, `te.json` and the `useT()` hook.
 - `src/World.jsx`: the earlier SVG village (no longer routed).
-- `src/styles.css`, `src/game-scene.css`, `src/life.css`, `src/pixel.css`: styles (`pixel.css` is the map game).
+- `src/styles.css`, `src/game-scene.css`, `src/life.css`, `src/pixel.css`: styles (`pixel.css` is the map game); `src/arcade.css` the mini-games; `src/calm.css` (loaded last) the calmer story-game look: icon top bar, one-line objective, bell notifications, simpler outcomes and Gyaan slides.
 
 ## Browser checks
 
