@@ -1,0 +1,427 @@
+{
+  "app": {
+    "name": "lakshyam",
+    "kicker": "A LITTLE LIFE. A BIG DREAM.",
+    "tagline": "Every little choice grows a story.",
+    "description": "A cosy village. Twenty-five years. One big dream.",
+    "play": "Play",
+    "continue": "Continue my life",
+    "newLife": "Start a new life",
+    "howToPlay": "First time here? How to play",
+    "made": "Made of little moments & big dreams",
+    "chapter": "AGES 11 TO 36",
+    "illustrative": "All numbers are illustrative teaching assumptions, not advice or promises."
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "close": "Close",
+    "continue": "Continue",
+    "done": "Done",
+    "skip": "Skip",
+    "age": "Age {age}",
+    "perMonth": "{amount} a month",
+    "years": "{n} years",
+    "you": "YOU",
+    "menu": "Back to the title screen",
+    "fullscreenOn": "Enter fullscreen",
+    "fullscreenOff": "Exit fullscreen"
+  },
+  "lang": {
+    "eyebrow": "BHASHA · భాష · भाषा",
+    "title": "Choose your language",
+    "subtitle": "You can change it any time from the top bar.",
+    "label": "Language",
+    "en": "English",
+    "hi": "हिंदी",
+    "te": "తెలుగు",
+    "contentNote": "Some story text is still in English. It will appear in your language as it is translated."
+  },
+  "storyline": {
+    "eyebrow": "STEP 1 · WHOSE LIFE?",
+    "title": "Choose your life",
+    "subtitle": "Every life teaches the same 24 money lessons. The world around you changes.",
+    "play": "Live this life",
+    "comingSoon": "Coming soon"
+  },
+  "intro": {
+    "eyebrow": "MEET YOUR FAMILY",
+    "skip": "Skip the story",
+    "begin": "Choose my dream",
+    "panel": "Panel {n} of {total}",
+    "storyteller": "The storyteller"
+  },
+  "dream": {
+    "eyebrow": "STEP 2 · YOUR BIG DREAM",
+    "title": "What is your big dream?",
+    "subtitle": "Everything you save and every choice you make moves you toward it, or away from it.",
+    "nameLabel": "What should Ammamma call you?",
+    "namePlaceholder": "Kanna",
+    "cost": "About {amount} at today's prices",
+    "costNote": "Prices rise every year, so the target will grow.",
+    "start": "Start my life at 11"
+  },
+  "stage": {
+    "child": "Pocket money",
+    "teen": "First choices",
+    "young": "First income",
+    "adult": "Storms",
+    "settle": "The dream"
+  },
+  "hud": {
+    "cash": "CASH",
+    "savings": "SAVINGS",
+    "investments": "INVESTED",
+    "debt": "DEBT",
+    "netWorth": "NET WORTH",
+    "income": "INCOME",
+    "dream": "MY DREAM",
+    "reached": "Reached!",
+    "meters": "How life feels",
+    "glasses": "Ammamma's glasses: {n} charges",
+    "soundOn": "Turn sound off",
+    "soundOff": "Turn sound on",
+    "ask": "Ask Ammamma",
+    "help": "How to play",
+    "year": "YEAR {n} OF 26"
+  },
+  "meter": {
+    "joy": "Khushi",
+    "health": "Health",
+    "family": "Family",
+    "gyaan": "Gyaan"
+  },
+  "budget": {
+    "eyebrow": "AGE {age} · YOUR MONEY PLAN",
+    "title": "Give every rupee a home",
+    "subtitle": "This year you have {amount} a month to divide.",
+    "autoPaid": "{gross} comes in; {auto} already went to EMIs and premiums.",
+    "required": "A new stage of life: check your jars.",
+    "optional": "Your plan from last year is ready. Change it, or keep it.",
+    "left": "left to place",
+    "allPlaced": "every rupee has a home",
+    "minNeeds": "Needs must be at least {amount}.",
+    "stepHelp": "Tap − on one jar, then + on another. Each tap moves {amount}.",
+    "add": "Add {amount} to {jar}",
+    "remove": "Remove {amount} from {jar}",
+    "investIn": "The invest jar goes into",
+    "confirm": "Live this year",
+    "keep": "Keep last year's plan",
+    "squeezed": "EMIs leave less than the family needs. Something has to give.",
+    "mentor": "Some for today, some for a little joy, and some for tomorrow. That is how a dream grows, kanna.",
+    "yearly": "{amount} a year",
+    "jar": {
+      "needs": {
+        "label": "Needs",
+        "note": "Food, school, bus, rent",
+        "hint": "Keep at least {amount} here."
+      },
+      "wants": {
+        "label": "Little joys",
+        "note": "Spend it in the shop",
+        "hint": "A little joy belongs in life."
+      },
+      "emergency": {
+        "label": "Just in case",
+        "note": "For life's surprises",
+        "hint": "Shocks hit this jar first."
+      },
+      "goal": {
+        "label": "My dream",
+        "note": "Toward your big dream",
+        "hint": "Small savings, big dream."
+      },
+      "invest": {
+        "label": "Invest",
+        "note": "Grows over time",
+        "hint": "Time matters more than amount."
+      }
+    }
+  },
+  "products": {
+    "bank": "Bank savings",
+    "fd": "Fixed deposit",
+    "rd": "Recurring deposit",
+    "ppf": "PPF",
+    "sip_index": "Index-fund SIP",
+    "gold": "Gold",
+    "chit": "Chit fund",
+    "land": "Land",
+    "vehicle": "Vehicle",
+    "pension": "Pension",
+    "insurance_health": "Health cover",
+    "insurance_term": "Life cover",
+    "insurance_crop": "Crop cover",
+    "insurance_accident": "Accident cover"
+  },
+  "loans": {
+    "family": "family",
+    "shg": "self-help group",
+    "moneylender": "moneylender",
+    "loan_app": "loan app",
+    "credit_card": "credit card",
+    "bnpl_emi": "shop EMI",
+    "gold_loan": "gold loan",
+    "bank_personal": "bank loan",
+    "education": "education loan",
+    "kcc": "Kisan Credit Card",
+    "mudra": "Mudra loan",
+    "home": "home loan",
+    "vehicle_loan": "vehicle loan"
+  },
+  "sources": {
+    "cash": "cash",
+    "wallet": "the joys jar",
+    "emergency": "the emergency jar",
+    "goal": "the dream jar",
+    "bank": "the bank",
+    "fd": "the FD",
+    "rd": "the RD",
+    "chit": "the chit",
+    "gold": "gold",
+    "sip_index": "the index fund",
+    "insurance": "insurance"
+  },
+  "shop": {
+    "eyebrow": "AGE {age} · THE WANTS SHOP",
+    "title": "Treat yourself?",
+    "subtitle": "Spend your little-joys jar here. Prices rise a little every year.",
+    "wallet": "In your joys jar",
+    "buy": "Buy",
+    "bought": "Bought",
+    "cantAfford": "Not enough",
+    "joy": "+{n} khushi",
+    "done": "Done shopping",
+    "leftover": "Whatever you don't spend here goes on small treats during the year.",
+    "empty": "Nothing in the shop for this stage."
+  },
+  "card": {
+    "kind": {
+      "lesson": "A LESSON",
+      "random": "LIFE HAPPENS",
+      "crossroads": "CROSSROADS",
+      "consequence": "AN ECHO RETURNS",
+      "crisis": "A CRISIS",
+      "teachback": "SOMEONE ASKS YOU",
+      "scam": "TOO GOOD TO BE TRUE?",
+      "calamity": "A STORM",
+      "windfall": "GOOD NEWS"
+    },
+    "choose": "What do you do?",
+    "keys": "Press 1–{n} to choose",
+    "echoFrom": "An echo from age {age}",
+    "echoHint": "Ammamma looks at you a moment longer.",
+    "glassesOn": "Put on Ammamma's glasses",
+    "glassesWorn": "Glasses on",
+    "charges": "{n} left",
+    "noCharges": "No charges left",
+    "glassesHelp": "The glasses show what tricky words really mean. You get more each stage.",
+    "tapPhrase": "Tap a glowing phrase to see what it really means.",
+    "freeReveal": "You can see this yourself now.",
+    "readDocs": "Read the documents",
+    "crisis": {
+      "joy_low": "Life has gone grey.",
+      "joy_high": "Too much spending, too fast.",
+      "family_low": "The family is upset.",
+      "family_high": "Everyone leans on you."
+    }
+  },
+  "outcome": {
+    "eyebrow": "WHAT HAPPENED",
+    "why": "Why?",
+    "hideWhy": "Hide why",
+    "money": "Where the money went",
+    "noMoney": "No money changed hands.",
+    "next": "Continue",
+    "lesson": {
+      "applied": "Gyaan card earned: you applied it!",
+      "missed": "Gyaan card earned, lesson missed. It can come back.",
+      "seen": "Gyaan card earned."
+    },
+    "netWorth": "Net worth {change}",
+    "m": {
+      "cashIn": "{amount} came in.",
+      "cashOut": "{amount} spent.",
+      "paidFrom": "Paid from {sources}.",
+      "borrowed": "Borrowed {amount} from the {source} to cover it.",
+      "jarIn": "{amount} moved into {jar}.",
+      "jarOut": "{amount} taken out of {jar}.",
+      "loan": "{source}: {amount}, {emi} a month for {months} months. You will repay {total} in all.",
+      "repay": "Repaid {amount} of the {source}.",
+      "open": "{amount} put into {product}.",
+      "openShort": "Only {amount} could go into {product}.",
+      "close": "{product} closed: got {amount} back.",
+      "penalty": "Early-exit cost: {amount}.",
+      "insuranceOn": "{product} bought: {premium} a year for {cover} of cover.",
+      "insuranceNo": "Could not afford {product} ({premium} a year).",
+      "shock": "A {cost} bill.",
+      "insurancePaid": "Insurance paid {amount}.",
+      "income": "From next year your income is {amount} a month.",
+      "scheduled": "Something has been set in motion…",
+      "want": "Bought for {amount}."
+    },
+    "document": {
+      "caught": "You caught the problem in the papers before signing.",
+      "missed": "There was a problem in the papers. Nobody caught it… yet.",
+      "clean": "The papers were clean."
+    }
+  },
+  "shock": {
+    "health": "hospital",
+    "hospital": "hospital",
+    "accident": "accident",
+    "death": "loss in the family",
+    "crop": "crop loss",
+    "flood": "flood",
+    "drought": "drought",
+    "repair": "repair",
+    "theft": "theft",
+    "fire": "fire",
+    "other": "surprise"
+  },
+  "yearEnd": {
+    "eyebrow": "AGE {age} · THE YEAR'S END",
+    "title": "Your year in a few lines",
+    "netWorth": "Net worth",
+    "change": "This year",
+    "debt": "Debt",
+    "savings": "Savings",
+    "dream": "Dream",
+    "next": "On to age {age}",
+    "final": "See how my life turned out",
+    "inflation": "Prices rose {pct}% this year.",
+    "headline": {
+      "shock": "A {kind} bill of {cost}",
+      "chitCollapsed": "The chit fund collapsed",
+      "marketCrash": "Markets fell {pct}%",
+      "borrowedForEmi": "Borrowed just to pay the EMIs",
+      "crossroads": "A big decision",
+      "loanCleared": "A loan is fully repaid!",
+      "dreamMilestone": "Your dream is {pct}% funded",
+      "income": "New income: {amount} a month",
+      "policyLapsed": "An insurance policy lapsed",
+      "squeezed": "A squeezed year: EMIs ate the needs",
+      "lessonApplied": "You put a lesson into practice",
+      "quiet": "A quiet year"
+    },
+    "habit": {
+      "wants_high": "If little joys stay at {wantsPct}% of income, your dream moves about {delayYears} years later.",
+      "wants_high_never": "If little joys stay at {wantsPct}% and nothing goes to the dream jar, the dream never arrives.",
+      "emi_heavy": "EMIs now take {emiPct}% of your income. One more loan and the needs jar goes hungry.",
+      "no_emergency": "With an empty emergency jar, a {exampleCost} bill goes to the moneylender: about {exampleInterest} a year in interest.",
+      "tin_box": "{idle} sits in the tin box. Next year it buys about {lostToInflation} less.",
+      "start_early": "{monthly} a month from now grows to about {ifNow} by 36. Starting 5 years later: about {ifFiveYearsLater}."
+    }
+  },
+  "minigame": {
+    "eyebrow": "SAHUKAR'S CHAIR",
+    "title": "A day at the lending desk",
+    "pick": "Pick one offer",
+    "borrower": "Borrower {n} of {total}",
+    "profit": "Your profit: {amount}",
+    "score": "Today's profit: {amount}",
+    "reveal": "Now see what each loan did to them",
+    "finish": "Leave the desk",
+    "skip": "Skip the desk",
+    "rate": "≈ {pct}% a year"
+  },
+  "document": {
+    "open": "Read the documents",
+    "eyebrow": "READ CAREFULLY · TAP ANYTHING SUSPICIOUS",
+    "verify": "Pay {amount}: {label}",
+    "verified": "Verified by an expert",
+    "flagged": "Flagged",
+    "redFlag": "Red flag",
+    "fine": "Looks fine",
+    "seal": "OFFICIAL",
+    "signature": "Signature",
+    "finePrint": "Terms and conditions apply. Read every line before you sign.",
+    "close": "Done reading",
+    "cantVerify": "Not enough money to verify."
+  },
+  "ask": {
+    "title": "Ask Ammamma",
+    "placeholder": "Ask about money, loans, saving…",
+    "send": "Ask",
+    "thinking": "Ammamma is adjusting her glasses…",
+    "offline": "From Ammamma's notebook",
+    "noAnswer": "Hmm, kanna. Ask me about saving, loans, insurance or scams.",
+    "try": "Try asking",
+    "disclaimer": "Ammamma explains; she never tells you what to buy."
+  },
+  "ending": {
+    "eyebrow": "AGE 36 · HOW YOUR LIFE TURNED OUT",
+    "title": {
+      "dream_on_time": "Your dream came true, on time",
+      "dream_with_debt": "Your dream came true, with heavy debt",
+      "dream_close": "So close to your dream",
+      "secure_no_dream": "Safe and steady, the dream still waits",
+      "debt_trap": "Caught in a debt trap"
+    },
+    "modifier": {
+      "wrong_path": "The wrong path, and the way back",
+      "no_safety_net": "No safety net yet"
+    },
+    "storyteller": "Who was telling this story?",
+    "reveal": "Reveal",
+    "stats": "Dream {pct}% · Net worth {netWorth} · Debt {debt}",
+    "next": "See my Gyaan report",
+    "rival": "Meanwhile, {name}'s life"
+  },
+  "report": {
+    "eyebrow": "YOUR GYAAN REPORT",
+    "title": "What you learned",
+    "cards": "{n} of 24 Gyaan cards",
+    "pillar": {
+      "PLAN": "Plan & budget",
+      "SAVE": "Save & manage",
+      "INVEST": "Understand investing",
+      "SAFE": "Stay safe"
+    },
+    "status": {
+      "applied": "Applied",
+      "seen": "Seen",
+      "missed": "Missed",
+      "unseen": "Not yet"
+    },
+    "next": "Try a parallel life"
+  },
+  "parallel": {
+    "eyebrow": "PARALLEL LIFE",
+    "title": "What if you had chosen differently?",
+    "subtitle": "Pick one decision. Everything before it stays the same; the luck stays the same.",
+    "you": "You chose",
+    "instead": "Instead, choose",
+    "run": "Live it again",
+    "running": "Living the other life…",
+    "original": "Your life",
+    "parallel": "Parallel life",
+    "lessons": "Lessons that turned out differently",
+    "noLessons": "Your lessons ended the same way.",
+    "netWorth": "Net worth",
+    "debt": "Debt",
+    "dream": "Dream",
+    "ending": "Ending",
+    "another": "Try another decision",
+    "gallery": "Ending gallery"
+  },
+  "gallery": {
+    "eyebrow": "ENDING GALLERY",
+    "title": "Lives you have lived",
+    "subtitle": "{n} of {total} endings found. Every goal has its own story.",
+    "locked": "Not found yet",
+    "playAgain": "Live another life"
+  },
+  "help": {
+    "title": "One life. One big dream.",
+    "steps": [
+      "Each turn is one year, from age 11 to 36.",
+      "Divide your monthly money into jars. Needs come first.",
+      "Spend your little-joys jar in the shop, if you like.",
+      "Make choices on the cards. Press Why? to see the reason.",
+      "Ammamma's glasses reveal tricky words. Documents hide red flags: tap them.",
+      "At the end, replay one decision in a Parallel Life."
+    ],
+    "start": "Let's begin"
+  }
+}
