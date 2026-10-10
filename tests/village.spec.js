@@ -13,8 +13,8 @@ async function start(page, { lang = "English" } = {}) {
   return errors;
 }
 
-// Storyline → intro → dream and look → chapter 1 title card → budget.
-async function toFirstChapter(page) {
+// Storyline → intro → dream and look → the prologue's title card → budget.
+async function toPrologue(page) {
   await expect(page.getByRole("heading", { name: "Choose your life" })).toBeVisible();
   await expect(page.getByText("Coming soon")).toBeVisible();
   await page.getByRole("button", { name: "Live this life" }).click();
@@ -27,84 +27,96 @@ async function toFirstChapter(page) {
   await page.getByRole("radio", { name: "Girl" }).click();
   await page.getByLabel("What should Ammamma call you?").fill("Sravani");
   await startButton.click();
-  await expect(page.getByRole("heading", { name: "School life" })).toBeVisible();
-  await page.getByRole("button", { name: "Let's go" }).click();
+  await expect(page.getByRole("heading", { name: "The Tin Box" })).toBeVisible();
+  await page.getByRole("button", { name: "Begin" }).click();
   await expect(page.getByRole("heading", { name: "Give every rupee a home" })).toBeVisible();
 }
 
-// Live whatever opens (card, outcome, mini-game) until we are back on the map.
-async function liveEvent(page) {
-  for (let i = 0; i < 12; i++) {
-    if (await page.locator(".card-view").count()) {
-      await page.keyboard.press("1");
-      await expect(page.locator(".outcome-view")).toBeVisible();
-      await page.getByRole("button", { name: "Continue", exact: true }).click();
-    } else if (await page.locator(".minigame-view").count()) {
-      await page.getByRole("button", { name: "Skip the desk" }).click();
-    } else if (await page.locator(".mapgame.phase-map").count()) {
-      return;
-    } else {
-      await page.waitForTimeout(100);
-    }
-  }
+// Follow the objective: walk there, and pick the choice whose label matches (or the first open one).
+async function playScene(page, label) {
+  await page.locator(".objective-go").click();
+  await expect(page.locator(".card-view")).toBeVisible({ timeout: 20000 });
+  const choice = label ? page.locator(".choice:not(.locked)", { hasText: label }) : page.locator(".choice:not(.locked)").first();
+  await choice.first().click();
 }
 
-test("start → dream → chapter 1 → walk to a place → live its event → finish the chapter", async ({ page }) => {
+async function continueOutcome(page) {
+  await expect(page.locator(".outcome-view")).toBeVisible();
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+}
+
+test("prologue: follow the objective, live three scenes, reach an outcome and its flowchart", async ({ page }) => {
   test.setTimeout(120000);
   const errors = await start(page);
-  await toFirstChapter(page);
+  await toPrologue(page);
 
-  // Budget: the HUD shows the chapter and age; jars move in steps and must cover needs.
-  await expect(page.locator(".hud-chapter")).toContainText("School life");
-  await expect(page.locator(".hud-chapter")).toContainText("Age 11");
-  const needs = page.locator(".jar-card.peach output");
-  const before = await needs.innerText();
-  await page.getByRole("button", { name: /^Remove ₹10 from Needs$/ }).click();
-  await expect(needs).not.toHaveText(before);
-  await page.getByRole("button", { name: /^Add ₹10 to Little joys$/ }).click();
+  await expect(page.locator(".hud-chapter")).toContainText("Childhood");
   await page.getByRole("button", { name: "Live this year" }).click();
 
-  // The village: a quest log lists the places with events.
-  await expect(page.locator(".mapgame.phase-map")).toBeVisible();
-  await expect(page.locator(".map-canvas")).toBeVisible();
-  const quest = page.locator(".quest-log");
-  await expect(quest).toBeVisible();
-  const first = quest.locator(".quest-go").first();
-  await expect(first).toBeVisible();
+  // The objective says where to go; a trail on the map leads there.
+  const objective = page.locator(".objective");
+  await expect(objective).toContainText("Walk home. Ammamma is calling you.");
+  await expect(objective.getByRole("button", { name: "Go to Home" })).toBeVisible();
 
-  // Walk there: the event card opens at the door.
-  await first.click();
-  await expect(page.locator(".event-card")).toBeVisible({ timeout: 20000 });
-  await page.locator(".choice").first().click();
+  await playScene(page, "Put it in a bank");
   await expect(page.getByText("WHAT HAPPENED")).toBeVisible();
-  const why = page.getByRole("button", { name: "Why?" });
-  if (await why.count()) {
-    await why.click();
-    await expect(page.locator(".why-text")).toBeVisible();
-  }
-  await page.getByRole("button", { name: "Continue", exact: true }).click();
-  await liveEvent(page);
+  await continueOutcome(page);
+  await expect(objective).toContainText("Kavitha akka");
+  await playScene(page, "one for me");
+  await continueOutcome(page);
+  await expect(objective).toContainText("jatara");
+  await playScene(page, "notebook first");
+  await continueOutcome(page);
 
-  // Live every remaining event, then go home to finish the chapter.
-  for (let i = 0; i < 12 && !(await page.locator(".quest-finish").count()); i++) {
-    await quest.locator(".quest-go").first().click();
-    await expect(page.locator(".game-window")).toBeVisible({ timeout: 20000 });
-    await liveEvent(page);
-  }
-  await page.locator(".quest-finish").click();
-  await page.getByRole("button", { name: "Finish chapter" }).click({ timeout: 20000 });
-  await expect(page.getByText("CHAPTER COMPLETE")).toBeVisible();
+  // The chapter's outcome, and the flowchart of what else could have happened.
+  await expect(page.getByRole("heading", { name: "The tin box retired" })).toBeVisible();
+  await expect(page.locator(".flowchart")).toBeVisible();
+  await expect(page.locator(".flow-node.outcome.reached")).toHaveCount(1);
+  await expect(page.locator(".flow-node li.taken")).toHaveCount(3);
+  await page.getByRole("tab", { name: "Money & years" }).click();
   await expect(page.locator(".years-list li")).toHaveCount(4);
-  await page.getByRole("button", { name: "Start chapter 2" }).click();
-  await expect(page.getByRole("heading", { name: "College life" })).toBeVisible();
+  await page.getByRole("button", { name: "Next chapter" }).click();
+  await expect(page.getByRole("heading", { name: "The OTP Heist" })).toBeVisible();
   expect(errors).toEqual([]);
+});
+
+test("a very bad choice flashes STOP; thinking again keeps the scene open", async ({ page }) => {
+  test.setTimeout(150000);
+  await start(page);
+  await toPrologue(page);
+  await page.getByRole("button", { name: "Live this year" }).click();
+  await playScene(page, "steel box");
+  await continueOutcome(page);
+  await playScene(page, "Buy the steel box");
+  await continueOutcome(page);
+  await playScene(page, "notebook first");
+  await continueOutcome(page);
+  await page.getByRole("button", { name: "Next chapter" }).click();
+  await page.getByRole("button", { name: "Begin" }).click();
+  await page.getByRole("button", { name: "Live this year" }).click();
+  await playScene(page, "Hide it at home");
+  await continueOutcome(page);
+
+  // The OTP call: a countdown, and a STOP before reading the OTP aloud.
+  await page.locator(".objective-go").click();
+  await expect(page.locator(".timer-bar")).toBeVisible({ timeout: 20000 });
+  await page.locator(".choice", { hasText: "Read the OTP aloud" }).click();
+  const stop = page.getByRole("alertdialog");
+  await expect(stop).toBeVisible();
+  await expect(stop).toContainText("Do not share");
+  await expect(stop.getByRole("button", { name: "Do it anyway" })).toBeDisabled();
+  await stop.getByRole("button", { name: "Think again" }).click();
+  await expect(stop).not.toBeVisible();
+  await expect(page.locator(".card-view")).toBeVisible();
+  await page.locator(".choice", { hasText: "Hang up" }).click();
+  await expect(page.getByText("WHAT HAPPENED")).toBeVisible();
 });
 
 test("the player walks with the arrow keys", async ({ page }) => {
   await start(page);
-  await toFirstChapter(page);
+  await toPrologue(page);
   await page.getByRole("button", { name: "Live this year" }).click();
-  await expect(page.locator(".mapgame.phase-map")).toBeVisible();
+  await expect(page.locator(".objective")).toBeVisible();
   const labels = page.locator(".map-labels");
   const before = await labels.evaluate((el) => el.style.transform);
   // Down from the front of home: the camera follows the player.
@@ -123,33 +135,34 @@ test("the language can be switched at any time and Hindi/Telugu fit the layout",
   await page.getByRole("button", { name: "कहानी छोड़ें" }).click();
   await page.getByRole("radio").nth(2).click();
   await page.getByRole("button", { name: "11 साल की उम्र से शुरू करें" }).click();
-  await expect(page.getByRole("heading", { name: "स्कूल के दिन" })).toBeVisible();
-  await page.getByRole("button", { name: "चलो चलें" }).click();
+  await expect(page.getByRole("heading", { name: "टिन का डिब्बा" })).toBeVisible();
+  await page.getByRole("button", { name: "शुरू करें" }).click();
   await expect(page.getByRole("heading", { name: "हर रुपये को घर दें" })).toBeVisible();
-  // Nothing in the HUD overflows horizontally.
   for (const selector of [".map-hud", ".game-window"]) {
     const overflow = await page.locator(selector).evaluate((el) => el.scrollWidth - el.clientWidth);
     expect(overflow, selector).toBeLessThanOrEqual(1);
   }
   await page.getByRole("combobox", { name: "भाषा" }).selectOption("te");
   await expect(page.getByRole("heading", { name: "ప్రతి రూపాయికి ఒక ఇల్లు ఇవ్వండి" })).toBeVisible();
+  await page.locator(".window-budget .primary-button").click();
+  await expect(page.locator(".objective")).toContainText("అమ్మమ్మ");
 });
 
 test("progress is saved: the title offers Continue after a reload", async ({ page }) => {
   await start(page);
-  await toFirstChapter(page);
+  await toPrologue(page);
   await page.getByRole("button", { name: "Live this year" }).click();
-  await expect(page.locator(".mapgame.phase-map")).toBeVisible();
+  await expect(page.locator(".objective")).toBeVisible();
   await page.reload();
   await expect(page.getByRole("button", { name: "Continue my life" })).toBeVisible();
   await page.getByRole("button", { name: "Continue my life" }).click();
   await expect(page.locator(".hud-chapter")).toContainText("Age 11");
-  await expect(page.locator(".quest-log")).toBeVisible();
+  await expect(page.locator(".objective")).toContainText("Ammamma");
 });
 
 test("Ask Ammamma answers offline", async ({ page }) => {
   await start(page);
-  await toFirstChapter(page);
+  await toPrologue(page);
   await page.getByRole("button", { name: "Ask Ammamma" }).first().click();
   const panel = page.getByRole("dialog", { name: "Ask Ammamma" });
   await expect(panel).toBeVisible();
@@ -168,13 +181,14 @@ for (const size of [
   test(`laptop layout ${size.width}×${size.height}`, async ({ page }) => {
     await page.setViewportSize(size);
     await start(page);
-    await toFirstChapter(page);
+    await toPrologue(page);
     const win = await page.locator(".game-window").boundingBox();
     expect(win.x + win.width).toBeLessThanOrEqual(size.width);
     expect(win.y + win.height).toBeLessThanOrEqual(size.height);
     await expect(page.getByRole("button", { name: "Live this year" })).toBeInViewport();
     await page.getByRole("button", { name: "Live this year" }).click();
-    const quest = await page.locator(".quest-log").boundingBox();
-    expect(quest.y + quest.height).toBeLessThanOrEqual(size.height);
+    const objective = await page.locator(".objective").boundingBox();
+    expect(objective.x).toBeGreaterThanOrEqual(0);
+    expect(objective.x + objective.width).toBeLessThanOrEqual(size.width);
   });
 }

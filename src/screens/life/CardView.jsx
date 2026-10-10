@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FileText, Glasses, Waves } from "lucide-react";
+import { FileText, Glasses, KeyRound, Lock, Waves } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { select } from "../../ui/gameAdapter.js";
 import { DocumentViewer } from "../../ui/DocumentViewer.jsx";
@@ -110,7 +110,8 @@ export function CardView({ life, dispatch }) {
           {card.choices.map((c, i) => (
             <button
               key={c.id}
-              className={`choice ${c.echo ? `has-echo echo-${c.echo.level}` : ""}`}
+              className={`choice ${c.echo ? `has-echo echo-${c.echo.level}` : ""} ${c.locked ? "locked" : ""}`}
+              aria-disabled={c.locked || undefined}
               onClick={() => dispatch({ type: "CHOOSE", choiceId: c.id })}
               onMouseEnter={() => c.echo && setHoverEcho(c.id)}
               onMouseLeave={() => setHoverEcho(null)}
@@ -119,7 +120,20 @@ export function CardView({ life, dispatch }) {
               style={{ animationDelay: `${0.08 * i + 0.1}s` }}
             >
               <kbd aria-hidden="true">{i + 1}</kbd>
-              <span>{plain(c.label)}</span>
+              <span>
+                {plain(c.label)}
+                {/* Story mode: closed (or opened) by an earlier decision. */}
+                {c.locked && (
+                  <small className="choice-lock">
+                    <Lock size={11} /> {c.lockedHint ? plain(c.lockedHint) : t("story.locked")}
+                  </small>
+                )}
+                {c.unlockedBy && (
+                  <small className="choice-unlocked">
+                    <KeyRound size={11} /> {t("story.unlocked")}
+                  </small>
+                )}
+              </span>
               {c.echo && <span className="choice-ripple" aria-hidden="true" />}
             </button>
           ))}

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { LOOKS, drawCharacter, drawMarker, renderVillage } from "./art.js";
-import { H, PLACES, START, TILE, W, findPath, placeAt, placeByEntrance, walkable } from "./village.js";
+import { drawGuide } from "./guide.js";
+import { H, PLACES, START, TILE, W, findPath, placeAt, placeById, placeByEntrance, walkable } from "./village.js";
 
 const DIRS = {
   ArrowUp: "up",
@@ -34,7 +35,7 @@ const NPCS = [
 
 // The playable village. Keyboard: arrows/WASD to walk, Enter/Space to go in. Mouse: click a
 // place or the ground to walk there. Calls onEnter(placeId) at a door.
-export function MapCanvas({ avatar = "boy", stage = "child", markers = {}, labels = {}, active = true, onEnter, onGranny, spawn, goTo, ariaLabel }) {
+export function MapCanvas({ avatar = "boy", stage = "child", markers = {}, labels = {}, active = true, onEnter, onGranny, spawn, goTo, guide = null, ariaLabel }) {
   const wrap = useRef(null);
   const canvas = useRef(null);
   const labelLayer = useRef(null);
@@ -44,7 +45,8 @@ export function MapCanvas({ avatar = "boy", stage = "child", markers = {}, label
   const me = useRef({ x: START.x, y: START.y, fx: START.x, fy: START.y, dir: "down", moving: null, path: [], enterOnArrive: null, held: [], frame: 0, animT: 0 });
   const granny = useRef({ x: 7, y: 9, dir: "left", t: 0 });
   const props = useRef({});
-  props.current = { avatar, stage, markers, active, onEnter, onGranny };
+  props.current = { avatar, stage, markers, active, onEnter, onGranny, guide };
+  const guideCache = useRef({ key: null, path: [] });
 
   // Place the player (new chapter, or back out of a door).
   useEffect(() => {
@@ -236,6 +238,11 @@ export function MapCanvas({ avatar = "boy", stage = "child", markers = {}, label
       const x = place.door.x * TILE + 8 - v.camX;
       const y = place.y * TILE - (place.h > 1 ? 18 : 30) - v.camY;
       drawMarker(ctx, x, y, kind, now + place.x * 90);
+    }
+
+    // Story mode: the trail to the objective (guide = { place, urgent }).
+    if (props.current.guide?.place && placeById[props.current.guide.place]) {
+      drawGuide(ctx, v, guideCache.current, m, placeById[props.current.guide.place], now, { urgent: props.current.guide.urgent });
     }
 
     // People, back to front.

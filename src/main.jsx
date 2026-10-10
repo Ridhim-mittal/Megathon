@@ -10,6 +10,7 @@ import "./styles.css";
 import "./game-scene.css";
 import "./life.css";
 import "./pixel.css";
+import "./story.css";
 import { App } from "./screens/App.jsx";
 
 createRoot(document.getElementById("root")).render(
