@@ -1,0 +1,270 @@
+[
+  {
+    "id": "task_job",
+    "scam": true,
+    "ages": [18, 32],
+    "sender": { "en": "HR Priya (unknown number)", "hi": "HR प्रिया (अनजान नंबर)", "te": "HR ప్రియ (తెలియని నంబర్)" },
+    "text": {
+      "en": "Part-time job! Like YouTube videos, earn ₹500/day. Reply YES. Small VIP deposit later for bigger tasks.",
+      "hi": "पार्ट-टाइम जॉब! YouTube वीडियो लाइक करो, ₹500/दिन कमाओ। YES लिखो। बड़े टास्क के लिए बाद में छोटा VIP डिपॉज़िट।",
+      "te": "పార్ట్-టైమ్ జాబ్! YouTube వీడియోలు లైక్ చేసి రోజుకు ₹500 సంపాదించు. YES అని పంపు. పెద్ద టాస్కులకు తర్వాత చిన్న VIP డిపాజిట్."
+    },
+    "hint": {
+      "en": "Tenali smiles: \"A job that pays you for liking videos, but asks you to deposit money first? Who is the real customer here?\"",
+      "hi": "तेनाली मुस्कुराते हैं: \"वीडियो लाइक करने के पैसे, पर पहले जमा करो? असली ग्राहक कौन है?\"",
+      "te": "తెనాలి నవ్వాడు: \"వీడియోలు లైక్ చేస్తే జీతం, కానీ ముందు డిపాజిట్ కట్టాలా? ఇక్కడ అసలు కస్టమర్ ఎవరు?\""
+    },
+    "fact": {
+      "en": "Real jobs never ask you to pay a deposit. Report task scams at cybercrime.gov.in or call 1930.",
+      "hi": "असली नौकरी कभी डिपॉज़िट नहीं माँगती। टास्क स्कैम की शिकायत cybercrime.gov.in या 1930 पर करें।",
+      "te": "నిజమైన ఉద్యోగం ఎప్పుడూ డిపాజిట్ అడగదు. టాస్క్ మోసాలను cybercrime.gov.inలో లేదా 1930కి ఫిర్యాదు చేయండి."
+    },
+    "reply": { "effects": { "money": 300, "peace": 1 }, "seed": "c_task_scam", "after": 1 }
+  },
+  {
+    "id": "loan_app",
+    "scam": true,
+    "ages": [18, 32],
+    "sender": { "en": "QuickRupee Loans", "hi": "क्विकरुपी लोन", "te": "క్విక్‌రూపీ లోన్స్" },
+    "text": {
+      "en": "Pre-approved ₹10,000 in 5 minutes! No documents. Just install our app and allow contacts.",
+      "hi": "5 मिनट में ₹10,000 प्री-अप्रूव्ड! कोई कागज़ नहीं। बस ऐप इंस्टॉल करो और कॉन्टैक्ट्स की अनुमति दो।",
+      "te": "5 నిమిషాల్లో ₹10,000 ప్రీ-అప్రూవ్డ్! పత్రాలు అక్కర్లేదు. మా యాప్ ఇన్‌స్టాల్ చేసి కాంటాక్ట్స్ అనుమతి ఇవ్వండి."
+    },
+    "hint": {
+      "en": "Tenali asks: \"Why would a lender need your friends' phone numbers to give you money?\"",
+      "hi": "तेनाली पूछते हैं: \"उधार देने के लिए तुम्हारे दोस्तों के नंबर क्यों चाहिए?\"",
+      "te": "తెనాలి అడిగాడు: \"అప్పు ఇవ్వడానికి నీ స్నేహితుల ఫోన్ నంబర్లు ఎందుకు?\""
+    },
+    "fact": {
+      "en": "Check if a lender is RBI-registered. Report harassing loan apps on sachet.rbi.org.in or 1930.",
+      "hi": "देखें लोन देने वाला RBI-पंजीकृत है या नहीं। परेशान करने वाले ऐप की शिकायत sachet.rbi.org.in या 1930 पर करें।",
+      "te": "అప్పు ఇచ్చేవారు RBI నమోదైనవారో చూడండి. వేధించే లోన్ యాప్‌లను sachet.rbi.org.inలో లేదా 1930కి ఫిర్యాదు చేయండి."
+    },
+    "reply": { "effects": { "money": 0, "peace": 2 }, "loan": { "amount": 10000, "source": "app" }, "seed": "c_loanapp_harass", "after": 1 }
+  },
+  {
+    "id": "upi_collect",
+    "scam": true,
+    "ages": [18, 32],
+    "sender": { "en": "PhonePay Rewards", "hi": "फ़ोनपे रिवॉर्ड्स", "te": "ఫోన్‌పే రివార్డ్స్" },
+    "text": {
+      "en": "Congrats! ₹5,000 cashback waiting. Accept the collect request and enter UPI PIN to receive.",
+      "hi": "बधाई! ₹5,000 कैशबैक इंतज़ार में। कलेक्ट रिक्वेस्ट स्वीकारो और पाने के लिए UPI PIN डालो।",
+      "te": "అభినందనలు! ₹5,000 క్యాష్‌బ్యాక్ వేచి ఉంది. కలెక్ట్ రిక్వెస్ట్ ఒప్పుకుని, పొందడానికి UPI PIN వేయండి."
+    },
+    "hint": {
+      "en": "Tenali: \"When you receive a gift, do you open your own purse? A PIN is the key to your purse.\"",
+      "hi": "तेनाली: \"तोहफ़ा लेते समय क्या अपना बटुआ खोलते हो? PIN तुम्हारे बटुए की चाबी है।\"",
+      "te": "తెనాలి: \"బహుమతి తీసుకునేటప్పుడు నీ పర్సు తెరుస్తావా? PIN నీ పర్సుకు తాళం చెవి.\""
+    },
+    "fact": {
+      "en": "UPI PIN is only needed to PAY, never to receive money. Report fraud on 1930.",
+      "hi": "UPI PIN सिर्फ पैसे भेजने के लिए है, पाने के लिए कभी नहीं। धोखाधड़ी की शिकायत 1930 पर करें।",
+      "te": "UPI PIN డబ్బు పంపడానికే, తీసుకోవడానికి ఎప్పుడూ కాదు. మోసాన్ని 1930కి ఫిర్యాదు చేయండి."
+    },
+    "reply": { "effects": { "money": -5000, "peace": 2 }, "seed": "c_kyc_drain", "after": 1 }
+  },
+  {
+    "id": "lend_account",
+    "scam": true,
+    "ages": [18, 28],
+    "sender": { "en": "Bro from gym", "hi": "जिम वाला भाई", "te": "జిమ్ బ్రో" },
+    "text": {
+      "en": "Bhai, lend me your bank account for a week. Some payments will come, you keep ₹2,000 commission. Easy!",
+      "hi": "भाई, एक हफ़्ते के लिए अपना बैंक खाता दे दो। कुछ पेमेंट आएँगे, तुम ₹2,000 कमीशन रखो। आसान!",
+      "te": "అన్నా, వారం రోజులు నీ బ్యాంకు ఖాతా ఇవ్వు. కొన్ని పేమెంట్లు వస్తాయి, నువ్వు ₹2,000 కమీషన్ ఉంచుకో. సులువే!"
+    },
+    "hint": {
+      "en": "Tenali: \"If his money were honest, why can't it sit in his own account?\"",
+      "hi": "तेनाली: \"अगर पैसा ईमानदार है तो उसके अपने खाते में क्यों नहीं आता?\"",
+      "te": "తెనాలి: \"ఆ డబ్బు నిజాయితీదైతే, అతని సొంత ఖాతాలో ఎందుకు ఉండదు?\""
+    },
+    "fact": {
+      "en": "Lending your account makes you a 'money mule' — a crime. Banks freeze such accounts. Report on 1930.",
+      "hi": "खाता उधार देना तुम्हें 'मनी म्यूल' बनाता है — यह अपराध है। बैंक ऐसे खाते फ़्रीज़ करते हैं। 1930 पर बताएँ।",
+      "te": "ఖాతా అద్దెకివ్వడం నిన్ను 'మనీ మ్యూల్'గా చేస్తుంది — ఇది నేరం. బ్యాంకులు ఇలాంటి ఖాతాలు ఫ్రీజ్ చేస్తాయి. 1930కి తెలపండి."
+    },
+    "reply": { "effects": { "money": 2000, "peace": 1 }, "seed": "c_mule_account", "after": 1 }
+  },
+  {
+    "id": "telegram_tips",
+    "scam": true,
+    "ages": [20, 32],
+    "sender": { "en": "Banyan50 VIP Tips 🚀", "hi": "बरगद50 VIP टिप्स 🚀", "te": "మర్రి50 VIP టిప్స్ 🚀" },
+    "text": {
+      "en": "Guaranteed 300% returns! Yesterday's tip gave 40%. Join our Telegram VIP for ₹4,999, sure-shot stocks daily.",
+      "hi": "300% पक्का मुनाफ़ा! कल की टिप ने 40% दिया। ₹4,999 में टेलीग्राम VIP जॉइन करो, रोज़ पक्के शेयर।",
+      "te": "300% ఖచ్చిత లాభం! నిన్నటి టిప్ 40% ఇచ్చింది. ₹4,999కి టెలిగ్రామ్ VIPలో చేరండి, రోజూ ఖచ్చితమైన షేర్లు."
+    },
+    "hint": {
+      "en": "Tenali: \"If the tip were truly sure, would he sell it to you for ₹4,999 instead of using it himself?\"",
+      "hi": "तेनाली: \"अगर टिप सच में पक्की होती, तो वह ख़ुद इस्तेमाल करता या तुम्हें ₹4,999 में बेचता?\"",
+      "te": "తెనాలి: \"టిప్ నిజంగా ఖచ్చితమైతే, తానే వాడుకుంటాడా లేక నీకు ₹4,999కి అమ్ముతాడా?\""
+    },
+    "fact": {
+      "en": "No one can guarantee market returns. Check SEBI registration and report on SEBI SCORES or 1930.",
+      "hi": "कोई भी बाज़ार का मुनाफ़ा पक्का नहीं कर सकता। SEBI पंजीकरण जाँचें, SEBI SCORES या 1930 पर शिकायत करें।",
+      "te": "మార్కెట్ లాభాన్ని ఎవరూ హామీ ఇవ్వలేరు. SEBI నమోదు చూడండి, SEBI SCORES లేదా 1930కి ఫిర్యాదు చేయండి."
+    },
+    "reply": { "effects": { "money": 1500, "peace": 2 }, "seed": "c_tips_loss", "after": 1 }
+  },
+  {
+    "id": "kyc_link",
+    "scam": true,
+    "ages": [18, 32],
+    "sender": { "en": "BANK-ALERT (+91 7xxxx)", "hi": "BANK-ALERT (+91 7xxxx)", "te": "BANK-ALERT (+91 7xxxx)" },
+    "text": {
+      "en": "Dear customer, your KYC expires TODAY. Account will be blocked. Update now: bit.ly/kyc-upd8",
+      "hi": "प्रिय ग्राहक, आपका KYC आज ख़त्म हो रहा है। खाता बंद होगा। अभी अपडेट करें: bit.ly/kyc-upd8",
+      "te": "ప్రియమైన కస్టమర్, మీ KYC ఈరోజే ముగుస్తుంది. ఖాతా బ్లాక్ అవుతుంది. ఇప్పుడే అప్‌డేట్ చేయండి: bit.ly/kyc-upd8"
+    },
+    "hint": {
+      "en": "Tenali: \"A bank that writes from a mobile number, with a short link, and in a hurry? Hurry is the thief's friend.\"",
+      "hi": "तेनाली: \"मोबाइल नंबर से, छोटे लिंक के साथ, जल्दबाज़ी में लिखने वाला बैंक? जल्दी चोर की दोस्त है।\"",
+      "te": "తెనాలి: \"మొబైల్ నంబర్ నుంచి, చిన్న లింక్‌తో, హడావుడిగా రాసే బ్యాంకా? తొందర దొంగకు స్నేహితుడు.\""
+    },
+    "fact": {
+      "en": "Banks never send KYC links or ask for OTP. Visit the branch or official app. Call 1930 if money is lost.",
+      "hi": "बैंक कभी KYC लिंक नहीं भेजते या OTP नहीं माँगते। शाखा या आधिकारिक ऐप पर जाएँ। पैसे गए तो 1930 पर कॉल करें।",
+      "te": "బ్యాంకులు ఎప్పుడూ KYC లింక్‌లు పంపవు, OTP అడగవు. బ్రాంచ్ లేదా అధికారిక యాప్ వాడండి. డబ్బు పోతే 1930కి కాల్ చేయండి."
+    },
+    "reply": { "effects": { "money": 0, "peace": 2 }, "seed": "c_kyc_drain", "after": 1 }
+  },
+  {
+    "id": "digital_arrest",
+    "scam": true,
+    "ages": [21, 32],
+    "sender": { "en": "\"CBI Officer\" (video call)", "hi": "\"CBI अफ़सर\" (वीडियो कॉल)", "te": "\"CBI ఆఫీసర్\" (వీడియో కాల్)" },
+    "text": {
+      "en": "A parcel in your name has drugs. You are under DIGITAL ARREST. Pay ₹50,000 'verification' or police come tonight.",
+      "hi": "तुम्हारे नाम के पार्सल में ड्रग्स हैं। तुम डिजिटल अरेस्ट में हो। ₹50,000 'वेरिफ़िकेशन' भरो वरना आज रात पुलिस आएगी।",
+      "te": "నీ పేరుతో ఉన్న పార్సెల్‌లో డ్రగ్స్ ఉన్నాయి. నువ్వు డిజిటల్ అరెస్ట్‌లో ఉన్నావు. ₹50,000 'వెరిఫికేషన్' కట్టు, లేకుంటే ఈ రాత్రి పోలీసులు వస్తారు."
+    },
+    "hint": {
+      "en": "Tenali laughs: \"Since when do police arrest people over video call and take fees on UPI?\"",
+      "hi": "तेनाली हँसते हैं: \"पुलिस कब से वीडियो कॉल पर गिरफ़्तार करती है और UPI पर फ़ीस लेती है?\"",
+      "te": "తెనాలి నవ్వాడు: \"పోలీసులు ఎప్పటి నుంచి వీడియో కాల్‌లో అరెస్ట్ చేసి UPIలో ఫీజు తీసుకుంటున్నారు?\""
+    },
+    "fact": {
+      "en": "'Digital arrest' does not exist in Indian law. Hang up and call 1930 or visit cybercrime.gov.in.",
+      "hi": "भारतीय क़ानून में 'डिजिटल अरेस्ट' नहीं होता। फ़ोन काटें और 1930 पर कॉल करें या cybercrime.gov.in देखें।",
+      "te": "భారత చట్టంలో 'డిజిటల్ అరెస్ట్' అనేదే లేదు. ఫోన్ పెట్టేసి 1930కి కాల్ చేయండి లేదా cybercrime.gov.in చూడండి."
+    },
+    "reply": { "effects": { "money": -15000, "peace": 3 }, "seed": "c_kyc_drain", "after": 1 }
+  },
+  {
+    "id": "gulf_visa",
+    "scam": true,
+    "ages": [20, 26],
+    "sender": { "en": "Dubai Jobs Agent Rafiq", "hi": "दुबई जॉब्स एजेंट रफ़ीक़", "te": "దుబాయ్ జాబ్స్ ఏజెంట్ రఫీక్" },
+    "text": {
+      "en": "Dubai job, ₹80,000/month, free stay! Only 3 seats. Send passport photo and ₹40,000 visa fee today.",
+      "hi": "दुबई में नौकरी, ₹80,000/महीना, रहना मुफ़्त! सिर्फ 3 सीटें। आज ही पासपोर्ट फ़ोटो और ₹40,000 वीज़ा फ़ीस भेजो।",
+      "te": "దుబాయ్ ఉద్యోగం, నెలకు ₹80,000, ఉచిత వసతి! 3 సీట్లే. ఈరోజే పాస్‌పోర్ట్ ఫోటో, ₹40,000 వీసా ఫీజు పంపు."
+    },
+    "hint": {
+      "en": "Tenali: \"Only 3 seats, only today, only cash? Real recruiters are registered on eMigrate.\"",
+      "hi": "तेनाली: \"सिर्फ 3 सीटें, सिर्फ आज, सिर्फ नकद? असली भर्ती एजेंट eMigrate पर पंजीकृत होते हैं।\"",
+      "te": "తెనాలి: \"3 సీట్లే, ఈరోజే, నగదు మాత్రమే? నిజమైన రిక్రూటర్లు eMigrateలో నమోదై ఉంటారు.\""
+    },
+    "fact": {
+      "en": "Check the recruiting agent on emigrate.gov.in. Never pay cash or send passports to unknown agents.",
+      "hi": "भर्ती एजेंट को emigrate.gov.in पर जाँचें। अनजान एजेंट को नकद या पासपोर्ट कभी न दें।",
+      "te": "రిక్రూటింగ్ ఏజెంట్‌ను emigrate.gov.inలో చూడండి. తెలియని ఏజెంట్లకు నగదు, పాస్‌పోర్ట్ ఎప్పుడూ ఇవ్వకండి."
+    },
+    "reply": { "effects": { "money": 0, "peace": 4 }, "seed": "c_gulf_agent", "after": 1 }
+  },
+  {
+    "id": "amma_call",
+    "scam": false,
+    "ages": [18, 32],
+    "sender": { "en": "Amma", "hi": "अम्मा", "te": "అమ్మ" },
+    "text": {
+      "en": "Did you eat? Call me when you are free. {mentor} is asking about you.",
+      "hi": "खाना खाया? फ़ुर्सत में फ़ोन करना। {mentor} तुम्हारे बारे में पूछ रही हैं।",
+      "te": "భోజనం చేశావా? తీరిక దొరికినప్పుడు ఫోన్ చేయి. {mentor} నీ గురించి అడుగుతోంది."
+    },
+    "hint": {
+      "en": "Tenali: \"No link, no money, no hurry. Just love. Some messages are exactly what they look like.\"",
+      "hi": "तेनाली: \"न लिंक, न पैसा, न जल्दी। बस प्यार। कुछ संदेश वैसे ही होते हैं जैसे दिखते हैं।\"",
+      "te": "తెనాలి: \"లింక్ లేదు, డబ్బు లేదు, తొందర లేదు. ప్రేమ మాత్రమే. కొన్ని మెసేజ్‌లు కనిపించినట్టే ఉంటాయి.\""
+    },
+    "fact": {
+      "en": "That was Amma! Not every message is a scam. Look for money requests, links, PINs and hurry.",
+      "hi": "वह अम्मा थीं! हर संदेश स्कैम नहीं होता। पैसे की माँग, लिंक, PIN और जल्दबाज़ी पर ध्यान दें।",
+      "te": "అది అమ్మే! ప్రతి మెసేజ్ మోసం కాదు. డబ్బు అడగడం, లింకులు, PIN, తొందర చూడండి."
+    },
+    "reply": { "effects": { "money": 0, "family": 4, "peace": 2 } },
+    "flag": { "effects": { "family": -4 } }
+  },
+  {
+    "id": "scholarship",
+    "scam": false,
+    "ages": [18, 20],
+    "sender": { "en": "College Office", "hi": "कॉलेज ऑफ़िस", "te": "కాలేజీ ఆఫీస్" },
+    "text": {
+      "en": "Reminder: State scholarship forms close Friday. Submit at the office with your income certificate. No fee.",
+      "hi": "याद दिलाना: राज्य स्कॉलरशिप फ़ॉर्म शुक्रवार को बंद। आय प्रमाणपत्र के साथ ऑफ़िस में जमा करें। कोई फ़ीस नहीं।",
+      "te": "గుర్తుచేత: రాష్ట్ర స్కాలర్‌షిప్ ఫారాలు శుక్రవారం ముగుస్తాయి. ఆదాయ ధ్రువపత్రంతో ఆఫీసులో ఇవ్వండి. ఫీజు లేదు."
+    },
+    "hint": {
+      "en": "Tenali: \"It sends you to a real office, asks no money, and gives you time. Smells honest.\"",
+      "hi": "तेनाली: \"असली दफ़्तर भेजता है, पैसे नहीं माँगता, समय देता है। ईमानदार लगता है।\"",
+      "te": "తెనాలి: \"నిజమైన ఆఫీసుకు పంపుతుంది, డబ్బు అడగదు, సమయం ఇస్తుంది. నిజాయితీగానే ఉంది.\""
+    },
+    "fact": {
+      "en": "That was a real scholarship notice. Genuine notices don't ask for fees, PINs or links.",
+      "hi": "वह असली स्कॉलरशिप सूचना थी। सच्ची सूचनाएँ फ़ीस, PIN या लिंक नहीं माँगतीं।",
+      "te": "అది నిజమైన స్కాలర్‌షిప్ నోటీసు. నిజమైన నోటీసులు ఫీజు, PIN, లింకులు అడగవు."
+    },
+    "reply": { "effects": { "money": 6000, "gyaan": 2 } },
+    "flag": { "effects": { "gyaan": -1, "peace": -2 } }
+  },
+  {
+    "id": "bank_credit",
+    "scam": false,
+    "ages": [19, 32],
+    "sender": { "en": "VM-SBBANK", "hi": "VM-SBBANK", "te": "VM-SBBANK" },
+    "text": {
+      "en": "Your a/c XX42 is credited with salary. Never share OTP or PIN with anyone. -Your Bank",
+      "hi": "आपके खाते XX42 में वेतन जमा हुआ। OTP या PIN किसी से साझा न करें। -आपका बैंक",
+      "te": "మీ ఖాతా XX42లో జీతం జమ అయింది. OTP లేదా PIN ఎవరికీ చెప్పకండి. -మీ బ్యాంకు"
+    },
+    "hint": {
+      "en": "Tenali: \"Official sender name, no link, no request — and it even warns you about thieves.\"",
+      "hi": "तेनाली: \"आधिकारिक नाम, कोई लिंक नहीं, कोई माँग नहीं — और चोरों से सावधान भी करता है।\"",
+      "te": "తెనాలి: \"అధికారిక పేరు, లింక్ లేదు, ఏమీ అడగదు — పైగా దొంగల గురించి హెచ్చరిస్తోంది.\""
+    },
+    "fact": {
+      "en": "That was a real bank alert. Real alerts inform; they never ask you to click, pay or share.",
+      "hi": "वह असली बैंक अलर्ट था। असली अलर्ट सिर्फ़ जानकारी देते हैं; क्लिक, भुगतान या साझा करने को नहीं कहते।",
+      "te": "అది నిజమైన బ్యాంకు అలర్ట్. నిజమైన అలర్ట్‌లు సమాచారం ఇస్తాయి; క్లిక్, చెల్లింపు, పంచుకోమని అడగవు."
+    },
+    "reply": { "effects": { "money": 0, "peace": 2, "gyaan": 1 } },
+    "flag": { "effects": { "peace": -2 } }
+  },
+  {
+    "id": "cricket",
+    "scam": false,
+    "ages": [17, 26],
+    "sender": { "en": "Ravi (school friend)", "hi": "रवि (स्कूल दोस्त)", "te": "రవి (బడి స్నేహితుడు)" },
+    "text": {
+      "en": "Cricket on the tank bund Sunday morning? Bring your bat!",
+      "hi": "रविवार सुबह तालाब किनारे क्रिकेट? बैट लेकर आना!",
+      "te": "ఆదివారం ఉదయం చెరువు కట్ట మీద క్రికెట్? బ్యాట్ తీసుకురా!"
+    },
+    "hint": {
+      "en": "Tenali: \"Your old friend wants your bat, not your bank. Go play.\"",
+      "hi": "तेनाली: \"पुराना दोस्त तुम्हारा बैट चाहता है, बैंक नहीं। जाओ खेलो।\"",
+      "te": "తెనాలి: \"పాత స్నేహితుడికి నీ బ్యాట్ కావాలి, బ్యాంకు కాదు. వెళ్ళి ఆడు.\""
+    },
+    "fact": {
+      "en": "That was just Ravi! Flag only messages that want money, PINs, links or secrecy.",
+      "hi": "वह बस रवि था! सिर्फ़ उन संदेशों को फ़्लैग करें जो पैसा, PIN, लिंक या राज़ माँगें।",
+      "te": "అది రవే! డబ్బు, PIN, లింకులు, రహస్యం అడిగే మెసేజ్‌లనే ఫ్లాగ్ చేయండి."
+    },
+    "reply": { "effects": { "money": 0, "peace": 3, "health": 2 } },
+    "flag": { "effects": { "peace": -3 } }
+  }
+]

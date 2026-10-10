@@ -1,0 +1,28 @@
+{
+  "telangana": {
+    "name": { "en": "Telangana", "hi": "तेलंगाना", "te": "తెలంగాణ" },
+    "tokens": {
+      "mentor": { "en": "Ammamma", "hi": "अम्मम्मा", "te": "అమ్మమ్మ" },
+      "festival": { "en": "Bathukamma", "hi": "बतुकम्मा", "te": "బతుకమ్మ" },
+      "village": { "en": "Pochampally", "hi": "पोचमपल्ली", "te": "పోచంపల్లి" },
+      "city": { "en": "Hyderabad", "hi": "हैदराबाद", "te": "హైదరాబాద్" },
+      "chitti": { "en": "chitti", "hi": "चिट्टी", "te": "చిట్టీ" },
+      "lender": { "en": "vaddi vyapari", "hi": "वड्डी व्यापारी", "te": "వడ్డీ వ్యాపారి" },
+      "storyteller": { "en": "Oggu Katha storyteller", "hi": "ओग्गु कथा कथाकार", "te": "ఒగ్గు కథ కళాకారుడు" },
+      "wheel": { "en": "Chakravaddi", "hi": "चक्रवड्डी", "te": "చక్రవడ్డీ" }
+    }
+  },
+  "north": {
+    "name": { "en": "North (mini-pack)", "hi": "उत्तर (मिनी-पैक)", "te": "ఉత్తరం (మినీ-ప్యాక్)" },
+    "tokens": {
+      "mentor": { "en": "Nani", "hi": "नानी", "te": "నానీ" },
+      "festival": { "en": "Diwali", "hi": "दिवाली", "te": "దీపావళి" },
+      "village": { "en": "Rampur", "hi": "रामपुर", "te": "రాంపూర్" },
+      "city": { "en": "Lucknow", "hi": "लखनऊ", "te": "లక్నో" },
+      "chitti": { "en": "committee (BC)", "hi": "कमेटी (बीसी)", "te": "కమిటీ (బీసీ)" },
+      "lender": { "en": "sahukar", "hi": "साहूकार", "te": "సాహుకార్" },
+      "storyteller": { "en": "Alha storyteller", "hi": "आल्हा गायक", "te": "ఆల్హా కథకుడు" },
+      "wheel": { "en": "Chakravriddhi", "hi": "चक्रवृद्धि", "te": "చక్రవృద్ధి" }
+    }
+  }
+}

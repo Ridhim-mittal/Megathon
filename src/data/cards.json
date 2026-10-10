@@ -1,0 +1,2831 @@
+[
+  {
+    "id": "phone_upgrade",
+    "ages": [
+      17,
+      19
+    ],
+    "art": "📱",
+    "title": {
+      "en": "Everyone has a smartphone",
+      "hi": "सबके पास स्मार्टफोन है",
+      "te": "అందరి దగ్గర స్మార్ట్‌ఫోన్ ఉంది"
+    },
+    "text": {
+      "en": "Your friends share notes and reels on smartphones. Your keypad phone feels old.",
+      "hi": "दोस्त स्मार्टफोन पर नोट्स और रील्स शेयर करते हैं। तुम्हारा कीपैड फोन पुराना लगता है।",
+      "te": "స్నేహితులు స్మార్ట్‌ఫోన్‌లో నోట్స్, రీల్స్ పంచుకుంటారు. నీ కీప్యాడ్ ఫోన్ పాతదిగా అనిపిస్తోంది."
+    },
+    "options": [
+      {
+        "id": "emi",
+        "style": "bold",
+        "label": {
+          "en": "New phone on shop's \"no-cost\" EMI",
+          "hi": "दुकान की \"नो-कॉस्ट\" EMI पर नया फोन",
+          "te": "షాపు \"నో-కాస్ట్\" EMIలో కొత్త ఫోన్"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 6,
+          "gyaan": 1
+        },
+        "loan": {
+          "amount": 15000,
+          "source": "shop"
+        },
+        "hidden": {
+          "seed": "c_emi_late",
+          "after": 1,
+          "chance": 0.55
+        }
+      },
+      {
+        "id": "used",
+        "style": "careful",
+        "label": {
+          "en": "Buy a second-hand phone",
+          "hi": "पुराना (सेकंड-हैंड) फोन लो",
+          "te": "సెకండ్-హ్యాండ్ ఫోన్ కొను"
+        },
+        "effects": {
+          "money": -4000,
+          "peace": 3,
+          "gyaan": 2
+        }
+      },
+      {
+        "id": "keep",
+        "style": "careful",
+        "label": {
+          "en": "Keep the keypad, save up",
+          "hi": "कीपैड रखो, पैसे जोड़ो",
+          "te": "కీప్యాడే ఉంచు, డబ్బు దాచు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -4,
+          "gyaan": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "festival_clothes",
+    "ages": [
+      17,
+      32
+    ],
+    "scaled": true,
+    "art": "🪔",
+    "title": {
+      "en": "{festival} is coming",
+      "hi": "{festival} आ रहा है",
+      "te": "{festival} వస్తోంది"
+    },
+    "text": {
+      "en": "The family hopes for new clothes this {festival}. The market is full of colour.",
+      "hi": "परिवार इस {festival} पर नए कपड़ों की उम्मीद कर रहा है। बाज़ार रंगों से भरा है।",
+      "te": "ఈ {festival}కి కొత్త బట్టలు వస్తాయని ఇంట్లో అందరూ ఆశిస్తున్నారు. బజారు రంగులతో నిండిపోయింది."
+    },
+    "options": [
+      {
+        "id": "silk",
+        "style": "generous",
+        "label": {
+          "en": "Silk for everyone",
+          "hi": "सबके लिए रेशम",
+          "te": "అందరికీ పట్టు బట్టలు"
+        },
+        "effects": {
+          "money": -6000,
+          "family": 8,
+          "peace": 2
+        }
+      },
+      {
+        "id": "one_each",
+        "style": "careful",
+        "label": {
+          "en": "One simple outfit each",
+          "hi": "सबको एक सादा जोड़ा",
+          "te": "ఒక్కొక్కరికి ఒక సాదా జత"
+        },
+        "effects": {
+          "money": -2500,
+          "family": 4,
+          "peace": 1
+        }
+      },
+      {
+        "id": "skip",
+        "style": "careful",
+        "label": {
+          "en": "Wear last year's clothes",
+          "hi": "पिछले साल के कपड़े पहनो",
+          "te": "పోయిన ఏడాది బట్టలే వేసుకో"
+        },
+        "effects": {
+          "money": 0,
+          "family": -4,
+          "peace": -1
+        }
+      }
+    ],
+    "repeat": 4
+  },
+  {
+    "id": "trip_friends",
+    "ages": [
+      17,
+      22
+    ],
+    "art": "🚌",
+    "title": {
+      "en": "A trip to {city}",
+      "hi": "{city} की सैर",
+      "te": "{city} ట్రిప్"
+    },
+    "text": {
+      "en": "Friends plan a two-day trip to {city}. They really want you to come.",
+      "hi": "दोस्त {city} की दो दिन की सैर बना रहे हैं। वे चाहते हैं तुम भी चलो।",
+      "te": "స్నేహితులు {city}కి రెండు రోజుల ట్రిప్ ప్లాన్ చేశారు. నువ్వూ రావాలని వాళ్ల కోరిక."
+    },
+    "options": [
+      {
+        "id": "go",
+        "style": "bold",
+        "label": {
+          "en": "Go for both days",
+          "hi": "दोनों दिन जाओ",
+          "te": "రెండు రోజులూ వెళ్ళు"
+        },
+        "effects": {
+          "money": -3000,
+          "peace": 6,
+          "health": -1
+        }
+      },
+      {
+        "id": "day",
+        "style": "careful",
+        "label": {
+          "en": "Join for one day only",
+          "hi": "सिर्फ एक दिन जाओ",
+          "te": "ఒక్క రోజే వెళ్ళు"
+        },
+        "effects": {
+          "money": -1000,
+          "peace": 3
+        }
+      },
+      {
+        "id": "skip",
+        "style": "careful",
+        "label": {
+          "en": "Stay back and study",
+          "hi": "रुको और पढ़ाई करो",
+          "te": "ఆగి చదువుకో"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -3,
+          "gyaan": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "coaching",
+    "ages": [
+      17,
+      18
+    ],
+    "art": "📚",
+    "title": {
+      "en": "Entrance coaching",
+      "hi": "प्रवेश परीक्षा कोचिंग",
+      "te": "ఎంట్రన్స్ కోచింగ్"
+    },
+    "text": {
+      "en": "A coaching centre in town promises better ranks. The fee is steep.",
+      "hi": "शहर का कोचिंग सेंटर अच्छी रैंक का वादा करता है। फीस भारी है।",
+      "te": "పట్టణంలోని కోచింగ్ సెంటర్ మంచి ర్యాంక్ ఇస్తామంటోంది. ఫీజు ఎక్కువ."
+    },
+    "options": [
+      {
+        "id": "join",
+        "style": "bold",
+        "label": {
+          "en": "Join the coaching",
+          "hi": "कोचिंग में दाखिला लो",
+          "te": "కోచింగ్‌లో చేరు"
+        },
+        "effects": {
+          "money": -8000,
+          "gyaan": 10,
+          "peace": -2
+        },
+        "hidden": {
+          "seed": "c_coaching_payoff",
+          "after": 2,
+          "chance": 0.7
+        }
+      },
+      {
+        "id": "library",
+        "style": "careful",
+        "label": {
+          "en": "Free videos + library",
+          "hi": "मुफ़्त वीडियो + लाइब्रेरी",
+          "te": "ఉచిత వీడియోలు + లైబ్రరీ"
+        },
+        "effects": {
+          "money": -500,
+          "gyaan": 5,
+          "health": -2
+        }
+      },
+      {
+        "id": "skip",
+        "style": "careful",
+        "label": {
+          "en": "Skip it, rest more",
+          "hi": "छोड़ो, आराम करो",
+          "te": "వదిలెయ్, విశ్రాంతి తీసుకో"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 3,
+          "gyaan": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "mentor_medicine",
+    "ages": [
+      17,
+      23
+    ],
+    "art": "💊",
+    "title": {
+      "en": "{mentor}'s medicines",
+      "hi": "{mentor} की दवाइयाँ",
+      "te": "{mentor} మందులు"
+    },
+    "text": {
+      "en": "{mentor}'s BP tablets ran out and money at home is short this month.",
+      "hi": "{mentor} की बीपी की गोलियाँ खत्म हो गईं और इस महीने घर में पैसे कम हैं।",
+      "te": "{mentor} బీపీ మాత్రలు అయిపోయాయి, ఈ నెల ఇంట్లో డబ్బు తక్కువగా ఉంది."
+    },
+    "options": [
+      {
+        "id": "full",
+        "style": "generous",
+        "label": {
+          "en": "Pay for a full year",
+          "hi": "पूरे साल का खर्च दो",
+          "te": "ఏడాది మొత్తం ఖర్చు భరించు"
+        },
+        "effects": {
+          "money": -3000,
+          "family": 8,
+          "health": 1
+        }
+      },
+      {
+        "id": "half",
+        "style": "careful",
+        "label": {
+          "en": "Share half the cost",
+          "hi": "आधा खर्च बाँटो",
+          "te": "సగం ఖర్చు పంచుకో"
+        },
+        "effects": {
+          "money": -1500,
+          "family": 4
+        }
+      },
+      {
+        "id": "later",
+        "style": "careful",
+        "label": {
+          "en": "Say you can't right now",
+          "hi": "कहो अभी नहीं हो पाएगा",
+          "te": "ఇప్పుడు కుదరదని చెప్పు"
+        },
+        "effects": {
+          "money": 0,
+          "family": -6,
+          "peace": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "gaming_packs",
+    "ages": [
+      17,
+      20
+    ],
+    "art": "🎮",
+    "title": {
+      "en": "Game shop sale",
+      "hi": "गेम में सेल",
+      "te": "గేమ్‌లో సేల్"
+    },
+    "text": {
+      "en": "Your favourite phone game has a 'today only' pack sale. ₹99 at a time adds up quietly.",
+      "hi": "पसंदीदा फोन गेम में 'सिर्फ आज' पैक सेल है। ₹99-₹99 करके चुपचाप बहुत खर्च हो जाता है।",
+      "te": "నీ ఇష్టమైన ఫోన్ గేమ్‌లో 'ఈరోజే' ప్యాక్ సేల్. ₹99 చొప్పున నిశ్శబ్దంగా ఖర్చు పెరిగిపోతుంది."
+    },
+    "options": [
+      {
+        "id": "buy",
+        "style": "bold",
+        "label": {
+          "en": "Buy packs all year",
+          "hi": "साल भर पैक खरीदो",
+          "te": "ఏడాదంతా ప్యాక్‌లు కొను"
+        },
+        "effects": {
+          "money": -2400,
+          "peace": 4,
+          "health": -1
+        }
+      },
+      {
+        "id": "limit",
+        "style": "careful",
+        "label": {
+          "en": "Set a ₹300 limit",
+          "hi": "₹300 की सीमा रखो",
+          "te": "₹300 పరిమితి పెట్టు"
+        },
+        "effects": {
+          "money": -300,
+          "peace": 1,
+          "gyaan": 3
+        }
+      },
+      {
+        "id": "none",
+        "style": "careful",
+        "label": {
+          "en": "Play free, buy nothing",
+          "hi": "मुफ़्त खेलो, कुछ मत खरीदो",
+          "te": "ఉచితంగా ఆడు, ఏమీ కొనకు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -2,
+          "gyaan": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "lend_friend",
+    "ages": [
+      18,
+      24
+    ],
+    "art": "🤝",
+    "title": {
+      "en": "A friend needs money",
+      "hi": "दोस्त को पैसे चाहिए",
+      "te": "స్నేహితుడికి డబ్బు కావాలి"
+    },
+    "text": {
+      "en": "Your school friend asks for ₹5,000 for an 'urgent need'. He promises to return it in a month.",
+      "hi": "स्कूल का दोस्त 'ज़रूरी काम' के लिए ₹5,000 माँगता है। एक महीने में लौटाने का वादा करता है।",
+      "te": "బడి స్నేహితుడు 'అత్యవసరం' అని ₹5,000 అడుగుతున్నాడు. నెలలో తిరిగిస్తానంటున్నాడు."
+    },
+    "options": [
+      {
+        "id": "lend",
+        "style": "generous",
+        "label": {
+          "en": "Lend ₹5,000",
+          "hi": "₹5,000 उधार दो",
+          "te": "₹5,000 అప్పు ఇవ్వు"
+        },
+        "effects": {
+          "money": -5000,
+          "peace": 3,
+          "family": 1
+        },
+        "hidden": {
+          "outcomes": [
+            {
+              "p": 0.5,
+              "seed": "c_friend_unpaid"
+            },
+            {
+              "p": 0.5,
+              "seed": "c_friend_repaid"
+            }
+          ],
+          "after": 1
+        }
+      },
+      {
+        "id": "gift",
+        "style": "careful",
+        "label": {
+          "en": "Give ₹1,000 as a gift, not a loan",
+          "hi": "₹1,000 तोहफ़े में दो, उधार नहीं",
+          "te": "₹1,000 బహుమతిగా ఇవ్వు, అప్పుగా కాదు"
+        },
+        "effects": {
+          "money": -1000,
+          "peace": 2,
+          "gyaan": 2
+        }
+      },
+      {
+        "id": "no",
+        "style": "careful",
+        "label": {
+          "en": "Say no kindly",
+          "hi": "प्यार से मना करो",
+          "te": "మర్యాదగా వద్దని చెప్పు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -4
+        }
+      }
+    ]
+  },
+  {
+    "id": "upi_splits",
+    "ages": [
+      18,
+      24
+    ],
+    "art": "🧾",
+    "title": {
+      "en": "The roommate's UPI splits",
+      "hi": "रूममेट का UPI हिसाब",
+      "te": "రూమ్‌మేట్ UPI లెక్కలు"
+    },
+    "text": {
+      "en": "Your roommate keeps 'forgetting' his share of rent and food. It is adding up.",
+      "hi": "रूममेट किराए और खाने का अपना हिस्सा 'भूल' जाता है। रकम बढ़ती जा रही है।",
+      "te": "రూమ్‌మేట్ అద్దె, భోజనం వాటా 'మర్చిపోతూనే' ఉన్నాడు. మొత్తం పెరుగుతోంది."
+    },
+    "options": [
+      {
+        "id": "sheet",
+        "style": "careful",
+        "label": {
+          "en": "Start a shared expense sheet",
+          "hi": "साझा खर्च शीट बनाओ",
+          "te": "కలిసి ఖర్చుల షీట్ పెట్టు"
+        },
+        "effects": {
+          "money": 1500,
+          "peace": -2,
+          "gyaan": 3
+        }
+      },
+      {
+        "id": "let_go",
+        "style": "generous",
+        "label": {
+          "en": "Let it go",
+          "hi": "जाने दो",
+          "te": "వదిలెయ్"
+        },
+        "effects": {
+          "money": -1500,
+          "peace": 3
+        }
+      },
+      {
+        "id": "fight",
+        "style": "bold",
+        "label": {
+          "en": "Demand it all, loudly",
+          "hi": "ज़ोर से पूरा माँगो",
+          "te": "గట్టిగా మొత్తం అడుగు"
+        },
+        "effects": {
+          "money": 2500,
+          "peace": -7,
+          "family": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "bike",
+    "ages": [
+      20,
+      25
+    ],
+    "art": "🏍️",
+    "title": {
+      "en": "The long commute",
+      "hi": "लंबा सफ़र",
+      "te": "పొడవైన ప్రయాణం"
+    },
+    "text": {
+      "en": "Work is 15 km away. Buses are slow and crowded.",
+      "hi": "काम 15 किमी दूर है। बसें धीमी और भीड़ भरी हैं।",
+      "te": "పని 15 కి.మీ. దూరం. బస్సులు నెమ్మదిగా, రద్దీగా ఉంటాయి."
+    },
+    "options": [
+      {
+        "id": "new_loan",
+        "style": "bold",
+        "label": {
+          "en": "New bike on a bank loan",
+          "hi": "बैंक लोन पर नई बाइक",
+          "te": "బ్యాంకు లోన్‌తో కొత్త బైక్"
+        },
+        "effects": {
+          "money": -10000,
+          "peace": 6,
+          "health": 1
+        },
+        "loan": {
+          "amount": 70000,
+          "source": "bank"
+        }
+      },
+      {
+        "id": "used",
+        "style": "careful",
+        "label": {
+          "en": "Used bike with cash",
+          "hi": "नकद में पुरानी बाइक",
+          "te": "నగదుతో పాత బైక్"
+        },
+        "effects": {
+          "money": -25000,
+          "peace": 3,
+          "health": 1
+        }
+      },
+      {
+        "id": "bus",
+        "style": "careful",
+        "label": {
+          "en": "Bus pass for the year",
+          "hi": "साल भर का बस पास",
+          "te": "ఏడాది బస్ పాస్"
+        },
+        "effects": {
+          "money": -6000,
+          "health": -2,
+          "peace": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "medical",
+    "ages": [
+      20,
+      32
+    ],
+    "luck": true,
+    "medical": true,
+    "insurable": true,
+    "repeat": true,
+    "art": "🏥",
+    "title": {
+      "en": "A hospital night",
+      "hi": "अस्पताल की रात",
+      "te": "ఆసుపత్రిలో ఒక రాత్రి"
+    },
+    "text": {
+      "en": "Your father is admitted with a high fever and needs care. About 1 in 10 families face this each year.",
+      "hi": "पिताजी तेज़ बुख़ार से भर्ती हैं। हर साल लगभग 10 में से 1 परिवार इसका सामना करता है।",
+      "te": "నాన్న తీవ్రమైన జ్వరంతో ఆసుపత్రిలో చేరారు. ప్రతి ఏడాది సుమారు 10లో 1 కుటుంబానికి ఇలా జరుగుతుంది."
+    },
+    "options": [
+      {
+        "id": "private",
+        "style": "generous",
+        "label": {
+          "en": "Private hospital",
+          "hi": "प्राइवेट अस्पताल",
+          "te": "ప్రైవేట్ ఆసుపత్రి"
+        },
+        "effects": {
+          "money": -60000,
+          "health": 8,
+          "family": 6
+        }
+      },
+      {
+        "id": "govt",
+        "style": "careful",
+        "label": {
+          "en": "Government hospital",
+          "hi": "सरकारी अस्पताल",
+          "te": "ప్రభుత్వ ఆసుపత్రి"
+        },
+        "effects": {
+          "money": -10000,
+          "health": 3,
+          "peace": -4
+        }
+      },
+      {
+        "id": "lender",
+        "style": "bold",
+        "label": {
+          "en": "Private, on a loan from the {lender}",
+          "hi": "{lender} से उधार लेकर प्राइवेट",
+          "te": "{lender} దగ్గర అప్పు చేసి ప్రైవేట్"
+        },
+        "effects": {
+          "money": 0,
+          "health": 8,
+          "family": 6,
+          "peace": -3
+        },
+        "loan": {
+          "amount": 60000,
+          "source": "lender"
+        }
+      }
+    ]
+  },
+  {
+    "id": "crop_failure",
+    "ages": [
+      19,
+      32
+    ],
+    "luck": true,
+    "art": "🌾",
+    "title": {
+      "en": "The rains came late",
+      "hi": "बारिश देर से आई",
+      "te": "వానలు ఆలస్యంగా వచ్చాయి"
+    },
+    "text": {
+      "en": "Father's cotton crop failed. Home needs help before the next sowing.",
+      "hi": "पिताजी की कपास की फ़सल खराब हो गई। अगली बुवाई से पहले घर को मदद चाहिए।",
+      "te": "నాన్న పత్తి పంట పోయింది. తదుపరి విత్తనాలకు ముందు ఇంటికి సాయం కావాలి."
+    },
+    "options": [
+      {
+        "id": "send_big",
+        "style": "generous",
+        "label": {
+          "en": "Send ₹30,000",
+          "hi": "₹30,000 भेजो",
+          "te": "₹30,000 పంపు"
+        },
+        "effects": {
+          "money": -30000,
+          "family": 10,
+          "peace": -2
+        }
+      },
+      {
+        "id": "send_small",
+        "style": "careful",
+        "label": {
+          "en": "Send ₹10,000",
+          "hi": "₹10,000 भेजो",
+          "te": "₹10,000 పంపు"
+        },
+        "effects": {
+          "money": -10000,
+          "family": 4
+        }
+      },
+      {
+        "id": "lender",
+        "style": "bold",
+        "label": {
+          "en": "Tell him to borrow from the {lender}",
+          "hi": "कहो {lender} से उधार ले लें",
+          "te": "{lender} దగ్గర అప్పు తీసుకోమను"
+        },
+        "effects": {
+          "money": 0,
+          "family": -8,
+          "peace": -3
+        },
+        "hidden": {
+          "seed": "c_family_debt",
+          "after": 2,
+          "chance": 0.75
+        }
+      }
+    ],
+    "repeat": 4
+  },
+  {
+    "id": "certificate",
+    "ages": [
+      21,
+      26
+    ],
+    "art": "🎓",
+    "title": {
+      "en": "An evening course",
+      "hi": "शाम का कोर्स",
+      "te": "సాయంత్రం కోర్సు"
+    },
+    "text": {
+      "en": "A paid accounting-software course could lead to a better role. It means tired evenings.",
+      "hi": "एक पेड अकाउंटिंग सॉफ़्टवेयर कोर्स से बेहतर पद मिल सकता है। शामें थकी होंगी।",
+      "te": "డబ్బు కట్టే అకౌంటింగ్ సాఫ్ట్‌వేర్ కోర్సు మంచి ఉద్యోగానికి దారి తీయొచ్చు. సాయంత్రాలు అలసటగా ఉంటాయి."
+    },
+    "options": [
+      {
+        "id": "enrol",
+        "style": "bold",
+        "label": {
+          "en": "Enrol (₹12,000)",
+          "hi": "दाखिला लो (₹12,000)",
+          "te": "చేరు (₹12,000)"
+        },
+        "effects": {
+          "money": -12000,
+          "gyaan": 8,
+          "peace": -3
+        },
+        "hidden": {
+          "seed": "c_promotion",
+          "after": 2,
+          "chance": 0.75
+        }
+      },
+      {
+        "id": "free",
+        "style": "careful",
+        "label": {
+          "en": "Free online course",
+          "hi": "मुफ़्त ऑनलाइन कोर्स",
+          "te": "ఉచిత ఆన్‌లైన్ కోర్సు"
+        },
+        "effects": {
+          "money": 0,
+          "gyaan": 4,
+          "health": -2
+        }
+      },
+      {
+        "id": "rest",
+        "style": "careful",
+        "label": {
+          "en": "Keep evenings for rest",
+          "hi": "शामें आराम के लिए रखो",
+          "te": "సాయంత్రాలు విశ్రాంతికే"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 3,
+          "health": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "sister_fees",
+    "ages": [
+      21,
+      28
+    ],
+    "art": "👩‍⚕️",
+    "title": {
+      "en": "Sister's nursing seat",
+      "hi": "बहन की नर्सिंग सीट",
+      "te": "చెల్లి నర్సింగ్ సీటు"
+    },
+    "text": {
+      "en": "Your sister got a nursing seat. The first-year fee is ₹40,000.",
+      "hi": "बहन को नर्सिंग की सीट मिली। पहले साल की फीस ₹40,000 है।",
+      "te": "చెల్లికి నర్సింగ్ సీటు వచ్చింది. మొదటి ఏడాది ఫీజు ₹40,000."
+    },
+    "options": [
+      {
+        "id": "all",
+        "style": "generous",
+        "label": {
+          "en": "Pay it all",
+          "hi": "पूरी फीस दो",
+          "te": "మొత్తం కట్టు"
+        },
+        "effects": {
+          "money": -40000,
+          "family": 12
+        }
+      },
+      {
+        "id": "half",
+        "style": "careful",
+        "label": {
+          "en": "Pay half, she takes an education loan",
+          "hi": "आधा दो, बाकी एजुकेशन लोन",
+          "te": "సగం కట్టు, మిగతాది విద్యా రుణం"
+        },
+        "effects": {
+          "money": -20000,
+          "family": 6,
+          "gyaan": 2
+        }
+      },
+      {
+        "id": "none",
+        "style": "careful",
+        "label": {
+          "en": "Can't help this year",
+          "hi": "इस साल मदद नहीं हो पाएगी",
+          "te": "ఈ ఏడాది సాయం చేయలేను"
+        },
+        "effects": {
+          "money": 0,
+          "family": -10,
+          "peace": -4
+        }
+      }
+    ]
+  },
+  {
+    "id": "sale_bnpl",
+    "ages": [
+      21,
+      28
+    ],
+    "art": "📺",
+    "title": {
+      "en": "The big festive sale",
+      "hi": "त्योहारी बड़ी सेल",
+      "te": "పండుగ పెద్ద సేల్"
+    },
+    "text": {
+      "en": "A 43-inch TV, 'Buy Now Pay Later', just one tap. The family would love it.",
+      "hi": "43-इंच टीवी, 'अभी खरीदो बाद में चुकाओ', बस एक टैप। परिवार खुश हो जाएगा।",
+      "te": "43-అంగుళాల టీవీ, 'ఇప్పుడే కొను తర్వాత కట్టు', ఒక్క ట్యాప్. ఇంట్లో అందరూ సంతోషిస్తారు."
+    },
+    "options": [
+      {
+        "id": "bnpl",
+        "style": "bold",
+        "label": {
+          "en": "Tap Buy Now Pay Later",
+          "hi": "'अभी खरीदो बाद में चुकाओ' दबाओ",
+          "te": "'ఇప్పుడే కొను తర్వాత కట్టు' నొక్కు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 5,
+          "family": 4
+        },
+        "loan": {
+          "amount": 30000,
+          "source": "bnpl"
+        },
+        "hidden": {
+          "seed": "c_bnpl_late",
+          "after": 1,
+          "chance": 0.6
+        }
+      },
+      {
+        "id": "small_cash",
+        "style": "careful",
+        "label": {
+          "en": "Smaller TV with cash",
+          "hi": "नकद में छोटा टीवी",
+          "te": "నగదుతో చిన్న టీవీ"
+        },
+        "effects": {
+          "money": -12000,
+          "peace": 3,
+          "family": 2
+        }
+      },
+      {
+        "id": "skip",
+        "style": "careful",
+        "label": {
+          "en": "Skip the sale",
+          "hi": "सेल छोड़ दो",
+          "te": "సేల్ వదిలెయ్"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -2,
+          "gyaan": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "friend_stall",
+    "ages": [
+      22,
+      29
+    ],
+    "art": "☕",
+    "title": {
+      "en": "Partner in a tea stall",
+      "hi": "चाय की दुकान में साझेदारी",
+      "te": "టీ స్టాల్‌లో భాగస్వామ్యం"
+    },
+    "text": {
+      "en": "Your friend wants ₹30,000 to open a tea stall near the bus stand and share profits.",
+      "hi": "दोस्त बस अड्डे के पास चाय की दुकान के लिए ₹30,000 चाहता है, मुनाफ़ा बाँटेगा।",
+      "te": "బస్టాండ్ దగ్గర టీ స్టాల్ పెట్టడానికి స్నేహితుడు ₹30,000 అడుగుతున్నాడు, లాభం పంచుతానంటున్నాడు."
+    },
+    "options": [
+      {
+        "id": "invest",
+        "style": "bold",
+        "label": {
+          "en": "Invest ₹30,000",
+          "hi": "₹30,000 लगाओ",
+          "te": "₹30,000 పెట్టు"
+        },
+        "effects": {
+          "money": -30000,
+          "peace": 2,
+          "gyaan": 2
+        },
+        "hidden": {
+          "outcomes": [
+            {
+              "p": 0.45,
+              "seed": "c_stall_boom"
+            },
+            {
+              "p": 0.55,
+              "seed": "c_stall_bust"
+            }
+          ],
+          "after": 2
+        }
+      },
+      {
+        "id": "small",
+        "style": "careful",
+        "label": {
+          "en": "Put in ₹10,000 only",
+          "hi": "सिर्फ ₹10,000 लगाओ",
+          "te": "₹10,000 మాత్రమే పెట్టు"
+        },
+        "effects": {
+          "money": -10000,
+          "peace": 1,
+          "gyaan": 3
+        }
+      },
+      {
+        "id": "decline",
+        "style": "careful",
+        "label": {
+          "en": "Wish him luck, no money",
+          "hi": "शुभकामना दो, पैसे नहीं",
+          "te": "శుభాకాంక్షలు చెప్పు, డబ్బు కాదు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -2,
+          "family": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "ponzi",
+    "ages": [
+      21,
+      30
+    ],
+    "art": "🌳",
+    "title": {
+      "en": "The Golden Banyan Club",
+      "hi": "गोल्डन बरगद क्लब",
+      "te": "గోల్డెన్ మర్రి క్లబ్"
+    },
+    "text": {
+      "en": "A colleague says the club doubles money in 30 days. He already got a ₹4,000 'joining bonus'.",
+      "hi": "एक सहकर्मी कहता है क्लब 30 दिन में पैसे दोगुने करता है। उसे ₹4,000 'जॉइनिंग बोनस' मिला।",
+      "te": "క్లబ్ 30 రోజుల్లో డబ్బు రెట్టింపు చేస్తుందని సహోద్యోగి అంటున్నాడు. అతనికి ₹4,000 'జాయినింగ్ బోనస్' వచ్చింది."
+    },
+    "options": [
+      {
+        "id": "join",
+        "style": "bold",
+        "label": {
+          "en": "Join and get the bonus",
+          "hi": "जुड़ो और बोनस लो",
+          "te": "చేరి బోనస్ తీసుకో"
+        },
+        "effects": {
+          "money": 4000,
+          "peace": 2
+        },
+        "hidden": {
+          "seed": "c_ponzi_collapse",
+          "after": 2,
+          "chance": 0.95
+        }
+      },
+      {
+        "id": "ask",
+        "style": "careful",
+        "label": {
+          "en": "Ask for its SEBI registration",
+          "hi": "SEBI रजिस्ट्रेशन पूछो",
+          "te": "SEBI రిజిస్ట్రేషన్ అడుగు"
+        },
+        "effects": {
+          "money": 0,
+          "gyaan": 6,
+          "peace": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "credit_card",
+    "ages": [
+      22,
+      28
+    ],
+    "art": "💳",
+    "title": {
+      "en": "Your first credit card",
+      "hi": "पहला क्रेडिट कार्ड",
+      "te": "మొదటి క్రెడిట్ కార్డు"
+    },
+    "text": {
+      "en": "The bank offers a 'lifetime free' card. Paying only the minimum due feels easy.",
+      "hi": "बैंक 'लाइफ़टाइम फ्री' कार्ड दे रहा है। सिर्फ मिनिमम ड्यू भरना आसान लगता है।",
+      "te": "బ్యాంకు 'లైఫ్‌టైమ్ ఫ్రీ' కార్డు ఇస్తోంది. మినిమం డ్యూ మాత్రమే కట్టడం సులువుగా అనిపిస్తుంది."
+    },
+    "options": [
+      {
+        "id": "min_due",
+        "style": "bold",
+        "label": {
+          "en": "Use it, pay minimum due",
+          "hi": "इस्तेमाल करो, मिनिमम ड्यू भरो",
+          "te": "వాడు, మినిమం డ్యూ కట్టు"
+        },
+        "effects": {
+          "money": 8000,
+          "peace": 4
+        },
+        "hidden": {
+          "seed": "c_card_trap",
+          "after": 2,
+          "chance": 0.85
+        }
+      },
+      {
+        "id": "full",
+        "style": "careful",
+        "label": {
+          "en": "Use it, pay in full monthly",
+          "hi": "इस्तेमाल करो, हर महीने पूरा भरो",
+          "te": "వాడు, ప్రతి నెలా పూర్తిగా కట్టు"
+        },
+        "effects": {
+          "money": 0,
+          "gyaan": 4,
+          "peace": -1
+        }
+      },
+      {
+        "id": "decline",
+        "style": "careful",
+        "label": {
+          "en": "Say no to the card",
+          "hi": "कार्ड को मना करो",
+          "te": "కార్డు వద్దను"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 1,
+          "gyaan": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "gold_mother",
+    "ages": [
+      20,
+      30
+    ],
+    "art": "📿",
+    "title": {
+      "en": "Gold for Amma",
+      "hi": "अम्मा के लिए सोना",
+      "te": "అమ్మకు బంగారం"
+    },
+    "text": {
+      "en": "On Akshaya Tritiya, Amma wishes for small gold earrings.",
+      "hi": "अक्षय तृतीया पर अम्मा छोटे सोने के झुमके चाहती हैं।",
+      "te": "అక్షయ తృతీయకు అమ్మ చిన్న బంగారు కమ్మలు కావాలనుకుంటోంది."
+    },
+    "options": [
+      {
+        "id": "buy",
+        "style": "generous",
+        "label": {
+          "en": "Buy them with cash",
+          "hi": "नकद में खरीदो",
+          "te": "నగదుతో కొను"
+        },
+        "effects": {
+          "money": -30000,
+          "family": 8
+        }
+      },
+      {
+        "id": "scheme",
+        "style": "careful",
+        "label": {
+          "en": "Join the jeweller's 11-month plan",
+          "hi": "सुनार की 11 महीने की योजना",
+          "te": "నగల షాపు 11 నెలల పథకం"
+        },
+        "effects": {
+          "money": -15000,
+          "family": 5,
+          "peace": -1
+        }
+      },
+      {
+        "id": "later",
+        "style": "careful",
+        "label": {
+          "en": "Promise for next year",
+          "hi": "अगले साल का वादा करो",
+          "te": "వచ్చే ఏడాది అని మాటివ్వు"
+        },
+        "effects": {
+          "money": 0,
+          "family": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "rent_hike",
+    "ages": [
+      21,
+      26
+    ],
+    "luck": true,
+    "art": "🏠",
+    "title": {
+      "en": "Rent goes up",
+      "hi": "किराया बढ़ा",
+      "te": "అద్దె పెరిగింది"
+    },
+    "text": {
+      "en": "The owner raises your room rent by ₹1,500 a month.",
+      "hi": "मकान-मालिक ने कमरे का किराया ₹1,500 महीना बढ़ा दिया।",
+      "te": "ఇంటి యజమాని గది అద్దె నెలకు ₹1,500 పెంచాడు."
+    },
+    "options": [
+      {
+        "id": "stay",
+        "style": "generous",
+        "label": {
+          "en": "Stay and pay",
+          "hi": "रुको और भरो",
+          "te": "ఉండి కట్టు"
+        },
+        "effects": {
+          "money": -18000,
+          "peace": 2
+        }
+      },
+      {
+        "id": "share",
+        "style": "careful",
+        "label": {
+          "en": "Share the room",
+          "hi": "कमरा साझा करो",
+          "te": "గది పంచుకో"
+        },
+        "effects": {
+          "money": -6000,
+          "peace": -4,
+          "health": -1
+        }
+      },
+      {
+        "id": "far",
+        "style": "careful",
+        "label": {
+          "en": "Move further out",
+          "hi": "दूर चले जाओ",
+          "te": "దూరం మారు"
+        },
+        "effects": {
+          "money": -9000,
+          "health": -3,
+          "peace": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "job_loss",
+    "ages": [
+      25,
+      32
+    ],
+    "luck": true,
+    "scaled": true,
+    "art": "📉",
+    "title": {
+      "en": "Four months without salary",
+      "hi": "चार महीने बिना तनख़्वाह",
+      "te": "నాలుగు నెలలు జీతం లేదు"
+    },
+    "text": {
+      "en": "Your company cuts staff. It takes four months to find new work.",
+      "hi": "कंपनी ने छँटनी की। नया काम मिलने में चार महीने लगे।",
+      "te": "కంపెనీ ఉద్యోగులను తగ్గించింది. కొత్త పని దొరకడానికి నాలుగు నెలలు పట్టింది."
+    },
+    "options": [
+      {
+        "id": "fund",
+        "style": "careful",
+        "label": {
+          "en": "Live on your savings",
+          "hi": "बचत से गुज़ारा करो",
+          "te": "పొదుపుతో గడుపు"
+        },
+        "effects": {
+          "money": -40000,
+          "peace": -2,
+          "gyaan": 2
+        }
+      },
+      {
+        "id": "app",
+        "style": "bold",
+        "label": {
+          "en": "Quick loan app cash",
+          "hi": "क्विक लोन ऐप से पैसे",
+          "te": "క్విక్ లోన్ యాప్ డబ్బు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 1
+        },
+        "loan": {
+          "amount": 40000,
+          "source": "app"
+        },
+        "hidden": {
+          "seed": "c_loanapp_harass",
+          "after": 1,
+          "chance": 0.6
+        }
+      },
+      {
+        "id": "home",
+        "style": "generous",
+        "label": {
+          "en": "Go home, family helps",
+          "hi": "घर जाओ, परिवार मदद करेगा",
+          "te": "ఇంటికి వెళ్ళు, కుటుంబం సాయం"
+        },
+        "effects": {
+          "money": -15000,
+          "family": -5,
+          "peace": -5,
+          "health": 2
+        }
+      }
+    ],
+    "repeat": 4
+  },
+  {
+    "id": "parents_roof",
+    "ages": [
+      24,
+      32
+    ],
+    "art": "🛖",
+    "title": {
+      "en": "The roof leaks",
+      "hi": "छत टपक रही है",
+      "te": "పైకప్పు కారుతోంది"
+    },
+    "text": {
+      "en": "Before the monsoon, your parents' roof needs repair: about ₹50,000.",
+      "hi": "बरसात से पहले माता-पिता की छत की मरम्मत चाहिए: लगभग ₹50,000।",
+      "te": "వానాకాలానికి ముందు అమ్మానాన్నల ఇంటి పైకప్పు బాగుచేయాలి: సుమారు ₹50,000."
+    },
+    "options": [
+      {
+        "id": "fix",
+        "style": "generous",
+        "label": {
+          "en": "Fix it properly",
+          "hi": "ठीक से बनवाओ",
+          "te": "సరిగ్గా బాగుచేయించు"
+        },
+        "effects": {
+          "money": -50000,
+          "family": 10,
+          "health": 2
+        }
+      },
+      {
+        "id": "patch",
+        "style": "careful",
+        "label": {
+          "en": "Patch with tarpaulin",
+          "hi": "तिरपाल से ढको",
+          "te": "టార్పాలిన్‌తో కప్పు"
+        },
+        "effects": {
+          "money": -8000,
+          "family": 2,
+          "peace": -3
+        }
+      },
+      {
+        "id": "cousin",
+        "style": "careful",
+        "label": {
+          "en": "Ask a cousin to handle it",
+          "hi": "चचेरे भाई से कहो",
+          "te": "బంధువును చూసుకోమను"
+        },
+        "effects": {
+          "money": 0,
+          "family": -6,
+          "peace": -2
+        }
+      }
+    ],
+    "repeat": 4
+  },
+  {
+    "id": "car_dream",
+    "ages": [
+      27,
+      32
+    ],
+    "art": "🚗",
+    "title": {
+      "en": "Everyone is buying cars",
+      "hi": "सब गाड़ियाँ खरीद रहे हैं",
+      "te": "అందరూ కార్లు కొంటున్నారు"
+    },
+    "text": {
+      "en": "Colleagues post photos with new cars. A dealer calls with 'easy EMI'.",
+      "hi": "सहकर्मी नई गाड़ियों की फ़ोटो डालते हैं। डीलर 'आसान EMI' के लिए फ़ोन करता है।",
+      "te": "సహోద్యోగులు కొత్త కార్లతో ఫోటోలు పెడుతున్నారు. డీలర్ 'సులువైన EMI' అని ఫోన్ చేస్తున్నాడు."
+    },
+    "options": [
+      {
+        "id": "new",
+        "style": "bold",
+        "label": {
+          "en": "New car on a bank loan",
+          "hi": "बैंक लोन पर नई कार",
+          "te": "బ్యాంకు లోన్‌తో కొత్త కారు"
+        },
+        "effects": {
+          "money": -50000,
+          "peace": 6,
+          "family": 4
+        },
+        "loan": {
+          "amount": 400000,
+          "source": "bank"
+        }
+      },
+      {
+        "id": "used",
+        "style": "careful",
+        "label": {
+          "en": "Old car with cash",
+          "hi": "नकद में पुरानी कार",
+          "te": "నగదుతో పాత కారు"
+        },
+        "effects": {
+          "money": -150000,
+          "peace": 3,
+          "family": 2
+        }
+      },
+      {
+        "id": "bike",
+        "style": "careful",
+        "label": {
+          "en": "Keep the bike",
+          "hi": "बाइक ही रखो",
+          "te": "బైకే ఉంచు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -2,
+          "gyaan": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "cousin_wedding",
+    "ages": [
+      19,
+      32
+    ],
+    "scaled": true,
+    "art": "💐",
+    "title": {
+      "en": "Cousin's wedding gift",
+      "hi": "चचेरे भाई की शादी का तोहफ़ा",
+      "te": "బంధువు పెళ్లి కానుక"
+    },
+    "text": {
+      "en": "The whole family is watching what gift you bring.",
+      "hi": "पूरा परिवार देख रहा है कि तुम क्या तोहफ़ा लाते हो।",
+      "te": "నువ్వు ఏ కానుక తెస్తావో కుటుంబమంతా చూస్తోంది."
+    },
+    "options": [
+      {
+        "id": "big",
+        "style": "generous",
+        "label": {
+          "en": "A big, shiny gift",
+          "hi": "बड़ा, चमकदार तोहफ़ा",
+          "te": "పెద్ద, మెరిసే కానుక"
+        },
+        "effects": {
+          "money": -8000,
+          "family": 7,
+          "peace": 1
+        }
+      },
+      {
+        "id": "useful",
+        "style": "careful",
+        "label": {
+          "en": "A small useful gift",
+          "hi": "छोटा काम का तोहफ़ा",
+          "te": "చిన్న ఉపయోగపడే కానుక"
+        },
+        "effects": {
+          "money": -2000,
+          "family": 3
+        }
+      },
+      {
+        "id": "help",
+        "style": "careful",
+        "label": {
+          "en": "Help with the work instead",
+          "hi": "बदले में काम में हाथ बँटाओ",
+          "te": "బదులుగా పనిలో సాయం చేయి"
+        },
+        "effects": {
+          "money": 0,
+          "family": 2,
+          "health": -3
+        }
+      }
+    ],
+    "repeat": 4
+  },
+  {
+    "id": "health_checkup",
+    "ages": [
+      26,
+      32
+    ],
+    "art": "🩺",
+    "title": {
+      "en": "A tired chest",
+      "hi": "थकी हुई साँस",
+      "te": "అలసిన ఛాతీ"
+    },
+    "text": {
+      "en": "You feel breathless on stairs lately. A full check-up costs ₹3,000.",
+      "hi": "आजकल सीढ़ियों पर साँस फूलती है। पूरी जाँच ₹3,000 की है।",
+      "te": "ఈమధ్య మెట్లు ఎక్కితే ఆయాసం వస్తోంది. పూర్తి పరీక్షకు ₹3,000."
+    },
+    "options": [
+      {
+        "id": "test",
+        "style": "careful",
+        "label": {
+          "en": "Get the full check-up",
+          "hi": "पूरी जाँच करवाओ",
+          "te": "పూర్తి పరీక్ష చేయించు"
+        },
+        "effects": {
+          "money": -3000,
+          "health": 6,
+          "peace": 1
+        }
+      },
+      {
+        "id": "camp",
+        "style": "careful",
+        "label": {
+          "en": "Free government health camp",
+          "hi": "मुफ़्त सरकारी स्वास्थ्य शिविर",
+          "te": "ఉచిత ప్రభుత్వ వైద్య శిబిరం"
+        },
+        "effects": {
+          "money": -300,
+          "health": 3,
+          "peace": -2
+        }
+      },
+      {
+        "id": "ignore",
+        "style": "bold",
+        "label": {
+          "en": "It's nothing, ignore it",
+          "hi": "कुछ नहीं है, छोड़ो",
+          "te": "ఏమీ కాదు, వదిలెయ్"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 2
+        },
+        "hidden": {
+          "seed": "c_ignored_symptoms",
+          "after": 2,
+          "chance": 0.45
+        }
+      }
+    ],
+    "repeat": 4
+  },
+  {
+    "id": "child_school",
+    "ages": [
+      28,
+      32
+    ],
+    "art": "🎒",
+    "title": {
+      "en": "School admission",
+      "hi": "स्कूल में दाख़िला",
+      "te": "బడిలో అడ్మిషన్"
+    },
+    "text": {
+      "en": "Your niece lives with you now. Which school will she go to?",
+      "hi": "भांजी अब तुम्हारे साथ रहती है। वह किस स्कूल जाएगी?",
+      "te": "మేనకోడలు ఇప్పుడు నీతోనే ఉంటోంది. ఏ బడికి వెళ్తుంది?"
+    },
+    "options": [
+      {
+        "id": "private",
+        "style": "generous",
+        "label": {
+          "en": "Private English-medium school",
+          "hi": "प्राइवेट इंग्लिश मीडियम स्कूल",
+          "te": "ప్రైవేట్ ఇంగ్లీష్ మీడియం బడి"
+        },
+        "effects": {
+          "money": -60000,
+          "family": 8,
+          "gyaan": 2
+        }
+      },
+      {
+        "id": "govt_tuition",
+        "style": "careful",
+        "label": {
+          "en": "Government school + evening tuition",
+          "hi": "सरकारी स्कूल + शाम की ट्यूशन",
+          "te": "ప్రభుత్వ బడి + సాయంత్రం ట్యూషన్"
+        },
+        "effects": {
+          "money": -12000,
+          "family": 4,
+          "health": -1
+        }
+      },
+      {
+        "id": "govt",
+        "style": "careful",
+        "label": {
+          "en": "Government school, you teach at home",
+          "hi": "सरकारी स्कूल, घर पर तुम पढ़ाओ",
+          "te": "ప్రభుత్వ బడి, ఇంట్లో నువ్వే చదివించు"
+        },
+        "effects": {
+          "money": 0,
+          "family": 2,
+          "peace": -3,
+          "gyaan": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "pilgrimage",
+    "ages": [
+      26,
+      32
+    ],
+    "art": "🛕",
+    "title": {
+      "en": "Parents' pilgrimage",
+      "hi": "माता-पिता की तीर्थयात्रा",
+      "te": "అమ్మానాన్నల తీర్థయాత్ర"
+    },
+    "text": {
+      "en": "Your parents have dreamt of a pilgrimage for years.",
+      "hi": "माता-पिता सालों से तीर्थयात्रा का सपना देख रहे हैं।",
+      "te": "అమ్మానాన్నలు ఏళ్లుగా తీర్థయాత్ర కలలు కంటున్నారు."
+    },
+    "options": [
+      {
+        "id": "full",
+        "style": "generous",
+        "label": {
+          "en": "Send them by train with a tour",
+          "hi": "टूर के साथ ट्रेन से भेजो",
+          "te": "టూర్‌తో రైలులో పంపు"
+        },
+        "effects": {
+          "money": -25000,
+          "family": 9,
+          "peace": 2
+        }
+      },
+      {
+        "id": "bus",
+        "style": "careful",
+        "label": {
+          "en": "Government yatra bus",
+          "hi": "सरकारी यात्रा बस",
+          "te": "ప్రభుత్వ యాత్ర బస్సు"
+        },
+        "effects": {
+          "money": -8000,
+          "family": 5,
+          "health": -1
+        }
+      },
+      {
+        "id": "later",
+        "style": "careful",
+        "label": {
+          "en": "Next year, promise",
+          "hi": "अगले साल, वादा",
+          "te": "వచ్చే ఏడాది, మాటిస్తున్నా"
+        },
+        "effects": {
+          "money": 0,
+          "family": -4,
+          "peace": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "flagship_phone",
+    "ages": [
+      25,
+      32
+    ],
+    "art": "📲",
+    "title": {
+      "en": "The new flagship phone",
+      "hi": "नया फ़्लैगशिप फ़ोन",
+      "te": "కొత్త ఫ్లాగ్‌షిప్ ఫోన్"
+    },
+    "text": {
+      "en": "Your phone works fine, but the new model is everywhere. 'Just ₹2,999 a month.'",
+      "hi": "फ़ोन ठीक चलता है, पर नया मॉडल हर जगह है। 'बस ₹2,999 महीना।'",
+      "te": "ఫోన్ బాగానే పనిచేస్తోంది, కానీ కొత్త మోడల్ ఎక్కడ చూసినా. 'నెలకు ₹2,999 మాత్రమే.'"
+    },
+    "options": [
+      {
+        "id": "emi",
+        "style": "bold",
+        "label": {
+          "en": "Buy on card EMI",
+          "hi": "कार्ड EMI पर खरीदो",
+          "te": "కార్డు EMIలో కొను"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 5
+        },
+        "loan": {
+          "amount": 70000,
+          "source": "bnpl"
+        }
+      },
+      {
+        "id": "last_year",
+        "style": "careful",
+        "label": {
+          "en": "Last year's model with cash",
+          "hi": "नकद में पिछले साल का मॉडल",
+          "te": "నగదుతో పోయిన ఏడాది మోడల్"
+        },
+        "effects": {
+          "money": -30000,
+          "peace": 2,
+          "gyaan": 1
+        }
+      },
+      {
+        "id": "keep",
+        "style": "careful",
+        "label": {
+          "en": "Keep your phone",
+          "hi": "अपना फ़ोन रखो",
+          "te": "నీ ఫోనే ఉంచుకో"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -2,
+          "gyaan": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_emi_late",
+    "consequence": true,
+    "art": "📵",
+    "title": {
+      "en": "The EMI bounced",
+      "hi": "EMI बाउंस हो गई",
+      "te": "EMI బౌన్స్ అయింది"
+    },
+    "text": {
+      "en": "Your phone EMI auto-debit failed twice. Bounce charges pile up and the shop calls home.",
+      "hi": "फोन की EMI दो बार कटी नहीं। बाउंस चार्ज बढ़ रहे हैं और दुकान घर फ़ोन कर रही है।",
+      "te": "ఫోన్ EMI రెండుసార్లు కట్ కాలేదు. బౌన్స్ చార్జీలు పెరుగుతున్నాయి, షాపు ఇంటికి ఫోన్ చేస్తోంది."
+    },
+    "options": [
+      {
+        "id": "clear",
+        "style": "careful",
+        "label": {
+          "en": "Clear the overdue + charges now",
+          "hi": "बकाया और चार्ज अभी भरो",
+          "te": "బకాయి + చార్జీలు ఇప్పుడే కట్టు"
+        },
+        "effects": {
+          "money": -3000,
+          "peace": 4,
+          "gyaan": 3
+        }
+      },
+      {
+        "id": "ignore",
+        "style": "bold",
+        "label": {
+          "en": "Ignore the calls",
+          "hi": "कॉल अनदेखी करो",
+          "te": "కాల్స్ పట్టించుకోకు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -6,
+          "family": -2
+        },
+        "hidden": {
+          "seed": "c_low_score",
+          "after": 2,
+          "chance": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_low_score",
+    "consequence": true,
+    "art": "📊",
+    "title": {
+      "en": "A low credit score",
+      "hi": "कम क्रेडिट स्कोर",
+      "te": "తక్కువ క్రెడిట్ స్కోర్"
+    },
+    "text": {
+      "en": "Old missed payments show on your credit report. Banks now offer you costlier loans.",
+      "hi": "पुरानी छूटी किस्तें क्रेडिट रिपोर्ट में दिखती हैं। बैंक अब महँगे लोन देते हैं।",
+      "te": "పాత బకాయిలు క్రెడిట్ రిపోర్టులో కనిపిస్తున్నాయి. బ్యాంకులు ఇప్పుడు ఖరీదైన లోన్లు ఇస్తున్నాయి."
+    },
+    "options": [
+      {
+        "id": "rebuild",
+        "style": "careful",
+        "label": {
+          "en": "Pay dues, check report, rebuild",
+          "hi": "बकाया भरो, रिपोर्ट जाँचो, सुधारो",
+          "te": "బకాయిలు కట్టు, రిపోర్ట్ చూసు, మెరుగుపరచు"
+        },
+        "effects": {
+          "money": -2000,
+          "gyaan": 6,
+          "peace": 2
+        },
+        "ops": [
+          "clearFlag:lowScore"
+        ]
+      },
+      {
+        "id": "ignore",
+        "style": "bold",
+        "label": {
+          "en": "Live with it",
+          "hi": "ऐसे ही चलने दो",
+          "te": "అలాగే వదిలెయ్"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -4
+        },
+        "ops": [
+          "setFlag:lowScore"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c_friend_unpaid",
+    "consequence": true,
+    "art": "📞",
+    "title": {
+      "en": "The ₹5,000 never came back",
+      "hi": "₹5,000 वापस नहीं आए",
+      "te": "₹5,000 తిరిగి రాలేదు"
+    },
+    "text": {
+      "en": "Your friend avoids your calls. The money you lent is still out.",
+      "hi": "दोस्त तुम्हारे फ़ोन टालता है। उधार दिए पैसे अब भी बाकी हैं।",
+      "te": "స్నేహితుడు నీ ఫోన్లు తప్పించుకుంటున్నాడు. ఇచ్చిన అప్పు ఇంకా రాలేదు."
+    },
+    "options": [
+      {
+        "id": "plan",
+        "style": "careful",
+        "label": {
+          "en": "Talk calmly, agree ₹500 a month",
+          "hi": "शांति से बात करो, ₹500 महीना तय करो",
+          "te": "నెమ్మదిగా మాట్లాడు, నెలకు ₹500 ఒప్పందం"
+        },
+        "effects": {
+          "money": 2500,
+          "peace": 2,
+          "gyaan": 3
+        }
+      },
+      {
+        "id": "forgive",
+        "style": "generous",
+        "label": {
+          "en": "Let it go, keep the friend",
+          "hi": "जाने दो, दोस्ती बचाओ",
+          "te": "వదిలెయ్, స్నేహం నిలుపుకో"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 4,
+          "family": 1
+        }
+      },
+      {
+        "id": "shout",
+        "style": "bold",
+        "label": {
+          "en": "Shame him in the group chat",
+          "hi": "ग्रुप चैट में शर्मिंदा करो",
+          "te": "గ్రూప్ చాట్‌లో అవమానించు"
+        },
+        "effects": {
+          "money": 5000,
+          "peace": -6,
+          "family": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_friend_repaid",
+    "consequence": true,
+    "art": "🙏",
+    "title": {
+      "en": "Your friend paid back",
+      "hi": "दोस्त ने पैसे लौटाए",
+      "te": "స్నేహితుడు డబ్బు తిరిగిచ్చాడు"
+    },
+    "text": {
+      "en": "He returns the ₹5,000 with a box of sweets and asks if you need help with anything.",
+      "hi": "वह ₹5,000 मिठाई के डिब्बे के साथ लौटाता है और पूछता है कोई मदद चाहिए।",
+      "te": "అతను ₹5,000 స్వీట్ల డబ్బాతో తిరిగిచ్చి, ఏమైనా సాయం కావాలా అని అడిగాడు."
+    },
+    "options": [
+      {
+        "id": "save",
+        "style": "careful",
+        "label": {
+          "en": "Put it straight into savings",
+          "hi": "सीधे बचत में डालो",
+          "te": "నేరుగా పొదుపులో వేయి"
+        },
+        "effects": {
+          "money": 5000,
+          "gyaan": 2
+        }
+      },
+      {
+        "id": "treat",
+        "style": "generous",
+        "label": {
+          "en": "Treat everyone to dinner",
+          "hi": "सबको खाना खिलाओ",
+          "te": "అందరికీ భోజనం పెట్టు"
+        },
+        "effects": {
+          "money": 3000,
+          "peace": 3,
+          "family": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_coaching_payoff",
+    "consequence": true,
+    "art": "🏅",
+    "title": {
+      "en": "The coaching paid off",
+      "hi": "कोचिंग काम आई",
+      "te": "కోచింగ్ ఫలించింది"
+    },
+    "text": {
+      "en": "Your rank earned a scholarship and a better course.",
+      "hi": "तुम्हारी रैंक से स्कॉलरशिप और बेहतर कोर्स मिला।",
+      "te": "నీ ర్యాంక్‌తో స్కాలర్‌షిప్, మంచి కోర్సు వచ్చాయి."
+    },
+    "options": [
+      {
+        "id": "course",
+        "style": "bold",
+        "label": {
+          "en": "Take the tougher course",
+          "hi": "कठिन कोर्स चुनो",
+          "te": "కష్టమైన కోర్సు తీసుకో"
+        },
+        "effects": {
+          "money": -5000,
+          "gyaan": 6,
+          "peace": -2,
+          "income": 8
+        }
+      },
+      {
+        "id": "family",
+        "style": "generous",
+        "label": {
+          "en": "Send the scholarship money home",
+          "hi": "स्कॉलरशिप के पैसे घर भेजो",
+          "te": "స్కాలర్‌షిప్ డబ్బు ఇంటికి పంపు"
+        },
+        "effects": {
+          "money": 3000,
+          "family": 6,
+          "income": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_family_debt",
+    "consequence": true,
+    "art": "🌀",
+    "title": {
+      "en": "Father's loan grew",
+      "hi": "पिताजी का कर्ज़ बढ़ा",
+      "te": "నాన్న అప్పు పెరిగింది"
+    },
+    "text": {
+      "en": "At ₹3 per ₹100 per month, father's crop loan has doubled. He asks you for ₹40,000.",
+      "hi": "₹3 प्रति ₹100 महीना पर पिताजी का फ़सल कर्ज़ दोगुना हो गया। वे ₹40,000 माँगते हैं।",
+      "te": "నెలకు ₹100కి ₹3 వడ్డీతో నాన్న పంట అప్పు రెట్టింపైంది. ఆయన ₹40,000 అడుగుతున్నారు."
+    },
+    "options": [
+      {
+        "id": "pay",
+        "style": "generous",
+        "label": {
+          "en": "Pay it all off",
+          "hi": "पूरा चुका दो",
+          "te": "మొత్తం తీర్చేయి"
+        },
+        "effects": {
+          "money": -40000,
+          "family": 8,
+          "peace": 3
+        }
+      },
+      {
+        "id": "interest",
+        "style": "careful",
+        "label": {
+          "en": "Pay only this year's interest",
+          "hi": "सिर्फ इस साल का ब्याज भरो",
+          "te": "ఈ ఏడాది వడ్డీ మాత్రమే కట్టు"
+        },
+        "effects": {
+          "money": -12000,
+          "family": 2,
+          "peace": 2
+        }
+      },
+      {
+        "id": "kcc",
+        "style": "careful",
+        "label": {
+          "en": "Move it to a bank crop loan (KCC)",
+          "hi": "बैंक के किसान क्रेडिट कार्ड में बदलो",
+          "te": "బ్యాంకు కిసాన్ క్రెడిట్ కార్డుకు మార్చు"
+        },
+        "effects": {
+          "money": -5000,
+          "gyaan": 6,
+          "family": 3,
+          "peace": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_promotion",
+    "consequence": true,
+    "art": "📈",
+    "title": {
+      "en": "A promotion offer",
+      "hi": "तरक़्क़ी का प्रस्ताव",
+      "te": "ప్రమోషన్ ఆఫర్"
+    },
+    "text": {
+      "en": "That course paid off. Your manager offers a senior role in the {city} branch.",
+      "hi": "वह कोर्स काम आया। मैनेजर {city} शाखा में बड़ा पद दे रहे हैं।",
+      "te": "ఆ కోర్సు ఫలించింది. మేనేజర్ {city} బ్రాంచ్‌లో సీనియర్ పదవి ఇస్తున్నారు."
+    },
+    "options": [
+      {
+        "id": "move",
+        "style": "bold",
+        "label": {
+          "en": "Take it and move",
+          "hi": "लो और शहर जाओ",
+          "te": "తీసుకుని ఊరు మారు"
+        },
+        "effects": {
+          "money": -10000,
+          "income": 12,
+          "family": -4
+        }
+      },
+      {
+        "id": "stay",
+        "style": "careful",
+        "label": {
+          "en": "Ask for a smaller raise here",
+          "hi": "यहीं छोटी बढ़ोतरी माँगो",
+          "te": "ఇక్కడే చిన్న జీతం పెంపు అడుగు"
+        },
+        "effects": {
+          "money": 0,
+          "income": 4,
+          "family": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_stall_boom",
+    "consequence": true,
+    "art": "🫖",
+    "title": {
+      "en": "The tea stall is a hit",
+      "hi": "चाय की दुकान चल पड़ी",
+      "te": "టీ స్టాల్ హిట్ అయింది"
+    },
+    "text": {
+      "en": "The stall is always crowded. Your friend offers your profit share.",
+      "hi": "दुकान पर हमेशा भीड़ रहती है। दोस्त तुम्हारा मुनाफ़ा देना चाहता है।",
+      "te": "స్టాల్ ఎప్పుడూ రద్దీగా ఉంటోంది. స్నేహితుడు నీ లాభం వాటా ఇస్తానంటున్నాడు."
+    },
+    "options": [
+      {
+        "id": "cash",
+        "style": "careful",
+        "label": {
+          "en": "Take ₹45,000 profit",
+          "hi": "₹45,000 मुनाफ़ा लो",
+          "te": "₹45,000 లాభం తీసుకో"
+        },
+        "effects": {
+          "money": 45000,
+          "peace": 3
+        }
+      },
+      {
+        "id": "second",
+        "style": "bold",
+        "label": {
+          "en": "Reinvest in a second stall",
+          "hi": "दूसरी दुकान में लगाओ",
+          "te": "రెండో స్టాల్‌లో పెట్టు"
+        },
+        "effects": {
+          "money": 10000,
+          "income": 5,
+          "peace": -1,
+          "gyaan": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_stall_bust",
+    "consequence": true,
+    "art": "🪧",
+    "title": {
+      "en": "The tea stall closed",
+      "hi": "चाय की दुकान बंद",
+      "te": "టీ స్టాల్ మూతపడింది"
+    },
+    "text": {
+      "en": "A big chain opened next door. Your friend can return only ₹10,000, slowly.",
+      "hi": "बगल में बड़ी चेन खुल गई। दोस्त धीरे-धीरे सिर्फ ₹10,000 लौटा सकता है।",
+      "te": "పక్కనే పెద్ద చైన్ షాపు తెరిచారు. స్నేహితుడు నెమ్మదిగా ₹10,000 మాత్రమే ఇవ్వగలడు."
+    },
+    "options": [
+      {
+        "id": "accept",
+        "style": "careful",
+        "label": {
+          "en": "Accept ₹10,000 over time",
+          "hi": "धीरे-धीरे ₹10,000 लो",
+          "te": "నెమ్మదిగా ₹10,000 తీసుకో"
+        },
+        "effects": {
+          "money": 10000,
+          "peace": 1,
+          "gyaan": 3
+        }
+      },
+      {
+        "id": "forgive",
+        "style": "generous",
+        "label": {
+          "en": "Write it off, stay friends",
+          "hi": "माफ़ करो, दोस्ती रखो",
+          "te": "మాఫీ చేయి, స్నేహం నిలుపుకో"
+        },
+        "effects": {
+          "money": 0,
+          "peace": 3,
+          "family": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_bnpl_late",
+    "consequence": true,
+    "art": "⏰",
+    "title": {
+      "en": "Pay Later is now",
+      "hi": "'बाद में' अब आ गया",
+      "te": "'తర్వాత' ఇప్పుడు వచ్చింది"
+    },
+    "text": {
+      "en": "You missed BNPL dues. ₹8,000 of late fees stacked up and the app now calls every day.",
+      "hi": "BNPL की किस्तें छूट गईं। ₹8,000 लेट फीस जुड़ गई और ऐप रोज़ कॉल करता है।",
+      "te": "BNPL బకాయిలు తప్పిపోయాయి. ₹8,000 లేట్ ఫీజులు పెరిగాయి, యాప్ రోజూ కాల్ చేస్తోంది."
+    },
+    "options": [
+      {
+        "id": "clear",
+        "style": "careful",
+        "label": {
+          "en": "Clear it fully now",
+          "hi": "अभी पूरा चुकाओ",
+          "te": "ఇప్పుడే పూర్తిగా తీర్చు"
+        },
+        "effects": {
+          "money": -8000,
+          "peace": 4,
+          "gyaan": 3
+        },
+        "ops": [
+          "payoff:bnpl"
+        ]
+      },
+      {
+        "id": "roll",
+        "style": "bold",
+        "label": {
+          "en": "Roll it over again",
+          "hi": "फिर से आगे बढ़ाओ",
+          "te": "మళ్ళీ వాయిదా వేయి"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -6
+        },
+        "hidden": {
+          "seed": "c_low_score",
+          "after": 2,
+          "chance": 1
+        }
+      }
+    ],
+    "base": {
+      "loan": {
+        "amount": 8000,
+        "source": "bnpl"
+      }
+    }
+  },
+  {
+    "id": "c_ponzi_collapse",
+    "consequence": true,
+    "art": "🍂",
+    "title": {
+      "en": "The Banyan fell",
+      "hi": "बरगद गिर गया",
+      "te": "మర్రి కూలిపోయింది"
+    },
+    "text": {
+      "en": "The Golden Banyan Club vanished. You had put in ₹40,000 more chasing the 'double'.",
+      "hi": "गोल्डन बरगद क्लब गायब हो गया। 'दोगुना' के चक्कर में तुमने ₹40,000 और डाले थे।",
+      "te": "గోల్డెన్ మర్రి క్లబ్ మాయమైంది. 'రెట్టింపు' ఆశతో నువ్వు ఇంకో ₹40,000 పెట్టావు."
+    },
+    "base": {
+      "money": -40000
+    },
+    "options": [
+      {
+        "id": "report",
+        "style": "careful",
+        "label": {
+          "en": "Report on 1930 and cybercrime.gov.in",
+          "hi": "1930 और cybercrime.gov.in पर शिकायत",
+          "te": "1930, cybercrime.gov.in లో ఫిర్యాదు"
+        },
+        "effects": {
+          "money": 5000,
+          "gyaan": 8,
+          "peace": 1
+        }
+      },
+      {
+        "id": "chase",
+        "style": "bold",
+        "label": {
+          "en": "Chase the colleague yourself",
+          "hi": "ख़ुद सहकर्मी के पीछे पड़ो",
+          "te": "నువ్వే సహోద్యోగి వెంటపడు"
+        },
+        "effects": {
+          "money": 10000,
+          "peace": -6,
+          "family": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_card_trap",
+    "consequence": true,
+    "art": "🔥",
+    "title": {
+      "en": "Minimum due, maximum trouble",
+      "hi": "मिनिमम ड्यू, मैक्सिमम मुसीबत",
+      "te": "మినిమం డ్యూ, మాక్సిమం కష్టం"
+    },
+    "text": {
+      "en": "Paying only the minimum, your card balance grew to ₹35,000 at about 42% a year.",
+      "hi": "सिर्फ मिनिमम भरते-भरते कार्ड का बकाया ~42% सालाना पर ₹35,000 हो गया।",
+      "te": "మినిమం మాత్రమే కడుతూ ఉంటే, కార్డు బకాయి ఏడాదికి ~42% వడ్డీతో ₹35,000 అయింది."
+    },
+    "base": {
+      "loan": {
+        "amount": 35000,
+        "source": "card"
+      }
+    },
+    "options": [
+      {
+        "id": "payoff",
+        "style": "careful",
+        "label": {
+          "en": "Pay it off from savings",
+          "hi": "बचत से चुका दो",
+          "te": "పొదుపుతో తీర్చేయి"
+        },
+        "effects": {
+          "money": -35000,
+          "peace": 5,
+          "gyaan": 4
+        },
+        "ops": [
+          "payoff:card"
+        ]
+      },
+      {
+        "id": "transfer",
+        "style": "careful",
+        "label": {
+          "en": "Move it to a 14% bank loan",
+          "hi": "14% बैंक लोन में बदलो",
+          "te": "14% బ్యాంకు లోన్‌కు మార్చు"
+        },
+        "effects": {
+          "money": -1000,
+          "gyaan": 6,
+          "peace": 2
+        },
+        "ops": [
+          "refinance:card"
+        ]
+      },
+      {
+        "id": "minimum",
+        "style": "bold",
+        "label": {
+          "en": "Keep paying the minimum",
+          "hi": "मिनिमम ही भरते रहो",
+          "te": "మినిమమే కడుతూ ఉండు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -5,
+          "family": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_loanapp_harass",
+    "consequence": true,
+    "art": "☎️",
+    "title": {
+      "en": "The recovery calls",
+      "hi": "वसूली के कॉल",
+      "te": "వసూలు కాల్స్"
+    },
+    "text": {
+      "en": "The loan app's agents threaten to message everyone in your contacts.",
+      "hi": "लोन ऐप के एजेंट तुम्हारे सभी कॉन्टैक्ट्स को मैसेज करने की धमकी देते हैं।",
+      "te": "లోన్ యాప్ ఏజెంట్లు నీ కాంటాక్ట్స్ అందరికీ మెసేజ్ చేస్తామని బెదిరిస్తున్నారు."
+    },
+    "options": [
+      {
+        "id": "report",
+        "style": "careful",
+        "label": {
+          "en": "Report on 1930 + RBI Sachet, repay principal only",
+          "hi": "1930 + RBI सचेत पर शिकायत, सिर्फ मूलधन लौटाओ",
+          "te": "1930 + RBI సచేత్‌లో ఫిర్యాదు, అసలు మాత్రమే చెల్లించు"
+        },
+        "effects": {
+          "money": -20000,
+          "gyaan": 8,
+          "peace": 2
+        },
+        "ops": [
+          "payoff:app"
+        ]
+      },
+      {
+        "id": "pay",
+        "style": "bold",
+        "label": {
+          "en": "Pay whatever they demand",
+          "hi": "जितना माँगें दे दो",
+          "te": "అడిగినంత ఇచ్చేయి"
+        },
+        "effects": {
+          "money": -60000,
+          "peace": 6
+        },
+        "ops": [
+          "payoff:app"
+        ]
+      },
+      {
+        "id": "ignore",
+        "style": "bold",
+        "label": {
+          "en": "Ignore them",
+          "hi": "अनदेखा करो",
+          "te": "పట్టించుకోకు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -10,
+          "family": -6
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_ignored_symptoms",
+    "consequence": true,
+    "insurable": true,
+    "art": "🫀",
+    "title": {
+      "en": "The breathlessness was real",
+      "hi": "साँस फूलना सच में बीमारी थी",
+      "te": "ఆయాసం నిజమైన జబ్బే"
+    },
+    "text": {
+      "en": "The ignored symptoms turned serious. You need treatment now.",
+      "hi": "अनदेखे लक्षण गंभीर हो गए। अब इलाज ज़रूरी है।",
+      "te": "పట్టించుకోని లక్షణాలు తీవ్రమయ్యాయి. ఇప్పుడే చికిత్స కావాలి."
+    },
+    "options": [
+      {
+        "id": "private",
+        "style": "generous",
+        "label": {
+          "en": "Private treatment",
+          "hi": "प्राइवेट इलाज",
+          "te": "ప్రైవేట్ చికిత్స"
+        },
+        "effects": {
+          "money": -50000,
+          "health": 10,
+          "peace": 2
+        }
+      },
+      {
+        "id": "govt",
+        "style": "careful",
+        "label": {
+          "en": "Government hospital",
+          "hi": "सरकारी अस्पताल",
+          "te": "ప్రభుత్వ ఆసుపత్రి"
+        },
+        "effects": {
+          "money": -8000,
+          "health": 4,
+          "peace": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_task_scam",
+    "consequence": true,
+    "art": "🕳️",
+    "title": {
+      "en": "The 'VIP task' deposit",
+      "hi": "'VIP टास्क' जमा राशि",
+      "te": "'VIP టాస్క్' డిపాజిట్"
+    },
+    "text": {
+      "en": "After the first small payouts, the task group took ₹8,000 as a 'VIP deposit' and blocked you.",
+      "hi": "पहले छोटे भुगतान के बाद टास्क ग्रुप ने ₹8,000 'VIP जमा' लेकर तुम्हें ब्लॉक कर दिया।",
+      "te": "మొదట చిన్న చెల్లింపుల తర్వాత, టాస్క్ గ్రూప్ ₹8,000 'VIP డిపాజిట్' తీసుకుని నిన్ను బ్లాక్ చేసింది."
+    },
+    "base": {
+      "money": -8000
+    },
+    "options": [
+      {
+        "id": "report",
+        "style": "careful",
+        "label": {
+          "en": "Call 1930 fast",
+          "hi": "तुरंत 1930 पर कॉल करो",
+          "te": "వెంటనే 1930కి కాల్ చేయి"
+        },
+        "effects": {
+          "money": 3000,
+          "gyaan": 6,
+          "peace": 2
+        }
+      },
+      {
+        "id": "more",
+        "style": "bold",
+        "label": {
+          "en": "Pay more to 'unlock' it",
+          "hi": "'अनलॉक' करने को और भरो",
+          "te": "'అన్‌లాక్' కోసం ఇంకా కట్టు"
+        },
+        "effects": {
+          "money": -10000,
+          "peace": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_mule_account",
+    "consequence": true,
+    "art": "🧊",
+    "title": {
+      "en": "Your account is frozen",
+      "hi": "तुम्हारा खाता फ़्रीज़",
+      "te": "నీ ఖాతా ఫ్రీజ్ అయింది"
+    },
+    "text": {
+      "en": "The account you 'lent' was used for fraud money. The bank froze it and police sent a notice.",
+      "hi": "जो खाता तुमने 'उधार' दिया, उसमें धोखाधड़ी का पैसा आया। बैंक ने फ़्रीज़ किया, पुलिस नोटिस आया।",
+      "te": "నువ్వు 'అద్దెకిచ్చిన' ఖాతాలో మోసం డబ్బు తిరిగింది. బ్యాంకు ఫ్రీజ్ చేసింది, పోలీసు నోటీసు వచ్చింది."
+    },
+    "base": {
+      "money": -10000
+    },
+    "options": [
+      {
+        "id": "cooperate",
+        "style": "careful",
+        "label": {
+          "en": "Cooperate and give a statement",
+          "hi": "सहयोग करो, बयान दो",
+          "te": "సహకరించి వాంగ్మూలం ఇవ్వు"
+        },
+        "effects": {
+          "money": -5000,
+          "gyaan": 8,
+          "peace": -2
+        }
+      },
+      {
+        "id": "ignore",
+        "style": "bold",
+        "label": {
+          "en": "Ignore the notice",
+          "hi": "नोटिस अनदेखा करो",
+          "te": "నోటీసు పట్టించుకోకు"
+        },
+        "effects": {
+          "money": 0,
+          "peace": -10,
+          "family": -6
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_kyc_drain",
+    "consequence": true,
+    "art": "🔓",
+    "title": {
+      "en": "The KYC link emptied your account",
+      "hi": "KYC लिंक ने खाता खाली किया",
+      "te": "KYC లింక్ ఖాతా ఖాళీ చేసింది"
+    },
+    "text": {
+      "en": "The 'KYC update' link captured your login. ₹15,000 left your account overnight.",
+      "hi": "'KYC अपडेट' लिंक ने लॉगिन चुरा लिया। रातों-रात ₹15,000 खाते से निकल गए।",
+      "te": "'KYC అప్‌డేట్' లింక్ నీ లాగిన్ దొంగిలించింది. రాత్రికి రాత్రే ₹15,000 ఖాతా నుంచి పోయాయి."
+    },
+    "base": {
+      "money": -15000
+    },
+    "options": [
+      {
+        "id": "golden",
+        "style": "careful",
+        "label": {
+          "en": "Call 1930 within the golden hour",
+          "hi": "गोल्डन ऑवर में 1930 पर कॉल",
+          "te": "గోల్డెన్ అవర్‌లో 1930కి కాల్"
+        },
+        "effects": {
+          "money": 9000,
+          "gyaan": 6,
+          "peace": -2
+        }
+      },
+      {
+        "id": "later",
+        "style": "careful",
+        "label": {
+          "en": "Freeze cards, change passwords, then visit branch",
+          "hi": "कार्ड ब्लॉक करो, पासवर्ड बदलो, फिर शाखा जाओ",
+          "te": "కార్డులు బ్లాక్ చేసి, పాస్‌వర్డ్‌లు మార్చి, తర్వాత బ్రాంచ్‌కి వెళ్ళు"
+        },
+        "effects": {
+          "money": 3000,
+          "peace": 4,
+          "gyaan": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_tips_loss",
+    "consequence": true,
+    "art": "📉",
+    "title": {
+      "en": "The 'sure-shot' tip",
+      "hi": "'पक्का' टिप",
+      "te": "'ఖచ్చితమైన' టిప్"
+    },
+    "text": {
+      "en": "The Telegram group pumped a tiny stock, then sold. Your ₹25,000 became ₹4,000.",
+      "hi": "टेलीग्राम ग्रुप ने छोटे शेयर को चढ़ाकर बेच दिया। तुम्हारे ₹25,000 ₹4,000 रह गए।",
+      "te": "టెలిగ్రామ్ గ్రూప్ చిన్న షేర్‌ను పెంచి అమ్మేసింది. నీ ₹25,000 ₹4,000 అయ్యాయి."
+    },
+    "base": {
+      "money": -21000
+    },
+    "options": [
+      {
+        "id": "learn",
+        "style": "careful",
+        "label": {
+          "en": "Report to SEBI SCORES, learn index basics",
+          "hi": "SEBI SCORES पर शिकायत, इंडेक्स की बुनियाद सीखो",
+          "te": "SEBI SCORESలో ఫిర్యాదు, ఇండెక్స్ ప్రాథమికాలు నేర్చుకో"
+        },
+        "effects": {
+          "money": 0,
+          "gyaan": 8,
+          "peace": 1
+        }
+      },
+      {
+        "id": "revenge",
+        "style": "bold",
+        "label": {
+          "en": "Pay for their 'premium' to win it back",
+          "hi": "वापस पाने को उनका 'प्रीमियम' लो",
+          "te": "తిరిగి గెలవడానికి వాళ్ల 'ప్రీమియం' కొను"
+        },
+        "effects": {
+          "money": -5000,
+          "peace": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_gulf_agent",
+    "consequence": true,
+    "art": "🛂",
+    "title": {
+      "en": "The visa agent vanished",
+      "hi": "वीज़ा एजेंट ग़ायब",
+      "te": "వీసా ఏజెంట్ మాయం"
+    },
+    "text": {
+      "en": "The 'Gulf job' agent took your passport copy and ₹40,000, then switched off his phone.",
+      "hi": "'खाड़ी नौकरी' वाला एजेंट पासपोर्ट कॉपी और ₹40,000 लेकर फ़ोन बंद कर गया।",
+      "te": "'గల్ఫ్ ఉద్యోగం' ఏజెంట్ పాస్‌పోర్ట్ కాపీ, ₹40,000 తీసుకుని ఫోన్ ఆఫ్ చేశాడు."
+    },
+    "base": {
+      "money": -40000
+    },
+    "options": [
+      {
+        "id": "emigrate",
+        "style": "careful",
+        "label": {
+          "en": "Complain on eMigrate + police",
+          "hi": "eMigrate और पुलिस में शिकायत",
+          "te": "eMigrate, పోలీసులకు ఫిర్యాదు"
+        },
+        "effects": {
+          "money": 5000,
+          "gyaan": 8,
+          "peace": 1
+        }
+      },
+      {
+        "id": "another",
+        "style": "bold",
+        "label": {
+          "en": "Try another agent",
+          "hi": "दूसरा एजेंट आज़माओ",
+          "te": "ఇంకో ఏజెంట్‌ను ప్రయత్నించు"
+        },
+        "effects": {
+          "money": -10000,
+          "peace": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_shop_boom",
+    "consequence": true,
+    "art": "🎉",
+    "title": {
+      "en": "The shop is thriving",
+      "hi": "दुकान चल निकली",
+      "te": "దుకాణం బాగా నడుస్తోంది"
+    },
+    "text": {
+      "en": "Customers keep coming. The shop now earns more than your old job.",
+      "hi": "ग्राहक आते रहते हैं। दुकान अब पुरानी नौकरी से ज़्यादा कमाती है।",
+      "te": "కస్టమర్లు వస్తూనే ఉన్నారు. దుకాణం ఇప్పుడు పాత ఉద్యోగం కంటే ఎక్కువ సంపాదిస్తోంది."
+    },
+    "options": [
+      {
+        "id": "prepay",
+        "style": "careful",
+        "label": {
+          "en": "Use profits to clear the loan early",
+          "hi": "मुनाफ़े से लोन जल्दी चुकाओ",
+          "te": "లాభంతో లోన్ ముందే తీర్చు"
+        },
+        "effects": {
+          "money": -60000,
+          "income": 30,
+          "peace": 5
+        },
+        "ops": [
+          "reduceLoan:bank:60000"
+        ]
+      },
+      {
+        "id": "expand",
+        "style": "bold",
+        "label": {
+          "en": "Expand: hire a helper",
+          "hi": "बढ़ाओ: एक सहायक रखो",
+          "te": "విస్తరించు: సహాయకుడిని పెట్టు"
+        },
+        "effects": {
+          "money": -20000,
+          "income": 40,
+          "health": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "c_shop_bust",
+    "consequence": true,
+    "art": "🌧️",
+    "title": {
+      "en": "The shop is struggling",
+      "hi": "दुकान मुश्किल में",
+      "te": "దుకాణం కష్టాల్లో ఉంది"
+    },
+    "text": {
+      "en": "A mall opened nearby. Sales fell, but the loan EMI did not.",
+      "hi": "पास में मॉल खुल गया। बिक्री गिरी, पर लोन की EMI नहीं।",
+      "te": "దగ్గర్లో మాల్ తెరిచారు. అమ్మకాలు పడిపోయాయి, కానీ లోన్ EMI తగ్గలేదు."
+    },
+    "options": [
+      {
+        "id": "close",
+        "style": "careful",
+        "label": {
+          "en": "Close it, return to a job",
+          "hi": "बंद करो, नौकरी पर लौटो",
+          "te": "మూసేసి, ఉద్యోగానికి తిరిగి వెళ్ళు"
+        },
+        "effects": {
+          "money": 0,
+          "income": -5,
+          "peace": 2,
+          "gyaan": 4
+        },
+        "ops": [
+          "reduceLoan:bank:40000"
+        ]
+      },
+      {
+        "id": "online",
+        "style": "bold",
+        "label": {
+          "en": "Pivot: sell online too",
+          "hi": "बदलो: ऑनलाइन भी बेचो",
+          "te": "మార్చు: ఆన్‌లైన్‌లో కూడా అమ్ము"
+        },
+        "effects": {
+          "money": -15000,
+          "income": 10,
+          "peace": -4,
+          "gyaan": 5
+        }
+      }
+    ]
+  }
+]
