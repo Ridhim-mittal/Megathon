@@ -6,29 +6,56 @@
     "lesson": "L01",
     "ages": [11, 18],
     "weight": 1,
+    "location": "home",
     "requires": { "flags": ["crisis_joy_low"] },
     "speaker": "sibling",
-    "title": { "en": "You forgot how to have fun" },
+    "title": { "en": "You forgot how to have fun", "hi": "आप मज़े करना भूल गए", "te": "సరదాగా ఉండడం మర్చిపోయారు" },
     "text": {
-      "en": "{cast:sibling} pulls your sleeve. \"You never play anymore. You just count coins.\" Even Bujji looks bored of you."
+      "en": "{cast:sibling} pulls your sleeve. \"You never play anymore. You just count coins.\" Even Bujji looks bored of you.",
+      "hi": "{cast:sibling} आपकी बाँह खींचती है। \"तुम अब कभी नहीं खेलते। बस सिक्के गिनते हो।\" बुज्जी भी आपसे ऊबी दिखती है।",
+      "te": "{cast:sibling} మీ చేయి లాగుతుంది. \"నువ్వు ఇప్పుడు అసలు ఆడవు. నాణేలు లెక్కపెడతావు అంతే.\" బుజ్జి కూడా మిమ్మల్ని చూసి విసుగ్గా ఉంది."
     },
     "choices": [
       {
         "id": "jatara",
-        "label": { "en": "Spend ₹100 on a day of fun with Chinni" },
+        "label": {
+          "en": "Spend ₹100 on a day of fun with Chinni",
+          "hi": "चिन्नी के साथ मज़े के एक दिन पर ₹100 खर्च करें",
+          "te": "చిన్నితో ఒక సరదా రోజుకు ₹100 ఖర్చు చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -100, "meters": { "joy": 30, "family": 5 } },
-        "outcome": { "en": "Kites, ice candy and a muddy cricket match. ₹100 well spent." },
-        "why": { "en": "Wants are part of a good budget. Saving every rupee isn't a plan, it's a punishment." }
+        "outcome": {
+          "en": "Kites, ice candy and a muddy cricket match. ₹100 well spent.",
+          "hi": "पतंगें, आइस कैंडी और कीचड़ भरा क्रिकेट मैच। ₹100 का अच्छा खर्च।",
+          "te": "గాలిపటాలు, ఐస్ క్యాండీ, బురదలో క్రికెట్ మ్యాచ్. ₹100 బాగా ఖర్చయింది."
+        },
+        "why": {
+          "en": "Wants are part of a good budget. Saving every rupee isn't a plan, it's a punishment.",
+          "hi": "चाहतें अच्छे बजट का हिस्सा हैं। हर रुपया बचाना प्लान नहीं, सज़ा है।",
+          "te": "కోరికలు మంచి బడ్జెట్‌లో భాగం. ప్రతి రూపాయీ దాచడం ప్లాన్ కాదు, శిక్ష."
+        }
       },
       {
         "id": "keep_saving",
-        "label": { "en": "Keep saving. Fun can wait" },
+        "label": {
+          "en": "Keep saving. Fun can wait",
+          "hi": "बचाते रहें। मज़ा रुक सकता है",
+          "te": "పొదుపు కొనసాగించండి. సరదా ఆగొచ్చు"
+        },
         "quality": "risky",
         "effects": { "meters": { "joy": 10, "health": -5, "family": -4 } },
-        "outcome": { "en": "You save ₹100 more and catch a fever from exhaustion." },
-        "why": { "en": "A plan you can't live with won't last. Leave room for small joys." }
+        "outcome": {
+          "en": "You save ₹100 more and catch a fever from exhaustion.",
+          "hi": "आप ₹100 और बचाते हैं और थकान से बुखार आ जाता है।",
+          "te": "ఇంకో ₹100 మిగుల్చుకుంటారు, అలసటతో జ్వరం వస్తుంది."
+        },
+        "why": {
+          "en": "A plan you can't live with won't last. Leave room for small joys.",
+          "hi": "जिस प्लान के साथ जी न सकें, वह टिकता नहीं। छोटी खुशियों के लिए जगह रखें।",
+          "te": "భరించలేని ప్లాన్ నిలవదు. చిన్న సంతోషాలకు చోటు ఉంచండి."
+        }
       }
     ]
   },
@@ -39,29 +66,52 @@
     "lesson": "L18",
     "ages": [19, 36],
     "weight": 1,
+    "location": "home",
     "requires": { "flags": ["crisis_joy_low"] },
     "speaker": "mentor",
-    "title": { "en": "A calculator, not a person" },
+    "title": { "en": "A calculator, not a person", "hi": "इंसान नहीं, कैलकुलेटर", "te": "మనిషి కాదు, క్యాలిక్యులేటర్" },
     "text": {
-      "en": "You haven't laughed in months. {cast:mentor}: \"Kanna, money is for living. You've stopped living.\" Chinni calls you \"the calculator\"."
+      "en": "You haven't laughed in months. {cast:mentor}: \"Kanna, money is for living. You've stopped living.\" Chinni calls you \"the calculator\".",
+      "hi": "आप महीनों से नहीं हँसे। {cast:mentor}: \"कन्ना, पैसा जीने के लिए है। तुमने जीना छोड़ दिया है।\" चिन्नी आपको \"कैलकुलेटर\" बुलाती है।",
+      "te": "మీరు నెలల తరబడి నవ్వలేదు. {cast:mentor}: \"కన్నా, డబ్బు బతకడానికే. నువ్వు బతకడం మానేశావు.\" చిన్ని మిమ్మల్ని \"క్యాలిక్యులేటర్\" అంటుంది."
     },
     "choices": [
       {
         "id": "family_trip",
-        "label": { "en": "Take the family on a ₹3,000 day trip" },
+        "label": {
+          "en": "Take the family on a ₹3,000 day trip",
+          "hi": "परिवार को ₹3,000 की एक दिन की सैर पर ले जाएँ",
+          "te": "కుటుంబాన్ని ₹3,000 ఒక్క రోజు ట్రిప్‌కు తీసుకెళ్లండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -3000, "meters": { "joy": 30, "family": 8 } },
-        "outcome": { "en": "₹3,000, one waterfall and Ammamma's first ride on a boat. Everyone talks about it for a year." },
-        "why": { "en": "Joy is a need too. A budget with no wants breaks sooner or later." }
+        "outcome": {
+          "en": "₹3,000, one waterfall and Ammamma's first ride on a boat. Everyone talks about it for a year.",
+          "hi": "₹3,000, एक झरना और अम्मम्मा की पहली नाव की सवारी। सब साल भर उसकी बात करते हैं।",
+          "te": "₹3,000, ఒక జలపాతం, అమ్మమ్మ మొదటి పడవ ప్రయాణం. ఏడాదంతా అందరూ దాని గురించే మాట్లాడతారు."
+        },
+        "why": {
+          "en": "Joy is a need too. A budget with no wants breaks sooner or later.",
+          "hi": "खुशी भी ज़रूरत है। बिना चाहतों वाला बजट देर-सवेर टूटता है।",
+          "te": "సంతోషం కూడా అవసరమే. కోరికలు లేని బడ్జెట్ ఎప్పటికైనా విరిగిపోతుంది."
+        }
       },
       {
         "id": "work_more",
-        "label": { "en": "Take more overtime instead" },
+        "label": { "en": "Take more overtime instead", "hi": "इसके बजाय और ओवरटाइम करें", "te": "బదులుగా ఇంకా ఓవర్‌టైమ్ చేయండి" },
         "quality": "risky",
         "effects": { "cash": 3000, "meters": { "joy": 8, "health": -8, "family": -5 } },
-        "outcome": { "en": "₹3,000 more and a back that hurts every morning." },
-        "why": { "en": "Health and family are wealth too. Spend a little on them." }
+        "outcome": {
+          "en": "₹3,000 more and a back that hurts every morning.",
+          "hi": "₹3,000 और, और हर सुबह दर्द करती कमर।",
+          "te": "ఇంకో ₹3,000, ప్రతి ఉదయం నొప్పెట్టే నడుము."
+        },
+        "why": {
+          "en": "Health and family are wealth too. Spend a little on them.",
+          "hi": "सेहत और परिवार भी दौलत हैं। उन पर थोड़ा खर्च करें।",
+          "te": "ఆరోగ్యం, కుటుంబం కూడా సంపదే. వాటిపై కొంచెం ఖర్చు చేయండి."
+        }
       }
     ]
   },
@@ -72,29 +122,52 @@
     "lesson": "L01",
     "ages": [11, 18],
     "weight": 1,
+    "location": "home",
     "requires": { "flags": ["crisis_joy_high"] },
     "speaker": "shopkeeper",
-    "title": { "en": "The khata is full" },
+    "title": { "en": "The khata is full", "hi": "खाता भर गया", "te": "ఖాతా నిండిపోయింది" },
     "text": {
-      "en": "Snacks, top-ups, movies. {cast:shopkeeper} turns her [[khata]] around. \"₹640, kanna. That's a whole page with your name.\""
+      "en": "Snacks, top-ups, movies. {cast:shopkeeper} turns her [[khata]] around. \"₹640, kanna. That's a whole page with your name.\"",
+      "hi": "नाश्ता, टॉप-अप, फ़िल्में। {cast:shopkeeper} अपना [[khata]] आपकी ओर घुमाती हैं। \"₹640, कन्ना। पूरा पन्ना तुम्हारे नाम।\"",
+      "te": "స్నాక్స్, టాప్-అప్‌లు, సినిమాలు. {cast:shopkeeper} తన [[khata]] మీ వైపు తిప్పుతుంది. \"₹640, కన్నా. మొత్తం పేజీ నీ పేరే.\""
     },
     "choices": [
       {
         "id": "pay_back",
-        "label": { "en": "Pay it back and cut wants for two months" },
+        "label": {
+          "en": "Pay it back and cut wants for two months",
+          "hi": "चुकाएँ और दो महीने चाहतें घटाएँ",
+          "te": "తీర్చేసి రెండు నెలలు కోరికలు తగ్గించండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -640, "meters": { "joy": -25 }, "gyaan": 2 },
-        "outcome": { "en": "₹640 repaid in two months. The page is crossed out. You feel lighter." },
-        "why": { "en": "Too many wants means the needs end up on credit. Balance is the goal." }
+        "outcome": {
+          "en": "₹640 repaid in two months. The page is crossed out. You feel lighter.",
+          "hi": "दो महीने में ₹640 चुका दिए। पन्ना कट गया। आप हल्का महसूस करते हैं।",
+          "te": "రెండు నెలల్లో ₹640 తీర్చారు. పేజీ కొట్టేశారు. తేలికగా అనిపిస్తుంది."
+        },
+        "why": {
+          "en": "Too many wants means the needs end up on credit. Balance is the goal.",
+          "hi": "बहुत सारी चाहतें मतलब ज़रूरतें उधार पर। लक्ष्य संतुलन है।",
+          "te": "కోరికలు ఎక్కువైతే అవసరాలు అప్పుపైకి. లక్ష్యం సమతుల్యం."
+        }
       },
       {
         "id": "more_credit",
-        "label": { "en": "Ask for one more week of credit" },
+        "label": { "en": "Ask for one more week of credit", "hi": "एक हफ़्ता और उधार माँगें", "te": "ఇంకో వారం అప్పు అడగండి" },
         "quality": "bad",
         "effects": { "cash": -900, "meters": { "joy": -15, "family": -6 } },
-        "outcome": { "en": "One more week becomes ₹900. Anjamma aunty tells Amma." },
-        "why": { "en": "Credit for wants grows quietly until someone else has to pay." }
+        "outcome": {
+          "en": "One more week becomes ₹900. Anjamma aunty tells Amma.",
+          "hi": "एक हफ़्ता ₹900 बन जाता है। अंजम्मा आंटी अम्मा को बता देती हैं।",
+          "te": "ఇంకో వారం ₹900 అవుతుంది. అంజమ్మ ఆంటీ అమ్మకు చెప్పేస్తుంది."
+        },
+        "why": {
+          "en": "Credit for wants grows quietly until someone else has to pay.",
+          "hi": "चाहतों का उधार चुपचाप बढ़ता है, जब तक किसी और को न चुकाना पड़े।",
+          "te": "కోరికల అప్పు నిశ్శబ్దంగా పెరుగుతుంది, ఎవరో ఒకరు కట్టాల్సి వచ్చే వరకు."
+        }
       }
     ]
   },
@@ -105,30 +178,64 @@
     "lesson": "L18",
     "ages": [19, 36],
     "weight": 1,
+    "location": "home",
     "requires": { "flags": ["crisis_joy_high"] },
     "speaker": "narrator",
-    "title": { "en": "Living like a film hero" },
+    "title": { "en": "Living like a film hero", "hi": "फ़िल्मी हीरो जैसी ज़िंदगी", "te": "సినిమా హీరో లాంటి జీవితం" },
     "text": {
-      "en": "New clothes, eating out, trips, gadgets. Life is fantastic. Then the month ends ₹12,000 short, and the card bill arrives."
+      "en": "New clothes, eating out, trips, gadgets. Life is fantastic. Then the month ends ₹12,000 short, and the card bill arrives.",
+      "hi": "नए कपड़े, बाहर खाना, सैर, गैजेट। ज़िंदगी शानदार है। फिर महीना ₹12,000 कम पर खत्म होता है, और कार्ड का बिल आता है।",
+      "te": "కొత్త బట్టలు, బయట భోజనాలు, ట్రిప్‌లు, గ్యాడ్జెట్లు. జీవితం అద్భుతం. తర్వాత నెల ₹12,000 తక్కువతో ముగుస్తుంది, కార్డు బిల్లు వస్తుంది."
     },
     "choices": [
       {
         "id": "reset",
-        "label": { "en": "Pay the bill in full and cut wants to 10% for three months" },
+        "label": {
+          "en": "Pay the bill in full and cut wants to 10% for three months",
+          "hi": "पूरा बिल भरें और तीन महीने चाहतें 10% पर रखें",
+          "te": "బిల్లు పూర్తిగా కట్టి, మూడు నెలలు కోరికలు 10%కి తగ్గించండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -12000, "meters": { "joy": -30 }, "gyaan": 2 },
-        "outcome": { "en": "Three quiet months. ₹12,000 cleared, ₹0 interest. The fun comes back slowly, and paid for." },
-        "why": { "en": "When spending runs ahead of income, the gap becomes debt. Reset early." }
+        "outcome": {
+          "en": "Three quiet months. ₹12,000 cleared, ₹0 interest. The fun comes back slowly, and paid for.",
+          "hi": "तीन शांत महीने। ₹12,000 चुकता, ₹0 ब्याज। मज़ा धीरे-धीरे लौटता है, और चुकाया हुआ।",
+          "te": "మూడు నిశ్శబ్ద నెలలు. ₹12,000 తీరింది, ₹0 వడ్డీ. సరదా నెమ్మదిగా తిరిగొస్తుంది, కట్టేసినదిగా."
+        },
+        "why": {
+          "en": "When spending runs ahead of income, the gap becomes debt. Reset early.",
+          "hi": "जब खर्च आमदनी से आगे भागे, तो फ़र्क कर्ज़ बन जाता है। जल्दी सँभलें।",
+          "te": "ఖర్చు ఆదాయం కంటే ముందు పరిగెడితే, ఆ తేడా అప్పు అవుతుంది. త్వరగా సరిచేసుకోండి."
+        }
       },
       {
         "id": "minimum",
-        "label": { "en": "Pay the minimum and keep going" },
+        "label": {
+          "en": "Pay the minimum and keep going",
+          "hi": "मिनिमम भरें और चलते रहें",
+          "te": "కనీసం కట్టి, అలాగే కొనసాగండి"
+        },
         "quality": "bad",
         "effects": { "loan": { "source": "credit_card", "principal": 12000, "months": 12 }, "meters": { "joy": -15 } },
-        "echo": { "level": 2, "hint": { "en": "The party is over. The bill isn't." } },
-        "outcome": { "en": "At 42%, the ₹12,000 becomes about ₹14,900 over a year." },
-        "why": { "en": "Lifestyle on credit costs you twice: once now, and again in interest." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "The party is over. The bill isn't.",
+            "hi": "पार्टी खत्म। बिल नहीं।",
+            "te": "పార్టీ ముగిసింది. బిల్లు కాదు."
+          }
+        },
+        "outcome": {
+          "en": "At 42%, the ₹12,000 becomes about ₹14,900 over a year.",
+          "hi": "42% पर ₹12,000 साल भर में लगभग ₹14,900 बन जाते हैं।",
+          "te": "42% వద్ద ₹12,000 ఏడాదిలో సుమారు ₹14,900 అవుతుంది."
+        },
+        "why": {
+          "en": "Lifestyle on credit costs you twice: once now, and again in interest.",
+          "hi": "उधार पर ठाठ दो बार कीमत लेते हैं: एक बार अभी, और फिर ब्याज में।",
+          "te": "అప్పుతో ఆడంబరాలకు రెండుసార్లు ధర: ఇప్పుడొకసారి, మళ్లీ వడ్డీలో."
+        }
       }
     ]
   },
@@ -139,27 +246,52 @@
     "lesson": "L01",
     "ages": [11, 18],
     "weight": 1,
+    "location": "home",
     "requires": { "flags": ["crisis_family_low"] },
     "speaker": "mother",
-    "title": { "en": "Nobody's talking" },
-    "text": { "en": "Dinner is silent. Amma says, \"You count rupees, not people.\" Chinni won't sit next to you." },
+    "title": { "en": "Nobody's talking", "hi": "कोई बात नहीं कर रहा", "te": "ఎవరూ మాట్లాడడం లేదు" },
+    "text": {
+      "en": "Dinner is silent. Amma says, \"You count rupees, not people.\" Chinni won't sit next to you.",
+      "hi": "खाने पर सन्नाटा है। अम्मा कहती हैं, \"तुम रुपये गिनते हो, लोग नहीं।\" चिन्नी आपके पास नहीं बैठती।",
+      "te": "భోజనం దగ్గర నిశ్శబ్దం. అమ్మ అంటుంది, \"నువ్వు రూపాయలు లెక్కపెడతావు, మనుషులను కాదు.\" చిన్ని మీ పక్కన కూర్చోదు."
+    },
     "choices": [
       {
         "id": "make_up",
-        "label": { "en": "Buy sweets for everyone and say sorry" },
+        "label": {
+          "en": "Buy sweets for everyone and say sorry",
+          "hi": "सबके लिए मिठाई लाएँ और माफ़ी माँगें",
+          "te": "అందరికీ స్వీట్లు తెచ్చి సారీ చెప్పండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -150, "meters": { "family": 30, "joy": 5 } },
-        "outcome": { "en": "₹150 of jalebis and one honest sorry. Chinni sits next to you again." },
-        "why": { "en": "Money spent on people you love is not wasted. Needs, wants and family all fit in a plan." }
+        "outcome": {
+          "en": "₹150 of jalebis and one honest sorry. Chinni sits next to you again.",
+          "hi": "₹150 की जलेबी और एक सच्ची माफ़ी। चिन्नी फिर आपके पास बैठती है।",
+          "te": "₹150 జిలేబీలు, ఒక నిజాయితీ సారీ. చిన్ని మళ్లీ మీ పక్కన కూర్చుంటుంది."
+        },
+        "why": {
+          "en": "Money spent on people you love is not wasted. Needs, wants and family all fit in a plan.",
+          "hi": "अपनों पर खर्च पैसा बर्बाद नहीं होता। ज़रूरत, चाहत और परिवार, सब प्लान में आते हैं।",
+          "te": "ప్రేమించే వాళ్లపై ఖర్చు వృథా కాదు. అవసరాలు, కోరికలు, కుటుంబం అన్నీ ప్లాన్‌లో పడతాయి."
+        }
       },
       {
         "id": "ignore",
-        "label": { "en": "Ignore it. They'll get over it" },
+        "label": { "en": "Ignore it. They'll get over it", "hi": "छोड़ें। मान जाएँगे", "te": "వదిలేయండి. వాళ్లే సర్దుకుంటారు" },
         "quality": "risky",
         "effects": { "meters": { "family": 8, "joy": -6 } },
-        "outcome": { "en": "They do, slowly, over two cold weeks." },
-        "why": { "en": "Saving money while losing people isn't a good trade." }
+        "outcome": {
+          "en": "They do, slowly, over two cold weeks.",
+          "hi": "मान जाते हैं, धीरे-धीरे, दो ठंडे हफ़्तों में।",
+          "te": "సర్దుకుంటారు, నెమ్మదిగా, రెండు చల్లని వారాల్లో."
+        },
+        "why": {
+          "en": "Saving money while losing people isn't a good trade.",
+          "hi": "लोगों को खोकर पैसा बचाना अच्छा सौदा नहीं।",
+          "te": "మనుషులను పోగొట్టుకుని డబ్బు దాచడం మంచి బేరం కాదు."
+        }
       }
     ]
   },
@@ -170,27 +302,52 @@
     "lesson": "L18",
     "ages": [19, 36],
     "weight": 1,
+    "location": "home",
     "requires": { "flags": ["crisis_family_low"] },
     "speaker": "father",
-    "title": { "en": "Nanna stops calling" },
-    "text": { "en": "You skipped the festival, the wedding and Ammamma's birthday to save money. Nanna has stopped calling." },
+    "title": { "en": "Nanna stops calling", "hi": "नान्ना ने फ़ोन करना बंद कर दिया", "te": "నాన్న ఫోన్ చేయడం మానేశాడు" },
+    "text": {
+      "en": "You skipped the festival, the wedding and Ammamma's birthday to save money. Nanna has stopped calling.",
+      "hi": "पैसे बचाने के लिए आपने त्योहार, शादी और अम्मम्मा का जन्मदिन छोड़ा। नान्ना ने फ़ोन करना बंद कर दिया है।",
+      "te": "డబ్బు ఆదా కోసం పండుగ, పెళ్లి, అమ్మమ్మ పుట్టినరోజు మానేశారు. నాన్న ఫోన్ చేయడం మానేశాడు."
+    },
     "choices": [
       {
         "id": "go_home",
-        "label": { "en": "Go home for a week with gifts for everyone" },
+        "label": {
+          "en": "Go home for a week with gifts for everyone",
+          "hi": "सबके लिए तोहफ़े लेकर एक हफ़्ते घर जाएँ",
+          "te": "అందరికీ బహుమతులతో ఒక వారం ఇంటికి వెళ్లండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -5000, "meters": { "family": 30, "joy": 8 } },
-        "outcome": { "en": "₹5,000 and a week of Amma's cooking. Nanna pretends he wasn't waiting at the bus stop." },
-        "why": { "en": "A budget includes people. Social spending is fine when it's planned." }
+        "outcome": {
+          "en": "₹5,000 and a week of Amma's cooking. Nanna pretends he wasn't waiting at the bus stop.",
+          "hi": "₹5,000 और एक हफ़्ता अम्मा का खाना। नान्ना ऐसे दिखाते हैं जैसे बस स्टॉप पर इंतज़ार नहीं कर रहे थे।",
+          "te": "₹5,000, ఒక వారం అమ్మ వంట. బస్టాప్‌లో ఎదురుచూడలేదన్నట్టు నాన్న నటిస్తాడు."
+        },
+        "why": {
+          "en": "A budget includes people. Social spending is fine when it's planned.",
+          "hi": "बजट में लोग भी शामिल हैं। सामाजिक खर्च ठीक है, जब योजना से हो।",
+          "te": "బడ్జెట్‌లో మనుషులూ ఉంటారు. ప్లాన్ చేసిన సామాజిక ఖర్చు సరే."
+        }
       },
       {
         "id": "send_money",
-        "label": { "en": "Just send ₹5,000 by UPI" },
+        "label": { "en": "Just send ₹5,000 by UPI", "hi": "बस UPI से ₹5,000 भेज दें", "te": "UPIలో ₹5,000 పంపేయండి చాలు" },
         "quality": "neutral",
         "effects": { "cash": -5000, "meters": { "family": 12 } },
-        "outcome": { "en": "The money arrives. You don't. Amma says thank you, politely." },
-        "why": { "en": "Money helps, but it doesn't replace being there." }
+        "outcome": {
+          "en": "The money arrives. You don't. Amma says thank you, politely.",
+          "hi": "पैसा पहुँचता है। आप नहीं। अम्मा विनम्रता से धन्यवाद कहती हैं।",
+          "te": "డబ్బు చేరుతుంది. మీరు కాదు. అమ్మ మర్యాదగా థాంక్స్ చెబుతుంది."
+        },
+        "why": {
+          "en": "Money helps, but it doesn't replace being there.",
+          "hi": "पैसा मदद करता है, पर वहाँ होने की जगह नहीं लेता।",
+          "te": "డబ్బు సాయం చేస్తుంది, కానీ అక్కడ ఉండడానికి బదులు కాదు."
+        }
       }
     ]
   },
@@ -201,29 +358,56 @@
     "lesson": "L02",
     "ages": [11, 18],
     "weight": 1,
+    "location": "home",
     "requires": { "flags": ["crisis_family_high"] },
     "speaker": "sibling",
-    "title": { "en": "Everyone's favourite bank" },
+    "title": { "en": "Everyone's favourite bank", "hi": "सबका पसंदीदा बैंक", "te": "అందరికీ ఇష్టమైన బ్యాంక్" },
     "text": {
-      "en": "You've given your savings to everyone: Chinni, cousins, Chintu. Your dream jar is empty, and nobody has paid back."
+      "en": "You've given your savings to everyone: Chinni, cousins, Chintu. Your dream jar is empty, and nobody has paid back.",
+      "hi": "आपने अपनी बचत सबको दे दी: चिन्नी, चचेरे भाई, चिंटू। आपका सपने का डिब्बा खाली है, और किसी ने लौटाया नहीं।",
+      "te": "మీ పొదుపంతా అందరికీ ఇచ్చేశారు: చిన్ని, కజిన్లు, చింటూ. మీ కల డబ్బా ఖాళీ, ఎవరూ తిరిగివ్వలేదు."
     },
     "choices": [
       {
         "id": "kind_no",
-        "label": { "en": "Say a kind no, and start saving again" },
+        "label": {
+          "en": "Say a kind no, and start saving again",
+          "hi": "प्यार से मना करें, और फिर से बचत शुरू करें",
+          "te": "మర్యాదగా వద్దని, మళ్లీ పొదుపు మొదలుపెట్టండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "meters": { "family": -20 }, "gyaan": 2 },
-        "outcome": { "en": "Chinni sulks for a day. In three months your jar is back to ₹300." },
-        "why": { "en": "You can only help others if you keep something for yourself. Pay yourself first." }
+        "outcome": {
+          "en": "Chinni sulks for a day. In three months your jar is back to ₹300.",
+          "hi": "चिन्नी एक दिन रूठती है। तीन महीने में आपका डिब्बा फिर ₹300 पर।",
+          "te": "చిన్ని ఒక రోజు అలుగుతుంది. మూడు నెలల్లో మీ డబ్బా మళ్లీ ₹300."
+        },
+        "why": {
+          "en": "You can only help others if you keep something for yourself. Pay yourself first.",
+          "hi": "दूसरों की मदद तभी कर सकते हैं जब अपने लिए कुछ रखें। पहले खुद को दें।",
+          "te": "మీ కోసం కొంత ఉంచుకుంటేనే ఇతరులకు సాయం చేయగలరు. ముందు మీకే చెల్లించుకోండి."
+        }
       },
       {
         "id": "keep_giving",
-        "label": { "en": "Keep giving. They need it more" },
+        "label": {
+          "en": "Keep giving. They need it more",
+          "hi": "देते रहें। उन्हें ज़्यादा ज़रूरत है",
+          "te": "ఇస్తూనే ఉండండి. వాళ్లకు ఎక్కువ అవసరం"
+        },
         "quality": "risky",
         "effects": { "meters": { "family": -10, "joy": -8 } },
-        "outcome": { "en": "Your jar stays at ₹0. Your cricket bat dream moves another year away." },
-        "why": { "en": "Generosity without a limit leaves nothing for your own goals." }
+        "outcome": {
+          "en": "Your jar stays at ₹0. Your cricket bat dream moves another year away.",
+          "hi": "आपका डिब्बा ₹0 पर ही रहता है। आपके क्रिकेट बैट का सपना एक साल और दूर।",
+          "te": "మీ డబ్బా ₹0 వద్దే. మీ క్రికెట్ బ్యాట్ కల ఇంకో ఏడాది దూరం."
+        },
+        "why": {
+          "en": "Generosity without a limit leaves nothing for your own goals.",
+          "hi": "बिना सीमा की उदारता आपके अपने लक्ष्यों के लिए कुछ नहीं छोड़ती।",
+          "te": "హద్దు లేని దాతృత్వం మీ సొంత లక్ష్యాలకు ఏమీ మిగల్చదు."
+        }
       }
     ]
   },
@@ -234,33 +418,67 @@
     "lesson": "L13",
     "ages": [19, 36],
     "weight": 1,
+    "location": "home",
     "requires": { "flags": ["crisis_family_high"] },
     "speaker": "mother",
-    "title": { "en": "The family ATM" },
+    "title": { "en": "The family ATM", "hi": "परिवार का ATM", "te": "కుటుంబ ATM" },
     "text": {
-      "en": "Uncles, cousins and neighbours queue up. You've lent ₹40,000 with no paper. Your own emergency fund is gone."
+      "en": "Uncles, cousins and neighbours queue up. You've lent ₹40,000 with no paper. Your own emergency fund is gone.",
+      "hi": "चाचा, चचेरे भाई और पड़ोसी लाइन लगाते हैं। आपने बिना कागज़ ₹40,000 उधार दे दिए। आपका अपना आपात फंड खत्म।",
+      "te": "మామయ్యలు, కజిన్లు, పొరుగువాళ్లు క్యూ కడతారు. కాగితం లేకుండా ₹40,000 అప్పిచ్చారు. మీ సొంత అత్యవసర నిధి అయిపోయింది."
     },
     "choices": [
       {
         "id": "family_budget",
-        "label": { "en": "Set a family-help budget of ₹2,000 a month, and stick to it" },
+        "label": {
+          "en": "Set a family-help budget of ₹2,000 a month, and stick to it",
+          "hi": "परिवार-मदद का ₹2,000 महीने का बजट तय करें, और उस पर टिके रहें",
+          "te": "కుటుంబ సాయానికి నెలకు ₹2,000 బడ్జెట్ పెట్టి, దానికే కట్టుబడి ఉండండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "meters": { "family": -20 }, "gyaan": 3 },
-        "outcome": { "en": "Some relatives grumble. Your fund rebuilds to ₹24,000 in a year, and you still help ₹2,000 a month." },
-        "why": { "en": "Your emergency fund protects the family too. Help from a budget, not from the cushion." }
+        "outcome": {
+          "en": "Some relatives grumble. Your fund rebuilds to ₹24,000 in a year, and you still help ₹2,000 a month.",
+          "hi": "कुछ रिश्तेदार बड़बड़ाते हैं। साल भर में आपका फंड ₹24,000 तक फिर बनता है, और आप ₹2,000 महीना मदद भी करते हैं।",
+          "te": "కొందరు బంధువులు గొణుగుతారు. ఏడాదిలో మీ నిధి మళ్లీ ₹24,000 అవుతుంది, నెలకు ₹2,000 సాయం కూడా చేస్తారు."
+        },
+        "why": {
+          "en": "Your emergency fund protects the family too. Help from a budget, not from the cushion.",
+          "hi": "आपका आपात फंड परिवार को भी बचाता है। मदद बजट से करें, गद्दी से नहीं।",
+          "te": "మీ అత్యవసర నిధి కుటుంబాన్నీ కాపాడుతుంది. సాయం బడ్జెట్ నుంచి, భద్రతా నిధి నుంచి కాదు."
+        }
       },
       {
         "id": "borrow_to_lend",
-        "label": { "en": "Borrow so you can keep lending" },
+        "label": {
+          "en": "Borrow so you can keep lending",
+          "hi": "उधार लें ताकि उधार देते रह सकें",
+          "te": "అప్పిస్తూ ఉండడానికి అప్పు తీసుకోండి"
+        },
         "quality": "bad",
         "effects": {
           "loan": { "source": "loan_app", "principal": 20000, "months": 6, "disburse": "direct" },
           "meters": { "family": -10, "health": -6 }
         },
-        "echo": { "level": 3, "hint": { "en": "Borrowing to be generous is still borrowing." } },
-        "outcome": { "en": "₹20,000 from a loan app (₹25,600 to repay), lent to a cousin who repays ₹5,000." },
-        "why": { "en": "Never borrow at high interest to lend for free." }
+        "echo": {
+          "level": 3,
+          "hint": {
+            "en": "Borrowing to be generous is still borrowing.",
+            "hi": "उदार बनने के लिए उधार लेना भी उधार ही है।",
+            "te": "దాతృత్వం కోసం అప్పు చేసినా అది అప్పే."
+          }
+        },
+        "outcome": {
+          "en": "₹20,000 from a loan app (₹25,600 to repay), lent to a cousin who repays ₹5,000.",
+          "hi": "लोन ऐप से ₹20,000 (चुकाने ₹25,600), एक चचेरे भाई को दिए जो ₹5,000 लौटाता है।",
+          "te": "లోన్ యాప్ నుంచి ₹20,000 (తీర్చాల్సింది ₹25,600), ఒక కజిన్‌కు ఇచ్చారు, అతను ₹5,000 తిరిగిస్తాడు."
+        },
+        "why": {
+          "en": "Never borrow at high interest to lend for free.",
+          "hi": "मुफ़्त उधार देने के लिए ऊँचे ब्याज पर कभी उधार न लें।",
+          "te": "ఉచితంగా అప్పివ్వడానికి ఎక్కువ వడ్డీకి ఎప్పుడూ అప్పు తీసుకోకండి."
+        }
       }
     ]
   }

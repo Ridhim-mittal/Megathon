@@ -2,560 +2,728 @@
   {
     "id": "faq01",
     "q": {
-      "en": "What is the difference between a need and a want?"
+      "en": "What is the difference between a need and a want?",
+      "hi": "ज़रूरत और चाहत में क्या फ़र्क है?",
+      "te": "అవసరానికి, కోరికకు తేడా ఏమిటి?"
     },
     "a": {
-      "en": "A need is something you must have, like food, school things or bus fare. A want makes life nicer but can wait."
+      "en": "A need is something you must have, like food, school things or bus fare. A want makes life nicer but can wait.",
+      "hi": "ज़रूरत वह है जो चाहिए ही, जैसे खाना, स्कूल का सामान या बस किराया। चाहत ज़िंदगी अच्छी बनाती है पर रुक सकती है।",
+      "te": "అవసరం అంటే లేకుండా గడవనిది, తిండి, స్కూల్ సామాను, బస్ ఛార్జీ లాగా. కోరిక జీవితాన్ని బాగు చేస్తుంది కానీ ఆగవచ్చు."
     },
     "lesson": "L01"
   },
   {
     "id": "faq02",
     "q": {
-      "en": "Is it wrong to spend on wants?"
+      "en": "Is it wrong to spend on wants?",
+      "hi": "क्या चाहतों पर खर्च करना गलत है?",
+      "te": "కోరికలపై ఖర్చు చేయడం తప్పా?"
     },
     "a": {
-      "en": "No, kanna. Wants are part of a good life. Just pay for needs first and keep wants inside your plan."
+      "en": "No, kanna. Wants are part of a good life. Just pay for needs first and keep wants inside your plan.",
+      "hi": "नहीं, कन्ना। चाहतें अच्छी ज़िंदगी का हिस्सा हैं। बस पहले ज़रूरतें पूरी करो और चाहतों को प्लान के अंदर रखो।",
+      "te": "కాదు కన్నా. కోరికలు మంచి జీవితంలో భాగమే. ముందు అవసరాలు తీర్చు, కోరికలను ప్లాన్‌లోనే ఉంచు."
     },
     "lesson": "L01"
   },
   {
     "id": "faq03",
     "q": {
-      "en": "How do I start saving with very little money?"
+      "en": "How do I start saving with very little money?",
+      "hi": "बहुत कम पैसे में बचत कैसे शुरू करूँ?",
+      "te": "చాలా తక్కువ డబ్బుతో పొదుపు ఎలా మొదలుపెట్టాలి?"
     },
     "a": {
-      "en": "Save first, the day money comes. Even ₹5 a day becomes ₹1,825 in a year."
+      "en": "Save first, the day money comes. Even ₹5 a day becomes ₹1,825 in a year.",
+      "hi": "पैसा आते ही पहले बचाओ। रोज़ ₹5 भी साल में ₹1,825 बन जाते हैं।",
+      "te": "డబ్బు వచ్చిన రోజే ముందు పొదుపు చేయి. రోజుకు ₹5 అయినా ఏడాదిలో ₹1,825 అవుతుంది."
     },
     "lesson": "L02"
   },
   {
     "id": "faq04",
     "q": {
-      "en": "What does \"pay yourself first\" mean?"
+      "en": "What does \"pay yourself first\" mean?",
+      "hi": "\"पहले खुद को दो\" का मतलब क्या है?",
+      "te": "\"ముందు నీకే చెల్లించుకో\" అంటే ఏమిటి?"
     },
     "a": {
-      "en": "Put your savings aside before you spend anything. Whatever you never see, you never spend."
+      "en": "Put your savings aside before you spend anything. Whatever you never see, you never spend.",
+      "hi": "कुछ भी खर्च करने से पहले बचत अलग रख दो। जो पैसा दिखता नहीं, वह खर्च भी नहीं होता।",
+      "te": "ఏదైనా ఖర్చు చేసే ముందే పొదుపు పక్కన పెట్టు. కనిపించని డబ్బు ఖర్చు కాదు."
     },
     "lesson": "L02"
   },
   {
     "id": "faq05",
     "q": {
-      "en": "Why do prices keep going up?"
+      "en": "Why do prices keep going up?",
+      "hi": "कीमतें बढ़ती क्यों रहती हैं?",
+      "te": "ధరలు ఎందుకు పెరుగుతూనే ఉంటాయి?"
     },
     "a": {
-      "en": "That's inflation. In this game prices rise about 6% a year, so ₹10 today is about ₹18 in 10 years."
+      "en": "That's inflation. In this game prices rise about 6% a year, so ₹10 today is about ₹18 in 10 years.",
+      "hi": "यही महंगाई है। इस गेम में कीमतें हर साल लगभग 6% बढ़ती हैं, तो आज का ₹10 10 साल में लगभग ₹18 का।",
+      "te": "అదే ధరల పెరుగుదల. ఈ గేమ్‌లో ధరలు ఏడాదికి సుమారు 6% పెరుగుతాయి, కాబట్టి ఈ రోజు ₹10 10 ఏళ్లలో సుమారు ₹18."
     },
     "lesson": "L03"
   },
   {
     "id": "faq06",
     "q": {
-      "en": "Is it safe to keep cash at home?"
+      "en": "Is it safe to keep cash at home?",
+      "hi": "क्या घर में नकद रखना सुरक्षित है?",
+      "te": "ఇంట్లో నగదు ఉంచడం భద్రమా?"
     },
     "a": {
-      "en": "It's safe from the bank, but not from rats, thieves or inflation. Idle cash buys less every year."
+      "en": "It's safe from the bank, but not from rats, thieves or inflation. Idle cash buys less every year.",
+      "hi": "बैंक से तो सुरक्षित है, पर चूहों, चोरों और महंगाई से नहीं। पड़ा पैसा हर साल कम खरीदता है।",
+      "te": "బ్యాంక్ నుంచి భద్రమే, కానీ ఎలుకలు, దొంగలు, ధరల పెరుగుదల నుంచి కాదు. ఊరికే ఉన్న డబ్బు ప్రతి ఏడాది తక్కువ కొంటుంది."
     },
     "lesson": "L03"
   },
   {
     "id": "faq07",
     "q": {
-      "en": "Can a child open a bank account?"
+      "en": "Can a child open a bank account?",
+      "hi": "क्या बच्चा बैंक खाता खोल सकता है?",
+      "te": "పిల్లలు బ్యాంక్ ఖాతా తెరవొచ్చా?"
     },
     "a": {
-      "en": "Yes. A minor's savings account is opened with a parent or guardian. Many need zero balance."
+      "en": "Yes. A minor's savings account is opened with a parent or guardian. Many need zero balance.",
+      "hi": "हाँ। नाबालिग बचत खाता माता-पिता या अभिभावक के साथ खुलता है। कई में ज़ीरो बैलेंस चलता है।",
+      "te": "అవును. మైనర్ సేవింగ్స్ ఖాతా తల్లిదండ్రులు లేదా సంరక్షకులతో తెరుస్తారు. చాలావాటికి జీరో బ్యాలెన్స్ చాలు."
     },
     "lesson": "L04"
   },
   {
     "id": "faq08",
     "q": {
-      "en": "Why is a bank better than a tin box?"
+      "en": "Why is a bank better than a tin box?",
+      "hi": "बैंक डिब्बे से बेहतर क्यों है?",
+      "te": "డబ్బా కంటే బ్యాంక్ ఎందుకు మేలు?"
     },
     "a": {
-      "en": "A bank keeps money safe and pays interest, about 3% in a savings account. A tin box pays nothing."
+      "en": "A bank keeps money safe and pays interest, about 3% in a savings account. A tin box pays nothing.",
+      "hi": "बैंक पैसा सुरक्षित रखता है और ब्याज देता है, बचत खाते में लगभग 3%। डिब्बा कुछ नहीं देता।",
+      "te": "బ్యాంక్ డబ్బును భద్రంగా ఉంచి వడ్డీ ఇస్తుంది, సేవింగ్స్ ఖాతాలో సుమారు 3%. డబ్బా ఏమీ ఇవ్వదు."
     },
     "lesson": "L04"
   },
   {
     "id": "faq09",
-    "q": {
-      "en": "What is compound interest?"
-    },
+    "q": { "en": "What is compound interest?", "hi": "चक्रवृद्धि ब्याज क्या है?", "te": "చక్రవడ్డీ అంటే ఏమిటి?" },
     "a": {
-      "en": "Interest on interest. ₹1,000 at 10% for 10 years becomes ₹2,594, not just ₹2,000."
+      "en": "Interest on interest. ₹1,000 at 10% for 10 years becomes ₹2,594, not just ₹2,000.",
+      "hi": "ब्याज पर ब्याज। 10% पर 10 साल में ₹1,000 बनते हैं ₹2,594, सिर्फ़ ₹2,000 नहीं।",
+      "te": "వడ్డీ మీద వడ్డీ. 10% వద్ద 10 ఏళ్లలో ₹1,000 అవుతుంది ₹2,594, కేవలం ₹2,000 కాదు."
     },
     "lesson": "L05"
   },
   {
     "id": "faq10",
     "q": {
-      "en": "Why is compound interest dangerous on loans?"
+      "en": "Why is compound interest dangerous on loans?",
+      "hi": "कर्ज़ में चक्रवृद्धि ब्याज खतरनाक क्यों है?",
+      "te": "అప్పులో చక్రవడ్డీ ఎందుకు ప్రమాదం?"
     },
     "a": {
-      "en": "Unpaid interest joins the loan and earns more interest. ₹2,000 at ₹2 per ₹100 a month, compounded, becomes ₹2,536 in a year."
+      "en": "Unpaid interest joins the loan and earns more interest. ₹2,000 at ₹2 per ₹100 a month, compounded, becomes ₹2,536 in a year.",
+      "hi": "न चुकाया ब्याज कर्ज़ में जुड़ता है और उस पर और ब्याज लगता है। ₹2 सैकड़ा महीना चक्रवृद्धि पर ₹2,000 साल में ₹2,536 बन जाते हैं।",
+      "te": "కట్టని వడ్డీ అప్పులో కలిసి దానిపై ఇంకా వడ్డీ వస్తుంది. నెలకు నూటికి ₹2 చక్రవడ్డీతో ₹2,000 ఏడాదిలో ₹2,536 అవుతుంది."
     },
     "lesson": "L05"
   },
   {
     "id": "faq11",
     "q": {
-      "en": "Someone asks for my OTP. What do I do?"
+      "en": "Someone asks for my OTP. What do I do?",
+      "hi": "कोई मेरा OTP माँग रहा है। क्या करूँ?",
+      "te": "ఎవరో నా OTP అడుగుతున్నారు. ఏం చేయాలి?"
     },
     "a": {
-      "en": "Never share it. An OTP is a key to your money. Real banks and games never ask for it."
+      "en": "Never share it. An OTP is a key to your money. Real banks and games never ask for it.",
+      "hi": "कभी मत बताना। OTP तुम्हारे पैसे की चाबी है। असली बैंक और गेम कभी नहीं माँगते।",
+      "te": "ఎప్పుడూ చెప్పకు. OTP నీ డబ్బుకు తాళం. నిజమైన బ్యాంకులు, గేమ్స్ ఎప్పుడూ అడగవు."
     },
     "lesson": "L06"
   },
   {
     "id": "faq12",
     "q": {
-      "en": "I got a link for free game coins. Is it real?"
+      "en": "I got a link for free game coins. Is it real?",
+      "hi": "मुझे मुफ़्त गेम कॉइन का लिंक मिला। क्या यह असली है?",
+      "te": "ఉచిత గేమ్ కాయిన్ల లింక్ వచ్చింది. ఇది నిజమేనా?"
     },
     "a": {
-      "en": "Almost never. \"Free\" plus a request for an OTP or password is always a trap. Delete it."
+      "en": "Almost never. \"Free\" plus a request for an OTP or password is always a trap. Delete it.",
+      "hi": "लगभग कभी नहीं। \"मुफ़्त\" के साथ OTP या पासवर्ड माँगना हमेशा जाल है। डिलीट कर दो।",
+      "te": "దాదాపు ఎప్పుడూ కాదు. \"ఉచితం\" తో పాటు OTP లేదా పాస్‌వర్డ్ అడిగితే అది ఉచ్చే. డిలీట్ చేయి."
     },
     "lesson": "L06"
   },
   {
     "id": "faq13",
     "q": {
-      "en": "How do I find the real cost of an EMI?"
+      "en": "How do I find the real cost of an EMI?",
+      "hi": "EMI की असली कीमत कैसे निकालूँ?",
+      "te": "EMI అసలు ఖర్చు ఎలా కనుక్కోవాలి?"
     },
     "a": {
-      "en": "Multiply the EMI by the number of months, then add every fee. ₹699 × 12 + ₹1,200 = ₹9,588."
+      "en": "Multiply the EMI by the number of months, then add every fee. ₹699 × 12 + ₹1,200 = ₹9,588.",
+      "hi": "EMI को महीनों से गुणा करो, फिर हर फ़ीस जोड़ो। ₹699 × 12 + ₹1,200 = ₹9,588।",
+      "te": "EMIని నెలలతో గుణించు, తర్వాత ప్రతి ఫీజు కలుపు. ₹699 × 12 + ₹1,200 = ₹9,588."
     },
     "lesson": "L07"
   },
   {
     "id": "faq14",
     "q": {
-      "en": "Is \"zero down payment\" really free?"
+      "en": "Is \"zero down payment\" really free?",
+      "hi": "क्या \"ज़ीरो डाउन पेमेंट\" सच में मुफ़्त है?",
+      "te": "\"జీరో డౌన్ పేమెంట్\" నిజంగా ఉచితమా?"
     },
     "a": {
-      "en": "No. The cost is hidden in fees and interest. Always ask for the total in writing."
+      "en": "No. The cost is hidden in fees and interest. Always ask for the total in writing.",
+      "hi": "नहीं। कीमत फ़ीस और ब्याज में छुपी होती है। हमेशा कुल रकम लिखकर माँगो।",
+      "te": "కాదు. ఖర్చు ఫీజుల్లో, వడ్డీలో దాగి ఉంటుంది. ఎప్పుడూ మొత్తం రాసి ఇవ్వమని అడుగు."
     },
     "lesson": "L07"
   },
   {
     "id": "faq15",
-    "q": {
-      "en": "What is opportunity cost?"
-    },
+    "q": { "en": "What is opportunity cost?", "hi": "अवसर लागत क्या है?", "te": "అవకాశ వ్యయం అంటే ఏమిటి?" },
     "a": {
-      "en": "The best thing you give up when you choose something. A day of work can cost a day of study."
+      "en": "The best thing you give up when you choose something. A day of work can cost a day of study.",
+      "hi": "कुछ चुनने पर छोड़ी गई सबसे अच्छी चीज़। एक दिन का काम एक दिन की पढ़ाई की कीमत पर हो सकता है।",
+      "te": "ఏదైనా ఎంచుకున్నప్పుడు వదులుకున్న మంచి అవకాశం. ఒక రోజు పనికి ఒక రోజు చదువు ఖర్చు కావచ్చు."
     },
     "lesson": "L08"
   },
   {
     "id": "faq16",
-    "q": {
-      "en": "Should I work or study?"
-    },
+    "q": { "en": "Should I work or study?", "hi": "मैं काम करूँ या पढ़ूँ?", "te": "నేను పని చేయాలా, చదువుకోవాలా?" },
     "a": {
-      "en": "Compare what each pays over many years, not just this month. A skill can pay for 40 years."
+      "en": "Compare what each pays over many years, not just this month. A skill can pay for 40 years.",
+      "hi": "देखो कि दोनों कई सालों में कितना देते हैं, सिर्फ़ इस महीने नहीं। हुनर 40 साल तक कमा सकता है।",
+      "te": "రెండూ చాలా ఏళ్లలో ఎంత ఇస్తాయో పోల్చు, ఈ నెల మాత్రమే కాదు. నైపుణ్యం 40 ఏళ్లు సంపాదించగలదు."
     },
     "lesson": "L08"
   },
   {
     "id": "faq17",
     "q": {
-      "en": "Do I need a PIN to receive money on UPI?"
+      "en": "Do I need a PIN to receive money on UPI?",
+      "hi": "क्या UPI पर पैसे लेने के लिए PIN चाहिए?",
+      "te": "UPIలో డబ్బు తీసుకోవడానికి PIN కావాలా?"
     },
     "a": {
-      "en": "Never. You only share your UPI ID. A PIN is only for sending money."
+      "en": "Never. You only share your UPI ID. A PIN is only for sending money.",
+      "hi": "कभी नहीं। बस अपनी UPI ID दो। PIN सिर्फ़ पैसा भेजने के लिए है।",
+      "te": "ఎప్పుడూ కాదు. నీ UPI ID ఇవ్వు చాలు. PIN డబ్బు పంపడానికే."
     },
     "lesson": "L09"
   },
   {
     "id": "faq18",
     "q": {
-      "en": "What is a UPI collect request?"
+      "en": "What is a UPI collect request?",
+      "hi": "UPI कलेक्ट रिक्वेस्ट क्या है?",
+      "te": "UPI కలెక్ట్ రిక్వెస్ట్ అంటే ఏమిటి?"
     },
     "a": {
-      "en": "A request asking you to pay. Entering your PIN on it sends money away from you."
+      "en": "A request asking you to pay. Entering your PIN on it sends money away from you.",
+      "hi": "ऐसी रिक्वेस्ट जो तुमसे पैसे माँगती है। उस पर PIN डाला तो पैसा तुमसे चला जाता है।",
+      "te": "నిన్నే చెల్లించమనే రిక్వెస్ట్. దానిపై PIN వేస్తే డబ్బు నీ దగ్గర నుంచి వెళ్లిపోతుంది."
     },
     "lesson": "L09"
   },
   {
     "id": "faq19",
     "q": {
-      "en": "I was cheated on UPI. What now?"
+      "en": "I was cheated on UPI. What now?",
+      "hi": "UPI पर मेरे साथ ठगी हुई। अब क्या?",
+      "te": "UPIలో మోసపోయాను. ఇప్పుడు ఏం చేయాలి?"
     },
     "a": {
-      "en": "Call 1930 at once, within the hour if possible. Fast reports often freeze the stolen money."
+      "en": "Call 1930 at once, within the hour if possible. Fast reports often freeze the stolen money.",
+      "hi": "तुरंत 1930 पर फ़ोन करो, हो सके तो एक घंटे के अंदर। जल्दी रिपोर्ट से अक्सर चोरी का पैसा फ़्रीज़ हो जाता है।",
+      "te": "వెంటనే 1930కి ఫోన్ చేయి, వీలైతే గంటలోపు. త్వరగా చెబితే దొంగ డబ్బు చాలాసార్లు ఫ్రీజ్ అవుతుంది."
     },
     "lesson": "L09"
   },
   {
     "id": "faq20",
-    "q": {
-      "en": "What is good debt?"
-    },
+    "q": { "en": "What is good debt?", "hi": "अच्छा कर्ज़ क्या है?", "te": "మంచి అప్పు అంటే ఏమిటి?" },
     "a": {
-      "en": "A loan that helps you earn more later, like a fair education loan for a course with good jobs."
+      "en": "A loan that helps you earn more later, like a fair education loan for a course with good jobs.",
+      "hi": "ऐसा कर्ज़ जो आगे ज़्यादा कमाने में मदद करे, जैसे अच्छी नौकरी वाले कोर्स के लिए सही शिक्षा ऋण।",
+      "te": "తర్వాత ఎక్కువ సంపాదించడానికి సహాయపడే అప్పు, మంచి ఉద్యోగాలు ఇచ్చే కోర్సుకు సరైన విద్యా రుణం లాగా."
     },
     "lesson": "L10"
   },
   {
     "id": "faq21",
     "q": {
-      "en": "How does an education loan work?"
+      "en": "How does an education loan work?",
+      "hi": "शिक्षा ऋण कैसे काम करता है?",
+      "te": "విద్యా రుణం ఎలా పని చేస్తుంది?"
     },
     "a": {
-      "en": "The bank pays the fees. You repay in EMIs after the course, but interest adds up while you study."
+      "en": "The bank pays the fees. You repay in EMIs after the course, but interest adds up while you study.",
+      "hi": "बैंक फ़ीस भरता है। तुम कोर्स के बाद EMI में चुकाते हो, पर पढ़ाई के दौरान ब्याज जुड़ता रहता है।",
+      "te": "బ్యాంక్ ఫీజు కడుతుంది. కోర్సు అయ్యాక నువ్వు EMIలలో తిరిగి కడతావు, కానీ చదువుతున్నప్పుడూ వడ్డీ పెరుగుతుంది."
     },
     "lesson": "L10"
   },
   {
     "id": "faq22",
     "q": {
-      "en": "Can I make money on betting apps?"
+      "en": "Can I make money on betting apps?",
+      "hi": "क्या सट्टे के ऐप से पैसा कमा सकता हूँ?",
+      "te": "బెట్టింగ్ యాప్‌లతో డబ్బు సంపాదించొచ్చా?"
     },
     "a": {
-      "en": "On average, no. They are built so players lose. Many are illegal, and early wins are bait."
+      "en": "On average, no. They are built so players lose. Many are illegal, and early wins are bait.",
+      "hi": "औसतन नहीं। वे ऐसे बने हैं कि खिलाड़ी हारें। कई अवैध हैं, और शुरू की जीत चारा है।",
+      "te": "సగటున కాదు. ఆటగాళ్లు ఓడిపోయేలా తయారవుతాయి. చాలా అక్రమం, మొదటి గెలుపు ఎర."
     },
     "lesson": "L11"
   },
   {
     "id": "faq23",
     "q": {
-      "en": "My friend keeps betting to win back losses. What should I say?"
+      "en": "My friend keeps betting to win back losses. What should I say?",
+      "hi": "मेरा दोस्त हार की भरपाई के लिए बार-बार दाँव लगाता है। क्या कहूँ?",
+      "te": "నా స్నేహితుడు పోయినది గెలవాలని పదే పదే పందెం కాస్తున్నాడు. ఏం చెప్పాలి?"
     },
     "a": {
-      "en": "Chasing losses digs deeper. The only winning move is to stop and delete the app."
+      "en": "Chasing losses digs deeper. The only winning move is to stop and delete the app.",
+      "hi": "हार का पीछा गड्ढा गहरा करता है। जीतने का एक ही तरीका है: रुको और ऐप डिलीट करो।",
+      "te": "నష్టం వెంటపడితే గొయ్యి లోతవుతుంది. గెలిచే ఒకే మార్గం: ఆపేసి యాప్ డిలీట్ చేయడం."
     },
     "lesson": "L11"
   },
   {
     "id": "faq24",
     "q": {
-      "en": "Why is money cut from my salary for PF?"
+      "en": "Why is money cut from my salary for PF?",
+      "hi": "मेरी तनख्वाह से PF क्यों कटता है?",
+      "te": "నా జీతం నుంచి PF ఎందుకు కోస్తారు?"
     },
     "a": {
-      "en": "PF is your own savings for later. You put in 12% of basic pay, and your employer adds 12% more."
+      "en": "PF is your own savings for later. You put in 12% of basic pay, and your employer adds 12% more.",
+      "hi": "PF बाद के लिए तुम्हारी अपनी बचत है। तुम बेसिक का 12% डालते हो, और कंपनी 12% और जोड़ती है।",
+      "te": "PF తర్వాత కోసం నీ సొంత పొదుపు. నువ్వు బేసిక్‌లో 12% వేస్తావు, కంపెనీ ఇంకో 12% కలుపుతుంది."
     },
     "lesson": "L12"
   },
   {
     "id": "faq25",
     "q": {
-      "en": "Do I have to pay income tax on my first job?"
+      "en": "Do I have to pay income tax on my first job?",
+      "hi": "क्या पहली नौकरी पर आयकर देना होगा?",
+      "te": "మొదటి ఉద్యోగంలో ఆదాయపు పన్ను కట్టాలా?"
     },
     "a": {
-      "en": "Only above a yearly limit. Most first jobs fall below it. Filing a return yourself is free."
+      "en": "Only above a yearly limit. Most first jobs fall below it. Filing a return yourself is free.",
+      "hi": "सिर्फ़ एक सालाना सीमा के ऊपर। ज़्यादातर पहली नौकरियाँ उससे नीचे होती हैं। रिटर्न खुद भरना मुफ़्त है।",
+      "te": "ఏడాది పరిమితి దాటితేనే. చాలా మొదటి ఉద్యోగాలు దాని కంటే తక్కువే. రిటర్న్ నువ్వే వేయడం ఉచితం."
     },
     "lesson": "L12"
   },
   {
     "id": "faq26",
-    "q": {
-      "en": "What is a PAN card for?"
-    },
+    "q": { "en": "What is a PAN card for?", "hi": "PAN कार्ड किसलिए है?", "te": "PAN కార్డు దేనికి?" },
     "a": {
-      "en": "It's your tax ID. You need it for bank accounts, salaries and big purchases."
+      "en": "It's your tax ID. You need it for bank accounts, salaries and big purchases.",
+      "hi": "यह तुम्हारा टैक्स ID है। बैंक खाते, तनख्वाह और बड़ी खरीदारी के लिए चाहिए।",
+      "te": "అది నీ ట్యాక్స్ ID. బ్యాంక్ ఖాతాలు, జీతం, పెద్ద కొనుగోళ్లకు కావాలి."
     },
     "lesson": "L12"
   },
   {
     "id": "faq27",
     "q": {
-      "en": "How big should my emergency fund be?"
+      "en": "How big should my emergency fund be?",
+      "hi": "मेरा आपात फंड कितना बड़ा हो?",
+      "te": "నా అత్యవసర నిధి ఎంత ఉండాలి?"
     },
     "a": {
-      "en": "About 3 to 6 months of expenses. If you spend ₹8,000 a month, aim for ₹24,000 to ₹48,000."
+      "en": "About 3 to 6 months of expenses. If you spend ₹8,000 a month, aim for ₹24,000 to ₹48,000.",
+      "hi": "लगभग 3 से 6 महीने का खर्च। महीने में ₹8,000 खर्च हो तो ₹24,000 से ₹48,000 का लक्ष्य रखो।",
+      "te": "సుమారు 3 నుంచి 6 నెలల ఖర్చు. నెలకు ₹8,000 ఖర్చైతే ₹24,000 నుంచి ₹48,000 లక్ష్యం పెట్టుకో."
     },
     "lesson": "L13"
   },
   {
     "id": "faq28",
-    "q": {
-      "en": "Where should I keep my emergency fund?"
-    },
+    "q": { "en": "Where should I keep my emergency fund?", "hi": "आपात फंड कहाँ रखूँ?", "te": "అత్యవసర నిధి ఎక్కడ ఉంచాలి?" },
     "a": {
-      "en": "Somewhere safe and quick to reach, like a separate savings account. Not in gold or shares."
+      "en": "Somewhere safe and quick to reach, like a separate savings account. Not in gold or shares.",
+      "hi": "कहीं सुरक्षित और जल्दी मिलने वाली जगह, जैसे अलग बचत खाता। सोने या शेयरों में नहीं।",
+      "te": "భద్రంగా, త్వరగా అందే చోట, వేరే సేవింగ్స్ ఖాతా లాగా. బంగారం లేదా షేర్లలో కాదు."
     },
     "lesson": "L13"
   },
   {
     "id": "faq29",
-    "q": {
-      "en": "How do I compare loans?"
-    },
+    "q": { "en": "How do I compare loans?", "hi": "कर्ज़ों की तुलना कैसे करूँ?", "te": "అప్పులను ఎలా పోల్చాలి?" },
     "a": {
-      "en": "Turn every rate into a yearly number and add all fees. ₹2 per ₹100 per month is 24% a year."
+      "en": "Turn every rate into a yearly number and add all fees. ₹2 per ₹100 per month is 24% a year.",
+      "hi": "हर दर को सालाना में बदलो और सारी फ़ीस जोड़ो। ₹2 सैकड़ा महीना मतलब 24% सालाना।",
+      "te": "ప్రతి రేటును ఏడాదికి మార్చి, అన్ని ఫీజులు కలుపు. నెలకు నూటికి ₹2 అంటే ఏడాదికి 24%."
     },
     "lesson": "L14"
   },
   {
     "id": "faq30",
-    "q": {
-      "en": "What is a credit score?"
-    },
+    "q": { "en": "What is a credit score?", "hi": "क्रेडिट स्कोर क्या है?", "te": "క్రెడిట్ స్కోర్ అంటే ఏమిటి?" },
     "a": {
-      "en": "A number from 300 to 900 showing how well you repay. Paying every EMI on time raises it."
+      "en": "A number from 300 to 900 showing how well you repay. Paying every EMI on time raises it.",
+      "hi": "300 से 900 तक का नंबर जो बताता है तुम कितना अच्छा चुकाते हो। हर EMI समय पर दो तो बढ़ता है।",
+      "te": "నువ్వు ఎంత బాగా తిరిగి కడతావో చూపించే 300 నుంచి 900 నంబర్. ప్రతి EMI సమయానికి కడితే పెరుగుతుంది."
     },
     "lesson": "L14"
   },
   {
     "id": "faq31",
-    "q": {
-      "en": "Are loan apps safe?"
-    },
+    "q": { "en": "Are loan apps safe?", "hi": "क्या लोन ऐप सुरक्षित हैं?", "te": "లోన్ యాప్‌లు భద్రమా?" },
     "a": {
-      "en": "Many charge huge fees and some harass borrowers. Use only lenders registered with the banking regulator."
+      "en": "Many charge huge fees and some harass borrowers. Use only lenders registered with the banking regulator.",
+      "hi": "कई भारी फ़ीस लेते हैं और कुछ कर्ज़दारों को परेशान करते हैं। सिर्फ़ बैंकिंग नियामक में रजिस्टर्ड कर्ज़दाता चुनो।",
+      "te": "చాలా భారీ ఫీజులు వేస్తాయి, కొన్ని వేధిస్తాయి. బ్యాంకింగ్ నియంత్రణ సంస్థలో రిజిస్టర్ అయినవాళ్ల దగ్గరే తీసుకో."
     },
     "lesson": "L14"
   },
   {
     "id": "faq32",
     "q": {
-      "en": "Someone wants to rent my bank account. Is it okay?"
+      "en": "Someone wants to rent my bank account. Is it okay?",
+      "hi": "कोई मेरा बैंक खाता किराए पर लेना चाहता है। क्या यह ठीक है?",
+      "te": "ఎవరో నా బ్యాంక్ ఖాతాను అద్దెకు అడుగుతున్నారు. ఇది సరేనా?"
     },
     "a": {
-      "en": "No. That makes you a money mule, which is a crime. The stolen money is traced to you."
+      "en": "No. That makes you a money mule, which is a crime. The stolen money is traced to you.",
+      "hi": "नहीं। इससे तुम मनी म्यूल बनते हो, जो अपराध है। चोरी का पैसा तुम तक पहुँचता है।",
+      "te": "కాదు. దానితో నువ్వు మనీ మ్యూల్ అవుతావు, అది నేరం. దొంగ డబ్బు దారి నీ వరకే వస్తుంది."
     },
     "lesson": "L15"
   },
   {
     "id": "faq33",
     "q": {
-      "en": "I already let someone use my account. What do I do?"
+      "en": "I already let someone use my account. What do I do?",
+      "hi": "मैंने पहले ही किसी को अपना खाता इस्तेमाल करने दिया। अब क्या करूँ?",
+      "te": "ఇప్పటికే నా ఖాతా ఎవరికో వాడనిచ్చాను. ఇప్పుడు ఏం చేయాలి?"
     },
     "a": {
-      "en": "Stop now. Go to the police or call 1930 and tell the truth. Coming clean early is the way back."
+      "en": "Stop now. Go to the police or call 1930 and tell the truth. Coming clean early is the way back.",
+      "hi": "अभी रुको। पुलिस के पास जाओ या 1930 पर फ़ोन करके सच बताओ। जल्दी सच बोलना ही वापसी का रास्ता है।",
+      "te": "ఇప్పుడే ఆపు. పోలీసుల దగ్గరికి వెళ్లు లేదా 1930కి ఫోన్ చేసి నిజం చెప్పు. త్వరగా నిజం చెప్పడమే తిరిగి రావడానికి దారి."
     },
     "lesson": "L15"
   },
   {
     "id": "faq34",
-    "q": {
-      "en": "Why do I need insurance?"
-    },
+    "q": { "en": "Why do I need insurance?", "hi": "मुझे बीमा क्यों चाहिए?", "te": "నాకు బీమా ఎందుకు?" },
     "a": {
-      "en": "It's a small, sure cost against a big, rare one. One hospital bill can cost more than years of premiums."
+      "en": "It's a small, sure cost against a big, rare one. One hospital bill can cost more than years of premiums.",
+      "hi": "यह बड़े, कभी-कभार के खर्च के खिलाफ़ छोटा, पक्का खर्च है। एक अस्पताल बिल सालों के प्रीमियम से ज़्यादा हो सकता है।",
+      "te": "పెద్ద, అరుదైన ఖర్చుకు వ్యతిరేకంగా చిన్న, ఖచ్చితమైన ఖర్చు. ఒక్క ఆసుపత్రి బిల్లు ఏళ్ల ప్రీమియం కంటే ఎక్కువ కావచ్చు."
     },
     "lesson": "L16"
   },
   {
     "id": "faq35",
     "q": {
-      "en": "What cheap government insurance exists?"
+      "en": "What cheap government insurance exists?",
+      "hi": "सस्ता सरकारी बीमा कौन-सा है?",
+      "te": "చౌక ప్రభుత్వ బీమా ఏది?"
     },
     "a": {
-      "en": "PMSBY gives ₹2 lakh accident cover for ₹20 a year. PMJJBY gives ₹2 lakh life cover for ₹436."
+      "en": "PMSBY gives ₹2 lakh accident cover for ₹20 a year. PMJJBY gives ₹2 lakh life cover for ₹436.",
+      "hi": "PMSBY ₹20 सालाना में ₹2 लाख दुर्घटना कवर देता है। PMJJBY ₹436 में ₹2 लाख जीवन कवर।",
+      "te": "PMSBY ఏడాదికి ₹20కి ₹2 లక్షల ప్రమాద బీమా ఇస్తుంది. PMJJBY ₹436కి ₹2 లక్షల జీవిత బీమా."
     },
     "lesson": "L16"
   },
   {
     "id": "faq36",
     "q": {
-      "en": "Does the family need health insurance?"
+      "en": "Does the family need health insurance?",
+      "hi": "क्या परिवार को स्वास्थ्य बीमा चाहिए?",
+      "te": "కుటుంబానికి ఆరోగ్య బీమా కావాలా?"
     },
     "a": {
-      "en": "Check if you qualify for Ayushman Bharat or Aarogyasri. They cover big hospital bills for eligible families."
+      "en": "Check if you qualify for Ayushman Bharat or Aarogyasri. They cover big hospital bills for eligible families.",
+      "hi": "देखो कि तुम आयुष्मान भारत या आरोग्यश्री के पात्र हो या नहीं। ये पात्र परिवारों के बड़े अस्पताल बिल भरते हैं।",
+      "te": "ఆయుష్మాన్ భారత్ లేదా ఆరోగ్యశ్రీకి అర్హత ఉందో చూడు. అర్హత ఉన్న కుటుంబాల పెద్ద ఆసుపత్రి బిల్లులు అవి కడతాయి."
     },
     "lesson": "L16"
   },
   {
     "id": "faq37",
-    "q": {
-      "en": "What is an SIP?"
-    },
+    "q": { "en": "What is an SIP?", "hi": "SIP क्या है?", "te": "SIP అంటే ఏమిటి?" },
     "a": {
-      "en": "A fixed amount put into a fund every month. It builds the habit and spreads your buying over time."
+      "en": "A fixed amount put into a fund every month. It builds the habit and spreads your buying over time.",
+      "hi": "हर महीने फंड में डाली जाने वाली तय रकम। इससे आदत बनती है और खरीद समय में फैल जाती है।",
+      "te": "ప్రతి నెలా ఫండ్‌లో వేసే స్థిర మొత్తం. అలవాటు ఏర్పడుతుంది, కొనుగోలు కాలంలో విస్తరిస్తుంది."
     },
     "lesson": "L17"
   },
   {
     "id": "faq38",
     "q": {
-      "en": "Is investing in an index fund safe?"
+      "en": "Is investing in an index fund safe?",
+      "hi": "क्या इंडेक्स फंड में निवेश सुरक्षित है?",
+      "te": "ఇండెక్స్ ఫండ్‌లో పెట్టుబడి భద్రమా?"
     },
     "a": {
-      "en": "It can fall 20–30% in a bad year. It's for long-term money, not money you need soon."
+      "en": "It can fall 20–30% in a bad year. It's for long-term money, not money you need soon.",
+      "hi": "बुरे साल में 20–30% गिर सकता है। यह लंबे समय के पैसे के लिए है, जल्दी चाहिए पैसे के लिए नहीं।",
+      "te": "చెడ్డ ఏడాదిలో 20–30% పడొచ్చు. ఇది దీర్ఘకాల డబ్బుకు, త్వరలో అవసరమయ్యే డబ్బుకు కాదు."
     },
     "lesson": "L17"
   },
   {
     "id": "faq39",
     "q": {
-      "en": "Should I wait until I earn more to invest?"
+      "en": "Should I wait until I earn more to invest?",
+      "hi": "क्या निवेश के लिए ज़्यादा कमाने तक रुकूँ?",
+      "te": "పెట్టుబడికి ఎక్కువ సంపాదించే వరకు ఆగాలా?"
     },
     "a": {
-      "en": "Start small now. ₹1,000 a month from 22 grows much more than ₹2,000 a month from 30."
+      "en": "Start small now. ₹1,000 a month from 22 grows much more than ₹2,000 a month from 30.",
+      "hi": "अभी छोटे से शुरू करो। 22 से ₹1,000 महीना, 30 से ₹2,000 महीने से कहीं ज़्यादा बढ़ता है।",
+      "te": "ఇప్పుడే చిన్నగా మొదలుపెట్టు. 22 నుంచి నెలకు ₹1,000, 30 నుంచి నెలకు ₹2,000 కంటే చాలా ఎక్కువ పెరుగుతుంది."
     },
     "lesson": "L17"
   },
   {
     "id": "faq40",
     "q": {
-      "en": "How much should I spend on a wedding?"
+      "en": "How much should I spend on a wedding?",
+      "hi": "शादी पर कितना खर्च करूँ?",
+      "te": "పెళ్లికి ఎంత ఖర్చు చేయాలి?"
     },
     "a": {
-      "en": "What you have saved, not what you can borrow. A loan for one day can take years to repay."
+      "en": "What you have saved, not what you can borrow. A loan for one day can take years to repay.",
+      "hi": "जितना बचाया है, उतना, जितना उधार मिल सकता है उतना नहीं। एक दिन का कर्ज़ चुकाने में सालों लग सकते हैं।",
+      "te": "పొదుపు చేసినంత, అప్పు దొరికినంత కాదు. ఒక్క రోజు కోసం చేసిన అప్పు తీరడానికి ఏళ్లు పట్టొచ్చు."
     },
     "lesson": "L18"
   },
   {
     "id": "faq41",
     "q": {
-      "en": "My salary went up. Should my spending go up too?"
+      "en": "My salary went up. Should my spending go up too?",
+      "hi": "मेरी तनख्वाह बढ़ी। क्या खर्च भी बढ़ाऊँ?",
+      "te": "నా జీతం పెరిగింది. ఖర్చు కూడా పెంచాలా?"
     },
     "a": {
-      "en": "A little, yes. But save part of every raise first, or the raise disappears."
+      "en": "A little, yes. But save part of every raise first, or the raise disappears.",
+      "hi": "थोड़ा, हाँ। पर हर बढ़ोतरी का हिस्सा पहले बचाओ, वरना बढ़ोतरी गायब हो जाएगी।",
+      "te": "కొంచెం, సరే. కానీ ప్రతి పెంపులో కొంత ముందు పొదుపు చేయి, లేకపోతే పెంపు మాయమవుతుంది."
     },
     "lesson": "L18"
   },
   {
     "id": "faq42",
     "q": {
-      "en": "The market fell 30%. Should I sell?"
+      "en": "The market fell 30%. Should I sell?",
+      "hi": "बाज़ार 30% गिरा। क्या बेच दूँ?",
+      "te": "మార్కెట్ 30% పడింది. అమ్మేయాలా?"
     },
     "a": {
-      "en": "Panic-selling turns a paper loss into a real one. Broad markets have usually recovered in time."
+      "en": "Panic-selling turns a paper loss into a real one. Broad markets have usually recovered in time.",
+      "hi": "घबराकर बेचने से कागज़ी नुकसान असली बन जाता है। बड़े बाज़ार आमतौर पर समय के साथ सँभले हैं।",
+      "te": "భయంతో అమ్మితే కాగితపు నష్టం నిజమవుతుంది. విస్తృత మార్కెట్లు సాధారణంగా కాలంతో కోలుకున్నాయి."
     },
     "lesson": "L19"
   },
   {
     "id": "faq43",
-    "q": {
-      "en": "What is diversification?"
-    },
+    "q": { "en": "What is diversification?", "hi": "विविधता क्या है?", "te": "వైవిధ్యం అంటే ఏమిటి?" },
     "a": {
-      "en": "Not keeping all your eggs in one basket. Spread money across FD, gold and funds."
+      "en": "Not keeping all your eggs in one basket. Spread money across FD, gold and funds.",
+      "hi": "सारे अंडे एक टोकरी में न रखना। पैसा FD, सोने और फंड में फैलाओ।",
+      "te": "అన్ని గుడ్లు ఒకే బుట్టలో పెట్టకపోవడం. డబ్బును FD, బంగారం, ఫండ్లలో పంచు."
     },
     "lesson": "L19"
   },
   {
     "id": "faq44",
     "q": {
-      "en": "How do I prepare for a flood or hospital bill?"
+      "en": "How do I prepare for a flood or hospital bill?",
+      "hi": "बाढ़ या अस्पताल के बिल के लिए कैसे तैयारी करूँ?",
+      "te": "వరద లేదా ఆసుపత్రి బిల్లుకు ఎలా సిద్ధం కావాలి?"
     },
     "a": {
-      "en": "Insurance first, an emergency fund second. Together they decide how much a disaster hurts."
+      "en": "Insurance first, an emergency fund second. Together they decide how much a disaster hurts.",
+      "hi": "पहले बीमा, फिर आपात फंड। दोनों मिलकर तय करते हैं कि आपदा कितना नुकसान करेगी।",
+      "te": "ముందు బీమా, తర్వాత అత్యవసర నిధి. రెండూ కలిసి విపత్తు ఎంత దెబ్బ తీస్తుందో నిర్ణయిస్తాయి."
     },
     "lesson": "L20"
   },
   {
     "id": "faq45",
     "q": {
-      "en": "The crop failed. Where can we get help?"
+      "en": "The crop failed. Where can we get help?",
+      "hi": "फ़सल खराब हो गई। मदद कहाँ मिलेगी?",
+      "te": "పంట పోయింది. సహాయం ఎక్కడ దొరుకుతుంది?"
     },
     "a": {
-      "en": "Claim crop insurance, ask about government relief, and use a bank or SHG loan, never the costliest lender."
+      "en": "Claim crop insurance, ask about government relief, and use a bank or SHG loan, never the costliest lender.",
+      "hi": "फ़सल बीमा का दावा करो, सरकारी राहत के बारे में पूछो, और बैंक या SHG का कर्ज़ लो, सबसे महँगे कर्ज़दाता का कभी नहीं।",
+      "te": "పంట బీమా క్లెయిమ్ చేయి, ప్రభుత్వ సహాయం గురించి అడుగు, బ్యాంక్ లేదా పొదుపు సంఘం అప్పు తీసుకో, అతి ఖరీదైనవాడి దగ్గర ఎప్పుడూ కాదు."
     },
     "lesson": "L20"
   },
   {
     "id": "faq46",
     "q": {
-      "en": "How do I know if an agent is mis-selling?"
+      "en": "How do I know if an agent is mis-selling?",
+      "hi": "कैसे जानूँ कि एजेंट गलत बेच रहा है?",
+      "te": "ఏజెంట్ తప్పుగా అమ్ముతున్నాడని ఎలా తెలుస్తుంది?"
     },
     "a": {
-      "en": "Ask how much commission they earn. Mixed insurance-plus-investment plans often pay agents the most."
+      "en": "Ask how much commission they earn. Mixed insurance-plus-investment plans often pay agents the most.",
+      "hi": "पूछो कि उसे कितना कमीशन मिलता है। बीमा-और-निवेश वाले मिले-जुले प्लान अक्सर एजेंट को सबसे ज़्यादा देते हैं।",
+      "te": "అతనికి ఎంత కమిషన్ వస్తుందో అడుగు. బీమా-పెట్టుబడి కలిపిన ప్లాన్లు చాలాసార్లు ఏజెంట్లకు ఎక్కువ ఇస్తాయి."
     },
     "lesson": "L21"
   },
   {
     "id": "faq47",
     "q": {
-      "en": "What is better: term insurance or a money-back plan?"
+      "en": "What is better: term insurance or a money-back plan?",
+      "hi": "बेहतर क्या है: टर्म बीमा या मनी-बैक प्लान?",
+      "te": "ఏది మేలు: టర్మ్ బీమానా, మనీ-బ్యాక్ ప్లానా?"
     },
     "a": {
-      "en": "Usually term cover for protection, plus a low-cost fund for growth. Each does one job well."
+      "en": "Usually term cover for protection, plus a low-cost fund for growth. Each does one job well.",
+      "hi": "आमतौर पर सुरक्षा के लिए टर्म कवर, और बढ़त के लिए कम खर्च वाला फंड। हर एक अपना काम अच्छे से करता है।",
+      "te": "సాధారణంగా రక్షణకు టర్మ్ బీమా, పెరుగుదలకు తక్కువ ఖర్చు ఫండ్. ఒక్కొక్కటి తన పని బాగా చేస్తుంది."
     },
     "lesson": "L21"
   },
   {
     "id": "faq48",
     "q": {
-      "en": "How do I spot a Ponzi scheme?"
+      "en": "How do I spot a Ponzi scheme?",
+      "hi": "पोंज़ी स्कीम कैसे पहचानूँ?",
+      "te": "పోంజీ స్కీమ్‌ను ఎలా గుర్తించాలి?"
     },
     "a": {
-      "en": "Very high \"guaranteed\" returns and bonuses for bringing friends. Old members are paid with new members' money."
+      "en": "Very high \"guaranteed\" returns and bonuses for bringing friends. Old members are paid with new members' money.",
+      "hi": "बहुत ऊँचा \"गारंटी\" वाला रिटर्न और दोस्त लाने पर बोनस। पुराने सदस्यों को नए सदस्यों के पैसे से दिया जाता है।",
+      "te": "చాలా ఎక్కువ \"గ్యారంటీ\" రాబడి, స్నేహితులను తెస్తే బోనస్. పాత సభ్యులకు కొత్తవాళ్ల డబ్బుతో ఇస్తారు."
     },
     "lesson": "L22"
   },
   {
     "id": "faq49",
     "q": {
-      "en": "I got a video call from police saying I'm under digital arrest. What do I do?"
+      "en": "I got a video call from police saying I'm under digital arrest. What do I do?",
+      "hi": "पुलिस का वीडियो कॉल आया कि मैं डिजिटल अरेस्ट में हूँ। क्या करूँ?",
+      "te": "పోలీసుల నుంచి వీడియో కాల్, నేను డిజిటల్ అరెస్ట్‌లో ఉన్నానని. ఏం చేయాలి?"
     },
     "a": {
-      "en": "Hang up. There is no digital arrest. Real police never ask for money on a call. Call 1930."
+      "en": "Hang up. There is no digital arrest. Real police never ask for money on a call. Call 1930.",
+      "hi": "फ़ोन काट दो। डिजिटल अरेस्ट जैसी कोई चीज़ नहीं। असली पुलिस कॉल पर कभी पैसे नहीं माँगती। 1930 पर फ़ोन करो।",
+      "te": "ఫోన్ పెట్టేయి. డిజిటల్ అరెస్ట్ అనేదే లేదు. నిజమైన పోలీసులు కాల్‌లో ఎప్పుడూ డబ్బు అడగరు. 1930కి ఫోన్ చేయి."
     },
     "lesson": "L22"
   },
   {
     "id": "faq50",
     "q": {
-      "en": "An app shows my investment tripled, but I must pay tax to withdraw. Is it real?"
+      "en": "An app shows my investment tripled, but I must pay tax to withdraw. Is it real?",
+      "hi": "ऐप दिखाता है मेरा निवेश तीन गुना हुआ, पर निकालने के लिए टैक्स देना होगा। क्या यह असली है?",
+      "te": "నా పెట్టుబడి మూడు రెట్లు అయ్యిందని యాప్ చూపిస్తోంది, కానీ తీసుకోవాలంటే ట్యాక్స్ కట్టాలంటోంది. ఇది నిజమేనా?"
     },
     "a": {
-      "en": "No. Fake trading apps show fake numbers. Never pay to withdraw. Report it on 1930."
+      "en": "No. Fake trading apps show fake numbers. Never pay to withdraw. Report it on 1930.",
+      "hi": "नहीं। नकली ट्रेडिंग ऐप नकली नंबर दिखाते हैं। निकालने के लिए कभी पैसा मत दो। 1930 पर रिपोर्ट करो।",
+      "te": "కాదు. నకిలీ ట్రేడింగ్ యాప్‌లు నకిలీ నంబర్లు చూపిస్తాయి. తీసుకోవడానికి ఎప్పుడూ డబ్బు కట్టకు. 1930కి రిపోర్ట్ చేయి."
     },
     "lesson": "L22"
   },
   {
     "id": "faq51",
     "q": {
-      "en": "How big an EMI can I afford?"
+      "en": "How big an EMI can I afford?",
+      "hi": "मैं कितनी बड़ी EMI सँभाल सकता हूँ?",
+      "te": "నేను ఎంత EMI భరించగలను?"
     },
     "a": {
-      "en": "Keep all EMIs together under about 30–40% of your take-home pay."
+      "en": "Keep all EMIs together under about 30–40% of your take-home pay.",
+      "hi": "सारी EMI मिलाकर हाथ की तनख्वाह के लगभग 30–40% से कम रखो।",
+      "te": "అన్ని EMIలు కలిపి టేక్-హోమ్ జీతంలో సుమారు 30–40% లోపు ఉంచు."
     },
     "lesson": "L23"
   },
   {
     "id": "faq52",
     "q": {
-      "en": "What papers should I check before buying land?"
+      "en": "What papers should I check before buying land?",
+      "hi": "ज़मीन खरीदने से पहले कौन-से कागज़ देखूँ?",
+      "te": "భూమి కొనే ముందు ఏ కాగితాలు చూడాలి?"
     },
     "a": {
-      "en": "The sale deed, the pahani and an encumbrance certificate. The seller's name must match the records."
+      "en": "The sale deed, the pahani and an encumbrance certificate. The seller's name must match the records.",
+      "hi": "बैनामा, पहानी और भार प्रमाणपत्र। विक्रेता का नाम रिकॉर्ड से मेल खाना चाहिए।",
+      "te": "సేల్ డీడ్, పహాణీ, ఈసీ. అమ్మేవారి పేరు రికార్డులతో సరిపోలాలి."
     },
     "lesson": "L23"
   },
   {
     "id": "faq53",
-    "q": {
-      "en": "What is a down payment?"
-    },
+    "q": { "en": "What is a down payment?", "hi": "डाउन पेमेंट क्या है?", "te": "డౌన్ పేమెంట్ అంటే ఏమిటి?" },
     "a": {
-      "en": "The part you pay from your own savings. A bigger down payment means a smaller loan and EMI."
+      "en": "The part you pay from your own savings. A bigger down payment means a smaller loan and EMI.",
+      "hi": "वह हिस्सा जो तुम अपनी बचत से देते हो। बड़ा डाउन पेमेंट मतलब छोटा कर्ज़ और छोटी EMI।",
+      "te": "నీ పొదుపు నుంచి కట్టే భాగం. పెద్ద డౌన్ పేమెంట్ అంటే చిన్న అప్పు, చిన్న EMI."
     },
     "lesson": "L23"
   },
   {
     "id": "faq54",
     "q": {
-      "en": "What is the Atal Pension Yojana?"
+      "en": "What is the Atal Pension Yojana?",
+      "hi": "अटल पेंशन योजना क्या है?",
+      "te": "అటల్ పెన్షన్ యోజన అంటే ఏమిటి?"
     },
     "a": {
-      "en": "A government pension: pay a small amount monthly and get ₹1,000 to ₹5,000 a month from 60."
+      "en": "A government pension: pay a small amount monthly and get ₹1,000 to ₹5,000 a month from 60.",
+      "hi": "सरकारी पेंशन: हर महीने थोड़ा दो और 60 से ₹1,000 से ₹5,000 महीना पाओ।",
+      "te": "ప్రభుత్వ పెన్షన్: ప్రతి నెలా కొంచెం కట్టు, 60 నుంచి నెలకు ₹1,000 నుంచి ₹5,000 పొందు."
     },
     "lesson": "L24"
   },
   {
     "id": "faq55",
-    "q": {
-      "en": "Why should I add a nominee?"
-    },
+    "q": { "en": "Why should I add a nominee?", "hi": "नॉमिनी क्यों जोड़ूँ?", "te": "నామినీని ఎందుకు చేర్చాలి?" },
     "a": {
-      "en": "So your family gets your money quickly if something happens to you. It takes two minutes."
+      "en": "So your family gets your money quickly if something happens to you. It takes two minutes.",
+      "hi": "ताकि तुम्हें कुछ हो जाए तो परिवार को पैसा जल्दी मिले। इसमें दो मिनट लगते हैं।",
+      "te": "నీకు ఏదైనా జరిగితే కుటుంబానికి డబ్బు త్వరగా అందడానికి. రెండు నిమిషాలే పడుతుంది."
     },
     "lesson": "L24"
   },
   {
     "id": "faq56",
     "q": {
-      "en": "How do I update my KYC safely?"
+      "en": "How do I update my KYC safely?",
+      "hi": "अपना KYC सुरक्षित तरीके से कैसे अपडेट करूँ?",
+      "te": "నా KYCని భద్రంగా ఎలా అప్‌డేట్ చేయాలి?"
     },
     "a": {
-      "en": "At your bank branch or its official app. Never through an SMS link."
+      "en": "At your bank branch or its official app. Never through an SMS link.",
+      "hi": "अपनी बैंक ब्रांच में या उसके अपने ऐप में। SMS लिंक से कभी नहीं।",
+      "te": "నీ బ్యాంక్ బ్రాంచ్‌లో లేదా దాని సొంత యాప్‌లో. SMS లింక్ ద్వారా ఎప్పుడూ కాదు."
     },
     "lesson": "L24"
   }
