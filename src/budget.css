@@ -252,10 +252,88 @@
   color: #b5482c;
 }
 .budget-tip {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 12.5px;
-  color: #8a6f45;
+  margin: 14px auto 0;
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px 9px 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff8e6, #ffefc8);
+  border: 2px solid #f1d58f;
+  box-shadow: 0 3px 0 #e8c46e, 0 6px 14px rgba(170, 120, 40, 0.14);
+  color: #6b4f24;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  animation: tip-in 0.5s ease-out both, tip-bob 3.2s ease-in-out 0.6s infinite;
+}
+
+.budget-tip-coin {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe58a, #f2b632);
+  border: 2px solid #d9962a;
+  color: #8a5a10;
+  animation: tip-coin 2.4s ease-in-out infinite;
+}
+
+.budget-tip-key {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin: 0 3px;
+  border-radius: 9px;
+  font-size: 18px;
+  font-weight: 800;
+  vertical-align: middle;
+  background: #fff;
+  border: 2px solid currentColor;
+  box-shadow: 0 2px 0 currentColor;
+}
+
+.budget-tip-key.minus {
+  color: #e07a6a;
+}
+
+.budget-tip-key.plus {
+  color: #5aa86a;
+}
+
+@keyframes tip-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+}
+
+@keyframes tip-bob {
+  50% {
+    box-shadow: 0 3px 0 #e8c46e, 0 8px 20px rgba(242, 182, 50, 0.3);
+  }
+}
+
+@keyframes tip-coin {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg) scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .budget-tip,
+  .budget-tip-coin {
+    animation: none;
+  }
 }
 
 .budget-actions {
