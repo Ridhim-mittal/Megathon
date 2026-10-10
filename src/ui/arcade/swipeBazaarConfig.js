@@ -39,10 +39,22 @@ export const SWIPE_CONFIG = {
   // Savings coin: moves money into savings and builds a combo.
   coin: { amount: 200, comboBonusEvery: 3, comboBonus: 60 },
 
-  // Spawning: how often something flies up, and what it is (needs are scheduled separately).
-  spawnEvery: [0.85, 0.55], // seconds between launches, at month 1 → last month
-  mix: { want: 0.38, emi: 0.16, loan: 0.08, coin: 0.38 },
-  maxOnScreen: 5,
+  // Waves, tossed the way classic slicing games do it: early waves are single items, then pairs,
+  // clusters, fans, quick streams and crossing throws. The next wave comes once the screen has
+  // (mostly) cleared. Difficulty builds over the whole game, not per month.
+  waves: {
+    rampWaves: 36, // waves until full difficulty (roughly the whole game)
+    size: [1, 6], // most items in one wave, first wave → full difficulty
+    gap: [1.0, 0.35], // pause after a wave clears, in seconds
+    maxWait: 3.4, // start the next wave anyway if items are still up this long after the last toss
+    streamEvery: [0.32, 0.14], // seconds between tosses in a stream
+    trapChance: [0.15, 0.55], // chance a wave hides a trap (pay-later item or loan app)
+    // When each toss pattern unlocks (game progress 0 → 1).
+    patterns: { single: 0, pair: 0.06, clump: 0.15, fan: 0.22, stream: 0.32, cross: 0.45 },
+  },
+  // Inside a wave: non-trap items are wants or savings coins; traps are pay-later items or loan apps.
+  mix: { want: 0.5, emiTrap: 0.68 },
+  apex: [0.16, 0.45], // how high a toss peaks, as a share of the field height from the top
 
   // Status meter (0–100): wants and EMIs raise it, and it drains by itself. EMIs don't drain.
   statusDrain: 3.2, // points per second
@@ -54,7 +66,6 @@ export const SWIPE_CONFIG = {
 
   // Physics (in field pixels; the field is 640 × 360).
   gravity: 520,
-  launchSpeed: [500, 610],
   friendBubbleChance: 0.75, // chance a tempting item comes with a friend's push
 
   // Final score = savings + cash − EMI still owed − fines. Stars at these scores.

@@ -4,7 +4,7 @@ import { useT, formatMoney } from "../../i18n/index.jsx";
 import { sounds } from "../sound.js";
 import { SWIPE_CONFIG as C } from "./swipeBazaarConfig.js";
 
-// Swipe Bazaar (lesson: peer pressure & borrowing). Things fly up from the bazaar. Swiping one
+// Swipe Bazaar (lesson: peer pressure & borrowing). Things are tossed up from the bazaar in waves. Swiping one
 // BUYS or ACCEPTS it; letting it fall means saying NO. Six months, a fixed income each month.
 // Needs should be paid, wants cost money now, "pay later" items chain an EMI to your wallet,
 // loan apps hand you cash and then come after you, and savings coins build a combo.
@@ -107,8 +107,10 @@ export function SwipeBazaar({ running, onEnd }) {
       floats: [], // floating texts on the field
       threats: [], // loan-app threat popups
       trail: [],
-      spawnIn: 1,
       needQueue: [],
+      waveNo: 0, // waves tossed so far this game (drives difficulty)
+      wave: null, // { id, t, queue: [toss…], lastAt }
+      gapLeft: 1, // seconds until the next wave
       thinkLeft: C.thinkUses,
       thinkT: 0,
       shake: 0,
@@ -164,41 +166,125 @@ export function SwipeBazaar({ running, onEnd }) {
       // Needs fly at spread-out moments during the month.
       const slot = (C.monthSeconds - 6) / C.needs.length;
       g.needQueue = [...C.needs].sort(() => Math.random() - 0.5).map((d, i) => ({ d, at: 1.5 + slot * (i + Math.random() * 0.7) }));
-      g.spawnIn = 0.8;
+      g.wave = null;
+      g.gapLeft = 0.9;
       if (g.emis.some((e) => e.kind === "loan")) g.nextThreat = 2 + Math.random() * 3;
       else g.nextThreat = Infinity;
     };
 
-    const launch = (kind, def) => {
-      const x = 90 + Math.random() * (FW - 180);
-      const toward = (FW / 2 - x) / (FW / 2);
-      const it = {
-        kind,
-        def,
-        x,
-        y: FH + R[kind],
-        vx: toward * (40 + Math.random() * 70),
-        vy: -lerp(C.launchSpeed[0], C.launchSpeed[1], Math.random()),
-        r: R[kind],
-        spin: (Math.random() - 0.5) * 2,
-        rot: 0,
-        born: performance.now(),
-      };
-      if ((kind === "want" || kind === "emi" || kind === "loan") && Math.random() < C.friendBubbleChance) {
+    // Toss one item from the bottom so it peaks at `apex` (share of the field from the top).
+    const launch = (kind, def, x, vx, apex, waveId) => {
+      const r = R[kind];
+      const startY = FH + r;
+      const vy = -Math.sqrt(2 * C.gravity * (startY - FH * apex));
+      const air = (2 * -vy) / C.gravity;
+      // Keep the whole arc on screen.
+      const land = x + vx * air;
+      if (land < r + 10 || land > FW - r - 10) vx = (Math.max(r + 10, Math.min(FW - r - 10, land)) - x) / air;
+      const it = { kind, def, x, y: startY, vx, vy, r, spin: (Math.random() - 0.5) * 2.4, rot: 0, wave: waveId };
+      // At most one friend pushes per wave, so big waves stay readable.
+      const pushed = g.items.some((o) => o.wave === waveId && o.bubble);
+      if (!pushed && (kind === "want" || kind === "emi" || kind === "loan") && Math.random() < C.friendBubbleChance) {
         const lines = tRef.current("arcade.swipe.friends");
         it.bubble = Array.isArray(lines) ? pick(lines) : String(lines);
       }
       g.items.push(it);
     };
 
-    const spawnRandom = () => {
-      if (g.items.length >= C.maxOnScreen) return;
-      const r = Math.random();
-      const m = C.mix;
-      if (r < m.want) launch("want", pick(C.wants));
-      else if (r < m.want + m.emi) launch("emi", pick(C.emiItems));
-      else if (r < m.want + m.emi + m.loan) launch("loan", C.loanApp);
-      else launch("coin", C.coin);
+    // ---------- waves ----------
+    const W = C.waves;
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const progress = () => Math.min(1, g.waveNo / W.rampWaves);
+    const apexAt = () => rand(C.apex[0], C.apex[1]);
+
+    // Later patterns unlock as the game goes on, and become more common.
+    const pickPattern = (p) => {
+      const open = Object.entries(W.patterns).filter(([, at]) => p >= at);
+      const weights = open.map(([name, at]) => (name === "single" ? Math.max(0.12, 1 - p * 1.6) : 0.5 + (p - at) * 2.5));
+      let r = Math.random() * weights.reduce((a, w) => a + w, 0);
+      for (let i = 0; i < open.length; i++) if ((r -= weights[i]) <= 0) return open[i][0];
+      return open[open.length - 1][0];
+    };
+
+    // What flies in a wave: any due need, maybe a hidden trap, the rest wants and savings coins.
+    const waveItems = (n, p) => {
+      const out = [];
+      const due = g.needQueue.find((q) => !q.done && g.time >= q.at);
+      if (due) {
+        due.done = true;
+        out.push(["need", due.d]);
+      }
+      if (Math.random() < lerp(W.trapChance[0], W.trapChance[1], p)) {
+        const traps = n >= 5 && Math.random() < p ? 2 : 1;
+        for (let i = 0; i < traps && out.length < n; i++) out.push(Math.random() < C.mix.emiTrap ? ["emi", pick(C.emiItems)] : ["loan", C.loanApp]);
+      }
+      while (out.length < n) out.push(Math.random() < C.mix.want ? ["want", pick(C.wants)] : ["coin", C.coin]);
+      return out.sort(() => Math.random() - 0.5);
+    };
+
+    const startWave = () => {
+      g.waveNo += 1;
+      const p = progress();
+      const pattern = pickPattern(p);
+      const most = Math.max(3, Math.round(lerp(W.size[0], W.size[1], p)));
+      const n = pattern === "single" ? 1 : pattern === "pair" ? 2 : 3 + Math.floor(Math.random() * (most - 2));
+      const items = waveItems(n, p);
+      const tosses = [];
+      const add = (i, delay, x, vx, apex = apexAt()) => tosses.push({ at: delay, kind: items[i][0], def: items[i][1], x, vx, apex });
+      if (pattern === "single") {
+        const x = rand(140, FW - 140);
+        add(0, 0, x, (FW / 2 - x) * rand(0.15, 0.4));
+      } else if (pattern === "pair") {
+        const x1 = rand(110, FW / 2 - 50);
+        const x2 = rand(FW / 2 + 50, FW - 110);
+        add(0, 0, x1, rand(10, 60));
+        add(1, rand(0, 0.12), x2, -rand(10, 60));
+      } else if (pattern === "clump") {
+        // A bunch from one spot, spreading a little.
+        const x0 = rand(170, FW - 170);
+        items.forEach((_, i) => add(i, i * 0.09, x0 + rand(-40, 40), lerp(-110, 110, n === 1 ? 0.5 : i / (n - 1)) + rand(-20, 20) + (FW / 2 - x0) * 0.2, apexAt()));
+      } else if (pattern === "fan") {
+        // Thrown together from the middle, fanning out left to right.
+        const x0 = FW / 2 + rand(-60, 60);
+        const apex = apexAt();
+        items.forEach((_, i) => add(i, 0, x0 + rand(-10, 10), lerp(-180, 180, n === 1 ? 0.5 : i / (n - 1)), apex + rand(-0.04, 0.04)));
+      } else if (pattern === "stream") {
+        // One after another, sweeping across from one side.
+        const dir = Math.random() < 0.5 ? 1 : -1;
+        const every = lerp(W.streamEvery[0], W.streamEvery[1], p);
+        items.forEach((_, i) => {
+          const x = dir > 0 ? 90 + i * 70 : FW - 90 - i * 70;
+          add(i, i * every, Math.max(60, Math.min(FW - 60, x)), dir * rand(50, 110));
+        });
+      } else {
+        // Crossing throws from both bottom corners.
+        items.forEach((_, i) => {
+          const left = i % 2 === 0;
+          add(i, Math.floor(i / 2) * 0.12, left ? rand(50, 110) : rand(FW - 110, FW - 50), (left ? 1 : -1) * rand(170, 240), apexAt());
+        });
+      }
+      g.wave = { id: g.waveNo, t: 0, queue: tosses.sort((a, b) => a.at - b.at), lastAt: Math.max(...tosses.map((x) => x.at)) };
+    };
+
+    // Toss what's due in the current wave; start the next once the screen clears.
+    const runWaves = (dt) => {
+      if (g.wave) {
+        g.wave.t += dt;
+        while (g.wave.queue.length && g.wave.queue[0].at <= g.wave.t) {
+          const q = g.wave.queue.shift();
+          launch(q.kind, q.def, q.x, q.vx, q.apex, g.wave.id);
+        }
+        const up = g.items.some((it) => it.wave === g.wave.id && !it.sliced && !it.gone);
+        const overdue = g.wave.t > g.wave.lastAt + W.maxWait;
+        if (!g.wave.queue.length && (!up || overdue)) {
+          g.wave = null;
+          g.gapLeft = lerp(W.gap[0], W.gap[1], progress());
+        }
+      } else if (g.time < C.monthSeconds - 2.5) {
+        // No new waves in the last moments of a month, so it ends cleanly.
+        g.gapLeft -= dt;
+        if (g.gapLeft <= 0) startWave();
+      }
     };
 
     // Swiping an item: buy it, accept it, or save.
@@ -424,16 +510,7 @@ export function SwipeBazaar({ running, onEnd }) {
       if (live) {
         g.time += realDt; // the month clock runs at real speed; only the items slow down
         g.status = Math.max(0, g.status - C.statusDrain * realDt);
-        for (const n of g.needQueue) if (!n.done && g.time >= n.at) {
-          n.done = true;
-          launch("need", n.d);
-        }
-        g.spawnIn -= dt;
-        if (g.spawnIn <= 0) {
-          spawnRandom();
-          const k = (g.month - 1) / Math.max(1, C.rounds - 1);
-          g.spawnIn = lerp(C.spawnEvery[0], C.spawnEvery[1], k) * (0.7 + Math.random() * 0.6);
-        }
+        runWaves(dt);
         g.nextThreat -= realDt;
         if (g.nextThreat <= 0 && g.emis.some((e) => e.kind === "loan")) {
           const lines = tRef.current("arcade.swipe.threats");
@@ -728,6 +805,8 @@ function drawBall(ctx, kind, def, x, y, r, now, clipSide, angle) {
   ctx.font = `${Math.round(r * (kind === "coin" ? 1.0 : 1.05))}px system-ui, "Noto Color Emoji", sans-serif`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
+  ctx.fillStyle = kind === "coin" ? "#7a4f00" : "#2b2238"; // emoji keep their own colours
+  if (kind === "coin") ctx.font = `800 ${Math.round(r * 1.05)}px system-ui, sans-serif`;
   ctx.fillText(kind === "loan" ? "💸" : kind === "coin" ? "₹" : def.icon, 0, kind === "coin" ? 1 : 2);
   ctx.restore();
 }
