@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, TriangleAlert, X } from "lucide-react";
+import { ArrowRight, Rat, TriangleAlert, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { goals, select } from "../ui/gameAdapter.js";
 import { AskAmmamma } from "../ui/AskAmmamma.jsx";
@@ -14,6 +14,7 @@ import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { sounds } from "../ui/sound.js";
 import { CHOICE_GAMES, GAME_COMPONENTS, SCENE_GAMES } from "../ui/games/choiceGames.js";
+import { RatGuard } from "../ui/games/RatGuard.jsx";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
 import { CardView } from "./life/CardView.jsx";
@@ -58,7 +59,12 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   }, [toast, onToast]);
 
   const placeName = useCallback((id) => (story?.mission.placeNames?.[id] ? pick(story.mission.placeNames[id]) : t(`places.${id}`)), [story, pick, t]);
-  const labels = useMemo(() => Object.fromEntries(Object.keys(map.placeById).map((id) => [id, gameAtPlace(id) ? `${placeName(id)} 🎮` : placeName(id)])), [placeName, map]);
+  // In the prologue, home is where Rat Guard can be played again.
+  const ratsAtHome = story?.mission.id === "prologue";
+  const labels = useMemo(
+    () => Object.fromEntries(Object.keys(map.placeById).map((id) => [id, gameAtPlace(id) || (ratsAtHome && id === "home") ? `${placeName(id)} 🎮` : placeName(id)])),
+    [placeName, map, ratsAtHome],
+  );
 
   const showIntro = phase === "budget" && story && introDone !== story.mission.id;
   const engineDialog = ["budget", "card", "outcome", "minigame", "chapterEnd"].includes(phase);
@@ -233,6 +239,21 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         <h2>{placeName(overlay.place)}</h2>
         <p>{t(`placeInfo.${overlay.place}`)}</p>
         {gameAtPlace(overlay.place) && <GameInvite gameId={gameAtPlace(overlay.place).id} onPlay={(game) => setOverlay({ type: "arcade", game })} />}
+        {ratsAtHome && overlay.place === "home" && (
+          <button className="game-invite game-ratGuard" onClick={() => setOverlay({ type: "ratguard" })}>
+            <span className="arcade-icon" aria-hidden="true">
+              <Rat size={30} />
+            </span>
+            <span>
+              <small>{t("arcade.invite")}</small>
+              <b>{t("ratguard.title")}</b>
+              <em>{t("ratguard.tag")}</em>
+            </span>
+            <strong>
+              {t("arcade.here")} <ArrowRight size={16} />
+            </strong>
+          </button>
+        )}
         {objective && <p className="quiet">{t("story.notHere", { place: placeName(objective.location) })}</p>}
         <div className="action-row">
           <button className="text-button" onClick={() => setOverlay(null)}>
@@ -339,6 +360,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
             if (!dispatch({ type: "CHOOSE", choiceId })) dispatch({ type: "ADVANCE" });
           },
         })}
+      {overlay?.type === "ratguard" && <RatGuard mode="practice" onClose={() => setOverlay(null)} />}
       {game && GAME_COMPONENTS[game.kind] &&
         React.createElement(GAME_COMPONENTS[game.kind], {
           mode: "story",

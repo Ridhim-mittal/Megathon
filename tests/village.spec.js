@@ -240,6 +240,38 @@ test("the interest race mini-game opens from the title: a wrong run offers Try a
   await expect(game).toContainText("5 of 5 right");
 });
 
+test("Rat Guard opens from the title: the bank unlocks after the cutscene, rats bounce off the vault, play again", async ({ page }) => {
+  test.setTimeout(90000);
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("/?seed=demo");
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+  await page.getByRole("button", { name: "Mini-game: Rat Guard" }).click();
+  const game = page.getByRole("dialog", { name: "Rat Guard" });
+  await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
+  await game.getByRole("button", { name: /Tin box/ }).click();
+  // Swat a few with Space, then skip to the cutscene.
+  await page.waitForTimeout(2500);
+  for (let i = 0; i < 4; i++) {
+    await page.keyboard.press(" ");
+    await page.waitForTimeout(400);
+  }
+  await game.getByRole("button", { name: "Skip" }).click();
+  await expect(game.getByText("₹500 chewed")).toBeVisible();
+  await game.getByRole("button", { name: /Bank account/ }).click({ timeout: 10000 });
+  await expect(game.locator(".rg-chip").nth(1)).toContainText("VAULT");
+  // Rats clang off the vault; after five the rest give up.
+  await expect(game.getByText("The vault holds!")).toBeVisible({ timeout: 45000 });
+  await expect(game.getByText("Not one rupee lost!")).toBeVisible({ timeout: 10000 });
+  await expect(game.locator(".rg-final")).toContainText("Rats shooed");
+  await game.getByRole("button", { name: "Play again" }).click();
+  await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
+  await game.getByRole("button", { name: "Close" }).click();
+  await expect(game).not.toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test("the title can jump straight to the town of the first job without touching the saved life", async ({ page }) => {
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());

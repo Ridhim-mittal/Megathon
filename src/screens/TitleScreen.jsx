@@ -1,9 +1,10 @@
 import React from "react";
-import { Building2, Calculator, Gamepad2, Play, Snowflake, Sparkles, Sprout, Sun } from "lucide-react";
+import { Building2, Calculator, Gamepad2, Play, Rat, Snowflake, Sparkles, Sprout, Sun } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 import { HeroPicker } from "../ui/HeroPicker.jsx";
 import { InterestRace } from "../ui/games/InterestRace.jsx";
+import { RatGuard } from "../ui/games/RatGuard.jsx";
 import { ArcadeGame, ArcadeMenu } from "../ui/arcade/Arcade.jsx";
 import { PixelPortrait } from "../ui/PixelPortrait.jsx";
 
@@ -14,6 +15,7 @@ export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settin
   const [playing, setPlaying] = React.useState(false);
   const [arcade, setArcade] = React.useState(null); // null | "menu" | a game id
   const [snow, setSnow] = React.useState(false);
+  const [rats, setRats] = React.useState(false);
   return (
     <div className="title-screen">
       <div className="title-vignette" />
@@ -65,6 +67,9 @@ export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settin
           <button className="title-game" onClick={() => setArcade("menu")}>
             <Gamepad2 size={16} aria-hidden="true" /> {t("arcade.title")}
           </button>
+          <button className="title-game rats" onClick={() => setRats(true)}>
+            <Rat size={16} aria-hidden="true" /> {t("ratguard.menu")}
+          </button>
           <button className="title-game snow" onClick={() => setSnow(true)}>
             <Snowflake size={16} aria-hidden="true" /> {t("arcade.snowMenu")}
           </button>
@@ -98,6 +103,7 @@ export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settin
           </section>
         </div>
       )}
+      {rats && <RatGuard mode="practice" onClose={() => setRats(false)} />}
       {playing && <InterestRace mode="practice" avatar={hero?.avatar ?? "boy"} onClose={() => setPlaying(false)} />}
       {picking && <HeroPicker initialAvatar={hero?.pickAvatar} initialName={hero?.pickName} onClose={() => onPicking(false)} onDone={onNew} />}
     </div>
