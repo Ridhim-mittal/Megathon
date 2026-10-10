@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useT } from "../i18n/index.jsx";
 import { goals, select } from "../ui/gameAdapter.js";
 import { AskAmmamma } from "../ui/AskAmmamma.jsx";
@@ -28,6 +28,7 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
   const [overlay, setOverlay] = useState(null); // { type: info|shop|phone|gyaan|ask, place?, lesson? }
   const [introDone, setIntroDone] = useState(null);
   const [goTo, setGoTo] = useState(null);
+  const finishing = useRef(false); // walking home to finish the chapter
   const [spawn, setSpawn] = useState(() => ({ ...START, dir: "down", key: life.chapter?.id }));
 
   // A new chapter starts in front of home.
@@ -60,7 +61,9 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
     (placeId) => {
       if (busy) return;
       const loc = locs.find((l) => l.id === placeId);
-      if (loc?.pending) {
+      const finish = finishing.current && placeId === "home";
+      finishing.current = false;
+      if (loc?.pending && !finish) {
         const err = dispatch({ type: "VISIT", location: placeId });
         if (!err) return;
       }
@@ -79,7 +82,8 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
   }, [busy, phone.unlocked]);
 
   // Quest log: walk to a place and go in (the phone just opens).
-  function go(place) {
+  function go(place, { finish = false } = {}) {
+    finishing.current = finish;
     if (place === "phone") setOverlay({ type: "phone", app: "messages" });
     else setGoTo({ place, key: Date.now() });
   }
@@ -143,7 +147,7 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
         onHelp={onHelp}
         onMenu={onMenu}
       />
-      {phase === "map" && !overlay && <QuestLog chapter={chapter} onGo={go} />}
+      {phase === "map" && !overlay && <QuestLog chapter={chapter} onGo={go} onFinish={() => go("home", { finish: true })} />}
       {phase === "map" && !overlay && <p className="map-controls">{t("map.controls")}</p>}
       {showIntro && <ChapterIntro chapter={chapter} avatar={avatar} phoneGift={chapter.phoneGift} onStart={() => setIntroDone(chapter.id)} />}
       {dialog && (

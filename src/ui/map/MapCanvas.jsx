@@ -141,9 +141,13 @@ export function MapCanvas({ avatar = "boy", stage = "child", markers = {}, label
     let last = performance.now();
     const ctx = canvas.current.getContext("2d");
     const tick = (now) => {
-      const dt = Math.min(0.05, (now - last) / 1000);
+      // Real time even when frames are slow: step in small slices.
+      let dt = Math.min(0.5, (now - last) / 1000);
       last = now;
-      update(dt, now);
+      while (dt > 0) {
+        update(Math.min(dt, 0.05), now);
+        dt -= 0.05;
+      }
       draw(ctx, now);
       raf = requestAnimationFrame(tick);
     };

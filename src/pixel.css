@@ -95,7 +95,7 @@
   align-items: stretch;
   gap: 6px;
   pointer-events: none;
-  z-index: 3;
+  z-index: 7; /* above dialogs, so language, sound and Ask stay usable */
 }
 .map-hud > * {
   pointer-events: auto;

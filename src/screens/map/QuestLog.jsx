@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp, Home, MapPin, Sparkles } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 
 // The chapter's to-do list: which places have events, and when to go home.
-export function QuestLog({ chapter, onGo }) {
+export function QuestLog({ chapter, onGo, onFinish }) {
   const { t, plain } = useT();
   const [open, setOpen] = useState(true);
   if (!chapter) return null;
@@ -49,7 +49,7 @@ export function QuestLog({ chapter, onGo }) {
               </span>
               <span>
                 <b>{t("quest.goHome")}</b>
-                <button className="secondary-button small quest-finish" onClick={() => onGo("home")}>
+                <button className="secondary-button small quest-finish" onClick={onFinish}>
                   {t("quest.finish")}
                 </button>
               </span>
