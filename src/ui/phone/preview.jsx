@@ -1,4 +1,5 @@
-// Dev preview for the phone: `npm run dev`, then open /phone-preview.html (?lang=hi|te, ?age=24).
+// Dev preview for the phone: `npm run dev`, then open /phone-preview.html
+// (?lang=hi|te, ?age=24, ?app=bank|invest|messages|gyaan, or ?app=reader&lesson=L07|topic:share).
 // Plays a real chapters-mode life forward with default choices, then opens the phone over a
 // stand-in map. Tapping a message runs VISIT "phone" and shows the card here.
 import React, { useCallback, useMemo, useState } from "react";
@@ -9,6 +10,7 @@ import "@fontsource-variable/noto-sans-telugu";
 import { I18nProvider, LANGS } from "../../i18n/index.jsx";
 import { content, createLife, select, step } from "../gameAdapter.js";
 import { Phone } from "./Phone.jsx";
+import { GyaanReader } from "../gyaan/GyaanReader.jsx";
 
 const params = new URLSearchParams(window.location.search);
 const TARGET_AGE = Number(params.get("age")) || 19;
@@ -39,7 +41,8 @@ function grownLife() {
 function Preview() {
   const [lang, setLang] = useState(LANGS.includes(params.get("lang")) ? params.get("lang") : "en");
   const [life, setLife] = useState(grownLife);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(params.get("app") !== "reader");
+  const [reader, setReader] = useState(params.get("app") === "reader");
   const i18n = useMemo(() => ({ lang, setLang, playerName: "Test", glossary: content.glossary ?? {} }), [lang]);
 
   const dispatch = useCallback(
@@ -74,6 +77,9 @@ function Preview() {
           <button type="button" onClick={() => setOpen(true)} disabled={open}>
             Open phone
           </button>
+          <button type="button" onClick={() => setReader(true)} disabled={reader || open}>
+            Gyaan reader
+          </button>
         </header>
 
         {card && (
@@ -96,8 +102,11 @@ function Preview() {
           </section>
         )}
 
+        {reader && <GyaanReader life={life} lessonId={params.get("lesson")} onClose={() => setReader(false)} />}
+
         {open && !card && (
           <Phone
+            initialApp={params.get("app")}
             life={life}
             dispatch={dispatch}
             onClose={() => setOpen(false)}

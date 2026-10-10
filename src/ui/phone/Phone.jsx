@@ -18,10 +18,14 @@ const APPS = [
 
 const FOCUSABLE = 'button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+const APP_IDS = APPS.map((a) => a.id);
+
 // The in-game phone. `dispatch(action)` returns null or an error { message }.
-export function Phone({ life, dispatch, onClose, onNotification }) {
+// Same props as src/ui/PhoneLite.jsx, so the map can swap it in: `initialApp` opens one app
+// directly; `onLearn` is accepted but not needed, because lessons open inside this phone.
+export function Phone({ life, dispatch, onClose, onNotification, onLearn, initialApp = null }) {
   const { s, money, lang } = usePhoneText();
-  const [app, setApp] = useState(null);
+  const [app, setApp] = useState(APP_IDS.includes(initialApp) ? initialApp : null);
   const [lesson, setLesson] = useState(null); // { id, kind }
   const [note, setNote] = useState(null); // { tone: "ok" | "error", text }
   const phoneRef = useRef(null);

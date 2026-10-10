@@ -5,6 +5,11 @@ import { useT } from "../../i18n/index.jsx";
 export const GYAAN_STRINGS = {
   en: {
     close: "Close lesson",
+    reader: "Gyaan",
+    closeReader: "Close Gyaan",
+    lessons: "Lessons",
+    topics: "Market topics",
+    locked: "Locked: live this lesson in the story first.",
     bigIdea: "The big idea",
     example: "Example",
     myth: "Myth",
@@ -139,6 +144,11 @@ export const GYAAN_STRINGS = {
   },
   hi: {
     close: "पाठ बंद करें",
+    reader: "ज्ञान",
+    closeReader: "ज्ञान बंद करें",
+    lessons: "पाठ",
+    topics: "बाज़ार के विषय",
+    locked: "बंद: पहले कहानी में यह पाठ जिएँ।",
     bigIdea: "बड़ी बात",
     example: "उदाहरण",
     myth: "भ्रम",
@@ -273,6 +283,11 @@ export const GYAAN_STRINGS = {
   },
   te: {
     close: "పాఠం మూసేయండి",
+    reader: "జ్ఞానం",
+    closeReader: "జ్ఞానం మూసేయండి",
+    lessons: "పాఠాలు",
+    topics: "మార్కెట్ విషయాలు",
+    locked: "లాక్: ముందు కథలో ఈ పాఠాన్ని జీవించండి.",
     bigIdea: "ముఖ్య విషయం",
     example: "ఉదాహరణ",
     myth: "అపోహ",
