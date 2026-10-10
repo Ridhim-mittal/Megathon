@@ -505,24 +505,46 @@ export function renderVillage(frame = 0) {
 
 const SKIN = { warm: "#c98b5e", light: "#d9a072", deep: "#a86f45" };
 
+// The player (see the reference sheet): a curly-haired boy in a striped polo who grows into
+// plaid shirts, a beard and finally a lungi; a girl in a pattu langa with bows who grows into a
+// half-saree with jasmine in her braid. Teammates and NPCs keep the plain looks.
+const plainBoy = (stage) => ({
+  skin: SKIN.warm,
+  hair: "#2b2420",
+  top: { child: "#f08a3c", teen: "#3c8fd0", young: "#f4f4f0", adult: "#6b8f4f", settle: "#a0522d" }[stage] ?? "#f08a3c",
+  bottom: stage === "child" ? "#3b4a7a" : "#4a4f5c",
+  shoes: "#4a3020",
+  size: stage === "child" ? "child" : stage === "teen" ? "teen" : "adult",
+});
+const plainGirl = (stage) => ({
+  skin: SKIN.warm,
+  hair: "#2b2420",
+  braid: true,
+  top: { child: "#e0508a", teen: "#2fa59a", young: "#f2c14e", adult: "#9b59b6", settle: "#d35400" }[stage] ?? "#e0508a",
+  bottom: { child: "#f4e3c3", teen: "#f4e3c3", young: "#3b4a7a", adult: "#f4e3c3", settle: "#f4e3c3" }[stage] ?? "#f4e3c3",
+  shoes: "#7a3b2e",
+  size: stage === "child" ? "child" : stage === "teen" ? "teen" : "adult",
+});
+const sizeOf = (stage) => (stage === "child" ? "child" : stage === "teen" ? "teen" : "adult");
+
+const BOY = {
+  child: { top: "#eef3ea", top2: "#2f8f8a", pattern: "stripes", collar: "#2f8f8a", shortSleeves: true, bottom: "#34446e", shorts: true, socks: "#f4f4f0", shoes: "#3a5a9e" },
+  teen: { top: "#e9f1f6", top2: "#3a6fb0", pattern: "stripes", collar: "#3a6fb0", shortSleeves: true, bottom: "#4a6f9e", shoes: "#3a5a9e", socks: "#f4f4f0" },
+  young: { top: "#d9772e", top2: "#f2b06a", pattern: "plaid", collar: "#b85e20", bottom: "#4a6f9e", shoes: "#3a5a9e", socks: "#f4f4f0" },
+  adult: { top: "#4a78c8", top2: "#9fbde8", pattern: "plaid", collar: "#33589a", bottom: "#4a6f9e", shoes: "#3a5a9e", beard: true },
+  settle: { top: "#f1ead2", top2: "#d9cfae", collar: "#d9cfae", skirt: { color: "#4f6fb0", check: "#86a2d8" }, shoes: "#8a5a2c", beard: true },
+};
+const GIRL = {
+  child: { top: "#b8357a", shortSleeves: true, skirt: { color: "#2a9db0", band: "#f2b233", border: "#f08a2c", flare: true }, braid: true, bows: "#d8304a", bindi: true, shoes: "#8a5a2c" },
+  teen: { top: "#2a9d8f", shortSleeves: true, skirt: { color: "#2f8f5a", band: "#f2b233", border: "#f08a2c", flare: true }, dupatta: "#e2405e", braid: true, bows: "#d8304a", bindi: true, shoes: "#8a5a2c" },
+  young: { top: "#2a9d8f", shortSleeves: true, skirt: { color: "#2fa07a", band: "#f2b233", border: "#f08a2c", flare: true }, dupatta: "#e2405e", longBraid: true, jasmine: true, bindi: true, bangles: true, shoes: "#8a5a2c" },
+  adult: { top: "#2a8fb0", shortSleeves: true, skirt: { color: "#2f62b0", band: "#f2b233", border: "#f08a2c", flare: true }, dupatta: "#e2405e", longBraid: true, jasmine: true, bindi: true, bangles: true, shoes: "#8a5a2c" },
+  settle: { top: "#2a9d8f", shortSleeves: true, skirt: { color: "#2f9a5a", band: "#f2b233", border: "#f08a2c", flare: true }, dupatta: "#d8304a", longBraid: true, jasmine: true, bindi: true, bangles: true, shoes: "#8a5a2c" },
+};
+
 export const LOOKS = {
-  boy: (stage) => ({
-    skin: SKIN.warm,
-    hair: "#2b2420",
-    top: { child: "#f08a3c", teen: "#3c8fd0", young: "#f4f4f0", adult: "#6b8f4f", settle: "#a0522d" }[stage] ?? "#f08a3c",
-    bottom: stage === "child" ? "#3b4a7a" : "#4a4f5c",
-    shoes: "#4a3020",
-    size: stage === "child" ? "child" : stage === "teen" ? "teen" : "adult",
-  }),
-  girl: (stage) => ({
-    skin: SKIN.warm,
-    hair: "#2b2420",
-    braid: true,
-    top: { child: "#e0508a", teen: "#2fa59a", young: "#f2c14e", adult: "#9b59b6", settle: "#d35400" }[stage] ?? "#e0508a",
-    bottom: { child: "#f4e3c3", teen: "#f4e3c3", young: "#3b4a7a", adult: "#f4e3c3", settle: "#f4e3c3" }[stage] ?? "#f4e3c3",
-    shoes: "#7a3b2e",
-    size: stage === "child" ? "child" : stage === "teen" ? "teen" : "adult",
-  }),
+  boy: (stage) => ({ skin: SKIN.warm, hair: "#241c18", curly: true, smile: true, size: sizeOf(stage), ...(BOY[stage] ?? BOY.child) }),
+  girl: (stage) => ({ skin: SKIN.warm, hair: "#241c18", smile: true, size: sizeOf(stage), ...(GIRL[stage] ?? GIRL.child) }),
   granny: () => ({ skin: SKIN.light, hair: "#e8e8e8", bun: true, glasses: "#c0609a", top: "#f07ab4", bottom: "#6b84d8", border: "#f2d14a", saree: true, shoes: "#b8453a", size: "adult" }),
   banker: () => ({ skin: SKIN.warm, hair: "#2b2420", bun: true, top: "#3d9a4a", bottom: "#2f7a3a", saree: true, shoes: "#4a3020", size: "adult" }),
   teacher: () => ({ skin: SKIN.light, hair: "#2b2420", bun: true, glasses: "#5e3c1e", top: "#f2d14a", bottom: "#d35400", saree: true, shoes: "#4a3020", size: "adult" }),
@@ -533,8 +555,8 @@ export const LOOKS = {
   farmer: () => ({ skin: SKIN.deep, hair: "#2b2420", top: "#f4f4f0", bottom: "#f4f4f0", shoes: "#4a3020", turban: "#e7c46d", size: "adult" }),
   worker: () => ({ skin: SKIN.warm, hair: "#2b2420", top: "#5b7fa8", bottom: "#3b4a7a", shoes: "#3b2b22", cap: "#f2d14a", size: "adult" }),
   tempter: () => ({ skin: SKIN.warm, hair: "#1f1a17", top: "#f2d14a", bottom: "#2b2e3a", shoes: "#f4f4f0", sunglasses: true, gold: true, size: "adult" }),
-  friend: (stage = "child") => ({ ...LOOKS.boy(stage), top: "#5fb0a5", cap: "#d9824f" }),
-  sibling: (stage = "child") => ({ ...LOOKS.girl(stage), top: "#f4a3c0", size: "child" }),
+  friend: (stage = "child") => ({ ...plainBoy(stage), top: "#5fb0a5", cap: "#d9824f" }),
+  sibling: (stage = "child") => ({ ...plainGirl(stage), top: "#f4a3c0", size: "child" }),
   agent: () => ({ skin: SKIN.light, hair: "#2b2420", top: "#55657d", bottom: "#2b2e3a", shoes: "#1f1a17", tie: "#b9523f", size: "adult" }),
   father: () => ({ skin: SKIN.deep, hair: "#2b2420", top: "#efe9d9", bottom: "#efe9d9", shoes: "#4a3020", turban: "#e7c46d", mustache: true, size: "adult" }),
   mother: () => ({ skin: SKIN.warm, hair: "#1f1a17", bun: true, top: "#7aa37f", bottom: "#c0563b", border: "#f2d14a", saree: true, shoes: "#7a3b2e", size: "adult" }),
@@ -562,24 +584,50 @@ export function drawCharacter(ctx, ox, oy, look, dir = "down", frame = 0) {
   const bodyTop = legTop - body;
   const head = bodyTop - 8;
   const step = frame === 1 ? 1 : frame === 2 ? -1 : 0;
+  const sk = look.skirt;
 
   p(4, 22, 8, 2, "rgba(30,40,20,0.3)");
-  // Legs or saree.
+  // Legs, saree or skirt (a skirt keeps the feet stepping).
   if (look.saree) {
     p(4, bodyTop + 3, 8, feet - bodyTop - 3, look.bottom);
     p(4, feet - 1, 8, 1, look.border ?? look.bottom);
     p(5, feet, 2, 1, look.shoes);
     p(9, feet, 2, 1, look.shoes);
+  } else if (sk) {
+    if (d === "left") {
+      p(5 - step, feet, 3, 1, look.shoes);
+      p(8 + step, feet, 3, 1, look.shoes);
+    } else {
+      p(5, feet - (step === 1 ? 1 : 0), 2, 1, look.shoes);
+      p(9, feet - (step === -1 ? 1 : 0), 2, 1, look.shoes);
+    }
   } else if (d === "left") {
     const front = step === 0 ? 6 : 5 - step;
     const back = step === 0 ? 8 : 9 + step;
-    p(back, legTop, 2, leg, look.bottom);
+    const legColor = look.shorts ? look.skin : look.bottom;
+    p(back, legTop, 2, leg, legColor);
+    p(front, legTop, 2, leg, legColor);
+    if (look.shorts) {
+      p(back, legTop, 2, 1, look.bottom);
+      p(front, legTop, 2, 1, look.bottom);
+    }
+    if (look.socks) {
+      p(back, feet - 1, 2, 1, look.socks);
+      p(front, feet - 1, 2, 1, look.socks);
+    }
     p(back, feet, 3, 1, look.shoes);
-    p(front, legTop, 2, leg, look.bottom);
     p(front - 1, feet, 3, 1, look.shoes);
   } else {
-    p(5, legTop, 2, leg - (step === 1 ? 1 : 0), look.bottom);
-    p(9, legTop, 2, leg - (step === -1 ? 1 : 0), look.bottom);
+    const l = leg - (step === 1 ? 1 : 0);
+    const r = leg - (step === -1 ? 1 : 0);
+    const legColor = look.shorts ? look.skin : look.bottom;
+    p(5, legTop, 2, l, legColor);
+    p(9, legTop, 2, r, legColor);
+    if (look.shorts) p(5, legTop, 6, 1, look.bottom);
+    if (look.socks) {
+      p(5, legTop + l - 1, 2, 1, look.socks);
+      p(9, legTop + r - 1, 2, 1, look.socks);
+    }
     p(5, feet - (step === 1 ? 1 : 0), 2, 1, look.shoes);
     p(9, feet - (step === -1 ? 1 : 0), 2, 1, look.shoes);
   }
@@ -588,16 +636,60 @@ export function drawCharacter(ctx, ox, oy, look, dir = "down", frame = 0) {
   const bx = d === "left" ? 5 : 4;
   p(bx, bodyTop, bw, body + (look.saree ? 0 : 0), look.top);
   if (look.coat) p(bx, bodyTop, bw, body + 2, look.top);
+  if (look.pattern === "stripes") for (let y = bodyTop + 1; y < bodyTop + body; y += 2) p(bx, y, bw, 1, look.top2);
+  if (look.pattern === "plaid") {
+    for (let y = bodyTop + 2; y < bodyTop + body; y += 3) p(bx, y, bw, 1, look.top2);
+    for (let x = bx + 1; x < bx + bw; x += 3) p(x, bodyTop, 1, body, look.top2);
+  }
+  if (look.collar) {
+    if (d === "down") {
+      p(6, bodyTop, 1, 1, look.collar);
+      p(9, bodyTop, 1, 1, look.collar);
+      p(7, bodyTop, 2, 1, look.skin);
+    } else if (d === "left") p(5, bodyTop, 2, 1, look.collar);
+    else p(5, bodyTop, 6, 1, look.collar);
+  }
+  if (sk) {
+    // Langa, half-saree skirt or lungi from the waist down; a langa flares at the hem.
+    const waist = bodyTop + 3;
+    p(4, waist, 8, feet - waist, sk.color);
+    if (sk.flare) p(3, feet - 2, 10, 2, sk.color);
+    if (sk.check) {
+      for (let x = 5; x < 12; x += 3) p(x, waist, 1, feet - waist, sk.check);
+      p(4, waist + 3, 8, 1, sk.check);
+    }
+    if (sk.band) p(4, waist, 8, 1, sk.band);
+    if (sk.border) p(sk.flare ? 3 : 4, feet - 1, sk.flare ? 10 : 8, 1, sk.border);
+  }
   if (look.saree) p(d === "left" ? 9 : 10, bodyTop, 2, body, look.bottom);
+  if (look.dupatta) {
+    if (d === "down") {
+      for (let r = 0; r < 4; r++) p(10 - r * 2, bodyTop + r, 3, 1, look.dupatta);
+      p(11, bodyTop, 1, 2, look.dupatta);
+    } else if (d === "up") p(4, bodyTop, 3, body, look.dupatta);
+    else p(9, bodyTop, 2, body + 1, look.dupatta);
+  }
   if (look.gold) p(bx + 1, bodyTop + 1, bw - 2, 1, "#e5bf4f");
+  const sleeve = look.shortSleeves ? 1 : 4;
   if (d === "left") {
     p(7 + step, bodyTop + 1, 2, 4, look.top);
+    if (look.shortSleeves) p(7 + step, bodyTop + 2, 2, 3, look.skin);
     p(7 + step, bodyTop + 5, 2, 1, look.skin);
+    if (look.bangles) p(7 + step, bodyTop + 4, 2, 1, "#e5bf4f");
   } else {
-    p(3, bodyTop + 1 + (step > 0 ? 1 : 0), 1, 4, look.top);
-    p(12, bodyTop + 1 + (step < 0 ? 1 : 0), 1, 4, look.top);
-    p(3, bodyTop + 5 + (step > 0 ? 1 : 0), 1, 1, look.skin);
-    p(12, bodyTop + 5 + (step < 0 ? 1 : 0), 1, 1, look.skin);
+    const ly = bodyTop + 1 + (step > 0 ? 1 : 0);
+    const ry = bodyTop + 1 + (step < 0 ? 1 : 0);
+    p(3, ly, 1, 4, look.skin);
+    p(12, ry, 1, 4, look.skin);
+    p(3, ly, 1, sleeve, look.top);
+    p(12, ry, 1, sleeve, look.top);
+    p(3, ly + 4, 1, 1, look.skin);
+    p(12, ry + 4, 1, 1, look.skin);
+    if (look.bangles) {
+      p(3, ly + 3, 1, 1, "#e5bf4f");
+      p(12, ry + 3, 1, 1, "#e5bf4f");
+    }
+    if (look.dupatta && d === "down") p(12, ry, 1, 2, look.dupatta);
   }
   // Head.
   const hx = d === "left" ? 4 : 4;
@@ -611,6 +703,7 @@ export function drawCharacter(ctx, ox, oy, look, dir = "down", frame = 0) {
     p(8, head + 2, 5, 4, look.hair);
     p(5, head + 4, 1, 2, "#2b2420");
     p(4, head + 6, 1, 1, "#e08a7a");
+    if (look.smile) p(4, head + 6, 2, 1, "#9a4a3a");
   } else {
     p(3, head - 1, 10, 3, look.hair);
     p(3, head + 2, 1, 3, look.hair);
@@ -619,14 +712,73 @@ export function drawCharacter(ctx, ox, oy, look, dir = "down", frame = 0) {
     p(9, head + 4, 1, 2, "#2b2420");
     p(5, head + 6, 1, 1, "#e08a7a");
     p(10, head + 6, 1, 1, "#e08a7a");
+    if (look.smile) p(7, head + 6, 2, 1, "#9a4a3a");
     if (look.mustache) p(6, head + 6, 4, 1, look.hair === "#d8d4cc" ? "#f0eee8" : "#2b2420");
   }
+  if (look.curly) {
+    // Bumpy curls on top and over the ears.
+    p(4, head - 2, 2, 1, look.hair);
+    p(7, head - 2, 3, 1, look.hair);
+    p(11, head - 2, 1, 1, look.hair);
+    if (d === "left") {
+      p(2, head, 1, 2, look.hair);
+      p(13, head + 1, 1, 3, look.hair);
+    } else {
+      p(2, head, 1, 3, look.hair);
+      p(13, head, 1, 3, look.hair);
+      if (d === "down") p(5, head + 2, 1, 1, look.hair);
+    }
+  }
+  if (look.beard && d !== "up") {
+    if (d === "left") {
+      p(5, head + 7, 4, 1, look.hair);
+      p(7, head + 6, 1, 1, look.hair);
+    } else {
+      p(4, head + 5, 1, 3, look.hair);
+      p(11, head + 5, 1, 3, look.hair);
+      p(5, head + 7, 6, 1, look.hair);
+      p(6, head + 6, 1, 1, look.hair);
+      p(9, head + 6, 1, 1, look.hair);
+    }
+  }
+  if (look.bindi && d === "down") p(7, head + 3, 1, 1, "#d0302a");
+  if (look.bindi && d === "left") p(4, head + 3, 1, 1, "#d0302a");
   if (look.bun) p(d === "left" ? 9 : 6, head - 3, 4, 3, look.hair);
   if (look.braid && d !== "left") {
     p(3, head + 5, 1, 6, look.hair);
     p(12, head + 5, 1, 6, look.hair);
+    if (look.bows) {
+      p(3, head + 10, 1, 1, look.bows);
+      p(12, head + 10, 1, 1, look.bows);
+    }
   }
-  if (look.braid && d === "left") p(11, head + 5, 2, 7, look.hair);
+  if (look.braid && d === "left") {
+    p(11, head + 5, 2, 7, look.hair);
+    if (look.bows) p(11, head + 11, 2, 1, look.bows);
+  }
+  if (look.longBraid) {
+    // One long braid down the back, with jasmine where it starts.
+    if (d === "up") {
+      p(7, head + 6, 2, body + 4, look.hair);
+      if (look.jasmine) {
+        p(6, head + 5, 1, 1, "#fbf6e6");
+        p(7, head + 4, 2, 1, "#fbf6e6");
+        p(9, head + 5, 1, 1, "#fbf6e6");
+      }
+    } else if (d === "left") {
+      p(12, head + 4, 2, body + 4, look.hair);
+      if (look.jasmine) {
+        p(12, head + 2, 1, 1, "#fbf6e6");
+        p(13, head + 3, 1, 1, "#fbf6e6");
+      }
+    } else {
+      p(12, head + 5, 1, 4, look.hair);
+      if (look.jasmine) {
+        p(12, head + 1, 1, 1, "#fbf6e6");
+        p(13, head + 2, 1, 2, "#fbf6e6");
+      }
+    }
+  }
   if (look.turban) p(3, head - 2, 10, 3, look.turban);
   if (look.cap) {
     p(3, head - 2, 10, 2, look.cap);
