@@ -45,6 +45,9 @@
 .game-snowball {
   --game-color: #3b82b8;
 }
+.game-priceSnake {
+  --game-color: #4f9a3c;
+}
 @keyframes arcade-bob {
   50% {
     transform: translateY(-6px) rotate(-3deg);
@@ -1701,3 +1704,417 @@
 .rush-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: min(420px, 100%); }
 .rush-controls button { justify-content: center; user-select: none; touch-action: none; }
 @media (prefers-reduced-motion: reduce) { .rush-policy.is-low { animation: none; } }
+
+/* ---------- Price Snake (src/ui/arcade/PriceSnake.jsx): the phone snake, eating years ---------- */
+.snake-field,
+.snake-intro,
+.snake-result {
+  --snake-font: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  font-family: var(--snake-font);
+}
+.snake-field {
+  justify-items: center;
+}
+.snake-bar {
+  width: min(600px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.snake-year,
+.snake-weight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 14px;
+  border: 2px solid #9fd07e;
+  background: #f3fbe9;
+  box-shadow: 0 3px 0 #9fd07e;
+  color: #2f5a26;
+}
+.snake-year span,
+.snake-weight span {
+  display: grid;
+  line-height: 1.1;
+}
+.snake-year b {
+  font-size: 15px;
+}
+.snake-year small,
+.snake-weight small {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+.snake-years {
+  flex: 1;
+  height: 10px;
+  border-radius: 99px;
+  background: #e3f1d6;
+  border: 2px solid #b9dca0;
+  overflow: hidden;
+}
+.snake-years i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: repeating-linear-gradient(-45deg, #78c95a 0 6px, #8fd56f 6px 12px);
+  transition: width 0.35s ease;
+}
+.snake-weight {
+  position: relative;
+  border-color: #f1c66a;
+  background: linear-gradient(180deg, #fffaf0, #fff0c8);
+  box-shadow: 0 3px 0 #e2ae4a;
+  color: #6b4a14;
+  animation: snake-weigh 0.45s cubic-bezier(0.2, 1.6, 0.4, 1);
+}
+.snake-weight svg {
+  color: #c98a1c;
+}
+.snake-weight b {
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+.snake-weight em {
+  position: absolute;
+  top: -13px;
+  right: -8px;
+  padding: 1px 7px;
+  border-radius: 99px;
+  font-style: normal;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #fff;
+  background: #e0674f;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(150, 60, 30, 0.25);
+}
+.snake-stage {
+  position: relative;
+  width: min(600px, 100%);
+}
+.arcade-field canvas.snake-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  border: 4px solid #5d9c48;
+  border-radius: 16px;
+  box-shadow: 0 5px 0 #3d7f34, 0 10px 24px rgba(40, 80, 30, 0.18);
+  cursor: default;
+}
+.snake-over {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(255, 250, 235, 0.35);
+}
+.snake-over p {
+  padding: 10px 26px;
+  border-radius: 99px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #6b3a1a;
+  background: #fffaf0;
+  border: 3px solid #f1c66a;
+  box-shadow: 0 4px 0 #e2ae4a;
+  animation: snake-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+.snake-over.win p {
+  color: #2f5a26;
+  border-color: #9fd07e;
+  box-shadow: 0 4px 0 #78b85a;
+}
+.snake-pad {
+  display: grid;
+  grid-template-columns: repeat(4, 52px);
+  gap: 8px;
+}
+.snake-pad button {
+  justify-content: center;
+  padding: 8px 0;
+  user-select: none;
+  touch-action: none;
+}
+
+/* Intro */
+.snake-intro {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+.snake-lead {
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #2f5a26;
+}
+.snake-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.snake-steps li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 6px;
+  padding: 12px 8px 10px;
+  text-align: center;
+  border-radius: 12px;
+  border: 3px solid #c6e6ad;
+  background: #f5fbef;
+  box-shadow: 0 4px 0 #a6d487;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #2f5a26;
+  animation: tile-in 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+.snake-steps li > b {
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  background: #4f9a3c;
+  border: 2px solid #3d7f34;
+}
+.snake-step-art {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.snake-step-art kbd {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  border: 2px solid #2f5a26;
+  background: #fff;
+  font-weight: 800;
+  box-shadow: 0 2px 0 #2f5a26;
+  animation: key-press 1.6s ease-in-out infinite;
+}
+.snake-step-art kbd:nth-child(2) { animation-delay: 0.4s; }
+.snake-step-art kbd:nth-child(3) { animation-delay: 0.8s; }
+.snake-step-art kbd:nth-child(4) { animation-delay: 1.2s; }
+.snake-cal {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  padding-top: 7px;
+  border-radius: 7px;
+  border: 2px solid #8a6a4a;
+  background: linear-gradient(#ef6b5b 0 9px, #fffdf6 9px);
+  font-size: 13px;
+  font-weight: 800;
+  color: #4a3a2a;
+  animation: arcade-bob 1.6s ease-in-out infinite;
+}
+.snake-step-art.weigh {
+  color: #c98a1c;
+  animation: snake-tilt 2s ease-in-out infinite;
+}
+.snake-fact,
+.snake-stars-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  font-weight: 700;
+  color: #6b4a14;
+}
+.snake-fact {
+  justify-self: center;
+  padding: 8px 16px;
+  border-radius: 99px;
+  border: 2px solid #f1d58f;
+  background: #fff6dc;
+  font-size: 14px;
+}
+.snake-stars-line {
+  font-size: 13px;
+  color: #6f7a5f;
+}
+.snake-go {
+  justify-self: center;
+}
+
+/* Result: how heavy prices got */
+.snake-result {
+  display: grid;
+  gap: 10px;
+  width: min(560px, 100%);
+  justify-self: center;
+}
+.snake-headline {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #3a2a18;
+}
+.snake-tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #b07a2a;
+}
+.snake-tag {
+  display: grid;
+  justify-items: center;
+  padding: 6px 16px;
+  border-radius: 12px;
+  border: 2px solid #c6e6ad;
+  background: #f5fbef;
+  color: #2f5a26;
+  line-height: 1.15;
+}
+.snake-tag small {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+.snake-tag b {
+  font-size: 18px;
+}
+.snake-tag.heavy {
+  border-color: #f1c66a;
+  background: #fff4d6;
+  color: #8a4a14;
+  animation: snake-weigh 0.6s 0.4s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+.snake-tag.heavy b {
+  font-size: 24px;
+}
+.snake-chart {
+  position: relative;
+  height: 150px;
+  padding: 18px 10px 20px;
+  border-radius: 14px;
+  border: 2px solid #e6dcc4;
+  background: linear-gradient(#fffdf7, #fbf5e6);
+}
+.snake-bars {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+}
+.snake-barcol {
+  position: relative;
+  flex: 1;
+  height: var(--h);
+  min-width: 4px;
+  max-width: 34px;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, #8fd56f, #5fae45);
+  border: 1.5px solid #3d7f34;
+  transform-origin: bottom;
+  animation: snake-bar 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+.snake-barcol em {
+  position: absolute;
+  bottom: calc(100% + 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-style: normal;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #8a4a14;
+}
+.snake-tin {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 0;
+  border-top: 2px dashed #d9572b;
+  pointer-events: none;
+}
+.snake-tin small {
+  position: absolute;
+  left: 0;
+  top: -19px;
+  padding: 0 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background: #d9572b;
+}
+.snake-axis {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8a7a5a;
+}
+.snake-buys {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #6b3a1a;
+}
+.snake-meter {
+  flex: none;
+  width: 70px;
+  height: 14px;
+  border-radius: 99px;
+  border: 2px solid #d9572b;
+  background: #fde7df;
+  overflow: hidden;
+}
+.snake-meter i {
+  display: block;
+  height: 100%;
+  background: #f08a62;
+  animation: snake-shrink 1.2s 0.6s ease-out both;
+}
+@keyframes snake-weigh {
+  from { transform: scale(0.85); }
+}
+@keyframes snake-pop {
+  from { opacity: 0; transform: scale(0.5); }
+}
+@keyframes snake-tilt {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+@keyframes snake-bar {
+  from { transform: scaleY(0); }
+}
+@keyframes snake-shrink {
+  from { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .snake-weight, .snake-cal, .snake-step-art.weigh, .snake-barcol, .snake-meter i, .snake-tag.heavy { animation: none; }
+}

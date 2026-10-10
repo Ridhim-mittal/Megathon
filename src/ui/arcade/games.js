@@ -5,6 +5,7 @@
 //   scamSmash block the scam messages, let the real ones through        (prize, panic, OTP = scam)
 //   snowball  roll your savings ball, collect coins, dodge money traps  (growth grows on growth)
 //   insuranceRush  endless drive; keep your policy renewed (see InsuranceRush.jsx)    (insurance must be active)
+//   priceSnake     the phone snake; each +1 year makes prices heavier (see priceSnake.js)  (inflation)
 
 export const FIELD = { w: 480, h: 270 };
 
@@ -14,6 +15,8 @@ export const GAMES = [
   { id: "snowball", place: "bank", seconds: 40 },
   // Endless: runs until a crash with an expired policy. Its logic lives in InsuranceRush.jsx.
   { id: "insuranceRush", place: null, seconds: null },
+  // Endless too: the classic snake, logic in priceSnake.js.
+  { id: "priceSnake", place: null, seconds: null },
 ];
 export const gameById = Object.fromEntries(GAMES.map((g) => [g.id, g]));
 export const gameAtPlace = (place) => GAMES.find((g) => g.place === place) ?? null;
@@ -277,6 +280,7 @@ export function stepGame(s, dt, input = {}) {
 export function result(s) {
   if (s.id === "jarDash") return { score: s.score, caught: s.caught, spent: s.spent };
   if (s.id === "scamSmash") return { score: s.score, blocked: s.blocked, passed: s.passed, mistakes: s.mistakes };
+  if (s.id === "priceSnake") return { score: s.score, years: s.years, price: s.price, history: s.history, reason: s.reason };
   if (s.id === "insuranceRush") return { score: s.score, distance: s.distance, claims: s.claims, renewals: s.renewals };
   return { score: s.value, added: s.added, interest: s.interest, lost: s.lost, shielded: s.shielded };
 }

@@ -249,3 +249,17 @@ test("the title can jump straight to the town of the first job without touching 
   await expect(page.locator(".hud-chapter")).toContainText("Age 22");
   expect(await page.evaluate(() => window.localStorage.getItem("lakshyam.life"))).toBeNull();
 });
+
+test("the price snake opens from the arcade, and a crash shows how prices grew", async ({ page }) => {
+  await page.goto("/?seed=demo");
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+  await page.getByRole("button", { name: "Arcade" }).click();
+  await page.getByRole("button", { name: /Price Snake/ }).click();
+  await expect(page.getByText("Meet Mehngai, the price snake.")).toBeVisible();
+  await page.locator(".snake-go").click();
+  await expect(page.locator(".snake-weight")).toContainText("₹100");
+  // With no turns the snake runs into the wall.
+  await expect(page.locator(".snake-result")).toBeVisible({ timeout: 20000 });
+  await expect(page.locator(".snake-headline")).toBeVisible();
+});
