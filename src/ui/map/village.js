@@ -2,7 +2,9 @@
 // Tiles: grass, path (dirt road), plaza (village square), water, crop (cotton field), flowers,
 // tree, bush, rock, fence, building. Buildings and objects carry the map location they open.
 
-export const TILE = 16;
+import { TILE, mapHelpers } from "./mapkit.js";
+
+export { TILE };
 export const W = 40;
 export const H = 28;
 
@@ -126,47 +128,35 @@ function buildGrid() {
 export const GRID = buildGrid();
 
 const BLOCKED = new Set(["water", "crop", "tree", "bush", "rock", "fence", "building", "well"]);
-export const walkable = (x, y) => x >= 0 && y >= 0 && x < W && y < H && !BLOCKED.has(GRID[y][x]);
+export const { walkable, placeAt, placeByEntrance, findPath } = mapHelpers({ W, H, GRID, PLACES, blocked: BLOCKED });
 
-// The place whose footprint covers a tile, if any.
-export function placeAt(x, y) {
-  return PLACES.find((p) => x >= p.x && x < p.x + p.w && y >= p.y && y < p.y + p.h) ?? null;
-}
+// People standing by their places (decoration; they don't block the way).
+const NPCS = [
+  { look: "teacher", x: 16, y: 8 },
+  { look: "banker", x: 27, y: 8 },
+  { look: "postman", x: 35, y: 8 },
+  { look: "shopkeeper", x: 6, y: 17 },
+  { look: "doctor", x: 29, y: 17 },
+  { look: "farmer", x: 35, y: 16 },
+  { look: "lender", x: 7, y: 25 },
+  { look: "clerk", x: 17, y: 25 },
+  { look: "worker", x: 27, y: 25 },
+];
 
-export function placeByEntrance(x, y) {
-  return PLACES.find((p) => p.entrance.x === x && p.entrance.y === y) ?? null;
-}
-
-// Breadth-first path over walkable tiles, 4 directions. Returns [{x, y}, ...] excluding start.
-export function findPath(from, to) {
-  if (!walkable(to.x, to.y)) return null;
-  const key = (x, y) => y * W + x;
-  const prev = new Map([[key(from.x, from.y), null]]);
-  const queue = [from];
-  while (queue.length) {
-    const c = queue.shift();
-    if (c.x === to.x && c.y === to.y) {
-      const path = [];
-      let k = key(c.x, c.y);
-      while (k !== key(from.x, from.y)) {
-        path.unshift({ x: k % W, y: Math.floor(k / W) });
-        k = prev.get(k);
-      }
-      return path;
-    }
-    for (const [dx, dy] of [
-      [0, 1],
-      [1, 0],
-      [0, -1],
-      [-1, 0],
-    ]) {
-      const n = { x: c.x + dx, y: c.y + dy };
-      const k = key(n.x, n.y);
-      if (!prev.has(k) && walkable(n.x, n.y)) {
-        prev.set(k, key(c.x, c.y));
-        queue.push(n);
-      }
-    }
-  }
-  return null;
-}
+// Everything MapCanvas needs to draw and walk this map. render/ambient are filled in by art.js.
+export const VILLAGE = {
+  id: "village",
+  W,
+  H,
+  PLACES,
+  placeById,
+  START,
+  GRID,
+  walkable,
+  placeAt,
+  placeByEntrance,
+  findPath,
+  npcs: NPCS,
+  // Ammamma strolls along the road in front of home, between these columns.
+  granny: { y: 9, from: 7, to: 3 },
+};
