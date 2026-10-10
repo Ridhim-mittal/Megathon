@@ -226,7 +226,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         onBack={overlay.fromPhone ? () => setOverlay({ type: "arcade", fromPhone: true }) : undefined}
       />
     ) : (
-      <ArcadeMenu onPick={(game) => setOverlay({ type: "arcade", game, fromPhone: true })} onClose={() => setOverlay(null)} />
+      <ArcadeMenu onPick={(game) => setOverlay({ type: "arcade", game, fromPhone: true })} onClose={() => setOverlay(null)} avatar={life.avatar ?? "boy"} />
     );
   } else if (overlay?.type === "shop") {
     windowType = "shop";
