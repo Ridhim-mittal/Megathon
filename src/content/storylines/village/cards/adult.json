@@ -1,0 +1,945 @@
+[
+  {
+    "id": "village.adult.cousin_wedding.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L18",
+    "ages": [24, 28],
+    "weight": 1,
+    "speaker": "mother",
+    "title": { "en": "Cousin Ravi's grand wedding" },
+    "text": { "en": "Cousin Ravi's wedding. The relatives expect you, the earning one, to give ₹50,000. \"Use a [[credit_card]]. Easy monthly payments!\" says an uncle." },
+    "clarity": [
+      {
+        "phrase": { "en": "Easy monthly payments!" },
+        "truth": { "en": "Easy to start. At 42% a year, ₹50,000 costs about ₹12,000 in interest over 12 months." },
+        "lesson": "L18"
+      }
+    ],
+    "document": "doc.loan_agreement",
+    "choices": [
+      {
+        "id": "budget_gift",
+        "label": { "en": "Give ₹10,000 with love, and help cook for 300 guests" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -10000, "meters": { "family": 2, "joy": 3 } },
+        "outcome": { "en": "₹10,000, no debt. Your uncle grumbles for one day. Then he eats your sambar and goes quiet." },
+        "why": { "en": "Family duties matter. Give from your budget, not from a loan." }
+      },
+      {
+        "id": "card_gift",
+        "label": { "en": "Put ₹50,000 of gifts and clothes on the credit card" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "credit_card", "principal": 50000, "months": 12, "rateYearly": 42 }, "meters": { "family": 6, "joy": 5 } },
+        "echo": { "level": 3, "hint": { "en": "Everyone remembers the gift for a week. The card remembers for a year." } },
+        "outcome": { "en": "Everyone praises you for an evening. The ₹50,000 costs about ₹62,000 by the time it's paid." },
+        "why": { "en": "When income grows, spending to impress grows faster. That's lifestyle inflation." }
+      },
+      {
+        "id": "skip_wedding",
+        "label": { "en": "Skip the wedding to save money" },
+        "quality": "neutral",
+        "effects": { "meters": { "family": -10, "joy": -4 } },
+        "outcome": { "en": "You save ₹10,000 and lose a lot of love. Ammamma: \"Money is for people, kanna.\"" },
+        "why": { "en": "Being too stingy also costs something. A budget includes people." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.move_or_stay.a",
+    "storyline": "village",
+    "kind": "crossroads",
+    "lesson": "L18",
+    "ages": [25, 27],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "Crossroads: go or stay?" },
+    "text": { "en": "Nanna's back is weak now. Chinni is in college. Four offers on the table. A [[mudra]] loan is \"collateral-free\", says the bank." },
+    "clarity": [
+      {
+        "phrase": { "en": "\"collateral-free\"" },
+        "truth": { "en": "No property is pledged, but the EMI is still yours. Missing it hurts your [[credit_score]]." },
+        "lesson": "L18"
+      }
+    ],
+    "document": "doc.loan_agreement",
+    "choices": [
+      {
+        "id": "city",
+        "label": { "en": "Move to Hyderabad for a better job" },
+        "quality": "good",
+        "default": true,
+        "effects": {
+          "income": { "monthly": 26000, "source": "job_city" },
+          "meters": { "family": -6, "joy": 2 },
+          "flags": { "add": ["path_city"] },
+          "schedule": [{ "inYears": 7, "card": "village.settle.tin_box.a" }]
+        },
+        "outcome": { "en": "₹26,000 a month. Rent ₹7,000, ₹5,000 home to Amma. You still save ₹4,000 more than before." },
+        "why": { "en": "More pay brings more costs. Count what's left after rent and family, not the salary." }
+      },
+      {
+        "id": "gulf",
+        "label": { "en": "A Gulf job through a licensed recruiting agent" },
+        "quality": "neutral",
+        "effects": {
+          "income": { "monthly": 40000, "source": "job_gulf" },
+          "meters": { "family": -10, "health": -3 },
+          "flags": { "add": ["path_gulf"] },
+          "schedule": [{ "inYears": 7, "card": "village.settle.tin_box.a" }]
+        },
+        "echo": { "level": 1, "hint": { "en": "You'll see Chinni's graduation on a video call." } },
+        "outcome": { "en": "₹40,000 a month, but ₹15,000 goes on living costs there. You send ₹15,000 home." },
+        "why": { "en": "Money sent home is love, but plan it. Remittances need a budget too." }
+      },
+      {
+        "id": "farm",
+        "label": { "en": "Stay and grow the farm with Nanna" },
+        "quality": "neutral",
+        "effects": {
+          "income": { "monthly": 14000, "source": "farm" },
+          "meters": { "family": 8, "joy": 2 },
+          "flags": { "add": ["path_farm"] },
+          "schedule": [{ "inYears": 7, "card": "village.settle.tin_box.a" }]
+        },
+        "outcome": { "en": "About ₹14,000 a month, more in a good season. Crop insurance and a [[kcc]] at 7%. Bujji approves." },
+        "why": { "en": "Lower income can still be a good life if costs are low and risks are insured." }
+      },
+      {
+        "id": "business",
+        "label": { "en": "Start a small repair shop with a Mudra loan" },
+        "quality": "good",
+        "effects": {
+          "loan": { "source": "mudra", "principal": 100000, "months": 60 },
+          "income": { "monthly": 18000, "source": "small_business" },
+          "meters": { "family": 3, "health": -2 },
+          "flags": { "add": ["path_business"] },
+          "schedule": [{ "inYears": 7, "card": "village.settle.tin_box.a" }]
+        },
+        "outcome": { "en": "₹1 lakh at about 10% is ₹2,125 a month for 5 years. You earn ₹18,000 in a good month, ₹9,000 in a bad one." },
+        "why": { "en": "Business income goes up and down. Keep the EMI small enough for the bad months." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.market_crash.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L19",
+    "ages": [25, 30],
+    "weight": 1,
+    "requires": { "owns": ["sip_index"] },
+    "speaker": "headline",
+    "title": { "en": "Markets crash 30%!" },
+    "text": { "en": "TV anchors are shouting. Your index fund shows ₹29,400. Last month it was ₹42,000. A WhatsApp tip says \"sell everything, buy this sure-shot share\"." },
+    "clarity": [
+      {
+        "phrase": { "en": "\"sell everything, buy this sure-shot share\"" },
+        "truth": { "en": "Nobody knows the bottom. One share can fall far more than a whole index." },
+        "lesson": "L19"
+      }
+    ],
+    "choices": [
+      {
+        "id": "hold",
+        "label": { "en": "Keep the SIP running. Don't sell" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3, "meters": { "health": -1 } },
+        "outcome": { "en": "Your SIP buys more units cheaply. In this world, two years later your fund is back above ₹48,000." },
+        "why": { "en": "Crashes are normal. Selling in panic turns a paper loss into a real one." }
+      },
+      {
+        "id": "sell",
+        "label": { "en": "Sell everything before it falls more" },
+        "quality": "bad",
+        "effects": { "close": { "product": "sip_index" }, "meters": { "health": 2 } },
+        "echo": { "level": 2, "hint": { "en": "Fear sells low. Every time." } },
+        "outcome": { "en": "You lock in a ₹12,600 loss. The market recovers in 20 months, without you." },
+        "why": { "en": "Missing the recovery is the most expensive part of panic-selling." }
+      },
+      {
+        "id": "tip_share",
+        "label": { "en": "Sell and put it all into the sure-shot share" },
+        "quality": "bad",
+        "effects": { "close": { "product": "sip_index" }, "cash": -17600, "meters": { "joy": -4 } },
+        "echo": { "level": 2, "hint": { "en": "All your eggs, one basket, no basket." } },
+        "outcome": { "en": "The \"sure-shot\" share falls 60%. Your ₹29,400 is now ₹11,800." },
+        "why": { "en": "[[diversification]] protects you. One company can collapse; a whole index rarely does." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.market_crash.b",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L19",
+    "ages": [25, 30],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "The hot share" },
+    "text": { "en": "A colleague whispers: \"Put all your savings in this one share. My cousin says it will triple. Can't lose.\" You have ₹30,000 saved." },
+    "clarity": [
+      {
+        "phrase": { "en": "Can't lose." },
+        "truth": { "en": "Every investment can lose. A single share can fall to almost nothing." },
+        "lesson": "L19"
+      }
+    ],
+    "choices": [
+      {
+        "id": "spread",
+        "label": { "en": "Spread it: some in FD, some gold, some in an index fund" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "sip_index", "amount": 10000 }, "gyaan": 3 },
+        "outcome": { "en": "When the market falls 30% next year, your ₹30,000 dips only about ₹3,500 overall." },
+        "why": { "en": "[[diversification]]: different things fall at different times, so one bad year hurts less." }
+      },
+      {
+        "id": "all_in",
+        "label": { "en": "Put all ₹30,000 in the one share" },
+        "quality": "bad",
+        "effects": { "cash": -15000, "meters": { "joy": -5 } },
+        "echo": { "level": 2, "hint": { "en": "His cousin is suddenly very hard to reach." } },
+        "outcome": { "en": "The share halves in six months. ₹30,000 becomes ₹15,000. The colleague changes jobs." },
+        "why": { "en": "All your savings in one thing means one bad day can take half of it." }
+      },
+      {
+        "id": "cash",
+        "label": { "en": "Keep it all as cash at home" },
+        "quality": "neutral",
+        "effects": { "meters": { "joy": 1 } },
+        "outcome": { "en": "No crash can touch it. But 6% inflation quietly takes ₹1,800 of its value this year." },
+        "why": { "en": "Avoiding all risk has its own cost: slow loss to inflation." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.flood.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L20",
+    "ages": [25, 30],
+    "weight": 1,
+    "speaker": "headline",
+    "title": { "en": "The tank overflows" },
+    "text": { "en": "Three days of rain. The village tank breaks its bank. Crop and house wall damaged: ₹80,000. Bujji is fine, standing on the roof of her shed." },
+    "clarity": [
+      {
+        "phrase": { "en": "Crop and house wall damaged: ₹80,000." },
+        "truth": { "en": "Crop insurance, a health card and an emergency fund decide how much of this you pay." },
+        "lesson": "L20"
+      }
+    ],
+    "choices": [
+      {
+        "id": "prepared",
+        "label": { "en": "Claim insurance, use the emergency fund, borrow only the gap cheaply" },
+        "quality": "good",
+        "default": true,
+        "effects": { "shock": { "kind": "flood", "cost": 80000 }, "gyaan": 2 },
+        "outcome": { "en": "Insurance pays first, then your fund. Whatever you prepared shrinks the ₹80,000 hit." },
+        "why": { "en": "Calamities can't be avoided. Their damage can be made smaller, before they happen." }
+      },
+      {
+        "id": "relief_first",
+        "label": { "en": "Apply for flood relief first, then pay the rest" },
+        "quality": "good",
+        "effects": { "shock": { "kind": "flood", "cost": 70000 }, "meters": { "health": -2 }, "gyaan": 3 },
+        "outcome": { "en": "Two weeks of forms with {cast:banker}'s help. ₹10,000 of government relief arrives. ₹70,000 left to cover." },
+        "why": { "en": "Government relief exists for disasters. Ask for it, and keep every receipt." }
+      },
+      {
+        "id": "sahukar",
+        "label": { "en": "Go straight to the sahukar, keep your savings" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "moneylender", "principal": 80000, "months": 12, "rateYearly": 36 }, "meters": { "family": -3 } },
+        "echo": { "level": 3, "hint": { "en": "Ammamma stares at the sahukar's house for a long time." } },
+        "outcome": { "en": "Your savings stay. At 36%, the ₹80,000 costs about ₹96,400 to clear in a year." },
+        "why": { "en": "Savings that sit unused while you borrow at 36% are costing you money." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.policy_ramana.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L21",
+    "ages": [26, 30],
+    "weight": 1,
+    "speaker": "agent",
+    "title": { "en": "The Golden Future Plan" },
+    "text": { "en": "{cast:agent} arrives at lunchtime. \"Golden Future Plan! ₹30,000 a year for 15 years. Guaranteed ₹6 lakh, plus ₹3 lakh life cover. Free steel dinner set!\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Guaranteed ₹6 lakh" },
+        "truth": { "en": "You pay ₹4.5 lakh over 15 years. Getting ₹6 lakh back is only about 3.5% a year." },
+        "lesson": "L21"
+      },
+      {
+        "phrase": { "en": "plus ₹3 lakh life cover" },
+        "truth": { "en": "Too small to protect a family. A [[term_insurance]] plan gives ₹50 lakh for about ₹8,000 a year." },
+        "lesson": "L21"
+      },
+      {
+        "phrase": { "en": "Free steel dinner set!" },
+        "truth": { "en": "Paid from your premium. His [[commission]] can be about ₹9,000 of your first year." },
+        "lesson": "L21"
+      }
+    ],
+    "document": "doc.insurance_policy",
+    "choices": [
+      {
+        "id": "buy_plan",
+        "label": { "en": "Sign up for the Golden Future Plan" },
+        "quality": "risky",
+        "effects": { "cash": -30000, "flags": { "add": ["owns_mixed_plan"] }, "schedule": [{ "inYears": 2, "card": "village.adult.surrender_value.a" }] },
+        "echo": { "level": 2, "hint": { "en": "The dinner set is shiny. The lock-in is 15 years." } },
+        "outcome": { "en": "₹30,000 a year, locked for 15 years, earning about 3.5%. Ramana leaves with the last vada." },
+        "why": { "en": "Mixed plans pay big commissions and give low cover. Keep insurance and investing separate." }
+      },
+      {
+        "id": "term_plus_sip",
+        "label": { "en": "Buy cheap term cover and invest the rest yourself" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "insurance_term", "amount": 8000 }, "flags": { "add": ["term_cover"] }, "gyaan": 3 },
+        "outcome": { "en": "₹8,000 a year buys ₹50 lakh of cover. ₹22,000 a year in an index fund could reach ₹6–8 lakh in 15 years." },
+        "why": { "en": "Pure cover protects the family. A low-fee fund grows the money. Each does one job well." }
+      },
+      {
+        "id": "ask_commission",
+        "label": { "en": "Ask Ramana how much he earns from this" },
+        "quality": "neutral",
+        "effects": { "gyaan": 3, "meters": { "joy": 2 } },
+        "outcome": { "en": "He laughs, eats the last vada, and admits it: about ₹9,000 from your first year." },
+        "why": { "en": "Always ask how the seller is paid. It explains what they push." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.double_money.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L22",
+    "ages": [24, 32],
+    "weight": 1,
+    "speaker": "tempter",
+    "title": { "en": "The Lucky Wealth Club" },
+    "text": { "en": "{cast:tempter}'s sunglasses are now enormous. \"Lucky Wealth Club! Guaranteed double in 12 months. Risk-free. Bonus for every friend you bring!\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Guaranteed double in 12 months." },
+        "truth": { "en": "That's 100% a year. Honest savings pay about 7%. Nobody honest can promise this." },
+        "lesson": "L22"
+      },
+      {
+        "phrase": { "en": "Risk-free." },
+        "truth": { "en": "High return and no risk never go together." },
+        "lesson": "L22"
+      },
+      {
+        "phrase": { "en": "Bonus for every friend you bring!" },
+        "truth": { "en": "Old members are paid with new members' money. That's a [[ponzi]]. It always collapses." },
+        "lesson": "L22"
+      }
+    ],
+    "choices": [
+      {
+        "id": "invest",
+        "label": { "en": "Put in ₹50,000" },
+        "quality": "bad",
+        "effects": { "cash": -38000, "meters": { "joy": 3 }, "flags": { "add": ["ponzi_victim"] }, "schedule": [{ "inYears": 1, "card": "village.adult.club_collapse.a" }] },
+        "echo": { "level": 3, "hint": { "en": "Big glasses, small truth." } },
+        "outcome": { "en": "You pay ₹50,000. Three monthly \"returns\" of ₹4,000 arrive. You feel very smart." },
+        "why": { "en": "Early payouts are bait, paid with newer members' money. They stop when new money stops." }
+      },
+      {
+        "id": "invest_recruit",
+        "label": { "en": "Put in ₹50,000 and bring Chintu and two cousins" },
+        "quality": "bad",
+        "effects": { "cash": -32000, "meters": { "joy": 4 }, "flags": { "add": ["ponzi_victim", "wrong_ponzi"] }, "schedule": [{ "inYears": 1, "card": "village.adult.club_collapse_recruiter.a" }] },
+        "echo": { "level": 3, "hint": { "en": "Three families now trust your word." } },
+        "outcome": { "en": "₹12,000 in returns and ₹6,000 in bonuses. Your cousins put in ₹1.5 lakh because of you." },
+        "why": { "en": "Recruiting into a Ponzi makes you part of it. The law and your family will both ask." }
+      },
+      {
+        "id": "warn",
+        "label": { "en": "Refuse, and warn the village through Kavitha akka's SHG" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3, "meters": { "family": 4 } },
+        "outcome": { "en": "100% a year is impossible. Your warning keeps ₹3 lakh of SHG savings out of the club." },
+        "why": { "en": "If it sounds too good to be true, it is. Ask: where does the profit really come from?" }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.digital_arrest.b",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L22",
+    "ages": [24, 32],
+    "weight": 1,
+    "speaker": "headline",
+    "title": { "en": "A video call from \"police\"" },
+    "text": { "en": "A man in uniform on video: \"A drugs parcel is in your name. You are under digital arrest. Don't tell anyone. Transfer ₹60,000 for verification.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "You are under digital arrest." },
+        "truth": { "en": "There is no such thing. Real police never arrest or collect money on a video call." },
+        "lesson": "L22"
+      },
+      {
+        "phrase": { "en": "Don't tell anyone." },
+        "truth": { "en": "Scammers isolate you so no one can stop you. Tell someone at once." },
+        "lesson": "L22"
+      }
+    ],
+    "choices": [
+      {
+        "id": "hang_up",
+        "label": { "en": "Hang up and call 1930" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3 },
+        "outcome": { "en": "1930 confirms it's a known scam. ₹60,000 safe. You post a warning in the family group." },
+        "why": { "en": "[[digital_arrest]] scams run on fear. Hanging up is always allowed." }
+      },
+      {
+        "id": "pay",
+        "label": { "en": "Pay, to clear your name" },
+        "quality": "bad",
+        "effects": { "cash": -60000, "meters": { "health": -6, "joy": -6 } },
+        "echo": { "level": 2, "hint": { "en": "They will call again. They always call again." } },
+        "outcome": { "en": "₹60,000 gone. Then they demand ₹1 lakh more. You call 1930, late, and ₹15,000 is frozen." },
+        "why": { "en": "Paying never ends it. Police don't take money to \"verify\" anyone." }
+      },
+      {
+        "id": "ask_family",
+        "label": { "en": "Say you'll call back, and phone Chinni first" },
+        "quality": "good",
+        "effects": { "gyaan": 2, "meters": { "family": 3 } },
+        "outcome": { "en": "Chinni: \"That's a scam! A patient's son lost ₹2 lakh to it.\" ₹60,000 safe." },
+        "why": { "en": "Talking to one trusted person breaks the scammer's spell." }
+      }
+    ]
+  },
+
+  {
+    "id": "village.adult.teachback_cushion.a",
+    "storyline": "village",
+    "kind": "teachback",
+    "lesson": "L13",
+    "ages": [25, 30],
+    "weight": 1,
+    "speaker": "friend",
+    "title": { "en": "Chintu asks for advice" },
+    "text": { "en": "{cast:friend} is a delivery rider now, out of his loan-app mess. \"Mama, how do I make sure I never end up there again?\"" },
+    "choices": [
+      {
+        "id": "fund_first",
+        "label": { "en": "\"Build three months of expenses in a separate account first\"" },
+        "quality": "good",
+        "default": true,
+        "effects": { "meters": { "family": 3, "joy": 3 }, "gyaan": 2 },
+        "outcome": { "en": "He starts a ₹1,000 RD. In two years he has ₹24,000, and stops panicking when the bike breaks." },
+        "why": { "en": "An emergency fund is what stands between a bad day and a loan app." }
+      },
+      {
+        "id": "credit_card",
+        "label": { "en": "\"Get a credit card for emergencies\"" },
+        "quality": "bad",
+        "effects": { "meters": { "joy": -2 } },
+        "outcome": { "en": "His first emergency goes on the card at 42%. He's back where he started within a year." },
+        "why": { "en": "A credit card is borrowing, not a cushion. Savings are the cushion." }
+      },
+      {
+        "id": "gold",
+        "label": { "en": "\"Buy a little gold every month\"" },
+        "quality": "risky",
+        "effects": {},
+        "outcome": { "en": "He buys ₹1,000 of gold a month. Selling it in a hurry costs him 10% in charges." },
+        "why": { "en": "Gold is fine for long-term savings. Emergencies need cash you can reach today." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.teachback_sip.a",
+    "storyline": "village",
+    "kind": "teachback",
+    "lesson": "L17",
+    "ages": [27, 33],
+    "weight": 1,
+    "speaker": "sibling",
+    "title": { "en": "Chinni's first salary" },
+    "text": { "en": "{cast:sibling} is a staff nurse now, earning ₹22,000. \"Should I invest now, or wait till I earn more like you?\"" },
+    "choices": [
+      {
+        "id": "start_now",
+        "label": { "en": "\"Emergency fund first, then a small SIP now. Time matters most.\"" },
+        "quality": "good",
+        "default": true,
+        "effects": { "meters": { "family": 5 }, "gyaan": 2 },
+        "outcome": { "en": "She starts ₹1,500 a month at 25. If it averages 10%, that's about ₹6 lakh by 40." },
+        "why": { "en": "Starting early beats starting big. She has 15 years of compounding on her side." }
+      },
+      {
+        "id": "hot_share",
+        "label": { "en": "\"Put it all in one share a doctor told me about\"" },
+        "quality": "bad",
+        "effects": { "meters": { "family": -3 } },
+        "outcome": { "en": "The share falls 40%. Chinni loses ₹8,000 and stops investing for three years." },
+        "why": { "en": "One share is a gamble. Spread money out, and keep costs low." }
+      },
+      {
+        "id": "wait",
+        "label": { "en": "\"Wait. You don't earn enough yet.\"" },
+        "quality": "risky",
+        "effects": {},
+        "outcome": { "en": "She waits five years. Starting at 30 instead of 25 roughly halves what she'd have at 40." },
+        "why": { "en": "Waiting for a big salary costs the years compounding needs." }
+      }
+    ]
+  },
+
+  {
+    "id": "village.adult.surrender_value.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L21",
+    "ages": [27, 33],
+    "weight": 1,
+    "speaker": "agent",
+    "title": { "en": "Surrender value" },
+    "text": { "en": "You need ₹40,000 urgently. You've paid ₹60,000 into the Golden Future Plan. Its surrender value today: ₹18,000." },
+    "choices": [
+      {
+        "id": "surrender",
+        "label": { "en": "Surrender it and take ₹18,000" },
+        "quality": "neutral",
+        "default": true,
+        "effects": { "cash": 18000, "flags": { "remove": ["owns_mixed_plan"] }, "gyaan": 2 },
+        "outcome": { "en": "You lose ₹42,000. Then you buy term cover and an RD, separately." },
+        "why": { "en": "Long lock-ins with heavy early charges punish people who need their money." }
+      },
+      {
+        "id": "keep_paying",
+        "label": { "en": "Keep paying and borrow elsewhere" },
+        "quality": "risky",
+        "effects": { "cash": -30000, "meters": { "health": -3 } },
+        "outcome": { "en": "Another ₹30,000 premium, plus a loan for the ₹40,000 you needed." },
+        "why": { "en": "Throwing good money after a bad product is still throwing money." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.club_collapse.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L22",
+    "ages": [25, 33],
+    "weight": 1,
+    "speaker": "headline",
+    "title": { "en": "The club shuts down" },
+    "text": { "en": "The Lucky Wealth Club office is locked. Phones off. 2,000 members, ₹40 crore gone. Your ₹38,000 is gone too." },
+    "choices": [
+      {
+        "id": "complain",
+        "label": { "en": "File a police complaint with other victims" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": 6000, "meters": { "joy": -4 }, "flags": { "remove": ["ponzi_victim"] }, "gyaan": 3, "lesson": "applied" },
+        "outcome": { "en": "Years later, the court returns part of the seized money: ₹6,000 of your ₹38,000." },
+        "why": { "en": "Complaining together helps police seize assets. Some money comes back; most doesn't." }
+      },
+      {
+        "id": "pay_unlock",
+        "label": { "en": "Pay ₹20,000 \"release fee\" a caller asks for" },
+        "quality": "bad",
+        "effects": { "cash": -20000, "meters": { "joy": -6 } },
+        "echo": { "level": 2, "hint": { "en": "Scammers keep lists of people who already paid." } },
+        "outcome": { "en": "The \"recovery agent\" is another scammer. ₹20,000 more is gone." },
+        "why": { "en": "Victims get targeted again with fake recovery offers. Only police and courts recover money." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.club_collapse_recruiter.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L22",
+    "ages": [25, 33],
+    "weight": 1,
+    "speaker": "mother",
+    "title": { "en": "Your cousins' money" },
+    "text": { "en": "The club collapses. Your cousins lost ₹1.5 lakh because you vouched for it. The police list you as a recruiter." },
+    "choices": [
+      {
+        "id": "own_it",
+        "label": { "en": "Cooperate with police and repay your cousins what you can" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -30000, "flags": { "add": ["came_clean"] }, "meters": { "family": -6 }, "gyaan": 3, "lesson": "applied" },
+        "outcome": { "en": "You give a full statement and return your ₹6,000 bonus, plus ₹24,000 to your cousins. It's a start." },
+        "why": { "en": "The way back is honesty and repair. It costs money now and saves your name later." }
+      },
+      {
+        "id": "blame",
+        "label": { "en": "Say you were only a victim too" },
+        "quality": "bad",
+        "effects": { "meters": { "family": -12, "health": -4 } },
+        "outcome": { "en": "The bonus payments to your account say otherwise. The case drags on. Your cousins stop visiting." },
+        "why": { "en": "Taking bonuses for bringing people in made you part of it. Owning that is the way back." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.visa_rejected.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L22",
+    "ages": [25, 28],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "Caught at the airport" },
+    "text": { "en": "Immigration checks your experience certificate. Fake. Your visa is cancelled. The agent's number is switched off. The ₹1.2 lakh loan remains." },
+    "choices": [
+      {
+        "id": "report_agent",
+        "label": { "en": "Tell the truth and file a complaint against the agent" },
+        "quality": "good",
+        "default": true,
+        "effects": { "flags": { "add": ["came_clean"] }, "meters": { "family": -4, "joy": -8 }, "gyaan": 3 },
+        "outcome": { "en": "You're let go with a warning. Police find the agent cheated 40 others. You start repaying the ₹1.2 lakh." },
+        "why": { "en": "Fake documents can ban you from travel for years. Licensed agents never sell papers." }
+      },
+      {
+        "id": "new_agent",
+        "label": { "en": "Find another agent with \"better\" papers" },
+        "quality": "bad",
+        "effects": { "cash": -40000, "meters": { "family": -6, "health": -4 } },
+        "echo": { "level": 3, "hint": { "en": "The second fake is easier to catch than the first." } },
+        "outcome": { "en": "₹40,000 more, another rejection, and your name on a watch list." },
+        "why": { "en": "A shortcut that failed once fails worse the second time. The way back is the truth." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.claim_rejected.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L21",
+    "ages": [26, 36],
+    "weight": 1,
+    "speaker": "agent",
+    "title": { "en": "Claim rejected" },
+    "text": { "en": "You claim ₹35,000 for Amma's knee surgery. The insurer refuses: \"Existing illness, four-year waiting period. Page 11.\"" },
+    "choices": [
+      {
+        "id": "ombudsman",
+        "label": { "en": "Appeal, then complain to the insurance ombudsman" },
+        "quality": "good",
+        "default": true,
+        "effects": { "shock": { "kind": "health", "cost": 35000 }, "gyaan": 3 },
+        "outcome": { "en": "The rule was real, so the claim stays rejected. But you learn to read page 11 first." },
+        "why": { "en": "Waiting periods and exclusions decide what a policy really covers. Read them before paying." }
+      },
+      {
+        "id": "give_up",
+        "label": { "en": "Give up on insurance forever" },
+        "quality": "risky",
+        "effects": { "shock": { "kind": "health", "cost": 35000 } },
+        "echo": { "level": 1, "hint": { "en": "One bad policy doesn't make all cover bad." } },
+        "outcome": { "en": "You pay ₹35,000 and cancel every policy, including the good ones." },
+        "why": { "en": "The fix for a bad policy is a better one, not none." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.chit_vanished.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L22",
+    "ages": [25, 36],
+    "weight": 1,
+    "speaker": "mother",
+    "title": { "en": "The organiser has gone" },
+    "text": { "en": "The [[chit]] organiser's house is locked. Twenty families, ₹5,000 a month each. Your ₹60,000 of payments is gone." },
+    "choices": [
+      {
+        "id": "complain",
+        "label": { "en": "File a joint police complaint with the other members" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": 12000, "meters": { "family": -3 }, "gyaan": 3 },
+        "outcome": { "en": "Police trace him in a year. Members get back about 20%: ₹12,000 for you." },
+        "why": { "en": "Registered chits have a registrar who holds security money. Unregistered ones have only trust." }
+      },
+      {
+        "id": "let_go",
+        "label": { "en": "Let it go" },
+        "quality": "neutral",
+        "effects": { "meters": { "joy": -4 } },
+        "outcome": { "en": "₹60,000 gone. Amma stops trusting anyone with a notebook, except Anjamma aunty." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.loan_hidden_fees.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L14",
+    "ages": [19, 36],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "Charges you didn't see" },
+    "text": { "en": "Your loan statement shows a ₹3,500 \"loan insurance\" and a 4% fee if you repay early. Both were in the papers." },
+    "choices": [
+      {
+        "id": "question",
+        "label": { "en": "Write to the lender and ask for the add-on to be removed" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -1500, "gyaan": 2 },
+        "outcome": { "en": "They cancel the insurance after a month of letters. You lose ₹1,500 and learn to read clause 7." }
+      },
+      {
+        "id": "pay",
+        "label": { "en": "Just pay it" },
+        "quality": "neutral",
+        "effects": { "cash": -3500 },
+        "outcome": { "en": "₹3,500 for something you never chose." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.loan_recovery_agents.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L14",
+    "ages": [19, 36],
+    "weight": 1,
+    "speaker": "mother",
+    "title": { "en": "They called everyone" },
+    "text": { "en": "One EMI late. The lender's agents call Amma, Chinni and your boss. The papers you signed allowed \"contacting references\"." },
+    "choices": [
+      {
+        "id": "report",
+        "label": { "en": "Pay the EMI and report the harassment to the bank regulator and police" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -2000, "meters": { "health": -3 }, "gyaan": 3 },
+        "outcome": { "en": "The ₹2,000 late EMI is paid, and the calls stop after your complaint. Recovery agents can't threaten anyone." },
+        "why": { "en": "Even when you owe money, harassment is illegal. Complain to the lender, the regulator and police." }
+      },
+      {
+        "id": "new_loan",
+        "label": { "en": "Take another app loan to pay this one" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "loan_app", "principal": 10000, "months": 3 }, "meters": { "health": -6 } },
+        "echo": { "level": 3, "hint": { "en": "Two apps, then three. This is how Chintu's year went." } },
+        "outcome": { "en": "One loan pays another. Within three months you owe four apps ₹28,000." },
+        "why": { "en": "Borrowing to repay borrowing is a trap. Talk to the lender or a bank instead." }
+      }
+    ]
+  },
+
+  {
+    "id": "village.adult.gulf_agent.a",
+    "storyline": "village",
+    "kind": "scam",
+    "lesson": "L22",
+    "ages": [24, 27],
+    "weight": 1,
+    "speaker": "tempter",
+    "title": { "en": "A Gulf job, fast" },
+    "text": { "en": "An agent, sent by {cast:tempter}: \"₹1.2 lakh fee. We will make your experience certificate. Visit visa now, work visa there.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "We will make your experience certificate." },
+        "truth": { "en": "That's a fake document. Using it can mean a cancelled visa, a travel ban and a police case." },
+        "lesson": "L22"
+      },
+      {
+        "phrase": { "en": "Visit visa now, work visa there." },
+        "truth": { "en": "Working on a visit visa is illegal. Licensed agents give a work visa and contract before you fly." },
+        "lesson": "L22"
+      }
+    ],
+    "choices": [
+      {
+        "id": "pay_agent",
+        "label": { "en": "Borrow ₹1.2 lakh and take the deal" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "moneylender", "principal": 120000, "months": 24 }, "flags": { "add": ["wrong_fakedoc"] }, "schedule": [{ "inYears": 1, "card": "village.adult.visa_rejected.a" }] },
+        "echo": { "level": 3, "hint": { "en": "A certificate for a job you never did." } },
+        "outcome": { "en": "₹1.2 lakh at 36%, a plane ticket booked, and a certificate from a company that doesn't exist." }
+      },
+      {
+        "id": "check_licence",
+        "label": { "en": "Check his licence on the government's list of recruiting agents" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3 },
+        "outcome": { "en": "He's not on the list. ₹1.2 lakh saved. You report him, and help two neighbours avoid him too." }
+      },
+      {
+        "id": "refuse",
+        "label": { "en": "Refuse. It feels wrong" },
+        "quality": "good",
+        "effects": { "gyaan": 1 },
+        "outcome": { "en": "You walk away ₹0 poorer. Months later the agent is arrested for cheating 40 people." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.chinni_fees.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L10",
+    "ages": [24, 28],
+    "weight": 2,
+    "speaker": "sibling",
+    "title": { "en": "Chinni got in!" },
+    "text": { "en": "{cast:sibling} got a seat in B.Sc Nursing! Fees: ₹60,000 a year for four years. She looks at you. Everyone looks at you." },
+    "clarity": [
+      {
+        "phrase": { "en": "Fees: ₹60,000 a year for four years." },
+        "truth": { "en": "₹2.4 lakh in total. An education loan with you as co-borrower spreads it over 7 years." },
+        "lesson": "L10"
+      }
+    ],
+    "document": "doc.loan_agreement",
+    "choices": [
+      {
+        "id": "edu_loan",
+        "label": { "en": "Education loan in her name, with you as co-borrower" },
+        "quality": "good",
+        "default": true,
+        "effects": { "loan": { "source": "education", "principal": 240000, "months": 84 }, "meters": { "family": 10 }, "flags": { "add": ["chinni_nursing"] } },
+        "outcome": { "en": "About ₹4,000 a month after she graduates. A staff nurse earns ₹22,000. Chinni hugs Bujji." },
+        "why": { "en": "An education loan is good debt when the course leads to steady work." }
+      },
+      {
+        "id": "sahukar",
+        "label": { "en": "Borrow from Narsaiah sahukar, it's faster" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "moneylender", "principal": 60000, "months": 12 }, "meters": { "family": 6 }, "flags": { "add": ["chinni_nursing"] } },
+        "echo": { "level": 3, "hint": { "en": "Ammamma's hands start shaking again." } },
+        "outcome": { "en": "₹60,000 at 36% for one year's fees. Three more years to go." }
+      },
+      {
+        "id": "wait",
+        "label": { "en": "Ask her to work for a year first" },
+        "quality": "risky",
+        "effects": { "meters": { "family": -12 } },
+        "outcome": { "en": "Chinni cries quietly and takes a ₹6,000 hospital helper job. The seat goes to someone else." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.drought.a",
+    "storyline": "village",
+    "kind": "calamity",
+    "lesson": "L20",
+    "ages": [25, 32],
+    "weight": 1,
+    "speaker": "father",
+    "title": { "en": "The rains don't come" },
+    "text": { "en": "No rain in July. No rain in August. The cotton dries in the field. The family loses ₹40,000 of crop." },
+    "choices": [
+      {
+        "id": "face_it",
+        "label": { "en": "Claim crop insurance and use savings" },
+        "quality": "good",
+        "default": true,
+        "effects": { "shock": { "kind": "drought", "cost": 40000 }, "meters": { "family": 3 } },
+        "outcome": { "en": "Crop insurance pays first, if you had it. Savings cover the rest. Nanna sleeps that night." }
+      },
+      {
+        "id": "sahukar",
+        "label": { "en": "Borrow from the sahukar for next season" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "moneylender", "principal": 40000, "months": 12 }, "meters": { "family": -3, "health": -3 } },
+        "echo": { "level": 3, "hint": { "en": "This is how the story began, last time." } },
+        "outcome": { "en": "₹40,000 at 36%. Next season must be perfect. Ammamma doesn't sleep." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.chit_offer.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L14",
+    "ages": [24, 32],
+    "weight": 1,
+    "speaker": "mother",
+    "title": { "en": "Amma's friend's chitti" },
+    "text": { "en": "Amma's friend runs a ₹1 lakh [[chit]]: 20 members, ₹5,000 a month. \"No registration needed, we all trust each other.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "No registration needed, we all trust each other." },
+        "truth": { "en": "Chits must be registered with the state registrar. Unregistered organisers can vanish with the pot." },
+        "lesson": "L22"
+      }
+    ],
+    "document": "doc.chit_agreement",
+    "choices": [
+      {
+        "id": "registered",
+        "label": { "en": "Join a registered chit instead, after checking its papers" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "chit", "amount": 5000 }, "gyaan": 2 },
+        "outcome": { "en": "₹5,000 a month in a registered chit. The organiser keeps about 5% as commission. Your money is traceable." }
+      },
+      {
+        "id": "friends_chit",
+        "label": { "en": "Join the friend's chit" },
+        "quality": "risky",
+        "effects": { "open": { "product": "chit", "amount": 5000 }, "meters": { "family": 2 }, "schedule": [{ "inYears": 1, "card": "village.adult.chit_vanished.a" }] },
+        "echo": { "level": 2, "hint": { "en": "Trust is lovely. Receipts are better." } },
+        "outcome": { "en": "₹5,000 a month, no receipts. Everyone is very friendly." }
+      },
+      {
+        "id": "rd",
+        "label": { "en": "Skip it, start a ₹5,000 RD at the bank" },
+        "quality": "neutral",
+        "effects": { "open": { "product": "rd", "amount": 5000 } },
+        "outcome": { "en": "₹5,000 a month at about 6.5%. Boring, safe, and Amma's friend sulks." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.crop_price.a",
+    "storyline": "village",
+    "kind": "windfall",
+    "lesson": "L18",
+    "ages": [25, 30],
+    "weight": 1,
+    "speaker": "father",
+    "title": { "en": "Best cotton price in years" },
+    "text": { "en": "Cotton prices jump. The family earns ₹25,000 more than expected. Nanna wants a big TV. Amma wants to clear the kirana khata." },
+    "choices": [
+      {
+        "id": "clear_and_save",
+        "label": { "en": "Clear the khata, save the rest for the emergency fund" },
+        "quality": "good",
+        "default": true,
+        "effects": { "jar": { "emergency": 20000 }, "meters": { "family": 5 } },
+        "outcome": { "en": "₹5,000 clears the khata. Anjamma aunty crosses out a page she's kept for 12 years. ₹20,000 saved." }
+      },
+      {
+        "id": "tv",
+        "label": { "en": "Big TV and a feast" },
+        "quality": "risky",
+        "effects": { "meters": { "joy": 9, "family": 3 } },
+        "echo": { "level": 1, "hint": { "en": "Good seasons are for saving for bad ones." } },
+        "outcome": { "en": "₹25,000 becomes a TV the whole street watches cricket on. The khata stays open." }
+      }
+    ]
+  }
+]
