@@ -378,3 +378,82 @@ export function PatangReport({ report, reason }) {
     </div>
   );
 }
+
+// ---------- the start card: the goal and every symbol, in a few words ----------
+
+function PatangIcon({ kind }) {
+  const { t } = useT();
+  const ref = useRef(null);
+  useEffect(() => {
+    let raf;
+    const tick = (now) => {
+      const ctx = ref.current?.getContext("2d");
+      if (ctx) {
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, 128, 96);
+        // Drawn half again as big as in the game (canvas 128×96 shown at 64×48).
+        ctx.setTransform(3, 0, 0, 3, 0, 0);
+        if (kind === "kite") {
+          ctx.save();
+          ctx.translate(-PATANG.kiteX + 24, Math.sin(now / 300) * 2);
+          kite(ctx, { kite: { y: 11, vy: 0 }, safeFor: 0 }, now);
+          ctx.restore();
+        } else if (kind === "coin") coin(ctx, 21, 16);
+        else if (kind === "panic") panic(ctx, 21, 14, now, t);
+        else if (kind === "rocket") rocket(ctx, 21, 19, now);
+        else if (kind === "candle") {
+          ctx.setTransform(2, 0, 0, 2, 0, 0);
+          for (const [x, up] of [
+            [22, true],
+            [42, false],
+          ]) {
+            ctx.fillStyle = up ? "#2f4a26" : "#7a2318";
+            ctx.fillRect(x - 7, 6, 14, 36);
+            ctx.fillStyle = up ? "#5f9e46" : "#c94b3c";
+            ctx.fillRect(x - 5, 8, 10, 32);
+          }
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [kind, t]);
+  if (kind === "shield")
+    return (
+      <span className="patang-icon heart" aria-hidden="true">
+        <Heart size={26} />
+      </span>
+    );
+  return <canvas ref={ref} className="patang-icon" width={128} height={96} aria-hidden="true" />;
+}
+
+const RULES = [
+  { kind: "kite", tone: "how" },
+  { kind: "coin", tone: "good" },
+  { kind: "shield", tone: "good" },
+  { kind: "candle", tone: "bad" },
+  { kind: "panic", tone: "bad" },
+  { kind: "rocket", tone: "bad" },
+];
+
+export function PatangIntro({ startRef, onStart, playLabel }) {
+  const { t } = useT();
+  return (
+    <div className="patang-intro">
+      <p className="patang-lead">{t("arcade.patang.rules.lead")}</p>
+      <ul className="patang-rules">
+        {RULES.map((r, i) => (
+          <li key={r.kind} className={r.tone} style={{ animationDelay: `${0.05 + i * 0.08}s` }}>
+            <PatangIcon kind={r.kind} />
+            <b>{t(`arcade.patang.rules.${r.kind}.name`)}</b>
+            <small>{t(`arcade.patang.rules.${r.kind}.does`)}</small>
+          </li>
+        ))}
+      </ul>
+      <button ref={startRef} className="primary-button big" onClick={onStart}>
+        {playLabel}
+      </button>
+    </div>
+  );
+}

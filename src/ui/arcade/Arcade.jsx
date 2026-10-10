@@ -7,7 +7,7 @@ import { FIELD, GAMES, ballRadius, createGame, gameById, laneY, result, stepGame
 import { nextAd, wantsInterstitial } from "./ads.js";
 import { AdBanner, AdInterstitial, ScamSite } from "./ScamAds.jsx";
 import { InsuranceRush } from "./InsuranceRush.jsx";
-import { PatangMarket, PatangReport } from "./PatangMarket.jsx";
+import { PatangIntro, PatangMarket, PatangReport } from "./PatangMarket.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
 export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind };
@@ -146,8 +146,19 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
       </header>
 
       {stage === "intro" && gameId === "snowball" && <SnowballIntro best={best} startRef={start} onStart={begin} />}
+      {stage === "intro" && gameId === "patangMarket" && (
+        <PatangIntro
+          startRef={start}
+          onStart={begin}
+          playLabel={
+            <>
+              {t("arcade.play", { s: gameById.patangMarket.seconds })} <ArrowRight size={18} />
+            </>
+          }
+        />
+      )}
 
-      {stage === "intro" && gameId !== "snowball" && (
+      {stage === "intro" && gameId !== "snowball" && gameId !== "patangMarket" && (
         <div className="arcade-intro">
           <span className="arcade-icon huge" aria-hidden="true">
             <Icon size={64} />

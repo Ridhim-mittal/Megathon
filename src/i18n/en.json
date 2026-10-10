@@ -1321,7 +1321,34 @@
       "youPanicked": "You sold in a panic",
       "ifBottom": "If you'd sold at the bottom of the crash",
       "ifStayed": "If you'd stayed to the end",
-      "dip": "In the dip, ₹500 bought {cheap} units. Near the top, only {dear}."
+      "dip": "In the dip, ₹500 bought {cheap} units. Near the top, only {dear}.",
+      "rules": {
+        "lead": "🪁 Fly through 10 years of a share price. Stay in the air = stay invested.",
+        "kite": {
+          "name": "Space / tap",
+          "does": "lifts the kite"
+        },
+        "coin": {
+          "name": "₹500 coin",
+          "does": "buys shares, more in a dip"
+        },
+        "shield": {
+          "name": "Breathe",
+          "does": "one free bump"
+        },
+        "candle": {
+          "name": "Candles",
+          "does": "bump = you sold"
+        },
+        "panic": {
+          "name": "Panic news",
+          "does": "touch = you sell"
+        },
+        "rocket": {
+          "name": "10x tip",
+          "does": "flings you up"
+        }
+      }
     }
   }
 }
