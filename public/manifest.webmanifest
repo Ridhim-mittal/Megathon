@@ -1,0 +1,9 @@
+{
+  "name": "Lakshyam",
+  "short_name": "Lakshyam",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#b5332e",
+  "theme_color": "#b5332e",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
