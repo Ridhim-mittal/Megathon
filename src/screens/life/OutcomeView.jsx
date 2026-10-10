@@ -6,7 +6,9 @@ import { describeMovements } from "../../ui/movements.js";
 import { PixelPortrait as Portrait } from "../../ui/PixelPortrait.jsx";
 import { Actor } from "./CardView.jsx";
 
-// The speaker reacts to the choice: a short stamp, then the story and the money as coins.
+// The speaker reacts to the choice: a big reaction, one line of story and the money as coins.
+// The details (every money move, the reason) wait behind "Why?".
+const REACTION = { good: "🎉", risky: "😬", bad: "😟", neutral: "🙂" };
 export function OutcomeView({ life, dispatch, onLearn }) {
   const { t, pick, rich, plain, money, signed } = useT();
   const out = select.lastOutcome(life);
@@ -70,7 +72,12 @@ export function OutcomeView({ life, dispatch, onLearn }) {
         <div className="vn-main">
           <div className="vn-tags">
             <span className="eyebrow vn-kind">{t("outcome.eyebrow")}</span>
-            <span className={`vn-stamp q-${quality}`}>{t(`outcome.react.${quality}`)}</span>
+            <span className={`vn-stamp q-${quality}`}>
+              <i className="vn-react" aria-hidden="true">
+                {REACTION[quality] ?? REACTION.neutral}
+              </i>
+              {t(`outcome.react.${quality}`)}
+            </span>
           </div>
           {chosen && (
             <p className="outcome-choice">
@@ -98,10 +105,8 @@ export function OutcomeView({ life, dispatch, onLearn }) {
                   </span>
                 ))}
               </div>
-            ) : (
-              <p className="quiet vn-nomoney">{t("outcome.noMoney")}</p>
-            )}
-            {lines.length > 0 && (
+            ) : null}
+            {why && lines.length > 0 && (
               <ul className="vn-moves">
                 {lines.map((l, i) => (
                   <li key={i} className={`move ${l.tone}`} style={{ animationDelay: `${0.3 + 0.08 * i}s` }}>
@@ -138,30 +143,30 @@ export function OutcomeView({ life, dispatch, onLearn }) {
             </div>
           )}
 
-          {out.why && (
-            <div className={`why vn-why ${why ? "open" : ""}`}>
-              <button className="why-button" aria-expanded={why} aria-controls="why-text" onClick={() => setWhy(!why)}>
-                <Lightbulb size={17} /> {why ? t("outcome.hideWhy") : t("outcome.why")}
-              </button>
-              {why && (
-                <div className="vn-why-note">
-                  <Portrait role="mentor" className="whisper-face" />
-                  <p id="why-text" className="why-text">
-                    {rich(out.why)}
-                  </p>
-                </div>
-              )}
+          {out.why && why && (
+            <div className="why vn-why open">
+              <div className="vn-why-note">
+                <Portrait role="mentor" className="whisper-face" />
+                <p id="why-text" className="why-text">
+                  {rich(out.why)}
+                </p>
+              </div>
             </div>
           )}
 
           <div className="action-row">
-            {onLearn && card?.lesson ? (
-              <button className="secondary-button" onClick={() => onLearn(card.lesson)}>
-                {t("gyaan.learnMore")}
-              </button>
-            ) : (
-              <span />
-            )}
+            <span className="vn-tools">
+              {(out.why || lines.length > 0) && (
+                <button className="why-button" aria-expanded={why} aria-controls="why-text" onClick={() => setWhy(!why)}>
+                  <Lightbulb size={17} /> {why ? t("outcome.hideWhy") : t("outcome.why")}
+                </button>
+              )}
+              {onLearn && card?.lesson && (
+                <button className="secondary-button" onClick={() => onLearn(card.lesson)}>
+                  {t("gyaan.learnMore")}
+                </button>
+              )}
+            </span>
             <button ref={next} className="primary-button big" onClick={() => dispatch({ type: "ADVANCE" })}>
               {t("outcome.next")} <ArrowRight size={18} />
             </button>

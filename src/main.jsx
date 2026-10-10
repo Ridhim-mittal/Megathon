@@ -17,6 +17,8 @@ import "./title.css";
 import "./dream.css";
 import "./games.css";
 import "./story.css";
+import "./arcade.css";
+import "./calm.css";
 import { App } from "./screens/App.jsx";
 
 createRoot(document.getElementById("root")).render(

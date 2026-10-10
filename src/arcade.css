@@ -1,0 +1,441 @@
+/* The arcade: three one-minute mini-games (src/ui/arcade). Loaded after story.css. */
+
+.game-window.window-arcade {
+  width: min(760px, 100%);
+  padding: 12px 16px 16px;
+}
+.arcade {
+  display: grid;
+  gap: 12px;
+}
+.arcade-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.arcade-head h2 {
+  flex: 1;
+  margin: 0;
+  font-family: var(--px-font);
+  font-size: 22px;
+}
+.arcade-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  color: #fff;
+  background: var(--game-color, #c9763a);
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+.arcade-icon.huge {
+  width: 104px;
+  height: 104px;
+  border-radius: 28px;
+  animation: arcade-bob 2.4s ease-in-out infinite;
+}
+.game-jarDash {
+  --game-color: #d9902a;
+}
+.game-scamSmash {
+  --game-color: #b8453a;
+}
+.game-snowball {
+  --game-color: #3b82b8;
+}
+@keyframes arcade-bob {
+  50% {
+    transform: translateY(-6px) rotate(-3deg);
+  }
+}
+
+/* The menu (phone app) */
+.arcade-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+.arcade-tile {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 16px 10px 12px;
+  font: inherit;
+  color: var(--px-ink);
+  background: #fffaf0;
+  border: 3px solid var(--px-wood);
+  border-radius: 12px;
+  box-shadow: 0 4px 0 rgba(40, 25, 10, 0.3);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.arcade-tile:hover,
+.arcade-tile:focus-visible {
+  transform: translateY(-3px);
+}
+.arcade-tile b {
+  font-family: var(--px-font);
+  font-size: 17px;
+}
+.arcade-tile small {
+  color: #7a6a4f;
+}
+.arcade-stars {
+  display: inline-flex;
+  gap: 2px;
+  vertical-align: middle;
+}
+.arcade-stars svg {
+  color: #d8c9a4;
+}
+.arcade-stars svg.on {
+  color: #f2b705;
+  fill: #ffd84a;
+}
+.arcade-stars.big svg {
+  animation: arcade-star 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+@keyframes arcade-star {
+  from {
+    transform: scale(0) rotate(-40deg);
+  }
+}
+
+/* Title card */
+.arcade-intro,
+.arcade-done {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+.arcade-goal {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  max-width: 30em;
+}
+.arcade-howto {
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #5d5040;
+}
+.arcade-howto .keys {
+  display: inline-flex;
+  gap: 3px;
+}
+.arcade kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 5px;
+  font: 700 12px system-ui, sans-serif;
+  color: var(--px-ink);
+  background: #fff;
+  border: 2px solid #c9b07a;
+  border-bottom-width: 4px;
+  border-radius: 5px;
+}
+
+/* Playing */
+.arcade-stage {
+  position: relative;
+}
+.arcade-field {
+  display: grid;
+  gap: 6px;
+}
+.arcade-field canvas {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 3px solid var(--px-wood);
+  border-radius: 10px;
+  touch-action: none;
+  cursor: crosshair;
+  display: block;
+}
+.arcade-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.arcade-timer {
+  flex: 1;
+  position: relative;
+  height: 14px;
+  background: #eadcb6;
+  border: 2px solid #c9b07a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.arcade-timer i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, #5f9e46, #a6d36b);
+  transition: width 0.25s linear;
+}
+.arcade-timer b {
+  position: absolute;
+  right: 6px;
+  top: -2px;
+  font-size: 11px;
+}
+.arcade-live {
+  font-family: var(--px-font);
+  font-size: 22px;
+  min-width: 90px;
+  text-align: right;
+}
+.arcade-hearts svg {
+  color: #d8c9a4;
+}
+.arcade-hearts svg.on {
+  color: #d0453a;
+  fill: #ff7a6b;
+}
+.arcade-count {
+  position: absolute;
+  inset: 22px 0 0;
+  display: grid;
+  place-items: center;
+  background: rgba(40, 30, 15, 0.25);
+  border-radius: 10px;
+  pointer-events: none;
+}
+.arcade-count b {
+  font-family: var(--px-font);
+  font-size: 96px;
+  color: #fff;
+  text-shadow: 0 5px 0 rgba(0, 0, 0, 0.35);
+  animation: arcade-count 0.6s ease-out both;
+}
+@keyframes arcade-count {
+  from {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.9);
+  }
+}
+
+/* Scam Smash */
+.smash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  aspect-ratio: 16 / 8;
+}
+.smash-phone {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  font: inherit;
+  color: #fff;
+  background: #2b2b3a;
+  border: 4px solid #15151f;
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  transition: transform 0.08s;
+}
+.smash-phone:active {
+  transform: scale(0.96);
+}
+.smash-phone kbd {
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  min-width: 20px;
+  height: 20px;
+  font-size: 11px;
+  opacity: 0.8;
+}
+.smash-msg {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  animation: smash-in 0.22s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+.smash-text {
+  background: #f4f7ff;
+  color: #1d2433;
+  border-radius: 12px 12px 12px 3px;
+  padding: 8px 10px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.25;
+}
+.smash-life {
+  display: block;
+  height: 4px;
+  border-radius: 2px;
+  background: #ffd84a;
+}
+.smash-phone.flash-good {
+  background: #2f7d3a;
+}
+.smash-phone.flash-bad {
+  background: #b8453a;
+  animation: smash-shake 0.3s;
+}
+.smash-phone.flash-oops {
+  background: #8a6d2b;
+}
+.smash-flash {
+  position: absolute;
+  font-size: 40px;
+  animation: smash-pop 0.6s ease-out both;
+}
+@keyframes smash-in {
+  from {
+    transform: translateY(30px) scale(0.8);
+    opacity: 0;
+  }
+}
+@keyframes smash-pop {
+  from {
+    transform: scale(0.4);
+  }
+  to {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+@keyframes smash-shake {
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+/* Result */
+.arcade-score {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.arcade-score b {
+  font-family: var(--px-font);
+  font-size: 48px;
+}
+.arcade-new {
+  background: #ffd84a;
+  border: 2px solid var(--px-wood);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-weight: 800;
+  font-size: 13px;
+  animation: arcade-star 0.5s 0.9s both;
+}
+.arcade-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.arcade-chips li {
+  background: #fffaf0;
+  border: 2px solid #e0cb98;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 13px;
+}
+.arcade-lesson {
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 34em;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #fff5cf;
+  border: 2px solid #e8c95b;
+  font-weight: 700;
+  text-align: left;
+  animation: notif-in 0.4s 0.6s both;
+}
+.arcade-lesson svg {
+  flex-shrink: 0;
+  color: #c79a1c;
+}
+.arcade-done .action-row {
+  width: 100%;
+}
+
+/* The invite on a place card */
+.game-invite {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0 8px;
+  padding: 10px 12px;
+  font: inherit;
+  text-align: left;
+  color: var(--px-ink);
+  background: #fffaf0;
+  border: 3px solid var(--game-color);
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(40, 25, 10, 0.2);
+}
+.game-invite:hover,
+.game-invite:focus-visible {
+  transform: translateY(-2px);
+}
+.game-invite > span:nth-child(2) {
+  flex: 1;
+  display: grid;
+}
+.game-invite small {
+  color: #7a6a4f;
+  font-size: 11px;
+}
+.game-invite b {
+  font-family: var(--px-font);
+  font-size: 18px;
+}
+.game-invite em {
+  font-style: normal;
+  font-size: 12.5px;
+}
+.game-invite strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--game-color);
+}
+.game-invite .arcade-icon {
+  width: 48px;
+  height: 48px;
+}
+.app-arcade {
+  background: #3b82b8;
+}
+@media (max-width: 560px) {
+  .smash-grid {
+    grid-template-columns: repeat(2, 1fr);
+    aspect-ratio: auto;
+  }
+  .smash-phone {
+    min-height: 92px;
+  }
+}

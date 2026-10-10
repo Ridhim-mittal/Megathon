@@ -1,0 +1,481 @@
+/* A calmer story game: fewer labels, fewer boxes, more icons and motion. Loaded last; everything
+   is scoped to the story game (.storygame) so other screens keep their look. */
+
+/* ---------- top bar: icons and bars, labels in tooltips ---------- */
+.storygame .map-hud {
+  gap: 5px;
+}
+.storygame .hud-panel {
+  padding: 3px 8px;
+}
+.storygame .hud-cash .chip small,
+.storygame .hud-dream small {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.storygame .hud-cash .chip.no-debt {
+  display: none;
+}
+.storygame .hud-meters {
+  display: flex;
+  gap: 10px;
+}
+.storygame .hud-meters .meter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.storygame .hud-meters .meter-label {
+  font-size: 0;
+  line-height: 0;
+}
+.storygame .hud-meters .meter-label svg {
+  width: 15px;
+  height: 15px;
+}
+.storygame .hud-meters .meter-track {
+  width: 34px;
+}
+.storygame .hud-meters .meter-value {
+  display: none;
+}
+.storygame .hud-dream strong {
+  max-width: 9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- the objective: one line and a button ---------- */
+.storygame .objective-mission {
+  display: none;
+}
+.storygame .objective {
+  padding: 7px 10px;
+}
+.storygame .objective-main p {
+  font-size: 14.5px;
+}
+
+/* ---------- notifications: a bell, not a panel ---------- */
+.storygame .notif-head strong {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.storygame .notif-head {
+  position: relative;
+  padding: 5px 7px;
+}
+.storygame .notif-head > svg:last-child {
+  display: none;
+}
+.storygame .notif-head .badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+}
+.storygame .notif-tray {
+  width: min(290px, calc(100vw - 20px));
+}
+
+/* ---------- the controls hint fades away ---------- */
+.storygame .map-controls {
+  animation: calm-fade 0.8s 9s both;
+}
+@keyframes calm-fade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ---------- scene cards: less chrome, things arrive one by one ---------- */
+.storygame .card-view .vn-tags .vn-lesson,
+.storygame .card-view .choices-label {
+  display: none;
+}
+.storygame .card-view .vn-bubble {
+  animation: calm-rise 0.45s cubic-bezier(0.2, 1.2, 0.4, 1) both;
+}
+.storygame .card-view .choice {
+  animation: calm-rise 0.4s cubic-bezier(0.2, 1.2, 0.4, 1) both;
+}
+.storygame .card-view .choice:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.storygame .card-view .choice:nth-child(3) {
+  animation-delay: 0.45s;
+}
+.storygame .card-view .choice:nth-child(4) {
+  animation-delay: 0.55s;
+}
+.storygame .card-view .choice:nth-child(5) {
+  animation-delay: 0.65s;
+}
+@keyframes calm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* ---------- outcomes: a big reaction, one line, the money as coins ---------- */
+.storygame .outcome-view .outcome-choice {
+  display: none;
+}
+.vn-stamp .vn-react {
+  font-style: normal;
+  font-size: 34px;
+  line-height: 1;
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  animation: calm-react 0.7s cubic-bezier(0.2, 1.8, 0.4, 1) both;
+}
+@keyframes calm-react {
+  from {
+    transform: scale(0) rotate(-30deg);
+  }
+  60% {
+    transform: scale(1.25) rotate(8deg);
+  }
+}
+.storygame .outcome-view .vn-bubble {
+  animation: calm-rise 0.45s 0.15s both;
+}
+.storygame .outcome-view .vn-gyaan {
+  padding: 6px 10px;
+  gap: 8px;
+}
+.storygame .outcome-view .vn-gyaan small {
+  display: none;
+}
+.vn-tools {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.vn-tools .why-button {
+  margin: 0;
+}
+
+/* ---------- Gyaan as slides ---------- */
+.slides-mode {
+  width: min(760px, 100%);
+}
+.slides-mode.index-open {
+  width: min(940px, 100%);
+}
+.slides-mode .gyaan-body {
+  grid-template-columns: 1fr;
+}
+.slides-mode.index-open .gyaan-body {
+  grid-template-columns: 240px 1fr;
+}
+.slides-mode header {
+  gap: 8px;
+}
+.gyaan-all {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: inherit;
+  font-size: 13px;
+  padding: 4px 10px;
+  color: var(--px-ink);
+  background: #fffaf0;
+  border: 2px solid #c9b07a;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.gyaan-all.on {
+  background: #ffe27a;
+}
+.slides-mode .gyaan-index button span {
+  width: 1.6em;
+  display: inline-block;
+  text-align: center;
+}
+.gyaan-slides {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+.slide-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.slide-top h3 {
+  margin: 0;
+}
+.slide-badge {
+  font-size: 28px;
+}
+.slide {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding: 10px 6px;
+  animation: slide-in 0.35s cubic-bezier(0.2, 1.1, 0.4, 1) both;
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+.slide-icon {
+  font-size: 54px;
+  line-height: 1;
+  animation: calm-react 0.6s cubic-bezier(0.2, 1.8, 0.4, 1) both;
+}
+.slide-big {
+  margin: 0;
+  max-width: 28em;
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 700;
+}
+.slide-sub {
+  margin: 0;
+  font-weight: 700;
+}
+.slide-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  width: min(560px, 100%);
+  text-align: left;
+}
+.slide-points li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 12px;
+  background: #fffaf0;
+  border: 2px solid #e0cb98;
+  border-radius: 12px;
+  animation: calm-rise 0.4s both;
+}
+.slide-points b {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffd84a;
+  border: 2px solid var(--px-wood);
+  font-size: 13px;
+}
+.slide-example {
+  width: min(560px, 100%);
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+.slide-example ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  width: 100%;
+}
+.slide-example li {
+  padding: 8px 12px;
+  background: #eef6ff;
+  border: 2px solid #9fc0e0;
+  border-radius: 10px;
+  animation: calm-rise 0.35s both;
+}
+.slide-result {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #eaf6e2;
+  border: 2px solid #8fb36d;
+  font-weight: 700;
+  animation: calm-react 0.5s both;
+}
+.flip-card {
+  width: min(440px, 100%);
+  height: 210px;
+  perspective: 900px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.flip-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.3, 1.3, 0.5, 1);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 3px solid;
+  backface-visibility: hidden;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 5px 0 rgba(40, 25, 10, 0.2);
+}
+.flip-face b {
+  font-family: var(--px-font);
+  font-size: 20px;
+}
+.flip-face small {
+  color: #7a6a4f;
+  font-weight: 400;
+}
+.flip-face.front {
+  background: #fff0ec;
+  border-color: #d97a6a;
+}
+.flip-face.back {
+  background: #eaf6e2;
+  border-color: #8fb36d;
+  transform: rotateY(180deg);
+}
+.slide-quiz {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  width: min(560px, 100%);
+}
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+.quiz-option {
+  font: inherit;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 12px;
+  border: 3px solid #c9b07a;
+  background: #fffaf0;
+  color: var(--px-ink);
+  cursor: pointer;
+}
+.quiz-option:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+.quiz-option.right {
+  background: #dff1d6;
+  border-color: #5f9e46;
+  opacity: 1;
+  animation: calm-react 0.5s both;
+}
+.quiz-option.wrong {
+  background: #f8ddd7;
+  border-color: #b5443a;
+  opacity: 1;
+  animation: smash-shake 0.3s;
+}
+.quiz-result {
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-align: left;
+}
+.quiz-result > span:first-child {
+  font-size: 30px;
+}
+.slide-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 2px dashed #e3cfa0;
+}
+.slide-arrow {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 3px solid var(--px-wood);
+  background: #fffaf0;
+  color: var(--px-ink);
+  cursor: pointer;
+}
+.slide-arrow.next {
+  background: #ffd84a;
+}
+.slide-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.slide-dots {
+  display: flex;
+  gap: 6px;
+}
+.slide-dots button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid #e0cb98;
+  background: #fffaf0;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: transform 0.2s;
+}
+.slide-dots button.seen {
+  opacity: 0.85;
+}
+.slide-dots button.on {
+  opacity: 1;
+  border-color: var(--px-wood);
+  background: #ffe27a;
+  transform: scale(1.15);
+}
+@media (max-width: 760px) {
+  .slides-mode.index-open .gyaan-body {
+    grid-template-columns: 1fr;
+  }
+  .slides-mode.index-open .gyaan-slides {
+    display: none;
+  }
+  .slides-mode .gyaan-index {
+    display: grid;
+  }
+}

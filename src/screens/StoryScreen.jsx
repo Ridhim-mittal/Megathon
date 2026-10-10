@@ -9,7 +9,9 @@ import { START, placeById } from "../ui/map/village.js";
 import { PhoneLite as Phone } from "../ui/PhoneLite.jsx";
 import { NotificationTray } from "../ui/Notifications.jsx";
 import { StockExchange } from "../ui/exchange/StockExchange.jsx";
-import { loadDiscovered, recordDiscovered } from "../ui/persist.js";
+import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
+import { gameAtPlace } from "../ui/arcade/games.js";
+import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { sounds } from "../ui/sound.js";
 import { CHOICE_GAMES, InterestRace } from "../ui/games/InterestRace.jsx";
 import { BudgetView } from "./life/BudgetView.jsx";
@@ -55,7 +57,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   }, [toast, onToast]);
 
   const placeName = useCallback((id) => (story?.mission.placeNames?.[id] ? pick(story.mission.placeNames[id]) : t(`places.${id}`)), [story, pick, t]);
-  const labels = useMemo(() => Object.fromEntries(Object.keys(placeById).map((id) => [id, placeName(id)])), [placeName]);
+  const labels = useMemo(() => Object.fromEntries(Object.keys(placeById).map((id) => [id, gameAtPlace(id) ? `${placeName(id)} 🎮` : placeName(id)])), [placeName]);
 
   const showIntro = phase === "budget" && story && introDone !== story.mission.id;
   const engineDialog = ["budget", "card", "outcome", "minigame", "chapterEnd"].includes(phase);
@@ -88,6 +90,11 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     }, 200);
     return () => clearInterval(id);
   }, [rushKey, overlay, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Once per browser: point out the mini-games.
+  useEffect(() => {
+    if (phase === "map" && !overlay && seenOnce("arcadeHint")) onToast(t("arcade.hint"));
+  }, [phase, overlay]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // After a timeout, say what being late cost.
   const lastLate = story?.lastLate;
@@ -200,6 +207,18 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   } else if (overlay?.type === "exchange") {
     windowType = "exchange";
     dialog = <StockExchange onClose={() => setOverlay({ type: "phone" })} onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })} />;
+  } else if (overlay?.type === "arcade") {
+    windowType = "arcade";
+    dialog = overlay.game ? (
+      <ArcadeGame
+        key={overlay.game}
+        gameId={overlay.game}
+        onClose={() => setOverlay(null)}
+        onBack={overlay.fromPhone ? () => setOverlay({ type: "arcade", fromPhone: true }) : undefined}
+      />
+    ) : (
+      <ArcadeMenu onPick={(game) => setOverlay({ type: "arcade", game, fromPhone: true })} onClose={() => setOverlay(null)} />
+    );
   } else if (overlay?.type === "shop") {
     windowType = "shop";
     dialog = <ShopView life={life} dispatch={dispatch} onDone={() => setOverlay(null)} />;
@@ -210,6 +229,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         <span className="eyebrow">{placeName(overlay.place)}</span>
         <h2>{placeName(overlay.place)}</h2>
         <p>{t(`placeInfo.${overlay.place}`)}</p>
+        {gameAtPlace(overlay.place) && <GameInvite gameId={gameAtPlace(overlay.place).id} onPlay={(game) => setOverlay({ type: "arcade", game })} />}
         {objective && <p className="quiet">{t("story.notHere", { place: placeName(objective.location) })}</p>}
         <div className="action-row">
           <button className="text-button" onClick={() => setOverlay(null)}>
@@ -347,6 +367,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           }}
           onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })}
           onExchange={() => setOverlay({ type: "exchange" })}
+          onArcade={() => setOverlay({ type: "arcade", fromPhone: true })}
         />
       )}
       {overlay?.type === "gyaan" && <GyaanLite life={life} lessonId={overlay.lesson} onClose={() => setOverlay(null)} />}
@@ -359,5 +380,26 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         </p>
       )}
     </div>
+  );
+}
+
+// A place's mini-game, offered when you walk in.
+function GameInvite({ gameId, onPlay }) {
+  const { t } = useT();
+  const Icon = GAME_ICON[gameId];
+  return (
+    <button className={`game-invite game-${gameId}`} onClick={() => onPlay(gameId)}>
+      <span className="arcade-icon" aria-hidden="true">
+        <Icon size={30} />
+      </span>
+      <span>
+        <small>{t("arcade.invite")}</small>
+        <b>{t(`arcade.games.${gameId}.name`)}</b>
+        <em>{t(`arcade.games.${gameId}.tag`)}</em>
+      </span>
+      <strong>
+        {t("arcade.here")} <ArrowRight size={16} />
+      </strong>
+    </button>
   );
 }

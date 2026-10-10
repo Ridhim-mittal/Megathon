@@ -1,5 +1,6 @@
-// The objective guide on the map: a dotted trail from the player to the target door, a bouncing
-// arrow over the door, and an arrow at the screen edge when the target is off screen.
+// The objective guide on the map: a steady, softly glowing path from the player to the target
+// door, a gently bobbing arrow over the door, and an arrow at the screen edge when the target is
+// off screen.
 
 import { TILE, findPath } from "./village.js";
 
@@ -8,33 +9,49 @@ const INK = "#2b1d0e";
 
 export function drawGuide(ctx, view, cache, player, place, now, { urgent = false } = {}) {
   if (!place?.entrance) return;
-  const from = { x: player.x, y: player.y };
-  const key = `${from.x},${from.y}>${place.id}`;
-  if (cache.key !== key) {
-    cache.key = key;
-    cache.path = findPath(from, place.entrance) ?? [];
+  // Keep one path while the player follows it; find a new one only when they leave it, so the
+  // trail never jumps between equally short routes.
+  const here = { x: player.x, y: player.y };
+  if (cache.place !== place.id || !cache.path) {
+    cache.place = place.id;
+    cache.path = findPath(here, place.entrance) ?? [];
+  } else {
+    const i = cache.path.findIndex((p) => p.x === here.x && p.y === here.y);
+    if (i >= 0) cache.path = cache.path.slice(i + 1);
+    else if (!(cache.from && cache.from.x === here.x && cache.from.y === here.y)) cache.path = findPath(here, place.entrance) ?? [];
   }
-  const color = urgent ? (Math.floor(now / 250) % 2 ? "#ff5a4a" : "#ffd0c8") : GOLD;
+  cache.from = here;
   const camX = view.camX;
   const camY = view.camY;
+  // A slow breath instead of blinking: urgent trails are red and breathe a little faster.
+  const breath = 0.5 + 0.5 * Math.sin(now / (urgent ? 380 : 900));
+  const rgb = urgent ? "255, 98, 74" : "255, 216, 74";
+  const center = (p) => [p.x * TILE + 8 - camX, p.y * TILE + 8 - camY];
 
-  // Trail: small diamonds that march toward the target.
-  const phase = Math.floor(now / 140) % 3;
-  cache.path.forEach((p, i) => {
-    if ((i + 3 - phase) % 3 === 0) return;
-    const x = Math.round(p.x * TILE + 8 - camX);
-    const y = Math.round(p.y * TILE + 9 - camY);
-    ctx.fillStyle = INK;
-    ctx.fillRect(x - 2, y - 1, 5, 3);
-    ctx.fillRect(x - 1, y - 2, 3, 5);
-    ctx.fillStyle = color;
-    ctx.fillRect(x - 1, y, 3, 1);
-    ctx.fillRect(x, y - 1, 1, 3);
-  });
+  // The trail: one soft glowing path from the player (where they really are) to the door.
+  const pts = [[player.fx * TILE + 8 - camX, player.fy * TILE + 8 - camY], ...cache.path.map(center)];
+  if (pts.length > 1) {
+    ctx.save();
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    const stroke = (width, alpha) => {
+      ctx.strokeStyle = `rgba(${rgb}, ${alpha})`;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(pts[0][0], pts[0][1]);
+      for (const [x, y] of pts.slice(1)) ctx.lineTo(x, y);
+      ctx.stroke();
+    };
+    stroke(11, 0.1 + 0.08 * breath);
+    stroke(6, 0.22 + 0.1 * breath);
+    stroke(2, 0.55 + 0.2 * breath);
+    ctx.restore();
+  }
+  const color = urgent ? "#ff624a" : GOLD;
 
-  // Arrow over the door.
+  // Arrow over the door, bobbing gently.
   const tx = place.entrance.x * TILE + 8 - camX;
-  const ty = place.entrance.y * TILE - 14 - camY + Math.round(Math.sin(now / 160) * 3);
+  const ty = place.entrance.y * TILE - 14 - camY + Math.round(Math.sin(now / 420) * 2);
   const onScreen = tx > 6 && tx < view.w - 6 && ty > 6 && ty < view.h - 6;
   if (onScreen) {
     downArrow(ctx, Math.round(tx), Math.round(ty), color);
@@ -48,7 +65,7 @@ export function drawGuide(ctx, view, cache, player, place, now, { urgent = false
   const scale = Math.min((view.w / 2 - 14) / Math.max(1, Math.abs(dx)), (view.h / 2 - 14) / Math.max(1, Math.abs(dy)));
   const ex = Math.round(cx + dx * scale);
   const ey = Math.round(cy + dy * scale);
-  edgeArrow(ctx, ex, ey, Math.atan2(dy, dx), color, now);
+  edgeArrow(ctx, ex, ey, Math.atan2(dy, dx), color, breath);
 }
 
 function downArrow(ctx, x, y, color) {
@@ -69,11 +86,11 @@ function downArrow(ctx, x, y, color) {
   ctx.fillRect(x - 1, y + 2, 3, 1);
 }
 
-function edgeArrow(ctx, x, y, angle, color, now) {
+function edgeArrow(ctx, x, y, angle, color, breath) {
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(angle);
-  const pulse = Math.floor(now / 300) % 2;
+  const pulse = breath * 1.5;
   ctx.fillStyle = INK;
   ctx.beginPath();
   ctx.moveTo(10 + pulse, 0);

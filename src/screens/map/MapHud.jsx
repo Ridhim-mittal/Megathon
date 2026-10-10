@@ -17,22 +17,21 @@ export function MapHud({ hud, chapter, goalTitle, settings, phone, onPhone, onAs
           <strong>{chapter ? t(`chapter.names.${chapter.id}`) : ""}</strong>
           <span>
             {t("common.age", { age: hud.age })}
-            {chapter ? ` · ${t("chapter.ages", { from: chapter.from, to: chapter.to })}` : ""}
           </span>
         </div>
       </div>
       <div className="hud-panel hud-cash" aria-live="polite">
-        <span className="chip">
+        <span className="chip" title={t("hud.cash")}>
           <Wallet size={15} aria-hidden="true" />
           <small>{t("hud.cash")}</small>
           <Money value={hud.cash + hud.wallet} />
         </span>
-        <span className="chip">
+        <span className="chip" title={t("hud.savings")}>
           <Landmark size={15} aria-hidden="true" />
           <small>{t("hud.savings")}</small>
           <Money value={hud.savings - hud.cash - hud.wallet + hud.investments} />
         </span>
-        <span className={`chip ${hud.debt > 0 ? "debt" : ""}`}>
+        <span className={`chip ${hud.debt > 0 ? "debt" : "no-debt"}`} title={t("hud.debt")}>
           <TrendingDown size={15} aria-hidden="true" />
           <small>{t("hud.debt")}</small>
           <Money value={hud.debt} />

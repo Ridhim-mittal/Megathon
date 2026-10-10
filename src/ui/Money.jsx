@@ -51,7 +51,7 @@ export function Meter({ id, label, value, icon: Icon }) {
   }, [value]);
   const level = (id === "joy" || id === "family") && (value <= 15 || value >= 90) ? "edge" : "";
   return (
-    <div className={`meter meter-${id} ${level}`} role="meter" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={value}>
+    <div className={`meter meter-${id} ${level}`} title={`${label} ${value}`} role="meter" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={value}>
       <span className="meter-label">
         {Icon && <Icon size={13} aria-hidden="true" />}
         {label}

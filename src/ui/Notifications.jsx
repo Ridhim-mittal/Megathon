@@ -58,7 +58,7 @@ export function NotificationTray({ messages, phoneEvents, canFinish, active, onO
   const badge = unseen.length;
   return (
     <aside className={`notif-tray ${open ? "open" : ""}`} aria-label={t("inbox.title")}>
-      <button className="notif-head" aria-expanded={open} onClick={toggle}>
+      <button className="notif-head" aria-expanded={open} aria-label={badge ? `${t("inbox.title")} (${badge})` : t("inbox.title")} title={t("inbox.title")} onClick={toggle}>
         <Bell size={15} aria-hidden="true" />
         <strong>{t("inbox.title")}</strong>
         {badge > 0 && <b className="badge">{badge}</b>}

@@ -1,7 +1,7 @@
 // Progress lives in localStorage only (spec section 8). Every access is guarded: private windows
 // and blocked storage simply mean nothing is remembered.
 
-const KEYS = { settings: "lakshyam.settings", life: "lakshyam.life", endings: "lakshyam.endings", discovered: "lakshyam.discovered" };
+const KEYS = { settings: "lakshyam.settings", life: "lakshyam.life", endings: "lakshyam.endings", discovered: "lakshyam.discovered", arcade: "lakshyam.arcade" };
 
 function read(key, fallback) {
   try {
@@ -50,4 +50,19 @@ export function recordDiscovered(life) {
   for (const p of life.story.path) set.add(`${p.node}:${p.choice}`);
   if (set.size !== before) write(KEYS.discovered, [...set]);
   return set;
+}
+
+// Best arcade scores, by game id.
+export const loadArcade = () => read(KEYS.arcade, {});
+export function saveArcadeBest(id, score) {
+  const best = loadArcade();
+  if (score > (best[id] ?? 0)) write(KEYS.arcade, { ...best, [id]: score });
+}
+
+// True the first time it is asked for this key in this browser (one-time hints).
+export function seenOnce(key) {
+  const seen = read("lakshyam.once", {});
+  if (seen[key]) return false;
+  write("lakshyam.once", { ...seen, [key]: true });
+  return true;
 }
