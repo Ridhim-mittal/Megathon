@@ -4,6 +4,8 @@ import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
 import { FIELD, GAMES, ballRadius, createGame, gameById, laneY, result, stepGame } from "./games.js";
+import { nextAd, wantsInterstitial } from "./ads.js";
+import { AdBanner, AdInterstitial, ScamSite } from "./ScamAds.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
 export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake };
@@ -14,6 +16,8 @@ export const starsFor = (id, score) => STARS[id].filter((x) => score >= x).lengt
 export function ArcadeMenu({ onPick, onClose }) {
   const { t } = useT();
   const best = loadArcade();
+  const [ad, setAd] = useState(() => nextAd());
+  const [scam, setScam] = useState(null);
   return (
     <div className="view arcade arcade-menu">
       <header className="arcade-head">
@@ -38,6 +42,16 @@ export function ArcadeMenu({ onPick, onClose }) {
           );
         })}
       </div>
+      <AdBanner key={ad.id} ad={ad} onOpen={(a) => setScam(a.id)} onReport={() => setAd(nextAd(ad.id))} />
+      {scam && (
+        <ScamSite
+          adId={scam}
+          onClose={() => {
+            setScam(null);
+            setAd(nextAd(ad.id));
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -60,6 +74,10 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
   const [final, setFinal] = useState(null);
   const [best, setBest] = useState(() => loadArcade()[gameId] ?? 0);
   const [round, setRound] = useState(0);
+  const [ad, setAd] = useState(() => nextAd());
+  const [interstitial, setInterstitial] = useState(null);
+  const [scam, setScam] = useState(null);
+  const lastHadAd = useRef(false);
   const Icon = GAME_ICON[gameId];
   const start = useRef(null);
   useEffect(() => start.current?.focus(), [stage]);
@@ -77,6 +95,7 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
 
   useEffect(() => {
     const onKey = (e) => {
+      if (scam || interstitial) return;
       if (e.key === "Escape") onClose();
       else if (e.key === "Enter" && stage === "intro") begin();
     };
@@ -84,7 +103,15 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
     return () => window.removeEventListener("keydown", onKey);
   });
 
+  // "Play again" sometimes shows a full-screen ad first.
+  function again() {
+    const show = wantsInterstitial(round, lastHadAd.current);
+    lastHadAd.current = show;
+    if (show) setInterstitial(nextAd(ad.id));
+    else begin();
+  }
   function begin() {
+    setInterstitial(null);
     setCount(3);
     setStage("count");
     setRound((r) => r + 1);
@@ -141,7 +168,7 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
           ) : (
             <CanvasGame key={round} gameId={gameId} running={stage === "play"} onEnd={finish} />
           )}
-          {stage === "count" && (
+          {stage === "count" && !interstitial && (
             <div className="arcade-count" aria-live="assertive">
               <b key={count}>{count || t("arcade.go")}</b>
             </div>
@@ -169,8 +196,9 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
             <Lightbulb size={20} aria-hidden="true" />
             <span>{t(`arcade.games.${gameId}.lesson`)}</span>
           </p>
+          <AdBanner key={ad.id} ad={ad} onOpen={(a) => setScam(a.id)} onReport={() => setAd(nextAd(ad.id))} />
           <div className="action-row">
-            <button className="secondary-button" onClick={begin}>
+            <button className="secondary-button" onClick={again}>
               <RotateCcw size={16} /> {t("arcade.again")}
             </button>
             <button ref={start} className="primary-button big" onClick={onBack ?? onClose}>
@@ -178,6 +206,17 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
             </button>
           </div>
         </div>
+      )}
+      {interstitial && <AdInterstitial ad={interstitial} onOpen={(a) => setScam(a.id)} onSkip={begin} />}
+      {scam && (
+        <ScamSite
+          adId={scam}
+          onClose={() => {
+            setScam(null);
+            setAd(nextAd(ad.id));
+            if (interstitial) begin();
+          }}
+        />
       )}
     </div>
   );
