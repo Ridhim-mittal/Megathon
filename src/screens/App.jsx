@@ -32,7 +32,8 @@ export function App() {
   const [settings, setSettings] = useState(loadSettings);
   const saved = useMemo(loadLife, []);
   const [route, setRoute] = useState("title");
-  const [setup, setSetup] = useState({ storylineId: "village", goalId: null, playerName: "" });
+  const [setup, setSetup] = useState({ storylineId: "village", goalId: null, playerName: "", avatar: "boy" });
+  const [picking, setPicking] = useState(false);
   const [life, setLife] = useState(null);
   const [parallel, setParallel] = useState(null);
   const [endings, setEndings] = useState(loadEndings);
@@ -86,7 +87,7 @@ export function App() {
     }
   }, [life, route]);
 
-  function startLife({ goalId, playerName, avatar }) {
+  function startLife({ goalId, playerName = setup.playerName, avatar = setup.avatar }) {
     const seed = urlSeed() ?? `${Date.now()}`;
     let s = createLife({ storylineId: setup.storylineId, goalId, seed, playerName: playerName || "", mode: "story", avatar: avatar ?? "boy" });
     s = step(s, { type: "ADVANCE" });
@@ -99,14 +100,17 @@ export function App() {
   function continueLife() {
     if (!saved) return;
     setLife(saved.life);
-    setSetup({ storylineId: saved.life.storylineId, goalId: saved.life.goalId, playerName: saved.life.playerName });
+    setSetup({ storylineId: saved.life.storylineId, goalId: saved.life.goalId, playerName: saved.life.playerName, avatar: saved.life.avatar ?? "boy" });
     go(saved.route ?? "life");
   }
 
-  function newLife() {
+  // The title screen's "Who are you?" card hands over the look and name; then language and story.
+  function newLife({ avatar, playerName }) {
     saveLife(null);
     setLife(null);
     setParallel(null);
+    setSetup((x) => ({ ...x, goalId: null, playerName, avatar }));
+    setPicking(false);
     go("language");
   }
 
@@ -150,6 +154,15 @@ export function App() {
             onNew={newLife}
             onHelp={() => setHelp(true)}
             settings={settingsApi}
+            picking={picking}
+            onPicking={setPicking}
+            hero={{
+              avatar: (life ?? saved?.life)?.avatar ?? "boy",
+              stage: (life ?? saved?.life)?.stage ?? "child",
+              name: (life ?? saved?.life)?.playerName,
+              pickAvatar: setup.avatar,
+              pickName: setup.playerName,
+            }}
           />
         )}
         {route === "language" && <LanguageScreen {...common} onPick={(lang) => (i18n.setLang(lang), go("storyline"))} />}
@@ -157,7 +170,7 @@ export function App() {
           <StorylineScreen {...common} onBack={() => go("language")} onPick={(id) => (setSetup((x) => ({ ...x, storylineId: id })), go("intro"))} />
         )}
         {route === "intro" && <IntroScreen {...common} storylineId={setup.storylineId} onDone={() => go("dream")} />}
-        {route === "dream" && <DreamScreen {...common} initialName={setup.playerName} onBack={() => go("intro")} onStart={startLife} />}
+        {route === "dream" && <DreamScreen {...common} avatar={setup.avatar} playerName={setup.playerName} onBack={() => go("intro")} onStart={startLife} />}
         {route === "life" && life && life.mode === "story" && <StoryScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
         {route === "life" && life && life.mode !== "story" && <MapScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
         {route === "ending" && life && <EndingScreen {...common} life={life} onNext={() => go("report")} />}
@@ -165,7 +178,7 @@ export function App() {
         {route === "parallel" && life && (
           <ParallelScreen {...common} life={life} parallel={parallel} onParallel={setParallel} onGallery={() => go("gallery")} />
         )}
-        {route === "gallery" && <GalleryScreen {...common} endings={endings} onPlayAgain={newLife} />}
+        {route === "gallery" && <GalleryScreen {...common} endings={endings} onPlayAgain={() => (setPicking(true), go("title"))} />}
         {help && <HelpDialog onClose={() => setHelp(false)} />}
       </div>
     </I18nProvider>

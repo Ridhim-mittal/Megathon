@@ -24,7 +24,7 @@ Deploy as a static Vite site: build command `npm run build`, output directory `d
 
 ## How to play
 
-1. **Play** → choose a language → choose your life (the village; the city is "coming soon") → meet your family → choose your dream, your name and your look.
+1. **Play** (or **Start a new life**) → pick your look and name in "Who are you?" → choose a language → choose your life (the village; the city is "coming soon") → meet your family → choose your dream.
 2. **Each chapter** opens with a title card, then your jar split (needs first) for its years.
 3. **Follow the objective** (top of the screen): it says what to do and where. A gold trail and arrow lead to the place; walk with the arrow keys or WASD and press **Enter** at the door, or press **Go to …** to walk there. Each scene is a story card: press **1–4** or click to choose; **Why?** explains every outcome with numbers, and **Learn more** opens the Gyaan lesson.
 4. **Race the clock:** some scenes are urgent (a red objective and countdown: report a fraud in the golden hour, rush to the hospital). Some choices must be made before a timer runs out, like a scammer shouting for an OTP.

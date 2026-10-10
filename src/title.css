@@ -1,0 +1,378 @@
+/* Title screen: Continue and Start a new life side by side, and the "Who are you?" card.
+   Loaded after budget.css. */
+
+.title-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 26px auto 0;
+}
+.title-choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 330px;
+  min-height: 92px;
+  padding: 12px 18px 12px 12px;
+  text-align: left;
+  border-radius: 14px;
+  border: 3px solid;
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  transition: transform 0.18s, box-shadow 0.18s;
+  animation: choice-pop 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+.title-choice + .title-choice {
+  animation-delay: 0.1s;
+}
+.title-choice.continue {
+  background: #5f9e46;
+  border-color: #2f4a26;
+  color: #fffbe8;
+  box-shadow: 0 5px 0 #2f4a26, 0 14px 26px rgba(40, 60, 30, 0.25);
+}
+.title-choice.new {
+  background: #fff4d6;
+  border-color: var(--px-wood);
+  color: var(--px-ink);
+  box-shadow: 0 5px 0 var(--px-wood), 0 14px 26px rgba(40, 60, 30, 0.2);
+}
+.title-actions.one .title-choice.new {
+  background: #5f9e46;
+  border-color: #2f4a26;
+  color: #fffbe8;
+  box-shadow: 0 5px 0 #2f4a26, 0 14px 26px rgba(40, 60, 30, 0.25);
+}
+.title-choice:hover {
+  transform: translateY(-3px);
+}
+.title-choice:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #2f4a26;
+}
+.title-choice-face {
+  flex-shrink: 0;
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: end center;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fffbe8;
+  border: 3px solid currentColor;
+}
+.title-choice.new .title-choice-face {
+  background: #e6f3d8;
+  border-color: var(--px-wood);
+}
+.title-choice-face .pixel-portrait canvas {
+  width: 40px;
+  height: 60px;
+}
+.title-choice-face.pair {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+}
+.title-choice-face.pair .pixel-portrait canvas {
+  width: 30px;
+  height: 45px;
+}
+.title-choice:hover .title-choice-face .pixel-portrait {
+  animation: actor-hop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.title-choice-text {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+}
+.title-choice-text strong {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.title-choice-text small {
+  font-size: 12.5px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+.title-choice-icon {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+.title-choice.new .title-choice-icon {
+  color: #e0a12f;
+}
+.title-actions + .title-help {
+  margin-top: 16px;
+}
+
+/* ---------- Who are you? ---------- */
+.hero-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(28, 38, 20, 0.45);
+  backdrop-filter: blur(3px);
+  animation: fade-in 0.25s ease both;
+}
+.hero-card {
+  position: relative;
+  width: min(460px, 100%);
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 26px 24px 20px;
+  text-align: center;
+  background: var(--px-paper);
+  color: var(--px-ink);
+  border: 3px solid var(--px-wood);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 0 2px var(--px-paper-edge),
+    0 6px 0 rgba(40, 25, 10, 0.4);
+  animation: page-in 0.45s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+}
+.hero-ribbon {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--px-font);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #fff6dc;
+  background: var(--px-green);
+  border: 2px solid var(--px-green-dark);
+  border-radius: 5px;
+  box-shadow: 0 3px 0 var(--px-green-dark);
+  padding: 3px 14px 2px;
+}
+.hero-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  border: 2px solid #d9c391;
+  background: #fffaf0;
+  color: var(--px-wood);
+}
+.hero-card h2 {
+  font-family: var(--px-font);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--px-ink);
+}
+.hero-looks {
+  display: flex;
+  gap: 16px;
+}
+.hero-look {
+  position: relative;
+  width: 150px;
+  height: 196px;
+  display: grid;
+  justify-items: center;
+  align-content: end;
+  padding-bottom: 10px;
+  border-radius: 12px;
+  border: 3px solid #d9c391;
+  background: #fffaf0;
+  box-shadow: 0 4px 0 #c9b07a;
+  color: var(--px-ink);
+  transition: transform 0.18s, border-color 0.18s, background 0.18s, opacity 0.18s;
+  opacity: 0.75;
+}
+.hero-look:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+.hero-look.selected {
+  opacity: 1;
+  border-color: var(--px-green);
+  background: #eef7e3;
+  box-shadow: 0 4px 0 var(--px-green-dark);
+  transform: translateY(-3px);
+}
+.hero-look-glow {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 118px;
+  height: 118px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #f4e6bf;
+  transition: background 0.2s;
+}
+.look-girl.selected .hero-look-glow {
+  background: #fbe0ea;
+}
+.look-boy.selected .hero-look-glow {
+  background: #dcefee;
+}
+.hero-look .pixel-portrait {
+  position: relative;
+  z-index: 1;
+}
+.hero-look .pixel-portrait canvas {
+  width: 88px;
+  height: 132px;
+}
+.hero-look.selected .pixel-portrait {
+  animation: actor-idle 0.44s steps(2, jump-none) infinite;
+}
+.hero-look-shadow {
+  position: absolute;
+  bottom: 38px;
+  left: 50%;
+  width: 60px;
+  height: 9px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(60, 40, 20, 0.18);
+}
+.hero-look b {
+  position: relative;
+  z-index: 1;
+  margin-top: 4px;
+  font-family: var(--px-font);
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff6dc;
+  background: var(--px-wood-light);
+  border: 2px solid var(--px-wood);
+  border-radius: 5px;
+  padding: 2px 14px 1px;
+}
+.hero-look.selected b {
+  background: var(--px-green);
+  border-color: var(--px-green-dark);
+}
+.hero-look .vn-sparkles i:nth-child(1) { left: 14px; top: 26px; }
+.hero-look .vn-sparkles i:nth-child(2) { right: 14px; top: 14px; }
+.hero-look .vn-sparkles i:nth-child(3) { right: 22px; top: 96px; }
+
+.hero-name {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #8a6f45;
+}
+.hero-name input {
+  font: inherit;
+  font-family: var(--px-font);
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+  padding: 8px 12px;
+  color: var(--px-ink);
+  background: #fffdf3;
+  border: 3px solid var(--px-wood-light);
+  border-radius: 8px;
+  box-shadow: inset 0 3px 0 rgba(90, 58, 34, 0.12);
+}
+.hero-name input:focus-visible {
+  outline: 3px solid #ffd84a;
+  outline-offset: 1px;
+}
+.hero-greet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  text-align: left;
+}
+.hero-granny canvas {
+  width: 32px;
+  height: 48px;
+}
+.hero-greet > span:last-child {
+  position: relative;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #5a4a36;
+  background: #fffdf6;
+  border: 2px solid #e2cd9c;
+  border-radius: 12px 12px 12px 3px;
+  animation: words-in 0.3s ease both;
+}
+.hero-card .hero-go {
+  width: 100%;
+  justify-content: center;
+  background: var(--px-green);
+  border: 3px solid var(--px-green-dark);
+  box-shadow: 0 4px 0 var(--px-green-dark);
+  border-radius: 6px;
+  font-family: var(--px-font);
+  font-size: 18px;
+  font-weight: 500;
+  color: #fffbe8;
+}
+.hero-card .hero-go:active {
+  box-shadow: 0 1px 0 var(--px-green-dark);
+  transform: translateY(3px);
+}
+
+/* the chosen hero on the dream screen */
+.dream-you {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 4px 6px;
+  border-radius: 999px;
+  border: 2px solid #d9c391;
+  background: #fffaf0;
+  font-weight: 700;
+  color: #5a4a36;
+}
+.dream-you canvas {
+  width: 24px;
+  height: 36px;
+}
+
+@media (max-width: 680px) {
+  .title-actions.two {
+    flex-direction: column;
+    align-items: center;
+  }
+  .title-choice {
+    width: min(330px, 100%);
+  }
+  .hero-look {
+    width: 130px;
+    height: 176px;
+  }
+  .hero-look .pixel-portrait canvas {
+    width: 72px;
+    height: 108px;
+  }
+}
+
+@keyframes choice-pop {
+  from { opacity: 0; transform: translateY(14px) scale(0.92); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .title-choice,
+  .hero-layer,
+  .hero-layer * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
