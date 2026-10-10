@@ -1,0 +1,290 @@
+{
+  "budget": {
+    "name": { "en": "budget", "hi": "बजट", "te": "బడ్జెట్" },
+    "short": { "en": "A plan for every rupee before you spend it." }
+  },
+  "needs": {
+    "name": { "en": "needs", "hi": "ज़रूरतें", "te": "అవసరాలు" },
+    "short": { "en": "Things you must have: food, school, bus fare, medicine." }
+  },
+  "wants": {
+    "name": { "en": "wants", "hi": "इच्छाएँ", "te": "కోరికలు" },
+    "short": { "en": "Things that make life nicer but can wait: snacks, games, new clothes." }
+  },
+  "gullak": {
+    "name": { "en": "piggy bank (gullak)", "hi": "गुल्लक", "te": "హుండీ" },
+    "short": { "en": "A box or pot at home for saving coins. Safe from spending, not from rats or thieves." }
+  },
+  "inflation": {
+    "name": { "en": "inflation", "hi": "महंगाई", "te": "ధరల పెరుగుదల" },
+    "short": { "en": "Prices going up over time. In this game, about 6% a year." }
+  },
+  "interest": {
+    "name": { "en": "interest", "hi": "ब्याज", "te": "వడ్డీ" },
+    "short": { "en": "The price of money. You earn it when you save. You pay it when you borrow." }
+  },
+  "simple_interest": {
+    "name": { "en": "simple interest", "hi": "साधारण ब्याज", "te": "సాధారణ వడ్డీ" },
+    "short": { "en": "Interest only on the amount you started with." }
+  },
+  "chakravaddi": {
+    "name": { "en": "compound interest", "hi": "चक्रवृद्धि ब्याज", "te": "చక్రవడ్డీ" },
+    "short": { "en": "Interest on interest. Great for savings, dangerous for debts." }
+  },
+  "minor_account": {
+    "name": { "en": "minor's savings account" },
+    "short": { "en": "A bank account for a child, opened with a parent or guardian. Many have zero minimum balance." }
+  },
+  "jan_dhan": {
+    "name": { "en": "Jan Dhan account", "hi": "जन धन खाता", "te": "జన్ ధన్ ఖాతా" },
+    "short": { "en": "A government zero-balance bank account, with a RuPay card and accident cover." }
+  },
+  "bank_mitra": {
+    "name": { "en": "Bank Mitra", "hi": "बैंक मित्र", "te": "బ్యాంక్ మిత్ర" },
+    "short": { "en": "A village banking agent who opens accounts and handles deposits for a bank." }
+  },
+  "khata": {
+    "name": { "en": "shop credit book (khata)", "hi": "उधार खाता", "te": "ఖాతా పుస్తకం" },
+    "short": { "en": "The shop's notebook of what you owe. Easy to start, easy to forget, never forgets you." }
+  },
+  "otp": {
+    "name": { "en": "OTP" },
+    "short": { "en": "One-time password sent by SMS. It is a key to your money. Never share it." }
+  },
+  "pin": {
+    "name": { "en": "PIN" },
+    "short": { "en": "Your secret number for UPI or ATM. Only needed to send money, never to receive it." }
+  },
+  "upi": {
+    "name": { "en": "UPI" },
+    "short": { "en": "A way to send money from your phone using a UPI ID or QR code." }
+  },
+  "collect_request": {
+    "name": { "en": "collect request" },
+    "short": { "en": "A UPI request asking YOU to pay. Entering your PIN sends money away." }
+  },
+  "qr_code": {
+    "name": { "en": "QR code" },
+    "short": { "en": "A square code you scan to pay. Scanning to \"receive\" money is a common trick." }
+  },
+  "emi": {
+    "name": { "en": "EMI", "hi": "किस्त (EMI)", "te": "వాయిదా (EMI)" },
+    "short": { "en": "Equated monthly instalment: the same payment every month until a loan is paid off." }
+  },
+  "bnpl": {
+    "name": { "en": "buy now, pay later" },
+    "short": { "en": "A shop loan split into EMIs. Often has fees and high late charges." }
+  },
+  "processing_fee": {
+    "name": { "en": "processing fee" },
+    "short": { "en": "A one-time charge for giving you a loan. Add it to the real cost." }
+  },
+  "opportunity_cost": {
+    "name": { "en": "opportunity cost" },
+    "short": { "en": "The best thing you give up when you choose something else." }
+  },
+  "betting_app": {
+    "name": { "en": "betting app" },
+    "short": { "en": "An app where you bet money on games or matches. The app wins over time. Many are illegal." }
+  },
+  "education_loan": {
+    "name": { "en": "education loan", "hi": "शिक्षा ऋण", "te": "విద్యా రుణం" },
+    "short": { "en": "A bank loan for study. Repayment usually starts after the course ends." }
+  },
+  "good_debt": {
+    "name": { "en": "good debt vs bad debt" },
+    "short": { "en": "Good debt helps you earn more later. Bad debt pays for things that lose value." }
+  },
+  "iti": {
+    "name": { "en": "ITI course" },
+    "short": { "en": "Industrial Training Institute: 1–2 year government skill courses, like electrician or fitter." }
+  },
+  "payslip": {
+    "name": { "en": "payslip", "hi": "वेतन पर्ची", "te": "జీతం స్లిప్" },
+    "short": { "en": "A paper showing your pay, what was added and what was cut, each month." }
+  },
+  "pf": {
+    "name": { "en": "provident fund (PF)", "hi": "भविष्य निधि (PF)", "te": "భవిష్య నిధి (PF)" },
+    "short": { "en": "Retirement savings: 12% of your basic pay, matched by your employer." }
+  },
+  "pan": {
+    "name": { "en": "PAN card" },
+    "short": { "en": "A 10-character tax ID. Needed for bank accounts, salaries and big purchases." }
+  },
+  "income_tax": {
+    "name": { "en": "income tax", "hi": "आयकर", "te": "ఆదాయపు పన్ను" },
+    "short": { "en": "Tax on earnings above a yearly limit. Most first jobs fall below it." }
+  },
+  "emergency_fund": {
+    "name": { "en": "emergency fund", "hi": "आपातकालीन फंड", "te": "అత్యవసర నిధి" },
+    "short": { "en": "3–6 months of expenses kept safe and easy to reach." }
+  },
+  "sahukar": {
+    "name": { "en": "moneylender (sahukar)", "hi": "साहूकार", "te": "వడ్డీ వ్యాపారి" },
+    "short": { "en": "A private lender. Fast and easy, but usually very costly, and often in rates per month." }
+  },
+  "loan_app": {
+    "name": { "en": "instant loan app" },
+    "short": { "en": "Phone apps that lend in minutes. Many charge huge fees; illegal ones harass borrowers." }
+  },
+  "credit_card": {
+    "name": { "en": "credit card" },
+    "short": { "en": "Borrowing for a month free. Pay only the minimum and interest runs at 36–42% a year." }
+  },
+  "credit_score": {
+    "name": { "en": "credit score" },
+    "short": { "en": "A number from 300 to 900 showing how well you repay. Banks check it before lending." }
+  },
+  "shg": {
+    "name": { "en": "self-help group (SHG)", "hi": "स्वयं सहायता समूह", "te": "పొదుపు సంఘం" },
+    "short": { "en": "10–20 women who save together each month and lend to members at low interest." }
+  },
+  "gold_loan": {
+    "name": { "en": "gold loan", "hi": "सोने पर कर्ज़", "te": "బంగారు రుణం" },
+    "short": { "en": "A loan against your gold jewellery. Cheaper than a sahukar, but you can lose the gold." }
+  },
+  "kcc": {
+    "name": { "en": "Kisan Credit Card (KCC)" },
+    "short": { "en": "A low-interest bank loan for farming costs, about 7% a year, less if repaid on time." }
+  },
+  "mudra": {
+    "name": { "en": "Mudra loan" },
+    "short": { "en": "A government-backed bank loan for small businesses, without collateral." }
+  },
+  "money_mule": {
+    "name": { "en": "money mule" },
+    "short": { "en": "Someone whose bank account is used to move stolen money. It is a crime, even for \"commission\"." }
+  },
+  "helpline_1930": {
+    "name": { "en": "1930 helpline" },
+    "short": { "en": "The national cyber-crime helpline. Call 1930 fast if you are cheated online." }
+  },
+  "insurance": {
+    "name": { "en": "insurance", "hi": "बीमा", "te": "బీమా" },
+    "short": { "en": "You pay a small fixed amount. If something bad happens, the insurer pays the big bill." }
+  },
+  "premium": {
+    "name": { "en": "premium" },
+    "short": { "en": "The amount you pay for insurance, monthly or yearly." }
+  },
+  "term_insurance": {
+    "name": { "en": "term life insurance" },
+    "short": { "en": "Pure life cover for a fixed period. Low premium, big cover, no money back." }
+  },
+  "pmsby": {
+    "name": { "en": "PMSBY (accident cover)" },
+    "short": { "en": "Pradhan Mantri Suraksha Bima Yojana: ₹2 lakh accident cover for ₹20 a year." }
+  },
+  "pmjjby": {
+    "name": { "en": "PMJJBY (life cover)" },
+    "short": { "en": "Pradhan Mantri Jeevan Jyoti Bima Yojana: ₹2 lakh life cover for ₹436 a year." }
+  },
+  "ayushman": {
+    "name": { "en": "Ayushman Bharat (PM-JAY)" },
+    "short": { "en": "Free hospital cover up to ₹5 lakh a year for eligible families." }
+  },
+  "aarogyasri": {
+    "name": { "en": "Aarogyasri" },
+    "short": { "en": "Telangana's free health scheme for eligible families at listed hospitals." }
+  },
+  "pmfby": {
+    "name": { "en": "crop insurance (PMFBY)" },
+    "short": { "en": "Pradhan Mantri Fasal Bima Yojana: farmers pay about 2% of cover; pays out when crops fail." }
+  },
+  "pm_kisan": {
+    "name": { "en": "PM-KISAN" },
+    "short": { "en": "₹6,000 a year from the government to farmers who own land, in three parts." }
+  },
+  "fd": {
+    "name": { "en": "fixed deposit (FD)" },
+    "short": { "en": "Money locked in a bank for a fixed time at a fixed rate, about 6–7% a year." }
+  },
+  "rd": {
+    "name": { "en": "recurring deposit (RD)" },
+    "short": { "en": "Save the same amount in the bank every month at a fixed rate." }
+  },
+  "ppf": {
+    "name": { "en": "Public Provident Fund (PPF)" },
+    "short": { "en": "A 15-year government savings scheme, about 7% a year, tax-free." }
+  },
+  "sukanya": {
+    "name": { "en": "Sukanya Samriddhi" },
+    "short": { "en": "A government savings scheme for a girl child's future, with a good fixed rate." }
+  },
+  "sip": {
+    "name": { "en": "SIP" },
+    "short": { "en": "Systematic investment plan: putting a fixed amount into a fund every month." }
+  },
+  "index_fund": {
+    "name": { "en": "index fund" },
+    "short": { "en": "A low-cost fund that buys a little of many big companies. It swings, but spreads risk." }
+  },
+  "diversification": {
+    "name": { "en": "diversification" },
+    "short": { "en": "Not keeping all your eggs in one basket. Spread money across different things." }
+  },
+  "commission": {
+    "name": { "en": "commission" },
+    "short": { "en": "What a seller earns for selling you something. Bigger commission, bigger push." }
+  },
+  "mixed_plan": {
+    "name": { "en": "insurance-cum-investment plan" },
+    "short": { "en": "A policy that mixes cover and savings. Usually low cover, high fees, long lock-in." }
+  },
+  "chit": {
+    "name": { "en": "chit fund", "hi": "कमेटी", "te": "చిట్టీ" },
+    "short": { "en": "A group pools money monthly; each month one member takes the pot. Use only registered chits." }
+  },
+  "ponzi": {
+    "name": { "en": "Ponzi scheme" },
+    "short": { "en": "A fake scheme that pays old members with new members' money, until it collapses." }
+  },
+  "digital_arrest": {
+    "name": { "en": "\"digital arrest\" scam" },
+    "short": { "en": "Fake police on a video call demanding money. Real police never arrest over a call." }
+  },
+  "hawala": {
+    "name": { "en": "hawala (hundi)", "hi": "हवाला", "te": "హవాలా" },
+    "short": { "en": "Moving cash outside banks, without records. Illegal, and carriers get caught first." }
+  },
+  "pahani": {
+    "name": { "en": "pahani (land record)", "hi": "भूमि रिकॉर्ड (पहानी)", "te": "పహాణీ" },
+    "short": { "en": "The official record of who owns and farms a piece of land." }
+  },
+  "encumbrance": {
+    "name": { "en": "encumbrance certificate (EC)" },
+    "short": { "en": "A paper from the registration office showing if land is already sold, mortgaged or disputed." }
+  },
+  "sale_deed": {
+    "name": { "en": "sale deed", "hi": "बैनामा" },
+    "short": { "en": "The registered paper that transfers land from seller to buyer." }
+  },
+  "down_payment": {
+    "name": { "en": "down payment" },
+    "short": { "en": "The part of a big purchase you pay yourself. The rest is the loan." }
+  },
+  "apy": {
+    "name": { "en": "Atal Pension Yojana (APY)" },
+    "short": { "en": "A government pension scheme: ₹1,000–₹5,000 a month from age 60, for small monthly payments." }
+  },
+  "nps": {
+    "name": { "en": "National Pension System (NPS)" },
+    "short": { "en": "A long-term government-run pension account. You choose how much to add." }
+  },
+  "nominee": {
+    "name": { "en": "nominee" },
+    "short": { "en": "The person who receives your account or policy money if something happens to you." }
+  },
+  "kyc": {
+    "name": { "en": "KYC" },
+    "short": { "en": "Know Your Customer: ID papers the bank keeps. Update it at the branch, never through a link." }
+  },
+  "kalyana_lakshmi": {
+    "name": { "en": "Kalyana Lakshmi" },
+    "short": { "en": "Telangana's marriage help scheme for eligible families, paid to the bride's mother." }
+  },
+  "net_worth": {
+    "name": { "en": "net worth" },
+    "short": { "en": "Everything you own minus everything you owe." }
+  }
+}
