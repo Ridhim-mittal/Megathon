@@ -1458,6 +1458,17 @@
     "continue": "Continue",
     "how": "Click a rat (or press Space) to shoo it away.",
     "skip": "Skip",
-    "round2": "ROUND 2"
+    "round2": "ROUND 2",
+    "menu": "Mini-game: Rat Guard",
+    "tag": "Guard Ammamma's savings from the rats. Play again any time this chapter.",
+    "clang": "CLANG!",
+    "bounced": "VAULT {n}/{total}",
+    "vault": "RATS BOUNCED",
+    "holds": "The vault holds! The rats give up and run.",
+    "howBank": "Swat them if you like: in the bank, rats just bounce off.",
+    "final": "Rats shooed: {n} points",
+    "best": "Best: {n}",
+    "newBest": "New best!",
+    "again": "Play again"
   }
 }
