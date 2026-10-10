@@ -419,23 +419,33 @@ const next = step(life, { type: "CHOOSE", choiceId: "save" });   // pure: return
 select.hud(next);           // { age, stage, cash, savings, debt, netWorth, meters, dream: {saved, target, pct} }
 ```
 
+The full API with an example per action and selector is in `src/engine/README.md`. An invalid action
+returns the same state with `error: { type, message }`; it never throws.
+
 **Actions:**
-- `ADVANCE`: continue to the next phase
-- `SET_BUDGET { jars }`: monthly ₹ per jar; must sum to monthly income
+- `ADVANCE`: continue to the next phase (in `budget` it keeps the suggested split; in `minigame` it
+  skips the mini-game)
+- `SET_BUDGET { jars, investIn? }`: monthly ₹ per jar; must sum to `budgetRules.monthlyIncome` (the
+  take-home after EMIs and premiums). Commits the budget and moves to the shop. `investIn` picks the
+  product the invest jar goes into.
 - `BUY_WANT { itemId }`, `SKIP_SHOP`
 - `CHOOSE { choiceId }`: on the current card
 - `USE_GLASSES`: on the current card
-- `OPEN_DOCUMENT { docId }`, `FLAG_LINE { docId, lineId }`, `VERIFY_DOCUMENT { docId }`
-- `MINIGAME_RESULT { id, score }`
-- `ASKED_MENTOR`: small gyaan reward
+- `OPEN_DOCUMENT { docId }`, `FLAG_LINE { docId, lineId }` (toggles), `VERIFY_DOCUMENT { docId }`
+- `MINIGAME_RESULT { id, score, lesson? }`: `lesson` (`"seen"`, `"applied"`, `"missed"`) sets L14
+- `ASKED_MENTOR`, `USED_GLOSSARY { termId }`: small gyaan reward, at most 3 a year together
 
-**Phases:** `intro` → `budget` → `shop` → `card` ↔ `outcome` → `yearEnd` → (next year) … → `ending`.
+**Phases:** `intro` → `budget` → `shop` → `card` ↔ `outcome` → (`minigame`, once) → `yearEnd` →
+(next year) … → `ending`. `minigame` is Sahukar's chair, after the cards of one seeded year at age
+17–22.
 
 **Selectors** (`select.*`):
-- `hud`, `budgetRules` (`{ monthlyIncome, step, minNeeds, jarsUnlocked }`), `shopItems`, `currentCard`
-  (with the document variant and the glasses state resolved), `lastOutcome` (with money breakdown),
-  `yearSummary`
-- `timeline` (decisions, for Parallel Life), `lessonReport`, `ending`, `echoes`
+- `hud`, `budgetRules` (`{ monthlyIncome, grossMonthly, autoPaidMonthly, step, minNeeds,
+  jarsUnlocked, required, suggested, investIn, investOptions }`), `checkBudget`, `shopItems`,
+  `currentCard` (with the document variant and the glasses state resolved), `lastOutcome` (with
+  money breakdown), `yearSummary`
+- `timeline` (decisions, for Parallel Life), `lessonReport`, `ending`, `echoes`, `minigame`,
+  `world` (this life's inflation and returns), `compare(original, parallel)`, `lesson`, `error`
 
 **Parallel Life:** `replay(finalState, { decisionIndex, choiceId })` returns the parallel life's final
 state.
@@ -451,9 +461,81 @@ state.
   flags: [], scheduled: [], queue: [], current, lastOutcome,
   lessons: { L01: "unseen" | "seen" | "applied" | "missed" }, echoes: [], log: [], history: [], ending }
 ```
+Added by the engine: `params`, `world` (seeded luck), `plan` (lesson, crossroads and mini-game
+ages), `year` (this year's rules, events and summary), `years` (one snapshot per year), `budget`,
+`investIn`, `money.wallet` (the wants jar), `flows` (money ledger), `error`, and bookkeeping.
+`history` holds card decisions; `log` holds every successful action.
 
 The UI renders from state and selectors only, **never computes money itself**, and never imports
 engine internals.
+
+### Engine rules (how the engine reads content)
+These fill gaps in the contract with the smallest sensible rule. Content can rely on them.
+
+**Money and effects**
+- Effects inside one choice apply in this order: `income`, `loan`, `close`, `cash` (+), `jar`,
+  `cash` (−), `repay`, `open`, `shock`, `meters`, `flags`, `schedule`, `gyaan`, `glasses`.
+  So a loan arrives before the purchase it pays for, and a gift arrives before it is saved.
+- `loan`, `open`, `close`, `repay`, `shock` and `schedule` may also be arrays.
+- `cash: -X` is paid from cash, then the wants jar, bank, goal jar, emergency jar, then liquid
+  holdings (FD, RD, chit, gold, index fund), then a forced loan. `cash: +X` is new money.
+- `jar` moves money between cash and a jar (`emergency`, `goal`, or `wants`); it is not new money.
+  A gift into a jar is `{ "cash": 500, "jar": { "goal": 500 } }`.
+- `loan` takes an optional `disburse`: `"cash"` (the money comes to the player; spend it with
+  `cash` or `open`) or `"direct"` (it goes straight to the seller, so the item is already paid
+  for). Defaults by source: `bnpl_emi`, `credit_card`, `education` are direct; the rest are cash.
+  A given `emi` turns the loan into a fixed instalment (`emi × months` + `fee` in total). The fee is
+  billed with the first year's payments.
+- `open` pays from cash, then the wants jar, bank, goal jar and emergency jar; if that is not enough
+  the product is opened with what there was (the outcome reports the `shortfall`). For insurance,
+  `amount` is the cover (default in assumptions) and the first premium is paid at once.
+- `income` changes the monthly income from the next year (this year's was already paid).
+- `schedule` with `inYears: 0` queues the card later this same year.
+- Wants money the shop does not take is spent on small treats at year end.
+
+**Flags the engine reads or sets**
+- `goal_reached`: set it when the dream is bought (e.g. the 33–35 crossroads). The dream also counts
+  as reached the first year-end its savings cover the target.
+- `money_mule`, `fraud`, `legal_trouble`, or any flag starting with `legal_`: the `wrong_path`
+  ending modifier.
+- `owns_phone` or `has_smartphone` (age 18+): forced borrowing can go to a loan app instead of the
+  moneylender. In the `city` storyline a loan app is always reachable from 18.
+- `chit_unregistered`: an open `chit` can collapse in a seeded year.
+- `crisis_joy_low`, `crisis_joy_high`, `crisis_family_low`, `crisis_family_high`: set by the engine
+  while a crisis card is shown and removed after the choice. A crisis card picks its extreme with
+  `requires.flags`; a crisis card that requires none of them is used for any extreme.
+
+**Cards**
+- Variants of one moment share an id prefix: `<storyline>.<stage>.<slug>`. Only one card per prefix
+  is drawn in a life. Each crossroads prefix is drawn once at a seeded age inside its `ages`; if no
+  variant's `requires` hold that year, it moves to the next year in range.
+- A lesson card's `requires` decide which variant is drawn; if none hold at the planned age, a
+  variant is drawn anyway (coverage beats flags).
+- `consequence` cards are only drawn when scheduled; `crisis` cards only at meter extremes.
+  Teach-back cards are drawn only for a lesson that is `seen` or `missed` (three times likelier for
+  `missed`).
+- Lesson status from `quality`: `good` → `applied`; `neutral` → `seen` (if unseen); `risky` or
+  `bad` → `missed`, except that `applied` is never lowered. `effects.lesson` overrides it.
+- A document problem is "caught" if the player flagged any red-flag line or verified the document.
+  "Going ahead" means choosing a choice with an `open` or `loan` effect. Going ahead on an uncaught
+  problem schedules the variant's `consequence` (with `{ inYears, card, unlessFlag? }`).
+
+**Content additions the engine accepts**
+- `storyline.json` `start`: `{ cash, jars: { emergency, goal }, meters: {…absolute values},
+  flags: [], income: { monthly, source }, effects: {…vocabulary} }`, all optional.
+- `wants.json` items may have `effects` (same vocabulary), applied when bought.
+- `endings.json` may have `wrong_path: { <goalId>: text }` and `no_safety_net: { <goalId>: text }`
+  sections. The ending modifier `no_safety_net` marks a `secure_no_dream` ending without an
+  emergency fund or insurance (the life fits no ending cleanly; there is no high-interest debt).
+
+**Endings** (judged at the end of age 36, income = monthly income)
+- reached: `dream_on_time` if EMIs are at most 40% of income and high-interest debt (≥ 20% a year)
+  is at most one month's income; otherwise `dream_with_debt`.
+- not reached: `debt_trap` if high-interest debt is above 3 months' income and above liquid savings;
+  else `dream_close` if at least 75% funded and secure; else `secure_no_dream` if secure (3 months
+  of needs in the emergency jar, any insurance, no high-interest debt); else `dream_close` if at least
+  75% funded; else `debt_trap` if there is any high-interest debt; else `secure_no_dream` with the
+  `no_safety_net` modifier.
 
 ### Assumptions
 Every number lives in `src/engine/assumptions.js`, with a comment saying what it is based on:

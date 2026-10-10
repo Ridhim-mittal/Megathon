@@ -7,7 +7,8 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node --test src/game.test.js",
+    "test": "node --test \"src/**/*.test.js\"",
+    "validate:content": "node scripts/validate-content.js",
     "test:e2e": "playwright test"
   },
   "dependencies": {
