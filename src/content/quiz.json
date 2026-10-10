@@ -70,9 +70,9 @@
       "id": "post4",
       "lesson": "L14",
       "q": { "en": "You need ₹20,000. Which is usually the cheapest?" },
-      "options": [{ "en": "Moneylender at ₹3 per ₹100 a month" }, { "en": "Instant loan app" }, { "en": "Savings-group (SHG) loan at 12% a year" }, { "en": "Credit card minimum due" }],
+      "options": [{ "en": "Moneylender at ₹2 per ₹100 a month" }, { "en": "Instant loan app" }, { "en": "Savings-group (SHG) loan at 12% a year" }, { "en": "Credit card minimum due" }],
       "answer": 2,
-      "explain": { "en": "The moneylender is 36% a year, apps and cards even more. The SHG is 12%." }
+      "explain": { "en": "The moneylender is 24% a year on the full amount; apps and cards cost even more. The SHG is 12%." }
     },
     {
       "id": "post5",

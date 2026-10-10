@@ -122,7 +122,7 @@
         "lines": [
           { "id": "l1", "text": { "en": "Plan type: term life insurance. No money back at the end." } },
           { "id": "l2", "text": { "en": "Sum assured: ₹50,00,000" } },
-          { "id": "l3", "text": { "en": "Premium: ₹8,000 a year for 25 years" } },
+          { "id": "l3", "text": { "en": "Premium: ₹11,000 a year for 25 years" } },
           { "id": "l4", "text": { "en": "Nominee: Amma" } },
           { "id": "l5", "text": { "en": "Free-look period: cancel within 30 days for a full refund" } }
         ]

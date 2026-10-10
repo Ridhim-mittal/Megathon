@@ -1,15 +1,17 @@
 [
   {
-    "id": "village.any.crisis_joy_low.a",
+    "id": "village.any.crisis_joy_low_young.a",
     "storyline": "village",
     "kind": "crisis",
     "lesson": "L01",
     "ages": [11, 18],
     "weight": 1,
-    "trigger": { "meter": "joy", "at": 0 },
+    "requires": { "flags": ["crisis_joy_low"] },
     "speaker": "sibling",
     "title": { "en": "You forgot how to have fun" },
-    "text": { "en": "{cast:sibling} pulls your sleeve. \"You never play anymore. You just count coins.\" Even Bujji looks bored of you." },
+    "text": {
+      "en": "{cast:sibling} pulls your sleeve. \"You never play anymore. You just count coins.\" Even Bujji looks bored of you."
+    },
     "choices": [
       {
         "id": "jatara",
@@ -31,16 +33,18 @@
     ]
   },
   {
-    "id": "village.any.crisis_joy_low.b",
+    "id": "village.any.crisis_joy_low_grown.a",
     "storyline": "village",
     "kind": "crisis",
     "lesson": "L18",
     "ages": [19, 36],
     "weight": 1,
-    "trigger": { "meter": "joy", "at": 0 },
+    "requires": { "flags": ["crisis_joy_low"] },
     "speaker": "mentor",
     "title": { "en": "A calculator, not a person" },
-    "text": { "en": "You haven't laughed in months. {cast:mentor}: \"Kanna, money is for living. You've stopped living.\" Chinni calls you \"the calculator\"." },
+    "text": {
+      "en": "You haven't laughed in months. {cast:mentor}: \"Kanna, money is for living. You've stopped living.\" Chinni calls you \"the calculator\"."
+    },
     "choices": [
       {
         "id": "family_trip",
@@ -62,16 +66,18 @@
     ]
   },
   {
-    "id": "village.any.crisis_joy_high.a",
+    "id": "village.any.crisis_joy_high_young.a",
     "storyline": "village",
     "kind": "crisis",
     "lesson": "L01",
     "ages": [11, 18],
     "weight": 1,
-    "trigger": { "meter": "joy", "at": 100 },
+    "requires": { "flags": ["crisis_joy_high"] },
     "speaker": "shopkeeper",
     "title": { "en": "The khata is full" },
-    "text": { "en": "Snacks, top-ups, movies. {cast:shopkeeper} turns her [[khata]] around. \"₹640, kanna. That's a whole page with your name.\"" },
+    "text": {
+      "en": "Snacks, top-ups, movies. {cast:shopkeeper} turns her [[khata]] around. \"₹640, kanna. That's a whole page with your name.\""
+    },
     "choices": [
       {
         "id": "pay_back",
@@ -93,16 +99,18 @@
     ]
   },
   {
-    "id": "village.any.crisis_joy_high.b",
+    "id": "village.any.crisis_joy_high_grown.a",
     "storyline": "village",
     "kind": "crisis",
     "lesson": "L18",
     "ages": [19, 36],
     "weight": 1,
-    "trigger": { "meter": "joy", "at": 100 },
+    "requires": { "flags": ["crisis_joy_high"] },
     "speaker": "narrator",
     "title": { "en": "Living like a film hero" },
-    "text": { "en": "New clothes, eating out, trips, gadgets. Life is fantastic. Then the month ends ₹12,000 short, and the card bill arrives." },
+    "text": {
+      "en": "New clothes, eating out, trips, gadgets. Life is fantastic. Then the month ends ₹12,000 short, and the card bill arrives."
+    },
     "choices": [
       {
         "id": "reset",
@@ -125,13 +133,13 @@
     ]
   },
   {
-    "id": "village.any.crisis_family_low.a",
+    "id": "village.any.crisis_family_low_young.a",
     "storyline": "village",
     "kind": "crisis",
     "lesson": "L01",
     "ages": [11, 18],
     "weight": 1,
-    "trigger": { "meter": "family", "at": 0 },
+    "requires": { "flags": ["crisis_family_low"] },
     "speaker": "mother",
     "title": { "en": "Nobody's talking" },
     "text": { "en": "Dinner is silent. Amma says, \"You count rupees, not people.\" Chinni won't sit next to you." },
@@ -156,13 +164,13 @@
     ]
   },
   {
-    "id": "village.any.crisis_family_low.b",
+    "id": "village.any.crisis_family_low_grown.a",
     "storyline": "village",
     "kind": "crisis",
     "lesson": "L18",
     "ages": [19, 36],
     "weight": 1,
-    "trigger": { "meter": "family", "at": 0 },
+    "requires": { "flags": ["crisis_family_low"] },
     "speaker": "father",
     "title": { "en": "Nanna stops calling" },
     "text": { "en": "You skipped the festival, the wedding and Ammamma's birthday to save money. Nanna has stopped calling." },
@@ -187,16 +195,18 @@
     ]
   },
   {
-    "id": "village.any.crisis_family_high.a",
+    "id": "village.any.crisis_family_high_young.a",
     "storyline": "village",
     "kind": "crisis",
     "lesson": "L02",
     "ages": [11, 18],
     "weight": 1,
-    "trigger": { "meter": "family", "at": 100 },
+    "requires": { "flags": ["crisis_family_high"] },
     "speaker": "sibling",
     "title": { "en": "Everyone's favourite bank" },
-    "text": { "en": "You've given your savings to everyone: Chinni, cousins, Chintu. Your dream jar is empty, and nobody has paid back." },
+    "text": {
+      "en": "You've given your savings to everyone: Chinni, cousins, Chintu. Your dream jar is empty, and nobody has paid back."
+    },
     "choices": [
       {
         "id": "kind_no",
@@ -218,16 +228,18 @@
     ]
   },
   {
-    "id": "village.any.crisis_family_high.b",
+    "id": "village.any.crisis_family_high_grown.a",
     "storyline": "village",
     "kind": "crisis",
     "lesson": "L13",
     "ages": [19, 36],
     "weight": 1,
-    "trigger": { "meter": "family", "at": 100 },
+    "requires": { "flags": ["crisis_family_high"] },
     "speaker": "mother",
     "title": { "en": "The family ATM" },
-    "text": { "en": "Uncles, cousins and neighbours queue up. You've lent ₹40,000 with no paper. Your own emergency fund is gone." },
+    "text": {
+      "en": "Uncles, cousins and neighbours queue up. You've lent ₹40,000 with no paper. Your own emergency fund is gone."
+    },
     "choices": [
       {
         "id": "family_budget",
@@ -242,9 +254,12 @@
         "id": "borrow_to_lend",
         "label": { "en": "Borrow so you can keep lending" },
         "quality": "bad",
-        "effects": { "loan": { "source": "loan_app", "principal": 20000, "months": 6 }, "meters": { "family": -10, "health": -6 } },
+        "effects": {
+          "loan": { "source": "loan_app", "principal": 20000, "months": 6, "disburse": "direct" },
+          "meters": { "family": -10, "health": -6 }
+        },
         "echo": { "level": 3, "hint": { "en": "Borrowing to be generous is still borrowing." } },
-        "outcome": { "en": "₹20,000 from a loan app at 48%, lent to a cousin who repays ₹5,000." },
+        "outcome": { "en": "₹20,000 from a loan app (₹25,600 to repay), lent to a cousin who repays ₹5,000." },
         "why": { "en": "Never borrow at high interest to lend for free." }
       }
     ]

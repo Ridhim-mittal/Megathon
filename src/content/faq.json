@@ -95,7 +95,7 @@
       "en": "Why is compound interest dangerous on loans?"
     },
     "a": {
-      "en": "Unpaid interest joins the loan and earns more interest. ₹2,000 at ₹3 per ₹100 a month becomes ₹2,852 in a year."
+      "en": "Unpaid interest joins the loan and earns more interest. ₹2,000 at ₹2 per ₹100 a month, compounded, becomes ₹2,536 in a year."
     },
     "lesson": "L05"
   },

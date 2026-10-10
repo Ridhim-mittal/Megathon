@@ -8,7 +8,9 @@
     "weight": 1,
     "speaker": "mentor",
     "title": { "en": "₹100 and a jatara" },
-    "text": { "en": "The village jatara is tonight. {cast:mentor} presses ₹100 into your hand. Your school notebook is also finished. A new one costs ₹40." },
+    "text": {
+      "en": "The village jatara is tonight. {cast:mentor} presses ₹100 into your hand. Your school notebook is also finished. A new one costs ₹40."
+    },
     "choices": [
       {
         "id": "notebook_first",
@@ -23,7 +25,11 @@
         "id": "all_jatara",
         "label": { "en": "Spend all ₹100 at the jatara" },
         "quality": "risky",
-        "effects": { "meters": { "joy": 7, "family": -2 }, "flags": { "add": ["owes_kirana"] }, "schedule": [{ "inYears": 1, "card": "village.child.khata_remembers.a" }] },
+        "effects": {
+          "meters": { "joy": 7, "family": -2 },
+          "flags": { "add": ["owes_kirana"] },
+          "schedule": [{ "inYears": 1, "card": "village.child.khata_remembers.a" }]
+        },
         "echo": { "level": 1, "hint": { "en": "Wants first, needs on credit. Small now." } },
         "outcome": { "en": "Best night ever. On Monday you have no notebook, so {cast:shopkeeper} writes ₹40 in her [[khata]]." },
         "why": { "en": "Spending the need money on wants doesn't remove the need. It just turns it into a debt." }
@@ -32,7 +38,7 @@
         "id": "save_all",
         "label": { "en": "Save all ₹100 in the tin box" },
         "quality": "neutral",
-        "effects": { "jar": { "goal": 100 }, "meters": { "joy": -3 } },
+        "effects": { "jar": { "goal": 100 }, "meters": { "joy": -3 }, "cash": 100 },
         "outcome": { "en": "₹100 saved. But still no notebook, and no jatara. {cast:sibling} brings you half her jalebi." },
         "why": { "en": "Saving everything isn't a plan either. Needs come first, and a small want is allowed." }
       }
@@ -47,7 +53,9 @@
     "weight": 1,
     "speaker": "mother",
     "title": { "en": "Amma's savings-group rule" },
-    "text": { "en": "{cast:mother} comes back from her [[shg]] meeting. \"Our rule: first the savings, then the shopping.\" Your ₹200 pocket money for the month is in your hand." },
+    "text": {
+      "en": "{cast:mother} comes back from her [[shg]] meeting. \"Our rule: first the savings, then the shopping.\" Your ₹200 pocket money for the month is in your hand."
+    },
     "choices": [
       {
         "id": "save_first",
@@ -86,7 +94,9 @@
     "weight": 1,
     "speaker": "shopkeeper",
     "title": { "en": "The chocolate got expensive" },
-    "text": { "en": "\"₹12, kanna,\" says {cast:shopkeeper}. \"It was ₹10 last year.\" You have ₹300 saved in a tin for a bat that costs ₹300 today." },
+    "text": {
+      "en": "\"₹12, kanna,\" says {cast:shopkeeper}. \"It was ₹10 last year.\" You have ₹300 saved in a tin for a bat that costs ₹300 today."
+    },
     "choices": [
       {
         "id": "ask_why",
@@ -94,14 +104,16 @@
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 2, "flags": { "add": ["wants_bank"] } },
-        "outcome": { "en": "Rice was ₹2 a kilo when Ammamma married. Now it's ₹40. You decide your ₹300 needs a home where it grows." },
+        "outcome": {
+          "en": "Rice was ₹2 a kilo when Ammamma married. Now it's ₹40. You decide your ₹300 needs a home where it grows."
+        },
         "why": { "en": "[[inflation]] makes prices rise each year. Idle cash buys less and less." }
       },
       {
         "id": "buy_now",
         "label": { "en": "Buy the bat today, before it costs more" },
         "quality": "neutral",
-        "effects": { "jar": { "goal": -300 }, "meters": { "joy": 7 } },
+        "effects": { "meters": { "joy": 7 }, "cash": -300 },
         "outcome": { "en": "You beat inflation by buying today. Next year the same bat costs ₹318." },
         "why": { "en": "Buying something you really want before prices rise is fine. Just know you're spending, not saving." }
       },
@@ -125,7 +137,9 @@
     "weight": 1,
     "speaker": "banker",
     "title": { "en": "The rat ate ₹50" },
-    "text": { "en": "A rat chewed a ₹50 note in your tin box. Next day, {cast:banker} visits school. \"Open a [[minor_account]] with a parent. It is zero balance.\"" },
+    "text": {
+      "en": "A rat chewed a ₹50 note in your tin box. Next day, {cast:banker} visits school. \"Open a [[minor_account]] with a parent. It is zero balance.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "It is zero balance." },
@@ -147,7 +161,7 @@
         "id": "stronger_box",
         "label": { "en": "Buy a stronger steel box instead" },
         "quality": "risky",
-        "effects": { "jar": { "goal": -40 } },
+        "effects": { "cash": -40 },
         "echo": { "level": 1, "hint": { "en": "{cast:friend} saw where you hid the new box." } },
         "outcome": { "en": "The box cost ₹40. It earns ₹0 interest, and everyone at home knows where it is." },
         "why": { "en": "A box at home can't grow money and is easy to raid. A bank is both safe and paid." }
@@ -170,12 +184,14 @@
     "ages": [13, 14],
     "weight": 1,
     "speaker": "lender",
-    "title": { "en": "Only ₹3 per ₹100" },
-    "text": { "en": "Nanna needs ₹2,000 for cotton seeds. {cast:lender} smiles: \"Only ₹3 per ₹100 a month. Unpaid interest just joins the loan.\" Nanna looks at you, the maths topper." },
+    "title": { "en": "Only ₹2 per ₹100" },
+    "text": {
+      "en": "Nanna needs ₹2,000 for cotton seeds. {cast:lender} smiles: \"Only ₹2 per ₹100 a month. Unpaid interest just joins the loan.\" Nanna looks at you, the maths topper."
+    },
     "clarity": [
       {
-        "phrase": { "en": "Only ₹3 per ₹100 a month." },
-        "truth": { "en": "That is 36% a year. With interest on interest, it is nearly 43%." },
+        "phrase": { "en": "Only ₹2 per ₹100 a month." },
+        "truth": { "en": "That is 24% a year. With interest on interest, it is nearly 27%." },
         "lesson": "L05"
       },
       {
@@ -191,17 +207,27 @@
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 3, "meters": { "family": 4 } },
-        "outcome": { "en": "With [[chakravaddi]], ₹2,000 becomes ₹2,852 in a year. Amma's [[shg]] charges simple 1%: ₹2,240. Nanna borrows from the SHG." },
-        "why": { "en": "Compound interest is interest on interest. On debts it grows fast, so always compare the yearly cost." }
+        "outcome": {
+          "en": "With [[chakravaddi]], ₹2,000 becomes ₹2,536 in a year. Amma's [[shg]] charges simple 1%: ₹2,240. Nanna borrows from the SHG."
+        },
+        "why": {
+          "en": "Compound interest is interest on interest. On debts it grows fast, so always compare the yearly cost."
+        }
       },
       {
         "id": "its_fine",
-        "label": { "en": "Tell Nanna it's only ₹60 a month, that's fine" },
+        "label": { "en": "Tell Nanna it's only ₹40 a month, that's fine" },
         "quality": "risky",
-        "effects": { "meters": { "family": -2 }, "flags": { "add": ["family_owes_sahukar"] }, "schedule": [{ "inYears": 1, "card": "village.child.sahukar_visit.a" }] },
+        "effects": {
+          "meters": { "family": -2 },
+          "flags": { "add": ["family_owes_sahukar"] },
+          "schedule": [{ "inYears": 1, "card": "village.child.sahukar_visit.a" }]
+        },
         "echo": { "level": 2, "hint": { "en": "Nanna smiles. Ammamma doesn't." } },
-        "outcome": { "en": "₹60 is only the first month. A year later, if unpaid, {cast:lender} wants ₹2,852." },
-        "why": { "en": "When interest is added to the loan, the loan grows itself. Small monthly numbers hide big yearly ones." }
+        "outcome": { "en": "₹40 is only the first month. A year later, if unpaid, {cast:lender} wants ₹2,536." },
+        "why": {
+          "en": "When interest is added to the loan, the loan grows itself. Small monthly numbers hide big yearly ones."
+        }
       }
     ]
   },
@@ -214,7 +240,9 @@
     "weight": 1,
     "speaker": "tempter",
     "title": { "en": "5,000 free gems!" },
-    "text": { "en": "A man in small sunglasses shows you a link. \"100% free gems! Just tell me the OTP on your Amma's phone.\" It's {cast:tempter}." },
+    "text": {
+      "en": "A man in small sunglasses shows you a link. \"100% free gems! Just tell me the OTP on your Amma's phone.\" It's {cast:tempter}."
+    },
     "clarity": [
       {
         "phrase": { "en": "100% free gems!" },
@@ -227,7 +255,11 @@
         "id": "share_otp",
         "label": { "en": "Read out the OTP from Amma's phone" },
         "quality": "bad",
-        "effects": { "meters": { "family": -8, "joy": -3 }, "flags": { "add": ["otp_scammed_child"] }, "schedule": [{ "inYears": 1, "card": "village.child.chinni_link.a" }] },
+        "effects": {
+          "meters": { "family": -8, "joy": -3 },
+          "flags": { "add": ["otp_scammed_child"] },
+          "schedule": [{ "inYears": 1, "card": "village.child.chinni_link.a" }]
+        },
         "echo": { "level": 2, "hint": { "en": "Amma checks her phone twice now, every night." } },
         "outcome": { "en": "In one minute, ₹1,800 leaves Amma's account. It was her savings-group instalment. No gems arrive." },
         "why": { "en": "An [[otp]] is a key to your money. Anyone who has it can open the account." }
@@ -238,7 +270,9 @@
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 2, "meters": { "family": 3 } },
-        "outcome": { "en": "Ammamma peers at the link. Fake. You just saved Amma's ₹1,800. \"Big glasses, small truth,\" she says." },
+        "outcome": {
+          "en": "Ammamma peers at the link. Fake. You just saved Amma's ₹1,800. \"Big glasses, small truth,\" she says."
+        },
         "why": { "en": "Real banks and games never ask for an OTP. \"Free\" plus \"OTP\" always means a trap." }
       },
       {
@@ -252,7 +286,6 @@
       }
     ]
   },
-
   {
     "id": "village.child.khata_remembers.a",
     "storyline": "village",
@@ -262,14 +295,16 @@
     "weight": 1,
     "speaker": "shopkeeper",
     "title": { "en": "The notebook remembers everything" },
-    "text": { "en": "{cast:shopkeeper} opens her [[khata]]. \"₹40 notebook, plus two biscuit packets, plus one pencil. ₹65, kanna.\" A year of small credit adds up." },
+    "text": {
+      "en": "{cast:shopkeeper} opens her [[khata]]. \"₹40 notebook, plus two biscuit packets, plus one pencil. ₹65, kanna.\" A year of small credit adds up."
+    },
     "choices": [
       {
         "id": "pay_myself",
         "label": { "en": "Pay it from your savings" },
         "quality": "good",
         "default": true,
-        "effects": { "jar": { "goal": -65 }, "flags": { "remove": ["owes_kirana"] }, "meters": { "family": 2 } },
+        "effects": { "flags": { "remove": ["owes_kirana"] }, "meters": { "family": 2 }, "cash": -65 },
         "outcome": { "en": "You pay ₹65. The page is crossed out. It feels better than the jalebi did." },
         "why": { "en": "Credit for small wants grows quietly. Clearing it early keeps it small." }
       },
@@ -292,7 +327,9 @@
     "weight": 1,
     "speaker": "lender",
     "title": { "en": "A polite visit" },
-    "text": { "en": "{cast:lender} sits on your verandah, very politely. \"₹2,000 is now ₹2,852. Bujji is a fine buffalo, Yadagiri.\" Ammamma's hands are shaking." },
+    "text": {
+      "en": "{cast:lender} sits on your verandah, very politely. \"₹2,000 is now ₹2,536. Bujji is a fine buffalo, Yadagiri.\" Ammamma's hands are shaking."
+    },
     "choices": [
       {
         "id": "shg_refinance",
@@ -300,7 +337,7 @@
         "quality": "good",
         "default": true,
         "effects": { "flags": { "remove": ["family_owes_sahukar"] }, "meters": { "family": 5 }, "gyaan": 2 },
-        "outcome": { "en": "The SHG lends ₹2,852 at 12% a year. Bujji stays. The costly debt is now a cheap one." },
+        "outcome": { "en": "The SHG lends ₹2,536 at 12% a year. Bujji stays. The costly debt is now a cheap one." },
         "why": { "en": "Swapping a costly loan for a cheaper one stops the [[chakravaddi]] snowball." }
       },
       {
@@ -309,7 +346,7 @@
         "quality": "risky",
         "effects": { "meters": { "family": -6, "health": -3 } },
         "echo": { "level": 2, "hint": { "en": "One more season means one more season of interest." } },
-        "outcome": { "en": "He agrees. Next season the ₹2,852 is ₹4,066. Bujji is sold in the end." },
+        "outcome": { "en": "He agrees. Next season the ₹2,536 is ₹3,217. Bujji is sold in the end." },
         "why": { "en": "Waiting on compound debt makes it grow faster each month. Act early." }
       }
     ]
@@ -323,7 +360,9 @@
     "weight": 1,
     "speaker": "sibling",
     "title": { "en": "Chinni found a link" },
-    "text": { "en": "{cast:sibling} runs in with Amma's phone. \"Free recharge for kids! It wants the OTP.\" You remember last year." },
+    "text": {
+      "en": "{cast:sibling} runs in with Amma's phone. \"Free recharge for kids! It wants the OTP.\" You remember last year."
+    },
     "choices": [
       {
         "id": "stop_her",
@@ -344,7 +383,6 @@
       }
     ]
   },
-
   {
     "id": "village.child.scholarship.a",
     "storyline": "village",
@@ -361,7 +399,7 @@
         "label": { "en": "Save ₹800, spend ₹200 on a celebration" },
         "quality": "good",
         "default": true,
-        "effects": { "jar": { "goal": 800 }, "meters": { "joy": 4 } },
+        "effects": { "jar": { "goal": 800 }, "meters": { "joy": 4 }, "cash": 800 },
         "outcome": { "en": "₹800 saved, and sweets for the whole class with ₹200." }
       },
       {
@@ -390,7 +428,7 @@
         "label": { "en": "Give Nanna ₹400 from your savings" },
         "quality": "good",
         "default": true,
-        "effects": { "jar": { "goal": -400 }, "meters": { "family": 7 } },
+        "effects": { "meters": { "family": 7 }, "cash": -400 },
         "outcome": { "en": "Bujji recovers in a week and gives milk again: ₹60 a day for the family." },
         "why": { "en": "Savings are for exactly this. A small cushion stopped a big loss." }
       },
@@ -412,7 +450,9 @@
     "weight": 1,
     "speaker": "headline",
     "title": { "en": "You won ₹25 lakh!" },
-    "text": { "en": "An SMS on Nanna's phone: \"Congratulations! You won ₹25 lakh in the lucky draw. Pay a ₹999 processing fee to claim.\"" },
+    "text": {
+      "en": "An SMS on Nanna's phone: \"Congratulations! You won ₹25 lakh in the lucky draw. Pay a ₹999 processing fee to claim.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "You won ₹25 lakh in the lucky draw." },
@@ -452,27 +492,31 @@
     "weight": 1,
     "speaker": "sibling",
     "title": { "en": "Chinni's torn uniform" },
-    "text": { "en": "{cast:sibling}'s school uniform tore on the bus. A new one costs ₹350. The same week, the toy car you wanted is on sale for ₹200." },
+    "text": {
+      "en": "{cast:sibling}'s school uniform tore on the bus. A new one costs ₹350. The same week, the toy car you wanted is on sale for ₹200."
+    },
     "choices": [
       {
         "id": "uniform",
         "label": { "en": "Put ₹150 towards Chinni's uniform" },
         "quality": "good",
         "default": true,
-        "effects": { "jar": { "goal": -150 }, "meters": { "family": 6, "joy": 1 } },
-        "outcome": { "en": "Chinni wears the new uniform for a full week without sitting down. She writes \"best big one\" in her notebook." }
+        "effects": { "meters": { "family": 6, "joy": 1 }, "cash": -150 },
+        "outcome": {
+          "en": "Chinni wears the new uniform for a full week without sitting down. She writes \"best big one\" in her notebook."
+        }
       },
       {
         "id": "toy_car",
         "label": { "en": "Buy the toy car" },
         "quality": "neutral",
-        "effects": { "jar": { "goal": -200 }, "meters": { "joy": 5, "family": -3 } },
+        "effects": { "meters": { "joy": 5, "family": -3 }, "cash": -200 },
         "outcome": { "en": "The car is fast. Chinni's uniform has a safety pin for two months." }
       }
     ]
   },
   {
-    "id": "village.child.game_password.b",
+    "id": "village.child.free_gems.b",
     "storyline": "village",
     "kind": "lesson",
     "lesson": "L06",
@@ -480,7 +524,9 @@
     "weight": 1,
     "speaker": "friend",
     "title": { "en": "Chintu's level-up offer" },
-    "text": { "en": "{cast:friend}'s cousin has a deal. \"Give me your game password. I'll level you up for free, mama.\" Amma's card is saved in that game." },
+    "text": {
+      "en": "{cast:friend}'s cousin has a deal. \"Give me your game password. I'll level you up for free, mama.\" Amma's card is saved in that game."
+    },
     "clarity": [
       {
         "phrase": { "en": "I'll level you up for free" },

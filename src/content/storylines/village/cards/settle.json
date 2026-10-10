@@ -8,7 +8,9 @@
     "weight": 1,
     "speaker": "banker",
     "title": { "en": "Pre-approved!" },
-    "text": { "en": "A bank SMS: \"Congratulations! You are pre-approved for a loan for your full dream. EMI only half your salary!\" {cast:banker} raises an eyebrow." },
+    "text": {
+      "en": "A bank SMS: \"Congratulations! You are pre-approved for a loan for your full dream. EMI only half your salary!\" {cast:banker} raises an eyebrow."
+    },
     "clarity": [
       {
         "phrase": { "en": "You are pre-approved for a loan" },
@@ -61,7 +63,9 @@
     "weight": 1,
     "speaker": "mentor",
     "title": { "en": "The tin box" },
-    "text": { "en": "Ammamma gives you an old tin box. Inside: Thatha's papers, and a thumbprint on a sale deed. \"It wasn't the rains, kanna. It was me.\"" },
+    "text": {
+      "en": "Ammamma gives you an old tin box. Inside: Thatha's papers, and a thumbprint on a sale deed. \"It wasn't the rains, kanna. It was me.\""
+    },
     "choices": [
       {
         "id": "listen",
@@ -77,7 +81,9 @@
         "label": { "en": "Ask her to teach you to read old land records" },
         "quality": "good",
         "effects": { "flags": { "add": ["knows_wound"] }, "meters": { "family": 6 }, "gyaan": 4, "glasses": 2 },
-        "outcome": { "en": "Two evenings with the [[pahani]] and the [[sale_deed]]. Survey No. 212. Thatha's land. Remember that number." },
+        "outcome": {
+          "en": "Two evenings with the [[pahani]] and the [[sale_deed]]. Survey No. 212. Thatha's land. Remember that number."
+        },
         "why": { "en": "She learnt to read so she'd never sign blind again. Now you can't either." }
       }
     ]
@@ -91,7 +97,9 @@
     "weight": 1,
     "speaker": "tempter",
     "title": { "en": "Crossroads: Survey No. 212" },
-    "text": { "en": "{cast:tempter}, now a \"property consultant\", offers a plot: Survey No. 212. \"Clear title, 100% safe. Own finance, no bank papers. It will double in two years and pay for your dream!\"" },
+    "text": {
+      "en": "{cast:tempter}, now a \"property consultant\", offers a plot: Survey No. 212. \"Clear title, 100% safe. Own finance, no bank papers. It will double in two years and pay for your dream!\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Clear title, 100% safe." },
@@ -116,8 +124,15 @@
         "label": { "en": "Read every paper with Ammamma's glasses, get the EC, use a bank loan only for the gap" },
         "quality": "good",
         "default": true,
-        "effects": { "loan": { "source": "home", "principal": 200000, "months": 120 }, "flags": { "add": ["checked_plot", "dream_bank_loan"] }, "gyaan": 3 },
-        "outcome": { "en": "₹2 lakh at about 9% for 10 years: EMI about ₹2,530. The bank also checks the land, a second pair of glasses." },
+        "effects": {
+          "loan": { "source": "home", "principal": 200000, "months": 120 },
+          "flags": { "add": ["checked_plot", "dream_bank_loan"] },
+          "gyaan": 3,
+          "jar": { "goal": 200000 }
+        },
+        "outcome": {
+          "en": "₹2 lakh at about 8.5% for 10 years: EMI about ₹2,480. The bank also checks the land, a second pair of glasses."
+        },
         "why": { "en": "Verified papers and a fair loan protect the dream. A bank loan comes with a legal check too." }
       },
       {
@@ -127,18 +142,25 @@
         "effects": {
           "loan": { "source": "moneylender", "principal": 200000, "months": 36 },
           "flags": { "add": ["dream_prakash"] },
-          "schedule": [{ "inYears": 1, "card": "village.settle.plot_dispute.a", "unlessFlag": "checked_plot" }]
+          "schedule": [{ "inYears": 1, "card": "village.settle.plot_dispute.a", "unlessFlag": "checked_plot" }],
+          "jar": { "goal": 200000 }
         },
         "echo": { "level": 3, "hint": { "en": "Thatha signed fast too." } },
-        "outcome": { "en": "₹2 lakh at 36% for 3 years: EMI about ₹9,160. You signed in ten minutes." },
+        "outcome": { "en": "₹2 lakh at ₹2 per ₹100 a month for 3 years: EMI about ₹9,560. You signed in ten minutes." },
         "why": { "en": "Fast deals skip the checks that protect you. The same trap, a generation later." }
       },
       {
         "id": "buy_back",
         "label": { "en": "Buy Thatha's land back, but only through the registration office, with verified papers" },
         "quality": "good",
-        "effects": { "loan": { "source": "home", "principal": 250000, "months": 180 }, "flags": { "add": ["checked_plot", "bought_back_212"] }, "meters": { "family": 12, "joy": 6 }, "gyaan": 2 },
-        "outcome": { "en": "₹2.5 lakh at about 9% for 15 years: EMI about ₹2,540. Ammamma holds the new deed with both hands." },
+        "effects": {
+          "loan": { "source": "home", "principal": 250000, "months": 180 },
+          "flags": { "add": ["checked_plot", "bought_back_212"] },
+          "meters": { "family": 12, "joy": 6 },
+          "gyaan": 2,
+          "open": { "product": "land", "amount": 250000 }
+        },
+        "outcome": { "en": "₹2.5 lakh at about 8.5% for 15 years: EMI about ₹2,460. Ammamma holds the new deed with both hands." },
         "why": { "en": "Emotion is allowed in a big purchase. Skipping checks is not." }
       },
       {
@@ -160,7 +182,9 @@
     "weight": 1,
     "speaker": "banker",
     "title": { "en": "Kavitha akka's checklist" },
-    "text": { "en": "{cast:banker} reads out your file: no pension, no [[nominee]] on any account, [[kyc]] ten years old. \"And Amma and Nanna have no old-age plan, right?\"" },
+    "text": {
+      "en": "{cast:banker} reads out your file: no pension, no [[nominee]] on any account, [[kyc]] ten years old. \"And Amma and Nanna have no old-age plan, right?\""
+    },
     "clarity": [
       {
         "phrase": { "en": "no pension" },
@@ -174,8 +198,15 @@
         "label": { "en": "Join APY, add nominees, update KYC, and help Amma and Nanna apply for the old-age pension" },
         "quality": "good",
         "default": true,
-        "effects": { "open": { "product": "pension", "amount": 750 }, "flags": { "add": ["nominee_set", "kyc_updated", "parents_pension"] }, "meters": { "family": 6 }, "gyaan": 3 },
-        "outcome": { "en": "About ₹750 a month for a ₹5,000 pension at 60. Nominees on 4 accounts. Amma's first pension: ₹2,016 a month." },
+        "effects": {
+          "open": { "product": "pension", "amount": 750 },
+          "flags": { "add": ["nominee_set", "kyc_updated", "parents_pension"] },
+          "meters": { "family": 6 },
+          "gyaan": 3
+        },
+        "outcome": {
+          "en": "About ₹750 a month for a ₹5,000 pension at 60. Nominees on 4 accounts. Amma's first pension: ₹2,016 a month."
+        },
         "why": { "en": "Planning ahead protects people who depend on you, now and after you." }
       },
       {
@@ -197,7 +228,6 @@
       }
     ]
   },
-
   {
     "id": "village.settle.plot_dispute.a",
     "storyline": "village",
@@ -207,7 +237,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Someone else's plot" },
-    "text": { "en": "A stranger arrives with a court notice. He bought Survey No. 212 two years before you. There was no [[encumbrance]] certificate in your papers." },
+    "text": {
+      "en": "A stranger arrives with a court notice. He bought Survey No. 212 two years before you. There was no [[encumbrance]] certificate in your papers."
+    },
     "choices": [
       {
         "id": "lawyer_police",
@@ -237,7 +269,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "The seller wasn't the owner" },
-    "text": { "en": "The real owner of the plot lives in Mumbai. The \"seller\" used a forged power of attorney. Your sale deed is void." },
+    "text": {
+      "en": "The real owner of the plot lives in Mumbai. The \"seller\" used a forged power of attorney. Your sale deed is void."
+    },
     "choices": [
       {
         "id": "complain",
@@ -257,7 +291,6 @@
       }
     ]
   },
-
   {
     "id": "village.settle.nanna_surgery.a",
     "storyline": "village",
@@ -267,7 +300,9 @@
     "weight": 1,
     "speaker": "mother",
     "title": { "en": "Nanna's heart" },
-    "text": { "en": "Nanna needs heart surgery. A private hospital quotes ₹1.5 lakh. A listed hospital accepts the [[ayushman]] and [[aarogyasri]] cards." },
+    "text": {
+      "en": "Nanna needs heart surgery. A private hospital quotes ₹1.5 lakh. A listed hospital accepts the [[ayushman]] and [[aarogyasri]] cards."
+    },
     "choices": [
       {
         "id": "health_card",
@@ -296,7 +331,9 @@
     "weight": 1,
     "speaker": "headline",
     "title": { "en": "Stock Masters VIP group" },
-    "text": { "en": "A WhatsApp group shows daily 300% profits. Their app says your ₹20,000 is now ₹80,000. \"Pay 20% tax to withdraw.\"" },
+    "text": {
+      "en": "A WhatsApp group shows daily 300% profits. Their app says your ₹20,000 is now ₹80,000. \"Pay 20% tax to withdraw.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Their app says your ₹20,000 is now ₹80,000." },
@@ -337,7 +374,9 @@
     "weight": 2,
     "speaker": "friend",
     "title": { "en": "Chintu's comeback" },
-    "text": { "en": "{cast:friend} wants to open a mobile repair stall. \"Lend me ₹50,000, mama. No paper needed between us. Trust me, this time it's different.\"" },
+    "text": {
+      "en": "{cast:friend} wants to open a mobile repair stall. \"Lend me ₹50,000, mama. No paper needed between us. Trust me, this time it's different.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "No paper needed between us." },
@@ -388,14 +427,14 @@
         "label": { "en": "Put it all in the dream jar" },
         "quality": "good",
         "default": true,
-        "effects": { "jar": { "goal": 60700 }, "meters": { "family": 8, "joy": 6 } },
+        "effects": { "jar": { "goal": 60700 }, "meters": { "family": 8, "joy": 6 }, "cash": 60700 },
         "outcome": { "en": "₹200 a month, never missed, became ₹60,700. Ammamma pretends she's not crying." }
       },
       {
         "id": "her_trip",
         "label": { "en": "Use part of it to take her on her first trip" },
         "quality": "good",
-        "effects": { "jar": { "goal": 45700 }, "meters": { "family": 10, "joy": 9 } },
+        "effects": { "jar": { "goal": 45700 }, "meters": { "family": 10, "joy": 9 }, "cash": 45700 },
         "outcome": { "en": "₹15,000 for her first train journey, to the sea. ₹45,700 into the dream jar." }
       }
     ]
@@ -409,7 +448,9 @@
     "weight": 1,
     "speaker": "sibling",
     "title": { "en": "Chinni's wedding" },
-    "text": { "en": "{cast:sibling} is getting married! Relatives want 1,000 guests. Chinni wants 200, and \"no loans, please\". Kavitha akka mentions [[kalyana_lakshmi]]." },
+    "text": {
+      "en": "{cast:sibling} is getting married! Relatives want 1,000 guests. Chinni wants 200, and \"no loans, please\". Kavitha akka mentions [[kalyana_lakshmi]]."
+    },
     "choices": [
       {
         "id": "simple",
@@ -423,9 +464,12 @@
         "id": "grand",
         "label": { "en": "1,000 guests, whatever it takes" },
         "quality": "bad",
-        "effects": { "loan": { "source": "moneylender", "principal": 250000, "months": 24 }, "meters": { "family": 6, "joy": 6 } },
+        "effects": {
+          "loan": { "source": "moneylender", "principal": 250000, "months": 24, "disburse": "direct" },
+          "meters": { "family": 6, "joy": 6 }
+        },
         "echo": { "level": 3, "hint": { "en": "One day of feasting, two years of EMIs." } },
-        "outcome": { "en": "₹2.5 lakh at 36% for one day. Chinni pays part of the EMI herself, quietly." }
+        "outcome": { "en": "₹3,70,000 to repay the sahukar, for one day. Chinni pays part of the EMI herself, quietly." }
       }
     ]
   }

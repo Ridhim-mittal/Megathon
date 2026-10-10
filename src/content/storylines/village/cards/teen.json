@@ -9,7 +9,9 @@
     "requires": { "flags": [], "notFlags": ["owns_phone"] },
     "speaker": "friend",
     "title": { "en": "Only ₹699 a month!" },
-    "text": { "en": "{cast:friend} shows off a new phone. \"Zero down payment, only ₹699 a month on [[emi]] for 12 months. Easy! Trust me, mama.\"" },
+    "text": {
+      "en": "{cast:friend} shows off a new phone. \"Zero down payment, only ₹699 a month on [[emi]] for 12 months. Easy! Trust me, mama.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Zero down payment" },
@@ -69,7 +71,9 @@
     "weight": 1,
     "speaker": "father",
     "title": { "en": "Cotton season" },
-    "text": { "en": "Cotton-picking season. The contractor pays ₹300 a day. Board exams are in four months. Evening tuition in town costs ₹500 a month." },
+    "text": {
+      "en": "Cotton-picking season. The contractor pays ₹300 a day. Board exams are in four months. Evening tuition in town costs ₹500 a month."
+    },
     "choices": [
       {
         "id": "pick_daily",
@@ -85,7 +89,12 @@
         "label": { "en": "Pick on weekends, tuition on weekdays" },
         "quality": "good",
         "default": true,
-        "effects": { "cash": 2400, "meters": { "health": -2, "family": 2 }, "gyaan": 2, "income": { "monthly": 1200, "source": "odd_jobs" } },
+        "effects": {
+          "cash": 2400,
+          "meters": { "health": -2, "family": 2 },
+          "gyaan": 2,
+          "income": { "monthly": 1200, "source": "odd_jobs" }
+        },
         "outcome": { "en": "₹2,400 earned in 8 days. After paying ₹500 tuition, your marks rise to 85." },
         "why": { "en": "Good choices weigh both sides. A little earning now, a bigger skill later." }
       },
@@ -108,7 +117,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Selling your old cycle" },
-    "text": { "en": "You list your old cycle online for ₹1,500. A \"buyer\" replies fast: \"I'm posted far away. I sent a [[collect_request]]. Enter your PIN to receive the money.\"" },
+    "text": {
+      "en": "You list your old cycle online for ₹1,500. A \"buyer\" replies fast: \"I'm posted far away. I sent a [[collect_request]]. Enter your PIN to receive the money.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Enter your PIN to receive the money." },
@@ -159,7 +170,9 @@
     "weight": 1,
     "speaker": "teacher",
     "title": { "en": "Swapna madam's career fair" },
-    "text": { "en": "{cast:teacher} draws on the board: \"Good debt vs bad debt.\" A bank officer says an [[education_loan]] has no repayment until you finish. A bike dealer has a stall too." },
+    "text": {
+      "en": "{cast:teacher} draws on the board: \"Good debt vs bad debt.\" A bank officer says an [[education_loan]] has no repayment until you finish. A bike dealer has a stall too."
+    },
     "clarity": [
       {
         "phrase": { "en": "no repayment until you finish" },
@@ -205,7 +218,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Crossroads: after school" },
-    "text": { "en": "Results are out. Four roads lead out of Mallepalli. {cast:mentor} says nothing, but polishes her glasses twice." },
+    "text": {
+      "en": "Results are out. Four roads lead out of Mallepalli. {cast:mentor} says nothing, but polishes her glasses twice."
+    },
     "clarity": [
       {
         "phrase": { "en": "Four roads lead out of Mallepalli." },
@@ -280,7 +295,9 @@
     "weight": 1,
     "speaker": "tempter",
     "title": { "en": "Cricket league fever" },
-    "text": { "en": "{cast:tempter} is back, in bigger sunglasses. \"New [[betting_app]]! Guaranteed winning tips. ₹50 joining bonus. My cousin won a bike!\"" },
+    "text": {
+      "en": "{cast:tempter} is back, in bigger sunglasses. \"New [[betting_app]]! Guaranteed winning tips. ₹50 joining bonus. My cousin won a bike!\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Guaranteed winning tips." },
@@ -298,7 +315,12 @@
         "id": "try_100",
         "label": { "en": "Try with ₹100, just for fun" },
         "quality": "risky",
-        "effects": { "cash": -1600, "meters": { "joy": -2 }, "flags": { "add": ["betting_habit"] }, "schedule": [{ "inYears": 1, "card": "village.teen.chasing_losses.a" }] },
+        "effects": {
+          "cash": -1600,
+          "meters": { "joy": -2 },
+          "flags": { "add": ["betting_habit"] },
+          "schedule": [{ "inYears": 1, "card": "village.teen.chasing_losses.a" }]
+        },
         "echo": { "level": 2, "hint": { "en": "The first win is the hook." } },
         "outcome": { "en": "You win ₹300 on day one. By month-end you've bet ₹2,800 chasing more and lost ₹1,600." },
         "why": { "en": "Apps let you win early to hook you. Over time, the house always wins." }
@@ -316,14 +338,18 @@
         "id": "big_tip",
         "label": { "en": "Bet ₹1,000 on the \"sure\" tip" },
         "quality": "bad",
-        "effects": { "cash": -1000, "meters": { "joy": -5, "family": -3 }, "flags": { "add": ["betting_habit", "wrong_betting"] }, "schedule": [{ "inYears": 1, "card": "village.teen.chasing_losses.a" }] },
+        "effects": {
+          "cash": -1000,
+          "meters": { "joy": -5, "family": -3 },
+          "flags": { "add": ["betting_habit", "betting_heavy"] },
+          "schedule": [{ "inYears": 1, "card": "village.teen.chasing_losses.a" }]
+        },
         "echo": { "level": 3, "hint": { "en": "A \"sure\" tip is only sure for the seller." } },
         "outcome": { "en": "The team loses. ₹1,000 gone in three hours. The tip-seller's number is switched off." },
         "why": { "en": "Paid tips and fixed-match promises are scams on top of a gamble." }
       }
     ]
   },
-
   {
     "id": "village.teen.phone_bought_cash.a",
     "storyline": "village",
@@ -333,7 +359,9 @@
     "weight": 1,
     "speaker": "friend",
     "title": { "en": "Paid in full" },
-    "text": { "en": "Eleven months of ₹700. You walk into the shop and pay ₹7,500 cash. {cast:friend} is still paying his EMIs." },
+    "text": {
+      "en": "Eleven months of ₹700. You walk into the shop and pay ₹7,500 cash. {cast:friend} is still paying his EMIs."
+    },
     "choices": [
       {
         "id": "buy_it",
@@ -348,7 +376,7 @@
         "id": "keep_saving",
         "label": { "en": "Keep the savings. The old phone still works" },
         "quality": "good",
-        "effects": { "jar": { "goal": 7500 }, "meters": { "joy": 2 }, "flags": { "remove": ["saving_for_phone"] } },
+        "effects": { "meters": { "joy": 2 }, "flags": { "remove": ["saving_for_phone"] } },
         "outcome": { "en": "₹7,500 moves to your dream jar. Ammamma looks over her glasses and smiles." },
         "why": { "en": "Waiting changed how much you wanted it. That's worth noticing." }
       }
@@ -363,7 +391,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Month seven" },
-    "text": { "en": "Month seven of 12. The ₹699 EMI is due, and you have ₹420. Miss it, and there's a ₹500 late fee and calls every day." },
+    "text": {
+      "en": "Month seven of 12. The ₹699 EMI is due, and you have ₹420. Miss it, and there's a ₹500 late fee and calls every day."
+    },
     "choices": [
       {
         "id": "skip_wants",
@@ -394,7 +424,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "The small print arrives" },
-    "text": { "en": "Your phone EMI statement shows ₹99 a month for \"device protection\" you never asked for. It was in the papers you didn't read." },
+    "text": {
+      "en": "Your phone EMI statement shows ₹99 a month for \"device protection\" you never asked for. It was in the papers you didn't read."
+    },
     "choices": [
       {
         "id": "complain",
@@ -424,7 +456,9 @@
     "weight": 1,
     "speaker": "banker",
     "title": { "en": "The 1930 call" },
-    "text": { "en": "{cast:banker} hears about the cycle scam. \"Next time, call the [[helpline_1930]] within an hour. Banks can freeze the money fast.\"" },
+    "text": {
+      "en": "{cast:banker} hears about the cycle scam. \"Next time, call the [[helpline_1930]] within an hour. Banks can freeze the money fast.\""
+    },
     "choices": [
       {
         "id": "save_number",
@@ -454,14 +488,21 @@
     "weight": 1,
     "speaker": "friend",
     "title": { "en": "Just one more bet" },
-    "text": { "en": "{cast:friend} is down ₹6,000. \"One big win and I'm even, mama. Lend me ₹2,000?\" The app shows a \"comeback bonus\"." },
+    "text": {
+      "en": "{cast:friend} is down ₹6,000. \"One big win and I'm even, mama. Lend me ₹2,000?\" The app shows a \"comeback bonus\"."
+    },
     "choices": [
       {
         "id": "delete_both",
         "label": { "en": "Delete the app together, and tell his mother" },
         "quality": "good",
         "default": true,
-        "effects": { "flags": { "remove": ["betting_habit"] }, "meters": { "family": 2, "joy": -2 }, "gyaan": 3, "lesson": "applied" },
+        "effects": {
+          "flags": { "remove": ["betting_habit"] },
+          "meters": { "family": 2, "joy": -2 },
+          "gyaan": 3,
+          "lesson": "applied"
+        },
         "outcome": { "en": "Chintu sulks for a week. Then he admits the ₹6,000 was his sister's fee money." },
         "why": { "en": "Chasing losses digs deeper. The only winning move is to stop." }
       },
@@ -476,7 +517,6 @@
       }
     ]
   },
-
   {
     "id": "village.teen.cricket_prize.a",
     "storyline": "village",
@@ -493,7 +533,7 @@
         "label": { "en": "Save ₹2,000, buy the team biryani with ₹1,000" },
         "quality": "good",
         "default": true,
-        "effects": { "jar": { "goal": 2000 }, "meters": { "joy": 6 } },
+        "effects": { "jar": { "goal": 2000 }, "meters": { "joy": 6 }, "cash": 2000 },
         "outcome": { "en": "₹2,000 saved. The biryani is legendary. The trophy goes next to Ammamma's glasses case." }
       },
       {
@@ -515,7 +555,9 @@
     "weight": 1,
     "speaker": "mother",
     "title": { "en": "Nanna's hand" },
-    "text": { "en": "Nanna cuts his hand badly on the motor pump. The town hospital wants ₹8,000. He can't work for six weeks." },
+    "text": {
+      "en": "Nanna cuts his hand badly on the motor pump. The town hospital wants ₹8,000. He can't work for six weeks."
+    },
     "choices": [
       {
         "id": "use_savings",
@@ -530,8 +572,8 @@
         "label": { "en": "Let Nanna borrow from Narsaiah sahukar" },
         "quality": "risky",
         "effects": { "meters": { "family": -2 }, "flags": { "add": ["family_owes_sahukar"] } },
-        "echo": { "level": 2, "hint": { "en": "₹3 per ₹100 per month, again." } },
-        "outcome": { "en": "₹8,000 at 36% a year becomes ₹10,880 if repaid in a year." }
+        "echo": { "level": 2, "hint": { "en": "₹2 per ₹100 per month, again." } },
+        "outcome": { "en": "At ₹2 per ₹100 a month, ₹8,000 becomes ₹9,920 to repay in a year." }
       }
     ]
   },
@@ -544,7 +586,9 @@
     "weight": 1,
     "speaker": "teacher",
     "title": { "en": "The school trip" },
-    "text": { "en": "The class trip to the science museum in Hyderabad costs ₹1,200. The same weekend, a shop pays ₹400 a day for helpers." },
+    "text": {
+      "en": "The class trip to the science museum in Hyderabad costs ₹1,200. The same weekend, a shop pays ₹400 a day for helpers."
+    },
     "choices": [
       {
         "id": "go_trip",
@@ -572,7 +616,9 @@
     "weight": 1,
     "speaker": "headline",
     "title": { "en": "Earn ₹5,000 a day!" },
-    "text": { "en": "A message: \"Part-time job! Like videos, earn ₹5,000 a day from home. Pay ₹500 to unlock premium tasks.\"" },
+    "text": {
+      "en": "A message: \"Part-time job! Like videos, earn ₹5,000 a day from home. Pay ₹500 to unlock premium tasks.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Like videos, earn ₹5,000 a day from home." },
@@ -605,7 +651,7 @@
     ]
   },
   {
-    "id": "village.teen.battle_pass.b",
+    "id": "village.teen.phone_emi.b",
     "storyline": "village",
     "kind": "lesson",
     "lesson": "L07",
@@ -648,7 +694,7 @@
     ]
   },
   {
-    "id": "village.teen.fake_screenshot.b",
+    "id": "village.teen.cycle_sale.b",
     "storyline": "village",
     "kind": "lesson",
     "lesson": "L09",
@@ -656,7 +702,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Payment successful?" },
-    "text": { "en": "You're selling Amma's vegetables at the market. A buyer takes ₹2,400 worth and shows his phone. \"See, payment done!\" Your phone shows nothing." },
+    "text": {
+      "en": "You're selling Amma's vegetables at the market. A buyer takes ₹2,400 worth and shows his phone. \"See, payment done!\" Your phone shows nothing."
+    },
     "clarity": [
       {
         "phrase": { "en": "\"See, payment done!\"" },

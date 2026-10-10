@@ -28,7 +28,6 @@
     { "speaker": "narrator", "text": { "en": "I know this story well. I was there for all of it. Let's begin." } }
   ],
   "start": {
-    "age": 11,
     "cash": 50,
     "jars": { "emergency": 0, "goal": 0 },
     "income": { "monthly": 200, "source": "pocket_money" },

@@ -157,7 +157,7 @@
     "ages": [25, 30],
     "title": { "en": "Calamity" },
     "summary": { "en": "Floods, droughts and hospitals don't ask permission. Insurance and an emergency fund decide how much it hurts." },
-    "keyNumber": { "en": "A ₹60,000 hospital bill: with cover, you pay almost nothing. Without it, you may borrow at 36%." }
+    "keyNumber": { "en": "A ₹60,000 hospital bill: with cover, you pay almost nothing. Without it, you may borrow at ₹2 per ₹100 a month." }
   },
   {
     "id": "L21",

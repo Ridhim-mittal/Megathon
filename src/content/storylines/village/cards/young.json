@@ -8,7 +8,9 @@
     "weight": 1,
     "speaker": "friend",
     "title": { "en": "Your first payslip" },
-    "text": { "en": "Your first proper [[payslip]]: ₹14,000 gross, but only ₹12,560 in hand. {cast:friend} is outraged. \"They cut ₹1,440! Withdraw that PF and party, mama.\"" },
+    "text": {
+      "en": "Your first proper [[payslip]]: ₹14,000 gross, but only ₹12,560 in hand. {cast:friend} is outraged. \"They cut ₹1,440! Withdraw that PF and party, mama.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "They cut ₹1,440!" },
@@ -54,7 +56,9 @@
     "weight": 1,
     "speaker": "mentor",
     "title": { "en": "Ammamma's rainy-day rule" },
-    "text": { "en": "You spend about ₹8,000 a month. {cast:mentor}: \"Kanna, keep three months safe for bad days.\" The jeweller says, \"Buy gold, it never falls!\"" },
+    "text": {
+      "en": "You spend about ₹8,000 a month. {cast:mentor}: \"Kanna, keep three months safe for bad days.\" The jeweller says, \"Buy gold, it never falls!\""
+    },
     "clarity": [
       {
         "phrase": { "en": "it never falls!" },
@@ -88,7 +92,7 @@
         "quality": "bad",
         "effects": { "meters": { "joy": 5 }, "schedule": [{ "inYears": 1, "card": "village.young.no_cushion.a" }] },
         "echo": { "level": 2, "hint": { "en": "Ammamma goes very quiet." } },
-        "outcome": { "en": "A ₹10,000 emergency from the sahukar at 36% costs ₹13,600 to clear in a year." },
+        "outcome": { "en": "A ₹10,000 emergency from the sahukar costs ₹12,400 to clear in a year." },
         "why": { "en": "Without a cushion, every surprise becomes an expensive loan." }
       }
     ]
@@ -102,16 +106,14 @@
     "weight": 1,
     "speaker": "father",
     "title": { "en": "Four ways to borrow ₹20,000" },
-    "text": { "en": "Nanna's motor pump is dead. Repair: ₹20,000. {cast:lender} offers \"just ₹3 per ₹100\". A [[loan_app]] says \"instant approval, no documents\". Amma's [[shg]] and a [[gold_loan]] are other options." },
+    "text": {
+      "en": "Nanna's motor pump is dead. Repair: ₹20,000. {cast:lender} offers \"just ₹2 per ₹100\". A [[loan_app]] says \"instant approval, no documents\". Amma's [[shg]] and a [[gold_loan]] are other options."
+    },
     "clarity": [
-      {
-        "phrase": { "en": "just ₹3 per ₹100" },
-        "truth": { "en": "Per month. That is 36% a year." },
-        "lesson": "L14"
-      },
+      { "phrase": { "en": "just ₹2 per ₹100" }, "truth": { "en": "Per month, on the full ₹20,000 even as you repay. 24% flat really costs about 42%." }, "lesson": "L14" },
       {
         "phrase": { "en": "instant approval, no documents" },
-        "truth": { "en": "₹4,000 \"fee\" is cut first, at about 48% a year. Some apps also read your contacts." },
+        "truth": { "en": "A 10% fee, then ₹3 per ₹100 a month on the full amount. Some apps also read your contacts." },
         "lesson": "L14"
       }
     ],
@@ -119,20 +121,23 @@
     "choices": [
       {
         "id": "sahukar",
-        "label": { "en": "Narsaiah sahukar: ₹3 per ₹100 per month" },
+        "label": { "en": "Narsaiah sahukar: ₹2 per ₹100 per month" },
         "quality": "risky",
-        "effects": { "loan": { "source": "moneylender", "principal": 20000, "months": 12, "rateYearly": 36 } },
+        "effects": { "loan": { "source": "moneylender", "principal": 20000, "months": 12, "disburse": "direct" } },
         "echo": { "level": 2, "hint": { "en": "{cast:lender} never says the yearly rate." } },
-        "outcome": { "en": "EMI about ₹2,009 for 12 months. You repay ₹24,100 for ₹20,000." },
-        "why": { "en": "Turn monthly rates into yearly ones: ₹3 per ₹100 per month is 36% a year." }
+        "outcome": { "en": "EMI about ₹2,067 for 12 months. You repay ₹24,800 for ₹20,000." },
+        "why": { "en": "Turn monthly rates into yearly ones: ₹2 per ₹100 per month is 24% a year, on the full amount." }
       },
       {
         "id": "loan_app",
         "label": { "en": "Instant loan app" },
         "quality": "bad",
-        "effects": { "loan": { "source": "loan_app", "principal": 20000, "months": 6, "rateYearly": 48, "fee": 4000 }, "meters": { "health": -3 } },
+        "effects": {
+          "loan": { "source": "loan_app", "principal": 20000, "months": 6, "disburse": "direct" },
+          "meters": { "health": -3 }
+        },
         "echo": { "level": 3, "hint": { "en": "The app now knows everyone in your phone." } },
-        "outcome": { "en": "You receive ₹16,000 after the fee, and repay about ₹22,900 in 6 months." },
+        "outcome": { "en": "A ₹2,000 fee plus ₹3,600 interest: you repay ₹25,600 in just 6 months." },
         "why": { "en": "Fast money is the most expensive money. Fees cut first make the real rate even higher." }
       },
       {
@@ -140,17 +145,24 @@
         "label": { "en": "Amma's SHG: ₹1 per ₹100 per month" },
         "quality": "good",
         "default": true,
-        "effects": { "loan": { "source": "shg", "principal": 20000, "months": 12, "rateYearly": 12 }, "meters": { "family": 3 }, "gyaan": 2 },
-        "outcome": { "en": "EMI about ₹1,777 for 12 months. You repay ₹21,320: about ₹2,790 less than the sahukar." },
+        "effects": {
+          "loan": { "source": "shg", "principal": 20000, "months": 12, "disburse": "direct" },
+          "meters": { "family": 3 },
+          "gyaan": 2
+        },
+        "outcome": { "en": "EMI about ₹1,777 plus a ₹200 fee. You repay ₹21,520: about ₹3,280 less than the sahukar." },
         "why": { "en": "Same ₹20,000, very different costs. Paying on time also builds your [[credit_score]]." }
       },
       {
         "id": "gold_loan",
         "label": { "en": "Gold loan on Amma's earrings, 10% a year" },
         "quality": "neutral",
-        "effects": { "loan": { "source": "gold_loan", "principal": 20000, "months": 12, "rateYearly": 10 }, "meters": { "family": -2 } },
-        "outcome": { "en": "EMI about ₹1,758. Cheapest, at ₹21,100 total, but miss payments and Amma's earrings are auctioned." },
-        "why": { "en": "Cheap secured loans are good, if you're sure you can repay. The risk is the gold." }
+        "effects": {
+          "loan": { "source": "gold_loan", "principal": 20000, "months": 12, "disburse": "direct" },
+          "meters": { "family": -2 }
+        },
+        "outcome": { "en": "₹167 a month in interest, then ₹20,000 at the end: ₹22,100 in all. Miss it, and Amma's earrings are auctioned." },
+        "why": { "en": "Secured loans are cheaper than a sahukar, if you're sure you can repay. The risk is the gold." }
       }
     ]
   },
@@ -163,7 +175,9 @@
     "weight": 1,
     "speaker": "tempter",
     "title": { "en": "Rent your bank account" },
-    "text": { "en": "{cast:tempter}'s sunglasses now cover half his face. \"100% legal part-time work. You just forward the money. ₹5,000 a month commission.\"" },
+    "text": {
+      "en": "{cast:tempter}'s sunglasses now cover half his face. \"100% legal part-time work. You just forward the money. ₹5,000 a month commission.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "100% legal part-time work." },
@@ -181,7 +195,11 @@
         "id": "agree",
         "label": { "en": "Agree, just for one month" },
         "quality": "bad",
-        "effects": { "cash": 5000, "flags": { "add": ["wrong_mule"] }, "schedule": [{ "inYears": 1, "card": "village.young.account_frozen.a" }] },
+        "effects": {
+          "cash": 5000,
+          "flags": { "add": ["legal_mule"] },
+          "schedule": [{ "inYears": 1, "card": "village.young.account_frozen.a" }]
+        },
         "echo": { "level": 3, "hint": { "en": "Your account remembers every rupee that passed through it." } },
         "outcome": { "en": "₹5,000 arrives. So does ₹3.8 lakh from strangers, which you forward as told." },
         "why": { "en": "That ₹3.8 lakh was stolen from scam victims. The trail leads to you, not to Prakash." }
@@ -214,7 +232,9 @@
     "weight": 1,
     "speaker": "banker",
     "title": { "en": "₹20 a year?" },
-    "text": { "en": "{cast:banker} explains: [[pmsby]] is ₹20 a year, [[pmjjby]] is ₹436. She can also update the family's [[aarogyasri]] card. Ammamma suddenly leaves the room." },
+    "text": {
+      "en": "{cast:banker} explains: [[pmsby]] is ₹20 a year, [[pmjjby]] is ₹436. She can also update the family's [[aarogyasri]] card. Ammamma suddenly leaves the room."
+    },
     "clarity": [
       {
         "phrase": { "en": "[[pmsby]] is ₹20 a year" },
@@ -233,8 +253,14 @@
         "label": { "en": "Enrol in both and update the family health card" },
         "quality": "good",
         "default": true,
-        "effects": { "open": { "product": "insurance_accident", "amount": 20 }, "cash": -436, "flags": { "add": ["pmjjby", "family_health_card"] }, "gyaan": 3 },
-        "outcome": { "en": "₹456 a year buys ₹4 lakh of cover. Months later, Ammamma's ₹48,000 hospital stay is paid by the health card." },
+        "effects": {
+          "open": [{ "product": "insurance_accident", "amount": 200000 }, { "product": "insurance_term", "amount": 200000 }],
+          "flags": { "add": ["pmjjby", "family_health_card", "family_health_card"] },
+          "gyaan": 3
+        },
+        "outcome": {
+          "en": "₹456 a year buys ₹4 lakh of cover. Months later, Ammamma's ₹48,000 hospital stay is paid by the health card."
+        },
         "why": { "en": "[[insurance]] is a small, sure cost against a big, rare one. Government schemes make it cheap." }
       },
       {
@@ -257,7 +283,9 @@
     "weight": 1,
     "speaker": "banker",
     "title": { "en": "₹1,000 a month, where?" },
-    "text": { "en": "{cast:banker} shows a chart: [[fd]], [[rd]], [[ppf]], gold, and an [[index_fund]] [[sip]]. \"Index funds are market-linked. They swing, but over long periods they've grown more.\"" },
+    "text": {
+      "en": "{cast:banker} shows a chart: [[fd]], [[rd]], [[ppf]], gold, and an [[index_fund]] [[sip]]. \"Index funds are market-linked. They swing, but over long periods they've grown more.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Index funds are market-linked." },
@@ -289,12 +317,13 @@
         "quality": "risky",
         "effects": { "meters": { "joy": 2 } },
         "echo": { "level": 2, "hint": { "en": "Every year you wait, the finish line moves." } },
-        "outcome": { "en": "Starting at 30 with ₹2,000 a month at 10% gives about ₹2 lakh by 36. Double the money, half the result." },
+        "outcome": {
+          "en": "Starting at 30 with ₹2,000 a month at 10% gives about ₹2 lakh by 36. Double the money, half the result."
+        },
         "why": { "en": "Compound growth needs time. Starting late costs more than starting small." }
       }
     ]
   },
-
   {
     "id": "village.young.teachback_emi.a",
     "storyline": "village",
@@ -304,7 +333,9 @@
     "weight": 1,
     "speaker": "sibling",
     "title": { "en": "Chinni wants a phone" },
-    "text": { "en": "{cast:sibling} holds up a flyer. \"Only ₹999 a month for 15 months! Everyone in my class has one. Can I?\"" },
+    "text": {
+      "en": "{cast:sibling} holds up a flyer. \"Only ₹999 a month for 15 months! Everyone in my class has one. Can I?\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Only ₹999 a month for 15 months!" },
@@ -350,7 +381,9 @@
     "weight": 1,
     "speaker": "sibling",
     "title": { "en": "Chinni's scholarship QR" },
-    "text": { "en": "{cast:sibling} calls, excited. \"A scholarship office sent a [[qr_code]]. Scan and enter PIN to receive ₹5,000! Should I?\"" },
+    "text": {
+      "en": "{cast:sibling} calls, excited. \"A scholarship office sent a [[qr_code]]. Scan and enter PIN to receive ₹5,000! Should I?\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Scan and enter PIN to receive ₹5,000!" },
@@ -365,7 +398,9 @@
         "quality": "good",
         "default": true,
         "effects": { "meters": { "family": 4 }, "gyaan": 3 },
-        "outcome": { "en": "The college confirms: scholarships come by bank transfer. Chinni keeps her ₹5,000 savings and warns her hostel." },
+        "outcome": {
+          "en": "The college confirms: scholarships come by bank transfer. Chinni keeps her ₹5,000 savings and warns her hostel."
+        },
         "why": { "en": "You receive money with your UPI ID or account number only. A PIN means money is leaving." }
       },
       {
@@ -378,7 +413,6 @@
       }
     ]
   },
-
   {
     "id": "village.young.degree_done.a",
     "storyline": "village",
@@ -388,7 +422,9 @@
     "weight": 1,
     "speaker": "mentor",
     "title": { "en": "Graduation day" },
-    "text": { "en": "Degree done! A company in Hyderabad offers ₹18,000 a month. Your education loan EMI of about ₹2,490 starts in six months." },
+    "text": {
+      "en": "Degree done! A company in Hyderabad offers ₹18,000 a month. Your education loan EMI of about ₹3,580 starts next year, interest included."
+    },
     "choices": [
       {
         "id": "take_job",
@@ -396,7 +432,7 @@
         "quality": "good",
         "default": true,
         "effects": { "income": { "monthly": 18000, "source": "job_graduate" }, "meters": { "joy": 8, "family": 6 } },
-        "outcome": { "en": "Ammamma wears her best saree to the ceremony. The EMI is 14% of your pay." },
+        "outcome": { "en": "Ammamma wears her best saree to the ceremony. The EMI is about 20% of your pay." },
         "why": { "en": "Good debt: the loan raised your income far more than it costs." }
       },
       {
@@ -418,14 +454,21 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "The ceiling" },
-    "text": { "en": "Four years at the mill. A supervisor post opens at ₹17,000, but only for diploma holders. An evening diploma costs ₹15,000 a year." },
+    "text": {
+      "en": "Four years at the mill. A supervisor post opens at ₹17,000, but only for diploma holders. An evening diploma costs ₹15,000 a year."
+    },
     "choices": [
       {
         "id": "evening_diploma",
         "label": { "en": "Do the evening diploma" },
         "quality": "good",
         "default": true,
-        "effects": { "cash": -15000, "income": { "monthly": 15000, "source": "job_mill_senior" }, "meters": { "health": -3 }, "gyaan": 2 },
+        "effects": {
+          "cash": -15000,
+          "income": { "monthly": 15000, "source": "job_mill_senior" },
+          "meters": { "health": -3 },
+          "gyaan": 2
+        },
         "outcome": { "en": "Tired evenings, ₹15,000 fees. A raise to ₹15,000 now, and the supervisor post is in sight." },
         "why": { "en": "Paying for a skill is an investment. It pays back every month for years." }
       },
@@ -447,7 +490,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Licensed electrician" },
-    "text": { "en": "ITI certificate in hand. A solar company hires you at ₹16,000 a month. The village calls you for every fan and fuse." },
+    "text": {
+      "en": "ITI certificate in hand. A solar company hires you at ₹16,000 a month. The village calls you for every fan and fuse."
+    },
     "choices": [
       {
         "id": "take_job",
@@ -475,22 +520,35 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "The office is raided" },
-    "text": { "en": "Police raid Prakash's \"office\". It was a fake loan-app call centre. Prakash has vanished. You and Chintu are taken in for questioning." },
+    "text": {
+      "en": "Police raid Prakash's \"office\". It was a fake loan-app call centre. Prakash has vanished. You and Chintu are taken in for questioning."
+    },
     "choices": [
       {
         "id": "tell_truth",
         "label": { "en": "Tell the police everything you know" },
         "quality": "good",
         "default": true,
-        "effects": { "income": { "monthly": 6000, "source": "farm_help" }, "flags": { "add": ["came_clean"], "remove": ["path_shortcut"] }, "meters": { "family": -3, "joy": -6 }, "gyaan": 3 },
-        "outcome": { "en": "You're let go as a witness. You return home, help on the farm for ₹6,000, and join an evening ITI class." },
+        "effects": {
+          "income": { "monthly": 6000, "source": "farm_help" },
+          "flags": { "add": ["came_clean"], "remove": ["path_shortcut"] },
+          "meters": { "family": -3, "joy": -6 },
+          "gyaan": 3
+        },
+        "outcome": {
+          "en": "You're let go as a witness. You return home, help on the farm for ₹6,000, and join an evening ITI class."
+        },
         "why": { "en": "Coming clean early is the way back. Easy money from a stranger always has a hidden price." }
       },
       {
         "id": "run",
         "label": { "en": "Say nothing and leave town" },
         "quality": "bad",
-        "effects": { "income": { "monthly": 7000, "source": "daily_wage" }, "flags": { "add": ["wrong_fraud"] }, "meters": { "family": -8, "health": -5 } },
+        "effects": {
+          "income": { "monthly": 7000, "source": "daily_wage" },
+          "flags": { "add": ["legal_fraud"] },
+          "meters": { "family": -8, "health": -5 }
+        },
         "echo": { "level": 3, "hint": { "en": "Your name is still in the office register." } },
         "outcome": { "en": "Daily-wage work at ₹7,000 a month, and a police notice that follows you for years." },
         "why": { "en": "Running makes you look guilty. There is still a way back: a lawyer and the truth." }
@@ -520,7 +578,13 @@
         "id": "bus_and_rebuild",
         "label": { "en": "Take the bus for two months and start the emergency fund now" },
         "quality": "good",
-        "effects": { "cash": -1200, "jar": { "emergency": 2000 }, "meters": { "joy": -3 }, "flags": { "add": ["has_emergency_fund"] }, "lesson": "applied" },
+        "effects": {
+          "cash": -1200,
+          "jar": { "emergency": 2000 },
+          "meters": { "joy": -3 },
+          "flags": { "add": ["has_emergency_fund"] },
+          "lesson": "applied"
+        },
         "outcome": { "en": "₹1,200 in bus fares instead of a ₹10,000 loan. Your fund starts at ₹2,000." },
         "why": { "en": "A crisis is a good time to start a cushion, not a loan." }
       }
@@ -535,14 +599,22 @@
     "weight": 1,
     "speaker": "banker",
     "title": { "en": "Account frozen" },
-    "text": { "en": "Your salary doesn't arrive. {cast:banker} looks worried. \"Your account is frozen. Cyber police traced ₹3.8 lakh of stolen money to it.\"" },
+    "text": {
+      "en": "Your salary doesn't arrive. {cast:banker} looks worried. \"Your account is frozen. Cyber police traced ₹3.8 lakh of stolen money to it.\""
+    },
     "choices": [
       {
         "id": "come_clean",
         "label": { "en": "Go to the police with Kavitha akka and tell everything" },
         "quality": "good",
         "default": true,
-        "effects": { "cash": -5000, "flags": { "add": ["came_clean"] }, "meters": { "family": -5, "joy": -6 }, "gyaan": 3, "lesson": "applied" },
+        "effects": {
+          "cash": -5000,
+          "flags": { "add": ["came_clean"] },
+          "meters": { "family": -5, "joy": -6 },
+          "gyaan": 3,
+          "lesson": "applied"
+        },
         "outcome": { "en": "You return the ₹5,000 and hand over Prakash's chats. After four months, your account opens again." },
         "why": { "en": "The way back is the truth. Cooperating early made you a witness, not an accused." }
       },
@@ -566,7 +638,9 @@
     "weight": 1,
     "speaker": "friend",
     "title": { "en": "Chintu is scared" },
-    "text": { "en": "{cast:friend} shows up at night, shaking. \"My account is frozen. Police called. Prakash isn't answering. What do I do, mama?\"" },
+    "text": {
+      "en": "{cast:friend} shows up at night, shaking. \"My account is frozen. Police called. Prakash isn't answering. What do I do, mama?\""
+    },
     "choices": [
       {
         "id": "help_him",
@@ -596,7 +670,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Not quite 22 carat" },
-    "text": { "en": "You try a [[gold_loan]] on your chain. The bank tests it: 18 carat, not 22. It's worth ₹2,000 less than you paid." },
+    "text": {
+      "en": "You try a [[gold_loan]] on your chain. The bank tests it: 18 carat, not 22. It's worth ₹2,000 less than you paid."
+    },
     "choices": [
       {
         "id": "complain",
@@ -615,36 +691,6 @@
       }
     ]
   },
-
-  {
-    "id": "village.young.sahukar_desk.a",
-    "storyline": "village",
-    "kind": "random",
-    "lesson": "L14",
-    "ages": [17, 23],
-    "weight": 2,
-    "minigame": "sahukar",
-    "speaker": "lender",
-    "title": { "en": "A day in the sahukar's chair" },
-    "text": { "en": "{cast:lender} has hurt his back. \"You're good with numbers. Sit at my desk for one day. Let's see if you can make me money.\"" },
-    "choices": [
-      {
-        "id": "play",
-        "label": { "en": "Sit in the sahukar's chair" },
-        "quality": "good",
-        "default": true,
-        "effects": {},
-        "outcome": { "en": "Three borrowers, three offers each. Your score is his profit." }
-      },
-      {
-        "id": "skip",
-        "label": { "en": "Politely say no" },
-        "quality": "neutral",
-        "effects": { "meters": { "joy": 1 } },
-        "outcome": { "en": "He shrugs. \"Your loss. The desk teaches more than school.\" You'll never know what he meant." }
-      }
-    ]
-  },
   {
     "id": "village.young.colleague_trip.a",
     "storyline": "village",
@@ -654,7 +700,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Beach trip with colleagues" },
-    "text": { "en": "Your colleagues plan a beach trip: ₹12,000 each. \"Use your new [[credit_card]]! No-cost EMI, and the minimum due is only ₹600.\"" },
+    "text": {
+      "en": "Your colleagues plan a beach trip: ₹12,000 each. \"Use your new [[credit_card]]! No-cost EMI, and the minimum due is only ₹600.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "No-cost EMI" },
@@ -680,7 +728,7 @@
         "id": "minimum_due",
         "label": { "en": "Go, and pay just the minimum each month" },
         "quality": "bad",
-        "effects": { "loan": { "source": "credit_card", "principal": 12000, "months": 24, "rateYearly": 42 }, "meters": { "joy": 9 } },
+        "effects": { "loan": { "source": "credit_card", "principal": 12000, "months": 24 }, "meters": { "joy": 9 } },
         "echo": { "level": 2, "hint": { "en": "The trip lasts four days. The bill lasts two years." } },
         "outcome": { "en": "Spread over two years at 42%, the ₹12,000 trip costs about ₹17,900." }
       },
@@ -703,7 +751,9 @@
     "weight": 1,
     "speaker": "headline",
     "title": { "en": "Your account will be blocked today" },
-    "text": { "en": "SMS: \"Dear customer, your KYC expires today. Click this link to update, or your account will be blocked.\"" },
+    "text": {
+      "en": "SMS: \"Dear customer, your KYC expires today. Click this link to update, or your account will be blocked.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "your KYC expires today." },
@@ -751,7 +801,7 @@
         "label": { "en": "₹6,000 to the emergency jar, ₹2,000 for sweets and gifts" },
         "quality": "good",
         "default": true,
-        "effects": { "jar": { "emergency": 6000 }, "meters": { "joy": 4, "family": 4 } },
+        "effects": { "jar": { "emergency": 6000 }, "meters": { "joy": 4, "family": 4 }, "cash": 6000 },
         "outcome": { "en": "₹6,000 saved, ₹2,000 of sweets. Ammamma gets the softest laddus." }
       },
       {
@@ -787,9 +837,12 @@
         "id": "loan_app",
         "label": { "en": "Borrow from a loan app, keep your savings" },
         "quality": "bad",
-        "effects": { "loan": { "source": "loan_app", "principal": 25000, "months": 6 }, "meters": { "health": -10 } },
+        "effects": {
+          "loan": { "source": "loan_app", "principal": 25000, "months": 6, "disburse": "direct" },
+          "meters": { "health": -10 }
+        },
         "echo": { "level": 2, "hint": { "en": "Savings exist for days like this." } },
-        "outcome": { "en": "Your savings sit untouched while ₹25,000 costs you about 48% a year." }
+        "outcome": { "en": "Your savings sit untouched while you repay ₹32,000 for ₹25,000 in 6 months." }
       }
     ]
   },
@@ -802,7 +855,9 @@
     "weight": 1,
     "speaker": "tempter",
     "title": { "en": "Just carry the bag" },
-    "text": { "en": "A friend of {cast:tempter}'s offers ₹3,000 to carry a sealed bag on the bus to Hyderabad. \"No questions, just deliver.\"" },
+    "text": {
+      "en": "A friend of {cast:tempter}'s offers ₹3,000 to carry a sealed bag on the bus to Hyderabad. \"No questions, just deliver.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "No questions, just deliver." },
@@ -815,7 +870,11 @@
         "id": "carry",
         "label": { "en": "Carry it. ₹3,000 for one bus ride" },
         "quality": "bad",
-        "effects": { "cash": 3000, "flags": { "add": ["wrong_hawala"] }, "schedule": [{ "inYears": 1, "card": "village.young.hawala_caught.a" }] },
+        "effects": {
+          "cash": 3000,
+          "flags": { "add": ["legal_hawala"] },
+          "schedule": [{ "inYears": 1, "card": "village.young.hawala_caught.a" }]
+        },
         "echo": { "level": 3, "hint": { "en": "You never saw what was inside. The police will." } },
         "outcome": { "en": "₹3,000 for a nervous four-hour ride. The man at the other end takes the bag without a word." }
       },
@@ -838,7 +897,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Your number in his phone" },
-    "text": { "en": "Police arrest the man you delivered to. The bag held ₹18 lakh of unrecorded cash. Your number is in his phone." },
+    "text": {
+      "en": "Police arrest the man you delivered to. The bag held ₹18 lakh of unrecorded cash. Your number is in his phone."
+    },
     "choices": [
       {
         "id": "truth",
@@ -858,7 +919,7 @@
     ]
   },
   {
-    "id": "village.young.rd_or_trip.b",
+    "id": "village.young.emergency_fund.b",
     "storyline": "village",
     "kind": "lesson",
     "lesson": "L13",
@@ -866,7 +927,9 @@
     "weight": 1,
     "speaker": "banker",
     "title": { "en": "The rainy-day RD" },
-    "text": { "en": "A colleague just lost his job and is borrowing from everyone. {cast:banker} suggests a ₹1,500 monthly [[rd]] as your [[emergency_fund]]. Friends want a trip instead." },
+    "text": {
+      "en": "A colleague just lost his job and is borrowing from everyone. {cast:banker} suggests a ₹1,500 monthly [[rd]] as your [[emergency_fund]]. Friends want a trip instead."
+    },
     "clarity": [
       {
         "phrase": { "en": "a ₹1,500 monthly [[rd]]" },
@@ -904,7 +967,7 @@
     ]
   },
   {
-    "id": "village.young.laptop_loan.b",
+    "id": "village.young.borrowing_compared.b",
     "storyline": "village",
     "kind": "lesson",
     "lesson": "L14",
@@ -912,7 +975,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "A ₹30,000 laptop for work" },
-    "text": { "en": "You need a ₹30,000 laptop for a better job. A mall stall offers a \"lifetime free\" [[credit_card]]. The bank offers a personal loan at 14%." },
+    "text": {
+      "en": "You need a ₹30,000 laptop for a better job. A mall stall offers a \"lifetime free\" [[credit_card]]. The bank offers a personal loan at 13%."
+    },
     "clarity": [
       {
         "phrase": { "en": "\"lifetime free\"" },
@@ -927,23 +992,23 @@
         "label": { "en": "Save for three months, borrow ₹10,000 from Amma's SHG" },
         "quality": "good",
         "default": true,
-        "effects": { "loan": { "source": "shg", "principal": 10000, "months": 6 }, "gyaan": 2 },
+        "effects": { "loan": { "source": "shg", "principal": 10000, "months": 6, "disburse": "direct" }, "gyaan": 2 },
         "outcome": { "en": "₹20,000 saved and ₹10,000 at 12% from the SHG. Interest: about ₹350 in total." },
         "why": { "en": "Borrowing less, for less time, at a lower rate is the cheapest way to borrow." }
       },
       {
         "id": "bank_loan",
-        "label": { "en": "Bank personal loan, 14% for 12 months" },
+        "label": { "en": "Bank personal loan, 13% for 12 months" },
         "quality": "neutral",
-        "effects": { "loan": { "source": "bank_personal", "principal": 30000, "months": 12, "rateYearly": 14 } },
-        "outcome": { "en": "EMI about ₹2,690. You repay ₹32,300. On-time payments build your [[credit_score]]." },
-        "why": { "en": "A bank loan is fair and clear. It still costs ₹2,300 for not waiting." }
+        "effects": { "loan": { "source": "bank_personal", "principal": 30000, "months": 12, "disburse": "direct" } },
+        "outcome": { "en": "EMI about ₹2,680 plus a ₹600 fee. You repay about ₹32,750. On-time payments build your [[credit_score]]." },
+        "why": { "en": "A bank loan is fair and clear. It still costs ₹2,750 for not waiting." }
       },
       {
         "id": "card_minimum",
         "label": { "en": "Credit card, pay the minimum each month" },
         "quality": "bad",
-        "effects": { "loan": { "source": "credit_card", "principal": 30000, "months": 24, "rateYearly": 42 } },
+        "effects": { "loan": { "source": "credit_card", "principal": 30000, "months": 24 } },
         "echo": { "level": 2, "hint": { "en": "The laptop will be old before the bill is paid." } },
         "outcome": { "en": "Spread over two years at 42%, the ₹30,000 laptop costs about ₹44,800." },
         "why": { "en": "The same ₹30,000 can cost ₹350 or ₹14,800 in interest. Compare before you borrow." }
@@ -951,7 +1016,7 @@
     ]
   },
   {
-    "id": "village.young.salary_processing.b",
+    "id": "village.young.rent_account.b",
     "storyline": "village",
     "kind": "lesson",
     "lesson": "L15",
@@ -959,7 +1024,9 @@
     "weight": 1,
     "speaker": "headline",
     "title": { "en": "A data-entry job, from home" },
-    "text": { "en": "A job message: \"Data entry, ₹20,000 a month! Send your net-banking login and a new SIM in your name for salary processing.\"" },
+    "text": {
+      "en": "A job message: \"Data entry, ₹20,000 a month! Send your net-banking login and a new SIM in your name for salary processing.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "for salary processing" },
@@ -972,7 +1039,7 @@
         "id": "send",
         "label": { "en": "Send them. ₹20,000 is a lot" },
         "quality": "bad",
-        "effects": { "flags": { "add": ["wrong_mule"] }, "schedule": [{ "inYears": 1, "card": "village.young.account_frozen.a" }] },
+        "effects": { "flags": { "add": ["legal_mule"] }, "schedule": [{ "inYears": 1, "card": "village.young.account_frozen.a" }] },
         "echo": { "level": 3, "hint": { "en": "There is no job. There is only your account." } },
         "outcome": { "en": "No salary ever comes. But ₹3.8 lakh of stolen money passes through your account in a week." },
         "why": { "en": "Whoever controls your account makes you a [[money_mule]], even if you never touch the money." }
@@ -983,7 +1050,9 @@
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 3 },
-        "outcome": { "en": "You lose ₹0. The number is blocked within a day, but 2 students in your batch had already sent theirs." },
+        "outcome": {
+          "en": "You lose ₹0. The number is blocked within a day, but 2 students in your batch had already sent theirs."
+        },
         "why": { "en": "Never share your login, SIM or ATM card. Your account is your identity." }
       }
     ]

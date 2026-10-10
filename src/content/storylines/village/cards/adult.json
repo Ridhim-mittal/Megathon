@@ -8,7 +8,9 @@
     "weight": 1,
     "speaker": "mother",
     "title": { "en": "Cousin Ravi's grand wedding" },
-    "text": { "en": "Cousin Ravi's wedding. The relatives expect you, the earning one, to give ₹50,000. \"Use a [[credit_card]]. Easy monthly payments!\" says an uncle." },
+    "text": {
+      "en": "Cousin Ravi's wedding. The relatives expect you, the earning one, to give ₹50,000. \"Use a [[credit_card]]. Easy monthly payments!\" says an uncle."
+    },
     "clarity": [
       {
         "phrase": { "en": "Easy monthly payments!" },
@@ -31,7 +33,7 @@
         "id": "card_gift",
         "label": { "en": "Put ₹50,000 of gifts and clothes on the credit card" },
         "quality": "bad",
-        "effects": { "loan": { "source": "credit_card", "principal": 50000, "months": 12, "rateYearly": 42 }, "meters": { "family": 6, "joy": 5 } },
+        "effects": { "loan": { "source": "credit_card", "principal": 50000, "months": 12 }, "meters": { "family": 6, "joy": 5 } },
         "echo": { "level": 3, "hint": { "en": "Everyone remembers the gift for a week. The card remembers for a year." } },
         "outcome": { "en": "Everyone praises you for an evening. The ₹50,000 costs about ₹62,000 by the time it's paid." },
         "why": { "en": "When income grows, spending to impress grows faster. That's lifestyle inflation." }
@@ -55,7 +57,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Crossroads: go or stay?" },
-    "text": { "en": "Nanna's back is weak now. Chinni is in college. Four offers on the table. A [[mudra]] loan is \"collateral-free\", says the bank." },
+    "text": {
+      "en": "Nanna's back is weak now. Chinni is in college. Four offers on the table. A [[mudra]] loan is \"collateral-free\", says the bank."
+    },
     "clarity": [
       {
         "phrase": { "en": "\"collateral-free\"" },
@@ -111,13 +115,15 @@
         "label": { "en": "Start a small repair shop with a Mudra loan" },
         "quality": "good",
         "effects": {
-          "loan": { "source": "mudra", "principal": 100000, "months": 60 },
+          "loan": { "source": "mudra", "principal": 100000, "months": 60, "disburse": "direct" },
           "income": { "monthly": 18000, "source": "small_business" },
           "meters": { "family": 3, "health": -2 },
           "flags": { "add": ["path_business"] },
           "schedule": [{ "inYears": 7, "card": "village.settle.tin_box.a" }]
         },
-        "outcome": { "en": "₹1 lakh at about 10% is ₹2,125 a month for 5 years. You earn ₹18,000 in a good month, ₹9,000 in a bad one." },
+        "outcome": {
+          "en": "₹1 lakh at about 10% is ₹2,125 a month for 5 years. You earn ₹18,000 in a good month, ₹9,000 in a bad one."
+        },
         "why": { "en": "Business income goes up and down. Keep the EMI small enough for the bad months." }
       }
     ]
@@ -132,7 +138,9 @@
     "requires": { "owns": ["sip_index"] },
     "speaker": "headline",
     "title": { "en": "Markets crash 30%!" },
-    "text": { "en": "TV anchors are shouting. Your index fund shows ₹29,400. Last month it was ₹42,000. A WhatsApp tip says \"sell everything, buy this sure-shot share\"." },
+    "text": {
+      "en": "TV anchors are shouting. Your index fund shows ₹29,400. Last month it was ₹42,000. A WhatsApp tip says \"sell everything, buy this sure-shot share\"."
+    },
     "clarity": [
       {
         "phrase": { "en": "\"sell everything, buy this sure-shot share\"" },
@@ -179,7 +187,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "The hot share" },
-    "text": { "en": "A colleague whispers: \"Put all your savings in this one share. My cousin says it will triple. Can't lose.\" You have ₹30,000 saved." },
+    "text": {
+      "en": "A colleague whispers: \"Put all your savings in this one share. My cousin says it will triple. Can't lose.\" You have ₹30,000 saved."
+    },
     "clarity": [
       {
         "phrase": { "en": "Can't lose." },
@@ -225,7 +235,9 @@
     "weight": 1,
     "speaker": "headline",
     "title": { "en": "The tank overflows" },
-    "text": { "en": "Three days of rain. The village tank breaks its bank. Crop and house wall damaged: ₹80,000. Bujji is fine, standing on the roof of her shed." },
+    "text": {
+      "en": "Three days of rain. The village tank breaks its bank. Crop and house wall damaged: ₹80,000. Bujji is fine, standing on the roof of her shed."
+    },
     "clarity": [
       {
         "phrase": { "en": "Crop and house wall damaged: ₹80,000." },
@@ -248,17 +260,22 @@
         "label": { "en": "Apply for flood relief first, then pay the rest" },
         "quality": "good",
         "effects": { "shock": { "kind": "flood", "cost": 70000 }, "meters": { "health": -2 }, "gyaan": 3 },
-        "outcome": { "en": "Two weeks of forms with {cast:banker}'s help. ₹10,000 of government relief arrives. ₹70,000 left to cover." },
+        "outcome": {
+          "en": "Two weeks of forms with {cast:banker}'s help. ₹10,000 of government relief arrives. ₹70,000 left to cover."
+        },
         "why": { "en": "Government relief exists for disasters. Ask for it, and keep every receipt." }
       },
       {
         "id": "sahukar",
         "label": { "en": "Go straight to the sahukar, keep your savings" },
         "quality": "bad",
-        "effects": { "loan": { "source": "moneylender", "principal": 80000, "months": 12, "rateYearly": 36 }, "meters": { "family": -3 } },
+        "effects": {
+          "loan": { "source": "moneylender", "principal": 80000, "months": 12, "disburse": "direct" },
+          "meters": { "family": -3 }
+        },
         "echo": { "level": 3, "hint": { "en": "Ammamma stares at the sahukar's house for a long time." } },
-        "outcome": { "en": "Your savings stay. At 36%, the ₹80,000 costs about ₹96,400 to clear in a year." },
-        "why": { "en": "Savings that sit unused while you borrow at 36% are costing you money." }
+        "outcome": { "en": "Your savings stay. At ₹2 per ₹100 a month, the ₹80,000 costs ₹99,200 to clear in a year." },
+        "why": { "en": "Savings that sit unused while you pay a sahukar are costing you money." }
       }
     ]
   },
@@ -271,7 +288,9 @@
     "weight": 1,
     "speaker": "agent",
     "title": { "en": "The Golden Future Plan" },
-    "text": { "en": "{cast:agent} arrives at lunchtime. \"Golden Future Plan! ₹30,000 a year for 15 years. Guaranteed ₹6 lakh, plus ₹3 lakh life cover. Free steel dinner set!\"" },
+    "text": {
+      "en": "{cast:agent} arrives at lunchtime. \"Golden Future Plan! ₹30,000 a year for 15 years. Guaranteed ₹6 lakh, plus ₹3 lakh life cover. Free steel dinner set!\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Guaranteed ₹6 lakh" },
@@ -280,7 +299,7 @@
       },
       {
         "phrase": { "en": "plus ₹3 lakh life cover" },
-        "truth": { "en": "Too small to protect a family. A [[term_insurance]] plan gives ₹50 lakh for about ₹8,000 a year." },
+        "truth": { "en": "Too small to protect a family. A [[term_insurance]] plan gives ₹50 lakh for about ₹11,000 a year." },
         "lesson": "L21"
       },
       {
@@ -295,7 +314,11 @@
         "id": "buy_plan",
         "label": { "en": "Sign up for the Golden Future Plan" },
         "quality": "risky",
-        "effects": { "cash": -30000, "flags": { "add": ["owns_mixed_plan"] }, "schedule": [{ "inYears": 2, "card": "village.adult.surrender_value.a" }] },
+        "effects": {
+          "cash": -30000,
+          "flags": { "add": ["owns_mixed_plan"] },
+          "schedule": [{ "inYears": 2, "card": "village.adult.surrender_value.a" }]
+        },
         "echo": { "level": 2, "hint": { "en": "The dinner set is shiny. The lock-in is 15 years." } },
         "outcome": { "en": "₹30,000 a year, locked for 15 years, earning about 3.5%. Ramana leaves with the last vada." },
         "why": { "en": "Mixed plans pay big commissions and give low cover. Keep insurance and investing separate." }
@@ -305,8 +328,10 @@
         "label": { "en": "Buy cheap term cover and invest the rest yourself" },
         "quality": "good",
         "default": true,
-        "effects": { "open": { "product": "insurance_term", "amount": 8000 }, "flags": { "add": ["term_cover"] }, "gyaan": 3 },
-        "outcome": { "en": "₹8,000 a year buys ₹50 lakh of cover. ₹22,000 a year in an index fund could reach ₹6–8 lakh in 15 years." },
+        "effects": { "open": { "product": "insurance_term", "amount": 5000000 }, "flags": { "add": ["term_cover"] }, "gyaan": 3 },
+        "outcome": {
+          "en": "₹11,000 a year buys ₹50 lakh of cover. ₹19,000 a year in an index fund could reach ₹5–7 lakh in 15 years."
+        },
         "why": { "en": "Pure cover protects the family. A low-fee fund grows the money. Each does one job well." }
       },
       {
@@ -328,7 +353,9 @@
     "weight": 1,
     "speaker": "tempter",
     "title": { "en": "The Lucky Wealth Club" },
-    "text": { "en": "{cast:tempter}'s sunglasses are now enormous. \"Lucky Wealth Club! Guaranteed double in 12 months. Risk-free. Bonus for every friend you bring!\"" },
+    "text": {
+      "en": "{cast:tempter}'s sunglasses are now enormous. \"Lucky Wealth Club! Guaranteed double in 12 months. Risk-free. Bonus for every friend you bring!\""
+    },
     "clarity": [
       {
         "phrase": { "en": "Guaranteed double in 12 months." },
@@ -351,7 +378,12 @@
         "id": "invest",
         "label": { "en": "Put in ₹50,000" },
         "quality": "bad",
-        "effects": { "cash": -38000, "meters": { "joy": 3 }, "flags": { "add": ["ponzi_victim"] }, "schedule": [{ "inYears": 1, "card": "village.adult.club_collapse.a" }] },
+        "effects": {
+          "cash": -38000,
+          "meters": { "joy": 3 },
+          "flags": { "add": ["ponzi_victim"] },
+          "schedule": [{ "inYears": 1, "card": "village.adult.club_collapse.a" }]
+        },
         "echo": { "level": 3, "hint": { "en": "Big glasses, small truth." } },
         "outcome": { "en": "You pay ₹50,000. Three monthly \"returns\" of ₹4,000 arrive. You feel very smart." },
         "why": { "en": "Early payouts are bait, paid with newer members' money. They stop when new money stops." }
@@ -360,7 +392,12 @@
         "id": "invest_recruit",
         "label": { "en": "Put in ₹50,000 and bring Chintu and two cousins" },
         "quality": "bad",
-        "effects": { "cash": -32000, "meters": { "joy": 4 }, "flags": { "add": ["ponzi_victim", "wrong_ponzi"] }, "schedule": [{ "inYears": 1, "card": "village.adult.club_collapse_recruiter.a" }] },
+        "effects": {
+          "cash": -32000,
+          "meters": { "joy": 4 },
+          "flags": { "add": ["ponzi_victim", "legal_ponzi"] },
+          "schedule": [{ "inYears": 1, "card": "village.adult.club_collapse_recruiter.a" }]
+        },
         "echo": { "level": 3, "hint": { "en": "Three families now trust your word." } },
         "outcome": { "en": "₹12,000 in returns and ₹6,000 in bonuses. Your cousins put in ₹1.5 lakh because of you." },
         "why": { "en": "Recruiting into a Ponzi makes you part of it. The law and your family will both ask." }
@@ -377,7 +414,7 @@
     ]
   },
   {
-    "id": "village.adult.digital_arrest.b",
+    "id": "village.adult.double_money.b",
     "storyline": "village",
     "kind": "lesson",
     "lesson": "L22",
@@ -385,7 +422,9 @@
     "weight": 1,
     "speaker": "headline",
     "title": { "en": "A video call from \"police\"" },
-    "text": { "en": "A man in uniform on video: \"A drugs parcel is in your name. You are under digital arrest. Don't tell anyone. Transfer ₹60,000 for verification.\"" },
+    "text": {
+      "en": "A man in uniform on video: \"A drugs parcel is in your name. You are under digital arrest. Don't tell anyone. Transfer ₹60,000 for verification.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "You are under digital arrest." },
@@ -427,7 +466,6 @@
       }
     ]
   },
-
   {
     "id": "village.adult.teachback_cushion.a",
     "storyline": "village",
@@ -437,7 +475,9 @@
     "weight": 1,
     "speaker": "friend",
     "title": { "en": "Chintu asks for advice" },
-    "text": { "en": "{cast:friend} is a delivery rider now, out of his loan-app mess. \"Mama, how do I make sure I never end up there again?\"" },
+    "text": {
+      "en": "{cast:friend} is a delivery rider now, out of his loan-app mess. \"Mama, how do I make sure I never end up there again?\""
+    },
     "choices": [
       {
         "id": "fund_first",
@@ -475,7 +515,9 @@
     "weight": 1,
     "speaker": "sibling",
     "title": { "en": "Chinni's first salary" },
-    "text": { "en": "{cast:sibling} is a staff nurse now, earning ₹22,000. \"Should I invest now, or wait till I earn more like you?\"" },
+    "text": {
+      "en": "{cast:sibling} is a staff nurse now, earning ₹22,000. \"Should I invest now, or wait till I earn more like you?\""
+    },
     "choices": [
       {
         "id": "start_now",
@@ -504,7 +546,6 @@
       }
     ]
   },
-
   {
     "id": "village.adult.surrender_value.a",
     "storyline": "village",
@@ -514,7 +555,9 @@
     "weight": 1,
     "speaker": "agent",
     "title": { "en": "Surrender value" },
-    "text": { "en": "You need ₹40,000 urgently. You've paid ₹60,000 into the Golden Future Plan. Its surrender value today: ₹18,000." },
+    "text": {
+      "en": "You need ₹40,000 urgently. You've paid ₹60,000 into the Golden Future Plan. Its surrender value today: ₹18,000."
+    },
     "choices": [
       {
         "id": "surrender",
@@ -544,14 +587,22 @@
     "weight": 1,
     "speaker": "headline",
     "title": { "en": "The club shuts down" },
-    "text": { "en": "The Lucky Wealth Club office is locked. Phones off. 2,000 members, ₹40 crore gone. Your ₹38,000 is gone too." },
+    "text": {
+      "en": "The Lucky Wealth Club office is locked. Phones off. 2,000 members, ₹40 crore gone. Your ₹38,000 is gone too."
+    },
     "choices": [
       {
         "id": "complain",
         "label": { "en": "File a police complaint with other victims" },
         "quality": "good",
         "default": true,
-        "effects": { "cash": 6000, "meters": { "joy": -4 }, "flags": { "remove": ["ponzi_victim"] }, "gyaan": 3, "lesson": "applied" },
+        "effects": {
+          "cash": 6000,
+          "meters": { "joy": -4 },
+          "flags": { "remove": ["ponzi_victim"] },
+          "gyaan": 3,
+          "lesson": "applied"
+        },
         "outcome": { "en": "Years later, the court returns part of the seized money: ₹6,000 of your ₹38,000." },
         "why": { "en": "Complaining together helps police seize assets. Some money comes back; most doesn't." }
       },
@@ -575,14 +626,22 @@
     "weight": 1,
     "speaker": "mother",
     "title": { "en": "Your cousins' money" },
-    "text": { "en": "The club collapses. Your cousins lost ₹1.5 lakh because you vouched for it. The police list you as a recruiter." },
+    "text": {
+      "en": "The club collapses. Your cousins lost ₹1.5 lakh because you vouched for it. The police list you as a recruiter."
+    },
     "choices": [
       {
         "id": "own_it",
         "label": { "en": "Cooperate with police and repay your cousins what you can" },
         "quality": "good",
         "default": true,
-        "effects": { "cash": -30000, "flags": { "add": ["came_clean"] }, "meters": { "family": -6 }, "gyaan": 3, "lesson": "applied" },
+        "effects": {
+          "cash": -30000,
+          "flags": { "add": ["came_clean"] },
+          "meters": { "family": -6 },
+          "gyaan": 3,
+          "lesson": "applied"
+        },
         "outcome": { "en": "You give a full statement and return your ₹6,000 bonus, plus ₹24,000 to your cousins. It's a start." },
         "why": { "en": "The way back is honesty and repair. It costs money now and saves your name later." }
       },
@@ -605,7 +664,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Caught at the airport" },
-    "text": { "en": "Immigration checks your experience certificate. Fake. Your visa is cancelled. The agent's number is switched off. The ₹1.2 lakh loan remains." },
+    "text": {
+      "en": "Immigration checks your experience certificate. Fake. Your visa is cancelled. The agent's number is switched off. The ₹1.2 lakh loan remains."
+    },
     "choices": [
       {
         "id": "report_agent",
@@ -613,7 +674,9 @@
         "quality": "good",
         "default": true,
         "effects": { "flags": { "add": ["came_clean"] }, "meters": { "family": -4, "joy": -8 }, "gyaan": 3 },
-        "outcome": { "en": "You're let go with a warning. Police find the agent cheated 40 others. You start repaying the ₹1.2 lakh." },
+        "outcome": {
+          "en": "You're let go with a warning. Police find the agent cheated 40 others. You start repaying the ₹1.2 lakh."
+        },
         "why": { "en": "Fake documents can ban you from travel for years. Licensed agents never sell papers." }
       },
       {
@@ -636,7 +699,9 @@
     "weight": 1,
     "speaker": "agent",
     "title": { "en": "Claim rejected" },
-    "text": { "en": "You claim ₹35,000 for Amma's knee surgery. The insurer refuses: \"Existing illness, four-year waiting period. Page 11.\"" },
+    "text": {
+      "en": "You claim ₹35,000 for Amma's knee surgery. The insurer refuses: \"Existing illness, four-year waiting period. Page 11.\""
+    },
     "choices": [
       {
         "id": "ombudsman",
@@ -667,7 +732,9 @@
     "weight": 1,
     "speaker": "mother",
     "title": { "en": "The organiser has gone" },
-    "text": { "en": "The [[chit]] organiser's house is locked. Twenty families, ₹5,000 a month each. Your ₹60,000 of payments is gone." },
+    "text": {
+      "en": "The [[chit]] organiser's house is locked. Twenty families, ₹5,000 a month each. Your ₹60,000 of payments is gone."
+    },
     "choices": [
       {
         "id": "complain",
@@ -696,7 +763,9 @@
     "weight": 1,
     "speaker": "narrator",
     "title": { "en": "Charges you didn't see" },
-    "text": { "en": "Your loan statement shows a ₹3,500 \"loan insurance\" and a 4% fee if you repay early. Both were in the papers." },
+    "text": {
+      "en": "Your loan statement shows a ₹3,500 \"loan insurance\" and a 4% fee if you repay early. Both were in the papers."
+    },
     "choices": [
       {
         "id": "question",
@@ -724,7 +793,9 @@
     "weight": 1,
     "speaker": "mother",
     "title": { "en": "They called everyone" },
-    "text": { "en": "One EMI late. The lender's agents call Amma, Chinni and your boss. The papers you signed allowed \"contacting references\"." },
+    "text": {
+      "en": "One EMI late. The lender's agents call Amma, Chinni and your boss. The papers you signed allowed \"contacting references\"."
+    },
     "choices": [
       {
         "id": "report",
@@ -732,21 +803,25 @@
         "quality": "good",
         "default": true,
         "effects": { "cash": -2000, "meters": { "health": -3 }, "gyaan": 3 },
-        "outcome": { "en": "The ₹2,000 late EMI is paid, and the calls stop after your complaint. Recovery agents can't threaten anyone." },
+        "outcome": {
+          "en": "The ₹2,000 late EMI is paid, and the calls stop after your complaint. Recovery agents can't threaten anyone."
+        },
         "why": { "en": "Even when you owe money, harassment is illegal. Complain to the lender, the regulator and police." }
       },
       {
         "id": "new_loan",
         "label": { "en": "Take another app loan to pay this one" },
         "quality": "bad",
-        "effects": { "loan": { "source": "loan_app", "principal": 10000, "months": 3 }, "meters": { "health": -6 } },
+        "effects": {
+          "loan": { "source": "loan_app", "principal": 10000, "months": 3, "disburse": "direct" },
+          "meters": { "health": -6 }
+        },
         "echo": { "level": 3, "hint": { "en": "Two apps, then three. This is how Chintu's year went." } },
         "outcome": { "en": "One loan pays another. Within three months you owe four apps ₹28,000." },
         "why": { "en": "Borrowing to repay borrowing is a trap. Talk to the lender or a bank instead." }
       }
     ]
   },
-
   {
     "id": "village.adult.gulf_agent.a",
     "storyline": "village",
@@ -756,7 +831,9 @@
     "weight": 1,
     "speaker": "tempter",
     "title": { "en": "A Gulf job, fast" },
-    "text": { "en": "An agent, sent by {cast:tempter}: \"₹1.2 lakh fee. We will make your experience certificate. Visit visa now, work visa there.\"" },
+    "text": {
+      "en": "An agent, sent by {cast:tempter}: \"₹1.2 lakh fee. We will make your experience certificate. Visit visa now, work visa there.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "We will make your experience certificate." },
@@ -774,9 +851,13 @@
         "id": "pay_agent",
         "label": { "en": "Borrow ₹1.2 lakh and take the deal" },
         "quality": "bad",
-        "effects": { "loan": { "source": "moneylender", "principal": 120000, "months": 24 }, "flags": { "add": ["wrong_fakedoc"] }, "schedule": [{ "inYears": 1, "card": "village.adult.visa_rejected.a" }] },
+        "effects": {
+          "loan": { "source": "moneylender", "principal": 120000, "months": 24, "disburse": "direct" },
+          "flags": { "add": ["legal_fakedoc"] },
+          "schedule": [{ "inYears": 1, "card": "village.adult.visa_rejected.a" }]
+        },
         "echo": { "level": 3, "hint": { "en": "A certificate for a job you never did." } },
-        "outcome": { "en": "₹1.2 lakh at 36%, a plane ticket booked, and a certificate from a company that doesn't exist." }
+        "outcome": { "en": "₹1,77,600 to repay the sahukar. A ticket is booked. The certificate is from a company that doesn't exist." }
       },
       {
         "id": "check_licence",
@@ -804,7 +885,9 @@
     "weight": 2,
     "speaker": "sibling",
     "title": { "en": "Chinni got in!" },
-    "text": { "en": "{cast:sibling} got a seat in B.Sc Nursing! Fees: ₹60,000 a year for four years. She looks at you. Everyone looks at you." },
+    "text": {
+      "en": "{cast:sibling} got a seat in B.Sc Nursing! Fees: ₹60,000 a year for four years. She looks at you. Everyone looks at you."
+    },
     "clarity": [
       {
         "phrase": { "en": "Fees: ₹60,000 a year for four years." },
@@ -819,17 +902,25 @@
         "label": { "en": "Education loan in her name, with you as co-borrower" },
         "quality": "good",
         "default": true,
-        "effects": { "loan": { "source": "education", "principal": 240000, "months": 84 }, "meters": { "family": 10 }, "flags": { "add": ["chinni_nursing"] } },
-        "outcome": { "en": "About ₹4,000 a month after she graduates. A staff nurse earns ₹22,000. Chinni hugs Bujji." },
+        "effects": {
+          "loan": { "source": "education", "principal": 240000, "months": 84 },
+          "meters": { "family": 10 },
+          "flags": { "add": ["chinni_nursing"] }
+        },
+        "outcome": { "en": "About ₹5,700 a month once repayment starts, as interest adds up while she studies. A staff nurse earns ₹22,000. Chinni hugs Bujji." },
         "why": { "en": "An education loan is good debt when the course leads to steady work." }
       },
       {
         "id": "sahukar",
         "label": { "en": "Borrow from Narsaiah sahukar, it's faster" },
         "quality": "bad",
-        "effects": { "loan": { "source": "moneylender", "principal": 60000, "months": 12 }, "meters": { "family": 6 }, "flags": { "add": ["chinni_nursing"] } },
+        "effects": {
+          "loan": { "source": "moneylender", "principal": 60000, "months": 12, "disburse": "direct" },
+          "meters": { "family": 6 },
+          "flags": { "add": ["chinni_nursing"] }
+        },
         "echo": { "level": 3, "hint": { "en": "Ammamma's hands start shaking again." } },
-        "outcome": { "en": "₹60,000 at 36% for one year's fees. Three more years to go." }
+        "outcome": { "en": "₹74,400 to repay the sahukar, for one year's fees. Three more years to go." }
       },
       {
         "id": "wait",
@@ -863,9 +954,12 @@
         "id": "sahukar",
         "label": { "en": "Borrow from the sahukar for next season" },
         "quality": "bad",
-        "effects": { "loan": { "source": "moneylender", "principal": 40000, "months": 12 }, "meters": { "family": -3, "health": -3 } },
+        "effects": {
+          "loan": { "source": "moneylender", "principal": 40000, "months": 12, "disburse": "direct" },
+          "meters": { "family": -3, "health": -3 }
+        },
         "echo": { "level": 3, "hint": { "en": "This is how the story began, last time." } },
-        "outcome": { "en": "₹40,000 at 36%. Next season must be perfect. Ammamma doesn't sleep." }
+        "outcome": { "en": "₹49,600 to repay in a year. Next season must be perfect. Ammamma doesn't sleep." }
       }
     ]
   },
@@ -878,7 +972,9 @@
     "weight": 1,
     "speaker": "mother",
     "title": { "en": "Amma's friend's chitti" },
-    "text": { "en": "Amma's friend runs a ₹1 lakh [[chit]]: 20 members, ₹5,000 a month. \"No registration needed, we all trust each other.\"" },
+    "text": {
+      "en": "Amma's friend runs a ₹1 lakh [[chit]]: 20 members, ₹5,000 a month. \"No registration needed, we all trust each other.\""
+    },
     "clarity": [
       {
         "phrase": { "en": "No registration needed, we all trust each other." },
@@ -894,13 +990,20 @@
         "quality": "good",
         "default": true,
         "effects": { "open": { "product": "chit", "amount": 5000 }, "gyaan": 2 },
-        "outcome": { "en": "₹5,000 a month in a registered chit. The organiser keeps about 5% as commission. Your money is traceable." }
+        "outcome": {
+          "en": "₹5,000 a month in a registered chit. The organiser keeps about 5% as commission. Your money is traceable."
+        }
       },
       {
         "id": "friends_chit",
         "label": { "en": "Join the friend's chit" },
         "quality": "risky",
-        "effects": { "open": { "product": "chit", "amount": 5000 }, "meters": { "family": 2 }, "schedule": [{ "inYears": 1, "card": "village.adult.chit_vanished.a" }] },
+        "effects": {
+          "open": { "product": "chit", "amount": 5000 },
+          "meters": { "family": 2 },
+          "schedule": [{ "inYears": 1, "card": "village.adult.chit_vanished.a" }],
+          "flags": { "add": ["chit_unregistered"] }
+        },
         "echo": { "level": 2, "hint": { "en": "Trust is lovely. Receipts are better." } },
         "outcome": { "en": "₹5,000 a month, no receipts. Everyone is very friendly." }
       },
@@ -922,14 +1025,16 @@
     "weight": 1,
     "speaker": "father",
     "title": { "en": "Best cotton price in years" },
-    "text": { "en": "Cotton prices jump. The family earns ₹25,000 more than expected. Nanna wants a big TV. Amma wants to clear the kirana khata." },
+    "text": {
+      "en": "Cotton prices jump. The family earns ₹25,000 more than expected. Nanna wants a big TV. Amma wants to clear the kirana khata."
+    },
     "choices": [
       {
         "id": "clear_and_save",
         "label": { "en": "Clear the khata, save the rest for the emergency fund" },
         "quality": "good",
         "default": true,
-        "effects": { "jar": { "emergency": 20000 }, "meters": { "family": 5 } },
+        "effects": { "jar": { "emergency": 20000 }, "meters": { "family": 5 }, "cash": 20000 },
         "outcome": { "en": "₹5,000 clears the khata. Anjamma aunty crosses out a page she's kept for 12 years. ₹20,000 saved." }
       },
       {

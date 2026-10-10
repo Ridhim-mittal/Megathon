@@ -1,45 +1,52 @@
 {
   "dream_on_time": {
-    "house": { "en": "A pucca house with a cement roof. The first monsoon comes, and nothing leaks. Ammamma has her own room, and the family photo has Bujji in it, uninvited." },
-    "business": { "en": "Your name is painted on the board above your shop. The first customer is Anjamma aunty. She pays in cash, and writes nothing in any notebook." },
-    "education": { "en": "Chinni walks across the stage in her nurse's white. Her degree is fully paid. No sahukar, no loan app, no one knocking." },
-    "vehicle": { "en": "Your goods auto rattles down the village road with a load of cotton. It earns every single day, and it's fully yours." },
-    "parents": { "en": "Amma and Nanna have a pension, a health card and savings in their own names. Nanna buys a newspaper every morning, just because he can." }
+    "house": {"en": "A pucca house with a cement roof. The first monsoon comes, and nothing leaks. Ammamma has her own room, and the family photo has Bujji in it, uninvited."},
+    "business": {"en": "Your name is painted on the board above your shop. The first customer is Anjamma aunty. She pays in cash, and writes nothing in any notebook."},
+    "education": {"en": "Chinni walks across the stage in her nurse's white. Her degree is fully paid. No sahukar, no loan app, no one knocking."},
+    "vehicle": {"en": "Your goods auto rattles down the village road with a load of cotton. It earns every single day, and it's fully yours."},
+    "parents": {"en": "Amma and Nanna have a pension, a health card and savings in their own names. Nanna buys a newspaper every morning, just because he can."}
   },
   "dream_with_debt": {
-    "house": { "en": "The house is real. So are the EMIs on the wall calendar. Every month the roof holds, and every month the bank is paid." },
-    "business": { "en": "The shop is open, and busy. But half of each good month goes to the lender, and the bad months keep you awake." },
-    "education": { "en": "Chinni is a nurse. The loans that got her there will take years to clear. She sends you ₹2,000 a month to help." },
-    "vehicle": { "en": "The auto earns. The lender earns more. You drive twelve hours a day to stay ahead of the EMI." },
-    "parents": { "en": "Amma and Nanna are safe, but you borrowed to make it so. The debt is yours now, and it is heavy." }
+    "house": {"en": "The house is real. So are the EMIs on the wall calendar. Every month the roof holds, and every month the bank is paid."},
+    "business": {"en": "The shop is open, and busy. But half of each good month goes to the lender, and the bad months keep you awake."},
+    "education": {"en": "Chinni is a nurse. The loans that got her there will take years to clear. She sends you ₹2,000 a month to help."},
+    "vehicle": {"en": "The auto earns. The lender earns more. You drive twelve hours a day to stay ahead of the EMI."},
+    "parents": {"en": "Amma and Nanna are safe, but you borrowed to make it so. The debt is yours now, and it is heavy."}
   },
   "dream_close": {
-    "house": { "en": "The foundation is laid and paid for. Walls next year. Ammamma: \"A tree doesn't fruit the year you plant it.\"" },
-    "business": { "en": "The shop space is rented and the tools are bought. You need one more good year. You have savings and no costly debt to slow you." },
-    "education": { "en": "Three of Chinni's four years are paid. The last one is saved for, almost. Nobody in the family has borrowed at 36%." },
-    "vehicle": { "en": "The down payment is ready, and the bank has said yes to a fair loan. Next season, the auto." },
-    "parents": { "en": "Amma's pension has started; Nanna's comes next year. The savings are three-quarters there, and growing." }
+    "house": {"en": "The foundation is laid and paid for. Walls next year. Ammamma: \"A tree doesn't fruit the year you plant it.\""},
+    "business": {"en": "The shop space is rented and the tools are bought. You need one more good year. You have savings and no costly debt to slow you."},
+    "education": {"en": "Three of Chinni's four years are paid. The last one is saved for, almost. Nobody in the family has borrowed from a sahukar."},
+    "vehicle": {"en": "The down payment is ready, and the bank has said yes to a fair loan. Next season, the auto."},
+    "parents": {"en": "Amma's pension has started; Nanna's comes next year. The savings are three-quarters there, and growing."}
   },
   "secure_no_dream": {
-    "house": { "en": "No new house yet. But there's an emergency fund, health cover and no sahukar. When the roof leaks, you fix it without fear." },
-    "business": { "en": "No shop of your own yet. But you have savings, insurance and a clean credit score. When the chance comes, you'll be ready." },
-    "education": { "en": "Chinni's degree took a loan, but a fair one. Your family is insured, and the emergency jar is full. The dream changed shape, not direction." },
-    "vehicle": { "en": "No auto yet. But no debt, no fear and a full emergency jar. You still take the bus, and you sleep well." },
-    "parents": { "en": "The full plan isn't there yet. But Amma and Nanna are insured and nobody owes a sahukar. That alone is new in this family." }
+    "house": {"en": "No new house yet. But there's an emergency fund, health cover and no sahukar. When the roof leaks, you fix it without fear."},
+    "business": {"en": "No shop of your own yet. But you have savings, insurance and a clean credit score. When the chance comes, you'll be ready."},
+    "education": {"en": "Chinni's degree took a loan, but a fair one. Your family is insured, and the emergency jar is full. The dream changed shape, not direction."},
+    "vehicle": {"en": "No auto yet. But no debt, no fear and a full emergency jar. You still take the bus, and you sleep well."},
+    "parents": {"en": "The full plan isn't there yet. But Amma and Nanna are insured and nobody owes a sahukar. That alone is new in this family."}
   },
   "debt_trap": {
-    "house": { "en": "The house plan is buried under loans. Anjamma aunty's khata is open again, and the EMIs take most of your pay. A way out exists: list every loan, start with the costliest, and talk to Kavitha akka tomorrow." },
-    "business": { "en": "The shop's earnings go to three lenders. Recovery calls come at dinner. A way out exists: stop new borrowing, swap costly loans for one bank loan, and ask for help." },
-    "education": { "en": "Chinni's fees went on loans at 36% and 48%. Now the interest is bigger than the EMI. A way out exists: the bank's education loan can replace them. Go together." },
-    "vehicle": { "en": "The auto earns less than its loans cost. A way out exists: sell before the debt grows, clear the costliest loan, and start the cushion again." },
-    "parents": { "en": "You borrowed to look after Amma and Nanna, and now you all worry. A way out exists: one honest family meeting, one list of loans, one cheaper bank loan." }
+    "house": {"en": "The house plan is buried under loans. Anjamma aunty's khata is open again, and the EMIs take most of your pay. A way out exists: list every loan, start with the costliest, and talk to Kavitha akka tomorrow."},
+    "business": {"en": "The shop's earnings go to three lenders. Recovery calls come at dinner. A way out exists: stop new borrowing, swap costly loans for one bank loan, and ask for help."},
+    "education": {"en": "Chinni's fees went on sahukar and loan-app loans. Now the interest is bigger than the EMI. A way out exists: the bank's education loan can replace them. Go together."},
+    "vehicle": {"en": "The auto earns less than its loans cost. A way out exists: sell before the debt grows, clear the costliest loan, and start the cushion again."},
+    "parents": {"en": "You borrowed to look after Amma and Nanna, and now you all worry. A way out exists: one honest family meeting, one list of loans, one cheaper bank loan."}
   },
   "wrong_path": {
-    "house": { "en": "The shortcut cost more than any loan: a police case, a frozen account, and months of fear. You told the truth, and that was the turn. Today your bank account is clean, and the house is a plan again." },
-    "business": { "en": "For a while, your name was on the wrong kind of list. Coming clean, calling 1930 and returning the money brought it back. Now it's going on a shop board instead." },
-    "education": { "en": "Easy money nearly cost Chinni her big one. You came clean, paid back what you could and started again. She still says you're her hero, for the second half." },
-    "vehicle": { "en": "The shortcut ended at a police station. The way back started there too: the truth, a lawyer and honest work. The auto will come, more slowly, and fully yours." },
-    "parents": { "en": "Amma cried when the police came. She smiled when you told them everything. The way back is slower than the shortcut, but it goes somewhere." }
+    "house": {"en": "The shortcut cost more than any loan: a police case, a frozen account, and months of fear. You told the truth, and that was the turn. Today your bank account is clean, and the house is a plan again."},
+    "business": {"en": "For a while, your name was on the wrong kind of list. Coming clean, calling 1930 and returning the money brought it back. Now it's going on a shop board instead."},
+    "education": {"en": "Easy money nearly cost Chinni her big one. You came clean, paid back what you could and started again. She still says you're her hero, for the second half."},
+    "vehicle": {"en": "The shortcut ended at a police station. The way back started there too: the truth, a lawyer and honest work. The auto will come, more slowly, and fully yours."},
+    "parents": {"en": "Amma cried when the police came. She smiled when you told them everything. The way back is slower than the shortcut, but it goes somewhere."}
   },
-  "storyteller": { "en": "This story was told by Chinni, the little sister who copied everything you did. She's a nurse now. Every Saturday she runs a money club at Mallepalli school, wearing Ammamma's thick glasses. She always ends the same way: \"My big one never had money. They had questions. That was enough.\"" }
+  "no_safety_net": {
+    "house": {"en": "No new house, no big debt, but no cushion either. One bad monsoon could undo it all. Start small: one month of expenses in a separate account, and a ₹20 accident cover."},
+    "business": {"en": "No shop yet and no costly loans. But no savings or insurance stand between you and the next shock. The first step is a tiny emergency fund."},
+    "education": {"en": "Chinni's degree isn't paid yet. Nobody owes a sahukar, but nobody is protected either. A health card and one month of savings would change that."},
+    "vehicle": {"en": "No auto, no debt, no safety net. You got away without the sahukar, but luck isn't a plan. Start the cushion this month."},
+    "parents": {"en": "Amma and Nanna have no pension yet, and the family has no cushion. There is no costly debt, which is a start. Next: health cards and a small RD."}
+  },
+  "storyteller": {"en": "This story was told by Chinni, the little sister who copied everything you did. She's a nurse now. Every Saturday she runs a money club at Mallepalli school, wearing Ammamma's thick glasses. She always ends the same way: \"My big one never had money. They had questions. That was enough.\""}
 }
