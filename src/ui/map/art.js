@@ -113,7 +113,6 @@ function crop(ctx, ox, oy, tx, ty) {
 }
 
 function fence(ctx, ox, oy, tx, ty) {
-  grass(ctx, ox, oy, tx, ty);
   const horiz = tileAt(tx - 1, ty) === "fence" || tileAt(tx + 1, ty) === "fence";
   const vert = tileAt(tx, ty - 1) === "fence" || tileAt(tx, ty + 1) === "fence";
   if (horiz || !vert) {
@@ -139,7 +138,6 @@ function flowers(ctx, ox, oy, tx, ty) {
 
 function palm(ctx, ox, oy, tx, ty) {
   // A coconut palm: a thin leaning trunk, a crown of fronds and a few coconuts.
-  grass(ctx, ox, oy, tx, ty);
   px(ctx, ox + 3, oy + 13, 10, 3, C.shadow);
   const lean = hash(tx, ty, 9) < 0.5 ? -1 : 1;
   for (let i = 0; i < 18; i++) {
@@ -170,7 +168,6 @@ function tree(ctx, ox, oy, tx, ty) {
   const border = tx === 0 || ty === 0 || tx === W - 1 || ty === H - 1;
   const banyan = tx >= 12 && tx <= 13 && ty >= 11 && ty <= 12;
   if (!border && !banyan && hash(tx, ty, 21) < 0.55) return palm(ctx, ox, oy, tx, ty);
-  grass(ctx, ox, oy, tx, ty);
   px(ctx, ox + 2, oy + 13, 12, 3, C.shadow);
   px(ctx, ox + 6, oy + 8, 4, 7, C.trunk);
   px(ctx, ox + 6, oy + 8, 1, 7, "#80562f");
@@ -192,7 +189,6 @@ function tree(ctx, ox, oy, tx, ty) {
 }
 
 function bush(ctx, ox, oy, tx, ty) {
-  grass(ctx, ox, oy, tx, ty);
   px(ctx, ox + 2, oy + 12, 12, 3, C.shadow);
   const blob = (cx, cy, r, color) => {
     for (let y = -r; y <= r; y++) {
@@ -210,7 +206,6 @@ function bush(ctx, ox, oy, tx, ty) {
 }
 
 function rock(ctx, ox, oy, tx, ty) {
-  grass(ctx, ox, oy, tx, ty);
   px(ctx, ox + 3, oy + 12, 11, 2, C.shadow);
   px(ctx, ox + 3, oy + 7, 10, 6, C.rockDark);
   px(ctx, ox + 4, oy + 6, 8, 6, C.rock);
@@ -218,7 +213,6 @@ function rock(ctx, ox, oy, tx, ty) {
 }
 
 function well(ctx, ox, oy) {
-  px(ctx, ox, oy, TILE, TILE, C.plaza);
   px(ctx, ox + 1, oy + 6, 14, 9, "#7d7d7d");
   px(ctx, ox + 2, oy + 7, 12, 6, "#a3a3a3");
   px(ctx, ox + 4, oy + 8, 8, 4, C.waterDeep);
@@ -229,172 +223,269 @@ function well(ctx, ox, oy) {
 }
 
 // ---------- buildings ----------
-// Telugu village buildings (see the reference sheet): Mangalore-tile roofs on homes and the shop,
-// flat white roofs with parapets (and a black water tank) on the clinic, bank and panchayat, a tin
-// roof on the rice mill. Footprints and doors stay where village.js puts them.
+// Telugu village buildings, drawn cosy: soft shading, a warm outline (added for the whole sprite
+// layer in renderVillage), gables with round vents, painted shutters, arched doors, torans of mango
+// leaves, flower boxes, kolams and tulasi kotas. Footprints and doors stay where village.js puts them.
+
+const OUTLINE = [58, 40, 30];
+const TERRACOTTA = { base: "#d4693f", dark: "#a54a2c", light: "#ec9466", ridge: "#8a3a22", under: "#7a3420" };
+const BLUE_TIN = { base: "#9fb2c4", dark: "#7890a6", light: "#c6d4e0", ridge: "#5f748a", under: "#4e5f70" };
 
 const STYLES = {
-  home: { wall: "#f3e2b8", wallDark: "#d9c08a", dado: "#b5523b", roof: "tile", sign: null },
-  school: { wall: "#f4e7c4", wallDark: "#dccb9c", dado: "#b5523b", roof: "tile", sign: "#2f4f3a" },
-  bank: { wall: "#f6f3ea", wallDark: "#d9d3c4", band: "#2f5f9e", roof: "flat", sign: "#e5bf4f" },
-  post: { wall: "#f6ead0", wallDark: "#dccaa2", band: "#c8382e", roof: "tile", sign: "#c8382e" },
-  shop: { wall: "#e9cf98", wallDark: "#c9a86a", roof: "tile", sign: "#f2c45a" },
-  hospital: { wall: "#fbfbf6", wallDark: "#dcdcd2", band: "#2f8f8a", roof: "flat", sign: "#ffffff" },
-  sahukar: { wall: "#e8c66a", wallDark: "#c9a44a", dado: "#7a2e38", band: "#7a2e38", roof: "tile", sign: "#e5bf4f" },
-  panchayat: { wall: "#f8f6ee", wallDark: "#dad6c8", band: "#5d6b73", roof: "flat", sign: "#fff3d0" },
-  work: { wall: "#b9a888", wallDark: "#9a8a6c", roof: "tin", sign: "#f2d14a" },
+  home: { wall: "#f8e8c4", shade: "#e3cc9a", dado: "#c25a3c", trim: "#2f9a94", door: "#3f8fbf", roof: TERRACOTTA, gable: true },
+  school: { wall: "#f7dc84", shade: "#e2c262", dado: "#5a9a4a", trim: "#4f8a3e", door: "#4f8a3e", roof: TERRACOTTA, gable: true },
+  bank: { wall: "#fbfaf4", shade: "#e2ded0", dado: "#2f5f9e", trim: "#2f5f9e", door: "#6fb7e0", roof: "flat", band: "#2f5f9e" },
+  post: { wall: "#fbeccd", shade: "#e6d2a6", dado: "#c8382e", trim: "#c8382e", door: "#9a3a2c", roof: TERRACOTTA, gable: true },
+  shop: { wall: "#a9dbe6", shade: "#86c2d0", dado: "#3f8fa6", trim: "#2f7f96", door: "#7a4a2a", roof: TERRACOTTA },
+  hospital: { wall: "#fdfdf8", shade: "#e3e3d8", dado: "#2f9a94", trim: "#2f9a94", door: "#2f9a94", roof: "flat", band: "#2f9a94" },
+  sahukar: { wall: "#e2c4ec", shade: "#c9a6d6", dado: "#7a2e58", trim: "#d9a62e", door: "#7a2e38", roof: TERRACOTTA, gable: true },
+  panchayat: { wall: "#fbfaf4", shade: "#e2ded0", dado: "#3d9a4a", trim: "#f29a3a", door: "#6b5a4a", roof: "flat", band: "#f29a3a" },
+  work: { wall: "#c99a62", shade: "#a87c48", dado: "#7a5432", trim: "#7a5432", door: "#4a3020", roof: BLUE_TIN, tin: true },
 };
-const TILE_ROOF = { base: "#c9643f", dark: "#9a452b", light: "#e08a5a", ridge: "#7e3622" };
 
-function tileRoof(ctx, x, y, w, h) {
-  // Rows of half-round tiles with a dark ridge; the top rows step in (a hip roof).
+const roofHeight = (b) => {
+  const s = STYLES[b.style];
+  const h = b.h * TILE;
+  return Math.round(h * (s.roof === "flat" ? 0.34 : 0.5));
+};
+
+function hipRoof(ctx, x, y, w, h, pal, tin) {
+  // A hipped roof seen from the front: rounded top corners, tile courses (or corrugations),
+  // a light top edge and a dark eave.
   for (let r = 0; r < h; r++) {
-    const inset = Math.max(0, Math.floor((h - r) / 3) - 1);
+    const inset = Math.max(0, Math.round((h * 0.34 - r) * 0.9));
     const rx = x - 3 + inset;
     const rw = w + 6 - inset * 2;
-    px(ctx, rx, y + r, rw, 1, r % 3 === 2 ? TILE_ROOF.dark : TILE_ROOF.base);
-    if (r % 3 === 1) for (let c = (r % 6 === 1 ? 0 : 2); c < rw; c += 4) px(ctx, rx + c, y + r, 1, 1, TILE_ROOF.light);
+    if (rw <= 0) continue;
+    let color = pal.base;
+    if (r < 2) color = pal.light;
+    else if (!tin && r % 4 === 3) color = pal.dark;
+    px(ctx, rx, y + r, rw, 1, color);
+    if (tin) for (let c = 1; c < rw; c += 4) px(ctx, rx + c, y + r, 1, 1, r < 2 ? pal.base : pal.dark);
+    else if (r % 4 === 1) for (let c = (r % 8 === 1 ? 1 : 3); c < rw - 1; c += 4) px(ctx, rx + c, y + r, 2, 1, pal.light);
+    // Rounded shoulders.
+    px(ctx, rx, y + r, 1, 1, pal.dark);
+    px(ctx, rx + rw - 1, y + r, 1, 1, pal.dark);
   }
-  px(ctx, x + Math.floor(h / 3) + 1, y, w - Math.floor(h / 3) * 2 - 2, 2, TILE_ROOF.ridge);
-  px(ctx, x - 3, y + h - 1, w + 6, 2, TILE_ROOF.dark);
-  px(ctx, x - 3, y + h + 1, w + 6, 1, "rgba(0,0,0,0.2)");
+  px(ctx, x - 3, y + h - 2, w + 6, 2, pal.under);
 }
 
-function flatRoof(ctx, x, y, w, h, tank = true) {
-  // Concrete roof seen from above: a parapet rim, a lighter deck, and the black water tank.
-  px(ctx, x - 2, y, w + 4, h, "#cfc9bb");
-  px(ctx, x, y + 2, w, h - 4, "#e9e5da");
-  for (let c = 6; c < w; c += 10) px(ctx, x + c, y + 2, 1, h - 4, "#ddd8cb");
-  px(ctx, x - 2, y + h - 2, w + 4, 2, "#b9b2a2");
-  px(ctx, x - 2, y + h, w + 4, 1, "rgba(0,0,0,0.2)");
+function gable(ctx, cx, baseY, w, h, s) {
+  // A front gable over the door: wall-coloured triangle with a roof-coloured edge and a round vent.
+  for (let r = 0; r < h; r++) {
+    const half = Math.round(((r + 1) / h) * (w / 2));
+    px(ctx, cx - half - 1, baseY - h + r, half * 2 + 2, 1, s.roof.dark);
+    if (half > 1) px(ctx, cx - half + 1, baseY - h + r, half * 2 - 2, 1, s.wall);
+  }
+  px(ctx, cx - Math.round(w / 2) - 2, baseY - 1, w + 4, 2, s.roof.under);
+  // A round four-pane window.
+  const vy = baseY - Math.round(h * 0.5);
+  px(ctx, cx - 3, vy - 4, 6, 1, s.trim);
+  px(ctx, cx - 4, vy - 3, 8, 6, s.trim);
+  px(ctx, cx - 3, vy + 3, 6, 1, s.trim);
+  px(ctx, cx - 3, vy - 3, 6, 6, "#9fd3ef");
+  px(ctx, cx - 2, vy - 4, 4, 1, s.trim);
+  px(ctx, cx - 3, vy - 3, 2, 2, "#d8f0fb");
+  px(ctx, cx, vy - 3, 1, 6, s.trim);
+  px(ctx, cx - 3, vy, 6, 1, s.trim);
+}
+
+function flatRoof(ctx, x, y, w, h, s, tank = true) {
+  px(ctx, x - 2, y, w + 4, h, "#d9d3c4");
+  px(ctx, x, y + 2, w, h - 5, "#f0ece2");
+  for (let c = 8; c < w - 2; c += 12) px(ctx, x + c, y + 3, 1, h - 7, "#e4dfd2");
+  px(ctx, x - 2, y, w + 4, 1, "#ffffff");
+  if (s.band) px(ctx, x - 2, y + h - 4, w + 4, 3, s.band);
+  px(ctx, x - 2, y + h - 1, w + 4, 1, "#9f998a");
   if (tank) {
-    const tx = x + w - 14;
-    px(ctx, tx, y + 3, 9, 8, "#2b2b2e");
-    px(ctx, tx + 1, y + 3, 7, 2, "#4a4a50");
-    px(ctx, tx + 3, y + 2, 3, 1, "#2b2b2e");
+    const tx = x + w - 15;
+    px(ctx, tx, y + 3, 10, 9, "#2b2b30");
+    px(ctx, tx + 1, y + 3, 3, 8, "#4a4a52");
+    px(ctx, tx + 2, y + 2, 6, 1, "#2b2b30");
   }
 }
 
-function tinRoof(ctx, x, y, w, h, b) {
-  // Corrugated sheets: ridges every 3 px, a few rust patches.
-  for (let c = 0; c < w + 6; c++) px(ctx, x - 3 + c, y, 1, h, c % 3 === 0 ? "#8e979f" : c % 3 === 1 ? "#b4bcc3" : "#a2abb3");
-  for (let i = 0; i < 6; i++) {
-    const rx = x + Math.floor(hash(b.x + i, b.y, 11) * (w - 8));
-    const ry = y + 2 + Math.floor(hash(b.x, b.y + i, 12) * (h - 8));
-    px(ctx, rx, ry, 4 + (i % 3), 3, i % 2 ? "#a8643a" : "#c07a46");
-  }
-  px(ctx, x - 3, y + Math.floor(h / 2), w + 6, 1, "#7d858c");
-  px(ctx, x - 3, y + h - 1, w + 6, 2, "#6f777e");
-  px(ctx, x - 3, y + h + 1, w + 6, 1, "rgba(0,0,0,0.2)");
-}
-
-function wall(ctx, x, y, w, h, s) {
+function wall(ctx, x, y, w, h, s, b) {
   px(ctx, x, y, w, h, s.wall);
-  px(ctx, x, y, w, 2, s.wallDark);
-  if (s.dado) px(ctx, x, y + h - 5, w, 5, s.dado);
-  else px(ctx, x, y + h - 3, w, 3, s.wallDark);
-  if (s.band) px(ctx, x, y + 2, w, 3, s.band);
+  for (let i = 0; i < Math.floor(w / 6); i++) {
+    const sx = x + Math.floor(hash(b.x + i, b.y, 31) * w);
+    const sy = y + 3 + Math.floor(hash(b.x, b.y + i, 32) * (h - 9));
+    px(ctx, sx, sy, 1, 1, s.shade);
+  }
+  px(ctx, x, y, w, 3, "rgba(80,40,20,0.22)");
+  px(ctx, x, y + h - 5, w, 5, s.dado);
+  px(ctx, x, y + h - 5, w, 1, "rgba(255,255,255,0.25)");
+  px(ctx, x, y, 1, h, "rgba(255,255,255,0.35)");
+  px(ctx, x + w - 2, y, 2, h, "rgba(80,40,20,0.15)");
 }
 
-function windowAt(ctx, x, y, w = 10, h = 9, glass = "#3b3a3c") {
-  // Barred village windows: dark inside, wooden frame, vertical grille, a sill.
-  px(ctx, x - 1, y - 1, w + 2, h + 2, "#6e4526");
-  px(ctx, x, y, w, h, glass);
-  for (let c = 2; c < w; c += 3) px(ctx, x + c, y, 1, h, "#8a8f94");
-  px(ctx, x - 2, y + h + 1, w + 4, 1, "#c9b68a");
+function windowAt(ctx, x, y, s, { box = false, grille = true } = {}) {
+  // A painted window: arched top, dark glass with a glint, shutters, a sill (and a flower box).
+  const w = 10;
+  const h = 10;
+  px(ctx, x - 4, y + 1, 3, h - 1, s.trim);
+  px(ctx, x + w + 1, y + 1, 3, h - 1, s.trim);
+  px(ctx, x - 4, y + 1, 1, h - 1, "rgba(255,255,255,0.3)");
+  px(ctx, x - 1, y, w + 2, h + 1, "#6e4526");
+  px(ctx, x, y + 1, w, h - 1, "#3a4048");
+  px(ctx, x + 1, y, w - 2, 1, "#3a4048");
+  px(ctx, x + 1, y + 2, 2, 3, "#9fd3ef");
+  if (grille) for (let c = 3; c < w; c += 3) px(ctx, x + c, y + 1, 1, h - 1, "#7d8590");
+  px(ctx, x - 2, y + h, w + 4, 2, "#fff3d6");
+  if (box) {
+    px(ctx, x - 1, y + h + 2, w + 2, 3, "#a5552f");
+    const flowers = ["#ff6f91", "#ffd84a", "#ff6f91", "#ffffff", "#ff9a3c"];
+    for (let i = 0; i < 5; i++) px(ctx, x + i * 2, y + h + 1, 2, 1, flowers[i]);
+    px(ctx, x, y + h + 2, w, 1, "#4f9a3a");
+  }
 }
 
-function doorAt(ctx, cx, bottom, color = "#7a4a2a", w = 10, h = 14) {
+function doorAt(ctx, cx, bottom, color, { w = 10, h = 15, toran = false } = {}) {
   const x = cx - Math.floor(w / 2);
-  px(ctx, x - 1, bottom - h - 1, w + 2, h + 1, "#4a2d18");
-  px(ctx, x, bottom - h, w, h, color);
-  px(ctx, x + Math.floor(w / 2), bottom - h, 1, h, "rgba(0,0,0,0.25)");
-  px(ctx, x + 1, bottom - h + 1, w - 2, 1, "rgba(255,255,255,0.25)");
-  px(ctx, x + w - 3, bottom - Math.floor(h / 2), 1, 2, "#f2d14a");
-  // Stone step.
-  px(ctx, x - 3, bottom, w + 6, 2, "#b3aa9a");
-  px(ctx, x - 3, bottom, w + 6, 1, "#cfc7b6");
+  // Frame with an arched top.
+  px(ctx, x - 2, bottom - h, w + 4, h, "#6e4526");
+  px(ctx, x - 1, bottom - h - 1, w + 2, 1, "#6e4526");
+  px(ctx, x, bottom - h + 1, w, h - 1, color);
+  px(ctx, x + 1, bottom - h, w - 2, 1, color);
+  px(ctx, x + Math.floor(w / 2), bottom - h + 1, 1, h - 1, "rgba(0,0,0,0.25)");
+  px(ctx, x + 1, bottom - h + 3, 2, h - 5, "rgba(255,255,255,0.22)");
+  px(ctx, x + w - 3, bottom - Math.floor(h / 2), 1, 2, "#ffd84a");
+  px(ctx, x + 2, bottom - Math.floor(h / 2), 1, 2, "#ffd84a");
+  if (toran) {
+    // Mango leaves with marigolds over the door.
+    for (let i = -1; i <= w; i += 3) {
+      px(ctx, x + i, bottom - h - 2, 2, 1, "#3f8a35");
+      px(ctx, x + i, bottom - h - 1, 2, 2, "#5da444");
+      px(ctx, x + i + 1, bottom - h + 1, 1, 1, "#3f8a35");
+    }
+    for (let i = 0; i < w; i += 3) px(ctx, x + i, bottom - h - 2, 1, 1, "#ff9a3c");
+  }
+  // Two stone steps.
+  px(ctx, x - 3, bottom, w + 6, 2, "#c8bfae");
+  px(ctx, x - 3, bottom, w + 6, 1, "#e2dacb");
+  px(ctx, x - 1, bottom + 2, w + 2, 2, "#b3aa9a");
 }
 
-function kolam(ctx, cx, y) {
-  // A small white rangoli dot pattern on the ground before the door.
-  for (const [dx, dy] of [[-4, 0], [0, -1], [4, 0], [-2, 2], [2, 2], [0, 3], [-6, 2], [6, 2]]) px(ctx, cx + dx, y + dy, 1, 1, "#fbf8ef");
-  px(ctx, cx - 1, y + 1, 3, 1, "#f2c4d8");
+function signboard(ctx, cx, y, color, ink, draw) {
+  px(ctx, cx - 11, y, 22, 9, "#6e4526");
+  px(ctx, cx - 10, y + 1, 20, 7, color);
+  px(ctx, cx - 10, y + 1, 20, 1, "rgba(255,255,255,0.35)");
+  draw?.(cx, y + 1, ink);
 }
 
-function plaque(ctx, cx, y, color, icon) {
-  px(ctx, cx - 9, y - 1, 18, 9, "#4a2d18");
-  px(ctx, cx - 8, y, 16, 7, color);
-  icon?.(cx, y);
-}
-
-function flag(ctx, x, y, h = 22) {
-  px(ctx, x, y, 1, h, "#d9d9d9");
-  px(ctx, x - 1, y + h - 1, 3, 1, "#8d8d8d");
-  px(ctx, x + 1, y, 8, 2, "#f29a3a");
-  px(ctx, x + 1, y + 2, 8, 2, "#ffffff");
-  px(ctx, x + 1, y + 4, 8, 2, "#3d9a4a");
-  px(ctx, x + 4, y + 2, 2, 2, "#2f4f9e");
-}
-
-function sack(ctx, x, y) {
-  px(ctx, x, y + 1, 6, 6, "#e3d3a8");
-  px(ctx, x + 1, y, 4, 2, "#cdb98a");
-  px(ctx, x, y + 6, 6, 1, "#b8a374");
-}
-
-function barrel(ctx, x, y) {
-  px(ctx, x, y, 7, 8, "#8a5a2c");
-  px(ctx, x + 1, y, 5, 1, "#b07a42");
-  px(ctx, x, y + 2, 7, 1, "#4a2d18");
-  px(ctx, x, y + 6, 7, 1, "#4a2d18");
-}
-
-const ICONS = {
-  bank: (ctx) => (cx, y) => {
-    // ₹
-    px(ctx, cx - 3, y + 1, 6, 1, "#5e3c1e");
-    px(ctx, cx - 3, y + 3, 6, 1, "#5e3c1e");
-    px(ctx, cx - 1, y + 2, 2, 1, "#5e3c1e");
-    px(ctx, cx - 2, y + 4, 2, 1, "#5e3c1e");
-    px(ctx, cx, y + 5, 2, 1, "#5e3c1e");
+const SIGNS = {
+  school: (ctx) => (cx, y, ink) => {
+    px(ctx, cx - 7, y + 2, 5, 1, ink);
+    px(ctx, cx - 7, y + 4, 8, 1, ink);
+    px(ctx, cx + 3, y + 1, 4, 4, "#ffd84a");
+  },
+  bank: (ctx) => (cx, y, ink) => {
+    px(ctx, cx - 3, y + 1, 6, 1, ink);
+    px(ctx, cx - 3, y + 3, 6, 1, ink);
+    px(ctx, cx - 1, y + 2, 2, 1, ink);
+    px(ctx, cx - 2, y + 4, 2, 1, ink);
+    px(ctx, cx, y + 5, 2, 1, ink);
+  },
+  post: (ctx) => (cx, y, ink) => {
+    px(ctx, cx - 5, y + 1, 10, 5, "#fffaf0");
+    px(ctx, cx - 4, y + 2, 2, 1, ink);
+    px(ctx, cx + 2, y + 2, 2, 1, ink);
+    px(ctx, cx - 2, y + 3, 4, 1, ink);
+  },
+  shop: (ctx) => (cx, y, ink) => {
+    for (let i = -8; i < 8; i += 3) px(ctx, cx + i, y + 2, 2, 3, ["#e0504a", "#3d9a4a", "#3b6ea5", "#ff9a3c", "#e04a8a", "#7a4ab0"][(i + 8) / 3]);
   },
   hospital: (ctx) => (cx, y) => {
-    px(ctx, cx - 1, y + 1, 3, 5, "#d0453a");
-    px(ctx, cx - 3, y + 2, 7, 3, "#d0453a");
-  },
-  school: (ctx) => (cx, y) => {
-    // A blackboard with chalk lines.
-    px(ctx, cx - 5, y + 2, 4, 1, "#f4f4f0");
-    px(ctx, cx - 5, y + 4, 7, 1, "#f4f4f0");
-    px(ctx, cx + 3, y + 2, 2, 3, "#f2d14a");
-  },
-  post: (ctx) => (cx, y) => {
-    px(ctx, cx - 5, y + 1, 10, 5, "#fff3d0");
-    px(ctx, cx - 4, y + 2, 2, 1, "#c8382e");
-    px(ctx, cx + 2, y + 2, 2, 1, "#c8382e");
-    px(ctx, cx - 2, y + 3, 4, 1, "#c8382e");
-  },
-  shop: (ctx) => (cx, y) => {
-    px(ctx, cx - 6, y + 2, 12, 1, "#93402c");
-    px(ctx, cx - 6, y + 4, 9, 1, "#93402c");
+    px(ctx, cx - 1, y, 3, 7, "#e04a3a");
+    px(ctx, cx - 3, y + 2, 7, 3, "#e04a3a");
   },
   sahukar: (ctx) => (cx, y) => {
-    px(ctx, cx - 5, y + 2, 4, 4, "#f7e08a");
-    px(ctx, cx + 1, y + 2, 4, 4, "#f7e08a");
-    px(ctx, cx - 4, y + 3, 2, 2, "#c99b2e");
-    px(ctx, cx + 2, y + 3, 2, 2, "#c99b2e");
+    for (const dx of [-6, -1, 4]) {
+      px(ctx, cx + dx, y + 1, 3, 4, "#ffe58a");
+      px(ctx, cx + dx + 1, y + 2, 1, 2, "#c99b2e");
+    }
   },
-  panchayat: (ctx) => (cx, y) => {
-    px(ctx, cx - 6, y + 2, 12, 1, "#5d6b73");
-    px(ctx, cx - 6, y + 4, 8, 1, "#5d6b73");
+  panchayat: (ctx) => (cx, y, ink) => {
+    px(ctx, cx - 8, y + 2, 16, 1, ink);
+    px(ctx, cx - 8, y + 4, 11, 1, ink);
   },
   work: (ctx) => (cx, y) => {
-    // A rice sack.
-    px(ctx, cx - 3, y + 1, 6, 5, "#f4ead0");
+    px(ctx, cx - 4, y + 1, 8, 5, "#fff3d6");
+    px(ctx, cx - 3, y + 1, 6, 1, "#e3d3a8");
     px(ctx, cx - 1, y + 3, 2, 1, "#c99b2e");
   },
 };
+
+function sack(ctx, x, y, c = "#efe2bd") {
+  px(ctx, x, y + 2, 7, 6, c);
+  px(ctx, x + 1, y + 1, 5, 2, c);
+  px(ctx, x + 2, y, 3, 1, "#c9b68a");
+  px(ctx, x + 1, y + 7, 6, 1, "rgba(80,50,20,0.25)");
+  px(ctx, x + 1, y + 3, 1, 3, "rgba(255,255,255,0.5)");
+}
+
+function barrel(ctx, x, y) {
+  px(ctx, x, y + 1, 8, 9, "#a8683a");
+  px(ctx, x + 1, y, 6, 1, "#c88a52");
+  px(ctx, x + 1, y + 1, 2, 8, "#c88a52");
+  px(ctx, x, y + 3, 8, 1, "#5e3c1e");
+  px(ctx, x, y + 7, 8, 1, "#5e3c1e");
+}
+
+function pot(ctx, x, y, plant = true) {
+  px(ctx, x, y + 3, 6, 5, "#c25a3c");
+  px(ctx, x - 1, y + 3, 8, 1, "#e07a52");
+  px(ctx, x + 1, y + 8, 4, 1, "#a5452c");
+  if (plant) {
+    px(ctx, x + 1, y, 4, 3, "#4f9a3a");
+    px(ctx, x, y + 1, 1, 2, "#3f8a35");
+    px(ctx, x + 5, y + 1, 1, 2, "#3f8a35");
+    px(ctx, x + 2, y - 1, 2, 1, "#ff6f91");
+  }
+}
+
+function tulasi(ctx, x, y) {
+  // The tulasi kota: a little painted pedestal with the holy basil on top.
+  px(ctx, x, y + 6, 10, 9, "#f8e8c4");
+  px(ctx, x, y + 6, 10, 2, "#c25a3c");
+  px(ctx, x + 3, y + 9, 4, 4, "#ffd84a");
+  px(ctx, x + 4, y + 10, 2, 2, "#c25a3c");
+  px(ctx, x - 1, y + 14, 12, 2, "#c25a3c");
+  px(ctx, x + 2, y + 1, 6, 5, "#4f9a3a");
+  px(ctx, x + 1, y + 2, 1, 3, "#3f8a35");
+  px(ctx, x + 8, y + 2, 1, 3, "#3f8a35");
+  px(ctx, x + 4, y, 2, 1, "#6fb84f");
+}
+
+function bench(ctx, x, y) {
+  px(ctx, x, y, 16, 3, "#b07a42");
+  px(ctx, x, y, 16, 1, "#d39a5a");
+  px(ctx, x + 1, y + 3, 2, 4, "#6e4526");
+  px(ctx, x + 13, y + 3, 2, 4, "#6e4526");
+}
+
+function cart(ctx, x, y) {
+  // A bullock cart with a big spoked wheel.
+  px(ctx, x + 2, y, 22, 7, "#b07a42");
+  px(ctx, x + 2, y, 22, 1, "#d39a5a");
+  for (let c = 5; c < 24; c += 5) px(ctx, x + c, y + 1, 1, 6, "#8a5a2c");
+  px(ctx, x + 24, y + 4, 10, 2, "#8a5a2c");
+  const wx = x + 6;
+  const wy = y + 6;
+  for (let r = -5; r <= 5; r++) {
+    const half = Math.round(Math.sqrt(25 - r * r));
+    px(ctx, wx - half, wy + r, 1, 1, "#5e3c1e");
+    px(ctx, wx + half, wy + r, 1, 1, "#5e3c1e");
+  }
+  px(ctx, wx - 4, wy - 5, 9, 1, "#5e3c1e");
+  px(ctx, wx - 4, wy + 5, 9, 1, "#5e3c1e");
+  px(ctx, wx - 4, wy, 9, 1, "#8a5a2c");
+  px(ctx, wx, wy - 4, 1, 9, "#8a5a2c");
+  px(ctx, wx - 1, wy - 1, 3, 3, "#c88a52");
+}
+
+// Where the moving bits go (smoke, flags), in map pixels. Filled by building().
+export const ANCHORS = { smoke: [], flags: [] };
 
 function building(ctx, b) {
   const s = STYLES[b.style];
@@ -402,167 +493,346 @@ function building(ctx, b) {
   const y = b.y * TILE;
   const w = b.w * TILE;
   const h = b.h * TILE;
-  const roofH = Math.round(h * (s.roof === "flat" ? 0.36 : b.style === "work" ? 0.42 : 0.48));
+  const roofH = roofHeight(b);
   const wallY = y + roofH;
-  const wallH = h - roofH;
+  const bottom = y + h - 3;
+  const wallH = bottom - wallY;
   const doorX = b.door.x * TILE + 8;
-  const bottom = y + h - 1;
-  px(ctx, x + 2, y + h - 2, w, 4, C.shadow);
-  // Raised plinth under the walls.
-  px(ctx, x, bottom - 2, w, 3, "#a79c88");
-  px(ctx, x, bottom - 2, w, 1, "#c4bba6");
-  wall(ctx, x + 2, wallY, w - 4, wallH - 3, s);
 
-  // Windows either side of the door (not on the open shop front or the mill).
-  if (b.style !== "shop" && b.style !== "work") {
-    const winY = wallY + Math.max(6, Math.floor(wallH / 2) - 5);
-    for (const off of [-1, 1]) {
-      for (let k = 1; k <= Math.floor((w / 2 - 14) / 18); k++) {
-        const wx = doorX + off * (6 + k * 16) - (off < 0 ? 10 : 0) + (off < 0 ? 6 : -6);
-        if (wx < x + 5 || wx + 10 > x + w - 5) continue;
-        windowAt(ctx, wx, winY, 10, 8, b.style === "sahukar" ? "#5a2a30" : "#3b3a3c");
-        if (b.style === "home") {
-          px(ctx, wx - 1, winY + 10, 12, 2, "#8a5a2c");
-          px(ctx, wx, winY + 9, 2, 1, "#e0504a");
-          px(ctx, wx + 5, winY + 9, 2, 1, "#f2d14a");
-          px(ctx, wx + 8, winY + 9, 2, 1, "#f08ac0");
-        }
-      }
+  // Plinth, walls.
+  px(ctx, x - 1, bottom, w + 2, 3, "#bdb3a0");
+  px(ctx, x - 1, bottom, w + 2, 1, "#d8cfbd");
+  wall(ctx, x + 1, wallY, w - 2, wallH, s, b);
+
+  // Windows either side of the door.
+  const open = b.style === "shop" || b.style === "work";
+  if (!open) {
+    const winY = wallY + Math.max(7, Math.floor(wallH / 2) - 6);
+    const slots = [];
+    for (const off of [-1, 1]) for (let k = 1; k <= 3; k++) slots.push(doorX + off * (k * 20) - 5);
+    for (const wx of slots) {
+      if (wx < x + 7 || wx + 14 > x + w - 2) continue;
+      windowAt(ctx, wx, winY, s, { box: b.style === "home" || b.style === "post" || b.style === "sahukar", grille: b.style !== "bank" });
     }
   }
 
   // Style details on the walls.
   if (b.style === "home" || b.style === "sahukar") {
-    // Verandah posts along the front.
-    for (let i = 0; i < 4; i++) {
-      const cx = x + 4 + Math.round((i * (w - 11)) / 3);
-      if (Math.abs(cx + 1 - doorX) < 8) continue;
-      px(ctx, cx, wallY, 3, wallH - 3, b.style === "sahukar" ? "#f4ead0" : "#8a5a2c");
-      px(ctx, cx, wallY, 1, wallH - 3, b.style === "sahukar" ? "#ffffff" : "#b07a42");
+    for (const cx of [x + 3, x + w - 6]) {
+      px(ctx, cx, wallY, 3, wallH, b.style === "sahukar" ? "#fffaf0" : "#9a6a3a");
+      px(ctx, cx, wallY, 1, wallH, b.style === "sahukar" ? "#ffffff" : "#c08a52");
+      px(ctx, cx - 1, bottom - 2, 5, 2, "#d8cfbd");
     }
+  }
+  if (b.style === "sahukar") {
+    px(ctx, x + 1, wallY + 4, w - 2, 2, s.trim);
+    for (let c = 4; c < w - 4; c += 4) px(ctx, x + c, wallY + 6, 1, 2, s.trim);
   }
   if (b.style === "bank") {
     for (let i = 0; i < 4; i++) {
-      const cx = x + 8 + Math.round((i * (w - 22)) / 3);
-      if (Math.abs(cx + 2 - doorX) < 9) continue;
-      px(ctx, cx, wallY + 6, 4, wallH - 9, "#ffffff");
-      px(ctx, cx + 3, wallY + 6, 1, wallH - 9, "#d8d2c4");
+      const cx = x + 7 + Math.round((i * (w - 20)) / 3);
+      if (Math.abs(cx + 2 - doorX) < 10) continue;
+      px(ctx, cx, wallY + 6, 5, wallH - 6, "#ffffff");
+      px(ctx, cx + 4, wallY + 6, 1, wallH - 6, "#d9d3c4");
+      px(ctx, cx - 1, wallY + 5, 7, 2, "#e2ded0");
     }
   }
   if (b.style === "shop") {
-    // Open stall: a dark front with packets hanging in rows, a counter, sacks and barrels.
-    const sx = x + 5;
-    const sw = w - 10;
-    const sy = wallY + 3;
-    const sh = wallH - 10;
-    px(ctx, sx, sy, sw, sh, "#3b2b22");
-    const packets = ["#e0504a", "#f2d14a", "#3d9a4a", "#3b6ea5", "#f08a3c", "#e04a8a"];
+    // Open stall under a striped scalloped awning: packets, candy jars, a counter.
+    const sx = x + 6;
+    const sw = w - 12;
+    const sy = wallY + 8;
+    const sh = wallH - 12;
+    px(ctx, sx, sy, sw, sh, "#4a3428");
+    px(ctx, sx, sy, sw, 2, "#2f2018");
+    const packets = ["#ff6f61", "#ffd84a", "#57b85a", "#4f8fe0", "#ff9a3c", "#e05aa0"];
     for (let r = 0; r < 2; r++)
-      for (let c = 0; c < sw - 2; c += 3) {
+      for (let c = 1; c < sw - 2; c += 3) {
         if (Math.abs(sx + c - doorX) < 7) continue;
-        px(ctx, sx + 1 + c, sy + 1 + r * 5, 2, 3, packets[(c / 3 + r * 2) % packets.length]);
+        px(ctx, sx + c, sy + 3 + r * 6, 2, 4, packets[(Math.floor(c / 3) + r * 3) % packets.length]);
+        px(ctx, sx + c, sy + 3 + r * 6, 2, 1, "rgba(255,255,255,0.45)");
       }
-    px(ctx, sx - 1, sy + sh - 3, sw + 2, 3, "#b07a42");
-    px(ctx, sx - 1, sy + sh - 3, sw + 2, 1, "#d39a5a");
-    for (let c = 2; c < sw - 4; c += 6) if (Math.abs(sx + c - doorX) >= 8) px(ctx, sx + c, sy + sh - 6, 4, 3, "#e3d3a8");
-    sack(ctx, x + 2, bottom - 9);
-    sack(ctx, x + 7, bottom - 8);
-    barrel(ctx, x + w - 10, bottom - 10);
+    px(ctx, sx - 2, sy + sh - 4, sw + 4, 4, "#c88a52");
+    px(ctx, sx - 2, sy + sh - 4, sw + 4, 1, "#e8b070");
+    for (let c = 3; c < sw - 6; c += 7) {
+      if (Math.abs(sx + c + 2 - doorX) < 9) continue;
+      px(ctx, sx + c, sy + sh - 9, 5, 5, "#cfeaf2");
+      px(ctx, sx + c, sy + sh - 10, 5, 1, "#e07a52");
+      px(ctx, sx + c + 1, sy + sh - 7, 3, 3, ["#ff6f91", "#ffd84a", "#57b85a"][Math.floor(c / 7) % 3]);
+    }
+    // Awning.
+    for (let c = 0; c < w + 4; c++) {
+      const stripe = Math.floor(c / 5) % 2 ? "#fff6e6" : "#e8503a";
+      px(ctx, x - 2 + c, wallY + 1, 1, 6, stripe);
+      if (c % 5 === 2) px(ctx, x - 2 + c - 1, wallY + 7, 3, 1, stripe);
+    }
+    px(ctx, x - 2, wallY + 1, w + 4, 1, "#b8402e");
+    sack(ctx, x + 1, bottom - 8);
+    sack(ctx, x + 7, bottom - 7, "#f6eccd");
+    barrel(ctx, x + w - 10, bottom - 9);
   }
   if (b.style === "hospital") {
-    // A big red cross on the wall and a little sign post by the door.
-    const cx = x + 12;
-    px(ctx, cx - 1, wallY + 8, 4, 10, "#d0453a");
-    px(ctx, cx - 4, wallY + 11, 10, 4, "#d0453a");
-    px(ctx, x + w - 10, bottom - 14, 1, 12, "#8d8d8d");
-    px(ctx, x + w - 13, bottom - 18, 7, 6, "#ffffff");
-    px(ctx, x + w - 10, bottom - 17, 1, 4, "#d0453a");
-    px(ctx, x + w - 12, bottom - 16, 5, 2, "#d0453a");
+    const cx = x + 14;
+    px(ctx, cx - 6, wallY + 6, 13, 13, "#ffffff");
+    px(ctx, cx - 5, wallY + 5, 11, 15, "#ffffff");
+    px(ctx, cx - 1, wallY + 8, 3, 9, "#e04a3a");
+    px(ctx, cx - 4, wallY + 11, 9, 3, "#e04a3a");
+    pot(ctx, doorX - 18, bottom - 8);
+    pot(ctx, doorX + 13, bottom - 8);
+    bench(ctx, x + w - 22, bottom - 6);
   }
   if (b.style === "panchayat") {
-    // The name board across the top of the wall.
-    px(ctx, x + 6, wallY + 1, w - 12, 7, "#4a5860");
-    px(ctx, x + 8, wallY + 3, w - 16, 1, "#e9e5da");
-    px(ctx, x + 8, wallY + 5, w - 24, 1, "#c9c4b6");
-  }
-  if (b.style === "work") {
-    // Open side: the huller with its green hopper, and sacks piled outside.
-    px(ctx, x + 4, wallY + 2, 20, wallH - 7, "#4a3f33");
-    px(ctx, x + 8, wallY + 4, 10, 6, "#4f8a4a");
-    px(ctx, x + 10, wallY + 10, 6, 8, "#3f6f3c");
-    px(ctx, x + 6, wallY + 18, 14, 3, "#6b6b6b");
-    sack(ctx, x + w - 16, bottom - 9);
-    sack(ctx, x + w - 10, bottom - 9);
-    sack(ctx, x + w - 13, bottom - 15);
+    px(ctx, x + 6, wallY + 2, w - 12, 8, "#3f4c55");
+    px(ctx, x + 7, wallY + 3, w - 14, 1, "#56646e");
+    px(ctx, x + 9, wallY + 5, w - 18, 1, "#f0ece2");
+    px(ctx, x + 9, wallY + 7, w - 30, 1, "#c9c4b6");
+    px(ctx, x + 1, bottom - 7, w - 2, 2, "#ffffff");
+    px(ctx, x + 1, bottom - 9, w - 2, 2, "#f29a3a");
+    pot(ctx, doorX + 13, bottom - 8);
   }
   if (b.style === "post") {
-    px(ctx, x + 4, wallY + 7, w - 8, 2, "#f2d14a");
+    px(ctx, x + 1, wallY + 6, w - 2, 3, "#c8382e");
+    px(ctx, x + 1, wallY + 9, w - 2, 1, "#ffd84a");
+  }
+  if (b.style === "work") {
+    // Plank walls, the open mill door with the huller, sacks, and the bullock cart.
+    for (let c = 4; c < w - 2; c += 6) px(ctx, x + c, wallY + 2, 1, wallH - 7, s.shade);
+    px(ctx, x + 6, wallY + 4, 26, wallH - 9, "#3a2c22");
+    px(ctx, x + 11, wallY + 6, 14, 7, "#57a050");
+    px(ctx, x + 11, wallY + 6, 14, 1, "#7cc070");
+    px(ctx, x + 14, wallY + 13, 8, 9, "#3f7f3c");
+    px(ctx, x + 9, wallY + 22, 18, 3, "#8d8d8d");
+    px(ctx, x + 16, wallY + 25, 3, 3, "#f6eccd");
+    sack(ctx, x + w - 34, bottom - 9);
+    sack(ctx, x + w - 27, bottom - 9, "#f6eccd");
+    sack(ctx, x + w - 31, bottom - 16);
   }
 
-  // Roofs.
-  if (s.roof === "tile") tileRoof(ctx, x, y, w, roofH);
-  else if (s.roof === "flat") flatRoof(ctx, x, y, w, roofH, b.style !== "bank");
-  else tinRoof(ctx, x, y, w, roofH, b);
+  // Roof.
+  if (s.roof === "flat") flatRoof(ctx, x, y, w, roofH, s, b.style !== "bank");
+  else hipRoof(ctx, x, y, w, roofH, s.roof, s.tin);
+  if (s.gable) gable(ctx, doorX, wallY, Math.min(34, w - 26), Math.round(roofH * 0.62), s);
+  if (b.style === "work") {
+    for (let i = 0; i < 7; i++) {
+      const rx = x + Math.floor(hash(b.x + i, b.y, 11) * (w - 10));
+      const ry = y + 3 + Math.floor(hash(b.x, b.y + i, 12) * (roofH - 9));
+      px(ctx, rx, ry, 4 + (i % 3), 2, i % 2 ? "#c47a46" : "#d9925a");
+    }
+  }
 
+  // Chimneys and flagpoles (smoke and flags move in drawAmbient).
   if (b.style === "home") {
-    // A little side lean-to and a clay pot by the door.
-    px(ctx, x + w - 8, wallY + wallH - 12, 6, 7, "#b5523b");
-    px(ctx, x + w - 7, wallY + wallH - 13, 4, 1, "#93402c");
+    const cx = x + 10;
+    px(ctx, cx, y - 6, 7, 12, "#b5523b");
+    px(ctx, cx - 1, y - 7, 9, 2, "#8a3a22");
+    px(ctx, cx + 1, y - 5, 2, 10, "#d4693f");
+    ANCHORS.smoke.push({ x: cx + 3, y: y - 8 });
+  }
+  if (b.style === "work") {
+    const cx = x + w - 14;
+    px(ctx, cx, y - 16, 7, roofH + 4, "#b5523b");
+    px(ctx, cx - 1, y - 18, 9, 3, "#8a3a22");
+    px(ctx, cx + 1, y - 14, 2, roofH + 2, "#d4693f");
+    ANCHORS.smoke.push({ x: cx + 3, y: y - 19 });
   }
   if (b.style === "school") {
-    flag(ctx, x + w - 8, y - 20);
-    const cx = x + Math.floor(w / 2);
-    // A small bell arch on the ridge.
-    px(ctx, cx - 3, y - 6, 6, 7, "#f4e7c4");
-    px(ctx, cx - 4, y - 7, 8, 2, TILE_ROOF.ridge);
-    px(ctx, cx - 1, y - 4, 2, 3, "#e5bf4f");
+    // A round clock in the gable's place above the sign, and the flagpole.
+    px(ctx, x + w - 9, y - 22, 1, 26, "#e2e2e2");
+    px(ctx, x + w - 10, y + 3, 3, 1, "#9a9a9a");
+    ANCHORS.flags.push({ x: x + w - 8, y: y - 22 });
   }
-  if (b.style === "panchayat") flag(ctx, x + 4, y - 16, 26);
-  if (b.style === "sahukar") px(ctx, x - 3, y + roofH - 4, w + 6, 2, "#e5bf4f");
-  if (b.style === "work") {
-    px(ctx, x + w - 12, y - 14, 6, roofH + 6, "#9a5a3c");
-    px(ctx, x + w - 13, y - 16, 8, 3, "#6e3a2b");
+  if (b.style === "panchayat") {
+    px(ctx, x + 6, y - 20, 1, 28, "#e2e2e2");
+    px(ctx, x + 5, y + 7, 3, 1, "#9a9a9a");
+    ANCHORS.flags.push({ x: x + 7, y: y - 20 });
   }
 
-  // Sign above the door, then the door, then a kolam at the step.
-  if (s.sign) plaque(ctx, doorX, wallY + (b.style === "panchayat" ? 10 : 4), s.sign, ICONS[b.style]?.(ctx));
-  const doorColor = { bank: "#2f5f9e", hospital: "#2f8f8a", sahukar: "#5e2a33", panchayat: "#6b5a4a", work: "#5e4a34" }[b.style] ?? "#7a4a2a";
-  doorAt(ctx, doorX, bottom - 2, doorColor, b.style === "work" ? 14 : 10, b.style === "shop" ? 12 : 14);
-  if (b.style === "home" || b.style === "sahukar") kolam(ctx, doorX, bottom + 4);
-  if (b.style === "post") {
-    px(ctx, doorX + 12, bottom - 13, 6, 11, "#c8382e");
-    px(ctx, doorX + 13, bottom - 11, 4, 1, "#3b2b22");
-    px(ctx, doorX + 11, bottom - 14, 8, 2, "#9a2c24");
+  // Sign, door, and what sits in front.
+  const sign = { school: "#2f4f3a", bank: "#ffd84a", post: "#c8382e", shop: "#ffd84a", hospital: "#ffffff", sahukar: "#7a2e58", panchayat: "#fff6dc", work: "#e8b070" }[b.style];
+  const ink = { school: "#f4f4f0", bank: "#5e3c1e", post: "#c8382e", shop: "#5e3c1e", panchayat: "#3f4c55" }[b.style] ?? "#5e3c1e";
+  if (sign) {
+    const sy = b.style === "shop" ? y + roofH - 14 : wallY + (b.style === "panchayat" ? 11 : 5);
+    signboard(ctx, doorX, sy, sign, ink, SIGNS[b.style]?.(ctx));
   }
+  doorAt(ctx, doorX, bottom, s.door, { w: b.style === "work" ? 14 : b.style === "bank" ? 12 : 10, h: b.style === "shop" ? 12 : 15, toran: b.style === "home" || b.style === "sahukar" || b.style === "shop" });
+  if (b.style === "home") {
+    tulasi(ctx, x + 6, bottom + 2);
+    pot(ctx, x + w - 12, bottom - 7);
+  }
+  if (b.style === "sahukar") {
+    pot(ctx, doorX - 16, bottom - 8);
+    pot(ctx, doorX + 11, bottom - 8);
+  }
+  if (b.style === "post") {
+    px(ctx, doorX + 11, bottom - 13, 7, 12, "#d63a2e");
+    px(ctx, doorX + 10, bottom - 15, 9, 3, "#a82a20");
+    px(ctx, doorX + 12, bottom - 11, 5, 1, "#3b2b22");
+    px(ctx, doorX + 12, bottom - 7, 5, 2, "#ffd84a");
+    px(ctx, doorX + 12, bottom - 1, 5, 2, "#7a2a20");
+  }
+  if (b.style === "work") cart(ctx, x + w + 2, bottom - 8);
 }
 
 function notice(ctx, o) {
   const x = o.x * TILE;
   const y = o.y * TILE;
-  px(ctx, x, y, TILE, TILE, C.plaza);
   px(ctx, x + 2, y + 3, 2, 13, C.woodDark);
   px(ctx, x + 12, y + 3, 2, 13, C.woodDark);
-  px(ctx, x, y - 4, 16, 11, C.wood);
-  px(ctx, x + 1, y - 3, 14, 9, C.woodLight);
-  px(ctx, x + 2, y - 2, 5, 4, "#fff8e0");
-  px(ctx, x + 8, y - 1, 6, 5, "#f7e08a");
-  px(ctx, x + 3, y + 3, 4, 2, "#f2c4d8");
+  px(ctx, x - 1, y - 5, 18, 12, C.wood);
+  px(ctx, x, y - 4, 16, 10, C.woodLight);
+  px(ctx, x - 1, y - 6, 18, 2, "#c25a3c");
+  px(ctx, x + 1, y - 3, 6, 5, "#fff8e0");
+  px(ctx, x + 8, y - 2, 6, 6, "#ffe58a");
+  px(ctx, x + 2, y + 3, 5, 2, "#ffc4d8");
+  px(ctx, x + 3, y - 3, 1, 1, "#e04a3a");
+  px(ctx, x + 10, y - 2, 1, 1, "#3b6ea5");
 }
 
 function gate(ctx, o) {
   const x = o.x * TILE;
   const y = o.y * TILE;
-  grass(ctx, x, y, o.x, o.y);
   px(ctx, x, y + 4, 2, 12, C.woodDark);
   px(ctx, x + 14, y + 4, 2, 12, C.woodDark);
   for (let i = 0; i < 3; i++) px(ctx, x + 2, y + 5 + i * 4, 12, 2, C.woodLight);
-  px(ctx, x + 2, y + 5, 12, 12, "rgba(0,0,0,0)");
-  // A scarecrow in the field behind.
+  // A scarecrow in the field behind, with a pot head and a bright shirt.
   px(ctx, x + 7, y - 18, 2, 16, C.woodDark);
-  px(ctx, x + 2, y - 14, 12, 2, C.woodDark);
-  px(ctx, x + 5, y - 24, 6, 6, "#f2d79a");
-  px(ctx, x + 3, y - 26, 10, 3, "#a8743e");
-  px(ctx, x + 4, y - 13, 8, 7, "#d0453a");
+  px(ctx, x + 1, y - 14, 14, 2, C.woodDark);
+  px(ctx, x + 4, y - 25, 8, 7, "#c25a3c");
+  px(ctx, x + 5, y - 24, 6, 1, "#e07a52");
+  px(ctx, x + 5, y - 22, 1, 1, "#fff6dc");
+  px(ctx, x + 10, y - 22, 1, 1, "#fff6dc");
+  px(ctx, x + 6, y - 20, 4, 1, "#fff6dc");
+  px(ctx, x + 3, y - 13, 10, 8, "#3f8fbf");
+  px(ctx, x + 3, y - 13, 10, 2, "#ffd84a");
+}
+
+// Things painted on the ground (no outline): kolams, lotus pads, pebbles.
+function groundDecals(ctx) {
+  for (const p of PLACES) {
+    if (!["home", "sahukar", "school", "panchayat"].includes(p.style)) continue;
+    const cx = p.door.x * TILE + 8;
+    const cy = (p.y + p.h) * TILE + 7;
+    const colors = ["#ffffff", "#ff6f91", "#ffd84a", "#57b8e0"];
+    for (let r = 0; r < 4; r++) {
+      const rad = 6 - r;
+      for (let a = 0; a < 12; a++) {
+        const ang = (a / 12) * Math.PI * 2;
+        px(ctx, cx + Math.round(Math.cos(ang) * rad * 1.3), cy + Math.round(Math.sin(ang) * rad * 0.7), 1, 1, colors[r]);
+      }
+    }
+    px(ctx, cx - 1, cy, 3, 1, "#ff9a3c");
+  }
+  // Lotus pads on the pond.
+  for (let ty = 0; ty < H; ty++)
+    for (let tx = 0; tx < W; tx++) {
+      if (GRID[ty][tx] !== "water" || hash(tx, ty, 41) > 0.6) continue;
+      const lx = tx * TILE + 3 + Math.floor(hash(tx, ty, 42) * 8);
+      const ly = ty * TILE + 4 + Math.floor(hash(tx, ty, 43) * 8);
+      px(ctx, lx, ly, 5, 3, "#4f9a3a");
+      px(ctx, lx + 1, ly - 1, 3, 1, "#4f9a3a");
+      px(ctx, lx + 2, ly, 1, 1, "#3f7a2e");
+      if (hash(tx, ty, 44) < 0.5) {
+        px(ctx, lx + 1, ly - 2, 3, 2, "#ff9ac0");
+        px(ctx, lx + 2, ly - 3, 1, 1, "#ffc4d8");
+      }
+    }
+}
+
+// The outline pass: every transparent pixel touching an opaque one becomes the warm outline.
+function outline(canvas) {
+  const ctx = canvas.getContext("2d");
+  const { width, height } = canvas;
+  const img = ctx.getImageData(0, 0, width, height);
+  const d = img.data;
+  const solid = (i) => d[i * 4 + 3] >= 200;
+  const out = new Uint8Array(width * height);
+  for (let yy = 0; yy < height; yy++)
+    for (let xx = 0; xx < width; xx++) {
+      const i = yy * width + xx;
+      if (solid(i)) continue;
+      if ((xx > 0 && solid(i - 1)) || (xx < width - 1 && solid(i + 1)) || (yy > 0 && solid(i - width)) || (yy < height - 1 && solid(i + width))) out[i] = 1;
+    }
+  for (let i = 0; i < out.length; i++)
+    if (out[i]) {
+      d[i * 4] = OUTLINE[0];
+      d[i * 4 + 1] = OUTLINE[1];
+      d[i * 4 + 2] = OUTLINE[2];
+      d[i * 4 + 3] = 255;
+    }
+  ctx.putImageData(img, 0, 0);
+}
+
+function shadowFor(ctx, x, y, w, h) {
+  ctx.fillStyle = "rgba(30, 50, 20, 0.22)";
+  ctx.beginPath();
+  ctx.ellipse(x + w / 2 + 3, y + h, w / 2 + 2, Math.max(3, h / 7), 0, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+let spriteLayer = null;
+
+function renderSprites() {
+  // Raised things on their own layer so they can share one outline.
+  const canvas = document.createElement("canvas");
+  canvas.width = W * TILE;
+  canvas.height = H * TILE;
+  const ctx = canvas.getContext("2d");
+  ANCHORS.smoke.length = 0;
+  ANCHORS.flags.length = 0;
+  for (let ty = 0; ty < H; ty++) {
+    for (let tx = 0; tx < W; tx++) {
+      const t = GRID[ty][tx];
+      const ox = tx * TILE;
+      const oy = ty * TILE;
+      if (t === "fence") fence(ctx, ox, oy, tx, ty);
+      else if (t === "bush") bush(ctx, ox, oy, tx, ty);
+      else if (t === "rock") rock(ctx, ox, oy, tx, ty);
+      else if (t === "well") well(ctx, ox, oy);
+    }
+    for (const p of PLACES) {
+      if (p.y + p.h - 1 !== ty) continue;
+      if (p.style === "notice") notice(ctx, p);
+      else if (p.style === "gate") gate(ctx, p);
+      else building(ctx, p);
+    }
+    for (let tx = 0; tx < W; tx++) if (GRID[ty][tx] === "tree" && !(tx >= 12 && tx <= 13 && ty >= 11 && ty <= 12)) tree(ctx, tx * TILE, ty * TILE, tx, ty);
+    if (ty === 12) banyan(ctx);
+  }
+  outline(canvas);
+  return canvas;
+}
+
+function banyan(ctx) {
+  // The banyan over the rachabanda: a raised stone platform where the elders sit.
+  const bx = 12 * TILE;
+  const by = 11 * TILE;
+  px(ctx, bx - 2, by + 14, 36, 16, "#a39c8c");
+  px(ctx, bx - 1, by + 13, 34, 14, "#cfc8b6");
+  px(ctx, bx, by + 14, 32, 2, "#e6dfcd");
+  for (let c = 3; c < 32; c += 7) px(ctx, bx + c, by + 17, 1, 9, "#b9b2a2");
+  px(ctx, bx + 9, by + 29, 14, 3, "#b9b2a2");
+  px(ctx, bx + 9, by + 29, 14, 1, "#e2dacb");
+  px(ctx, bx + 12, by + 2, 9, 20, C.trunk);
+  px(ctx, bx + 13, by + 2, 2, 20, "#8a5e34");
+  px(ctx, bx + 8, by + 12, 4, 10, C.trunk);
+  px(ctx, bx + 21, by + 10, 4, 12, C.trunk);
+  const blob = (cx, cy, r, color) => {
+    for (let y = -r; y <= r; y++) {
+      const w = Math.round(Math.sqrt(r * r - y * y) * 1.3);
+      px(ctx, bx + cx - w, by + cy + y, w * 2, 1, color);
+    }
+  };
+  blob(16, -6, 19, C.canopyDark);
+  blob(1, -1, 9, C.canopyDark);
+  blob(31, -1, 9, C.canopyDark);
+  blob(16, -8, 17, C.canopy);
+  blob(3, -2, 7, C.canopy);
+  blob(29, -2, 7, C.canopy);
+  blob(10, -14, 9, C.canopyLight);
+  blob(24, -11, 6, C.canopyLight);
+  blob(8, -17, 3, C.canopyHi);
+  blob(23, -13, 2, C.canopyHi);
+  for (const [rx, len] of [[-4, 12], [1, 16], [6, 12], [26, 15], [31, 17], [35, 11]]) px(ctx, bx + rx, by + 6, 1, len, "#7a5432");
 }
 
 // The whole static map at native resolution. Two frames (the water moves).
@@ -579,64 +849,109 @@ export function renderVillage(frame = 0) {
       if (t === "path" || t === "plaza") ground(ctx, ox, oy, tx, ty, t === "plaza");
       else if (t === "water") water(ctx, ox, oy, tx, ty, frame);
       else if (t === "crop") crop(ctx, ox, oy, tx, ty);
-      else if (t === "building") px(ctx, ox, oy, TILE, TILE, C.grassDark);
       else if (t === "well") px(ctx, ox, oy, TILE, TILE, C.plaza);
-      else grass(ctx, ox, oy, tx, ty);
-    }
-  }
-  // Raised things, top to bottom so lower ones overlap upper ones.
-  for (let ty = 0; ty < H; ty++) {
-    for (let tx = 0; tx < W; tx++) {
-      const t = GRID[ty][tx];
-      const ox = tx * TILE;
-      const oy = ty * TILE;
-      if (t === "fence") fence(ctx, ox, oy, tx, ty);
       else if (t === "flowers") flowers(ctx, ox, oy, tx, ty);
-      else if (t === "bush") bush(ctx, ox, oy, tx, ty);
-      else if (t === "rock") rock(ctx, ox, oy, tx, ty);
-      else if (t === "well") well(ctx, ox, oy);
+      else if (t === "building") {
+        const obj = PLACES.find((p) => p.style === "notice" && p.x === tx && p.y === ty);
+        if (obj) px(ctx, ox, oy, TILE, TILE, C.plaza);
+        else grass(ctx, ox, oy, tx, ty);
+      } else grass(ctx, ox, oy, tx, ty);
     }
-    for (const p of PLACES) {
-      if (p.y + p.h - 1 !== ty) continue;
-      if (p.style === "notice") notice(ctx, p);
-      else if (p.style === "gate") gate(ctx, p);
-      else building(ctx, p);
-    }
-    for (let tx = 0; tx < W; tx++) if (GRID[ty][tx] === "tree") tree(ctx, tx * TILE, ty * TILE, tx, ty);
   }
-  // The banyan over the rachabanda: a raised stone platform where the elders sit.
-  const bx = 12 * TILE;
-  const by = 11 * TILE;
-  px(ctx, bx, by, 32, 32, C.plaza);
-  px(ctx, bx - 1, by + 14, 34, 18, "#8d8678");
-  px(ctx, bx, by + 13, 32, 16, "#b9b2a2");
-  px(ctx, bx + 1, by + 14, 30, 2, "#d3ccbb");
-  for (let c = 4; c < 32; c += 8) px(ctx, bx + c, by + 16, 1, 13, "#a39c8c");
-  px(ctx, bx + 10, by + 29, 12, 3, "#a39c8c");
-  px(ctx, bx + 10, by + 29, 12, 1, "#cfc7b6");
-  px(ctx, bx + 4, by + 26, 24, 2, C.shadow);
-  px(ctx, bx + 12, by + 4, 8, 20, C.trunk);
-  px(ctx, bx + 13, by + 4, 2, 20, "#80562f");
-  px(ctx, bx + 9, by + 14, 3, 10, C.trunk);
-  px(ctx, bx + 20, by + 12, 3, 12, C.trunk);
-  const blob = (cx, cy, r, color) => {
-    for (let y = -r; y <= r; y++) {
-      const w = Math.round(Math.sqrt(r * r - y * y) * 1.25);
-      px(ctx, bx + cx - w, by + cy + y, w * 2, 1, color);
-    }
-  };
-  blob(16, -4, 19, C.canopyDark);
-  blob(2, 0, 9, C.canopyDark);
-  blob(30, 0, 9, C.canopyDark);
-  blob(16, -6, 17, C.canopy);
-  blob(4, -1, 7, C.canopy);
-  blob(28, -1, 7, C.canopy);
-  blob(10, -12, 9, C.canopyLight);
-  blob(24, -9, 5, C.canopyLight);
-  blob(8, -15, 3, C.canopyHi);
-  // Aerial roots hanging from the canopy.
-  for (const [rx, len] of [[-4, 12], [1, 16], [6, 13], [26, 15], [31, 17], [35, 11], [22, 9]]) px(ctx, bx + rx, by + 6, 1, len, "#7a5432");
+  px(ctx, 12 * TILE, 11 * TILE, 32, 32, C.plaza);
+  groundDecals(ctx);
+  // Soft shadows under buildings and trees.
+  for (const p of PLACES) if (p.style !== "notice" && p.style !== "gate") shadowFor(ctx, p.x * TILE, p.y * TILE + 2, p.w * TILE, p.h * TILE);
+  for (let ty = 0; ty < H; ty++)
+    for (let tx = 0; tx < W; tx++) if (GRID[ty][tx] === "tree") shadowFor(ctx, tx * TILE + 1, ty * TILE + 2, 12, 12);
+  if (!spriteLayer) spriteLayer = renderSprites();
+  ctx.drawImage(spriteLayer, 0, 0);
   return canvas;
+}
+
+// Moving details drawn every frame over the map (camera-relative): chimney smoke, flags,
+// butterflies, birds, chickens and a duck.
+export function drawAmbient(ctx, now, camX, camY) {
+  const t = now / 1000;
+  const P = (x, y, w, h, c) => {
+    ctx.fillStyle = c;
+    ctx.fillRect(Math.round(x - camX), Math.round(y - camY), w, h);
+  };
+  for (const s of ANCHORS.smoke) {
+    for (let i = 0; i < 4; i++) {
+      const life = (t * 0.45 + i / 4) % 1;
+      const r = 2 + Math.round(life * 4);
+      const a = 0.55 * (1 - life);
+      const sx = s.x + Math.sin(t * 1.5 + i) * 3 + life * 6;
+      const sy = s.y - life * 26;
+      P(sx - r, sy - r + 1, r * 2, r * 2 - 2, `rgba(240,240,236,${a})`);
+      P(sx - r + 1, sy - r, r * 2 - 2, r * 2, `rgba(240,240,236,${a})`);
+    }
+  }
+  for (const f of ANCHORS.flags) {
+    const colors = ["#f29a3a", "#ffffff", "#3d9a4a"];
+    for (let c = 0; c < 10; c++) {
+      const wave = Math.round(Math.sin(t * 5 - c * 0.7) * (c / 6));
+      for (let r = 0; r < 3; r++) P(f.x + c, f.y + r * 2 + wave, 1, 2, colors[r]);
+    }
+    P(f.x + 4, f.y + 2 + Math.round(Math.sin(t * 5 - 2.8) * 0.6), 2, 2, "#2f4f9e");
+  }
+  // Butterflies around the flower beds.
+  const flies = [
+    [7, 9, "#ffd84a"],
+    [10, 8, "#ff9ac0"],
+    [22, 10, "#ffffff"],
+    [30, 9, "#9fd3ef"],
+    [9, 18, "#ff9a3c"],
+    [33, 19, "#ffd84a"],
+  ];
+  flies.forEach(([tx, ty, c], i) => {
+    const bx = tx * TILE + Math.sin(t * 0.7 + i) * 22 + Math.sin(t * 1.9 + i * 2) * 6;
+    const by = ty * TILE + Math.cos(t * 0.9 + i * 1.3) * 10;
+    const flap = Math.floor(t * 10 + i) % 2;
+    P(bx, by, 1, 2, "#3b2b22");
+    if (flap) {
+      P(bx - 2, by - 1, 2, 2, c);
+      P(bx + 1, by - 1, 2, 2, c);
+    } else {
+      P(bx - 1, by - 1, 1, 2, c);
+      P(bx + 1, by - 1, 1, 2, c);
+    }
+  });
+  // A few birds crossing the sky every 20 seconds.
+  const cross = (t % 20) / 20;
+  if (cross < 0.6) {
+    const bx0 = -40 + (cross / 0.6) * (W * TILE + 80);
+    const by0 = 70 + Math.sin(t) * 6;
+    for (const [dx, dy] of [[0, 0], [-9, -5], [-9, 5], [-18, -9]]) {
+      const flap = Math.floor(t * 6 + dx) % 2;
+      P(bx0 + dx - 2, by0 + dy + (flap ? -1 : 0), 2, 1, "#3b2b22");
+      P(bx0 + dx + 1, by0 + dy + (flap ? -1 : 0), 2, 1, "#3b2b22");
+      P(bx0 + dx, by0 + dy, 1, 1, "#3b2b22");
+    }
+  }
+  // Two chickens pecking in the home yard.
+  for (const [hx, hy, i] of [[3 * TILE + 4, 8 * TILE + 2, 0], [7 * TILE + 6, 8 * TILE + 4, 1]]) {
+    const walk = Math.sin(t * 0.5 + i * 3) * 6;
+    const peck = Math.floor(t * 3 + i) % 3 === 0 ? 1 : 0;
+    const x0 = hx + walk;
+    P(x0, hy + 2, 6, 4, "#fffaf0");
+    P(x0 + 1, hy + 6, 1, 2, "#e8a03a");
+    P(x0 + 4, hy + 6, 1, 2, "#e8a03a");
+    P(x0 + 5, hy + peck, 3, 3, "#fffaf0");
+    P(x0 + 6, hy - 1 + peck, 1, 1, "#e04a3a");
+    P(x0 + 8, hy + 1 + peck, 1, 1, "#e8a03a");
+    P(x0 + 6, hy + 1 + peck, 1, 1, "#3b2b22");
+    P(x0, hy + 2, 1, 2, "#e3d6c0");
+  }
+  // A duck on the pond.
+  const dx0 = 21 * TILE + 14 + Math.sin(t * 0.4) * 10;
+  const dy0 = 13 * TILE + 2 + Math.round(Math.sin(t * 2));
+  P(dx0, dy0 + 2, 7, 3, "#fffaf0");
+  P(dx0 + 5, dy0, 3, 3, "#fffaf0");
+  P(dx0 + 8, dy0 + 1, 2, 1, "#f2a03a");
+  P(dx0 + 6, dy0 + 1, 1, 1, "#3b2b22");
+  P(dx0 - 1, dy0 + 5, 9, 1, "rgba(255,255,255,0.5)");
 }
 
 // ---------- characters ----------
