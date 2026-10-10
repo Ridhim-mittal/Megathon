@@ -899,5 +899,12 @@
       "emi_heavy": "Warning: EMIs eat over half your income. Don't take any new loan.",
       "costly_debt": "You have costly debt. Paying it off is the best 'investment' you can make."
     }
+  },
+  "hero": {
+    "ribbon": "A NEW LIFE",
+    "title": "Who are you?",
+    "greet": "Namaste, {name}! Come, your story is waiting.",
+    "start": "Let's go!",
+    "newHint": "Pick your look and name"
   }
 }

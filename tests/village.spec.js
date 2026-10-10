@@ -8,12 +8,19 @@ async function start(page, { lang = "English" } = {}) {
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
   await page.getByRole("button", { name: "Play", exact: true }).click();
+  // "Who are you?" opens on the title screen: pick a look and a name.
+  const hero = page.getByRole("dialog", { name: "Who are you?" });
+  await hero.getByRole("radio", { name: "Girl" }).click();
+  await expect(hero.getByRole("radio", { name: "Girl" })).toHaveAttribute("aria-checked", "true");
+  await hero.getByLabel("What should Ammamma call you?").fill("Sravani");
+  await expect(hero).toContainText("Namaste, Sravani!");
+  await hero.getByRole("button", { name: "Let's go!" }).click();
   await expect(page.getByRole("heading", { name: "Choose your language" })).toBeVisible();
   await page.getByRole("button", { name: lang }).click();
   return errors;
 }
 
-// Storyline → intro → dream and look → the prologue's title card → budget.
+// Storyline → intro → dream → the prologue's title card → budget.
 async function toPrologue(page) {
   await expect(page.getByRole("heading", { name: "Choose your life" })).toBeVisible();
   await expect(page.getByText("Coming soon")).toBeVisible();
@@ -24,8 +31,7 @@ async function toPrologue(page) {
   const startButton = page.getByRole("button", { name: "Start my life at 11" });
   await expect(startButton).toBeDisabled();
   await page.getByRole("radiogroup", { name: "What is your big dream?" }).getByRole("radio").first().click();
-  await page.getByRole("radio", { name: "Girl" }).click();
-  await page.getByLabel("What should Ammamma call you?").fill("Sravani");
+  await expect(page.locator(".dream-you")).toContainText("Sravani");
   await startButton.click();
   await expect(page.getByRole("heading", { name: "The Tin Box" })).toBeVisible();
   await page.getByRole("button", { name: "Begin" }).click();
@@ -155,6 +161,7 @@ test("progress is saved: the title offers Continue after a reload", async ({ pag
   await expect(page.locator(".objective")).toBeVisible();
   await page.reload();
   await expect(page.getByRole("button", { name: "Continue my life" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Start a new life" })).toBeVisible();
   await page.getByRole("button", { name: "Continue my life" }).click();
   await expect(page.locator(".hud-chapter")).toContainText("Age 11");
   await expect(page.locator(".objective")).toContainText("Ammamma");

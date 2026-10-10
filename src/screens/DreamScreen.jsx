@@ -8,11 +8,9 @@ import { PixelPortrait } from "../ui/PixelPortrait.jsx";
 
 export const GOAL_ICONS = { house: Home, business: Store, education: GraduationCap, vehicle: Bike, parents: HeartHandshake };
 
-export function DreamScreen({ settings, initialName, onStart, onBack, onMenu }) {
+export function DreamScreen({ settings, avatar = "boy", playerName = "", onStart, onBack, onMenu }) {
   const { t, pick, money } = useT();
   const [goalId, setGoalId] = useState(null);
-  const [name, setName] = useState(initialName ?? "");
-  const [avatar, setAvatar] = useState("boy");
   return (
     <>
       <ScreenBar>
@@ -42,23 +40,14 @@ export function DreamScreen({ settings, initialName, onStart, onBack, onMenu }) 
         </div>
         <p className="sheet-note">{t("dream.costNote")}</p>
         <div className="dream-start">
-          <label className="name-field">
-            <span>{t("dream.nameLabel")}</span>
-            <input value={name} maxLength={20} placeholder={t("dream.namePlaceholder")} onChange={(e) => setName(e.target.value)} />
-          </label>
-          <div className="avatar-pick" role="radiogroup" aria-label={t("avatar.label")}>
-            <span>{t("avatar.label")}</span>
-            {["boy", "girl"].map((a) => (
-              <button key={a} role="radio" aria-checked={avatar === a} className={`avatar-card ${avatar === a ? "selected" : ""}`} onClick={() => setAvatar(a)}>
-                <PixelPortrait role="player" avatar={a} stage="child" />
-                <small>{t(`avatar.${a}`)}</small>
-              </button>
-            ))}
-          </div>
+          <span className="dream-you">
+            <PixelPortrait role="player" avatar={avatar} stage="child" />
+            <b>{playerName || t("dream.namePlaceholder")}</b>
+          </span>
           <button className="text-button" onClick={onBack}>
             <ArrowLeft size={15} /> {t("common.back")}
           </button>
-          <button className="primary-button big" disabled={!goalId} onClick={() => onStart({ goalId, playerName: name.trim(), avatar })}>
+          <button className="primary-button big" disabled={!goalId} onClick={() => onStart({ goalId })}>
             {t("dream.start")} <ArrowRight size={18} />
           </button>
         </div>
