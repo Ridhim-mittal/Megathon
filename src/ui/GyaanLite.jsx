@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { BookOpen, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { content, select } from "./gameAdapter.js";
+import { GyaanWidget } from "./GyaanWidgets.jsx";
 
 // The Gyaan reader: a lesson's deeper page (content.gyaan when it exists, else the lesson's
-// summary). Stand-in for the full LessonPage with interactive widgets.
+// summary) with a myth, a worked example, a "try it" calculator and a quick check. Market topics
+// (shares, funds, fees…) are listed after the lessons.
 export function GyaanLite({ life, lessonId, onClose }) {
   const { t, pick, rich } = useT();
   const report = select.lessonReport(life);
@@ -18,8 +20,10 @@ export function GyaanLite({ life, lessonId, onClose }) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
-  const lesson = (content.lessons ?? []).find((l) => l.id === id);
-  const page = content.gyaan?.lessons?.[id];
+  const topics = Object.entries(content.gyaan?.topics ?? {});
+  const topicId = id.startsWith("topic:") ? id.slice(6) : null;
+  const lesson = topicId ? null : (content.lessons ?? []).find((l) => l.id === id);
+  const page = topicId ? content.gyaan?.topics?.[topicId] : content.gyaan?.lessons?.[id];
   return (
     <div className="phone-overlay" role="dialog" aria-modal="true" aria-label={t("gyaan.title")}>
       <div className="gyaan-book">
@@ -37,17 +41,21 @@ export function GyaanLite({ life, lessonId, onClose }) {
                 <span>{l.id}</span> {pick(l.title)}
               </button>
             ))}
+            {topics.length > 0 && <h3 className="gyaan-index-title">{t("gyaan.topics")}</h3>}
+            {topics.map(([tid, tp]) => (
+              <button key={tid} className={`topic ${id === `topic:${tid}` ? "on" : ""}`} onClick={() => setId(`topic:${tid}`)}>
+                <span>₹</span> {pick(tp.title)}
+              </button>
+            ))}
           </nav>
           <article className="gyaan-page">
-            {!lesson && <p className="quiet">{t("report.status.unseen")}</p>}
-            {lesson && (
+            {!lesson && !page && <p className="quiet">{t("report.status.unseen")}</p>}
+            {(lesson || page) && (
               <>
-                <span className="eyebrow">
-                  {lesson.id} · {t(`report.pillar.${lesson.pillar}`)}
-                </span>
+                <span className="eyebrow">{lesson ? `${lesson.id} · ${t(`report.pillar.${lesson.pillar}`)}` : t("gyaan.topics")}</span>
                 <h3>{pick(page?.title ?? lesson.title)}</h3>
                 {page?.big_idea && <p className="big-idea">{rich(page.big_idea)}</p>}
-                {!page && lesson.summary && <p>{rich(lesson.summary)}</p>}
+                {!page && lesson?.summary && <p>{rich(lesson.summary)}</p>}
                 {page?.points && (
                   <ul>
                     {page.points.map((p, i) => (
@@ -68,7 +76,18 @@ export function GyaanLite({ life, lessonId, onClose }) {
                     </p>
                   </section>
                 )}
-                {lesson.keyNumber && (
+                {page?.myth && (
+                  <section className="myth">
+                    <p>
+                      <b>{t("gyaan.myth")}</b> {rich(page.myth.myth)}
+                    </p>
+                    <p>
+                      <b>{t("gyaan.truth")}</b> {rich(page.myth.truth)}
+                    </p>
+                  </section>
+                )}
+                {page?.widget && <GyaanWidget key={id} id={page.widget} />}
+                {lesson?.keyNumber && (
                   <p className="key-number">
                     <span>{t("gyaan.keyNumber")}</span> {rich(lesson.keyNumber)}
                   </p>

@@ -565,11 +565,106 @@
     "example": "Worked example",
     "quiz": "Quick check",
     "right": "Right!",
-    "wrong": "Not quite."
+    "wrong": "Not quite.",
+    "topics": "Market basics",
+    "myth": "Myth:",
+    "truth": "Truth:"
   },
   "avatar": {
     "label": "Choose your look",
     "boy": "Boy",
     "girl": "Girl"
+  },
+  "widget": {
+    "title": "Try it",
+    "perMonth": "Save every month",
+    "years": "Years",
+    "rate": "Interest a year",
+    "tinBox": "Tin box",
+    "withInterest": "With interest",
+    "amount": "Money today",
+    "inflation": {
+      "result": "{amount} kept at home for {n} years buys only what {worth} buys today."
+    },
+    "today": "Today",
+    "later": "After {n} years",
+    "loan": "Loan",
+    "rateYear": "Interest a year",
+    "months": "Months",
+    "borrowed": "Borrowed",
+    "interest": "Interest",
+    "perHundred": "Per ₹100 a month",
+    "sipMonthly": "SIP every month",
+    "youPut": "You put in",
+    "badYears": "Slow years ({pct}%)",
+    "normalYears": "Usual ({pct}%)",
+    "goodYears": "Good years ({pct}%)",
+    "invest": "You invest",
+    "fee": "Fund fee {pct}%",
+    "companies": "Companies you spread across",
+    "afterBadNews": "After one company crashes",
+    "monthsSaved": "Months of needs saved",
+    "fund": "Emergency fund",
+    "billLeft": "₹30,000 bill left to borrow",
+    "premiums": "Premiums paid",
+    "oneBill": "One hospital bill",
+    "studyYears": "Years of study first",
+    "workNow": "Work now (₹8,000/month)",
+    "studyFirst": "Study first (₹15,000/month)",
+    "kinds": {
+      "need": "Need",
+      "want": "Want",
+      "safe": "Safe",
+      "scam": "Scam"
+    },
+    "sortScore": "{n} of {total} right.",
+    "compound": {
+      "result": "You put in {put}. With interest it becomes {grown}: {extra} you never worked for."
+    },
+    "emi": {
+      "result": "EMI {emi} a month. You pay back {total}, of which {interest} is interest."
+    },
+    "flat": {
+      "result": "₹{per} per ₹100 a month sounds small. It is {flat}% a year flat, about {real}% on a reducing balance. On this loan: {interest} interest, {emi} a month."
+    },
+    "sip": {
+      "result": "Markets have bad years and good years. Over a long time, steady SIPs usually beat the tin box. Over 1–2 years, anything can happen."
+    },
+    "fees": {
+      "result": "A small yearly fee is not small: after {n} years the cheaper fund leaves you {gap} richer."
+    },
+    "diversify": {
+      "result": "Spread across {n}: after one crash you have {after}. Eggs in many baskets."
+    },
+    "emergency": {
+      "borrow": "You must borrow {borrow}. At the sahukar that costs about {cost} in one year.",
+      "safe": "Your emergency fund pays the whole bill. No loan, no stress."
+    },
+    "insurance": {
+      "result": "{premium} a year feels like a waste until the year a {bill} bill arrives. {total} of premiums buys peace of mind."
+    },
+    "opportunity": {
+      "result": "Studying costs about {lost} of wages now. The bars show what it can pay back over 20 years."
+    },
+    "needs_wants": {
+      "items": {
+        "bus": "Bus fare to school",
+        "medicine": "Medicine for fever",
+        "topup": "Game top-up",
+        "notebook": "School notebook",
+        "shoes2": "A second pair of new shoes",
+        "chocolate": "Chocolate after school"
+      }
+    },
+    "upi_check": {
+      "items": {
+        "pin": "\"Enter your UPI PIN to receive ₹5,000\"",
+        "kyc": "\"Your KYC expires today, click this link\"",
+        "refund": "\"Refund pending, share the OTP\"",
+        "bill": "You scan the shop's QR to pay ₹40",
+        "qr": "A stranger sends a QR \"to send you money\"",
+        "shop": "You check the name before paying the kirana"
+      }
+    }
   }
 }

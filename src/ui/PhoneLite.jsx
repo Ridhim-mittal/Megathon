@@ -190,7 +190,7 @@ function InvestApp({ market, dispatch, onLearn }) {
             </button>
           )}
           {onLearn && (
-            <button className="text-button" onClick={() => onLearn(x.kind === "stock" ? "L19" : x.id === "mf_active" ? "L21" : "L17")}>
+            <button className="text-button" onClick={() => onLearn(x.kind === "stock" ? "topic:share" : x.id === "mf_active" ? "topic:index_vs_active" : x.id === "mf_debt" ? "topic:debt_fund" : "topic:sip")}>
               {t("gyaan.learnMore")}
             </button>
           )}

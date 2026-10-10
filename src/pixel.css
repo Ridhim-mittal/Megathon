@@ -988,6 +988,125 @@
   background: #f6d6c8;
 }
 
+.gyaan-index-title {
+  font-family: var(--px-font);
+  font-size: 13px;
+  margin: 10px 6px 4px;
+  color: #8a6a3a;
+}
+.gyaan-page .myth {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-left: 4px solid #d98b5f;
+  background: #fff4ec;
+  border-radius: 4px;
+}
+.gyaan-page .myth p {
+  margin: 2px 0;
+}
+.gyaan-widget {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: #eef6e4;
+  border: 2px solid #b9d39a;
+  border-radius: 8px;
+}
+.gyaan-widget h4 {
+  font-family: var(--px-font);
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: #3d5a2f;
+}
+.w-slider {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.9fr) 1.4fr minmax(70px, auto);
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  margin: 4px 0;
+}
+.w-slider input {
+  width: 100%;
+  accent-color: var(--px-green);
+}
+.w-slider output {
+  font-weight: 800;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.w-bars {
+  display: grid;
+  gap: 4px;
+  margin: 10px 0 6px;
+}
+.w-bar {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.9fr) 1.4fr minmax(70px, auto);
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+}
+.w-bar i {
+  display: block;
+  height: 14px;
+  background: #c9b07a;
+  border: 2px solid var(--px-ink);
+  border-radius: 2px;
+  transition: width 0.25s;
+}
+.w-bar.good i {
+  background: #8fcf6a;
+}
+.w-bar.bad i {
+  background: #ec8f6b;
+}
+.w-bar b {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.w-result {
+  font-weight: 600;
+  margin-top: 4px;
+}
+.w-sort {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 4px;
+}
+.w-sort li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+.w-sort li span {
+  flex: 1;
+}
+.w-sort li .secondary-button.small {
+  margin-top: 0;
+}
+.w-sort li.right {
+  background: #dcecc7;
+}
+.w-sort li.wrong {
+  background: #f6d6c8;
+}
+.w-sort .secondary-button.on {
+  border-color: var(--px-ink);
+  font-weight: 800;
+}
+@media (max-width: 700px) {
+  .w-slider,
+  .w-bar {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
 @keyframes window-pop {
   from {
     opacity: 0;
