@@ -514,7 +514,7 @@
         "quality": "neutral",
         "default": true,
         "effects": { "shock": { "kind": "repair", "cost": 10000 } },
-        "outcome": { "en": "Savings first. Whatever is short is borrowed, at whatever rate is available." }
+        "outcome": { "en": "Savings pay first. Whatever is short of ₹10,000 is borrowed, at whatever rate is available." }
       },
       {
         "id": "bus_and_rebuild",
@@ -854,6 +854,137 @@
         "quality": "bad",
         "effects": { "cash": -20000, "meters": { "family": -8, "health": -5 } },
         "outcome": { "en": "They find you anyway. A lawyer costs ₹20,000, and the case takes a year." }
+      }
+    ]
+  },
+  {
+    "id": "village.young.rd_or_trip.b",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L13",
+    "ages": [19, 22],
+    "weight": 1,
+    "speaker": "banker",
+    "title": { "en": "The rainy-day RD" },
+    "text": { "en": "A colleague just lost his job and is borrowing from everyone. {cast:banker} suggests a ₹1,500 monthly [[rd]] as your [[emergency_fund]]. Friends want a trip instead." },
+    "clarity": [
+      {
+        "phrase": { "en": "a ₹1,500 monthly [[rd]]" },
+        "truth": { "en": "An RD locks a fixed amount each month. Breaking it early costs a small penalty, not your savings." },
+        "lesson": "L13"
+      }
+    ],
+    "choices": [
+      {
+        "id": "start_rd",
+        "label": { "en": "Start the RD and keep it only for emergencies" },
+        "quality": "good",
+        "default": true,
+        "effects": { "jar": { "emergency": 1500 }, "flags": { "add": ["has_emergency_fund"] }, "gyaan": 2 },
+        "outcome": { "en": "₹1,500 a month becomes about ₹18,500 in a year. When your turn comes, you won't need to borrow." },
+        "why": { "en": "An emergency fund turns a crisis into an inconvenience. Build it before you need it." }
+      },
+      {
+        "id": "trip",
+        "label": { "en": "Go on the trip, start saving later" },
+        "quality": "risky",
+        "effects": { "cash": -4000, "meters": { "joy": 7 } },
+        "echo": { "level": 2, "hint": { "en": "Your colleague had planned to start later too." } },
+        "outcome": { "en": "₹4,000 on a great weekend. Your emergency fund stays at ₹0." },
+        "why": { "en": "Emergencies don't wait for \"later\". The cushion has to come first." }
+      },
+      {
+        "id": "wallet",
+        "label": { "en": "Keep ₹1,500 a month aside in your wallet" },
+        "quality": "neutral",
+        "effects": { "meters": { "joy": 2 } },
+        "outcome": { "en": "By month three, the wallet money has paid for snacks, fuel and a gift. ₹600 remains." },
+        "why": { "en": "Money within reach gets spent. Keep the cushion separate, safe and slightly hard to touch." }
+      }
+    ]
+  },
+  {
+    "id": "village.young.laptop_loan.b",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L14",
+    "ages": [19, 24],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "A ₹30,000 laptop for work" },
+    "text": { "en": "You need a ₹30,000 laptop for a better job. A mall stall offers a \"lifetime free\" [[credit_card]]. The bank offers a personal loan at 14%." },
+    "clarity": [
+      {
+        "phrase": { "en": "\"lifetime free\"" },
+        "truth": { "en": "No yearly fee, but 42% a year on anything you don't pay in full." },
+        "lesson": "L14"
+      }
+    ],
+    "document": "doc.loan_agreement",
+    "choices": [
+      {
+        "id": "save_first",
+        "label": { "en": "Save for three months, borrow ₹10,000 from Amma's SHG" },
+        "quality": "good",
+        "default": true,
+        "effects": { "loan": { "source": "shg", "principal": 10000, "months": 6 }, "gyaan": 2 },
+        "outcome": { "en": "₹20,000 saved and ₹10,000 at 12% from the SHG. Interest: about ₹350 in total." },
+        "why": { "en": "Borrowing less, for less time, at a lower rate is the cheapest way to borrow." }
+      },
+      {
+        "id": "bank_loan",
+        "label": { "en": "Bank personal loan, 14% for 12 months" },
+        "quality": "neutral",
+        "effects": { "loan": { "source": "bank_personal", "principal": 30000, "months": 12, "rateYearly": 14 } },
+        "outcome": { "en": "EMI about ₹2,690. You repay ₹32,300. On-time payments build your [[credit_score]]." },
+        "why": { "en": "A bank loan is fair and clear. It still costs ₹2,300 for not waiting." }
+      },
+      {
+        "id": "card_minimum",
+        "label": { "en": "Credit card, pay the minimum each month" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "credit_card", "principal": 30000, "months": 24, "rateYearly": 42 } },
+        "echo": { "level": 2, "hint": { "en": "The laptop will be old before the bill is paid." } },
+        "outcome": { "en": "Spread over two years at 42%, the ₹30,000 laptop costs about ₹44,800." },
+        "why": { "en": "The same ₹30,000 can cost ₹350 or ₹14,800 in interest. Compare before you borrow." }
+      }
+    ]
+  },
+  {
+    "id": "village.young.salary_processing.b",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L15",
+    "ages": [18, 23],
+    "weight": 1,
+    "speaker": "headline",
+    "title": { "en": "A data-entry job, from home" },
+    "text": { "en": "A job message: \"Data entry, ₹20,000 a month! Send your net-banking login and a new SIM in your name for salary processing.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "for salary processing" },
+        "truth": { "en": "Employers only need your account number. Your login and SIM let them run stolen money through you." },
+        "lesson": "L15"
+      }
+    ],
+    "choices": [
+      {
+        "id": "send",
+        "label": { "en": "Send them. ₹20,000 is a lot" },
+        "quality": "bad",
+        "effects": { "flags": { "add": ["wrong_mule"] }, "schedule": [{ "inYears": 1, "card": "village.young.account_frozen.a" }] },
+        "echo": { "level": 3, "hint": { "en": "There is no job. There is only your account." } },
+        "outcome": { "en": "No salary ever comes. But ₹3.8 lakh of stolen money passes through your account in a week." },
+        "why": { "en": "Whoever controls your account makes you a [[money_mule]], even if you never touch the money." }
+      },
+      {
+        "id": "refuse",
+        "label": { "en": "Refuse, and report the message on 1930" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3 },
+        "outcome": { "en": "You lose ₹0. The number is blocked within a day, but 2 students in your batch had already sent theirs." },
+        "why": { "en": "Never share your login, SIM or ATM card. Your account is your identity." }
       }
     ]
   }

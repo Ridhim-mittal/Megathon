@@ -470,5 +470,43 @@
         "outcome": { "en": "The car is fast. Chinni's uniform has a safety pin for two months." }
       }
     ]
+  },
+  {
+    "id": "village.child.game_password.b",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L06",
+    "ages": [11, 14],
+    "weight": 1,
+    "speaker": "friend",
+    "title": { "en": "Chintu's level-up offer" },
+    "text": { "en": "{cast:friend}'s cousin has a deal. \"Give me your game password. I'll level you up for free, mama.\" Amma's card is saved in that game." },
+    "clarity": [
+      {
+        "phrase": { "en": "I'll level you up for free" },
+        "truth": { "en": "With your password, anyone can buy things on the saved card. Nobody levels you up for free." },
+        "lesson": "L06"
+      }
+    ],
+    "choices": [
+      {
+        "id": "share",
+        "label": { "en": "Share the password, just this once" },
+        "quality": "bad",
+        "effects": { "meters": { "family": -7, "joy": -3 } },
+        "echo": { "level": 2, "hint": { "en": "A password shared once is shared forever." } },
+        "outcome": { "en": "By night, ₹1,200 of top-ups are charged to Amma's card. Your account is gone too." },
+        "why": { "en": "A password is a key, like an OTP. Never share it, even with friends." }
+      },
+      {
+        "id": "refuse",
+        "label": { "en": "Say no, and ask Amma to remove her saved card" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 2, "meters": { "family": 2 } },
+        "outcome": { "en": "Amma removes the card. Next week the cousin's own account is hacked. You lost ₹0." },
+        "why": { "en": "Keep passwords secret and don't leave cards saved in games." }
+      }
+    ]
   }
 ]

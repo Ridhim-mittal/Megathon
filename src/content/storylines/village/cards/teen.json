@@ -603,5 +603,86 @@
         "outcome": { "en": "₹500 unlocks a \"₹2,000 level\". Then a frozen wallet. You paid ₹2,500 and got back ₹150." }
       }
     ]
+  },
+  {
+    "id": "village.teen.battle_pass.b",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L07",
+    "ages": [15, 17],
+    "weight": 1,
+    "speaker": "friend",
+    "title": { "en": "Only ₹99 a week" },
+    "text": { "en": "The whole cricket team has the pro game pass. {cast:friend}: \"Only ₹99 a week, mama! Cancel anytime.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Only ₹99 a week" },
+        "truth": { "en": "₹99 × 52 weeks = ₹5,148 a year. That's more than three months of your income." },
+        "lesson": "L07"
+      },
+      {
+        "phrase": { "en": "Cancel anytime." },
+        "truth": { "en": "Auto-renewal is the default. Most people forget to cancel." },
+        "lesson": "L07"
+      }
+    ],
+    "choices": [
+      {
+        "id": "subscribe",
+        "label": { "en": "Subscribe, everyone has it" },
+        "quality": "risky",
+        "effects": { "cash": -1287, "meters": { "joy": 5 } },
+        "echo": { "level": 1, "hint": { "en": "Small, weekly, automatic: the most expensive kind." } },
+        "outcome": { "en": "You forget to cancel. Three months later you've paid ₹1,287 for skins." },
+        "why": { "en": "Weekly prices hide yearly totals. Always multiply before you say yes." }
+      },
+      {
+        "id": "free_version",
+        "label": { "en": "Stay on the free version" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 2, "meters": { "joy": -1 } },
+        "outcome": { "en": "Your character wears plain clothes. You keep ₹5,148 a year. You still win matches." },
+        "why": { "en": "Peer pressure sells the price per week. Your plan should look at the price per year." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.fake_screenshot.b",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L09",
+    "ages": [15, 18],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "Payment successful?" },
+    "text": { "en": "You're selling Amma's vegetables at the market. A buyer takes ₹2,400 worth and shows his phone. \"See, payment done!\" Your phone shows nothing." },
+    "clarity": [
+      {
+        "phrase": { "en": "\"See, payment done!\"" },
+        "truth": { "en": "A screenshot or someone else's screen proves nothing. Check your own bank SMS or app." },
+        "lesson": "L09"
+      }
+    ],
+    "choices": [
+      {
+        "id": "trust_screen",
+        "label": { "en": "Trust his screen, let him go" },
+        "quality": "bad",
+        "effects": { "cash": -2400, "meters": { "family": -4 } },
+        "echo": { "level": 1, "hint": { "en": "Your phone never buzzed." } },
+        "outcome": { "en": "The money never arrives. ₹2,400 of vegetables and a morning's work, gone." },
+        "why": { "en": "Fake payment screens are easy to make. Only your own account tells the truth." }
+      },
+      {
+        "id": "check_own",
+        "label": { "en": "\"Wait until my phone shows it\"" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 2, "meters": { "family": 2 } },
+        "outcome": { "en": "He suddenly \"has a network problem\" and leaves. ₹2,400 of vegetables saved for honest buyers." },
+        "why": { "en": "Money is received only when your bank says so. Wait for your own SMS." }
+      }
+    ]
   }
 ]
