@@ -1,0 +1,86 @@
+{
+  "pre": [
+    {
+      "id": "pre1",
+      "lesson": "L03",
+      "q": { "en": "A chocolate costs ₹10 today. Prices rise 6% a year. In 10 years it will cost about…" },
+      "options": [{ "en": "₹10" }, { "en": "₹12" }, { "en": "₹18" }, { "en": "₹60" }],
+      "answer": 2,
+      "explain": { "en": "6% a year, compounded for 10 years, makes ₹10 into about ₹18." }
+    },
+    {
+      "id": "pre2",
+      "lesson": "L07",
+      "q": { "en": "A ₹7,500 phone is \"only ₹699 a month for 12 months\" plus a ₹1,200 fee. What do you pay in total?" },
+      "options": [{ "en": "₹7,500" }, { "en": "₹8,388" }, { "en": "₹9,588" }, { "en": "₹699" }],
+      "answer": 2,
+      "explain": { "en": "₹699 × 12 = ₹8,388, plus the ₹1,200 fee = ₹9,588." }
+    },
+    {
+      "id": "pre3",
+      "lesson": "L09",
+      "q": { "en": "Someone wants to pay you ₹1,500 on UPI. What do you need to enter?" },
+      "options": [{ "en": "Your UPI PIN" }, { "en": "The OTP you receive" }, { "en": "Nothing. Just share your UPI ID" }, { "en": "Your ATM PIN" }],
+      "answer": 2,
+      "explain": { "en": "You never enter a PIN to receive money. A PIN only sends money out." }
+    },
+    {
+      "id": "pre4",
+      "lesson": "L14",
+      "q": { "en": "A lender charges \"₹2 per ₹100 per month\". What is that per year?" },
+      "options": [{ "en": "2%" }, { "en": "12%" }, { "en": "24%" }, { "en": "200%" }],
+      "answer": 2,
+      "explain": { "en": "₹2 every month for 12 months is ₹24 per ₹100: 24% a year." }
+    },
+    {
+      "id": "pre5",
+      "lesson": "L22",
+      "q": { "en": "A scheme promises to double your money in one year, guaranteed. It is most likely…" },
+      "options": [{ "en": "A great investment" }, { "en": "A scam" }, { "en": "A bank FD" }, { "en": "A government scheme" }],
+      "answer": 1,
+      "explain": { "en": "Doubling in a year is 100% returns. Nobody honest can guarantee that." }
+    }
+  ],
+  "post": [
+    {
+      "id": "post1",
+      "lesson": "L03",
+      "q": { "en": "You keep ₹1,000 in a tin box for 5 years while prices rise 6% a year. What happens?" },
+      "options": [{ "en": "It buys more" }, { "en": "It buys the same" }, { "en": "It buys less" }, { "en": "It doubles" }],
+      "answer": 2,
+      "explain": { "en": "The notes stay ₹1,000, but prices rise about 34% in 5 years. It buys less." }
+    },
+    {
+      "id": "post2",
+      "lesson": "L07",
+      "q": { "en": "\"Only ₹999 a month for 15 months\" for a ₹12,000 phone. How much extra do you pay?" },
+      "options": [{ "en": "₹0" }, { "en": "₹999" }, { "en": "₹2,985" }, { "en": "₹14,985" }],
+      "answer": 2,
+      "explain": { "en": "₹999 × 15 = ₹14,985. That's ₹2,985 more than the phone's price." }
+    },
+    {
+      "id": "post3",
+      "lesson": "L09",
+      "q": { "en": "A \"buyer\" sends a QR code and says, \"Scan and enter PIN to receive your money.\" What happens if you do?" },
+      "options": [{ "en": "You receive the money" }, { "en": "Money leaves your account" }, { "en": "Nothing" }, { "en": "Your account is verified" }],
+      "answer": 1,
+      "explain": { "en": "Scanning a QR and entering a PIN always pays out. It's a scam." }
+    },
+    {
+      "id": "post4",
+      "lesson": "L14",
+      "q": { "en": "You need ₹20,000. Which is usually the cheapest?" },
+      "options": [{ "en": "Moneylender at ₹2 per ₹100 a month" }, { "en": "Instant loan app" }, { "en": "Savings-group (SHG) loan at 12% a year" }, { "en": "Credit card minimum due" }],
+      "answer": 2,
+      "explain": { "en": "The moneylender is 24% a year on the full amount; apps and cards cost even more. The SHG is 12%." }
+    },
+    {
+      "id": "post5",
+      "lesson": "L17",
+      "q": { "en": "Which matters most for long-term savings growth?" },
+      "options": [{ "en": "Starting early" }, { "en": "A lucky tip" }, { "en": "Buying one hot share" }, { "en": "Waiting until you earn more" }],
+      "answer": 0,
+      "explain": { "en": "Time lets compounding work. Starting small and early beats starting big and late." }
+    }
+  ]
+}
