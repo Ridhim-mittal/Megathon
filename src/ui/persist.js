@@ -66,3 +66,10 @@ export function seenOnce(key) {
   write("lakshyam.once", { ...seen, [key]: true });
   return true;
 }
+
+// Scam ads in the arcade: how often they were clicked, reported, fallen for or walked away from.
+export const loadAdStats = () => read("lakshyam.ads", {});
+export function bumpAdStat(key) {
+  const stats = loadAdStats();
+  write("lakshyam.ads", { ...stats, [key]: (stats[key] ?? 0) + 1 });
+}
