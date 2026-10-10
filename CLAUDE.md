@@ -19,6 +19,7 @@ same time. These rules exist to keep us out of merge-conflict hell. Follow them 
   Use merge, not rebase — rebasing a pushed branch needs a force-push, which is blocked.
 
 ## Before you start any task
+0. Read `docs/GAME_SPEC.md` (the shared contract) if you haven't this session.
 1. `git fetch origin main` and branch from it: `git checkout -b <name>/<task> origin/main`
    (or, if your branch already exists, `git merge origin/main` into it).
 2. Check `git log --oneline -15 origin/main` to see what teammates just merged.
@@ -48,13 +49,34 @@ same time. These rules exist to keep us out of merge-conflict hell. Follow them 
 ## Commit messages
 `<area>: <what changed>` — e.g. `frontend: add login form`, `backend: fix /api/score 500`.
 
-## Ownership (edit to match the team)
-| Area        | Folder        | Owner |
-|-------------|---------------|-------|
-| Frontend    | `frontend/`   | TODO  |
-| Backend/API | `backend/`    | TODO  |
-| ML / data   | `ml/`         | TODO  |
-| Infra, docs, integration | root, `docs/` | TODO |
+## Ownership
+Three Claude sessions build the game in parallel; `docs/GAME_SPEC.md` is the contract between them.
+Read it fully before any task. Stay inside your area.
+
+| Area | Owner | Files |
+|------|-------|-------|
+| Engine & systems | Claude A (Person 1) | `src/engine/**`, `scripts/**`, `src/game.js`, `src/game.test.js`, `api/**`, `vite.config.js`, `scripts` in `package.json`, section 7 of `docs/GAME_SPEC.md` |
+| Story & content | Claude B (Person 2) | `src/content/**` |
+| Screens, art, motion, sound | Claude C (Person 3) | `src/main.jsx`, `src/World.jsx`, `src/screens/**`, `src/ui/**`, `src/i18n/**`, `src/*.css`, `public/**`, `tests/**`, `index.html`, dependencies in `package.json` |
+| Spec, research, pitch | Person 4 | `docs/**`, `README.md` |
+
+- Only Claude C adds npm dependencies.
+- Need something from another area? Don't edit their files. Write it in your own
+  `docs/requests/from-<engine|content|ui>.md` and tell your human.
 
 ## Project overview
-Lakshyam is a 2D financial-literacy browser game for Class 11–12 students. React + Vite render an illustrated budgeting scene; pure functions in `src/game.js` calculate a fixed bicycle repair and a fair parallel-life comparison. `src/main.jsx` owns the chapter UI; `src/World.jsx` owns the title screen and interactive village; `src/game-scene.css` styles the laptop game scene. Shared jar and story visuals live in `src/styles.css`. Browser checks run with `npm run test:e2e` after installing Playwright Chromium. There is no backend or API key requirement. See README.md for scope and teaching assumptions.
+Lakshyam is a story-driven financial-literacy life simulation for Class 11–12 students from
+underserved communities. The player picks a storyline (an underprivileged persona) and a dream, then
+lives from age 11 to 36, one year per turn, learning the full curriculum in `docs/GAME_SPEC.md`
+section 4. React 19 + Vite, plain JavaScript.
+
+- `src/engine/`: pure, seeded game engine (no React); `src/engine/README.md` lists its API.
+- `src/content/`: storylines, cards, lessons, glossary, documents, endings, in English, Hindi and Telugu.
+- `src/screens/`, `src/ui/`, `src/i18n/`: React screens, components and UI strings.
+- `src/World.jsx`: the illustrated village scene. Its cozy style is the game's visual identity.
+- `api/ask.js`: optional AI mentor endpoint; the game works fully offline without it.
+
+Checks: `npm test` (engine and rules), `npm run validate:content` (content against the spec, once it
+exists), `npm run build`, and `npm run test:e2e` (Playwright; install Chromium first).
+Never put API keys in client code. Real values go in `.env` (git-ignored). See README.md for running
+the game.
