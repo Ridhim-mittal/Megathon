@@ -21,7 +21,12 @@ function write(key, value) {
   }
 }
 
-export const loadSettings = () => ({ lang: "en", sound: false, ...read(KEYS.settings, {}) });
+// Sound (music and effects) is on by default. Settings saved before the music existed (no
+// version) had sound off by default, so they start with it on once.
+export function loadSettings() {
+  const saved = read(KEYS.settings, {});
+  return { lang: "en", ...saved, sound: saved.v >= 2 ? saved.sound !== false : true, v: 2 };
+}
 export const saveSettings = (settings) => write(KEYS.settings, settings);
 
 export const loadLife = () => read(KEYS.life, null);

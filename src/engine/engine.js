@@ -550,6 +550,31 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
 
   const hasPhone = (s) => s.flags.includes(A.chapters.phoneFlag) || s.flags.includes("has_smartphone");
 
+  // The phone's inbox: game updates and SMSes, language-neutral (the UI writes the words).
+  function pushMessage(s, msg) {
+    s.inboxSeq = (s.inboxSeq ?? 0) + 1;
+    s.inbox = [...(s.inbox ?? []), { id: s.inboxSeq, age: s.age, ...msg }].slice(-A.chapters.inboxSize);
+  }
+
+  // A delayed scam lands: the money goes now, and the phone says what happened.
+  function settleScams(s, all = false) {
+    if (!s.pendingScams?.length) return;
+    const keep = [];
+    for (const p of s.pendingScams) {
+      if (!all && p.eventsLeft > 0) {
+        keep.push(p);
+        continue;
+      }
+      const out = [];
+      applyEffects(A, s, { cash: p.cash, meters: p.meters }, out, { origin: { age: p.age, cardId: p.cardId, choiceId: p.choiceId }, step: A.budget.step[s.stage] });
+      const paid = out.find((m) => m.type === "cash");
+      pushMessage(s, { kind: "debit", cardId: p.cardId, amount: -p.cash, paidFrom: paid?.paidFrom ?? [], borrowed: paid?.borrowed ?? null });
+      pushMessage(s, { kind: "scamReveal", cardId: p.cardId, choiceId: p.choiceId, amount: -p.cash, fromAge: p.age });
+      addEvent(s, { type: "scamRevealed", cardId: p.cardId, amount: -p.cash });
+    }
+    s.pendingScams = keep;
+  }
+
   function startChapter(s) {
     const ch = CHAPTERS.find((c) => c.id === s.stage);
     s.chapter = {
@@ -572,6 +597,8 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       addEvent(s, { type: "phoneGift" });
     }
     buildChapterSlots(s);
+    pushMessage(s, { kind: "chapter", chapterId: ch.id, required: s.chapter.slots.filter((x) => x.required).length });
+    if (s.chapter.phoneGift) pushMessage(s, { kind: "phoneGift" });
     s.current = null;
     s.phase = "budget";
   }
@@ -691,6 +718,8 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     const slot = s.chapter.slots.find((x) => x.key === s.current?.slotKey);
     if (slot) slot.done = true;
     if (slot?.type === "minigame" && !s.minigames[slot.id]) s.minigames[slot.id] = { age: s.age, score: 0, skipped: true };
+    for (const p of s.pendingScams ?? []) if (p.slotKey !== slot?.key) p.eventsLeft -= 1;
+    settleScams(s);
     s.current = null;
     s.phase = "map";
     advanceClock(s);
@@ -700,6 +729,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
   function recordYear(s) {
     const y = s.year.summary;
     s.chapter.years.push({ age: y.age, headline: y.headline, netWorthChange: y.netWorthChange, habitEcho: y.habitEcho, inflation: y.inflation });
+    pushMessage(s, { kind: "year", yearAge: y.age, headline: y.headline, netWorthChange: y.netWorthChange });
   }
 
   // One year passes inside a chapter: settle it, then start the next with the same jar split.
@@ -988,7 +1018,15 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       const storyAge = s.current.age ?? s.age;
       const origin = { age: storyAge, cardId: card.id, choiceId };
       const out = [];
-      applyEffects(A, s, choice.effects, out, { origin, step: A.budget.step[s.stage] });
+      // Chapter mode: some scams take the money later, not now (see settleScams).
+      let effects = choice.effects;
+      let delayed = null;
+      if (s.mode === "chapters" && A.chapters.delayedScams?.[card.id]?.includes(choiceId) && Number(effects?.cash) < 0) {
+        const { cash, meters, ...now } = effects;
+        effects = now;
+        delayed = { cash, meters: meters ?? null };
+      }
+      applyEffects(A, s, effects, out, { origin, step: A.budget.step[s.stage] });
 
       // Documents: going ahead (buying or borrowing) on an uncaught problem schedules trouble.
       let doc = null;
@@ -1056,7 +1094,13 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
           debtChange: totalDebt(s) - before.debt,
         },
         gyaanChange: s.meters.gyaan - before.gyaan,
+        delayed: Boolean(delayed),
       };
+      if (delayed) {
+        s.pendingScams = s.pendingScams ?? [];
+        s.pendingScams.push({ cardId: card.id, choiceId, age: storyAge, slotKey: s.current.slotKey ?? null, eventsLeft: A.chapters.scamDelayEvents, ...delayed });
+        pushMessage(s, { kind: "scamHook", cardId: card.id, choiceId });
+      }
       s.current.chosen = choiceId;
       s.phase = "outcome";
       if (s.mode === "chapters") absorbScheduled(s);
@@ -1182,6 +1226,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       if (s.mode !== "chapters" || s.phase !== "map") return "You can only finish a chapter from the map.";
       const left = s.chapter.slots.filter((x) => x.required && !x.done).length;
       if (left) return `${left} event${left === 1 ? "" : "s"} still waiting in this chapter.`;
+      settleScams(s, true);
       while (s.age < s.chapter.to) passYear(s);
       endYear(s);
       recordYear(s);
@@ -1277,6 +1322,9 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       chapter: null,
       chapterLog: [],
       lastTrade: null,
+      inbox: [],
+      inboxSeq: 0,
+      pendingScams: [],
       seed: seedNum,
       rng: hashSeed(seedNum, "plan"),
       storylineId,

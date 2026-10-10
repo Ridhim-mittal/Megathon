@@ -862,9 +862,19 @@
   }
 }
 
+/* Leave room for the notification tray on the right. */
+@media (max-width: 1240px) {
+  .objective {
+    left: calc(50% - 165px);
+    width: min(540px, calc(100% - 360px));
+  }
+}
+
 @media (max-width: 760px) {
   .objective {
     top: 118px;
+    left: 50%;
+    width: calc(100% - 24px);
   }
   .stop-card h2 {
     font-size: 34px;

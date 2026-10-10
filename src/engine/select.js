@@ -470,10 +470,21 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget, stor
     };
   }
 
+  // The phone's inbox, newest first. Card messages carry the card's title and lesson; a scam
+  // reveal also carries what the choice really cost (the choice's outcome text).
+  function inbox(s) {
+    return [...(s.inbox ?? [])].reverse().map((m) => {
+      const card = m.cardId ? cardById(s, m.cardId) : null;
+      const choice = card?.choices?.find((c) => c.id === m.choiceId);
+      return { ...m, title: card?.title ?? null, lesson: card?.lesson ?? null, outcome: m.kind === "scamReveal" ? choice?.outcome ?? null : null };
+    });
+  }
+
   function phone(s) {
     const ch = s.chapter;
     return {
       unlocked: hasPhone(s),
+      messages: inbox(s),
       notifications:
         s.mode === "story"
           ? s.phase === "map" && storyNode(s.story.node)?.location === "phone"
@@ -522,6 +533,7 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget, stor
     locations,
     market,
     phone,
+    inbox,
     error: (s) => s.error,
   };
 }

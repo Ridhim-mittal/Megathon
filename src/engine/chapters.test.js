@@ -122,3 +122,52 @@ test("chapter mode: the same seed and actions give the same life", () => {
   assert.deepEqual(a.ending, b.ending);
   assert.equal(netWorth(a), netWorth(b));
 });
+
+test("chapter mode: a delayed scam takes the money a few events later and says so on the phone", async () => {
+  const { ASSUMPTIONS } = await import("./assumptions.js");
+  const A = { ...ASSUMPTIONS, chapters: { ...ASSUMPTIONS.chapters, delayedScams: { "village.teen.lottery_sms.a": ["pay"] } } };
+  const D = createEngine(fixtureContent, { assumptions: A });
+  let found = false;
+  for (let seed = 0; seed < 40 && !found; seed++) {
+    let s = D.createLife({ storylineId: "village", goalId: "house", seed: 7000 + seed, mode: "chapters" });
+    const r = makeRandom({ rng: seed + 1 });
+    let hooked = null;
+    for (let n = 0; s.phase !== "ending" && n < 2000; n++) {
+      if (s.phase === "map") {
+        const locs = D.select.locations(s);
+        const pending = locs.filter((l) => l.pending);
+        s = !locs.some((l) => l.required) && (!pending.length || r() < 0.5) ? D.step(s, { type: "END_CHAPTER" }) : D.step(s, { type: "VISIT", location: r.pick(pending).id });
+      } else if (s.phase === "card") {
+        const card = D.select.currentCard(s);
+        const before = netWorth(s);
+        if (card.id === "village.teen.lottery_sms.a") {
+          s = D.step(s, { type: "CHOOSE", choiceId: "pay" });
+          assert.equal(s.lastOutcome.delayed, true);
+          assert.equal(netWorth(s), before, "no money moves when you fall for it");
+          assert.equal(s.pendingScams.length, 1);
+          assert.equal(D.select.inbox(s)[0].kind, "scamHook");
+          hooked = s.inboxSeq;
+        } else s = D.step(s, { type: "CHOOSE", choiceId: card.choices[0].id });
+      } else s = D.step(s, { type: "ADVANCE" });
+      assert.ok(!s.error, s.error?.message);
+      assert.equal(netWorth(s), sumFlows(s.flows), "conservation");
+      if (hooked && !s.pendingScams.length) {
+        const later = D.select.inbox(s).filter((m) => m.id > hooked);
+        const reveal = later.find((m) => m.kind === "scamReveal");
+        assert.ok(reveal, "the scam is revealed on the phone");
+        assert.equal(reveal.amount, 2000);
+        assert.ok(later.some((m) => m.kind === "debit" && m.amount === 2000));
+        found = true;
+        break;
+      }
+    }
+  }
+  assert.ok(found, "no seed met the scam card");
+});
+
+test("chapter mode: the inbox gets chapter and year updates", () => {
+  const s = playChapters({ storylineId: "village", goalId: "house", seed: "inbox" }, 4, { trade: false });
+  const kinds = new Set(E.select.inbox(s).map((m) => m.kind));
+  assert.ok(kinds.has("chapter") && kinds.has("year"));
+  assert.ok(s.inbox.length <= E.ASSUMPTIONS.chapters.inboxSize);
+});

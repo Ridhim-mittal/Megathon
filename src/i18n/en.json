@@ -279,6 +279,10 @@
       "risky": "Hmm, risky…",
       "bad": "Ouch!",
       "neutral": "Fair enough"
+    },
+    "delayed": {
+      "title": "Done! It seems to have worked.",
+      "note": "Nothing has changed… for now. Keep an eye on your phone's messages."
     }
   },
   "shock": {
@@ -530,7 +534,8 @@
       "messages": "Messages",
       "bank": "Bank",
       "invest": "Invest",
-      "gyaan": "Gyaan"
+      "gyaan": "Gyaan",
+      "exchange": "Exchange"
     },
     "noMessages": "No new messages.",
     "buy": "Buy",
@@ -681,6 +686,168 @@
         "shop": "You check the name before paying the kirana"
       }
     }
+  },
+  "inbox": {
+    "title": "Notifications",
+    "open": "Open",
+    "dismiss": "Dismiss",
+    "phoneEvent": "New on your phone",
+    "from": {
+      "game": "Lakshyam",
+      "amma": "Amma",
+      "alert": "Safety alert"
+    },
+    "chapter": "{name} begins! {n} events are waiting on the map. Places with a yellow ! must be visited.",
+    "year": "Age {age} is over.",
+    "hookFrom": {
+      "default": "Unknown number",
+      "kyc_sms": "VK-KYCUPD",
+      "vip_tips": "VIP Stock Club 🚀",
+      "lottery_sms": "LOTTERY-WIN"
+    },
+    "hook": {
+      "default": "Payment received. Your request is being processed.",
+      "kyc_sms": "Dear customer, your KYC is updated successfully. Thank you for banking with us.",
+      "vip_tips": "Welcome to VIP! Spark Mobile target ₹180 🚀🚀 HOLD tight, don't sell!",
+      "lottery_sms": "Tax received. Your ₹25 lakh prize will reach your account in 3 days."
+    },
+    "debitFrom": {
+      "default": "BANK-ALERT",
+      "vip_tips": "Market alert"
+    },
+    "debit": {
+      "default": "{amount} debited from your account. Not you? Call 1930 now.",
+      "kyc_sms": "{amount} debited from A/c XX4417 in two UPI transfers. Not you? Call 1930 now.",
+      "vip_tips": "Spark Mobile crashed 50% after the VIP group sold. Your loss: {amount}. The group has been deleted."
+    },
+    "reveal": "It was a scam: {title}",
+    "revealLost": "Lost: {amount}",
+    "help": "Fell for a scam? Call 1930 (cyber-crime helpline) at once and tell your bank. A fast call can freeze the money."
+  },
+  "exchange": {
+    "eyebrow": "Practice exchange",
+    "ltp": "Last traded price",
+    "volume": "Volume {n} shares",
+    "pause": "Pause the market",
+    "play": "Run the market",
+    "fast": "Fast",
+    "close": "Close",
+    "newsGood": "Buyers rush in.",
+    "newsBad": "Sellers rush out.",
+    "news": {
+      "good1": "Chai Express opens 50 new stalls!",
+      "good2": "Chai Express profit up 30% this year.",
+      "good3": "A big chain wants to buy Chai Express.",
+      "bad1": "Milk prices jump; Chai Express profits fall.",
+      "bad2": "Chai Express boss quits suddenly.",
+      "bad3": "Food inspectors shut 10 Chai Express stalls."
+    },
+    "book": "Order book",
+    "price": "Price",
+    "qty": "Shares",
+    "orders": "Orders",
+    "asks": "Sellers waiting (asks): cheapest at the bottom",
+    "bids": "Buyers waiting (bids): highest at the top",
+    "spread": "Spread {spread} · Last trade {last}",
+    "pickPrice": "Use this price",
+    "you": "You",
+    "side": "Buy or sell",
+    "type": "Order type",
+    "buy": "Buy",
+    "sell": "Sell",
+    "market": "Market",
+    "limit": "Limit",
+    "typeHint": {
+      "market": {
+        "buy": "Buys right now from the cheapest sellers. Fast, but you take whatever price is there.",
+        "sell": "Sells right now to the highest buyers. Fast, but you take whatever price is there."
+      },
+      "limit": {
+        "buy": "Buys only at your price or lower. If no seller is there, your order waits in the book.",
+        "sell": "Sells only at your price or higher. If no buyer is there, your order waits in the book."
+      }
+    },
+    "limitPrice": "Your price (₹)",
+    "send": {
+      "buy": "Place buy order ({qty})",
+      "sell": "Place sell order ({qty})"
+    },
+    "fee": "Brokerage {fee} for each order that trades.",
+    "err": {
+      "qty": "Enter a whole number of shares.",
+      "price": "Enter your price.",
+      "noShares": "You don't have that many shares to sell. Shares in your waiting sell orders are already promised.",
+      "noCash": "Not enough practice cash for this order plus {fee} brokerage.",
+      "selfTrade": "Your own order is on the other side. An exchange won't let you trade with yourself: cancel it first.",
+      "empty": "No one is on the other side right now. Try a limit order.",
+      "priceBand": "Exchanges only accept prices near the last trade (now {lo} to {hi}). This price band stops costly typing mistakes."
+    },
+    "cash": "Practice cash",
+    "shares": "Shares",
+    "pnl": "Profit / loss",
+    "reserved": "Promised to your waiting orders: {cash} and {shares} shares.",
+    "myOrders": "Your waiting orders",
+    "ahead": "{n} shares ahead of you at this price",
+    "cancel": "Cancel",
+    "whatHappened": "What just happened:",
+    "explain": {
+      "read": "The best bid ({bid}) is the most anyone will pay right now. The best ask ({ask}) is the least anyone will sell for. The gap, {spread}, is the spread. A trade happens only when a buyer and a seller agree on a price. Tapping a price puts it in your order.",
+      "bought": "You bought {qty} shares from {n} waiting sell order(s), at an average of {avg} (the best ask was {best}). Brokerage {fee}.",
+      "sold": "You sold {qty} shares to {n} waiting buy order(s), at an average of {avg} (the best bid was {best}). Brokerage {fee}.",
+      "slippage": "Your order was bigger than the shares at the best price, so it ate through {levels} price levels. Average {avg} against the best {best}: that extra {cost} is called slippage.",
+      "profit": "You sold above your average buying price: about {gain} profit after brokerage.",
+      "restedBuy": "No seller was at {price} or lower, so {qty} shares wait in the book as a bid. {ahead} shares are ahead of you at this price: older orders at the same price fill first (time priority).",
+      "restedSell": "No buyer was at {price} or higher, so {qty} shares wait in the book as an ask. {ahead} shares are ahead of you at this price: older orders at the same price fill first (time priority).",
+      "cancelled": "{qty} shares could not be filled (not enough cash, or no one left on the other side), so that part of the market order was cancelled.",
+      "passiveBuy": "{name} sold {qty} at {price} and hit your waiting buy order. You didn't chase the price: the seller came to you.",
+      "passiveSell": "{name} bought {qty} at {price} from your waiting sell order. The buyer came to you.",
+      "cancel": "Order cancelled. Its money or shares are free again."
+    },
+    "tape": "Trades, newest first",
+    "noTrades": "No trades yet.",
+    "tapeBuy": "{buyer} bought from {seller}",
+    "tapeSell": "{seller} sold to {buyer}",
+    "missionsTitle": "Learn the market",
+    "missionsCount": "{n}/{total}",
+    "missions": {
+      "read": {
+        "title": "Read the order book",
+        "how": "Tap any price in the book. Red rows are sellers, green rows are buyers.",
+        "learned": "Nobody sets the price: it is wherever buyers and sellers meet. The gap between them is the spread."
+      },
+      "market": {
+        "title": "Buy with a market order",
+        "how": "Choose Buy → Market, 5 shares, and send it.",
+        "learned": "A market order fills at once at the best price waiting on the other side: speed over price."
+      },
+      "limit": {
+        "title": "Place a limit order",
+        "how": "Choose Limit and set a buy price below the best ask. Your order joins the queue in the book.",
+        "learned": "A limit order controls the price but not the timing. Orders at the same price wait in line: first come, first served."
+      },
+      "limitFill": {
+        "title": "Get your limit order filled",
+        "how": "Wait for a seller to reach your price, or set it just one rupee below the best ask.",
+        "learned": "When someone else's order hits yours, you trade at your price. Patient orders supply the shares that hurried traders take."
+      },
+      "slippage": {
+        "title": "See slippage",
+        "how": "Send a market buy bigger than the shares at the best ask. Watch it climb the book.",
+        "learned": "Big orders eat through several price levels. In a thin market, slippage can cost more than brokerage."
+      },
+      "profit": {
+        "title": "Sell for a profit",
+        "how": "Sell shares for more than your average price. A limit sell above it works.",
+        "learned": "Profit is the sell price minus the buy price minus fees. Every trade pays brokerage, so trading too often costs money."
+      },
+      "news": {
+        "title": "Watch news move the price",
+        "how": "Keep the market running. News arrives every minute or so.",
+        "learned": "News changes how many people want to buy or sell. The order book shows it first: one side empties, and the price moves."
+      }
+    },
+    "allDone": "You know how an exchange works: bids, asks, the spread, market and limit orders, the queue, slippage and news. Real investing is owning good businesses for years, not quick trades.",
+    "practice": "Practice money only: nothing here touches your real savings. Real exchanges work the same way, with millions of orders a second."
   },
   "story": {
     "walkTo": "Go to {place}",

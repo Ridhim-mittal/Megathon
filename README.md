@@ -31,9 +31,9 @@ Deploy as a static Vite site: build command `npm run build`, output directory `d
 5. **STOP warnings:** before a very bad choice (sharing an OTP, a loan app, becoming a money mule, a Ponzi scheme) the screen flashes STOP with Ammamma's warning. You can think again, or go ahead and live with it. Choices locked by earlier decisions show a 🔒 and why; a red banner warns when debt gets dangerous.
 6. **Evidence:** seeing through scams (recording the call, checking SEBI registration, photographing a fake certificate) adds to your evidence file. In the last chapter it decides whether Lucky Prakash is caught.
 7. **Flowcharts:** each chapter ends with its outcome and a Detroit-style flowchart: your path lit, branches from earlier lives shown, the rest locked. Open the current chapter's flowchart from the objective panel any time.
-8. **The phone** arrives in college (press **P**): messages (some scenes arrive here), the bank and the invest app (index, debt and active mutual funds and four shares, from age 18). At 36: your **story ending**, the money ending, your **Gyaan report**, **Parallel Life** and the **ending gallery**.
+8. **The phone** arrives in college (press **P**): messages (some scenes arrive here), the bank and the invest app (index, debt and active mutual funds and four shares, from age 18). The **Exchange** app is a practice stock market: a live order book with simulated traders, market and limit orders, and seven missions that teach the spread, queues, slippage and how news moves prices (practice money only). Updates also pop up on the map without opening the phone. At 36: your **story ending**, the money ending, your **Gyaan report**, **Parallel Life** and the **ending gallery**.
 
-The top bar switches language and sound (off by default) at any time. Progress is saved in this browser's `localStorage` only; `?seed=demo` gives a fixed, rehearsed life. All numbers are illustrative teaching assumptions, not advice.
+The top bar switches language and sound at any time. Sound is on by default: the background music ("Sunlight on the Well", `public/audio/`) starts with the first tap or key press. Progress is saved in this browser's `localStorage` only; `?seed=demo` gives a fixed, rehearsed life. All numbers are illustrative teaching assumptions, not advice.
 
 ## Files
 
@@ -43,6 +43,8 @@ The top bar switches language and sound (off by default) at any time. Progress i
 - `src/screens/`: one file per screen (`App.jsx` routes them). `StoryScreen.jsx` is the game (story mode) and `src/screens/story/` its objective panel, STOP warning, timers, chapter title cards, flowcharts and story ending; `MapScreen.jsx` is the older free-roam chapter mode; `src/screens/map/` holds its HUD, quest log and chapter cards, and `src/screens/life/` the card, outcome, budget, shop and mini-game views.
 - `src/ui/map/`: the pixel village: `village.js` (tile map, places, paths), `art.js` (code-drawn pixel art and characters), `MapCanvas.jsx` (movement, camera, clicks).
 - `src/ui/PhoneLite.jsx`, `src/ui/GyaanLite.jsx`: the in-game phone and the lesson reader.
+- `src/ui/exchange/`: the phone's practice stock exchange: `orderbook.js` (matching engine and simulated traders, tested in `orderbook.test.js`) and `StockExchange.jsx`.
+- `src/ui/Notifications.jsx`: phone notifications over the map.
 - `src/ui/`: shared components (HUD, jars, portraits, document viewer, Ask Ammamma, rich text).
 - `src/i18n/`: UI strings in `en.json`, `hi.json`, `te.json` and the `useT()` hook.
 - `src/World.jsx`: the earlier SVG village (no longer routed).

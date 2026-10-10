@@ -7,6 +7,8 @@ import { GyaanLite } from "../ui/GyaanLite.jsx";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
 import { START, placeById } from "../ui/map/village.js";
 import { PhoneLite as Phone } from "../ui/PhoneLite.jsx";
+import { NotificationTray } from "../ui/Notifications.jsx";
+import { StockExchange } from "../ui/exchange/StockExchange.jsx";
 import { loadDiscovered, recordDiscovered } from "../ui/persist.js";
 import { sounds } from "../ui/sound.js";
 import { BudgetView } from "./life/BudgetView.jsx";
@@ -185,6 +187,9 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         onNext={() => dispatch({ type: "ADVANCE" })}
       />
     );
+  } else if (overlay?.type === "exchange") {
+    windowType = "exchange";
+    dialog = <StockExchange onClose={() => setOverlay({ type: "phone" })} onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })} />;
   } else if (overlay?.type === "shop") {
     windowType = "shop";
     dialog = <ShopView life={life} dispatch={dispatch} onDone={() => setOverlay(null)} />;
@@ -275,6 +280,15 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         </p>
       )}
       {phase === "map" && !overlay && <p className="map-controls">{t("map.controls")}</p>}
+      <NotificationTray
+        messages={phone.messages}
+        phoneEvents={phone.unlocked ? phone.notifications : []}
+        canFinish={false}
+        active={phase === "map" && !overlay && !showIntro}
+        onOpenPhoneEvent={() => dispatch({ type: "VISIT", location: "phone" })}
+        onGoHome={() => {}}
+        onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })}
+      />
       {showIntro && <MissionIntro story={story} avatar={avatar} stage={hud.stage} previous={previous} onBegin={() => setIntroDone(story.mission.id)} />}
       {dialog && (
         <div className="dialog-layer">
@@ -309,6 +323,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
             dispatch({ type: "VISIT", location: "phone" });
           }}
           onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })}
+          onExchange={() => setOverlay({ type: "exchange" })}
         />
       )}
       {overlay?.type === "gyaan" && <GyaanLite life={life} lessonId={overlay.lesson} onClose={() => setOverlay(null)} />}
