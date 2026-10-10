@@ -50,6 +50,7 @@ The starting budget is editable, not a recommended allocation. All amounts are f
 - `src/game-scene.css`: full-window village, HUD, scene animation, and in-game panels.
 - `src/styles.css`: shared jar and story styles. Scene styles take precedence in the laptop game.
 - `public/favicon.svg`: sprout mark.
+- `docs/game-design.md`: full game design (personas, age 11–36 life, mechanics, scams, scaling), revised with team edits.
 
 ## Browser checks
 
