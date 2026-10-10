@@ -4,7 +4,7 @@ import { useT } from "../../i18n/index.jsx";
 import { select } from "../../ui/gameAdapter.js";
 import { Money } from "../../ui/Money.jsx";
 
-export function ShopView({ life, dispatch }) {
+export function ShopView({ life, dispatch, onDone }) {
   const { t, pick, money } = useT();
   const items = select.shopItems(life);
   const hud = select.hud(life);
@@ -71,7 +71,7 @@ export function ShopView({ life, dispatch }) {
       )}
       <div className="action-row">
         <p>{t("shop.leftover")}</p>
-        <button className="primary-button big" onClick={() => dispatch({ type: "SKIP_SHOP" })}>
+        <button className="primary-button big" onClick={() => (onDone ? onDone() : dispatch({ type: "SKIP_SHOP" }))}>
           {t("shop.done")} <ArrowRight size={18} />
         </button>
       </div>

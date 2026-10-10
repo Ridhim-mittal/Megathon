@@ -136,6 +136,46 @@ Text fields (`title`, `text`, `label`, `outcome`, `why`, `hint`, `truth`, `phras
   `secure_no_dream`, `debt_trap`. `modifiers` may hold `wrong_path` (mule or fraud flags) and
   `no_safety_net` (no dream, no emergency fund or insurance, but no high-interest debt either).
 
+## Chapter mode (the map game)
+
+`createLife({ …, mode: "chapters", avatar: "girl" })` plays the same 26 years in five chapters
+(`CHAPTERS` in `locations.js`): `child` 11–14 School life, `teen` 15–18 College life, `young`
+19–24 First job, `adult` 25–30 Marriage & family, `settle` 31–36 The dream. A life is about 35–45
+decisions instead of ~70.
+
+```
+intro → [chapter] budget → map ⇄ card/outcome/minigame → chapterEnd → (next chapter: budget …) → ending
+```
+
+- Each chapter's events (lesson cards, crises, echoes, scheduled cards and a few optional fillers)
+  wait at a **location**: `home, school, bank, hospital, shop, sahukar, post, work, panchayat,
+  square, field, phone` (`locationOf(card)`). Required events must be lived; optional ones may be skipped.
+- The money clock moves with progress: living required events passes the chapter's years one by one
+  (`yearEnd` is folded into the chapter summary). `END_CHAPTER` settles any years left.
+- The phone arrives as a gift in the `young` chapter (flag `owns_phone`), or when a want whose id
+  contains `phone` is bought. Phone events need it; without one they move home.
+
+| Action | Phase | Example |
+|---|---|---|
+| `VISIT { location }` | `map` | `step(s, { type: "VISIT", location: "bank" })` — plays the next event waiting there (error if none) |
+| `END_CHAPTER` | `map` | `step(s, { type: "END_CHAPTER" })` — needs every required event done; goes to `chapterEnd` |
+| `BUY_WANT { itemId }` | `map` | the shop, open any time on the map |
+| `TRADE { product, amount }` | `map` | `step(s, { type: "TRADE", product: "stock_chai", amount: 2000 })` — buy (+) or sell (−) a fund, share or deposit (`fd`, `rd`, `ppf`, `gold`, `bank`) from cash; needs the phone, and age ≥ 18 for funds and shares; brokerage on shares |
+| `MOVE_MONEY { from, to, amount }` | `map` | between `cash`, the `emergency` and `goal` jars and the `bank` account |
+| `REPAY { loanId, amount? }` | `map` | prepay a loan from cash (all of it when `amount` is left out) |
+
+Selectors: `select.chapter(s)` (slots with title, kind, location, required, done; `requiredLeft`,
+`optionalLeft`, `canEnd`, `progress`, `phoneGift`, and `summary` in `chapterEnd`),
+`select.locations(s)` (`{ id, unlocked, pending, required, special }`), `select.market(s)` (funds,
+stocks, deposits with yearly price history from 100, value, invested, risk, fee, bad-news years;
+`unlocked`/`reason`, `concentration`, `lastTrade`) and `select.phone(s)` (`unlocked`,
+`notifications`, `loans`, `accounts`). `select.hud(s)` adds `mode`, `chapter`, `hasPhone`, `avatar`.
+
+Markets: three fictional mutual funds (`sip_index` Top-50 Index Fund, `mf_debt`, `mf_active` with a
+1.8% fee) and four fictional shares (`stock_kisan`, `stock_chai`, `stock_spark`, `stock_power`) move
+once a year on their own seeded stream, so the same seed gives the same market. Shares can get
+"bad news" years. Numbers are in `assumptions.js` (`products`, `market`, `chapters`).
+
 ## Parallel Life
 
 ```js
@@ -163,7 +203,8 @@ not exist.
 | File | What |
 |---|---|
 | `index.js` | public entry, bound to `src/content` |
-| `engine.js` | `createEngine`: createLife, the step reducer, the year loop, replay |
+| `engine.js` | `createEngine`: createLife, the step reducer, the year loop, chapter mode, replay |
+| `locations.js` | chapters, map locations and where each card happens |
 | `effects.js` | the effects vocabulary and its order |
 | `money.js` | ledger, payments, loans, products, insurance, shocks |
 | `deck.js` | content index, lesson-coverage plan, yearly queue, card resolution |

@@ -1,6 +1,6 @@
 # Lakshyam 🌱
 
-A cosy, story-driven financial-literacy life simulation for Class 11–12 students, designed for laptops. Pick a life (the village), pick a dream, and live from age 11 to 36, one year per turn: budget your jars, shop for little joys, make choices on story cards, and see where every rupee went. English, हिंदी and తెలుగు.
+A cosy, story-driven financial-literacy game for Class 11–12 students, designed for laptops. Pick a life (the village), a dream and a look, then walk a pixel-art village from age 11 to 36 in five chapters (school life, college life, first job, marriage & family, the dream). Every place on the map (bank, school, hospital, kirana shop, sahukar, post office, panchayat, workplace, field) holds the chapter's story cards and lessons. A full life takes about 15–20 minutes. English, हिंदी and తెలుగు.
 
 ## Run locally
 
@@ -24,11 +24,12 @@ Deploy as a static Vite site: build command `npm run build`, output directory `d
 
 ## How to play
 
-1. **Play** → choose a language → choose your life (the village; the city is "coming soon") → meet your family → choose your dream and your name.
-2. **Each year:** split your monthly money into jars (needs first), spend the little-joys jar in the wants shop if you like, then make choices on 1–3 story cards. Press **1–4** or click to choose. **Why?** explains every outcome, with numbers.
-3. **Ammamma's glasses** reveal what tricky phrases really mean (limited charges). **Documents** look like real paper: tap suspicious lines, or pay to verify. **Ask Ammamma** (top bar, or click her in the village) answers questions; without the optional `/api/ask` endpoint she answers from her offline notebook.
-4. **Echoes:** some choices ripple quietly and come back years later.
-5. At 36: your **ending** and the storyteller's reveal, your **Gyaan report**, then **Parallel Life** (change one decision and compare both lives) and the **ending gallery**.
+1. **Play** → choose a language → choose your life (the village; the city is "coming soon") → meet your family → choose your dream, your name and your look.
+2. **Each chapter** opens with a title card, then your jar split (needs first) for its years.
+3. **Walk the village:** arrow keys or WASD to move, **Enter** to go in, or click a place (or a line in the quest log) to walk there. A yellow **!** is a must-live event, a white **!** is optional. Each event is a story card: press **1–4** or click to choose; **Why?** explains every outcome with numbers, and **Learn more** opens the Gyaan lesson.
+4. When the quest log says so, **go home** to finish the chapter and see how its years went (money, dream, the index fund year by year).
+5. **The phone** arrives with your first job (or buy one). Press **P** or the phone button: messages (some events arrive here), the bank (move money, prepay loans) and invest (index, debt and active mutual funds and four shares, from age 18, with fees, risk and a concentration warning).
+6. **Ammamma's glasses**, **documents**, **Ask Ammamma** (top bar, or click her on the road) and **echoes** work as before. At 36: your **ending**, your **Gyaan report**, **Parallel Life** and the **ending gallery**.
 
 The top bar switches language and sound (off by default) at any time. Progress is saved in this browser's `localStorage` only; `?seed=demo` gives a fixed, rehearsed life. All numbers are illustrative teaching assumptions, not advice.
 
@@ -37,11 +38,13 @@ The top bar switches language and sound (off by default) at any time. Progress i
 - `src/engine/`: the pure, seeded life engine; `src/engine/README.md` lists its API.
 - `src/content/`: storylines, cards, lessons, glossary, documents and endings.
 - `src/ui/gameAdapter.js`: the only door from the UI to the engine and content.
-- `src/screens/`: one file per screen (`App.jsx` routes them); `src/screens/life/` holds the year-loop views.
+- `src/screens/`: one file per screen (`App.jsx` routes them). `MapScreen.jsx` is the game; `src/screens/map/` holds its HUD, quest log and chapter cards, and `src/screens/life/` the card, outcome, budget, shop and mini-game views.
+- `src/ui/map/`: the pixel village: `village.js` (tile map, places, paths), `art.js` (code-drawn pixel art and characters), `MapCanvas.jsx` (movement, camera, clicks).
+- `src/ui/PhoneLite.jsx`, `src/ui/GyaanLite.jsx`: the in-game phone and the lesson reader.
 - `src/ui/`: shared components (HUD, jars, portraits, document viewer, Ask Ammamma, rich text).
 - `src/i18n/`: UI strings in `en.json`, `hi.json`, `te.json` and the `useT()` hook.
-- `src/World.jsx`: the illustrated village, the cast and the dream that grows in it.
-- `src/styles.css`, `src/game-scene.css`, `src/life.css`: styles.
+- `src/World.jsx`: the earlier SVG village (no longer routed).
+- `src/styles.css`, `src/game-scene.css`, `src/life.css`, `src/pixel.css`: styles (`pixel.css` is the map game).
 
 ## Browser checks
 
@@ -50,7 +53,7 @@ npx playwright install chromium  # One-time browser installation for developers
 npm run test:e2e
 ```
 
-The browser suite plays start → language → village → dream → one full year → year-end summary, switches between English, Hindi and Telugu (checking nothing overflows), checks saving/Continue and Ask Ammamma, and the 1024×768, 1280×720 and 1366×768 layouts. It starts its own Vite server on port 5180. To use an existing Chromium installation in a cloud machine, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to that browser's executable path.
+The browser suite plays start → language → village → dream → chapter 1 (walking to every event) → chapter summary, checks arrow-key walking, switches between English, Hindi and Telugu (checking nothing overflows), checks saving/Continue and Ask Ammamma, and the 1024×768, 1280×720 and 1366×768 layouts. It starts its own Vite server on port 5180. To use an existing Chromium installation in a cloud machine, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to that browser's executable path.
 
 ## Team workflow
 
