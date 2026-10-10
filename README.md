@@ -31,7 +31,7 @@ Deploy as a static Vite site: build command `npm run build`, output directory `d
 5. **The phone** arrives with your first job (or buy one). Press **P** or the phone button: messages (some events arrive here), the bank (move money, prepay loans) and invest (index, debt and active mutual funds and four shares, from age 18, with fees, risk and a concentration warning). The **Exchange** app is a practice stock market: a live order book with simulated traders, market and limit orders, and seven missions that teach the spread, queues, slippage and how news moves prices (practice money only). New messages and updates also pop up on the map without opening the phone; some scams (a phishing link, VIP stock tips) take your money later, and you find out from an SMS.
 6. **Ammamma's glasses**, **documents**, **Ask Ammamma** (top bar, or click her on the road) and **echoes** work as before. At 36: your **ending**, your **Gyaan report**, **Parallel Life** and the **ending gallery**.
 
-The top bar switches language and sound (off by default) at any time. Progress is saved in this browser's `localStorage` only; `?seed=demo` gives a fixed, rehearsed life. All numbers are illustrative teaching assumptions, not advice.
+The top bar switches language and sound at any time. Sound is on by default: the background music ("Sunlight on the Well", `public/audio/`) starts with the first tap or key press. Progress is saved in this browser's `localStorage` only; `?seed=demo` gives a fixed, rehearsed life. All numbers are illustrative teaching assumptions, not advice.
 
 ## Files
 
