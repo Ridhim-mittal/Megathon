@@ -1,14 +1,16 @@
 import React from "react";
-import { Play, Sparkles, Sprout, Sun } from "lucide-react";
+import { Calculator, Play, Sparkles, Sprout, Sun } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 import { HeroPicker } from "../ui/HeroPicker.jsx";
+import { InterestRace } from "../ui/games/InterestRace.jsx";
 import { PixelPortrait } from "../ui/PixelPortrait.jsx";
 
 // Continue and Start a new life sit side by side, the same size. A new life asks for your look and
 // name right here before the language and story.
 export function TitleScreen({ canContinue, onPlay, onNew, onHelp, settings, picking, onPicking, hero }) {
   const { t } = useT();
+  const [playing, setPlaying] = React.useState(false);
   return (
     <div className="title-screen">
       <div className="title-vignette" />
@@ -53,6 +55,9 @@ export function TitleScreen({ canContinue, onPlay, onNew, onHelp, settings, pick
             <Sparkles className="title-choice-icon" size={20} aria-hidden="true" />
           </button>
         </div>
+        <button className="title-game" onClick={() => setPlaying(true)}>
+          <Calculator size={16} aria-hidden="true" /> {t("interest.menu")}
+        </button>
         <button className="title-help" onClick={onHelp}>
           {t("app.howToPlay")}
         </button>
@@ -61,6 +66,7 @@ export function TitleScreen({ canContinue, onPlay, onNew, onHelp, settings, pick
         <Sun size={14} /> {t("app.made")}
       </span>
       <span className="title-version">{t("app.chapter")}</span>
+      {playing && <InterestRace mode="practice" avatar={hero?.avatar ?? "boy"} onClose={() => setPlaying(false)} />}
       {picking && <HeroPicker initialAvatar={hero?.pickAvatar} initialName={hero?.pickName} onClose={() => onPicking(false)} onDone={onNew} />}
     </div>
   );

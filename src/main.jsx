@@ -15,6 +15,7 @@ import "./storybook.css";
 import "./budget.css";
 import "./title.css";
 import "./dream.css";
+import "./games.css";
 import "./story.css";
 import { App } from "./screens/App.jsx";
 

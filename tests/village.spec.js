@@ -199,3 +199,28 @@ for (const size of [
     expect(objective.x + objective.width).toBeLessThanOrEqual(size.width);
   });
 }
+
+test("the interest race mini-game opens from the title: a wrong run offers Try again, a right run wins", async ({ page }) => {
+  await page.goto("/?seed=demo");
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+  await page.getByRole("button", { name: "Mini-game: Interest race" }).click();
+  const game = page.getByRole("dialog");
+  await expect(game.getByRole("heading", { name: "Interest race" })).toBeVisible();
+  await game.getByRole("button", { name: "Start the race" }).click();
+  const interest = async () =>
+    (await game.locator(".ir-offer").evaluateAll((els) => els.map((e) => [...e.querySelectorAll(".ir-row b")].map((b) => Number(b.textContent.replace(/[^0-9]/g, ""))))))
+      .map(([p, r, t]) => (p * r * t) / 100);
+  const playRound = async (right) => {
+    const si = await interest();
+    const best = si.indexOf(Math.max(...si));
+    await game.locator(".ir-offer").nth(right ? best : (best + 1) % 3).click();
+    await game.locator(".ir-feedback .primary-button").click();
+  };
+  for (let i = 0; i < 5; i++) await playRound(false);
+  await expect(game.getByRole("heading", { name: "So close!" })).toBeVisible();
+  await game.getByRole("button", { name: "Try again" }).click();
+  for (let i = 0; i < 5; i++) await playRound(true);
+  await expect(game.getByRole("heading", { name: "Scholarship won!" })).toBeVisible();
+  await expect(game).toContainText("5 of 5 right");
+});
