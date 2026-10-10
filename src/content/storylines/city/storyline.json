@@ -1,0 +1,7 @@
+{
+  "id": "city",
+  "playable": false,
+  "title": { "en": "The City" },
+  "tagline": { "en": "Some money. Some knowledge. A phone full of shortcuts." },
+  "persona": { "en": "A daily-wage family in a Hyderabad basti. Dad drives an auto, Mum does gig work. You get a phone early, and the scams find you first." }
+}
