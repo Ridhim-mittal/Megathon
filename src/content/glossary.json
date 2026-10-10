@@ -55,10 +55,7 @@
     "name": { "en": "PIN" },
     "short": { "en": "Your secret number for UPI or ATM. Only needed to send money, never to receive it." }
   },
-  "upi": {
-    "name": { "en": "UPI" },
-    "short": { "en": "A way to send money from your phone using a UPI ID or QR code." }
-  },
+  "upi": { "name": { "en": "UPI" }, "short": { "en": "A way to send money from your phone using a UPI ID or QR code." } },
   "collect_request": {
     "name": { "en": "collect request" },
     "short": { "en": "A UPI request asking YOU to pay. Entering your PIN sends money away." }
@@ -163,10 +160,7 @@
     "name": { "en": "insurance", "hi": "बीमा", "te": "బీమా" },
     "short": { "en": "You pay a small fixed amount. If something bad happens, the insurer pays the big bill." }
   },
-  "premium": {
-    "name": { "en": "premium" },
-    "short": { "en": "The amount you pay for insurance, monthly or yearly." }
-  },
+  "premium": { "name": { "en": "premium" }, "short": { "en": "The amount you pay for insurance, monthly or yearly." } },
   "term_insurance": {
     "name": { "en": "term life insurance" },
     "short": { "en": "Pure life cover for a fixed period. Low premium, big cover, no money back." }
@@ -283,8 +277,33 @@
     "name": { "en": "Kalyana Lakshmi" },
     "short": { "en": "Telangana's marriage help scheme for eligible families, paid to the bride's mother." }
   },
-  "net_worth": {
-    "name": { "en": "net worth" },
-    "short": { "en": "Everything you own minus everything you owe." }
+  "net_worth": { "name": { "en": "net worth" }, "short": { "en": "Everything you own minus everything you owe." } },
+  "share": {
+    "name": { "en": "share", "hi": "शेयर", "te": "షేర్" },
+    "short": { "en": "A tiny piece of a company. Its price goes up and down with the business." }
+  },
+  "mutual_fund": {
+    "name": { "en": "mutual fund", "hi": "म्यूचुअल फंड", "te": "మ్యూచువల్ ఫండ్" },
+    "short": { "en": "Many people's money pooled and spread across many shares or bonds by a fund manager." }
+  },
+  "nav": {
+    "name": { "en": "NAV" },
+    "short": { "en": "Net asset value: the price of one unit of a fund today. Your money ÷ NAV = units." }
+  },
+  "expense_ratio": {
+    "name": { "en": "expense ratio", "hi": "एक्सपेंस रेशियो", "te": "ఎక్స్‌పెన్స్ రేషియో" },
+    "short": { "en": "The yearly fee a fund takes from your money, like 0.2% or 1.8%." }
+  },
+  "debt_fund": {
+    "name": { "en": "debt fund", "hi": "डेट फंड", "te": "డెట్ ఫండ్" },
+    "short": { "en": "A fund that lends money for interest. Steadier than shares, but not guaranteed." }
+  },
+  "brokerage": {
+    "name": { "en": "brokerage", "hi": "ब्रोकरेज", "te": "బ్రోకరేజ్" },
+    "short": { "en": "The fee for each share trade. In this game, ₹20 a trade." }
+  },
+  "demat": {
+    "name": { "en": "demat account", "hi": "डीमैट खाता", "te": "డీమ్యాట్ ఖాతా" },
+    "short": { "en": "An account that holds your shares electronically, in your own name." }
   }
 }

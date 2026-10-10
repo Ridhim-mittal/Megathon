@@ -17,6 +17,7 @@ import villageYoung from "./storylines/village/cards/young.json" with { type: "j
 import villageAdult from "./storylines/village/cards/adult.json" with { type: "json" };
 import villageSettle from "./storylines/village/cards/settle.json" with { type: "json" };
 import villageCrisis from "./storylines/village/cards/crisis.json" with { type: "json" };
+import villageMarket from "./storylines/village/cards/market.json" with { type: "json" };
 
 import city from "./storylines/city/storyline.json" with { type: "json" };
 
@@ -32,6 +33,7 @@ const storylines = {
       ...villageAdult,
       ...villageSettle,
       ...villageCrisis,
+      ...villageMarket,
     ],
     endings: villageEndings,
   },

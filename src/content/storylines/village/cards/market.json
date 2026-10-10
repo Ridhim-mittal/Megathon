@@ -1,0 +1,347 @@
+[
+  {
+    "id": "village.young.invest_app.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L17",
+    "ages": [18, 23],
+    "weight": 2,
+    "location": "phone",
+    "speaker": "banker",
+    "title": { "en": "Your first SIP, on the phone" },
+    "text": { "en": "{cast:banker} helps you finish [[kyc]] with your [[pan]] on the invest app. \"Pick a fund. The Top-50 Index Fund is market-linked, so it goes up and down.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "market-linked" },
+        "truth": { "en": "No fixed return. Some years it falls 15–35%. It suits money you won't need for years." },
+        "lesson": "L17"
+      }
+    ],
+    "choices": [
+      {
+        "id": "index_sip",
+        "label": { "en": "Start a ₹500 monthly SIP in the Top-50 Index Fund" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "sip_index", "amount": 500 }, "flags": { "add": ["sip_started"] }, "gyaan": 2 },
+        "outcome": { "en": "₹500 a month. If it averages 10%, 15 years of this grows ₹90,000 into about ₹2 lakh." },
+        "why": { "en": "An [[sip]] buys a few units every month, more when prices are low. Time does the heavy lifting." }
+      },
+      {
+        "id": "debt_fund",
+        "label": { "en": "Put ₹500 in the Short-term Debt Fund instead" },
+        "quality": "neutral",
+        "effects": { "open": { "product": "mf_debt", "amount": 500 }, "gyaan": 1 },
+        "outcome": { "en": "About 6.5% a year with small swings. Steady, but slower for a goal 15 years away." },
+        "why": { "en": "Debt funds suit goals 1–3 years away. Long goals usually need some growth." }
+      },
+      {
+        "id": "close_app",
+        "label": { "en": "Close the app. Shares are scary" },
+        "quality": "risky",
+        "effects": {},
+        "echo": { "level": 1, "hint": { "en": "Every year you wait, the finish line moves." } },
+        "outcome": { "en": "₹0 invested. The ₹500 a month goes to snacks and recharges instead." },
+        "why": { "en": "A fund is not a single share. A small, steady SIP spreads the risk across 50 companies." }
+      }
+    ]
+  },
+  {
+    "id": "village.young.star_fund.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L21",
+    "ages": [21, 28],
+    "weight": 2,
+    "location": "bank",
+    "speaker": "agent",
+    "title": { "en": "Policy Ramana now sells funds" },
+    "text": { "en": "{cast:agent} has a new brochure. \"Star Active Equity Fund! Last year it gave 28%! Much better than a boring index fund.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Last year it gave 28%!" },
+        "truth": { "en": "Last year's star is often ordinary next year. Its 1.8% fee is charged every year, good or bad." },
+        "lesson": "L21"
+      },
+      {
+        "phrase": { "en": "boring index fund" },
+        "truth": { "en": "The Top-50 Index Fund charges 0.2% and pays Ramana no [[commission]]. That's why he calls it boring." },
+        "lesson": "L21"
+      }
+    ],
+    "choices": [
+      {
+        "id": "star_fund",
+        "label": { "en": "Put ₹5,000 in the Star Active Equity Fund through Ramana" },
+        "quality": "risky",
+        "effects": { "open": { "product": "mf_active", "amount": 5000 } },
+        "echo": { "level": 1, "hint": { "en": "1.8% a year, every year, quietly." } },
+        "outcome": { "en": "At 10% before fees, ₹5,000 left for 20 years becomes about ₹24,200 after the 1.8% fee." },
+        "why": { "en": "Fees come off every year. To be worth it, the manager must beat the index by more than the fee." }
+      },
+      {
+        "id": "index_fund",
+        "label": { "en": "Compare fees, then buy the Top-50 Index Fund yourself" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "sip_index", "amount": 5000 }, "gyaan": 3 },
+        "outcome": { "en": "The same ₹5,000 for 20 years with a 0.2% fee: about ₹32,400. That's ₹8,200 more." },
+        "why": { "en": "[[expense_ratio]] matters more than last year's return. Cheap and broad usually wins over time." }
+      },
+      {
+        "id": "ask_fee",
+        "label": { "en": "Ask Ramana for the fee and his commission first" },
+        "quality": "neutral",
+        "effects": { "gyaan": 2 },
+        "outcome": { "en": "\"1.8%, and about 1% of it comes to me,\" he admits, reaching for the last vada. You keep your ₹5,000 for now." },
+        "why": { "en": "Always ask how a seller is paid. It explains what they recommend." }
+      }
+    ]
+  },
+  {
+    "id": "village.young.vip_tips.a",
+    "storyline": "village",
+    "kind": "scam",
+    "lesson": "L22",
+    "ages": [19, 30],
+    "weight": 2,
+    "location": "phone",
+    "speaker": "headline",
+    "title": { "en": "Stock Gurus VIP group" },
+    "text": { "en": "A WhatsApp group adds you. \"Spark Mobile will triple this month! Buy now at ₹60. 100% sure. Only for VIP members.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Spark Mobile will triple this month!" },
+        "truth": { "en": "Nobody knows next month's price. Groups like this buy first, hype it, then sell to you." },
+        "lesson": "L22"
+      },
+      {
+        "phrase": { "en": "100% sure." },
+        "truth": { "en": "Registered advisers never promise returns. \"Sure\" tips are how pump-and-dump works." },
+        "lesson": "L22"
+      }
+    ],
+    "choices": [
+      {
+        "id": "buy_big",
+        "label": { "en": "Buy ₹10,000 of Spark Mobile now" },
+        "quality": "bad",
+        "effects": { "cash": -5000, "meters": { "joy": -5 } },
+        "echo": { "level": 2, "hint": { "en": "The group went quiet the day you bought." } },
+        "outcome": { "en": "You buy at ₹60. The group sells. It drops to ₹30, and you sell scared. ₹5,000 gone." },
+        "why": { "en": "In a pump-and-dump, your buying is their exit. The tip was the product." }
+      },
+      {
+        "id": "leave_report",
+        "label": { "en": "Leave the group and report it" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3 },
+        "outcome": { "en": "₹0 lost. Two weeks later Spark Mobile is back at ₹32. The group has a new name." },
+        "why": { "en": "If someone sells \"sure\" tips, ask why they need your money to get rich." }
+      },
+      {
+        "id": "buy_small",
+        "label": { "en": "Buy just ₹1,000 to test it" },
+        "quality": "risky",
+        "effects": { "cash": -520 },
+        "outcome": { "en": "It halves, and the ₹20 brokerage stings too. ₹520 lost on a \"small test\"." },
+        "why": { "en": "A scam doesn't become safe in small amounts. It just teaches you more cheaply." }
+      }
+    ]
+  },
+  {
+    "id": "village.young.one_stock.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L19",
+    "ages": [19, 26],
+    "weight": 2,
+    "location": "phone",
+    "speaker": "friend",
+    "title": { "en": "All in Kisan Tractors?" },
+    "text": { "en": "You have ₹20,000 saved. {cast:friend}: \"My uncle's tractor is a Kisan. Put it all in Kisan Tractors shares, mama. Can't go wrong!\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Can't go wrong!" },
+        "truth": { "en": "A good product isn't a safe share. One company can have a bad-news year and fall 30–60%." },
+        "lesson": "L19"
+      }
+    ],
+    "choices": [
+      {
+        "id": "all_kisan",
+        "label": { "en": "Put all ₹20,000 in Kisan Tractors" },
+        "quality": "risky",
+        "effects": { "open": { "product": "stock_kisan", "amount": 20000 } },
+        "echo": { "level": 2, "hint": { "en": "One company, one basket." } },
+        "outcome": { "en": "If Kisan has a bad-news year, you lose ₹6,000 to ₹12,000. If not, it moves with the market." },
+        "why": { "en": "A single share carries the company's own risks on top of the market's." }
+      },
+      {
+        "id": "index_fund",
+        "label": { "en": "Put it in the Top-50 Index Fund" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "sip_index", "amount": 20000 }, "gyaan": 3 },
+        "outcome": { "en": "Kisan is about 2% of the fund. The same bad news would cost you about ₹200, not ₹10,000." },
+        "why": { "en": "[[diversification]]: fifty companies rarely all have a bad year at once." }
+      },
+      {
+        "id": "split",
+        "label": { "en": "₹2,000 in Kisan for fun, ₹18,000 in the index fund" },
+        "quality": "neutral",
+        "effects": { "open": [{ "product": "stock_kisan", "amount": 2000 }, { "product": "sip_index", "amount": 18000 }], "gyaan": 1 },
+        "outcome": { "en": "Chintu is happy, and the worst Kisan news can now cost you about ₹1,200." },
+        "why": { "en": "If you want a single share, keep it a small part of your money." }
+      }
+    ]
+  },
+  {
+    "id": "village.adult.nfo_pitch.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L21",
+    "ages": [26, 32],
+    "weight": 2,
+    "location": "bank",
+    "speaker": "narrator",
+    "title": { "en": "A brand-new fund at only ₹10" },
+    "text": { "en": "The bank's sales officer calls you in. \"New fund launch! Only ₹10 a unit, very cheap. Old funds cost ₹80. Assured growth!\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Only ₹10 a unit, very cheap." },
+        "truth": { "en": "A low [[nav]] isn't cheaper. ₹1,000 grows the same 10% whether the unit costs ₹10 or ₹80." },
+        "lesson": "L21"
+      },
+      {
+        "phrase": { "en": "Assured growth!" },
+        "truth": { "en": "Equity funds can't assure anything. A seller who says so is mis-selling." },
+        "lesson": "L21"
+      }
+    ],
+    "choices": [
+      {
+        "id": "buy_nfo",
+        "label": { "en": "Buy ₹10,000 of the new fund" },
+        "quality": "risky",
+        "effects": { "open": { "product": "mf_active", "amount": 10000 } },
+        "echo": { "level": 1, "hint": { "en": "Cheap units, expensive fees." } },
+        "outcome": { "en": "1,000 units at ₹10. Its fee is 1.8% a year, and it has no track record at all." },
+        "why": { "en": "Judge a fund by its fee and what it holds, never by its unit price." }
+      },
+      {
+        "id": "compare",
+        "label": { "en": "Ask for the fee, then pick the Top-50 Index Fund at ₹80 a unit" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "sip_index", "amount": 10000 }, "gyaan": 3 },
+        "outcome": { "en": "125 units at ₹80, with a 0.2% fee. Same ₹10,000, 1.6% a year less in fees." },
+        "why": { "en": "Fewer units at a higher NAV is fine. Growth is in percent, and fees decide what you keep." }
+      },
+      {
+        "id": "leave",
+        "label": { "en": "Say no and leave" },
+        "quality": "neutral",
+        "effects": { "meters": { "joy": 1 } },
+        "outcome": { "en": "₹0 spent. The officer's sales target is not your problem." },
+        "why": { "en": "You can always walk away from a pitch." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.down_payment_fund.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L17",
+    "ages": [31, 34],
+    "weight": 2,
+    "location": "bank",
+    "speaker": "banker",
+    "title": { "en": "The down payment, two years away" },
+    "text": { "en": "You have ₹50,000 for the dream's down payment, needed in two years. {cast:friend} says Spark Mobile could double it. {cast:banker} suggests a [[debt_fund]]." },
+    "clarity": [
+      {
+        "phrase": { "en": "Spark Mobile could double it" },
+        "truth": { "en": "It could also halve it, just when you need it. Shares suit goals many years away." },
+        "lesson": "L17"
+      }
+    ],
+    "choices": [
+      {
+        "id": "debt_fund",
+        "label": { "en": "Short-term Debt Fund until the purchase" },
+        "quality": "good",
+        "default": true,
+        "effects": { "open": { "product": "mf_debt", "amount": 50000 }, "gyaan": 3 },
+        "outcome": { "en": "At about 6.6% a year, ₹50,000 is likely about ₹56,800 in two years, with small swings." },
+        "why": { "en": "Match the product to the date. Money with a fixed date needs steady products." }
+      },
+      {
+        "id": "spark",
+        "label": { "en": "All in Spark Mobile, to double it" },
+        "quality": "bad",
+        "effects": { "open": { "product": "stock_spark", "amount": 50000 } },
+        "echo": { "level": 3, "hint": { "en": "The seller of the plot won't wait for a recovery." } },
+        "outcome": { "en": "Spark is the most volatile share in town. A bad-news year could leave ₹20,000 to ₹35,000." },
+        "why": { "en": "High risk with a short deadline means you may have to sell at the worst time." }
+      },
+      {
+        "id": "index",
+        "label": { "en": "Top-50 Index Fund" },
+        "quality": "risky",
+        "effects": { "open": { "product": "sip_index", "amount": 50000 } },
+        "outcome": { "en": "Could be ₹60,000, or ₹35,000 after a crash. In two years, nobody can say which." },
+        "why": { "en": "Good for long goals, but two years is too short to ride out a crash." }
+      }
+    ]
+  },
+  {
+    "id": "village.settle.second_crash.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L19",
+    "ages": [31, 36],
+    "weight": 2,
+    "location": "phone",
+    "requires": { "owns": ["sip_index"] },
+    "speaker": "headline",
+    "title": { "en": "Markets fall 20%, again" },
+    "text": { "en": "The invest app is red. Your index fund is down from ₹60,000 to ₹48,000. The TV says \"worst week in years, sell before it's too late\"." },
+    "clarity": [
+      {
+        "phrase": { "en": "sell before it's too late" },
+        "truth": { "en": "Nobody knows the bottom. Selling makes the fall permanent for you." },
+        "lesson": "L19"
+      }
+    ],
+    "choices": [
+      {
+        "id": "hold",
+        "label": { "en": "Hold, and keep the SIP running" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3, "meters": { "health": -1 } },
+        "outcome": { "en": "You sleep badly for a month. Your ₹1,000 SIP now buys 25% more units than before." },
+        "why": { "en": "For money you won't need for years, a fall is a sale. Panic is the expensive part." }
+      },
+      {
+        "id": "sell_all",
+        "label": { "en": "Sell everything now" },
+        "quality": "bad",
+        "effects": { "close": { "product": "sip_index" }, "meters": { "health": 2 } },
+        "echo": { "level": 2, "hint": { "en": "Fear sells low. Every time." } },
+        "outcome": { "en": "You lock in a ₹12,000 loss. The fall may reverse, but you won't be in it." },
+        "why": { "en": "Selling in a crash turns a paper loss into a real one." }
+      },
+      {
+        "id": "move_needed",
+        "label": { "en": "Move only the part needed next year to the debt fund" },
+        "quality": "good",
+        "effects": { "close": { "product": "sip_index" }, "open": [{ "product": "mf_debt", "amount": 15000 }, { "product": "sip_index", "amount": 33000 }], "gyaan": 2 },
+        "outcome": { "en": "₹15,000 for next year's need is now steady. ₹33,000 stays invested for the long run." },
+        "why": { "en": "Near goals in safe products, far goals in growth. Decide by date, not by fear." }
+      }
+    ]
+  }
+]
