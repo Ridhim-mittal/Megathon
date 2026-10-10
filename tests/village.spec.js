@@ -46,6 +46,24 @@ async function playScene(page, label) {
   await choice.first().click();
 }
 
+// The first scene is Rat Guard: round 1 only offers the tin box (and is lost), then either.
+async function playRatGuard(page, second) {
+  await page.locator(".objective-go").click();
+  const game = page.getByRole("dialog", { name: "Rat Guard" });
+  await expect(game).toBeVisible({ timeout: 20000 });
+  await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
+  await game.getByRole("button", { name: /Tin box/ }).click();
+  await expect(game.locator(".rg-chip").first()).toContainText("SCORE");
+  await game.getByRole("button", { name: "Skip" }).click();
+  await expect(game.getByText("₹500 chewed")).toBeVisible();
+  const pickSecond = game.getByRole("button", { name: second === "bank" ? /Bank account/ : /Tin box/ });
+  await expect(pickSecond).toBeEnabled({ timeout: 10000 });
+  await pickSecond.click();
+  await game.getByRole("button", { name: "Skip" }).click();
+  await game.getByRole("button", { name: "Continue" }).click({ timeout: 10000 });
+  await expect(game).not.toBeVisible();
+}
+
 async function continueOutcome(page) {
   await expect(page.locator(".outcome-view")).toBeVisible();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
@@ -64,9 +82,7 @@ test("prologue: follow the objective, live three scenes, reach an outcome and it
   await expect(objective).toContainText("Walk home. Ammamma is calling you.");
   await expect(objective.getByRole("button", { name: "Go to Home" })).toBeVisible();
 
-  await playScene(page, "Put it in a bank");
-  await expect(page.getByText("WHAT HAPPENED")).toBeVisible();
-  await continueOutcome(page);
+  await playRatGuard(page, "bank");
   await expect(objective).toContainText("Kavitha akka");
   await playScene(page, "one for me");
   await continueOutcome(page);
@@ -91,8 +107,7 @@ test("a very bad choice flashes STOP; thinking again keeps the scene open", asyn
   await start(page);
   await toPrologue(page);
   await page.getByRole("button", { name: "Live this year" }).click();
-  await playScene(page, "steel box");
-  await continueOutcome(page);
+  await playRatGuard(page, "tin");
   await playScene(page, "Buy the steel box");
   await continueOutcome(page);
   await playScene(page, "notebook first");

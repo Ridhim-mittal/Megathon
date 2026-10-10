@@ -13,7 +13,7 @@ import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
 import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { sounds } from "../ui/sound.js";
-import { CHOICE_GAMES, GAME_COMPONENTS } from "../ui/games/choiceGames.js";
+import { CHOICE_GAMES, GAME_COMPONENTS, SCENE_GAMES } from "../ui/games/choiceGames.js";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
 import { CardView } from "./life/CardView.jsx";
@@ -174,6 +174,8 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         <p className="quiet chapter-split">{t("chapter.split")}</p>
       </>
     );
+  } else if (phase === "card" && SCENE_GAMES[card?.id]) {
+    // This scene is played, not read: the game brings its own full-screen layer (below).
   } else if (phase === "card") {
     dialog = (
       <>
@@ -329,6 +331,14 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           </section>
         </div>
       )}
+      {phase === "card" && !showIntro && SCENE_GAMES[card?.id] &&
+        React.createElement(SCENE_GAMES[card.id], {
+          key: card.id,
+          avatar: life.avatar ?? "boy",
+          onDone: (choiceId) => {
+            if (!dispatch({ type: "CHOOSE", choiceId })) dispatch({ type: "ADVANCE" });
+          },
+        })}
       {game && GAME_COMPONENTS[game.kind] &&
         React.createElement(GAME_COMPONENTS[game.kind], {
           mode: "story",

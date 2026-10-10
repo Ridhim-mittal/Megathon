@@ -1348,5 +1348,31 @@
     },
     "wonText": "Spelling mistakes, a fake number, guaranteed returns, a far-away office and a personal UPI: you caught him.",
     "lostText": "Look for promises of guaranteed returns, odd registration numbers and personal UPI IDs."
+  },
+  "ratguard": {
+    "title": "Rat Guard",
+    "bonk": "BONK!",
+    "poof": "POOF!",
+    "danger": "DANGER! HIGH FREQUENCY",
+    "stage": "STAGE {n}",
+    "score": "SCORE: {n}",
+    "frequency": "RATS",
+    "ask1": "Kanna, the rats are back tonight! Where do we keep our ₹12,000?",
+    "ask2": "They got in. Where do we keep the rest now?",
+    "tin": "Tin box",
+    "tinHint": "Under the bed, at home",
+    "bank": "Bank account",
+    "bankLocked": "Ammamma: “Banks are for rich people.”",
+    "bankHint": "Locked in a vault. Insured.",
+    "new": "NEW",
+    "ate": "One got in… ₹500 chewed to bits!",
+    "ateAgain": "They got in again. Another ₹500 gone.",
+    "safe": "Not one rupee lost! The rats can't get into a bank, kanna.",
+    "lostAgain": "A tin box can't keep rats out, kanna. Next time, let's try the bank.",
+    "lesson": "Cash at home can be eaten, stolen or burnt. A bank account keeps it safe, and your money is insured up to ₹5 lakh.",
+    "continue": "Continue",
+    "how": "Click a rat (or press Space) to shoo it away.",
+    "skip": "Skip",
+    "round2": "ROUND 2"
   }
 }
