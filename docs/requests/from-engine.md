@@ -2,6 +2,12 @@
 
 Add requests for other areas here (newest first). Each owner reads the requests addressed to them.
 
+## 2026-10-10 — Story mode
+
+`createLife({ mode: "story" })` plays `content.story.missions` (see `src/engine/README.md`, "Story
+mode"). New actions: `STORY_TIMEOUT`, `HEED_WARNING`; `CHOOSE` takes `ignoredWarning`. New
+selectors: `select.story`, `select.flowchart`, `select.storyMissions`.
+
 ## 2026-10-10 — Chapter mode, map locations, mutual funds and shares
 
 `createLife({ mode: "chapters" })` plays five chapters on the village map (API in

@@ -213,7 +213,8 @@
       "teachback": "SOMEONE ASKS YOU",
       "scam": "TOO GOOD TO BE TRUE?",
       "calamity": "A STORM",
-      "windfall": "GOOD NEWS"
+      "windfall": "GOOD NEWS",
+      "story": "Story"
     },
     "choose": "What do you do?",
     "keys": "Press 1–{n} to choose",
@@ -448,7 +449,13 @@
       "teen": "College life",
       "young": "First job",
       "adult": "Marriage & family",
-      "settle": "The dream"
+      "settle": "The dream",
+      "prologue": "Childhood",
+      "school": "School life",
+      "college": "College life",
+      "job": "First job",
+      "family": "Marriage & family",
+      "dream": "The dream"
     },
     "number": "Chapter {n} of {total}",
     "ages": "Ages {from}–{to}",
@@ -841,5 +848,56 @@
     },
     "allDone": "You know how an exchange works: bids, asks, the spread, market and limit orders, the queue, slippage and news. Real investing is owning good businesses for years, not quick trades.",
     "practice": "Practice money only: nothing here touches your real savings. Real exchanges work the same way, with millions of orders a second."
+  },
+  "story": {
+    "walkTo": "Go to {place}",
+    "openPhone": "Open your phone",
+    "notHere": "Nothing for you here right now. Your objective is at {place}.",
+    "flowchart": "Flowchart",
+    "explored": "of this chapter explored",
+    "flow": {
+      "yourPath": "your path",
+      "seen": "seen in another life",
+      "locked": "locked",
+      "lockedEnding": "Locked ending"
+    },
+    "stop": "STOP!",
+    "thinkAgain": "Think again",
+    "doIt": "Do it anyway",
+    "heeded": "Good call. Ammamma would be proud. (+1 Gyaan)",
+    "locked": "Locked by an earlier choice",
+    "unlocked": "Unlocked by an earlier choice",
+    "decideFast": "Decide fast!",
+    "tooLate": "Too late!",
+    "begin": "Begin",
+    "previously": "Previously:",
+    "moneyYears": "Money & years",
+    "nextChapter": "Next chapter",
+    "final": "See how your life ends",
+    "tone": {
+      "good": "Chapter complete · good ending",
+      "mixed": "Chapter complete",
+      "bad": "Chapter complete · it went wrong",
+      "tragic": "Chapter complete · disaster"
+    },
+    "yourEnding": "Your story's ending",
+    "lifeFlowchart": "Your life's flowchart",
+    "warningsSummary": "Warnings: you stopped and thought {heeded} times, and went ahead anyway {ignored} times.",
+    "evidenceTitle": "Evidence file",
+    "evidenceCount": "{n} pieces of evidence",
+    "evidenceHelp": "Every scam you see through can leave proof. One day, it might help catch the people behind them.",
+    "evidence": {
+      "evidence_call": "Recording of the fake bank call",
+      "evidence_prakash": "Prakash's crypto group name and UPI ID",
+      "evidence_telegram": "Screenshots of Lucky Prakash Capital",
+      "evidence_mule": "Chats from the mule-account gang",
+      "evidence_loanapp": "Police report on the illegal loan app",
+      "evidence_goldharvest": "Golden Harvest's fake certificate and brochures"
+    },
+    "danger": {
+      "debt_trap": "DANGER: your costly debts are bigger than 3 months' income. Stop borrowing and pay the costliest first.",
+      "emi_heavy": "Warning: EMIs eat over half your income. Don't take any new loan.",
+      "costly_debt": "You have costly debt. Paying it off is the best 'investment' you can make."
+    }
   }
 }

@@ -187,6 +187,42 @@ Markets: three fictional mutual funds (`sip_index` Top-50 Index Fund, `mf_debt`,
 once a year on their own seeded stream, so the same seed gives the same market. Shares can get
 "bad news" years. Numbers are in `assumptions.js` (`products`, `market`, `chapters`).
 
+## Story mode (the game the UI ships)
+
+`createLife({ …, mode: "story" })` plays the life as missions from `content.story.missions`
+(`src/content/story/*.json`): a prologue (11–14) and five chapters (15–17, 18–21, 22–25, 26–30,
+31–36). Helpers live in [`story.js`](story.js).
+
+```
+intro → [mission] budget → map ⇄ card → outcome → … → chapterEnd → (next mission: budget …) → ending
+```
+
+- **One objective at a time.** `select.story(s).objective` is the active scene: `{ node, location,
+  text, age, rush, late }`. `VISIT { location }` at that place shows it as a card (scenes are cards
+  with `kind: "story"`, so documents, glossary chips and `CHOOSE` work unchanged). Reaching a scene
+  passes the years up to its `age`.
+- **Branching.** A choice's `next` is a node id, or `[{ if: cond, to }, …, { to }]` (first match).
+  Conditions: `flags`, `notFlags`, `anyFlags`, `minCount { flags, n }`, `owns`, `minCash`,
+  `minLiquid`, `minEmergency`, `minDebt`, `maxDebt`, `ending` (money ending ids), `dreamReached`,
+  `lastDoc { problem, caught, wentAhead }`, `lessonStatus`, `goal`, `visited`, `late`.
+- **Locks and warnings.** A choice with `requires` (a condition) is shown `locked` with its
+  `lockedHint` until met; `CHOOSE` refuses it. A choice with `warn` gets a STOP flash in the UI;
+  `CHOOSE { choiceId, ignoredWarning: true }` counts ignored warnings and `HEED_WARNING { choiceId }`
+  counts the ones that stopped the player (+1 gyaan, once per choice).
+- **Clocks.** A scene's `timer { seconds, choice }` is decided by the UI: when it runs out the UI
+  chooses the (usually `hidden`) timeout choice. A scene's `rush { seconds, fail?, effects?, note? }`
+  is a race on the map: `STORY_TIMEOUT` applies `effects`, marks it late, and moves to `fail`.
+- **Outcomes.** A node with `type: "outcome"` (tone `good | mixed | bad | tragic`) ends the mission:
+  its `effects` apply, the remaining years pass, and `chapterEnd` shows `summary.story`. The last
+  mission's outcome is the story ending: `s.ending.story = { id, tone, title, text }`, next to the
+  money ending.
+- **Selectors.** `select.story(s)` (mission, objective, outcomes so far, evidence flags, warnings,
+  `danger`), `select.flowchart(s, missionId, discovered?)` (nodes with depth, choices with
+  `taken`/`known`, `completion` %) and `select.storyMissions()`. `currentCard` adds `locked`,
+  `lockedHint`, `unlockedBy`, `warn` per choice and the scene's `timer`.
+- **Validation.** `validateStory` (run by `npm run validate:content`) checks ids, places, ages,
+  routing targets, conditions, effects, and that every node is reachable.
+
 ## Parallel Life
 
 ```js
@@ -216,6 +252,7 @@ not exist.
 | `index.js` | public entry, bound to `src/content` |
 | `engine.js` | `createEngine`: createLife, the step reducer, the year loop, chapter mode, replay |
 | `locations.js` | chapters, map locations and where each card happens |
+| `story.js` | story mode: conditions, routing, flowcharts, validation |
 | `effects.js` | the effects vocabulary and its order |
 | `money.js` | ledger, payments, loans, products, insurance, shocks |
 | `deck.js` | content index, lesson-coverage plan, yearly queue, card resolution |

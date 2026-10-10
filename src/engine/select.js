@@ -2,13 +2,14 @@
 
 import { CURRICULUM, INVESTABLE, MUTUAL_FUNDS, PILLARS, START_AGE, STOCKS, lessonById } from "./curriculum.js";
 import { LOCATIONS, LOCATION_FROM_STAGE } from "./locations.js";
-import { netWorth, productsValue, savingsTotal, totalDebt } from "./money.js";
+import { highInterestDebt, monthlyEmi, netWorth, productsValue, savingsTotal, totalDebt } from "./money.js";
+import { choiceLocked, condOk, flowchartOf } from "./story.js";
 
 const INVESTMENTS = ["fd", "rd", "ppf", "sip_index", "mf_debt", "mf_active", "gold", "chit", "pension", ...STOCKS];
 const STAGE_ORDER = ["child", "teen", "young", "adult", "settle"];
 const ASSETS = ["land", "vehicle"];
 
-export function makeSelectors({ A, idx, content, computeDream, checkBudget }) {
+export function makeSelectors({ A, idx, content, computeDream, checkBudget, story, storyDeps }) {
   const cardById = (s, id) => idx.pools[s.storylineId]?.byId[id] ?? null;
   const lessonTitle = (id) => idx.lessons[id]?.title ?? null;
 
@@ -133,12 +134,23 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget }) {
       title: card.title,
       text: card.text,
       image: card.image ?? null,
-      choices: (card.choices ?? []).map((c, i) => ({
-        id: c.id,
-        label: c.label,
-        echo: c.echo ? { level: c.echo.level ?? 1, hint: c.echo.hint ?? null } : null,
-        default: Boolean(c.default) || (i === 0 && !(card.choices ?? []).some((x) => x.default)),
-      })),
+      choices: (card.choices ?? [])
+        .filter((c) => !c.hidden)
+        .map((c, i) => {
+          const locked = card.kind === "story" && choiceLocked(s, c, storyDeps);
+          return {
+            id: c.id,
+            label: c.label,
+            echo: c.echo ? { level: c.echo.level ?? 1, hint: c.echo.hint ?? null } : null,
+            default: Boolean(c.default) || (i === 0 && !(card.choices ?? []).some((x) => x.default)),
+            // Story mode: a choice an earlier decision closed, and a STOP warning before a very bad one.
+            locked,
+            lockedHint: locked ? c.lockedHint ?? null : null,
+            unlockedBy: !locked && c.requires ? true : null,
+            warn: c.warn && (!c.warnWhen || condOk(s, c.warnWhen, storyDeps)) ? c.warn : null,
+          };
+        }),
+      timer: card.kind === "story" ? storyNode(card.id)?.timer ?? null : null,
       clarity,
       glasses: { charges: s.glasses.charges, worn, hidden, canUse: !worn && hidden > 0 && s.glasses.charges > 0 && s.phase === "card" },
       document: card.document ? documentView(s, card.document, s.current.chosen) : null,
@@ -281,6 +293,64 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget }) {
     };
   }
 
+  // ---------- story mode ----------
+
+  const storyNode = (id) => story?.nodes[id]?.node ?? null;
+
+  // The current mission, its objective (where to go next and what to do) and the evidence file.
+  function storyView(s) {
+    if (s.mode !== "story" || !s.story) return null;
+    const m = story.missions[s.story.mission];
+    const n = storyNode(s.story.node);
+    const late = n ? Boolean(s.story.late[n.id]) : false;
+    const income = Math.max(1, s.income.monthly);
+    const hi = highInterestDebt(A, s);
+    const emiShare = monthlyEmi(s) / income;
+    return {
+      mission: {
+        id: m.id,
+        index: s.story.mission,
+        total: story.missions.length,
+        part: m.part ?? null,
+        title: m.title,
+        intro: m.intro,
+        from: m.from,
+        to: m.to,
+        placeNames: m.placeNames ?? {},
+      },
+      objective: n
+        ? {
+            node: n.id,
+            location: n.location,
+            text: n.objective,
+            age: n.age,
+            rush: n.rush && !late ? { seconds: n.rush.seconds } : null,
+            late: late ? n.rush?.note ?? null : null,
+          }
+        : null,
+      missions: story.missions.map((x, i) => {
+        const outcome = s.story.outcomes[x.id];
+        const o = outcome ? storyNode(outcome) : null;
+        return { id: x.id, part: x.part ?? null, title: x.title, done: Boolean(o), current: i === s.story.mission, outcome: o ? { id: o.id, title: o.title, tone: o.tone } : null };
+      }),
+      evidence: s.flags.filter((f) => f.startsWith("evidence_")),
+      warnings: { ignored: s.story.warningsIgnored, heeded: s.story.warningsHeeded },
+      lastLate: s.story.lastLate,
+      // A flashing danger sign when debt is getting out of hand.
+      danger: hi > income * 3 ? "debt_trap" : emiShare > 0.5 ? "emi_heavy" : hi > 0 && s.age >= 18 ? "costly_debt" : null,
+    };
+  }
+
+  // Detroit-style flowchart of one mission. `discovered` (a Set of node ids and "node:choice"
+  // keys from earlier lives) reveals branches the player has seen before.
+  function flowchart(s, missionId, discovered = null) {
+    return flowchartOf(story, s, missionId ?? story.missions[s?.story?.mission ?? 0]?.id, discovered);
+  }
+
+  function storyMissions() {
+    return (story?.missions ?? []).map((m) => ({ id: m.id, part: m.part ?? null, title: m.title, from: m.from, to: m.to }));
+  }
+
   // ---------- chapter mode ----------
 
   function hasPhone(s) {
@@ -309,12 +379,12 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget }) {
       id: ch.id,
       from: ch.from,
       to: ch.to,
-      number: STAGE_ORDER.indexOf(ch.id) + 1,
-      total: STAGE_ORDER.length,
+      number: s.mode === "story" ? s.story.mission : STAGE_ORDER.indexOf(ch.id) + 1,
+      total: s.mode === "story" ? story.missions.length - 1 : STAGE_ORDER.length,
       slots,
       requiredLeft: left,
       optionalLeft: slots.filter((x) => !x.required && !x.done).length,
-      canEnd: left === 0 && s.phase === "map",
+      canEnd: left === 0 && s.phase === "map" && s.mode !== "story",
       progress: slots.filter((x) => x.required).length ? 1 - left / slots.filter((x) => x.required).length : 1,
       phoneGift: ch.phoneGift,
       summary: ch.summary,
@@ -326,8 +396,10 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget }) {
   function locations(s) {
     const ch = s.chapter;
     const stageIdx = STAGE_ORDER.indexOf(s.stage);
+    const objective = s.mode === "story" && s.phase === "map" ? storyNode(s.story.node)?.location : null;
     return LOCATIONS.map((id) => {
       const waiting = ch ? ch.slots.filter((x) => !x.done && x.location === id) : [];
+      if (objective === id) waiting.push({ required: true, type: "story" });
       const from = LOCATION_FROM_STAGE[id];
       const unlocked = id === "phone" ? hasPhone(s) : from ? stageIdx >= STAGE_ORDER.indexOf(from) : true;
       return {
@@ -413,7 +485,12 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget }) {
     return {
       unlocked: hasPhone(s),
       messages: inbox(s),
-      notifications: ch
+      notifications:
+        s.mode === "story"
+          ? s.phase === "map" && storyNode(s.story.node)?.location === "phone"
+            ? [{ key: s.story.node, title: storyNode(s.story.node).title, kind: "story" }]
+            : []
+          : ch
         ? ch.slots
             .filter((x) => !x.done && x.location === "phone")
             .map((x) => ({ key: x.key, title: x.cardId ? cardById(s, x.cardId)?.title : null, kind: x.type }))
@@ -450,6 +527,9 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget }) {
     compare,
     lesson,
     chapter,
+    story: storyView,
+    flowchart,
+    storyMissions,
     locations,
     market,
     phone,

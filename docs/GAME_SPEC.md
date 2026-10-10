@@ -548,6 +548,16 @@ required events moves the money clock through the chapter's years; going home en
 The phone (a gift with the first job, or bought) opens mutual funds (index, debt, active) and four
 fictional shares from age 18. Full API: `src/engine/README.md`, "Chapter mode".
 
+### Story mode (the game the UI ships)
+The life is told as six missions in `src/content/story/`: a prologue (11–14) and five chapters,
+School life (15–17), College life (18–21), First job (22–25), Marriage & family (26–30) and The
+dream (31–36). Each mission is a small branching graph of scenes at map places. Choices route to
+the next scene by flags, money and documents; flags from earlier missions lock or unlock choices
+later; each mission ends in one of several outcomes, and the last mission's outcome is the story
+ending. Very bad choices carry a `warn` text shown as a STOP flash; some scenes have a decision
+timer or a race on the map. Every lesson L01–L24 is attached to at least one scene. Format and
+API: `src/engine/README.md`, "Story mode".
+
 ### Assumptions
 Every number lives in `src/engine/assumptions.js`, with a comment saying what it is based on:
 - inflation

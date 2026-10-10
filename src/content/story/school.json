@@ -1,0 +1,1147 @@
+{
+  "id": "school",
+  "stage": "teen",
+  "from": 15,
+  "to": 17,
+  "part": {
+    "en": "Chapter 1 · School life",
+    "hi": "अध्याय 1 · स्कूल की ज़िंदगी",
+    "te": "అధ్యాయం 1 · బడి జీవితం"
+  },
+  "title": {
+    "en": "The OTP Heist",
+    "hi": "OTP की लूट",
+    "te": "OTP దోపిడీ"
+  },
+  "intro": {
+    "en": "Age 15. Ammamma now gets her pension in the bank. Chintu bought a phone on EMI. And {cast:tempter} is back in the village, in bigger sunglasses, with a brand-new 'business'.",
+    "hi": "उम्र 15। अम्मम्मा की पेंशन अब बैंक में आती है। चिंटू ने EMI पर फ़ोन खरीदा है। और {cast:tempter} गाँव लौट आया है, पहले से बड़े काले चश्मे में, एक बिल्कुल नए 'बिज़नेस' के साथ।",
+    "te": "వయసు 15. ఇప్పుడు అమ్మమ్మ పెన్షన్ బ్యాంకులో పడుతుంది. చింటూ EMIలో ఫోన్ కొన్నాడు. ఇంకా {cast:tempter} మళ్లీ ఊరికి వచ్చాడు, ఇంకా పెద్ద నల్ల కళ్లద్దాలతో, సరికొత్త 'బిజినెస్'తో."
+  },
+  "start": "m1_treasurer",
+  "nodes": [
+    {
+      "id": "m1_treasurer",
+      "age": 15,
+      "location": "school",
+      "speaker": "teacher",
+      "lesson": "L05",
+      "objective": {
+        "en": "Go to school. Swapna madam wants to see you.",
+        "hi": "स्कूल जाएँ। स्वप्ना मैडम आपसे मिलना चाहती हैं।",
+        "te": "బడికి వెళ్లండి. స్వప్న మేడమ్ మిమ్మల్ని పిలుస్తున్నారు."
+      },
+      "title": {
+        "en": "The class treasurer",
+        "hi": "क्लास का खज़ांची",
+        "te": "క్లాస్ ట్రెజరర్"
+      },
+      "text": {
+        "en": "{cast:teacher} hands you a fat envelope: ₹24,000, the whole class's farewell-trip fund. \"You're good with money, {player}. Keep it safe for two years.\"",
+        "hi": "{cast:teacher} आपको एक मोटा लिफ़ाफ़ा देती हैं: ₹24,000, पूरी क्लास का फ़ेयरवेल-ट्रिप फंड। \"तुम पैसों के मामले में होशियार हो, {player}। इसे दो साल सुरक्षित रखना।\"",
+        "te": "{cast:teacher} మీ చేతికి ఒక లావు కవరు ఇస్తారు: ₹24,000, క్లాస్ మొత్తం ఫేర్‌వెల్ ట్రిప్ ఫండ్. \"డబ్బు విషయంలో నువ్వు జాగ్రత్తగా ఉంటావు, {player}. రెండేళ్లు దీన్ని భద్రంగా ఉంచు.\""
+      },
+      "choices": [
+        {
+          "id": "rd",
+          "label": {
+            "en": "Put it in a [[rd]] at the bank so it earns interest",
+            "hi": "इसे बैंक में [[rd]] में डालें ताकि ब्याज मिले",
+            "te": "వడ్డీ వచ్చేలా బ్యాంకులో [[rd]]లో వేయండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "fund_bank"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "By the trip, ₹24,000 grows to about ₹27,000. The extra buys the whole class a boat ride.",
+            "hi": "ट्रिप तक ₹24,000 बढ़कर लगभग ₹27,000 हो जाते हैं। बढ़े हुए पैसों से पूरी क्लास नाव की सैर करती है।",
+            "te": "ట్రిప్ నాటికి ₹24,000 సుమారు ₹27,000 అవుతుంది. ఆ అదనపు డబ్బుతో క్లాస్ అంతటికీ బోటు షికారు."
+          },
+          "why": {
+            "en": "Interest earns interest too. That's [[chakravaddi]], and it works best when money stays put.",
+            "hi": "ब्याज पर भी ब्याज मिलता है। यही [[chakravaddi]] है, और यह तब सबसे अच्छा काम करता है जब पैसा टिका रहे।",
+            "te": "వడ్డీ మీద కూడా వడ్డీ వస్తుంది. అదే [[chakravaddi]], డబ్బు కదలకుండా ఉన్నప్పుడే అది బాగా పని చేస్తుంది."
+          },
+          "next": "m1_call"
+        },
+        {
+          "id": "tin_box",
+          "label": {
+            "en": "Hide it at home, under the rice sack",
+            "hi": "घर पर चावल की बोरी के नीचे छिपा दें",
+            "te": "ఇంట్లో బియ్యం బస్తా కింద దాచండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "flags": {
+              "add": [
+                "fund_home"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The envelope sleeps under the rice. Every time a mouse squeaks, your heart jumps.",
+            "hi": "लिफ़ाफ़ा चावल के नीचे सोता है। जब भी कोई चूहा चूँ-चूँ करता है, आपका दिल उछल जाता है।",
+            "te": "కవరు బియ్యం కింద నిద్రపోతుంది. ఎలుక కీచుమన్న ప్రతిసారీ మీ గుండె దడదడలాడుతుంది."
+          },
+          "why": {
+            "en": "Cash at home earns nothing and is easy to lose, or to 'borrow' when tempted.",
+            "hi": "घर में रखा नकद कुछ नहीं कमाता और आसानी से खो सकता है, या मन ललचाए तो उसमें से 'उधार' लिया जा सकता है।",
+            "te": "ఇంట్లో ఉన్న నగదు ఏమీ సంపాదించదు. పోగొట్టుకోవడం సులువు, ఆశ పుడితే 'కొంచెం అప్పు' తీసుకోవడం కూడా సులువే."
+          },
+          "next": "m1_call"
+        },
+        {
+          "id": "chintu",
+          "label": {
+            "en": "Give it to Chintu. He has UPI, so it's 'digital'",
+            "hi": "चिंटू को दे दें। उसके पास UPI है, तो ये 'डिजिटल' है",
+            "te": "చింటూకు ఇవ్వండి. వాడి దగ్గర UPI ఉంది, కాబట్టి 'డిజిటల్'"
+          },
+          "quality": "bad",
+          "effects": {
+            "flags": {
+              "add": [
+                "fund_chintu"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Chintu salutes. \"Safe in my wallet app, boss!\" Somewhere, a [[betting_app]] notification pings.",
+            "hi": "चिंटू सलाम ठोकता है। \"मेरे वॉलेट ऐप में एकदम सेफ़, बॉस!\" कहीं एक [[betting_app]] का नोटिफ़िकेशन बजता है।",
+            "te": "చింటూ సెల్యూట్ కొడతాడు. \"నా వాలెట్ యాప్‌లో సేఫ్, బాస్!\" ఎక్కడో ఒక [[betting_app]] నోటిఫికేషన్ టింగ్‌మంటుంది."
+          },
+          "why": {
+            "en": "Money you are responsible for should stay where you control it, and where it leaves a record.",
+            "hi": "जिस पैसे की ज़िम्मेदारी आपकी है, उसे वहीं रहना चाहिए जहाँ उस पर आपका कंट्रोल हो, और जहाँ उसका रिकॉर्ड रहे।",
+            "te": "మీ బాధ్యతలో ఉన్న డబ్బు మీ కంట్రోల్‌లో ఉండాలి, దానికి లెక్క (రికార్డ్) ఉండే చోట ఉండాలి."
+          },
+          "next": "m1_call"
+        }
+      ]
+    },
+    {
+      "id": "m1_call",
+      "age": 15,
+      "location": "home",
+      "speaker": "headline",
+      "lesson": "L06",
+      "objective": {
+        "en": "Hurry home! Ammamma's phone won't stop ringing.",
+        "hi": "जल्दी घर चलें! अम्मम्मा का फ़ोन बजना बंद ही नहीं हो रहा।",
+        "te": "త్వరగా ఇంటికి! అమ్మమ్మ ఫోన్ మోగుతూనే ఉంది."
+      },
+      "title": {
+        "en": "\"Your pension will be BLOCKED\"",
+        "hi": "\"आपकी पेंशन BLOCK हो जाएगी\"",
+        "te": "\"మీ పెన్షన్ బ్లాక్ అవుతుంది\""
+      },
+      "text": {
+        "en": "A man shouts on Ammamma's phone: \"Bank KYC department! Pension BLOCKED in 2 minutes! Tell me the OTP!\" The SMS says: \"OTP 482913 to ADD BENEFICIARY. Do not share.\" Ammamma's hands shake.",
+        "hi": "अम्मम्मा के फ़ोन पर एक आदमी चिल्लाता है: \"बैंक KYC डिपार्टमेंट! 2 मिनट में पेंशन BLOCK! OTP बताइए!\" SMS में लिखा है: \"नया लाभार्थी जोड़ने के लिए OTP 482913। किसी को न बताएँ।\" अम्मम्मा के हाथ काँप रहे हैं।",
+        "te": "అమ్మమ్మ ఫోన్‌లో ఒకడు అరుస్తున్నాడు: \"బ్యాంక్ KYC డిపార్ట్‌మెంట్! 2 నిమిషాల్లో పెన్షన్ బ్లాక్! OTP చెప్పండి!\" SMSలో ఇలా ఉంది: \"OTP 482913: కొత్త బెనిఫిషియరీని జోడించడానికి. ఎవరికీ చెప్పకండి.\" అమ్మమ్మ చేతులు వణుకుతున్నాయి."
+      },
+      "timer": {
+        "seconds": 20,
+        "choice": "freeze"
+      },
+      "choices": [
+        {
+          "id": "read_otp",
+          "label": {
+            "en": "Read the OTP aloud. Save the pension!",
+            "hi": "OTP ज़ोर से पढ़ दें। पेंशन बचानी है!",
+            "te": "OTP గట్టిగా చదివి చెప్పండి. పెన్షన్ కాపాడండి!"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "Read the SMS again: \"Do not share.\" No bank, police or government office ever asks for an [[otp]]. An OTP is the key to the account.",
+            "hi": "SMS फिर से पढ़ें: \"किसी को न बताएँ।\" कोई बैंक, पुलिस या सरकारी दफ़्तर कभी [[otp]] नहीं माँगता। OTP खाते की चाबी है।",
+            "te": "SMS మళ్లీ చదవండి: \"ఎవరికీ చెప్పకండి.\" ఏ బ్యాంకూ, పోలీసులూ, ప్రభుత్వ ఆఫీసూ ఎప్పుడూ [[otp]] అడగవు. OTP అంటే అకౌంట్ తాళంచెవి."
+          },
+          "effects": {
+            "flags": {
+              "add": [
+                "shared_otp"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "\"Thank you, madam,\" says the man, sweetly. The line goes dead. Then Ammamma's phone buzzes. And buzzes. And buzzes.",
+            "hi": "\"शुक्रिया, मैडम,\" आदमी मीठी आवाज़ में कहता है। लाइन कट जाती है। फिर अम्मम्मा का फ़ोन बजता है। फिर बजता है। फिर बजता है।",
+            "te": "\"థాంక్యూ మేడమ్,\" అని వాడు తియ్యగా అంటాడు. లైన్ కట్ అవుతుంది. తర్వాత అమ్మమ్మ ఫోన్ బజ్ అవుతుంది. మళ్లీ బజ్. మళ్లీ బజ్."
+          },
+          "why": {
+            "en": "Scammers create panic and a countdown so you can't think. The OTP was for adding THEIR account as a payee.",
+            "hi": "धोखेबाज़ घबराहट और उलटी गिनती पैदा करते हैं ताकि आप सोच न सकें। वह OTP उनका अपना खाता पैसे पाने वाले के तौर पर जोड़ने के लिए था।",
+            "te": "మోసగాళ్లు మీరు ఆలోచించలేనంత కంగారు, టైమ్ ఒత్తిడి సృష్టిస్తారు. ఆ OTP వాళ్ల సొంత అకౌంట్‌ను పేయీగా జోడించడానికే."
+          },
+          "next": "m1_drained"
+        },
+        {
+          "id": "hang_up",
+          "label": {
+            "en": "Hang up. Call the bank on the passbook number",
+            "hi": "फ़ोन काटें। पासबुक पर लिखे नंबर पर बैंक को फ़ोन करें",
+            "te": "ఫోన్ పెట్టేయండి. పాస్‌బుక్‌లోని నంబర్‌కు బ్యాంకుకు కాల్ చేయండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "refused_otp"
+              ]
+            },
+            "meters": {
+              "family": 4
+            }
+          },
+          "outcome": {
+            "en": "The real bank says: \"We never ask for OTPs.\" That caller's number was already reported 300 times.",
+            "hi": "असली बैंक कहता है: \"हम कभी OTP नहीं माँगते।\" उस कॉल करने वाले के नंबर की पहले ही 300 बार शिकायत हो चुकी थी।",
+            "te": "అసలు బ్యాంకు చెబుతుంది: \"మేము ఎప్పుడూ OTP అడగం.\" ఆ కాలర్ నంబర్‌పై ఇప్పటికే 300 సార్లు ఫిర్యాదులు వచ్చాయి."
+          },
+          "why": {
+            "en": "Slow down, hang up, and call the official number yourself. Hanging up is always allowed.",
+            "hi": "रुकें, फ़ोन काटें, और ऑफ़िशियल नंबर पर खुद फ़ोन करें। फ़ोन काटने की इजाज़त हमेशा है।",
+            "te": "నెమ్మదించండి, ఫోన్ పెట్టేయండి, అధికారిక నంబర్‌కు మీరే కాల్ చేయండి. ఫోన్ పెట్టేయడం ఎప్పుడూ తప్పు కాదు."
+          },
+          "next": "m1_trap"
+        },
+        {
+          "id": "record",
+          "label": {
+            "en": "Keep him talking and secretly record the call",
+            "hi": "उसे बातों में उलझाए रखें और चुपके से कॉल रिकॉर्ड करें",
+            "te": "వాడిని మాట్లాడిస్తూ, రహస్యంగా కాల్ రికార్డ్ చేయండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "refused_otp",
+                "evidence_call"
+              ]
+            },
+            "meters": {
+              "family": 4
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "He gets angry and slips: \"Prakash sir's office will block you!\" You save the recording. Then you hang up.",
+            "hi": "वह गुस्से में आ जाता है और उसके मुँह से निकल जाता है: \"प्रकाश सर का ऑफ़िस तुम्हें ब्लॉक कर देगा!\" आप रिकॉर्डिंग सेव कर लेते हैं। फिर फ़ोन काट देते हैं।",
+            "te": "వాడికి కోపం వచ్చి నోరు జారుతాడు: \"ప్రకాష్ సార్ ఆఫీస్ మిమ్మల్ని బ్లాక్ చేస్తుంది!\" మీరు రికార్డింగ్ సేవ్ చేస్తారు. తర్వాత ఫోన్ పెట్టేస్తారు."
+          },
+          "why": {
+            "en": "Never share the OTP, but evidence helps police catch the gang. Report numbers to [[helpline_1930]].",
+            "hi": "OTP कभी न बताएँ, पर सबूत से पुलिस गिरोह को पकड़ पाती है। ऐसे नंबरों की शिकायत [[helpline_1930]] पर करें।",
+            "te": "OTP ఎప్పుడూ చెప్పకండి, కానీ సాక్ష్యం ఉంటే పోలీసులు ముఠాను పట్టుకోగలరు. నంబర్లను [[helpline_1930]] నంబర్‌కు రిపోర్ట్ చేయండి."
+          },
+          "next": "m1_trap"
+        },
+        {
+          "id": "freeze",
+          "hidden": true,
+          "label": {
+            "en": "Freeze",
+            "hi": "डर से जम जाएँ",
+            "te": "బిత్తరపోయి నిలబడండి"
+          },
+          "quality": "bad",
+          "effects": {
+            "flags": {
+              "add": [
+                "shared_otp"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "While you hesitate, Ammamma grabs the phone and reads the OTP herself. The line goes dead.",
+            "hi": "आप सोचते ही रह जाते हैं, और अम्मम्मा फ़ोन लेकर खुद OTP पढ़ देती हैं। लाइन कट जाती है।",
+            "te": "మీరు తటపటాయిస్తుంటే, అమ్మమ్మ ఫోన్ లాక్కుని OTP తనే చదివి చెప్పేస్తుంది. లైన్ కట్ అవుతుంది."
+          },
+          "why": {
+            "en": "The countdown is the trick. When someone rushes you about money, the safest move is to hang up.",
+            "hi": "उलटी गिनती ही असली चाल है। जब कोई पैसों के मामले में जल्दी मचाए, तो सबसे सुरक्षित कदम है फ़ोन काट देना।",
+            "te": "కౌంట్‌డౌనే అసలు ట్రిక్. డబ్బు విషయంలో ఎవరైనా తొందరపెడితే, ఫోన్ పెట్టేయడమే అన్నిటికంటే సేఫ్."
+          },
+          "next": "m1_drained"
+        }
+      ]
+    },
+    {
+      "id": "m1_drained",
+      "age": 15,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L09",
+      "objective": {
+        "en": "RUN to the bank! Report the fraud before the money disappears.",
+        "hi": "बैंक की तरफ़ भागें! पैसा गायब होने से पहले धोखे की रिपोर्ट करें।",
+        "te": "బ్యాంకుకు పరుగెత్తండి! డబ్బు మాయం కాకముందే మోసం గురించి రిపోర్ట్ చేయండి."
+      },
+      "rush": {
+        "seconds": 22,
+        "fail": "m1_too_late"
+      },
+      "title": {
+        "en": "The golden hour",
+        "hi": "सुनहरा घंटा",
+        "te": "బంగారు గంట"
+      },
+      "text": {
+        "en": "Three messages: ₹15,000 debited. ₹15,000 debited. ₹10,000 debited. Ammamma's whole pension saving. {cast:banker} grabs the phone: \"Call 1930 now! I'll freeze the account!\"",
+        "hi": "तीन मैसेज: ₹15,000 कटे। ₹15,000 कटे। ₹10,000 कटे। अम्मम्मा की पेंशन की पूरी बचत। {cast:banker} फ़ोन ले लेती हैं: \"अभी 1930 पर फ़ोन करो! मैं खाता फ़्रीज़ करती हूँ!\"",
+        "te": "మూడు మెసేజ్‌లు: ₹15,000 డెబిట్. ₹15,000 డెబిట్. ₹10,000 డెబిట్. అమ్మమ్మ పెన్షన్ పొదుపు మొత్తం. {cast:banker} ఫోన్ అందుకుంటుంది: \"ఇప్పుడే 1930కి కాల్ చేయి! నేను అకౌంట్ ఫ్రీజ్ చేస్తా!\""
+      },
+      "choices": [
+        {
+          "id": "report",
+          "label": {
+            "en": "Call [[helpline_1930]] and file a cyber-crime complaint",
+            "hi": "[[helpline_1930]] पर फ़ोन करें और साइबर-क्राइम शिकायत दर्ज करें",
+            "te": "[[helpline_1930]] నంబర్‌కు కాల్ చేసి సైబర్ క్రైమ్ ఫిర్యాదు ఇవ్వండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "reported_1930"
+              ]
+            },
+            "meters": {
+              "family": -4
+            }
+          },
+          "outcome": {
+            "en": "₹25,000 is frozen in the scammer's account before it can be withdrawn. It comes back in four months. ₹15,000 is gone forever.",
+            "hi": "₹25,000 निकाले जाने से पहले ही धोखेबाज़ के खाते में फ़्रीज़ हो जाते हैं। चार महीने में वे वापस आ जाते हैं। ₹15,000 हमेशा के लिए चले गए।",
+            "te": "మోసగాడు డబ్బు తీసుకునేలోపే ₹25,000 వాడి అకౌంట్‌లోనే ఫ్రీజ్ అవుతుంది. నాలుగు నెలల్లో అది తిరిగి వస్తుంది. ₹15,000 మాత్రం శాశ్వతంగా పోయింది."
+          },
+          "why": {
+            "en": "Report within the first hour. Banks can freeze money that is still moving between accounts.",
+            "hi": "पहले घंटे के अंदर रिपोर्ट करें। जो पैसा अभी खातों के बीच घूम रहा है, बैंक उसे फ़्रीज़ कर सकते हैं।",
+            "te": "మొదటి గంటలోపే రిపోర్ట్ చేయండి. ఇంకా అకౌంట్ల మధ్య తిరుగుతున్న డబ్బును బ్యాంకులు ఫ్రీజ్ చేయగలవు."
+          },
+          "next": "m1_trap"
+        },
+        {
+          "id": "hide",
+          "label": {
+            "en": "Don't report it. It's too embarrassing",
+            "hi": "रिपोर्ट न करें। बहुत शर्म की बात है",
+            "te": "రిపోర్ట్ చేయకండి. చాలా సిగ్గుచేటు"
+          },
+          "quality": "bad",
+          "effects": {
+            "flags": {
+              "add": [
+                "ammamma_robbed"
+              ]
+            },
+            "meters": {
+              "family": -10
+            }
+          },
+          "outcome": {
+            "en": "Nobody reports it. The money is gone, and the same gang calls fifty more grandmothers this week.",
+            "hi": "कोई रिपोर्ट नहीं करता। पैसा चला गया, और वही गिरोह इस हफ़्ते पचास और दादी-नानियों को फ़ोन करता है।",
+            "te": "ఎవరూ రిపోర్ట్ చేయరు. డబ్బు పోయింది, అదే ముఠా ఈ వారం ఇంకో యాభై మంది అమ్మమ్మలకు కాల్ చేస్తుంది."
+          },
+          "why": {
+            "en": "Shame helps only the scammer. Reporting fast can freeze the money, and protects the next victim.",
+            "hi": "शर्म से सिर्फ़ धोखेबाज़ का फ़ायदा होता है। जल्दी रिपोर्ट करने से पैसा फ़्रीज़ हो सकता है, और अगला शिकार बच जाता है।",
+            "te": "సిగ్గుపడితే లాభం మోసగాడికే. వెంటనే రిపోర్ట్ చేస్తే డబ్బు ఫ్రీజ్ కావచ్చు, తర్వాత మోసపోయేవాళ్లనూ కాపాడొచ్చు."
+          },
+          "next": "m1_trap"
+        }
+      ]
+    },
+    {
+      "id": "m1_too_late",
+      "age": 15,
+      "location": "bank",
+      "speaker": "banker",
+      "objective": {
+        "en": "Too slow. Go to the bank anyway and file the complaint.",
+        "hi": "बहुत देर हो गई। फिर भी बैंक जाएँ और शिकायत दर्ज करें।",
+        "te": "చాలా ఆలస్యమైంది. అయినా బ్యాంకుకు వెళ్లి ఫిర్యాదు ఇవ్వండి."
+      },
+      "title": {
+        "en": "Too late",
+        "hi": "बहुत देर हो गई",
+        "te": "చాలా ఆలస్యం"
+      },
+      "text": {
+        "en": "By the time you reach the bank, the money has jumped through six accounts and been withdrawn at an ATM in another state. {cast:banker} files the complaint anyway.",
+        "hi": "जब तक आप बैंक पहुँचते हैं, पैसा छह खातों से होकर दूसरे राज्य के एक ATM से निकाला जा चुका है। {cast:banker} फिर भी शिकायत दर्ज करती हैं।",
+        "te": "మీరు బ్యాంకు చేరేసరికి, డబ్బు ఆరు అకౌంట్లు దాటి, వేరే రాష్ట్రంలోని ఒక ATMలో డ్రా అయిపోయింది. అయినా {cast:banker} ఫిర్యాదు నమోదు చేస్తుంది."
+      },
+      "choices": [
+        {
+          "id": "promise",
+          "label": {
+            "en": "Promise Ammamma you'll make it up to her, one day",
+            "hi": "अम्मम्मा से वादा करें कि एक दिन आप इसकी भरपाई करेंगे",
+            "te": "ఏదో ఒక రోజు ఈ నష్టం తీరుస్తానని అమ్మమ్మకు మాట ఇవ్వండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "flags": {
+              "add": [
+                "ammamma_robbed",
+                "reported_1930"
+              ]
+            },
+            "meters": {
+              "family": -8,
+              "joy": -4
+            }
+          },
+          "outcome": {
+            "en": "Ammamma pats your head. \"Money comes and goes, kanna. Only don't let them fool you twice.\"",
+            "hi": "अम्मम्मा आपके सिर पर हाथ फेरती हैं। \"पैसा आता-जाता रहता है, कन्ना। बस उन्हें दोबारा तुझे बेवकूफ़ मत बनाने देना।\"",
+            "te": "అమ్మమ్మ మీ తల నిమురుతుంది. \"పైసలు వస్తయ్, పోతయ్ కన్నా. రెండోసారి మాత్రం వాళ్ల చేతిలో మోసపోకు.\""
+          },
+          "why": {
+            "en": "In cyber fraud, the first hour decides almost everything. Speed matters more than anything else.",
+            "hi": "साइबर धोखे में पहला घंटा लगभग सब कुछ तय करता है। रफ़्तार सबसे ज़्यादा मायने रखती है।",
+            "te": "సైబర్ మోసంలో దాదాపు అంతా మొదటి గంటలోనే తేలిపోతుంది. అన్నిటికంటే వేగమే ముఖ్యం."
+          },
+          "next": "m1_trap"
+        }
+      ]
+    },
+    {
+      "id": "m1_trap",
+      "age": 16,
+      "location": "square",
+      "speaker": "tempter",
+      "lesson": "L11",
+      "objective": {
+        "en": "Lucky Prakash is showing off at the village square. Go and see.",
+        "hi": "लकी प्रकाश गाँव के चौक पर दिखावा कर रहा है। जाकर देखें।",
+        "te": "లక్కీ ప్రకాష్ ఊరి కూడలిలో హడావుడి చేస్తున్నాడు. వెళ్లి చూడండి."
+      },
+      "title": {
+        "en": "Double in 10 days",
+        "hi": "10 दिन में डबल",
+        "te": "10 రోజుల్లో డబుల్"
+      },
+      "text": {
+        "en": "{cast:tempter} has a new phone, a gold chain and bigger sunglasses. \"Crypto, bro! Put ₹10,000 in my group, get ₹20,000 in 10 days. Your trip fund could become a Goa trip!\"",
+        "hi": "{cast:tempter} के पास नया फ़ोन, सोने की चेन और पहले से बड़ा काला चश्मा है। \"क्रिप्टो, ब्रो! मेरे ग्रुप में ₹10,000 डालो, 10 दिन में ₹20,000 पाओ। तुम्हारा ट्रिप फंड गोवा ट्रिप बन सकता है!\"",
+        "te": "{cast:tempter} దగ్గర కొత్త ఫోన్, బంగారు గొలుసు, ఇంకా పెద్ద నల్ల కళ్లద్దాలు. \"క్రిప్టో, బ్రో! నా గ్రూప్‌లో ₹10,000 వెయ్యి, 10 రోజుల్లో ₹20,000 తీస్కో. నీ ట్రిప్ ఫండ్ గోవా ట్రిప్ అయిపోతుంది!\""
+      },
+      "choices": [
+        {
+          "id": "invest_fund",
+          "label": {
+            "en": "Put ₹10,000 of the trip fund in. Goa!",
+            "hi": "ट्रिप फंड के ₹10,000 लगा दें। गोवा!",
+            "te": "ట్రిప్ ఫండ్ నుంచి ₹10,000 వేయండి. గోవా!"
+          },
+          "quality": "bad",
+          "requires": {
+            "notFlags": [
+              "fund_bank"
+            ]
+          },
+          "lockedHint": {
+            "en": "The trip fund is locked safely in the RD.",
+            "hi": "ट्रिप फंड RD में सुरक्षित बंद है।",
+            "te": "ట్రిప్ ఫండ్ RDలో భద్రంగా లాక్ అయి ఉంది."
+          },
+          "warn": {
+            "en": "This is not your money: it belongs to 40 classmates. And nobody can double money in 10 days. That promise IS the scam.",
+            "hi": "यह आपका पैसा नहीं है: यह 40 सहपाठियों का है। और कोई भी 10 दिन में पैसा डबल नहीं कर सकता। यही वादा तो धोखा है।",
+            "te": "ఇది మీ డబ్బు కాదు: 40 మంది క్లాస్‌మేట్‌లది. 10 రోజుల్లో డబ్బు డబుల్ చేయడం ఎవరి వల్లా కాదు. ఆ హామీయే అసలు మోసం."
+          },
+          "effects": {
+            "flags": {
+              "add": [
+                "invested_fund"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Day 3: the app shows ₹14,200! Day 9: the app won't open. Day 10: the group is deleted.",
+            "hi": "दिन 3: ऐप में ₹14,200 दिख रहे हैं! दिन 9: ऐप खुलता ही नहीं। दिन 10: ग्रुप डिलीट।",
+            "te": "3వ రోజు: యాప్‌లో ₹14,200 కనిపిస్తుంది! 9వ రోజు: యాప్ తెరుచుకోదు. 10వ రోజు: గ్రూప్ డిలీట్."
+          },
+          "why": {
+            "en": "Fake profit screens make you trust them, and add more. Then the 'company' disappears.",
+            "hi": "नकली मुनाफ़े वाली स्क्रीन आपका भरोसा जीतती है, ताकि आप और पैसा डालें। फिर 'कंपनी' गायब हो जाती है।",
+            "te": "నకిలీ లాభాల స్క్రీన్లు చూసి మీరు నమ్మేస్తారు, ఇంకా ఎక్కువ వేస్తారు. తర్వాత ఆ 'కంపెనీ' మాయం."
+          },
+          "next": "m1_vanished"
+        },
+        {
+          "id": "invest_own",
+          "label": {
+            "en": "Try it with ₹2,000 of your own savings",
+            "hi": "अपनी बचत के ₹2,000 से आज़माकर देखें",
+            "te": "మీ సొంత పొదుపులో ₹2,000తో ప్రయత్నించండి"
+          },
+          "quality": "bad",
+          "effects": {
+            "cash": -2000,
+            "flags": {
+              "add": [
+                "lost_crypto"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Your 'balance' shows ₹3,100 on day 3. On day 9 the group is gone, and so is your ₹2,000.",
+            "hi": "दिन 3 पर आपका 'बैलेंस' ₹3,100 दिखता है। दिन 9 पर ग्रुप गायब, और आपके ₹2,000 भी।",
+            "te": "3వ రోజు మీ 'బ్యాలెన్స్' ₹3,100 చూపిస్తుంది. 9వ రోజు గ్రూప్ మాయం, మీ ₹2,000 కూడా."
+          },
+          "why": {
+            "en": "Easy-money apps show fake gains so you put in more. 'Double in 10 days' never works for the investor.",
+            "hi": "आसान-पैसे वाले ऐप नकली मुनाफ़ा दिखाते हैं ताकि आप और पैसा डालें। '10 दिन में डबल' पैसा लगाने वाले के लिए कभी काम नहीं करता।",
+            "te": "మీరు ఇంకా వేయాలని ఈజీ-మనీ యాప్‌లు నకిలీ లాభాలు చూపిస్తాయి. '10 రోజుల్లో డబుల్' పెట్టుబడి పెట్టినవాళ్లకు ఎప్పుడూ పని చేయదు."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "fund_chintu"
+                ]
+              },
+              "to": "m1_chintu_fund"
+            },
+            {
+              "to": "m1_chintu"
+            }
+          ]
+        },
+        {
+          "id": "ask_name",
+          "label": {
+            "en": "\"What's your group called? Is it registered?\"",
+            "hi": "\"तुम्हारे ग्रुप का नाम क्या है? क्या वह रजिस्टर्ड है?\"",
+            "te": "\"మీ గ్రూప్ పేరేంటి? అది రిజిస్టర్ అయిందా?\""
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "evidence_prakash"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "\"Lucky Golden Crypto. Registered in... Dubai!\" You quietly note the name and his UPI ID. You may need them one day.",
+            "hi": "\"लकी गोल्डन क्रिप्टो। रजिस्टर्ड है... दुबई में!\" आप चुपचाप नाम और उसकी UPI ID लिख लेते हैं। एक दिन इनकी ज़रूरत पड़ सकती है।",
+            "te": "\"లక్కీ గోల్డెన్ క్రిప్టో. రిజిస్టర్ అయింది... దుబాయ్‌లో!\" మీరు ఆ పేరు, అతని UPI ID నిశ్శబ్దంగా రాసుకుంటారు. ఏదో ఒక రోజు అవి పనికొస్తాయేమో."
+          },
+          "why": {
+            "en": "Real investments are registered with regulators like SEBI and RBI. Asking simple questions scares scammers.",
+            "hi": "असली निवेश SEBI और RBI जैसे नियामकों के पास रजिस्टर्ड होते हैं। सीधे-सादे सवाल पूछने से धोखेबाज़ घबरा जाते हैं।",
+            "te": "నిజమైన పెట్టుబడులు SEBI, RBI లాంటి నియంత్రణ సంస్థల దగ్గర రిజిస్టర్ అయి ఉంటాయి. చిన్న ప్రశ్నలు అడిగితేనే మోసగాళ్లు భయపడతారు."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "fund_chintu"
+                ]
+              },
+              "to": "m1_chintu_fund"
+            },
+            {
+              "to": "m1_chintu"
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "label": {
+            "en": "Walk away",
+            "hi": "वहाँ से चले जाएँ",
+            "te": "వెళ్లిపోండి"
+          },
+          "quality": "ok",
+          "outcome": {
+            "en": "Prakash shrugs. \"Your loss, bro.\" Three boys from your class sign up anyway.",
+            "hi": "प्रकाश कंधे उचकाता है। \"तुम्हारा नुकसान, ब्रो।\" फिर भी आपकी क्लास के तीन लड़के जुड़ जाते हैं।",
+            "te": "ప్రకాష్ భుజాలు ఎగరేస్తాడు. \"నీకే లాస్, బ్రో.\" అయినా మీ క్లాస్‌లో ముగ్గురు అబ్బాయిలు చేరిపోతారు."
+          },
+          "why": {
+            "en": "Walking away from 'too good to be true' is always a good move.",
+            "hi": "'इतना अच्छा कि सच न लगे' वाली बात से दूर हट जाना हमेशा सही कदम है।",
+            "te": "'నమ్మలేనంత మంచిగా' ఉన్నదాని నుంచి దూరంగా వెళ్లడం ఎప్పుడూ మంచి నిర్ణయమే."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "fund_chintu"
+                ]
+              },
+              "to": "m1_chintu_fund"
+            },
+            {
+              "to": "m1_chintu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1_vanished",
+      "age": 16,
+      "location": "school",
+      "speaker": "teacher",
+      "lesson": "L08",
+      "objective": {
+        "en": "Prakash's phone is switched off. Face Swapna madam at school.",
+        "hi": "प्रकाश का फ़ोन बंद है। स्कूल में स्वप्ना मैडम का सामना करें।",
+        "te": "ప్రకాష్ ఫోన్ స్విచ్ ఆఫ్. బడిలో స్వప్న మేడమ్‌ను ఎదుర్కోండి."
+      },
+      "title": {
+        "en": "₹10,000 short",
+        "hi": "₹10,000 कम",
+        "te": "₹10,000 తక్కువ"
+      },
+      "text": {
+        "en": "The trip is in a year and ₹10,000 of your classmates' money is gone. {cast:teacher} is asking to see the fund 'just to check'.",
+        "hi": "ट्रिप एक साल बाद है और आपके सहपाठियों के ₹10,000 गायब हैं। {cast:teacher} फंड देखना चाहती हैं, 'बस चेक करने के लिए'।",
+        "te": "ట్రిప్‌కు ఇంకా ఒక్క ఏడాదే ఉంది, క్లాస్‌మేట్‌ల డబ్బులో ₹10,000 పోయింది. {cast:teacher} 'ఊరికే ఒకసారి చూద్దామని' ఫండ్ చూపించమంటున్నారు."
+      },
+      "choices": [
+        {
+          "id": "confess",
+          "label": {
+            "en": "Tell her everything. Repay by working weekends at the shop",
+            "hi": "उन्हें सब सच बताएँ। वीकेंड पर दुकान में काम करके चुकाएँ",
+            "te": "మేడమ్‌కు అంతా చెప్పండి. వీకెండ్స్ కొట్టులో పని చేసి తీర్చండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "loan": {
+              "source": "family",
+              "principal": 10000
+            },
+            "cash": -10000,
+            "meters": {
+              "joy": -6,
+              "family": -3
+            },
+            "flags": {
+              "add": [
+                "confessed"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Madam is quiet for a long time. Then: \"Thank you for the truth.\" Amma lends you ₹10,000. You stack rice sacks every Sunday for a year.",
+            "hi": "मैडम देर तक चुप रहती हैं। फिर कहती हैं: \"सच बताने के लिए शुक्रिया।\" अम्मा आपको ₹10,000 उधार देती हैं। आप साल भर हर रविवार चावल की बोरियाँ जमाते हैं।",
+            "te": "మేడమ్ చాలా సేపు ఏమీ మాట్లాడరు. తర్వాత: \"నిజం చెప్పినందుకు థాంక్స్.\" అమ్మ మీకు ₹10,000 అప్పుగా ఇస్తుంది. ఏడాది పాటు ప్రతి ఆదివారం మీరు బియ్యం బస్తాలు పేర్చుతారు."
+          },
+          "why": {
+            "en": "Every weekend at the shop is a weekend not studying: that's [[opportunity_cost]]. Honesty kept the damage small.",
+            "hi": "दुकान पर बिताया हर वीकेंड पढ़ाई से छिना वीकेंड है: यही [[opportunity_cost]] है। ईमानदारी ने नुकसान छोटा रखा।",
+            "te": "కొట్టులో గడిపిన ప్రతి వీకెండ్ చదువుకోని వీకెండ్: అదే [[opportunity_cost]]. నిజాయితీ వల్ల నష్టం చిన్నగానే ఆగింది."
+          },
+          "next": "m1_chintu"
+        },
+        {
+          "id": "sahukar",
+          "label": {
+            "en": "Secretly borrow ₹10,000 from Narsaiah sahukar",
+            "hi": "चुपके से नरसैया साहूकार से ₹10,000 उधार लें",
+            "te": "రహస్యంగా నర్సయ్య షావుకారు దగ్గర ₹10,000 అప్పు తీసుకోండి"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "₹2 per ₹100 per month sounds tiny. It is 24% a year, and the [[sahukar]] wants your family's papers. Hiding a mistake with costly debt makes it bigger.",
+            "hi": "हर ₹100 पर महीने का ₹2 बहुत कम लगता है। पर यह 24% सालाना है, और [[sahukar]] आपके परिवार के कागज़ माँगता है। गलती को महँगे कर्ज़ से छिपाने पर वह और बड़ी हो जाती है।",
+            "te": "నెలకు ₹100కు ₹2 వడ్డీ అంటే చిన్నగా అనిపిస్తుంది. అది ఏడాదికి 24%, పైగా [[sahukar]] మీ ఇంటి కాగితాలు అడుగుతాడు. ఖరీదైన అప్పుతో తప్పును దాస్తే, తప్పు ఇంకా పెద్దదవుతుంది."
+          },
+          "effects": {
+            "loan": {
+              "source": "moneylender",
+              "principal": 10000
+            },
+            "cash": -10000,
+            "flags": {
+              "add": [
+                "secret_debt"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Narsaiah writes your name in his red ledger, smiling. The envelope is full again. Your stomach is not.",
+            "hi": "नरसैया मुस्कुराते हुए अपनी लाल बही में आपका नाम लिखता है। लिफ़ाफ़ा फिर से भर गया। पर आपके पेट में गाँठ पड़ गई।",
+            "te": "నర్సయ్య నవ్వుతూ తన ఎర్ర ఖాతా పుస్తకంలో మీ పేరు రాస్తాడు. కవరు మళ్లీ నిండింది. మీ కడుపులో మాత్రం దేవుతోంది."
+          },
+          "why": {
+            "en": "The sahukar's interest is added every month, even when you can't pay. A secret loan at 17 follows you for years.",
+            "hi": "साहूकार का ब्याज हर महीने जुड़ता है, चाहे आप चुका पाएँ या नहीं। 17 की उम्र का छिपा कर्ज़ सालों तक पीछा करता है।",
+            "te": "కట్టలేకపోయినా షావుకారు వడ్డీ ప్రతి నెలా కలుస్తూనే ఉంటుంది. 17 ఏళ్లకు తీసుకున్న రహస్య అప్పు ఏళ్ల తరబడి వెంటాడుతుంది."
+          },
+          "next": "m1_chintu"
+        }
+      ]
+    },
+    {
+      "id": "m1_chintu",
+      "age": 17,
+      "location": "shop",
+      "speaker": "friend",
+      "lesson": "L07",
+      "objective": {
+        "en": "Chintu is waiting behind Anjamma aunty's shop. He looks scared.",
+        "hi": "चिंटू अंजम्मा आंटी की दुकान के पीछे इंतज़ार कर रहा है। वह डरा हुआ लग रहा है।",
+        "te": "అంజమ్మ ఆంటీ కొట్టు వెనకాల చింటూ ఎదురుచూస్తున్నాడు. భయపడుతున్నట్టు ఉన్నాడు."
+      },
+      "title": {
+        "en": "Chintu's 'sure win'",
+        "hi": "चिंटू की 'पक्की जीत'",
+        "te": "చింటూ 'పక్కా గెలుపు'"
+      },
+      "text": {
+        "en": "Chintu pays ₹799 a month for his phone [[emi]], and he's been chasing losses on a [[betting_app]]. ₹6,000 of his father's money is gone. \"Lend me ₹3,000. Tonight's match is a sure win!\"",
+        "hi": "चिंटू अपने फ़ोन की [[emi]] के ₹799 महीना भरता है, और एक [[betting_app]] पर हारा पैसा वापस जीतने के चक्कर में है। उसके पिता के ₹6,000 जा चुके हैं। \"मुझे ₹3,000 उधार दे दे। आज रात का मैच पक्की जीत है!\"",
+        "te": "చింటూ తన ఫోన్ [[emi]]కి నెలకు ₹799 కడుతున్నాడు, పైగా ఒక [[betting_app]] లో పోయిన డబ్బు తిరిగి రాబట్టాలని ఆడుతూనే ఉన్నాడు. వాళ్ల నాన్న డబ్బు ₹6,000 పోయింది. \"నాకు ₹3,000 అప్పియ్యి. ఈ రాత్రి మ్యాచ్ పక్కా గెలుస్తాం!\""
+      },
+      "choices": [
+        {
+          "id": "lend",
+          "label": {
+            "en": "Lend him ₹3,000. He's your best friend",
+            "hi": "उसे ₹3,000 उधार दें। वह आपका पक्का दोस्त है",
+            "te": "₹3,000 అప్పు ఇవ్వండి. వాడు మీ ప్రాణ స్నేహితుడు"
+          },
+          "quality": "bad",
+          "effects": {
+            "cash": -3000,
+            "flags": {
+              "add": [
+                "lent_chintu"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "India loses by four runs. So does Chintu. \"Next month, promise!\" he says. He doesn't.",
+            "hi": "भारत चार रन से हार जाता है। चिंटू भी। \"अगले महीने लौटा दूँगा, पक्का!\" वह कहता है। पर नहीं लौटाता।",
+            "te": "ఇండియా నాలుగు పరుగుల తేడాతో ఓడిపోతుంది. చింటూ కూడా. \"వచ్చే నెల ఇస్తా, ప్రామిస్!\" అంటాడు. ఇవ్వడు."
+          },
+          "why": {
+            "en": "Lending to cover gambling only feeds the habit. Chasing losses is how ₹300 becomes ₹30,000.",
+            "hi": "जुए का नुकसान भरने के लिए उधार देना बस आदत को और बढ़ाता है। हारा पैसा वापस जीतने के चक्कर में ही ₹300 बढ़कर ₹30,000 बन जाते हैं।",
+            "te": "జూదం నష్టం పూడ్చడానికి అప్పు ఇస్తే, అలవాటు ఇంకా పెరుగుతుంది. పోయింది రాబట్టాలని ఆడుతూ ఆడుతూనే ₹300 కాస్తా ₹30,000 అవుతుంది."
+          },
+          "next": "m1_trip"
+        },
+        {
+          "id": "help",
+          "label": {
+            "en": "Refuse, but go with him to tell his father, and delete the app together",
+            "hi": "मना करें, पर उसके साथ जाकर उसके पिता को बताएँ, और ऐप साथ में डिलीट करें",
+            "te": "కుదరదని చెప్పండి, కానీ వాడితో వెళ్లి వాళ్ల నాన్నకు చెప్పండి, ఇద్దరూ కలిసి యాప్ డిలీట్ చేయండి"
+          },
+          "quality": "good",
+          "effects": {
+            "meters": {
+              "family": 3,
+              "joy": -2
+            },
+            "flags": {
+              "add": [
+                "helped_chintu"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "His father shouts for a day, then hugs him. Chintu deletes the app. \"You're a real friend, re.\"",
+            "hi": "उसके पिता एक दिन तक चिल्लाते हैं, फिर उसे गले लगा लेते हैं। चिंटू ऐप डिलीट कर देता है। \"तू सच्चा दोस्त है, रे।\"",
+            "te": "వాళ్ల నాన్న ఒక రోజంతా అరుస్తాడు, తర్వాత హత్తుకుంటాడు. చింటూ యాప్ డిలీట్ చేస్తాడు. \"నువ్వే అసలైన దోస్తువి.\""
+          },
+          "why": {
+            "en": "Peer pressure works both ways. One friend saying 'stop' can break a debt spiral early.",
+            "hi": "दोस्तों का दबाव दोनों तरफ़ काम करता है। एक दोस्त का 'बस कर' कहना कर्ज़ के चक्कर को जल्दी तोड़ सकता है।",
+            "te": "స్నేహితుల ఒత్తిడి రెండు వైపులా పని చేస్తుంది. ఒక్క స్నేహితుడు 'ఆపు' అంటే చాలు, అప్పుల సుడిగుండం మొదట్లోనే ఆగిపోవచ్చు."
+          },
+          "next": "m1_trip"
+        },
+        {
+          "id": "bet_too",
+          "label": {
+            "en": "Bet ₹2,000 of your own on the match too",
+            "hi": "आप भी मैच पर अपने ₹2,000 लगा दें",
+            "te": "మీరు కూడా మ్యాచ్ మీద సొంత ₹2,000 బెట్ కట్టండి"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "[[betting_app]]s are built so the app wins over time. Betting to fix a friend's loss doubles the loss. This is how debt traps start at 17.",
+            "hi": "[[betting_app]] ऐसा बना होता है कि समय के साथ ऐप ही जीते। दोस्त का नुकसान भरने के लिए सट्टा लगाने से नुकसान दोगुना होता है। 17 की उम्र में कर्ज़ का जाल ऐसे ही शुरू होता है।",
+            "te": "ఏ [[betting_app]] అయినా, కాలక్రమేణా యాప్ గెలిచేలానే తయారవుతుంది. స్నేహితుడి నష్టం పూడ్చడానికి బెట్ కడితే, నష్టం రెట్టింపు అవుతుంది. 17 ఏళ్లకే అప్పుల ఉచ్చు ఇలాగే మొదలవుతుంది."
+          },
+          "effects": {
+            "cash": -2000,
+            "meters": {
+              "joy": -4
+            },
+            "flags": {
+              "add": [
+                "gambled"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "You both lose. Then the app sends a '₹500 bonus to win it back!' Chintu reaches for his phone again.",
+            "hi": "आप दोनों हार जाते हैं। फिर ऐप मैसेज भेजता है: 'वापस जीतने के लिए ₹500 बोनस!' चिंटू फिर से फ़ोन की तरफ़ हाथ बढ़ाता है।",
+            "te": "ఇద్దరూ ఓడిపోతారు. తర్వాత యాప్ నుంచి మెసేజ్: 'తిరిగి గెలవడానికి ₹500 బోనస్!' చింటూ మళ్లీ ఫోన్ అందుకుంటాడు."
+          },
+          "why": {
+            "en": "Bonuses and near-misses are designed to keep you playing. The house always wins in the end.",
+            "hi": "बोनस और 'बस थोड़े से चूक गए' वाले पल इसलिए बनाए जाते हैं कि आप खेलते रहें। आखिर में हमेशा ऐप वाला ही जीतता है।",
+            "te": "బోనస్‌లు, 'కొద్దిలో మిస్' అనిపించే ఆటలు మిమ్మల్ని ఆడిస్తూనే ఉండేలా తయారు చేస్తారు. చివరికి ఎప్పుడూ గెలిచేది యాప్ వాడే."
+          },
+          "next": "m1_trip"
+        }
+      ]
+    },
+    {
+      "id": "m1_chintu_fund",
+      "age": 17,
+      "location": "shop",
+      "speaker": "friend",
+      "lesson": "L07",
+      "objective": {
+        "en": "Chintu isn't answering calls about the trip fund. Find him behind Anjamma aunty's shop.",
+        "hi": "चिंटू ट्रिप फंड के बारे में फ़ोन नहीं उठा रहा। उसे अंजम्मा आंटी की दुकान के पीछे ढूँढें।",
+        "te": "ట్రిప్ ఫండ్ గురించి చింటూ ఫోన్ ఎత్తడం లేదు. అంజమ్మ ఆంటీ కొట్టు వెనకాల వాడిని పట్టుకోండి."
+      },
+      "title": {
+        "en": "Where is the trip fund?",
+        "hi": "ट्रिप फंड कहाँ है?",
+        "te": "ట్రిప్ ఫండ్ ఎక్కడ?"
+      },
+      "text": {
+        "en": "Chintu can't look at you. \"I only borrowed a little... to win it back.\" Of the ₹24,000, ₹8,000 is gone into a [[betting_app]]. The trip is in four months.",
+        "hi": "चिंटू आपसे नज़र नहीं मिला पाता। \"मैंने तो बस थोड़ा उधार लिया था... वापस जीतने के लिए।\" ₹24,000 में से ₹8,000 एक [[betting_app]] में डूब गए। ट्रिप चार महीने बाद है।",
+        "te": "చింటూ మీ కళ్లలోకి చూడలేకపోతున్నాడు. \"కొంచెమే తీసుకున్నా... తిరిగి గెలవడానికి.\" ₹24,000లో ₹8,000 ఒక [[betting_app]] లోకి పోయింది. ట్రిప్‌కు ఇంకా నాలుగు నెలలే ఉంది."
+      },
+      "choices": [
+        {
+          "id": "cover",
+          "label": {
+            "en": "Cover the ₹8,000 yourself, quietly",
+            "hi": "₹8,000 चुपचाप खुद भर दें",
+            "te": "ఆ ₹8,000 మీరే నిశ్శబ్దంగా పూడ్చండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "cash": -8000,
+            "flags": {
+              "add": [
+                "covered_chintu"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Your savings, and then some, refill the fund. Chintu swears he's done. You're not sure he is.",
+            "hi": "आपकी पूरी बचत, और उससे भी ज़्यादा, फंड को फिर से भरती है। चिंटू कसम खाता है कि अब बस। आपको यकीन नहीं होता।",
+            "te": "మీ పొదుపు మొత్తం, ఇంకా కొంచెం ఎక్కువే, ఫండ్‌ను మళ్లీ నింపుతుంది. ఇక ఆడనని చింటూ ఒట్టేస్తాడు. మీకు మాత్రం నమ్మకం లేదు."
+          },
+          "why": {
+            "en": "Rescuing a friend with money can hide the real problem. Talking to an adult is usually better.",
+            "hi": "पैसे देकर दोस्त को बचाने से असली समस्या छिप सकती है। किसी बड़े से बात करना अक्सर बेहतर होता है।",
+            "te": "స్నేహితుడిని డబ్బుతో కాపాడితే అసలు సమస్య దాగిపోవచ్చు. పెద్దవాళ్లతో మాట్లాడటం సాధారణంగా మంచిది."
+          },
+          "next": "m1_trip"
+        },
+        {
+          "id": "tell_madam",
+          "label": {
+            "en": "Go with Chintu to tell Swapna madam the truth",
+            "hi": "चिंटू के साथ जाकर स्वप्ना मैडम को सच बताएँ",
+            "te": "చింటూతో కలిసి వెళ్లి స్వప్న మేడమ్‌కు నిజం చెప్పండి"
+          },
+          "quality": "good",
+          "effects": {
+            "meters": {
+              "family": -2
+            },
+            "flags": {
+              "add": [
+                "confessed",
+                "helped_chintu"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Madam is disappointed, but fair: Chintu repays by tutoring juniors. The trip goes ahead, a little smaller.",
+            "hi": "मैडम निराश हैं, पर इंसाफ़ करती हैं: चिंटू जूनियर्स को ट्यूशन पढ़ाकर पैसा लौटाता है। ट्रिप होती है, बस थोड़ी छोटी।",
+            "te": "మేడమ్ బాధపడతారు, కానీ న్యాయంగా ఉంటారు: జూనియర్లకు ట్యూషన్ చెప్పి చింటూ డబ్బు తీరుస్తాడు. ట్రిప్ జరుగుతుంది, కొంచెం చిన్నగా."
+          },
+          "why": {
+            "en": "The truth early is cheaper than a lie later. Adults can help fix money problems before they grow.",
+            "hi": "जल्दी बोला गया सच बाद के झूठ से सस्ता पड़ता है। बड़े लोग पैसों की समस्या बढ़ने से पहले सुलझाने में मदद कर सकते हैं।",
+            "te": "తర్వాత చెప్పే అబద్ధం కంటే ముందే చెప్పే నిజం చౌక. డబ్బు సమస్యలు పెద్దవి కాకముందే పెద్దవాళ్లు సరిదిద్దడంలో సాయం చేయగలరు."
+          },
+          "next": "m1_trip"
+        }
+      ]
+    },
+    {
+      "id": "m1_trip",
+      "age": 17,
+      "location": "school",
+      "speaker": "teacher",
+      "objective": {
+        "en": "It's farewell day! The bus is waiting at school.",
+        "hi": "आज फ़ेयरवेल का दिन है! बस स्कूल पर इंतज़ार कर रही है।",
+        "te": "ఈరోజు ఫేర్‌వెల్! బడి దగ్గర బస్సు ఎదురుచూస్తోంది."
+      },
+      "title": {
+        "en": "Farewell day",
+        "hi": "फ़ेयरवेल का दिन",
+        "te": "ఫేర్‌వెల్ రోజు"
+      },
+      "text": {
+        "en": "Forty classmates. One bus. {cast:teacher} asks you to count the trip fund in front of everyone. Ravi, at the back, whispers that he can't pay his ₹600 share.",
+        "hi": "चालीस सहपाठी। एक बस। {cast:teacher} आपसे सबके सामने ट्रिप फंड गिनने को कहती हैं। पीछे बैठा रवि धीरे से बताता है कि वह अपना ₹600 का हिस्सा नहीं भर सकता।",
+        "te": "నలభై మంది క్లాస్‌మేట్‌లు. ఒక్క బస్సు. అందరి ముందు ట్రిప్ ఫండ్ లెక్కపెట్టమని {cast:teacher} మిమ్మల్ని అడుగుతారు. వెనకాల కూర్చున్న రవి, తన వాటా ₹600 కట్టలేనని గుసగుసగా చెబుతాడు."
+      },
+      "choices": [
+        {
+          "id": "pay_ravi",
+          "label": {
+            "en": "Quietly pay Ravi's ₹600 from your savings",
+            "hi": "चुपचाप अपनी बचत से रवि के ₹600 भर दें",
+            "te": "మీ పొదుపు నుంచి రవి ₹600 నిశ్శబ్దంగా కట్టేయండి"
+          },
+          "quality": "good",
+          "effects": {
+            "cash": -600,
+            "meters": {
+              "joy": 4,
+              "family": 2
+            }
+          },
+          "outcome": {
+            "en": "Ravi sits next to you on the bus and doesn't stop smiling for four hours.",
+            "hi": "रवि बस में आपके बगल में बैठता है और चार घंटे तक मुस्कुराता ही रहता है।",
+            "te": "బస్సులో రవి మీ పక్కనే కూర్చుంటాడు, నాలుగు గంటలు నవ్వు ఆపడు."
+          },
+          "why": {
+            "en": "Generosity you can afford, planned from savings, is money well spent.",
+            "hi": "जितनी मदद आप कर सकें, बचत से सोच-समझकर, वह पैसा अच्छी जगह खर्च हुआ है।",
+            "te": "పొదుపులోంచి, మీ స్తోమతకు తగ్గట్టు ప్లాన్ చేసి చేసే సాయం, బాగా ఖర్చు చేసిన డబ్బే."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "secret_debt"
+                ]
+              },
+              "to": "m1_end_debt"
+            },
+            {
+              "if": {
+                "flags": [
+                  "ammamma_robbed"
+                ],
+                "notFlags": [
+                  "reported_1930"
+                ]
+              },
+              "to": "m1_end_robbed"
+            },
+            {
+              "if": {
+                "flags": [
+                  "invested_fund"
+                ]
+              },
+              "to": "m1_end_short"
+            },
+            {
+              "if": {
+                "flags": [
+                  "refused_otp"
+                ],
+                "notFlags": [
+                  "gambled",
+                  "lent_chintu"
+                ]
+              },
+              "to": "m1_end_hero"
+            },
+            {
+              "to": "m1_end_ok"
+            }
+          ]
+        },
+        {
+          "id": "count",
+          "label": {
+            "en": "Just count the money out loud",
+            "hi": "बस ज़ोर से पैसे गिन दें",
+            "te": "డబ్బు గట్టిగా లెక్కపెట్టండి, అంతే"
+          },
+          "quality": "ok",
+          "outcome": {
+            "en": "Every rupee is counted twice. The class claps. Ravi stays home.",
+            "hi": "हर रुपया दो बार गिना जाता है। क्लास तालियाँ बजाती है। रवि घर पर रह जाता है।",
+            "te": "ప్రతి రూపాయి రెండుసార్లు లెక్కపెడతారు. క్లాస్ అంతా చప్పట్లు కొడుతుంది. రవి ఇంట్లోనే ఉండిపోతాడు."
+          },
+          "why": {
+            "en": "Keeping clear accounts of other people's money builds trust that lasts for years.",
+            "hi": "दूसरों के पैसों का साफ़ हिसाब रखने से ऐसा भरोसा बनता है जो सालों चलता है।",
+            "te": "ఇతరుల డబ్బుకు స్పష్టమైన లెక్కలు ఉంచితే, ఏళ్ల తరబడి నిలిచే నమ్మకం ఏర్పడుతుంది."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "secret_debt"
+                ]
+              },
+              "to": "m1_end_debt"
+            },
+            {
+              "if": {
+                "flags": [
+                  "ammamma_robbed"
+                ],
+                "notFlags": [
+                  "reported_1930"
+                ]
+              },
+              "to": "m1_end_robbed"
+            },
+            {
+              "if": {
+                "flags": [
+                  "invested_fund"
+                ]
+              },
+              "to": "m1_end_short"
+            },
+            {
+              "if": {
+                "flags": [
+                  "refused_otp"
+                ],
+                "notFlags": [
+                  "gambled",
+                  "lent_chintu"
+                ]
+              },
+              "to": "m1_end_hero"
+            },
+            {
+              "to": "m1_end_ok"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1_end_hero",
+      "type": "outcome",
+      "tone": "good",
+      "title": {
+        "en": "The OTP wall",
+        "hi": "OTP की दीवार",
+        "te": "OTP గోడ"
+      },
+      "text": {
+        "en": "No OTP left your house, the trip fund arrived in full, and Chintu is off the betting app. Swapna madam asks you to teach the juniors how scams work.",
+        "hi": "आपके घर से एक भी OTP बाहर नहीं गया, ट्रिप फंड पूरा पहुँचा, और चिंटू ने सट्टे का ऐप छोड़ दिया। स्वप्ना मैडम आपसे कहती हैं कि जूनियर्स को सिखाएँ कि धोखे कैसे होते हैं।",
+        "te": "మీ ఇంటి నుంచి ఒక్క OTP కూడా బయటకు వెళ్లలేదు, ట్రిప్ ఫండ్ పూర్తిగా చేరింది, చింటూ బెట్టింగ్ యాప్ వదిలేశాడు. మోసాలు ఎలా జరుగుతాయో జూనియర్లకు నేర్పమని స్వప్న మేడమ్ మిమ్మల్ని అడుగుతారు."
+      },
+      "effects": {
+        "meters": {
+          "gyaan": 4,
+          "joy": 4
+        },
+        "flags": {
+          "add": [
+            "scam_spotter"
+          ]
+        }
+      }
+    },
+    {
+      "id": "m1_end_ok",
+      "type": "outcome",
+      "tone": "mixed",
+      "title": {
+        "en": "Bruised, but wiser",
+        "hi": "चोट खाई, पर समझदार बने",
+        "te": "దెబ్బలు తగిలినా, తెలివి పెరిగింది"
+      },
+      "text": {
+        "en": "Not everything went right, but the class reached Hyderabad and you came back knowing how scammers think. Some of those lessons cost real money.",
+        "hi": "सब कुछ ठीक नहीं हुआ, पर क्लास हैदराबाद पहुँची और आप यह समझकर लौटे कि धोखेबाज़ कैसे सोचते हैं। इनमें से कुछ सबक असली पैसे देकर मिले।",
+        "te": "అంతా సరిగ్గా జరగలేదు, కానీ క్లాస్ హైదరాబాద్ చేరింది, మోసగాళ్లు ఎలా ఆలోచిస్తారో తెలుసుకుని మీరు తిరిగి వచ్చారు. ఆ పాఠాల్లో కొన్నింటికి నిజమైన డబ్బు ఖర్చయింది."
+      }
+    },
+    {
+      "id": "m1_end_robbed",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": {
+        "en": "Ammamma's pension stolen",
+        "hi": "अम्मम्मा की पेंशन चोरी",
+        "te": "అమ్మమ్మ పెన్షన్ దోపిడీ"
+      },
+      "text": {
+        "en": "₹40,000 of Ammamma's savings is gone for good, and nobody even reported it. She stops answering unknown numbers, and stops smiling at her phone. You promise yourself: never again.",
+        "hi": "अम्मम्मा की बचत के ₹40,000 हमेशा के लिए चले गए, और किसी ने रिपोर्ट तक नहीं की। वे अनजान नंबर उठाना बंद कर देती हैं, और फ़ोन देखकर मुस्कुराना भी। आप खुद से वादा करते हैं: फिर कभी नहीं।",
+        "te": "అమ్మమ్మ పొదుపులో ₹40,000 శాశ్వతంగా పోయింది, ఎవరూ కనీసం రిపోర్ట్ కూడా చేయలేదు. ఆమె తెలియని నంబర్లు ఎత్తడం మానేస్తుంది, ఫోన్ చూసి నవ్వడం కూడా మానేస్తుంది. మీకు మీరే మాట ఇచ్చుకుంటారు: ఇంకెప్పుడూ ఇలా జరగనివ్వను."
+      },
+      "effects": {
+        "meters": {
+          "family": -6
+        }
+      }
+    },
+    {
+      "id": "m1_end_short",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "Honest, but broke",
+        "hi": "ईमानदार, पर कंगाल",
+        "te": "నిజాయితీ ఉంది, పైసలు లేవు"
+      },
+      "text": {
+        "en": "Prakash's 'crypto group' took ₹10,000 of your classmates' money. You told the truth and you are still repaying Amma. For a year, nobody sits next to you on the bus.",
+        "hi": "प्रकाश के 'क्रिप्टो ग्रुप' ने आपके सहपाठियों के ₹10,000 ले लिए। आपने सच बताया और अब भी अम्मा का पैसा चुका रहे हैं। एक साल तक बस में कोई आपके बगल में नहीं बैठता।",
+        "te": "ప్రకాష్ 'క్రిప్టో గ్రూప్' మీ క్లాస్‌మేట్‌ల ₹10,000 మింగేసింది. మీరు నిజం చెప్పారు, ఇంకా అమ్మకు అప్పు తీరుస్తూనే ఉన్నారు. ఏడాది పాటు బస్సులో మీ పక్కన ఎవరూ కూర్చోరు."
+      }
+    },
+    {
+      "id": "m1_end_debt",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": {
+        "en": "In the sahukar's book at 17",
+        "hi": "17 की उम्र में साहूकार की बही में",
+        "te": "17 ఏళ్లకే షావుకారు పుస్తకంలో"
+      },
+      "text": {
+        "en": "The trip went ahead. Nobody knows your secret, except Narsaiah sahukar, whose red ledger now has your name in it. ₹10,000 at 24% a year follows you to college.",
+        "hi": "ट्रिप हो गई। आपका राज़ किसी को नहीं पता, सिवाय नरसैया साहूकार के, जिसकी लाल बही में अब आपका नाम है। 24% सालाना पर ₹10,000 का कर्ज़ कॉलेज तक आपका पीछा करता है।",
+        "te": "ట్రిప్ జరిగిపోయింది. మీ రహస్యం ఎవరికీ తెలియదు, నర్సయ్య షావుకారుకు తప్ప. అతని ఎర్ర ఖాతా పుస్తకంలో ఇప్పుడు మీ పేరు ఉంది. ఏడాదికి 24% వడ్డీతో ₹10,000 అప్పు కాలేజీ దాకా మీ వెంటే వస్తుంది."
+      }
+    }
+  ]
+}

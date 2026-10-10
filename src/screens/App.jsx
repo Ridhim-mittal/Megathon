@@ -11,6 +11,7 @@ import { StorylineScreen } from "./StorylineScreen.jsx";
 import { IntroScreen } from "./IntroScreen.jsx";
 import { DreamScreen } from "./DreamScreen.jsx";
 import { MapScreen } from "./MapScreen.jsx";
+import { StoryScreen } from "./StoryScreen.jsx";
 import { EndingScreen } from "./EndingScreen.jsx";
 import { ReportScreen } from "./ReportScreen.jsx";
 import { ParallelScreen } from "./ParallelScreen.jsx";
@@ -87,7 +88,7 @@ export function App() {
 
   function startLife({ goalId, playerName, avatar }) {
     const seed = urlSeed() ?? `${Date.now()}`;
-    let s = createLife({ storylineId: setup.storylineId, goalId, seed, playerName: playerName || "", mode: "chapters", avatar: avatar ?? "boy" });
+    let s = createLife({ storylineId: setup.storylineId, goalId, seed, playerName: playerName || "", mode: "story", avatar: avatar ?? "boy" });
     s = step(s, { type: "ADVANCE" });
     setSetup((x) => ({ ...x, goalId, playerName }));
     setLife(s);
@@ -157,7 +158,8 @@ export function App() {
         )}
         {route === "intro" && <IntroScreen {...common} storylineId={setup.storylineId} onDone={() => go("dream")} />}
         {route === "dream" && <DreamScreen {...common} initialName={setup.playerName} onBack={() => go("intro")} onStart={startLife} />}
-        {route === "life" && life && <MapScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
+        {route === "life" && life && life.mode === "story" && <StoryScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
+        {route === "life" && life && life.mode !== "story" && <MapScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
         {route === "ending" && life && <EndingScreen {...common} life={life} onNext={() => go("report")} />}
         {route === "report" && life && <ReportScreen {...common} life={life} onNext={() => go("parallel")} />}
         {route === "parallel" && life && (

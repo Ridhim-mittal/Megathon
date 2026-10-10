@@ -41,6 +41,7 @@ import {
 import { hashSeed, makeRandom } from "./rng.js";
 import { makeSelectors } from "./select.js";
 import { makeWorld } from "./world.js";
+import { choiceLocked, indexStory, routeNext } from "./story.js";
 
 const floorStep = (x, step) => Math.max(0, Math.floor(x / step) * step);
 const ceilStep = (x, step) => Math.max(0, Math.ceil(x / step) * step);
@@ -56,6 +57,10 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
   const A = assumptions;
   const idx = indexContent(content ?? {});
   const ctx = { A, idx, content };
+  // Story scenes are cards too (for the card views, documents and CHOOSE).
+  const story = indexStory(content);
+  for (const pool of Object.values(idx.pools)) Object.assign(pool.byId, story.cards);
+  const mapMode = (s) => s.mode === "chapters" || s.mode === "story";
 
   const cardById = (s, id) => idx.pools[s.storylineId]?.byId[id] ?? null;
 
@@ -163,7 +168,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     }
     s.budget = full;
     s.year.budget = { ...full, investIn: s.investIn };
-    s.phase = s.mode === "chapters" ? "map" : "shop";
+    s.phase = mapMode(s) ? "map" : "shop";
   }
 
   // ---------- the year loop ----------
@@ -258,8 +263,8 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     s.budgetDirty = false;
 
     s.current = null;
-    // Chapter mode: the chapter, not the year, decides what happens next.
-    if (s.mode === "chapters") {
+    // Chapter and story mode: the chapter, not the year, decides what happens next.
+    if (mapMode(s)) {
       s.queue = [];
       return;
     }
@@ -771,6 +776,104 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     };
   }
 
+  // ---------- story mode ----------
+  // A life is a list of missions (story.js). A mission's scenes wait one at a time at a place on
+  // the map: the active scene is the objective. Each choice routes to the next scene (years pass
+  // up to its age) or to an outcome, which ends the mission.
+
+  const storyDeps = { A, decideEnding: (s) => decideEnding(s), computeDream };
+  const nodeOf = (id) => story.nodes[id]?.node ?? null;
+
+  // Mission start effects (a phone, a new salary) land before its first year begins.
+  function applyMissionStart(s, index) {
+    const m = story.missions[index];
+    if (m?.startEffects) applyEffects(A, s, m.startEffects, [], { step: A.budget.step[stageOf(m.from)] });
+  }
+
+  function startMission(s, index) {
+    const m = story.missions[index];
+    s.chapter = {
+      id: m.id,
+      from: m.from,
+      to: m.to,
+      slots: [],
+      seq: 0,
+      startNetWorth: s.year?.startNetWorth ?? netWorth(s),
+      startDebt: s.year?.startDebt ?? totalDebt(s),
+      startMeters: { ...s.meters },
+      startDream: computeDream(s).pct,
+      years: [],
+      phoneGift: Boolean(m.startEffects?.flags?.add?.includes(A.chapters.phoneFlag)),
+      summary: null,
+    };
+    s.story.mission = index;
+    s.story.node = m.start;
+    s.story.pending = null;
+    s.current = null;
+    s.phase = "budget";
+  }
+
+  // Make a scene the objective; the clock moves on to its age.
+  function activateNode(s, id) {
+    const n = nodeOf(id);
+    s.story.node = id;
+    while (s.age < n.age && s.age < s.chapter.to) passYear(s);
+    s.phase = "map";
+  }
+
+  function presentNode(s) {
+    const id = s.story.node;
+    const card = story.cards[id];
+    if (!s.story.visited.includes(id)) s.story.visited.push(id);
+    if (card.lesson) s.lessonCards[card.lesson] = { cardId: id, age: s.age };
+    presentCard(s, { card, age: s.age }, { type: "story", key: id });
+  }
+
+  function finishScene(s) {
+    const prev = nodeOf(s.current?.cardId);
+    const nextId = s.story.pending;
+    const next = nodeOf(nextId);
+    if (!next) return `The story has nowhere to go from "${prev?.id}".`;
+    s.story.pending = null;
+    s.current = null;
+    if (next.type === "outcome") return endMission(s, nextId);
+    activateNode(s, nextId);
+    // Same place, no race against time: the scene simply continues.
+    if (next.location === prev?.location && !next.rush) presentNode(s);
+  }
+
+  function endMission(s, outcomeId) {
+    const o = nodeOf(outcomeId);
+    const m = story.missions[s.story.mission];
+    if (o.effects) applyEffects(A, s, o.effects, [], { step: A.budget.step[s.stage] });
+    s.story.outcomes[m.id] = outcomeId;
+    if (!s.story.visited.includes(outcomeId)) s.story.visited.push(outcomeId);
+    s.story.node = null;
+    while (s.age < s.chapter.to) passYear(s);
+    endYear(s);
+    recordYear(s);
+    const lessons = [];
+    for (const p of s.story.path) {
+      const l = p.mission === m.id ? nodeOf(p.node)?.lesson : null;
+      if (l && !lessons.some((x) => x.lesson === l)) lessons.push({ lesson: l, status: s.lessons[l] });
+    }
+    s.chapter.summary = {
+      ...chapterSummary(s),
+      lessons,
+      story: { mission: m.id, outcome: outcomeId, tone: o.tone, title: o.title, text: o.text },
+    };
+    s.chapterLog.push(s.chapter.summary);
+    s.current = null;
+    s.phase = "chapterEnd";
+  }
+
+  function storyEnding(s) {
+    const last = story.missions[story.missions.length - 1];
+    const id = s.story.outcomes[last.id];
+    const o = nodeOf(id);
+    return o ? { id, tone: o.tone, title: o.title, text: o.text } : null;
+  }
+
   // ---------- action handlers: return an error message, or nothing on success ----------
 
   const freeGyaan = (s, amount) => {
@@ -800,8 +903,10 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     ADVANCE(s) {
       switch (s.phase) {
         case "intro":
+          if (s.mode === "story") applyMissionStart(s, 0);
           beginYear(s, true);
           if (s.mode === "chapters") startChapter(s);
+          if (s.mode === "story") startMission(s, 0);
           return;
         case "budget": {
           const check = checkBudget(s, s.budget);
@@ -815,6 +920,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
         case "card":
           return "Choose an option first.";
         case "outcome":
+          if (s.mode === "story") return finishScene(s);
           if (s.mode === "chapters") {
             finishSlot(s);
             return;
@@ -831,8 +937,20 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
           endYear(s);
           return;
         case "map":
-          return "Walk to a place, or finish the chapter at home.";
+          return s.mode === "story" ? "Walk to the place in your objective." : "Walk to a place, or finish the chapter at home.";
         case "chapterEnd":
+          if (s.mode === "story") {
+            const next = s.story.mission + 1;
+            if (next >= story.missions.length || s.age >= END_AGE) {
+              s.ending = { ...decideEnding(s), story: storyEnding(s) };
+              s.phase = "ending";
+            } else {
+              applyMissionStart(s, next);
+              beginYear(s, false);
+              startMission(s, next);
+            }
+            return;
+          }
           if (s.age >= END_AGE) {
             s.ending = decideEnding(s);
             s.phase = "ending";
@@ -864,7 +982,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     },
 
     BUY_WANT(s, { itemId }) {
-      if (s.phase !== "shop" && !(s.mode === "chapters" && s.phase === "map")) return "The shop is closed right now.";
+      if (s.phase !== "shop" && !(mapMode(s) && s.phase === "map")) return "The shop is closed right now.";
       const item = idx.wantsById[itemId];
       if (!item || item.stage !== s.stage) return "That item is not in the shop.";
       if (s.year.bought.includes(itemId)) return "Already bought this year.";
@@ -890,11 +1008,12 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       drawNext(s);
     },
 
-    CHOOSE(s, { choiceId }) {
+    CHOOSE(s, { choiceId, ignoredWarning = false }) {
       const [card, err] = currentCardOrError(s);
       if (err) return err;
       const choice = (card.choices ?? []).find((c) => c.id === choiceId);
       if (!choice) return `No choice "${choiceId}" on this card.`;
+      if (card.kind === "story" && choiceLocked(s, choice, storyDeps)) return "That choice is locked.";
       const before = { netWorth: netWorth(s), cash: s.money.cash, debt: totalDebt(s), gyaan: s.meters.gyaan };
       const storyAge = s.current.age ?? s.age;
       const origin = { age: storyAge, cardId: card.id, choiceId };
@@ -985,6 +1104,38 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       s.current.chosen = choiceId;
       s.phase = "outcome";
       if (s.mode === "chapters") absorbScheduled(s);
+      if (card.kind === "story") {
+        s.story.path.push({ mission: s.chapter.id, node: card.id, choice: choiceId, age: storyAge });
+        if (ignoredWarning && choice.warn) s.story.warningsIgnored += 1;
+        s.story.pending = routeNext(s, choice.next, storyDeps);
+        s.lastOutcome.next = s.story.pending;
+        s.lastOutcome.nextIsOutcome = nodeOf(s.story.pending)?.type === "outcome";
+      }
+    },
+
+    // The player listened to a warning and chose again (story mode): a little gyaan, once a scene.
+    HEED_WARNING(s, { choiceId }) {
+      const [card, err] = currentCardOrError(s);
+      if (err) return err;
+      const choice = (card.choices ?? []).find((c) => c.id === choiceId);
+      if (!choice?.warn) return "There is no warning on that choice.";
+      const key = `${card.id}:${choiceId}`;
+      if (s.story.heeded.includes(key)) return;
+      s.story.heeded.push(key);
+      s.story.warningsHeeded += 1;
+      addMeter(s, "gyaan", 1);
+    },
+
+    // Story mode: the clock ran out on the way to a timed scene.
+    STORY_TIMEOUT(s) {
+      if (s.mode !== "story" || s.phase !== "map") return "No timer is running.";
+      const id = s.story.node;
+      const n = nodeOf(id);
+      if (!n?.rush || s.story.late[id]) return "No timer is running.";
+      s.story.late[id] = true;
+      if (n.rush.effects) applyEffects(A, s, n.rush.effects, [], { step: A.budget.step[s.stage] });
+      s.story.lastLate = { node: id, note: n.rush.note ?? null, fail: n.rush.fail ?? null };
+      if (n.rush.fail) activateNode(s, n.rush.fail);
     },
 
     USE_GLASSES(s) {
@@ -1057,6 +1208,12 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     // ---------- chapter mode ----------
 
     VISIT(s, { location }) {
+      if (s.mode === "story" && s.phase === "map") {
+        const n = nodeOf(s.story.node);
+        if (!n || n.location !== location) return "Nothing is happening here right now.";
+        presentNode(s);
+        return;
+      }
       if (s.mode !== "chapters" || s.phase !== "map") return "There is nowhere to go right now.";
       for (;;) {
         const slot = nextSlotAt(s, location);
@@ -1081,7 +1238,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
 
     // Buy (amount > 0, from cash) or sell (amount < 0, into cash) a fund, stock or deposit.
     TRADE(s, { product, amount }) {
-      if (s.mode !== "chapters" || s.phase !== "map") return "Trading happens on your phone, on the map.";
+      if (!mapMode(s) || s.phase !== "map") return "Trading happens on your phone, on the map.";
       const x = Math.round(Number(amount));
       if (!Number.isFinite(x) || x === 0) return "Enter an amount.";
       const isMarket = MUTUAL_FUNDS.includes(product) || STOCKS.includes(product);
@@ -1114,7 +1271,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
 
     // Move money between cash, the emergency and dream jars, and the bank account.
     MOVE_MONEY(s, { from, to, amount }) {
-      if (s.mode !== "chapters" || s.phase !== "map") return "Move money from your phone, on the map.";
+      if (!mapMode(s) || s.phase !== "map") return "Move money from your phone, on the map.";
       const accounts = ["cash", "emergency", "goal", "bank"];
       if (!accounts.includes(from) || !accounts.includes(to) || from === to) return "Pick two different places.";
       const x = Math.round(Number(amount));
@@ -1133,7 +1290,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
 
     // Prepay a loan (by its id) from cash and savings.
     REPAY(s, { loanId, amount }) {
-      if (s.mode !== "chapters" || s.phase !== "map") return "Repay from your phone, on the map.";
+      if (!mapMode(s) || s.phase !== "map") return "Repay from your phone, on the map.";
       if (!s.loans.some((l) => l.id === loanId)) return "No such loan.";
       const out = [];
       repayLoan(A, s, { loan: loanId, amount: amount ?? "all" }, out);
@@ -1160,7 +1317,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     const s = {
       v: 1,
       params: { storylineId, goalId, seed, playerName, mode, avatar },
-      mode: mode === "chapters" ? "chapters" : "years",
+      mode: ["chapters", "story"].includes(mode) ? mode : "years",
       avatar,
       chapter: null,
       chapterLog: [],
@@ -1214,7 +1371,12 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
       year: null,
       error: null,
       world: makeWorld(A, seedNum),
+      story:
+        mode === "story"
+          ? { mission: 0, node: null, pending: null, path: [], visited: [], outcomes: {}, late: {}, lastLate: null, warningsIgnored: 0, warningsHeeded: 0, heeded: [] }
+          : null,
     };
+    if (mode === "story" && !story.missions.length) throw new Error("This content has no story missions.");
     s.income.monthly = wageFor(s);
     s.plan = planLife(A, idx, s);
 
@@ -1252,7 +1414,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     s.history = [...history];
     s.years = [...years];
     s.error = null;
-    const entry = { action: structuredClone(action), age: state.age, phase: state.phase, cardId: state.current?.cardId ?? null };
+    const entry = { action: structuredClone(action), age: state.age, phase: state.phase, cardId: state.current?.cardId ?? null, node: state.story?.node ?? null };
     const err = handler(s, action);
     if (err) return { ...state, error: { type, message: err } };
     if (type === "CHOOSE") entry.decision = s.history.length - 1;
@@ -1261,6 +1423,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
   }
 
   const SIDE_ACTIONS = new Set([
+    "HEED_WARNING",
     "OPEN_DOCUMENT",
     "FLAG_LINE",
     "VERIFY_DOCUMENT",
@@ -1316,8 +1479,14 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
         const card = cardById(s, s.current.cardId);
         const want = original.get(card.id);
         const choices = card.choices ?? [];
-        const pick = choices.find((c) => c.id === want) ?? choices.find((c) => c.default) ?? choices[0];
+        const open = card.kind === "story" ? choices.filter((c) => !choiceLocked(s, c, storyDeps)) : choices;
+        const pick = open.find((c) => c.id === want) ?? open.find((c) => c.default && !c.hidden) ?? open.find((c) => !c.hidden) ?? open[0];
         action = { type: "CHOOSE", choiceId: pick.id };
+      } else if (s.phase === "map" && s.mode === "story") {
+        // Run out of time where the player did; otherwise walk to the objective.
+        const late = rest.find((e) => !e.used && e.action.type === "STORY_TIMEOUT" && e.node === s.story.node);
+        if (late) late.used = true;
+        action = late ? late.action : { type: "VISIT", location: nodeOf(s.story.node).location };
       } else if (s.phase === "map") {
         // Walk where the player walked, while those places still have events; then anywhere
         // with an event left; then finish the chapter.
@@ -1346,7 +1515,7 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     return s;
   }
 
-  const select = makeSelectors({ A, idx, content, computeDream, checkBudget });
+  const select = makeSelectors({ A, idx, content, computeDream, checkBudget, story, storyDeps });
 
   return {
     createLife,

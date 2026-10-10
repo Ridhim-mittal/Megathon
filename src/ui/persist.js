@@ -1,7 +1,7 @@
 // Progress lives in localStorage only (spec section 8). Every access is guarded: private windows
 // and blocked storage simply mean nothing is remembered.
 
-const KEYS = { settings: "lakshyam.settings", life: "lakshyam.life", endings: "lakshyam.endings" };
+const KEYS = { settings: "lakshyam.settings", life: "lakshyam.life", endings: "lakshyam.endings", discovered: "lakshyam.discovered" };
 
 function read(key, fallback) {
   try {
@@ -38,4 +38,16 @@ export function recordEnding(entry) {
   if (!list.some((e) => e.id === entry.id && e.goalId === entry.goalId)) list.push(entry);
   write(KEYS.endings, list);
   return list;
+}
+
+// Story flowcharts: every scene, choice ("node:choice") and outcome seen in any life on this device.
+export const loadDiscovered = () => new Set(read(KEYS.discovered, []));
+export function recordDiscovered(life) {
+  if (!life?.story) return loadDiscovered();
+  const set = loadDiscovered();
+  const before = set.size;
+  for (const id of life.story.visited) set.add(id);
+  for (const p of life.story.path) set.add(`${p.node}:${p.choice}`);
+  if (set.size !== before) write(KEYS.discovered, [...set]);
+  return set;
 }

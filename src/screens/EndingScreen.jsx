@@ -6,6 +6,7 @@ import { PixelPortrait as Portrait } from "../ui/PixelPortrait.jsx";
 import { Sheet, ScreenBar } from "../ui/Sheet.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 import { GOAL_ICONS } from "./DreamScreen.jsx";
+import { StoryEnding } from "./story/StoryEnding.jsx";
 
 export function EndingScreen({ life, settings, onNext, onMenu }) {
   const { t, pick, rich, money, castName } = useT();
@@ -21,6 +22,8 @@ export function EndingScreen({ life, settings, onNext, onMenu }) {
         <TopControls settings={settings} onMenu={onMenu} />
       </ScreenBar>
       <Sheet eyebrow={t("ending.eyebrow")} title={t(`ending.title.${ending.id}`)} className={`ending-sheet ending-${ending.id}`} wide>
+        {/* Story mode: the ending the choices led to comes first; the money ending follows. */}
+        <StoryEnding life={life} />
         <div className="ending-hero">
           <span className="ending-badge">{Icon && <Icon size={34} />}</span>
           <div>

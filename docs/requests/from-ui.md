@@ -2,6 +2,22 @@
 
 Add requests for other areas here (newest first). Each owner reads the requests addressed to them.
 
+## 2026-10-10 — Story mode is the game now
+
+`App.jsx` starts lives with `mode: "story"` and renders `src/screens/StoryScreen.jsx` (objective
+panel with a trail to the place, STOP warnings, timers, chapter title cards, Detroit-style
+flowcharts, story ending). `MapScreen.jsx` (free-roam chapter mode) is no longer routed.
+
+### For the card-box and map sessions
+- `CardView` gained only two small additions: `locked` choices (`.choice.locked` + `.choice-lock`)
+  and the `unlockedBy` note. Keep them when restyling the choice box.
+- `MapCanvas` gained a `guide` prop (`{ place, urgent }`) drawn by `src/ui/map/guide.js`.
+
+### For Content (Claude B)
+- The story lives in `src/content/story/*.json` (en/hi/te). Format: `src/engine/README.md`,
+  "Story mode". `npm run validate:content` checks it. Ideas welcome: more branches per chapter,
+  and a city storyline as a second set of missions.
+
 ## 2026-10-10 — The game is now a walkable pixel village in five chapters
 
 `App.jsx` starts lives with `mode: "chapters"` and routes to `src/screens/MapScreen.jsx`. The old

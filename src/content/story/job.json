@@ -1,0 +1,1025 @@
+{
+  "id": "job",
+  "stage": "young",
+  "from": 22,
+  "to": 25,
+  "part": {
+    "en": "Chapter 3 · First job",
+    "hi": "अध्याय 3 · पहली नौकरी",
+    "te": "అధ్యాయం 3 · మొదటి ఉద్యోగం"
+  },
+  "title": {
+    "en": "The Loan App",
+    "hi": "लोन ऐप",
+    "te": "లోన్ యాప్"
+  },
+  "intro": {
+    "en": "Age 22. You got a job as an accounts assistant in town: ₹15,000 a month. Ammamma frames your first payslip. Nanna still works the cotton field, coughing more than he admits.",
+    "hi": "उम्र 22। आपको शहर में अकाउंट्स असिस्टेंट की नौकरी मिल गई: ₹15,000 महीना। अम्मम्मा आपकी पहली सैलरी स्लिप फ़्रेम करवाती हैं। नान्ना अब भी कपास के खेत में काम करते हैं, और जितना मानते हैं उससे ज़्यादा खाँसते हैं।",
+    "te": "వయసు 22. టౌన్‌లో అకౌంట్స్ అసిస్టెంట్‌గా ఉద్యోగం వచ్చింది: నెలకు ₹15,000. అమ్మమ్మ మీ మొదటి పేస్లిప్‌కు ఫ్రేమ్ కట్టిస్తుంది. నాన్న ఇంకా పత్తి చేనులోనే పని చేస్తున్నాడు, ఒప్పుకునే దానికంటే ఎక్కువ దగ్గుతున్నాడు."
+  },
+  "placeNames": {
+    "work": {
+      "en": "Office",
+      "hi": "दफ़्तर",
+      "te": "ఆఫీసు"
+    }
+  },
+  "startEffects": {
+    "income": {
+      "monthly": 15000,
+      "source": "job"
+    }
+  },
+  "start": "m3_payday",
+  "nodes": [
+    {
+      "id": "m3_payday",
+      "age": 22,
+      "location": "work",
+      "speaker": "narrator",
+      "lesson": "L12",
+      "objective": {
+        "en": "Your first salary just arrived! Go to the office.",
+        "hi": "आपकी पहली सैलरी आ गई! दफ़्तर जाएँ।",
+        "te": "మీ మొదటి జీతం ఇప్పుడే పడింది! ఆఫీసుకు వెళ్లండి."
+      },
+      "title": {
+        "en": "₹15,000, all yours",
+        "hi": "₹15,000, सब आपके",
+        "te": "₹15,000, మొత్తం మీదే"
+      },
+      "text": {
+        "en": "Your first salary hits the account. Colleagues want a party at the dhaba: ₹3,000. Amma needs ₹2,000 for Chinni's nursing coaching. And a shiny phone is on 'no-cost EMI'.",
+        "hi": "पहली सैलरी खाते में आ जाती है। साथी ढाबे पर पार्टी चाहते हैं: ₹3,000। अम्मा को चिन्नी की नर्सिंग कोचिंग के लिए ₹2,000 चाहिए। और एक चमचमाता फ़ोन 'नो-कॉस्ट EMI' पर मिल रहा है।",
+        "te": "మొదటి జీతం ఖాతాలో పడుతుంది. ఆఫీసు వాళ్లు ధాబాలో పార్టీ అడుగుతున్నారు: ₹3,000. చిన్ని నర్సింగ్ కోచింగ్‌కు అమ్మకు ₹2,000 కావాలి. ఇంకా, ఒక మెరిసే ఫోన్ 'నో-కాస్ట్ EMI'లో ఊరిస్తోంది."
+      },
+      "choices": [
+        {
+          "id": "pay_first",
+          "label": {
+            "en": "Pay yourself first: ₹3,000 into an emergency fund, then Chinni's ₹2,000",
+            "hi": "पहले खुद को दें: ₹3,000 आपात फंड में, फिर चिन्नी के ₹2,000",
+            "te": "ముందు మీకే కట్టుకోండి: ₹3,000 అత్యవసర నిధికి, తర్వాత చిన్నికి ₹2,000"
+          },
+          "quality": "good",
+          "effects": {
+            "jar": {
+              "emergency": 3000
+            },
+            "cash": -2000,
+            "meters": {
+              "family": 4
+            },
+            "flags": {
+              "add": [
+                "pay_first"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "You set up an auto-transfer on salary day. The money you never see is the money you never miss.",
+            "hi": "आप सैलरी वाले दिन ऑटो-ट्रांसफ़र लगा देते हैं। जो पैसा दिखता ही नहीं, उसकी कमी भी नहीं खलती।",
+            "te": "జీతం రోజునే ఆటో-ట్రాన్స్‌ఫర్ పెట్టుకుంటారు. కంటికి కనిపించని డబ్బు, ఎప్పుడూ లోటుగా అనిపించదు."
+          },
+          "why": {
+            "en": "'Pay yourself first' means saving the moment money arrives, not whatever is left at month-end.",
+            "hi": "'पहले खुद को दें' का मतलब है पैसा आते ही बचत करना, न कि महीने के आख़िर में जो बचे।",
+            "te": "'ముందు మీకే కట్టుకోండి' అంటే, డబ్బు రాగానే పొదుపు చేయడం. నెలాఖరుకు ఏది మిగిలితే అది కాదు."
+          },
+          "next": "m3_insure"
+        },
+        {
+          "id": "party",
+          "label": {
+            "en": "Party tonight! And the new phone on EMI",
+            "hi": "आज रात पार्टी! और नया फ़ोन EMI पर",
+            "te": "ఈ రాత్రి పార్టీ! కొత్త ఫోన్ కూడా EMIలో"
+          },
+          "quality": "bad",
+          "effects": {
+            "cash": -3000,
+            "loan": {
+              "source": "bnpl_emi",
+              "principal": 18000
+            },
+            "meters": {
+              "joy": 8
+            },
+            "flags": {
+              "add": [
+                "lifestyle"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Best night of the year. The phone's 'no-cost' EMI has a ₹900 processing fee and a ₹199 'protection plan' you never asked for.",
+            "hi": "साल की सबसे मज़ेदार रात। फ़ोन की 'नो-कॉस्ट' EMI में ₹900 प्रोसेसिंग फ़ीस और ₹199 का 'प्रोटेक्शन प्लान' है, जो आपने माँगा ही नहीं था।",
+            "te": "ఈ ఏడాదిలో బెస్ట్ రాత్రి. ఫోన్ 'నో-కాస్ట్' EMIకి ₹900 ప్రాసెసింగ్ ఫీజు, మీరు అడగని ₹199 'ప్రొటెక్షన్ ప్లాన్' ఉన్నాయి."
+          },
+          "why": {
+            "en": "'No-cost' EMIs hide fees. And EMIs taken in the first month quietly eat every future salary.",
+            "hi": "'नो-कॉस्ट' EMI में फ़ीस छिपी होती है। और पहले ही महीने ली गई EMI चुपचाप आगे की हर सैलरी खाती है।",
+            "te": "'నో-కాస్ట్' EMIలు ఫీజులు దాచిపెడతాయి. మొదటి నెలలోనే తీసుకున్న EMIలు ముందున్న ప్రతి జీతాన్నీ చప్పుడు లేకుండా తినేస్తాయి."
+          },
+          "next": "m3_insure"
+        },
+        {
+          "id": "send_home",
+          "label": {
+            "en": "Send ₹8,000 home and keep a little",
+            "hi": "₹8,000 घर भेजें और थोड़ा अपने पास रखें",
+            "te": "₹8,000 ఇంటికి పంపి, కొంచెం మీ దగ్గర ఉంచుకోండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "cash": -8000,
+            "meters": {
+              "family": 8,
+              "joy": -2
+            }
+          },
+          "outcome": {
+            "en": "Amma cries on the phone. Nanna pretends he isn't. Your own pocket is nearly empty again.",
+            "hi": "फ़ोन पर अम्मा रो पड़ती हैं। नान्ना ऐसे दिखाते हैं जैसे वे नहीं रो रहे। आपकी अपनी जेब फिर लगभग खाली है।",
+            "te": "ఫోన్‌లో అమ్మ ఏడుస్తుంది. నాన్న ఏడవనట్టు నటిస్తాడు. మీ జేబు మళ్లీ దాదాపు ఖాళీ."
+          },
+          "why": {
+            "en": "Helping family is good. Without your own emergency fund, the next shock hits all of you.",
+            "hi": "परिवार की मदद करना अच्छा है। पर अपने आपात फंड के बिना, अगला झटका आप सबको लगेगा।",
+            "te": "కుటుంబానికి సాయం చేయడం మంచిదే. కానీ మీకంటూ అత్యవసర నిధి లేకపోతే, తర్వాతి దెబ్బ అందరి మీదా పడుతుంది."
+          },
+          "next": "m3_insure"
+        }
+      ]
+    },
+    {
+      "id": "m3_insure",
+      "age": 22,
+      "location": "home",
+      "speaker": "agent",
+      "lesson": "L16",
+      "objective": {
+        "en": "Policy Ramana is at your home. It's lunchtime, of course.",
+        "hi": "पॉलिसी रमणा आपके घर पर है। खाने का वक्त है, ज़ाहिर है।",
+        "te": "పాలసీ రమణ మీ ఇంట్లో ఉన్నాడు. భోజనం టైమ్ కదా, మరి."
+      },
+      "title": {
+        "en": "\"Insurance plus returns!\"",
+        "hi": "\"बीमा भी, मुनाफ़ा भी!\"",
+        "te": "\"బీమాతో పాటు రాబడి!\""
+      },
+      "text": {
+        "en": "{cast:agent} finishes his second plate and opens a glossy file: \"Endowment plan! ₹30,000 a year, money back after 20 years!\" Your office offers family [[insurance]] instead: ₹6,000 a year for ₹3 lakh cover.",
+        "hi": "{cast:agent} दूसरी थाली ख़त्म करके एक चमकदार फ़ाइल खोलता है: \"एंडोमेंट प्लान! ₹30,000 साल का, 20 साल बाद पैसा वापस!\" आपका दफ़्तर इसकी जगह परिवार का [[insurance]] देता है: ₹3 लाख के कवर के लिए ₹6,000 साल का।",
+        "te": "{cast:agent} రెండో ప్లేట్ ముగించి, మెరిసే ఫైల్ తెరుస్తాడు: \"ఎండోమెంట్ ప్లాన్! ఏడాదికి ₹30,000, 20 ఏళ్ల తర్వాత డబ్బు వెనక్కి!\" మీ ఆఫీసు మాత్రం కుటుంబ [[insurance]] ఇస్తోంది: ఏడాదికి ₹6,000కు ₹3 లక్షల కవర్."
+      },
+      "choices": [
+        {
+          "id": "family_cover",
+          "label": {
+            "en": "Take the office family health cover, a cheap [[term_insurance]], and enrol Nanna's crop in [[pmfby]]",
+            "hi": "दफ़्तर का फ़ैमिली हेल्थ कवर और एक सस्ता [[term_insurance]] लें, और नान्ना की फ़सल [[pmfby]] में दर्ज कराएँ",
+            "te": "ఆఫీసు ఫ్యామిలీ హెల్త్ కవర్, చౌకైన [[term_insurance]] తీసుకోండి, నాన్న పంటను [[pmfby]]లో చేర్పించండి"
+          },
+          "quality": "good",
+          "effects": {
+            "open": [
+              {
+                "product": "insurance_health"
+              },
+              {
+                "product": "insurance_term"
+              },
+              {
+                "product": "insurance_crop"
+              }
+            ],
+            "flags": {
+              "add": [
+                "insured"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "Three policies for about ₹7,500 a year. Ramana leaves without dessert.",
+            "hi": "तीन पॉलिसी, साल के लगभग ₹7,500 में। रमणा मीठा खाए बिना चला जाता है।",
+            "te": "మూడు పాలసీలు, ఏడాదికి దాదాపు ₹7,500. రమణ స్వీటు తినకుండానే వెళ్లిపోతాడు."
+          },
+          "why": {
+            "en": "Insurance is for disasters you can't afford, not for investing. Keep insurance and investing separate.",
+            "hi": "बीमा उन मुसीबतों के लिए है जिनका खर्च आप नहीं उठा सकते, निवेश के लिए नहीं। बीमा और निवेश को अलग रखें।",
+            "te": "బీమా అనేది మీరు భరించలేని విపత్తుల కోసం, పెట్టుబడి కోసం కాదు. బీమాను, పెట్టుబడిని వేర్వేరుగా ఉంచండి."
+          },
+          "next": "m3_hospital"
+        },
+        {
+          "id": "endowment",
+          "label": {
+            "en": "Sign Ramana's endowment plan",
+            "hi": "रमणा के एंडोमेंट प्लान पर साइन करें",
+            "te": "రమణ ఎండోమెంట్ ప్లాన్‌కు సంతకం పెట్టండి"
+          },
+          "quality": "bad",
+          "effects": {
+            "cash": -15000,
+            "flags": {
+              "add": [
+                "endowment"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The 'returns' work out to about 4% a year, and the life cover is tiny. Ramana's commission: ₹9,000.",
+            "hi": "'मुनाफ़ा' साल का लगभग 4% बैठता है, और जीवन बीमा का कवर बहुत छोटा है। रमणा का कमीशन: ₹9,000।",
+            "te": "'రాబడి' లెక్కేస్తే ఏడాదికి దాదాపు 4%, లైఫ్ కవర్ చాలా చిన్నది. రమణ కమిషన్: ₹9,000."
+          },
+          "why": {
+            "en": "Mixed insurance-plus-savings plans pay big commissions and give small cover and small returns.",
+            "hi": "बीमा-और-बचत वाले मिले-जुले प्लान बड़ा कमीशन देते हैं, पर कवर भी छोटा और मुनाफ़ा भी छोटा।",
+            "te": "బీమా-పొదుపు కలిపిన ప్లాన్‌లు ఏజెంట్లకు పెద్ద కమిషన్లు ఇస్తాయి, మీకు మాత్రం కవర్ తక్కువ, రాబడి తక్కువ."
+          },
+          "next": "m3_hospital"
+        },
+        {
+          "id": "skip",
+          "label": {
+            "en": "Skip it. Nothing will happen to us",
+            "hi": "छोड़ें। हमें कुछ नहीं होगा",
+            "te": "వద్దు. మనకేం కాదు"
+          },
+          "quality": "bad",
+          "effects": {
+            "flags": {
+              "add": [
+                "uninsured"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Ramana sighs and eats a banana for the road. You save ₹6,000 a year. For now.",
+            "hi": "रमणा आह भरता है और रास्ते के लिए एक केला खा लेता है। आप साल के ₹6,000 बचाते हैं। फ़िलहाल।",
+            "te": "రమణ నిట్టూర్చి, దారిలో తినడానికి ఒక అరటిపండు పట్టుకెళ్తాడు. మీకు ఏడాదికి ₹6,000 మిగులుతుంది. ప్రస్తుతానికి."
+          },
+          "why": {
+            "en": "One hospital bill can wipe out years of savings. Health cover is cheapest when you're young and healthy.",
+            "hi": "अस्पताल का एक बिल सालों की बचत मिटा सकता है। जवानी और अच्छी सेहत में हेल्थ कवर सबसे सस्ता होता है।",
+            "te": "ఒక్క హాస్పిటల్ బిల్లు ఏళ్ల పొదుపును తుడిచిపెట్టేయగలదు. వయసులో ఉండి, ఆరోగ్యంగా ఉన్నప్పుడే హెల్త్ కవర్ చౌక."
+          },
+          "next": "m3_hospital"
+        }
+      ]
+    },
+    {
+      "id": "m3_hospital",
+      "age": 23,
+      "location": "hospital",
+      "speaker": "mother",
+      "lesson": "L13",
+      "objective": {
+        "en": "Nanna collapsed in the cotton field! Rush to the hospital!",
+        "hi": "नान्ना कपास के खेत में गिर पड़े! तुरंत अस्पताल पहुँचें!",
+        "te": "నాన్న పత్తి చేనులో కుప్పకూలాడు! హాస్పిటల్‌కు పరుగెత్తండి!"
+      },
+      "rush": {
+        "seconds": 25,
+        "effects": {
+          "meters": {
+            "family": -6
+          }
+        },
+        "note": {
+          "en": "You arrived late. Amma had to sign the papers alone.",
+          "hi": "आप देर से पहुँचे। अम्मा को अकेले ही कागज़ों पर साइन करना पड़ा।",
+          "te": "మీరు ఆలస్యంగా వచ్చారు. అమ్మ ఒక్కతే కాగితాల మీద సంతకం పెట్టాల్సి వచ్చింది."
+        }
+      },
+      "title": {
+        "en": "₹1,80,000 by morning",
+        "hi": "सुबह तक ₹1,80,000",
+        "te": "తెల్లారేసరికి ₹1,80,000"
+      },
+      "text": {
+        "en": "Nanna had a heart attack. The hospital needs ₹1,80,000 for surgery by tomorrow morning. Amma holds his hand. Everyone looks at you.",
+        "hi": "नान्ना को दिल का दौरा पड़ा है। अस्पताल को कल सुबह तक ऑपरेशन के लिए ₹1,80,000 चाहिए। अम्मा उनका हाथ थामे बैठी हैं। सब आपकी ओर देख रहे हैं।",
+        "te": "నాన్నకు గుండెపోటు వచ్చింది. రేపు పొద్దున్నలోగా ఆపరేషన్‌కు హాస్పిటల్‌కు ₹1,80,000 కావాలి. అమ్మ నాన్న చెయ్యి పట్టుకుని కూర్చుంది. అందరూ మీ వైపే చూస్తున్నారు."
+      },
+      "choices": [
+        {
+          "id": "insurance",
+          "label": {
+            "en": "Use the family health insurance",
+            "hi": "परिवार का हेल्थ इंश्योरेंस इस्तेमाल करें",
+            "te": "ఫ్యామిలీ హెల్త్ ఇన్సూరెన్స్ వాడండి"
+          },
+          "quality": "good",
+          "requires": {
+            "owns": [
+              "insurance_health"
+            ]
+          },
+          "lockedHint": {
+            "en": "You don't have health insurance.",
+            "hi": "आपके पास हेल्थ इंश्योरेंस नहीं है।",
+            "te": "మీకు హెల్త్ ఇన్సూరెన్స్ లేదు."
+          },
+          "effects": {
+            "shock": {
+              "kind": "hospital",
+              "cost": 180000
+            }
+          },
+          "outcome": {
+            "en": "The insurance desk approves it in four hours. You pay ₹0. Nanna wakes up and asks for tea.",
+            "hi": "बीमा डेस्क चार घंटे में मंज़ूरी दे देता है। आप ₹0 भरते हैं। नान्ना आँखें खोलते ही चाय माँगते हैं।",
+            "te": "నాలుగు గంటల్లో ఇన్సూరెన్స్ డెస్క్ ఆమోదిస్తుంది. మీరు కట్టింది ₹0. నాన్న కళ్లు తెరిచి టీ అడుగుతాడు."
+          },
+          "why": {
+            "en": "This is exactly what insurance is for: a big bill you could never pay alone.",
+            "hi": "बीमा ठीक इसी के लिए होता है: एक बड़ा बिल, जो आप अकेले कभी नहीं भर पाते।",
+            "te": "బీమా ఉన్నది సరిగ్గా దీని కోసమే: మీరు ఒంటరిగా ఎప్పటికీ కట్టలేని పెద్ద బిల్లు."
+          },
+          "next": "m3_chintu"
+        },
+        {
+          "id": "bank_loan",
+          "label": {
+            "en": "Use your savings, and a bank personal loan for the rest",
+            "hi": "अपनी बचत लगाएँ, और बाकी के लिए बैंक से पर्सनल लोन लें",
+            "te": "మీ పొదుపు వాడండి, మిగతాదానికి బ్యాంక్ పర్సనల్ లోన్"
+          },
+          "quality": "ok",
+          "effects": {
+            "loan": {
+              "source": "bank_personal",
+              "principal": 150000
+            },
+            "shock": {
+              "kind": "hospital",
+              "cost": 180000
+            }
+          },
+          "outcome": {
+            "en": "Kavitha akka rushes the loan through by evening: 13% a year. Nanna is saved. The EMI will be with you for three years.",
+            "hi": "कविता अक्का शाम तक लोन जल्दी पास करवा देती हैं: 13% सालाना। नान्ना बच जाते हैं। EMI तीन साल तक आपके साथ रहेगी।",
+            "te": "కవిత అక్క సాయంత్రానికల్లా లోన్ పూర్తి చేయిస్తుంది: ఏడాదికి 13%. నాన్న ప్రాణం దక్కింది. EMI మూడేళ్లు మీతోనే ఉంటుంది."
+          },
+          "why": {
+            "en": "When you must borrow, a bank loan at 13% costs far less than a loan app or the sahukar. An [[emergency_fund]] would have cost nothing.",
+            "hi": "जब उधार लेना ही पड़े, तो 13% का बैंक लोन लोन ऐप या साहूकार से कहीं सस्ता पड़ता है। एक [[emergency_fund]] होता, तो कुछ भी खर्च न होता।",
+            "te": "తప్పనిసరిగా అప్పు చేయాల్సి వస్తే, 13% బ్యాంక్ లోన్ ఖర్చు లోన్ యాప్ లేదా షావుకారు కంటే చాలా తక్కువ. ఒక [[emergency_fund]] ఉంటే ఏ ఖర్చూ ఉండేది కాదు."
+          },
+          "next": "m3_chintu"
+        },
+        {
+          "id": "loan_app",
+          "label": {
+            "en": "Instant loan app: ₹1,50,000 in five minutes",
+            "hi": "इंस्टेंट लोन ऐप: पाँच मिनट में ₹1,50,000",
+            "te": "ఇన్‌స్టంట్ లోన్ యాప్: ఐదు నిమిషాల్లో ₹1,50,000"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "[[loan_app]]s charge 36% a year or more, plus 10% fees, and illegal ones steal your contacts and harass your family. A bank loan is less than half the cost.",
+            "hi": "[[loan_app]] साल का 36% या उससे ज़्यादा लेते हैं, ऊपर से 10% फ़ीस, और गैर-कानूनी ऐप आपके कॉन्टैक्ट चुराकर परिवार को परेशान करते हैं। बैंक लोन की लागत इसकी आधी से भी कम है।",
+            "te": "[[loan_app]]లు ఏడాదికి 36% లేదా అంతకంటే ఎక్కువ వడ్డీ, పైగా 10% ఫీజులు వసూలు చేస్తాయి. చట్టవిరుద్ధమైనవి మీ కాంటాక్ట్‌లు దొంగిలించి మీ కుటుంబాన్ని వేధిస్తాయి. బ్యాంక్ లోన్ ఖర్చు దీంట్లో సగం కంటే తక్కువ."
+          },
+          "effects": {
+            "loan": {
+              "source": "loan_app",
+              "principal": 150000
+            },
+            "shock": {
+              "kind": "hospital",
+              "cost": 180000
+            },
+            "flags": {
+              "add": [
+                "loan_app"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The money arrives in four minutes, minus a ₹15,000 'processing fee'. The app asked for your contacts. You clicked 'Allow'.",
+            "hi": "पैसा चार मिनट में आ जाता है, ₹15,000 की 'प्रोसेसिंग फ़ीस' काटकर। ऐप ने आपके कॉन्टैक्ट माँगे थे। आपने 'Allow' दबा दिया।",
+            "te": "నాలుగు నిమిషాల్లో డబ్బు వస్తుంది, ₹15,000 'ప్రాసెసింగ్ ఫీజు' కోసేసి. యాప్ మీ కాంటాక్ట్‌లు అడిగింది. మీరు 'Allow' నొక్కారు."
+          },
+          "why": {
+            "en": "Fast and easy is how loan apps hook you. The real cost appears later.",
+            "hi": "जल्दी और आसान, यही लोन ऐप का चारा है। असली कीमत बाद में पता चलती है।",
+            "te": "వేగంగా, సులువుగా అనిపించడమే లోన్ యాప్‌లు వేసే ఎర. అసలు ఖర్చు తర్వాత బయటపడుతుంది."
+          },
+          "next": "m3_loanapp"
+        },
+        {
+          "id": "sahukar",
+          "label": {
+            "en": "Narsaiah sahukar. He never says no",
+            "hi": "नरसैया साहूकार। वह कभी मना नहीं करता",
+            "te": "నర్సయ్య షావుకారు. ఎప్పుడూ కాదనడు"
+          },
+          "quality": "bad",
+          "effects": {
+            "loan": {
+              "source": "moneylender",
+              "principal": 150000
+            },
+            "shock": {
+              "kind": "hospital",
+              "cost": 180000
+            },
+            "flags": {
+              "add": [
+                "sahukar_hospital"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Narsaiah hands over the cash and takes Nanna's land papers 'just for safekeeping'.",
+            "hi": "नरसैया नकद थमा देता है और नान्ना की ज़मीन के कागज़ 'बस सँभालकर रखने के लिए' ले लेता है।",
+            "te": "నర్సయ్య డబ్బు చేతిలో పెట్టి, నాన్న భూమి కాగితాలు 'భద్రంగా ఉంచడానికి మాత్రమే' తీసుకుంటాడు."
+          },
+          "why": {
+            "en": "24% a year, and your family's land as security. Expensive debt in an emergency is how families lose land.",
+            "hi": "साल का 24%, और गिरवी में परिवार की ज़मीन। मुसीबत में महँगा कर्ज़, इसी तरह परिवार अपनी ज़मीन खो देते हैं।",
+            "te": "ఏడాదికి 24%, పైగా మీ కుటుంబ భూమి తాకట్టు. అత్యవసరంలో ఖరీదైన అప్పు చేసే కుటుంబాలు ఇలాగే భూమి పోగొట్టుకుంటాయి."
+          },
+          "next": "m3_chintu"
+        }
+      ]
+    },
+    {
+      "id": "m3_loanapp",
+      "age": 24,
+      "location": "phone",
+      "speaker": "headline",
+      "lesson": "L14",
+      "objective": {
+        "en": "Your phone won't stop buzzing. Open it (press P).",
+        "hi": "आपका फ़ोन लगातार बज रहा है। उसे खोलें (P दबाएँ)।",
+        "te": "మీ ఫోన్ ఆగకుండా మోగుతోంది. దాన్ని తెరవండి (P నొక్కండి)."
+      },
+      "title": {
+        "en": "Morphed photos",
+        "hi": "मॉर्फ़ की गई फ़ोटो",
+        "te": "మార్ఫ్ చేసిన ఫోటోలు"
+      },
+      "text": {
+        "en": "You missed one payment by a day. Now the app is sending YOUR photo, edited as a 'FRAUD' poster, to everyone in your contacts. Ammamma got it too.",
+        "hi": "आपकी एक किस्त एक दिन लेट हो गई। अब ऐप आपकी अपनी फ़ोटो को 'FRAUD' पोस्टर बनाकर आपके हर कॉन्टैक्ट को भेज रहा है। अम्मम्मा के पास भी पहुँच गई।",
+        "te": "ఒక్క పేమెంట్ ఒక్క రోజు లేటయింది. ఇప్పుడు యాప్ మీ సొంత ఫోటోను 'FRAUD' పోస్టర్‌గా ఎడిట్ చేసి, మీ కాంటాక్ట్‌లలో అందరికీ పంపుతోంది. అమ్మమ్మకు కూడా వచ్చింది."
+      },
+      "choices": [
+        {
+          "id": "another_app",
+          "label": {
+            "en": "Take a second app loan to pay the first",
+            "hi": "पहला लोन चुकाने के लिए दूसरे ऐप से लोन लें",
+            "te": "మొదటిది కట్టడానికి రెండో యాప్‌లో లోన్ తీసుకోండి"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "Paying a loan with another loan is a spiral: each new app adds fees and interest. In months you'll owe triple. Stop here and ask for help.",
+            "hi": "लोन चुकाने के लिए दूसरा लोन लेना एक भँवर है: हर नया ऐप फ़ीस और ब्याज जोड़ता है। कुछ ही महीनों में कर्ज़ तीन गुना हो जाएगा। यहीं रुकें और मदद माँगें।",
+            "te": "అప్పును ఇంకో అప్పుతో కట్టడం ఒక సుడిగుండం: ప్రతి కొత్త యాప్ ఫీజులు, వడ్డీ పెంచుతుంది. కొన్ని నెలల్లో మూడింతలు బాకీ పడతారు. ఇక్కడే ఆగండి, సాయం అడగండి."
+          },
+          "effects": {
+            "loan": {
+              "source": "loan_app",
+              "principal": 80000
+            },
+            "repay": {
+              "loan": "loan_app",
+              "amount": 60000
+            },
+            "flags": {
+              "add": [
+                "app_spiral"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "It works for 11 days. Then both apps call. Then a third app offers 'help'.",
+            "hi": "11 दिन तक काम चलता है। फिर दोनों ऐप फ़ोन करते हैं। फिर एक तीसरा ऐप 'मदद' की पेशकश करता है।",
+            "te": "11 రోజులు పనిచేస్తుంది. తర్వాత రెండు యాప్‌లూ కాల్ చేస్తాయి. తర్వాత మూడో యాప్ 'సాయం' చేస్తానంటుంది."
+          },
+          "why": {
+            "en": "New debt to pay old debt only delays the crash and makes it bigger.",
+            "hi": "पुराना कर्ज़ चुकाने के लिए नया कर्ज़ बस गिरने को टालता है, और गिरावट को और बड़ा बना देता है।",
+            "te": "పాత అప్పు కట్టడానికి కొత్త అప్పు చేస్తే, కూలిపోవడం ఆలస్యం అవుతుంది, కానీ ఇంకా పెద్దగా కూలుతుంది."
+          },
+          "next": "m3_spiral"
+        },
+        {
+          "id": "report",
+          "label": {
+            "en": "Report the app to the police and RBI's Sachet portal, then go to the bank",
+            "hi": "ऐप की शिकायत पुलिस और RBI के Sachet पोर्टल पर करें, फिर बैंक जाएँ",
+            "te": "యాప్ మీద పోలీసులకు, RBI సచేత్ పోర్టల్‌కు ఫిర్యాదు చేసి, బ్యాంక్‌కు వెళ్లండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "evidence_loanapp"
+              ]
+            },
+            "gyaan": 3
+          },
+          "outcome": {
+            "en": "The app isn't RBI-registered. The police block its harassment numbers. You still owe the money, but only the fair amount.",
+            "hi": "ऐप RBI में रजिस्टर्ड नहीं है। पुलिस उसके धमकी वाले नंबर ब्लॉक कर देती है। पैसा तो आपको अब भी चुकाना है, पर सिर्फ़ जायज़ रकम।",
+            "te": "ఆ యాప్ RBIలో రిజిస్టర్ కాలేదు. పోలీసులు దాని వేధింపు నంబర్లను బ్లాక్ చేస్తారు. మీరు ఇంకా డబ్బు బాకీనే, కానీ న్యాయమైన మొత్తం మాత్రమే."
+          },
+          "why": {
+            "en": "Illegal loan apps can be reported. Harassment is a crime. Check any lender on RBI's list first.",
+            "hi": "गैर-कानूनी लोन ऐप की शिकायत की जा सकती है। परेशान करना अपराध है। किसी भी कर्ज़ देने वाले को पहले RBI की सूची में जाँचें।",
+            "te": "చట్టవిరుద్ధ లోన్ యాప్‌ల మీద ఫిర్యాదు చేయొచ్చు. వేధించడం నేరం. ఎవరి దగ్గర అప్పు తీసుకున్నా, ముందు RBI జాబితాలో చెక్ చేయండి."
+          },
+          "next": "m3_bank"
+        },
+        {
+          "id": "family",
+          "label": {
+            "en": "Sit your family down and tell them everything",
+            "hi": "परिवार को बिठाकर उन्हें सब कुछ बता दें",
+            "te": "కుటుంబాన్ని కూర్చోబెట్టి అంతా చెప్పేయండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "meters": {
+              "family": 4
+            }
+          },
+          "outcome": {
+            "en": "Amma is angry for ten minutes. Then she takes out her savings-group book: \"We'll fix this together.\"",
+            "hi": "अम्मा दस मिनट गुस्सा रहती हैं। फिर अपनी बचत-समूह की किताब निकालती हैं: \"हम मिलकर इसे ठीक करेंगे।\"",
+            "te": "అమ్మ పది నిమిషాలు కోప్పడుతుంది. తర్వాత తన పొదుపు సంఘం పుస్తకం బయటకు తీస్తుంది: \"అందరం కలిసి సరిచేద్దాం.\""
+          },
+          "why": {
+            "en": "Debt grows in secret. Telling people who care about you opens cheaper ways out.",
+            "hi": "कर्ज़ छिपाने से बढ़ता है। जिन्हें आपकी परवाह है, उन्हें बताने से सस्ते रास्ते खुलते हैं।",
+            "te": "అప్పు రహస్యంగా ఉంటేనే పెరుగుతుంది. మీ మంచి కోరేవాళ్లకు చెబితే చౌకైన దారులు తెరుచుకుంటాయి."
+          },
+          "next": "m3_bank"
+        }
+      ]
+    },
+    {
+      "id": "m3_spiral",
+      "age": 24,
+      "location": "home",
+      "speaker": "mother",
+      "objective": {
+        "en": "Recovery agents are shouting outside your home. Go home, now.",
+        "hi": "रिकवरी एजेंट आपके घर के बाहर चिल्ला रहे हैं। अभी घर जाएँ।",
+        "te": "రికవరీ ఏజెంట్లు మీ ఇంటి బయట అరుస్తున్నారు. ఇప్పుడే ఇంటికి వెళ్లండి."
+      },
+      "title": {
+        "en": "Seven apps",
+        "hi": "सात ऐप",
+        "te": "ఏడు యాప్‌లు"
+      },
+      "text": {
+        "en": "Seven apps. ₹3,10,000 owed. Two recovery agents are shouting at Amma in the street, and the neighbours are watching. Chinni is hiding inside.",
+        "hi": "सात ऐप। ₹3,10,000 का कर्ज़। दो रिकवरी एजेंट गली में अम्मा पर चिल्ला रहे हैं, और पड़ोसी तमाशा देख रहे हैं। चिन्नी अंदर छिपी है।",
+        "te": "ఏడు యాప్‌లు. ₹3,10,000 బాకీ. ఇద్దరు రికవరీ ఏజెంట్లు వీధిలో అమ్మ మీద అరుస్తున్నారు, పొరుగువాళ్లు చూస్తున్నారు. చిన్ని లోపల దాక్కుంది."
+      },
+      "choices": [
+        {
+          "id": "sell_gold",
+          "label": {
+            "en": "Sell Amma's gold, borrow from the savings group, and close every app",
+            "hi": "अम्मा का सोना बेचें, बचत समूह से उधार लें, और हर ऐप का कर्ज़ बंद करें",
+            "te": "అమ్మ బంగారం అమ్మి, పొదుపు సంఘం నుంచి అప్పు తీసుకుని, ప్రతి యాప్ క్లోజ్ చేయండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "loan": {
+              "source": "shg",
+              "principal": 150000
+            },
+            "repay": {
+              "loan": "loan_app",
+              "amount": "all"
+            },
+            "meters": {
+              "family": -10,
+              "joy": -10
+            },
+            "flags": {
+              "add": [
+                "sold_gold"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Amma's wedding bangles go to the bank's gold counter. The apps go silent. Nobody talks at dinner for a week.",
+            "hi": "अम्मा की शादी की चूड़ियाँ बैंक के गोल्ड काउंटर पर चली जाती हैं। ऐप चुप हो जाते हैं। हफ़्ते भर खाने पर कोई बात नहीं करता।",
+            "te": "అమ్మ పెళ్లి గాజులు బ్యాంక్ గోల్డ్ కౌంటర్‌కు వెళ్తాయి. యాప్‌లు మూగబోతాయి. వారం రోజులు భోజనం దగ్గర ఎవరూ మాట్లాడరు."
+          },
+          "why": {
+            "en": "Closing the costliest debt first, even painfully, is how a spiral stops.",
+            "hi": "सबसे महँगा कर्ज़ पहले बंद करना, चाहे जितना दर्द हो, इसी से भँवर रुकता है।",
+            "te": "బాధగా ఉన్నా, అన్నిటికంటే ఖరీదైన అప్పు ముందు తీర్చడమే సుడిగుండం ఆగే దారి."
+          },
+          "next": "m3_chintu"
+        },
+        {
+          "id": "run",
+          "label": {
+            "en": "Switch off your phone and leave for Hyderabad",
+            "hi": "फ़ोन बंद करें और हैदराबाद निकल जाएँ",
+            "te": "ఫోన్ స్విచ్ ఆఫ్ చేసి హైదరాబాద్ వెళ్లిపోండి"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "Running doesn't stop the interest, the harassment of your family, or the damage to your [[credit_score]]. Every month away makes it worse.",
+            "hi": "भागने से न ब्याज रुकता है, न परिवार को परेशान करना, न आपके [[credit_score]] का नुकसान। दूर रहने का हर महीना हालत और बिगाड़ता है।",
+            "te": "పారిపోతే వడ్డీ ఆగదు, మీ కుటుంబాన్ని వేధించడం ఆగదు, మీ [[credit_score]]కి నష్టం ఆగదు. దూరంగా ఉండే ప్రతి నెలా పరిస్థితి ఇంకా దిగజారుతుంది."
+          },
+          "effects": {
+            "meters": {
+              "family": -25,
+              "joy": -15
+            },
+            "flags": {
+              "add": [
+                "bankrupt",
+                "ran_away"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "You sleep on a friend's floor in Hyderabad. The agents keep visiting Amma instead.",
+            "hi": "आप हैदराबाद में एक दोस्त के घर फ़र्श पर सोते हैं। एजेंट अब अम्मा के पास आते रहते हैं।",
+            "te": "హైదరాబాద్‌లో ఒక ఫ్రెండ్ ఇంట్లో నేల మీద పడుకుంటారు. ఏజెంట్లు మాత్రం అమ్మ దగ్గరికే వస్తూ ఉంటారు."
+          },
+          "why": {
+            "en": "Debt doesn't disappear when you do. Lenders go after the family and the credit record follows you.",
+            "hi": "आप गायब हो जाएँ, तो कर्ज़ गायब नहीं होता। कर्ज़ देने वाले परिवार के पीछे पड़ते हैं, और क्रेडिट रिकॉर्ड आपका पीछा करता है।",
+            "te": "మీరు మాయమైతే అప్పు మాయం కాదు. అప్పిచ్చినవాళ్లు కుటుంబం వెంట పడతారు, క్రెడిట్ రికార్డు మీ వెంటే వస్తుంది."
+          },
+          "next": "m3_end_bankrupt"
+        }
+      ]
+    },
+    {
+      "id": "m3_bank",
+      "age": 24,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L14",
+      "objective": {
+        "en": "Go to the bank. Kavitha akka can help you get out of this.",
+        "hi": "बैंक जाएँ। कविता अक्का इससे निकलने में आपकी मदद कर सकती हैं।",
+        "te": "బ్యాంక్‌కు వెళ్లండి. ఇందులోంచి బయటపడటానికి కవిత అక్క సాయం చేయగలదు."
+      },
+      "title": {
+        "en": "The way out",
+        "hi": "निकलने का रास्ता",
+        "te": "బయటపడే దారి"
+      },
+      "text": {
+        "en": "{cast:banker} lists your loans on paper, costliest first. \"Loan app 36%, then the rest. We close the most expensive one first. Always.\"",
+        "hi": "{cast:banker} कागज़ पर आपके सारे लोन लिखती हैं, सबसे महँगा सबसे ऊपर। \"लोन ऐप 36%, फिर बाकी। सबसे महँगा हम सबसे पहले बंद करते हैं। हमेशा।\"",
+        "te": "{cast:banker} మీ అప్పులన్నీ కాగితం మీద రాస్తుంది, అన్నిటికంటే ఖరీదైనది ముందు. \"లోన్ యాప్ 36%, తర్వాత మిగతావి. అన్నిటికంటే ఖరీదైనది ముందు క్లోజ్ చేస్తాం. ఎప్పుడూ.\""
+      },
+      "choices": [
+        {
+          "id": "consolidate",
+          "label": {
+            "en": "Take one bank loan at 13% to close the loan app today",
+            "hi": "लोन ऐप आज ही बंद करने के लिए 13% पर एक बैंक लोन लें",
+            "te": "లోన్ యాప్‌ను ఇవాళే క్లోజ్ చేయడానికి 13%కి ఒక బ్యాంక్ లోన్ తీసుకోండి"
+          },
+          "quality": "good",
+          "effects": {
+            "loan": {
+              "source": "bank_personal",
+              "principal": 120000
+            },
+            "repay": {
+              "loan": "loan_app",
+              "amount": "all"
+            },
+            "flags": {
+              "add": [
+                "consolidated"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "One loan, one EMI, one fair rate. The app's number is blocked. You sleep through the night for the first time in months.",
+            "hi": "एक लोन, एक EMI, एक जायज़ ब्याज दर। ऐप का नंबर ब्लॉक। महीनों बाद पहली बार आप रात भर चैन से सोते हैं।",
+            "te": "ఒక్క లోన్, ఒక్క EMI, ఒక్క న్యాయమైన వడ్డీ. యాప్ నంబర్ బ్లాక్. నెలల తర్వాత మొదటిసారి రాత్రంతా హాయిగా నిద్రపోతారు."
+          },
+          "why": {
+            "en": "Swapping a 36% loan for a 13% loan cuts the cost by more than half. Always repay the highest rate first.",
+            "hi": "36% वाले लोन को 13% वाले लोन से बदलने पर खर्च आधे से भी ज़्यादा घट जाता है। हमेशा सबसे ऊँची दर वाला कर्ज़ पहले चुकाएँ।",
+            "te": "36% లోన్‌ను 13% లోన్‌తో మార్చుకుంటే ఖర్చు సగం కంటే ఎక్కువ తగ్గుతుంది. ఎప్పుడూ ఎక్కువ వడ్డీ ఉన్న అప్పే ముందు తీర్చండి."
+          },
+          "next": "m3_chintu"
+        },
+        {
+          "id": "prepay",
+          "label": {
+            "en": "Prepay the app from every salary until it's gone",
+            "hi": "हर सैलरी से ऐप का कर्ज़ चुकाते जाएँ, जब तक ख़त्म न हो",
+            "te": "అయిపోయే దాకా ప్రతి జీతం నుంచి యాప్ అప్పు ముందే కట్టేయండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "repay": {
+              "loan": "loan_app",
+              "amount": 40000
+            },
+            "meters": {
+              "joy": -4
+            }
+          },
+          "outcome": {
+            "en": "Dal and rice for six months. The app balance falls, slowly.",
+            "hi": "छह महीने सिर्फ़ दाल-चावल। ऐप का बकाया धीरे-धीरे घटता है।",
+            "te": "ఆరు నెలలు పప్పు, అన్నం. యాప్ బాకీ నెమ్మదిగా తగ్గుతుంది."
+          },
+          "why": {
+            "en": "Prepaying costly debt is the best 'investment' you can make: it 'earns' you the interest rate you stop paying.",
+            "hi": "महँगा कर्ज़ जल्दी चुकाना सबसे अच्छा 'निवेश' है: जो ब्याज आप भरना बंद करते हैं, वही आपकी 'कमाई' है।",
+            "te": "ఖరీదైన అప్పును ముందే తీర్చడం మీరు చేయగల అత్యుత్తమ 'పెట్టుబడి': మీరు కట్టడం మానేసిన వడ్డీ రేటంత మీకు 'సంపాదిస్తుంది'."
+          },
+          "next": "m3_chintu"
+        }
+      ]
+    },
+    {
+      "id": "m3_chintu",
+      "age": 25,
+      "location": "square",
+      "speaker": "friend",
+      "lesson": "L22",
+      "objective": {
+        "en": "Chintu is back in the village in a white shirt and a gold watch. He's at the square.",
+        "hi": "चिंटू सफ़ेद शर्ट और सोने की घड़ी पहनकर गाँव लौटा है। वह चौक पर है।",
+        "te": "చింటూ తెల్ల షర్ట్, బంగారు వాచీతో ఊరికి తిరిగొచ్చాడు. కూడలిలో ఉన్నాడు."
+      },
+      "title": {
+        "en": "Golden Harvest",
+        "hi": "गोल्डन हार्वेस्ट",
+        "te": "గోల్డెన్ హార్వెస్ట్"
+      },
+      "text": {
+        "en": "Chintu now works for {cast:tempter}'s new company: Golden Harvest Gold Scheme. \"Pay ₹1 lakh, get ₹5,000 every month, forever! Half the village joined!\" He shows a stamped certificate.",
+        "hi": "चिंटू अब {cast:tempter} की नई कंपनी में काम करता है: गोल्डन हार्वेस्ट गोल्ड स्कीम। \"₹1 लाख दो, हर महीने ₹5,000 पाओ, हमेशा! आधा गाँव जुड़ गया!\" वह मुहर लगा एक सर्टिफ़िकेट दिखाता है।",
+        "te": "చింటూ ఇప్పుడు {cast:tempter} కొత్త కంపెనీలో పనిచేస్తున్నాడు: గోల్డెన్ హార్వెస్ట్ గోల్డ్ స్కీమ్. \"₹1 లక్ష కట్టు, ప్రతి నెలా ₹5,000 తీసుకో, జీవితాంతం! సగం ఊరు చేరింది!\" స్టాంప్ వేసిన ఒక సర్టిఫికెట్ చూపిస్తాడు."
+      },
+      "choices": [
+        {
+          "id": "join",
+          "label": {
+            "en": "Invest ₹50,000. Half the village can't be wrong",
+            "hi": "₹50,000 लगाएँ। आधा गाँव गलत नहीं हो सकता",
+            "te": "₹50,000 పెట్టండి. సగం ఊరు తప్పు చేయదు కదా"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "₹5,000 a month on ₹1 lakh is 60% a year. Schemes that pay old members with new members' money are [[ponzi]] schemes. They always collapse.",
+            "hi": "₹1 लाख पर ₹5,000 महीना यानी साल का 60%। जो स्कीम पुराने सदस्यों को नए सदस्यों के पैसे से देती हैं, वे [[ponzi]] स्कीम हैं। वे हमेशा डूबती हैं।",
+            "te": "₹1 లక్ష మీద నెలకు ₹5,000 అంటే ఏడాదికి 60%. పాత సభ్యులకు కొత్త సభ్యుల డబ్బుతో ఇచ్చే పథకాలు [[ponzi]] పథకాలు. అవి ఎప్పుడో ఒకప్పుడు కచ్చితంగా కూలిపోతాయి."
+          },
+          "effects": {
+            "cash": -50000,
+            "flags": {
+              "add": [
+                "gh_investor"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The first ₹2,500 arrives on time. And the second. You tell two colleagues about it.",
+            "hi": "पहले ₹2,500 समय पर आते हैं। फिर अगले भी। आप दो साथियों को भी इसके बारे में बता देते हैं।",
+            "te": "మొదటి ₹2,500 టైమ్‌కి వస్తాయి. రెండోసారి కూడా. మీరు ఆఫీసులో ఇద్దరికి దాని గురించి చెబుతారు."
+          },
+          "why": {
+            "en": "Ponzi schemes pay early on purpose, so investors bring in more people. It ends when new money stops.",
+            "hi": "पोंज़ी स्कीम जानबूझकर शुरू में पैसे देती हैं, ताकि निवेशक और लोगों को लाएँ। नया पैसा रुकते ही खेल ख़त्म।",
+            "te": "పెట్టుబడిదారులు ఇంకా ఎక్కువ మందిని తేవాలని, పోంజీ పథకాలు కావాలనే మొదట్లో డబ్బు ఇస్తాయి. కొత్త డబ్బు రావడం ఆగినప్పుడు అంతా ముగుస్తుంది."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "bankrupt"
+                ]
+              },
+              "to": "m3_end_bankrupt"
+            },
+            {
+              "if": {
+                "flags": [
+                  "sold_gold"
+                ]
+              },
+              "to": "m3_end_scarred"
+            },
+            {
+              "to": "m3_end_hooked"
+            }
+          ]
+        },
+        {
+          "id": "certificate",
+          "label": {
+            "en": "Ask to see its registration with SEBI or the Registrar of Chits",
+            "hi": "SEBI या चिट फंड रजिस्ट्रार में इसका रजिस्ट्रेशन दिखाने को कहें",
+            "te": "SEBI లేదా రిజిస్ట్రార్ ఆఫ్ చిట్స్‌లో రిజిస్ట్రేషన్ చూపించమని అడగండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "evidence_goldharvest"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "The 'certificate' is from a Dubai company and spells 'Goverment' wrong. You take a photo. Chintu looks uncomfortable.",
+            "hi": "'सर्टिफ़िकेट' दुबई की एक कंपनी का है, और उसमें 'Goverment' की स्पेलिंग गलत है। आप फ़ोटो ले लेते हैं। चिंटू बेचैन दिखता है।",
+            "te": "ఆ 'సర్టిఫికెట్' ఒక దుబాయ్ కంపెనీది, అందులో 'Goverment' అని తప్పు స్పెల్లింగ్ ఉంది. మీరు ఫోటో తీసుకుంటారు. చింటూ ఇబ్బందిగా చూస్తాడు."
+          },
+          "why": {
+            "en": "Legal schemes are registered and can show it. A stamp and a smile are not registration.",
+            "hi": "कानूनी स्कीम रजिस्टर्ड होती हैं और यह दिखा सकती हैं। मुहर और मुस्कान रजिस्ट्रेशन नहीं होते।",
+            "te": "చట్టబద్ధమైన పథకాలు రిజిస్టర్ అయి ఉంటాయి, అది చూపించగలవు. ఒక స్టాంప్, ఒక నవ్వు రిజిస్ట్రేషన్ కాదు."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "bankrupt"
+                ]
+              },
+              "to": "m3_end_bankrupt"
+            },
+            {
+              "if": {
+                "flags": [
+                  "sold_gold"
+                ]
+              },
+              "to": "m3_end_scarred"
+            },
+            {
+              "if": {
+                "flags": [
+                  "insured"
+                ]
+              },
+              "to": "m3_end_shield"
+            },
+            {
+              "to": "m3_end_ok"
+            }
+          ]
+        },
+        {
+          "id": "refuse",
+          "label": {
+            "en": "Refuse politely",
+            "hi": "विनम्रता से मना करें",
+            "te": "మర్యాదగా వద్దనండి"
+          },
+          "quality": "ok",
+          "outcome": {
+            "en": "\"Your loss, boss,\" says Chintu, sounding exactly like Prakash.",
+            "hi": "\"तुम्हारा नुकसान, बॉस,\" चिंटू कहता है, बिल्कुल प्रकाश की तरह।",
+            "te": "\"నీకే నష్టం, బాస్,\" అంటాడు చింటూ, అచ్చం ప్రకాష్ లాగే."
+          },
+          "why": {
+            "en": "Saying no to 'guaranteed' returns is always safe.",
+            "hi": "'गारंटी वाले' मुनाफ़े को ना कहना हमेशा सुरक्षित है।",
+            "te": "'గ్యారంటీ' రాబడికి నో చెప్పడం ఎప్పుడూ సురక్షితమే."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "bankrupt"
+                ]
+              },
+              "to": "m3_end_bankrupt"
+            },
+            {
+              "if": {
+                "flags": [
+                  "sold_gold"
+                ]
+              },
+              "to": "m3_end_scarred"
+            },
+            {
+              "if": {
+                "flags": [
+                  "insured"
+                ]
+              },
+              "to": "m3_end_shield"
+            },
+            {
+              "to": "m3_end_ok"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3_end_shield",
+      "type": "outcome",
+      "tone": "good",
+      "title": {
+        "en": "Insured and unshaken",
+        "hi": "बीमा साथ, हौसला बरकरार",
+        "te": "బీమా ఉంది, భయం లేదు"
+      },
+      "text": {
+        "en": "Nanna's heart attack cost you a week of worry and ₹0. Ramana now tells other families: \"That one? Can't sell them anything.\"",
+        "hi": "नान्ना के दिल के दौरे की कीमत: एक हफ़्ते की चिंता और ₹0। रमणा अब दूसरे परिवारों से कहता है: \"वो लोग? उन्हें कुछ नहीं बेच सकते।\"",
+        "te": "నాన్న గుండెపోటు మీకు ఒక వారం టెన్షన్, ₹0 ఖర్చు. రమణ ఇప్పుడు వేరే కుటుంబాలకు చెబుతాడు: \"ఆ ఇంటివాళ్లా? వాళ్లకేమీ అమ్మలేం.\""
+      },
+      "effects": {
+        "meters": {
+          "joy": 4
+        }
+      }
+    },
+    {
+      "id": "m3_end_ok",
+      "type": "outcome",
+      "tone": "mixed",
+      "title": {
+        "en": "Bruised, but standing",
+        "hi": "चोट खाई, पर खड़े हैं",
+        "te": "దెబ్బలు తిన్నా, నిలబడ్డారు"
+      },
+      "text": {
+        "en": "Nanna is home, and you are paying off the hospital bill one EMI at a time. Not a disaster. But you now know the price of having no [[emergency_fund]].",
+        "hi": "नान्ना घर पर हैं, और आप अस्पताल का बिल एक-एक EMI करके चुका रहे हैं। कोई बर्बादी नहीं। पर अब आप जानते हैं कि [[emergency_fund]] न होने की कीमत क्या होती है।",
+        "te": "నాన్న ఇంటికి వచ్చాడు, మీరు హాస్పిటల్ బిల్లును ఒక్కో EMIగా తీరుస్తున్నారు. విపత్తు కాదు. కానీ [[emergency_fund]] లేకపోతే ఎంత ఖరీదో ఇప్పుడు మీకు తెలుసు."
+      }
+    },
+    {
+      "id": "m3_end_hooked",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "Hooked on Golden Harvest",
+        "hi": "गोल्डन हार्वेस्ट के जाल में",
+        "te": "గోల్డెన్ హార్వెస్ట్ గాలానికి చిక్కారు"
+      },
+      "text": {
+        "en": "Every month ₹2,500 arrives from Golden Harvest, like clockwork. You start to believe. You don't notice that it's just your own money coming back.",
+        "hi": "हर महीने गोल्डन हार्वेस्ट से ₹2,500 आते हैं, घड़ी की सुई की तरह। आपको भरोसा होने लगता है। आपका ध्यान नहीं जाता कि यह बस आपका अपना पैसा वापस आ रहा है।",
+        "te": "ప్రతి నెలా గోల్డెన్ హార్వెస్ట్ నుంచి ₹2,500 గడియారంలా వస్తాయి. మీరు నమ్మడం మొదలుపెడతారు. అది మీ సొంత డబ్బే తిరిగి వస్తోందని మీరు గమనించరు."
+      }
+    },
+    {
+      "id": "m3_end_scarred",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "Escaped the spiral",
+        "hi": "भँवर से बाहर",
+        "te": "సుడిగుండం నుంచి బయటపడ్డారు"
+      },
+      "text": {
+        "en": "The loan apps are silent, Amma's gold is gone, and you have a long list of EMIs. You got out. Many people don't.",
+        "hi": "लोन ऐप चुप हैं, अम्मा का सोना चला गया, और आपके पास EMI की लंबी सूची है। आप निकल आए। बहुत लोग नहीं निकल पाते।",
+        "te": "లోన్ యాప్‌లు మూగబోయాయి, అమ్మ బంగారం పోయింది, మీ దగ్గర EMIల పెద్ద జాబితా ఉంది. మీరు బయటపడ్డారు. చాలా మంది పడలేరు."
+      }
+    },
+    {
+      "id": "m3_end_bankrupt",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": {
+        "en": "Bankrupt at 24",
+        "hi": "24 की उम्र में दिवालिया",
+        "te": "24 ఏళ్లకే దివాలా"
+      },
+      "text": {
+        "en": "₹3 lakh owed to seven apps, a family harassed, and a credit record in ruins. No bank will lend to you for seven years. It started with one 'instant' loan.",
+        "hi": "सात ऐप का ₹3 लाख कर्ज़, परेशान परिवार, और बर्बाद क्रेडिट रिकॉर्ड। सात साल तक कोई बैंक आपको लोन नहीं देगा। यह सब एक 'इंस्टेंट' लोन से शुरू हुआ था।",
+        "te": "ఏడు యాప్‌లకు ₹3 లక్షల బాకీ, వేధింపులకు గురైన కుటుంబం, నాశనమైన క్రెడిట్ రికార్డు. ఏడేళ్ల పాటు ఏ బ్యాంకూ మీకు అప్పు ఇవ్వదు. ఇదంతా ఒక్క 'ఇన్‌స్టంట్' లోన్‌తో మొదలైంది."
+      },
+      "effects": {
+        "meters": {
+          "family": -10
+        }
+      }
+    }
+  ]
+}
