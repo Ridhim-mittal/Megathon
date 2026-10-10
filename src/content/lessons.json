@@ -3,192 +3,392 @@
     "id": "L01",
     "pillar": "PLAN",
     "ages": [11, 12],
-    "title": { "en": "Needs vs wants" },
-    "summary": { "en": "Needs come first: food, school, the bus. Wants are fine too, once they fit inside your plan." },
-    "keyNumber": { "en": "₹10 a day on wants = ₹3,650 a year." }
+    "title": { "en": "Needs vs wants", "hi": "ज़रूरत और चाहत", "te": "అవసరాలు, కోరికలు" },
+    "summary": {
+      "en": "Needs come first: food, school, the bus. Wants are fine too, once they fit inside your plan.",
+      "hi": "पहले ज़रूरतें: खाना, स्कूल, बस। चाहतें भी ठीक हैं, अगर वे आपके प्लान में फिट हों।",
+      "te": "ముందు అవసరాలు: తిండి, స్కూల్, బస్సు. కోరికలూ తప్పు కాదు, మీ ప్లాన్‌లో సరిపోతే."
+    },
+    "keyNumber": {
+      "en": "₹10 a day on wants = ₹3,650 a year.",
+      "hi": "चाहतों पर रोज़ ₹10 = साल में ₹3,650।",
+      "te": "కోరికలపై రోజుకు ₹10 = ఏడాదికి ₹3,650."
+    }
   },
   {
     "id": "L02",
     "pillar": "SAVE",
     "ages": [11, 13],
-    "title": { "en": "Saving habit and goals" },
-    "summary": { "en": "Pay yourself first. Put the savings aside the day money comes, not with whatever is left." },
-    "keyNumber": { "en": "₹5 a day saved = ₹1,825 a year." }
+    "title": { "en": "Saving habit and goals", "hi": "बचत की आदत और लक्ष्य", "te": "పొదుపు అలవాటు, లక్ష్యాలు" },
+    "summary": {
+      "en": "Pay yourself first. Put the savings aside the day money comes, not with whatever is left.",
+      "hi": "पहले खुद को दें। पैसा आते ही बचत अलग रखें, जो बचे उसका इंतज़ार न करें।",
+      "te": "ముందు మీకే చెల్లించుకోండి. డబ్బు వచ్చిన రోజే పొదుపు పక్కన పెట్టండి, మిగిలినదాని కోసం ఆగకండి."
+    },
+    "keyNumber": {
+      "en": "₹5 a day saved = ₹1,825 a year.",
+      "hi": "रोज़ ₹5 की बचत = साल में ₹1,825।",
+      "te": "రోజుకు ₹5 పొదుపు = ఏడాదికి ₹1,825."
+    }
   },
   {
     "id": "L03",
     "pillar": "PLAN",
     "ages": [12, 14],
-    "title": { "en": "Inflation" },
-    "summary": { "en": "Prices rise a little every year. Cash kept idle buys less and less." },
-    "keyNumber": { "en": "At 6% a year, a ₹10 chocolate costs about ₹18 in 10 years." }
+    "title": { "en": "Inflation", "hi": "महंगाई", "te": "ధరల పెరుగుదల" },
+    "summary": {
+      "en": "Prices rise a little every year. Cash kept idle buys less and less.",
+      "hi": "हर साल कीमतें थोड़ी बढ़ती हैं। पड़ा हुआ पैसा कम-कम खरीद पाता है।",
+      "te": "ప్రతి ఏడాది ధరలు కొంచెం పెరుగుతాయి. ఊరికే ఉన్న డబ్బుతో తక్కువ తక్కువ కొనగలం."
+    },
+    "keyNumber": {
+      "en": "At 6% a year, a ₹10 chocolate costs about ₹18 in 10 years.",
+      "hi": "6% सालाना पर ₹10 की चॉकलेट 10 साल में लगभग ₹18 की होगी।",
+      "te": "ఏడాదికి 6% చొప్పున ₹10 చాక్లెట్ 10 ఏళ్లలో సుమారు ₹18 అవుతుంది."
+    }
   },
   {
     "id": "L04",
     "pillar": "SAVE",
     "ages": [12, 14],
-    "title": { "en": "Bank vs tin box" },
-    "summary": { "en": "A bank keeps money safe from rats, thieves and quick spending. It also pays interest. Children can open a minor's savings account." },
-    "keyNumber": { "en": "₹1,000 in a savings account at 3% becomes ₹1,030 in a year. In a tin box it stays ₹1,000." }
+    "title": { "en": "Bank vs tin box", "hi": "बैंक बनाम डिब्बा", "te": "బ్యాంక్ vs డబ్బా" },
+    "summary": {
+      "en": "A bank keeps money safe from rats, thieves and quick spending. It also pays interest. Children can open a minor's savings account.",
+      "hi": "बैंक पैसे को चूहों, चोरों और जल्दबाज़ी के खर्च से बचाता है। ब्याज भी देता है। बच्चे नाबालिग बचत खाता खोल सकते हैं।",
+      "te": "బ్యాంక్ డబ్బును ఎలుకలు, దొంగలు, తొందర ఖర్చుల నుంచి కాపాడుతుంది. వడ్డీ కూడా ఇస్తుంది. పిల్లలు మైనర్ సేవింగ్స్ ఖాతా తెరవొచ్చు."
+    },
+    "keyNumber": {
+      "en": "₹1,000 in a savings account at 3% becomes ₹1,030 in a year. In a tin box it stays ₹1,000.",
+      "hi": "3% वाले बचत खाते में ₹1,000 एक साल में ₹1,030 बनते हैं। डिब्बे में ₹1,000 ही रहते हैं।",
+      "te": "3% సేవింగ్స్ ఖాతాలో ₹1,000 ఏడాదిలో ₹1,030 అవుతుంది. డబ్బాలో ₹1,000 గానే ఉంటుంది."
+    }
   },
   {
     "id": "L05",
     "pillar": "SAVE",
     "ages": [13, 14],
-    "title": { "en": "Simple vs compound interest" },
-    "summary": { "en": "Compound interest is interest on interest. It makes savings grow fast. It makes debts grow fast too." },
-    "keyNumber": { "en": "₹1,000 at 10% for 10 years: ₹2,000 with simple interest, ₹2,594 with compound." }
+    "title": { "en": "Simple vs compound interest", "hi": "साधारण बनाम चक्रवृद्धि ब्याज", "te": "సాధారణ వడ్డీ vs చక్రవడ్డీ" },
+    "summary": {
+      "en": "Compound interest is interest on interest. It makes savings grow fast. It makes debts grow fast too.",
+      "hi": "चक्रवृद्धि ब्याज यानी ब्याज पर ब्याज। इससे बचत तेज़ बढ़ती है। कर्ज़ भी तेज़ बढ़ता है।",
+      "te": "చక్రవడ్డీ అంటే వడ్డీ మీద వడ్డీ. దీనితో పొదుపు వేగంగా పెరుగుతుంది. అప్పు కూడా వేగంగా పెరుగుతుంది."
+    },
+    "keyNumber": {
+      "en": "₹1,000 at 10% for 10 years: ₹2,000 with simple interest, ₹2,594 with compound.",
+      "hi": "₹1,000, 10% पर, 10 साल: साधारण ब्याज से ₹2,000, चक्रवृद्धि से ₹2,594।",
+      "te": "₹1,000, 10% వద్ద, 10 ఏళ్లు: సాధారణ వడ్డీతో ₹2,000, చక్రవడ్డీతో ₹2,594."
+    }
   },
   {
     "id": "L06",
     "pillar": "SAFE",
     "ages": [11, 14],
-    "title": { "en": "Online safety" },
-    "summary": { "en": "Never share an OTP, PIN or password. \"Free\" game coins and recharge links are bait." },
-    "keyNumber": { "en": "0: the number of times a real bank or game will ask for your OTP." }
+    "title": { "en": "Online safety", "hi": "ऑनलाइन सुरक्षा", "te": "ఆన్‌లైన్ భద్రత" },
+    "summary": {
+      "en": "Never share an OTP, PIN or password. \"Free\" game coins and recharge links are bait.",
+      "hi": "OTP, PIN या पासवर्ड कभी न बताएँ। \"मुफ़्त\" गेम कॉइन और रिचार्ज लिंक चारा हैं।",
+      "te": "OTP, PIN, పాస్‌వర్డ్ ఎప్పుడూ చెప్పకండి. \"ఉచిత\" గేమ్ కాయిన్లు, రీఛార్జ్ లింకులు ఎర."
+    },
+    "keyNumber": {
+      "en": "0: the number of times a real bank or game will ask for your OTP.",
+      "hi": "0: असली बैंक या गेम आपसे OTP कितनी बार माँगेगा।",
+      "te": "0: నిజమైన బ్యాంక్ లేదా గేమ్ మీ OTP ఎన్నిసార్లు అడుగుతుంది."
+    }
   },
   {
     "id": "L07",
     "pillar": "PLAN",
     "ages": [15, 17],
-    "title": { "en": "Peer pressure and EMIs" },
-    "summary": { "en": "\"Only ₹X a month\" hides the total. Multiply the EMI by the months and add every fee." },
-    "keyNumber": { "en": "₹699 × 12 months + ₹1,200 fee = ₹9,588 for a ₹7,500 phone." }
+    "title": { "en": "Peer pressure and EMIs", "hi": "दोस्तों का दबाव और EMI", "te": "స్నేహితుల ఒత్తిడి, EMIలు" },
+    "summary": {
+      "en": "\"Only ₹X a month\" hides the total. Multiply the EMI by the months and add every fee.",
+      "hi": "\"सिर्फ़ ₹X महीना\" कुल रकम छुपाता है। EMI को महीनों से गुणा करें और हर फ़ीस जोड़ें।",
+      "te": "\"నెలకు ₹X మాత్రమే\" మొత్తాన్ని దాచేస్తుంది. EMIని నెలలతో గుణించి, ప్రతి ఫీజు కలపండి."
+    },
+    "keyNumber": {
+      "en": "₹699 × 12 months + ₹1,200 fee = ₹9,588 for a ₹7,500 phone.",
+      "hi": "₹699 × 12 महीने + ₹1,200 फ़ीस = ₹7,500 के फ़ोन के ₹9,588।",
+      "te": "₹699 × 12 నెలలు + ₹1,200 ఫీజు = ₹7,500 ఫోన్‌కు ₹9,588."
+    }
   },
   {
     "id": "L08",
     "pillar": "PLAN",
     "ages": [15, 18],
-    "title": { "en": "Earning and opportunity cost" },
-    "summary": { "en": "Every choice has a hidden price: the best thing you gave up for it. Time is money too." },
-    "keyNumber": { "en": "₹300 a day picking cotton today vs a skill that can pay ₹500 a day for 40 years." }
+    "title": { "en": "Earning and opportunity cost", "hi": "कमाई और अवसर लागत", "te": "సంపాదన, అవకాశ వ్యయం" },
+    "summary": {
+      "en": "Every choice has a hidden price: the best thing you gave up for it. Time is money too.",
+      "hi": "हर फ़ैसले की छुपी कीमत होती है: उसके लिए छोड़ी गई सबसे अच्छी चीज़। समय भी पैसा है।",
+      "te": "ప్రతి నిర్ణయానికి దాగిన ధర ఉంది: దానికోసం వదులుకున్న మంచి అవకాశం. సమయం కూడా డబ్బే."
+    },
+    "keyNumber": {
+      "en": "₹300 a day picking cotton today vs a skill that can pay ₹500 a day for 40 years.",
+      "hi": "आज कपास चुनकर ₹300 रोज़ बनाम ऐसा हुनर जो 40 साल तक ₹500 रोज़ दे।",
+      "te": "ఈ రోజు పత్తి ఏరితే రోజుకు ₹300 vs 40 ఏళ్లు రోజుకు ₹500 ఇచ్చే నైపుణ్యం."
+    }
   },
   {
     "id": "L09",
     "pillar": "SAFE",
     "ages": [15, 18],
-    "title": { "en": "UPI safely" },
-    "summary": { "en": "You never enter a PIN to receive money. A collect request or QR code that asks for your PIN takes money out." },
-    "keyNumber": { "en": "₹0: the PIN needed to receive money." }
+    "title": { "en": "UPI safely", "hi": "सुरक्षित UPI", "te": "UPI భద్రంగా" },
+    "summary": {
+      "en": "You never enter a PIN to receive money. A collect request or QR code that asks for your PIN takes money out.",
+      "hi": "पैसे लेने के लिए कभी PIN नहीं डालते। जो कलेक्ट रिक्वेस्ट या QR कोड PIN माँगे, वह पैसा निकालता है।",
+      "te": "డబ్బు తీసుకోవడానికి ఎప్పుడూ PIN వేయరు. PIN అడిగే కలెక్ట్ రిక్వెస్ట్ లేదా QR కోడ్ డబ్బు బయటికి తీస్తుంది."
+    },
+    "keyNumber": {
+      "en": "₹0: the PIN needed to receive money.",
+      "hi": "₹0: पैसे लेने के लिए कितने PIN चाहिए।",
+      "te": "₹0: డబ్బు తీసుకోవడానికి కావాల్సిన PIN."
+    }
   },
   {
     "id": "L10",
     "pillar": "PLAN",
     "ages": [17, 18],
-    "title": { "en": "Education and career crossroads" },
-    "summary": { "en": "Good debt builds your earning power. Bad debt buys things that lose value. An education loan can be good debt." },
-    "keyNumber": { "en": "A ₹2 lakh study loan at 10% is about ₹3,300 a month for 7 years." }
+    "title": { "en": "Education and career crossroads", "hi": "पढ़ाई और करियर का चौराहा", "te": "చదువు, ఉద్యోగ కూడలి" },
+    "summary": {
+      "en": "Good debt builds your earning power. Bad debt buys things that lose value. An education loan can be good debt.",
+      "hi": "अच्छा कर्ज़ कमाने की ताकत बढ़ाता है। बुरा कर्ज़ घटती कीमत वाली चीज़ें खरीदता है। शिक्षा ऋण अच्छा कर्ज़ हो सकता है।",
+      "te": "మంచి అప్పు సంపాదన శక్తిని పెంచుతుంది. చెడ్డ అప్పు విలువ తగ్గే వస్తువులు కొంటుంది. విద్యా రుణం మంచి అప్పు కావచ్చు."
+    },
+    "keyNumber": {
+      "en": "A ₹2 lakh study loan at 10% is about ₹3,300 a month for 7 years.",
+      "hi": "10% पर ₹2 लाख का शिक्षा ऋण लगभग ₹3,300 महीना, 7 साल।",
+      "te": "10% వద్ద ₹2 లక్షల చదువు రుణం సుమారు నెలకు ₹3,300, 7 ఏళ్లు."
+    }
   },
   {
     "id": "L11",
     "pillar": "SAFE",
     "ages": [15, 19],
-    "title": { "en": "Betting and easy-money apps" },
-    "summary": { "en": "Betting and \"earning\" apps are built to win. Small early wins hook you. Chasing losses digs deeper." },
-    "keyNumber": { "en": "On average, betting apps give back less than ₹90 of every ₹100 bet." }
+    "title": { "en": "Betting and easy-money apps", "hi": "सट्टा और आसान-पैसे वाले ऐप", "te": "బెట్టింగ్, సులువు డబ్బు యాప్‌లు" },
+    "summary": {
+      "en": "Betting and \"earning\" apps are built to win. Small early wins hook you. Chasing losses digs deeper.",
+      "hi": "सट्टे और \"कमाई\" वाले ऐप जीतने के लिए बने हैं। शुरू की छोटी जीत फँसाती है। हार का पीछा गड्ढा गहरा करता है।",
+      "te": "బెట్టింగ్, \"సంపాదన\" యాప్‌లు గెలవడానికే తయారవుతాయి. మొదటి చిన్న గెలుపులు ఉచ్చులో పడేస్తాయి. నష్టం వెంటపడితే గొయ్యి లోతవుతుంది."
+    },
+    "keyNumber": {
+      "en": "On average, betting apps give back less than ₹90 of every ₹100 bet.",
+      "hi": "औसतन सट्टे के ऐप हर ₹100 के दाँव पर ₹90 से कम लौटाते हैं।",
+      "te": "సగటున బెట్టింగ్ యాప్‌లు ప్రతి ₹100 పందెంలో ₹90 కంటే తక్కువే తిరిగిస్తాయి."
+    }
   },
   {
     "id": "L12",
     "pillar": "PLAN",
     "ages": [19, 21],
-    "title": { "en": "First income" },
-    "summary": { "en": "Read your payslip. PF is your savings, not a cut. PAN tracks your income. Income tax starts only above a limit." },
-    "keyNumber": { "en": "On a ₹12,000 basic pay, you put ₹1,440 into PF and your employer adds ₹1,440 more." }
+    "title": { "en": "First income", "hi": "पहली कमाई", "te": "మొదటి సంపాదన" },
+    "summary": {
+      "en": "Read your payslip. PF is your savings, not a cut. PAN tracks your income. Income tax starts only above a limit.",
+      "hi": "अपनी वेतन पर्ची पढ़ें। PF आपकी बचत है, कटौती नहीं। PAN आपकी कमाई दर्ज करता है। आयकर सिर्फ़ एक सीमा के बाद।",
+      "te": "మీ జీతం స్లిప్ చదవండి. PF మీ పొదుపు, కోత కాదు. PAN మీ ఆదాయాన్ని నమోదు చేస్తుంది. ఆదాయపు పన్ను ఒక పరిమితి దాటాకే."
+    },
+    "keyNumber": {
+      "en": "On a ₹12,000 basic pay, you put ₹1,440 into PF and your employer adds ₹1,440 more.",
+      "hi": "₹12,000 बेसिक पर आप PF में ₹1,440 डालते हैं और कंपनी ₹1,440 और जोड़ती है।",
+      "te": "₹12,000 బేసిక్‌పై మీరు PFలో ₹1,440 వేస్తారు, కంపెనీ ఇంకో ₹1,440 కలుపుతుంది."
+    }
   },
   {
     "id": "L13",
     "pillar": "SAVE",
     "ages": [19, 22],
-    "title": { "en": "Emergency fund" },
-    "summary": { "en": "Keep 3 to 6 months of expenses safe and easy to reach. It turns a crisis into an inconvenience." },
-    "keyNumber": { "en": "Spending ₹10,000 a month? Keep ₹30,000 to ₹60,000 ready." }
+    "title": { "en": "Emergency fund", "hi": "आपातकालीन फंड", "te": "అత్యవసర నిధి" },
+    "summary": {
+      "en": "Keep 3 to 6 months of expenses safe and easy to reach. It turns a crisis into an inconvenience.",
+      "hi": "3 से 6 महीने का खर्च सुरक्षित और आसानी से मिलने वाली जगह रखें। इससे संकट बस एक परेशानी बन जाता है।",
+      "te": "3 నుంచి 6 నెలల ఖర్చు భద్రంగా, సులువుగా అందేలా ఉంచండి. దీనితో సంక్షోభం చిన్న ఇబ్బందిగా మారుతుంది."
+    },
+    "keyNumber": {
+      "en": "Spending ₹10,000 a month? Keep ₹30,000 to ₹60,000 ready.",
+      "hi": "महीने में ₹10,000 खर्च? ₹30,000 से ₹60,000 तैयार रखें।",
+      "te": "నెలకు ₹10,000 ఖర్చా? ₹30,000 నుంచి ₹60,000 సిద్ధంగా ఉంచండి."
+    }
   },
   {
     "id": "L14",
     "pillar": "SAVE",
     "ages": [19, 24],
-    "title": { "en": "Borrowing compared" },
-    "summary": { "en": "The same ₹10,000 can cost very different amounts. Always turn the rate into a yearly number. Paying on time builds your credit score." },
-    "keyNumber": { "en": "\"₹2 per ₹100 per month\" = 24% a year." }
+    "title": { "en": "Borrowing compared", "hi": "उधार की तुलना", "te": "అప్పుల పోలిక" },
+    "summary": {
+      "en": "The same ₹10,000 can cost very different amounts. Always turn the rate into a yearly number. Paying on time builds your credit score.",
+      "hi": "वही ₹10,000 बहुत अलग कीमत पर मिल सकते हैं। हमेशा दर को सालाना में बदलें। समय पर चुकाने से क्रेडिट स्कोर बनता है।",
+      "te": "అదే ₹10,000 చాలా వేరువేరు ధరలకు దొరుకుతుంది. ఎప్పుడూ రేటును ఏడాదికి మార్చండి. సమయానికి కడితే క్రెడిట్ స్కోర్ పెరుగుతుంది."
+    },
+    "keyNumber": {
+      "en": "\"₹2 per ₹100 per month\" = 24% a year.",
+      "hi": "\"₹2 सैकड़ा महीना\" = 24% सालाना।",
+      "te": "\"నెలకు నూటికి ₹2\" = ఏడాదికి 24%."
+    }
   },
   {
     "id": "L15",
     "pillar": "SAFE",
     "ages": [18, 23],
-    "title": { "en": "Money mule" },
-    "summary": { "en": "Letting someone use your bank account for \"commission\" is a crime. The money is traced to you, not them." },
-    "keyNumber": { "en": "A ₹5,000 \"commission\" can bring a frozen account and a police case." }
+    "title": { "en": "Money mule", "hi": "मनी म्यूल", "te": "మనీ మ్యూల్" },
+    "summary": {
+      "en": "Letting someone use your bank account for \"commission\" is a crime. The money is traced to you, not them.",
+      "hi": "\"कमीशन\" के लिए किसी को अपना खाता इस्तेमाल करने देना अपराध है। पैसे का रास्ता आप तक पहुँचता है, उन तक नहीं।",
+      "te": "\"కమిషన్\" కోసం మీ ఖాతా వాడనివ్వడం నేరం. డబ్బు దారి మీ వరకు వస్తుంది, వాళ్ల వరకు కాదు."
+    },
+    "keyNumber": {
+      "en": "A ₹5,000 \"commission\" can bring a frozen account and a police case.",
+      "hi": "₹5,000 का \"कमीशन\" फ़्रीज़ खाता और पुलिस केस ला सकता है।",
+      "te": "₹5,000 \"కమిషన్\" ఫ్రీజ్ ఖాతా, పోలీసు కేసు తేవచ్చు."
+    }
   },
   {
     "id": "L16",
     "pillar": "SAFE",
     "ages": [20, 24],
-    "title": { "en": "Insurance basics" },
-    "summary": { "en": "Insurance is a small, sure cost that protects you from a big, rare one. Government schemes make it cheap." },
-    "keyNumber": { "en": "₹20 a year buys ₹2 lakh accident cover under PMSBY." }
+    "title": { "en": "Insurance basics", "hi": "बीमा की बुनियादी बातें", "te": "బీమా ప్రాథమికాలు" },
+    "summary": {
+      "en": "Insurance is a small, sure cost that protects you from a big, rare one. Government schemes make it cheap.",
+      "hi": "बीमा एक छोटा, पक्का खर्च है जो बड़े, कभी-कभार के खर्च से बचाता है। सरकारी योजनाएँ इसे सस्ता बनाती हैं।",
+      "te": "బీమా అంటే చిన్న, ఖచ్చితమైన ఖర్చు, అది పెద్ద, అరుదైన ఖర్చు నుంచి కాపాడుతుంది. ప్రభుత్వ పథకాలు దీన్ని చౌకగా చేస్తాయి."
+    },
+    "keyNumber": {
+      "en": "₹20 a year buys ₹2 lakh accident cover under PMSBY.",
+      "hi": "PMSBY में ₹20 साल में ₹2 लाख का दुर्घटना कवर।",
+      "te": "PMSBYలో ఏడాదికి ₹20కి ₹2 లక్షల ప్రమాద బీమా."
+    }
   },
   {
     "id": "L17",
     "pillar": "INVEST",
     "ages": [20, 24],
-    "title": { "en": "Risk vs return; start early" },
-    "summary": { "en": "Safe options grow slowly. Riskier ones swing but can grow more. Time matters more than the amount." },
-    "keyNumber": { "en": "₹1,000 a month from 22 to 36 at 10% ≈ ₹3.6 lakh. Starting at 27: about ₹1.7 lakh." }
+    "title": {
+      "en": "Risk vs return; start early",
+      "hi": "जोखिम बनाम रिटर्न; जल्दी शुरू करें",
+      "te": "రిస్క్ vs రాబడి; త్వరగా మొదలుపెట్టండి"
+    },
+    "summary": {
+      "en": "Safe options grow slowly. Riskier ones swing but can grow more. Time matters more than the amount.",
+      "hi": "सुरक्षित विकल्प धीरे बढ़ते हैं। जोखिम वाले ऊपर-नीचे होते हैं पर ज़्यादा बढ़ सकते हैं। रकम से ज़्यादा समय मायने रखता है।",
+      "te": "భద్రమైనవి నెమ్మదిగా పెరుగుతాయి. రిస్క్ ఉన్నవి ఊగుతాయి, కానీ ఎక్కువ పెరగొచ్చు. మొత్తం కంటే సమయం ముఖ్యం."
+    },
+    "keyNumber": {
+      "en": "₹1,000 a month from 22 to 36 at 10% ≈ ₹3.6 lakh. Starting at 27: about ₹1.7 lakh.",
+      "hi": "22 से 36 तक ₹1,000 महीना, 10% पर ≈ ₹3.6 लाख। 27 से शुरू करें तो: लगभग ₹1.7 लाख।",
+      "te": "22 నుంచి 36 వరకు నెలకు ₹1,000, 10% వద్ద ≈ ₹3.6 లక్షలు. 27లో మొదలుపెడితే: సుమారు ₹1.7 లక్షలు."
+    }
   },
   {
     "id": "L18",
     "pillar": "PLAN",
     "ages": [24, 28],
-    "title": { "en": "Lifestyle inflation and social spending" },
-    "summary": { "en": "When income grows, spending tries to grow faster. Weddings and festivals matter, but they need a budget too." },
-    "keyNumber": { "en": "A ₹3 lakh wedding on ₹15,000 a month = 20 months of full pay." }
+    "title": {
+      "en": "Lifestyle inflation and social spending",
+      "hi": "दिखावे की महंगाई और सामाजिक खर्च",
+      "te": "జీవనశైలి ఖర్చులు, సామాజిక ఖర్చులు"
+    },
+    "summary": {
+      "en": "When income grows, spending tries to grow faster. Weddings and festivals matter, but they need a budget too.",
+      "hi": "आमदनी बढ़े तो खर्च उससे तेज़ बढ़ना चाहता है। शादी और त्योहार ज़रूरी हैं, पर उनका भी बजट चाहिए।",
+      "te": "ఆదాయం పెరిగితే ఖర్చు ఇంకా వేగంగా పెరగాలనుకుంటుంది. పెళ్లిళ్లు, పండుగలు ముఖ్యమే, కానీ వాటికీ బడ్జెట్ కావాలి."
+    },
+    "keyNumber": {
+      "en": "A ₹3 lakh wedding on ₹15,000 a month = 20 months of full pay.",
+      "hi": "₹15,000 महीने की आमदनी पर ₹3 लाख की शादी = 20 महीने की पूरी तनख्वाह।",
+      "te": "నెలకు ₹15,000 ఆదాయంపై ₹3 లక్షల పెళ్లి = 20 నెలల పూర్తి జీతం."
+    }
   },
   {
     "id": "L19",
     "pillar": "INVEST",
     "ages": [25, 30],
-    "title": { "en": "Diversification and crashes" },
-    "summary": { "en": "Markets fall sometimes. Selling in panic locks in the loss. Spread money across different things." },
-    "keyNumber": { "en": "A 30% fall feels huge. History shows broad markets usually recovered within a few years." }
+    "title": { "en": "Diversification and crashes", "hi": "विविधता और बाज़ार गिरावट", "te": "వైవిధ్యం, మార్కెట్ పతనాలు" },
+    "summary": {
+      "en": "Markets fall sometimes. Selling in panic locks in the loss. Spread money across different things.",
+      "hi": "बाज़ार कभी-कभी गिरता है। घबराकर बेचने से नुकसान पक्का होता है। पैसा अलग-अलग चीज़ों में फैलाएँ।",
+      "te": "మార్కెట్ అప్పుడప్పుడు పడుతుంది. భయంతో అమ్మితే నష్టం ఖాయం. డబ్బును వేర్వేరు వాటిలో పెట్టండి."
+    },
+    "keyNumber": {
+      "en": "A 30% fall feels huge. History shows broad markets usually recovered within a few years.",
+      "hi": "30% गिरावट बहुत बड़ी लगती है। इतिहास बताता है कि बड़े बाज़ार आमतौर पर कुछ सालों में सँभल गए।",
+      "te": "30% పతనం చాలా పెద్దగా అనిపిస్తుంది. విస్తృత మార్కెట్లు సాధారణంగా కొన్నేళ్లలో కోలుకున్నాయని చరిత్ర చెబుతుంది."
+    }
   },
   {
     "id": "L20",
     "pillar": "SAVE",
     "ages": [25, 30],
-    "title": { "en": "Calamity" },
-    "summary": { "en": "Floods, droughts and hospitals don't ask permission. Insurance and an emergency fund decide how much it hurts." },
-    "keyNumber": { "en": "A ₹60,000 hospital bill: with cover, you pay almost nothing. Without it, you may borrow at ₹2 per ₹100 a month." }
+    "title": { "en": "Calamity", "hi": "आपदा", "te": "విపత్తు" },
+    "summary": {
+      "en": "Floods, droughts and hospitals don't ask permission. Insurance and an emergency fund decide how much it hurts.",
+      "hi": "बाढ़, सूखा और अस्पताल पूछकर नहीं आते। बीमा और आपात फंड तय करते हैं कि चोट कितनी लगेगी।",
+      "te": "వరదలు, కరువు, ఆసుపత్రులు అడిగి రావు. ఎంత దెబ్బ తగులుతుందో బీమా, అత్యవసర నిధి నిర్ణయిస్తాయి."
+    },
+    "keyNumber": {
+      "en": "A ₹60,000 hospital bill: with cover, you pay almost nothing. Without it, you may borrow at ₹2 per ₹100 a month.",
+      "hi": "₹60,000 का अस्पताल बिल: कवर हो तो लगभग कुछ नहीं देना। न हो तो ₹2 सैकड़ा महीने पर उधार लेना पड़ सकता है।",
+      "te": "₹60,000 ఆసుపత్రి బిల్లు: బీమా ఉంటే దాదాపు ఏమీ కట్టనక్కర్లేదు. లేకపోతే నెలకు నూటికి ₹2 వడ్డీకి అప్పు చేయాల్సి రావొచ్చు."
+    }
   },
   {
     "id": "L21",
     "pillar": "INVEST",
     "ages": [26, 30],
-    "title": { "en": "Fees and mis-selling" },
-    "summary": { "en": "Ask how the seller is paid. Mixed insurance-plus-investment plans often give low cover and high fees." },
-    "keyNumber": { "en": "A 2% yearly fee eats about a quarter of 15 years of growth." }
+    "title": { "en": "Fees and mis-selling", "hi": "फ़ीस और गलत बिक्री", "te": "ఫీజులు, తప్పుడు అమ్మకాలు" },
+    "summary": {
+      "en": "Ask how the seller is paid. Mixed insurance-plus-investment plans often give low cover and high fees.",
+      "hi": "पूछें कि बेचने वाले को पैसा कैसे मिलता है। बीमा-और-निवेश वाले मिले-जुले प्लान अक्सर कम कवर और ज़्यादा फ़ीस देते हैं।",
+      "te": "అమ్మేవాడికి డబ్బు ఎలా వస్తుందో అడగండి. బీమా-పెట్టుబడి కలిపిన ప్లాన్లు చాలాసార్లు తక్కువ బీమా, ఎక్కువ ఫీజు."
+    },
+    "keyNumber": {
+      "en": "A 2% yearly fee eats about a quarter of 15 years of growth.",
+      "hi": "2% सालाना फ़ीस 15 साल की बढ़त का लगभग चौथाई खा जाती है।",
+      "te": "ఏడాదికి 2% ఫీజు 15 ఏళ్ల పెరుగుదలలో దాదాపు నాలుగో వంతు తినేస్తుంది."
+    }
   },
   {
     "id": "L22",
     "pillar": "SAFE",
     "ages": [24, 32],
-    "title": { "en": "Too good to be true" },
-    "summary": { "en": "\"Guaranteed\" high returns, fake trading apps and \"digital arrest\" calls are scams. Real police never arrest on video calls." },
-    "keyNumber": { "en": "\"Double in one year\" = 100% a year. Honest savings pay about 7%." }
+    "title": { "en": "Too good to be true", "hi": "इतना अच्छा कि सच न हो", "te": "నమ్మలేనంత మంచిది" },
+    "summary": {
+      "en": "\"Guaranteed\" high returns, fake trading apps and \"digital arrest\" calls are scams. Real police never arrest on video calls.",
+      "hi": "\"गारंटी\" वाला बड़ा रिटर्न, नकली ट्रेडिंग ऐप और \"डिजिटल अरेस्ट\" कॉल ठगी हैं। असली पुलिस वीडियो कॉल पर गिरफ़्तार नहीं करती।",
+      "te": "\"గ్యారంటీ\" పెద్ద రాబడి, నకిలీ ట్రేడింగ్ యాప్‌లు, \"డిజిటల్ అరెస్ట్\" కాల్స్ మోసాలు. నిజమైన పోలీసులు వీడియో కాల్‌లో అరెస్ట్ చేయరు."
+    },
+    "keyNumber": {
+      "en": "\"Double in one year\" = 100% a year. Honest savings pay about 7%.",
+      "hi": "\"एक साल में दोगुना\" = 100% सालाना। ईमानदार बचत लगभग 7% देती है।",
+      "te": "\"ఏడాదిలో రెట్టింపు\" = ఏడాదికి 100%. నిజాయితీ పొదుపు సుమారు 7%."
+    }
   },
   {
     "id": "L23",
     "pillar": "PLAN",
     "ages": [31, 35],
-    "title": { "en": "The big purchase" },
-    "summary": { "en": "Save a good down payment, keep EMIs affordable, and read and verify every document before you sign." },
-    "keyNumber": { "en": "Keep all EMIs together under about 30–40% of take-home pay." }
+    "title": { "en": "The big purchase", "hi": "बड़ी खरीदारी", "te": "పెద్ద కొనుగోలు" },
+    "summary": {
+      "en": "Save a good down payment, keep EMIs affordable, and read and verify every document before you sign.",
+      "hi": "अच्छा डाउन पेमेंट बचाएँ, EMI सँभलने लायक रखें, और साइन से पहले हर कागज़ पढ़ें और जाँचें।",
+      "te": "మంచి డౌన్ పేమెంట్ పొదుపు చేయండి, EMI భరించగలిగేలా ఉంచండి, సంతకానికి ముందు ప్రతి కాగితం చదివి తనిఖీ చేయండి."
+    },
+    "keyNumber": {
+      "en": "Keep all EMIs together under about 30–40% of take-home pay.",
+      "hi": "सारी EMI मिलाकर हाथ की तनख्वाह के लगभग 30–40% से कम रखें।",
+      "te": "అన్ని EMIలు కలిపి టేక్-హోమ్ జీతంలో సుమారు 30–40% లోపు ఉంచండి."
+    }
   },
   {
     "id": "L24",
     "pillar": "PLAN",
     "ages": [33, 36],
-    "title": { "en": "Planning ahead" },
-    "summary": { "en": "A pension plan, a nominee on every account and updated KYC protect your family's future." },
-    "keyNumber": { "en": "APY: ₹42 a month from age 18, or ₹116 from age 30, for a ₹1,000 pension at 60." }
+    "title": { "en": "Planning ahead", "hi": "आगे की योजना", "te": "ముందు చూపు" },
+    "summary": {
+      "en": "A pension plan, a nominee on every account and updated KYC protect your family's future.",
+      "hi": "पेंशन प्लान, हर खाते में नॉमिनी और अपडेटेड KYC आपके परिवार का भविष्य बचाते हैं।",
+      "te": "పెన్షన్ ప్లాన్, ప్రతి ఖాతాకు నామినీ, తాజా KYC మీ కుటుంబ భవిష్యత్తును కాపాడతాయి."
+    },
+    "keyNumber": {
+      "en": "APY: ₹42 a month from age 18, or ₹116 from age 30, for a ₹1,000 pension at 60.",
+      "hi": "APY: 18 साल से ₹42 महीना, या 30 से ₹116, 60 पर ₹1,000 पेंशन के लिए।",
+      "te": "APY: 18 ఏళ్ల నుంచి నెలకు ₹42, లేదా 30 నుంచి ₹116, 60లో ₹1,000 పెన్షన్ కోసం."
+    }
   }
 ]

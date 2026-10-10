@@ -4,6 +4,17 @@ Add requests for other areas here (newest first). Each owner reads the requests 
 
 ---
 
+## 2026-10-10 — Gyaan, locations, market cards, Hindi and Telugu
+
+- `gyaan.json` is exported as `gyaan`: 24 lesson pages and 12 topics, in en/hi/te.
+- Every card has a `location`. `phone` cards are only at age 18 and up.
+- New `cards/market.json` has 7 cards for L17/L19/L21/L22 (SIP app, star fund, VIP tips scam, single
+  stock, NFO pitch, down-payment fund, second crash). The glossary adds share, mutual_fund, nav,
+  expense_ratio, debt_fund, brokerage and demat.
+- All story content is now in Hindi and Telugu. `npm run validate:content`: 0 errors, 0 warnings.
+
+---
+
 ## 2026-10-10 — Village storyline v1 (English) is in `src/content/`
 
 `src/content/index.js` exports `{ lessons, glossary, goals, wants, documents, quiz, faq, minigames, storylines }`

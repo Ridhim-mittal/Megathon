@@ -2,36 +2,126 @@
   {
     "id": "doc.plot_sale",
     "type": "sale_deed",
-    "title": { "en": "Sale deed — Plot in Survey No. 212, Mallepalli" },
-    "verify": { "cost": 2000, "label": { "en": "Pay the village lawyer to check the land records and get the EC" } },
+    "title": {
+      "en": "Sale deed — Plot in Survey No. 212, Mallepalli",
+      "hi": "बैनामा — प्लॉट, सर्वे नं. 212, मल्लेपल्ली",
+      "te": "సేల్ డీడ్ — ప్లాట్, సర్వే నం. 212, మల్లేపల్లి"
+    },
+    "verify": {
+      "cost": 2000,
+      "label": {
+        "en": "Pay the village lawyer to check the land records and get the EC",
+        "hi": "गाँव के वकील को पैसे देकर ज़मीन के रिकॉर्ड जाँचें और EC लें",
+        "te": "ఊరి లాయర్‌కు డబ్బిచ్చి భూమి రికార్డులు తనిఖీ చేయించి, ఈసీ తీసుకోండి"
+      }
+    },
     "variants": [
       {
         "id": "clean",
         "weight": 5,
         "lines": [
-          { "id": "l1", "text": { "en": "Seller: B. Mallesh, son of B. Pentaiah" } },
-          { "id": "l2", "text": { "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed" } },
-          { "id": "l3", "text": { "en": "Price: ₹3,50,000, paid by bank transfer, receipt attached" } },
-          { "id": "l4", "text": { "en": "Encumbrance certificate for 30 years attached: no loans, no other sales" } },
-          { "id": "l5", "text": { "en": "Pahani: owner B. Mallesh, matches the seller" } },
-          { "id": "l6", "text": { "en": "To be registered at the Sub-Registrar office, with two witnesses" } }
+          {
+            "id": "l1",
+            "text": {
+              "en": "Seller: B. Mallesh, son of B. Pentaiah",
+              "hi": "विक्रेता: बी. मल्लेश, पिता बी. पेंटैया",
+              "te": "అమ్మేవారు: బి. మల్లేష్, తండ్రి బి. పెంటయ్య"
+            }
+          },
+          {
+            "id": "l2",
+            "text": {
+              "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed",
+              "hi": "संपत्ति: सर्वे नं. 212, मल्लेपल्ली, 0.25 एकड़, सीमाओं के साथ",
+              "te": "ఆస్తి: సర్వే నం. 212, మల్లేపల్లి, 0.25 ఎకరాలు, హద్దులతో"
+            }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Price: ₹3,50,000, paid by bank transfer, receipt attached",
+              "hi": "कीमत: ₹3,50,000, बैंक ट्रांसफ़र से, रसीद साथ में",
+              "te": "ధర: ₹3,50,000, బ్యాంక్ ట్రాన్స్‌ఫర్ ద్వారా, రశీదు జతచేయబడింది"
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Encumbrance certificate for 30 years attached: no loans, no other sales",
+              "hi": "30 साल का भार प्रमाणपत्र साथ में: कोई कर्ज़ नहीं, कोई दूसरी बिक्री नहीं",
+              "te": "30 ఏళ్ల ఈసీ జతచేయబడింది: అప్పులు లేవు, వేరే అమ్మకాలు లేవు"
+            }
+          },
+          {
+            "id": "l5",
+            "text": {
+              "en": "Pahani: owner B. Mallesh, matches the seller",
+              "hi": "पहानी: मालिक बी. मल्लेश, विक्रेता से मेल खाता है",
+              "te": "పహాణీ: యజమాని బి. మల్లేష్, అమ్మేవారితో సరిపోలుతుంది"
+            }
+          },
+          {
+            "id": "l6",
+            "text": {
+              "en": "To be registered at the Sub-Registrar office, with two witnesses",
+              "hi": "सब-रजिस्ट्रार दफ़्तर में दो गवाहों के साथ रजिस्ट्री होगी",
+              "te": "సబ్-రిజిస్ట్రార్ ఆఫీసులో ఇద్దరు సాక్షులతో రిజిస్ట్రేషన్"
+            }
+          }
         ]
       },
       {
         "id": "double_sold",
         "weight": 3,
         "lines": [
-          { "id": "l1", "text": { "en": "Seller: B. Mallesh, son of B. Pentaiah" } },
-          { "id": "l2", "text": { "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed" } },
           {
-            "id": "l3", "text": { "en": "Price: ₹3,50,000, cash only, receipt to follow" }, "redFlag": "cash_only",
-            "explain": { "en": "Cash with no receipt leaves no proof you paid. Always pay land money by bank transfer." }
+            "id": "l1",
+            "text": {
+              "en": "Seller: B. Mallesh, son of B. Pentaiah",
+              "hi": "विक्रेता: बी. मल्लेश, पिता बी. पेंटैया",
+              "te": "అమ్మేవారు: బి. మల్లేష్, తండ్రి బి. పెంటయ్య"
+            }
           },
           {
-            "id": "l4", "text": { "en": "Encumbrance: see attached" }, "redFlag": "no_ec",
-            "explain": { "en": "No encumbrance certificate is attached. The plot may already be sold or mortgaged." }
+            "id": "l2",
+            "text": {
+              "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed",
+              "hi": "संपत्ति: सर्वे नं. 212, मल्लेपल्ली, 0.25 एकड़, सीमाओं के साथ",
+              "te": "ఆస్తి: సర్వే నం. 212, మల్లేపల్లి, 0.25 ఎకరాలు, హద్దులతో"
+            }
           },
-          { "id": "l5", "text": { "en": "Pahani: owner B. Mallesh, matches the seller" } }
+          {
+            "id": "l3",
+            "text": {
+              "en": "Price: ₹3,50,000, cash only, receipt to follow",
+              "hi": "कीमत: ₹3,50,000, सिर्फ़ नकद, रसीद बाद में",
+              "te": "ధర: ₹3,50,000, నగదు మాత్రమే, రశీదు తర్వాత"
+            },
+            "redFlag": "cash_only",
+            "explain": {
+              "en": "Cash with no receipt leaves no proof you paid. Always pay land money by bank transfer.",
+              "hi": "बिना रसीद के नकद देने का कोई सबूत नहीं रहता। ज़मीन का पैसा हमेशा बैंक ट्रांसफ़र से दें।",
+              "te": "రశీదు లేని నగదుకు మీరు చెల్లించారనే రుజువు ఉండదు. భూమి డబ్బు ఎప్పుడూ బ్యాంక్ ట్రాన్స్‌ఫర్‌తోనే."
+            }
+          },
+          {
+            "id": "l4",
+            "text": { "en": "Encumbrance: see attached", "hi": "भार: साथ में देखें", "te": "భారం: జతచేసినది చూడండి" },
+            "redFlag": "no_ec",
+            "explain": {
+              "en": "No encumbrance certificate is attached. The plot may already be sold or mortgaged.",
+              "hi": "कोई भार प्रमाणपत्र साथ में नहीं है। प्लॉट पहले से बिका या गिरवी हो सकता है।",
+              "te": "ఈసీ జతచేయలేదు. ప్లాట్ ఇప్పటికే అమ్మేసి ఉండొచ్చు లేదా తాకట్టులో ఉండొచ్చు."
+            }
+          },
+          {
+            "id": "l5",
+            "text": {
+              "en": "Pahani: owner B. Mallesh, matches the seller",
+              "hi": "पहानी: मालिक बी. मल्लेश, विक्रेता से मेल खाता है",
+              "te": "పహాణీ: యజమాని బి. మల్లేష్, అమ్మేవారితో సరిపోలుతుంది"
+            }
+          }
         ],
         "consequence": { "inYears": 1, "card": "village.settle.plot_dispute.a" }
       },
@@ -40,15 +130,56 @@
         "weight": 2,
         "lines": [
           {
-            "id": "l1", "text": { "en": "Seller: K. Ravi, as power-of-attorney holder for B. Mallesh" }, "redFlag": "gpa_seller",
-            "explain": { "en": "The seller isn't the owner. A power of attorney must be checked with the owner and the registration office." }
+            "id": "l1",
+            "text": {
+              "en": "Seller: K. Ravi, as power-of-attorney holder for B. Mallesh",
+              "hi": "विक्रेता: के. रवि, बी. मल्लेश के मुख्तारनामा धारक के रूप में",
+              "te": "అమ్మేవారు: కె. రవి, బి. మల్లేష్ పవర్ ఆఫ్ అటార్నీ హోల్డర్‌గా"
+            },
+            "redFlag": "gpa_seller",
+            "explain": {
+              "en": "The seller isn't the owner. A power of attorney must be checked with the owner and the registration office.",
+              "hi": "विक्रेता मालिक नहीं है। मुख्तारनामा मालिक और रजिस्ट्री दफ़्तर से जाँचना ज़रूरी है।",
+              "te": "అమ్మేవారు యజమాని కాదు. పవర్ ఆఫ్ అటార్నీని యజమానితో, రిజిస్ట్రేషన్ ఆఫీసుతో తనిఖీ చేయాలి."
+            }
           },
-          { "id": "l2", "text": { "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed" } },
-          { "id": "l3", "text": { "en": "Price: ₹3,50,000, paid by bank transfer to K. Ravi" } },
-          { "id": "l4", "text": { "en": "Encumbrance certificate for 30 years attached: no loans, no other sales" } },
           {
-            "id": "l5", "text": { "en": "Pahani: owner B. Mallesh, address in Mumbai" }, "redFlag": "owner_absent",
-            "explain": { "en": "The owner lives far away and the money goes to someone else. Call the owner yourself before paying." }
+            "id": "l2",
+            "text": {
+              "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed",
+              "hi": "संपत्ति: सर्वे नं. 212, मल्लेपल्ली, 0.25 एकड़, सीमाओं के साथ",
+              "te": "ఆస్తి: సర్వే నం. 212, మల్లేపల్లి, 0.25 ఎకరాలు, హద్దులతో"
+            }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Price: ₹3,50,000, paid by bank transfer to K. Ravi",
+              "hi": "कीमत: ₹3,50,000, के. रवि को बैंक ट्रांसफ़र",
+              "te": "ధర: ₹3,50,000, కె. రవికి బ్యాంక్ ట్రాన్స్‌ఫర్"
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Encumbrance certificate for 30 years attached: no loans, no other sales",
+              "hi": "30 साल का भार प्रमाणपत्र साथ में: कोई कर्ज़ नहीं, कोई दूसरी बिक्री नहीं",
+              "te": "30 ఏళ్ల ఈసీ జతచేయబడింది: అప్పులు లేవు, వేరే అమ్మకాలు లేవు"
+            }
+          },
+          {
+            "id": "l5",
+            "text": {
+              "en": "Pahani: owner B. Mallesh, address in Mumbai",
+              "hi": "पहानी: मालिक बी. मल्लेश, पता मुंबई का",
+              "te": "పహాణీ: యజమాని బి. మల్లేష్, చిరునామా ముంబై"
+            },
+            "redFlag": "owner_absent",
+            "explain": {
+              "en": "The owner lives far away and the money goes to someone else. Call the owner yourself before paying.",
+              "hi": "मालिक दूर रहता है और पैसा किसी और को जा रहा है। भुगतान से पहले खुद मालिक को फ़ोन करें।",
+              "te": "యజమాని దూరంగా ఉంటాడు, డబ్బు వేరొకరికి వెళ్తోంది. చెల్లించే ముందు మీరే యజమానికి ఫోన్ చేయండి."
+            }
           }
         ],
         "consequence": { "inYears": 1, "card": "village.settle.fake_seller.a" }
@@ -58,36 +189,130 @@
   {
     "id": "doc.loan_agreement",
     "type": "loan_agreement",
-    "title": { "en": "Loan agreement and Key Fact Statement" },
-    "verify": { "cost": 500, "label": { "en": "Ask Kavitha akka to read the loan papers with you" } },
+    "title": {
+      "en": "Loan agreement and Key Fact Statement",
+      "hi": "कर्ज़ का अनुबंध और की फ़ैक्ट स्टेटमेंट",
+      "te": "రుణ ఒప్పందం, కీ ఫ్యాక్ట్ స్టేట్‌మెంట్"
+    },
+    "verify": {
+      "cost": 500,
+      "label": {
+        "en": "Ask Kavitha akka to read the loan papers with you",
+        "hi": "कविता अक्का से कर्ज़ के कागज़ साथ में पढ़वाएँ",
+        "te": "కవిత అక్కతో కలిసి రుణ కాగితాలు చదవండి"
+      }
+    },
     "variants": [
       {
         "id": "clean",
         "weight": 6,
         "lines": [
-          { "id": "l1", "text": { "en": "Lender: a bank registered with the national banking regulator" } },
-          { "id": "l2", "text": { "en": "Key Fact Statement: yearly interest rate, all fees and total amount payable shown on one page" } },
-          { "id": "l3", "text": { "en": "Processing fee: 1% of the loan, shown upfront" } },
-          { "id": "l4", "text": { "en": "Late payment fee: ₹500 per missed EMI" } },
-          { "id": "l5", "text": { "en": "Prepayment: no charge for paying early" } },
-          { "id": "l6", "text": { "en": "Complaints: grievance officer's phone number and the regulator's complaint process" } }
+          {
+            "id": "l1",
+            "text": {
+              "en": "Lender: a bank registered with the national banking regulator",
+              "hi": "कर्ज़दाता: राष्ट्रीय बैंकिंग नियामक में रजिस्टर्ड बैंक",
+              "te": "అప్పు ఇచ్చేవారు: జాతీయ బ్యాంకింగ్ నియంత్రణ సంస్థలో రిజిస్టర్ అయిన బ్యాంక్"
+            }
+          },
+          {
+            "id": "l2",
+            "text": {
+              "en": "Key Fact Statement: yearly interest rate, all fees and total amount payable shown on one page",
+              "hi": "की फ़ैक्ट स्टेटमेंट: सालाना ब्याज दर, सारी फ़ीस और कुल देय रकम एक पन्ने पर",
+              "te": "కీ ఫ్యాక్ట్ స్టేట్‌మెంట్: ఏడాది వడ్డీ రేటు, అన్ని ఫీజులు, కట్టాల్సిన మొత్తం ఒకే పేజీలో"
+            }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Processing fee: 1% of the loan, shown upfront",
+              "hi": "प्रोसेसिंग फ़ीस: कर्ज़ का 1%, पहले से बताई गई",
+              "te": "ప్రాసెసింగ్ ఫీజు: రుణంలో 1%, ముందే చూపించారు"
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Late payment fee: ₹500 per missed EMI",
+              "hi": "लेट फ़ीस: हर छूटी EMI पर ₹500",
+              "te": "లేట్ ఫీజు: తప్పిన ప్రతి EMIకి ₹500"
+            }
+          },
+          {
+            "id": "l5",
+            "text": {
+              "en": "Prepayment: no charge for paying early",
+              "hi": "जल्दी चुकाना: कोई चार्ज नहीं",
+              "te": "ముందే కట్టడం: ఛార్జీ లేదు"
+            }
+          },
+          {
+            "id": "l6",
+            "text": {
+              "en": "Complaints: grievance officer's phone number and the regulator's complaint process",
+              "hi": "शिकायत: शिकायत अधिकारी का फ़ोन नंबर और नियामक की शिकायत प्रक्रिया",
+              "te": "ఫిర్యాదులు: గ్రీవెన్స్ ఆఫీసర్ ఫోన్ నంబర్, నియంత్రణ సంస్థ ఫిర్యాదు విధానం"
+            }
+          }
         ]
       },
       {
         "id": "hidden_fees",
         "weight": 3,
         "lines": [
-          { "id": "l1", "text": { "en": "Lender: a bank registered with the national banking regulator" } },
-          { "id": "l2", "text": { "en": "Key Fact Statement: yearly interest rate and EMI shown on page 1" } },
           {
-            "id": "l3", "text": { "en": "Loan protection insurance: ₹3,500, added to the loan amount" }, "redFlag": "bundled_insurance",
-            "explain": { "en": "Insurance added without asking. You pay interest on it too. You can refuse it." }
+            "id": "l1",
+            "text": {
+              "en": "Lender: a bank registered with the national banking regulator",
+              "hi": "कर्ज़दाता: राष्ट्रीय बैंकिंग नियामक में रजिस्टर्ड बैंक",
+              "te": "అప్పు ఇచ్చేవారు: జాతీయ బ్యాంకింగ్ నియంత్రణ సంస్థలో రిజిస్టర్ అయిన బ్యాంక్"
+            }
           },
           {
-            "id": "l4", "text": { "en": "Clause 7: 4% charge on the balance if you repay early" }, "redFlag": "prepay_penalty",
-            "explain": { "en": "A penalty for paying early traps you in the loan. Ask for it to be removed." }
+            "id": "l2",
+            "text": {
+              "en": "Key Fact Statement: yearly interest rate and EMI shown on page 1",
+              "hi": "की फ़ैक्ट स्टेटमेंट: सालाना ब्याज दर और EMI पेज 1 पर",
+              "te": "కీ ఫ్యాక్ట్ స్టేట్‌మెంట్: ఏడాది వడ్డీ రేటు, EMI పేజీ 1లో"
+            }
           },
-          { "id": "l5", "text": { "en": "Late payment fee: ₹500 per missed EMI" } }
+          {
+            "id": "l3",
+            "text": {
+              "en": "Loan protection insurance: ₹3,500, added to the loan amount",
+              "hi": "लोन सुरक्षा बीमा: ₹3,500, कर्ज़ की रकम में जोड़ा गया",
+              "te": "లోన్ ప్రొటెక్షన్ బీమా: ₹3,500, రుణ మొత్తంలో కలిపారు"
+            },
+            "redFlag": "bundled_insurance",
+            "explain": {
+              "en": "Insurance added without asking. You pay interest on it too. You can refuse it.",
+              "hi": "बिना पूछे बीमा जोड़ दिया। उस पर भी ब्याज देंगे। आप इसे मना कर सकते हैं।",
+              "te": "అడగకుండానే బీమా కలిపారు. దానిపైనా వడ్డీ కడతారు. మీరు దీన్ని వద్దనొచ్చు."
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Clause 7: 4% charge on the balance if you repay early",
+              "hi": "धारा 7: जल्दी चुकाने पर बकाया पर 4% चार्ज",
+              "te": "క్లాజ్ 7: ముందే కడితే బాకీపై 4% ఛార్జీ"
+            },
+            "redFlag": "prepay_penalty",
+            "explain": {
+              "en": "A penalty for paying early traps you in the loan. Ask for it to be removed.",
+              "hi": "जल्दी चुकाने का जुर्माना आपको कर्ज़ में फँसाता है। इसे हटाने को कहें।",
+              "te": "ముందే కట్టినందుకు జరిమానా మిమ్మల్ని అప్పులో బంధిస్తుంది. దాన్ని తీసేయమని అడగండి."
+            }
+          },
+          {
+            "id": "l5",
+            "text": {
+              "en": "Late payment fee: ₹500 per missed EMI",
+              "hi": "लेट फ़ीस: हर छूटी EMI पर ₹500",
+              "te": "లేట్ ఫీజు: తప్పిన ప్రతి EMIకి ₹500"
+            }
+          }
         ],
         "consequence": { "inYears": 1, "card": "village.adult.loan_hidden_fees.a" }
       },
@@ -95,15 +320,45 @@
         "id": "harsh_recovery",
         "weight": 2,
         "lines": [
-          { "id": "l1", "text": { "en": "Lender: Quick Cash Finance (app-based)" } },
-          { "id": "l2", "text": { "en": "Interest: 2.5% per month" } },
           {
-            "id": "l3", "text": { "en": "Borrower allows the lender to contact all phone contacts and the employer" }, "redFlag": "contacts_access",
-            "explain": { "en": "This lets agents shame you to everyone you know. Honest lenders never need it." }
+            "id": "l1",
+            "text": {
+              "en": "Lender: Quick Cash Finance (app-based)",
+              "hi": "कर्ज़दाता: क्विक कैश फ़ाइनेंस (ऐप वाला)",
+              "te": "అప్పు ఇచ్చేవారు: క్విక్ క్యాష్ ఫైనాన్స్ (యాప్ ఆధారిత)"
+            }
           },
           {
-            "id": "l4", "text": { "en": "Borrower gives three signed blank cheques as security" }, "redFlag": "blank_cheques",
-            "explain": { "en": "Blank cheques can be filled with any amount. Never sign one for a lender." }
+            "id": "l2",
+            "text": { "en": "Interest: 2.5% per month", "hi": "ब्याज: 2.5% महीना", "te": "వడ్డీ: నెలకు 2.5%" }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Borrower allows the lender to contact all phone contacts and the employer",
+              "hi": "कर्ज़दार कर्ज़दाता को फ़ोन के सारे संपर्कों और कंपनी से बात करने की इजाज़त देता है",
+              "te": "అప్పు తీసుకున్నవారు ఫోన్ కాంటాక్ట్‌లందరినీ, యజమానినీ సంప్రదించడానికి అనుమతి ఇస్తారు"
+            },
+            "redFlag": "contacts_access",
+            "explain": {
+              "en": "This lets agents shame you to everyone you know. Honest lenders never need it.",
+              "hi": "इससे एजेंट आपको हर जानने वाले के सामने शर्मिंदा कर सकते हैं। ईमानदार कर्ज़दाताओं को इसकी ज़रूरत नहीं।",
+              "te": "దీనితో ఏజెంట్లు మీకు తెలిసిన అందరి ముందు అవమానించగలరు. నిజాయితీ గల అప్పు ఇచ్చేవాళ్లకు ఇది అక్కర్లేదు."
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Borrower gives three signed blank cheques as security",
+              "hi": "कर्ज़दार ज़मानत के तौर पर तीन साइन किए खाली चेक देता है",
+              "te": "అప్పు తీసుకున్నవారు హామీగా సంతకం చేసిన మూడు ఖాళీ చెక్కులు ఇస్తారు"
+            },
+            "redFlag": "blank_cheques",
+            "explain": {
+              "en": "Blank cheques can be filled with any amount. Never sign one for a lender.",
+              "hi": "खाली चेक में कोई भी रकम भरी जा सकती है। कर्ज़दाता के लिए कभी साइन न करें।",
+              "te": "ఖాళీ చెక్కులో ఏ మొత్తమైనా రాయొచ్చు. అప్పు ఇచ్చేవాళ్ల కోసం ఎప్పుడూ సంతకం చేయకండి."
+            }
           }
         ],
         "consequence": { "inYears": 1, "card": "village.adult.loan_recovery_agents.a" }
@@ -113,33 +368,94 @@
   {
     "id": "doc.insurance_policy",
     "type": "insurance_policy",
-    "title": { "en": "Insurance policy document" },
-    "verify": { "cost": 300, "label": { "en": "Ask an independent adviser at the bank to explain the policy" } },
+    "title": { "en": "Insurance policy document", "hi": "बीमा पॉलिसी का कागज़", "te": "బీమా పాలసీ పత్రం" },
+    "verify": {
+      "cost": 300,
+      "label": {
+        "en": "Ask an independent adviser at the bank to explain the policy",
+        "hi": "बैंक के किसी स्वतंत्र सलाहकार से पॉलिसी समझें",
+        "te": "బ్యాంక్‌లో స్వతంత్ర సలహాదారుడితో పాలసీ వివరించుకోండి"
+      }
+    },
     "variants": [
       {
         "id": "clean",
         "weight": 5,
         "lines": [
-          { "id": "l1", "text": { "en": "Plan type: term life insurance. No money back at the end." } },
-          { "id": "l2", "text": { "en": "Sum assured: ₹50,00,000" } },
-          { "id": "l3", "text": { "en": "Premium: ₹11,000 a year for 25 years" } },
-          { "id": "l4", "text": { "en": "Nominee: Amma" } },
-          { "id": "l5", "text": { "en": "Free-look period: cancel within 30 days for a full refund" } }
+          {
+            "id": "l1",
+            "text": {
+              "en": "Plan type: term life insurance. No money back at the end.",
+              "hi": "प्लान का प्रकार: टर्म जीवन बीमा। आखिर में पैसा वापस नहीं।",
+              "te": "ప్లాన్ రకం: టర్మ్ జీవిత బీమా. చివర్లో డబ్బు వెనక్కి రాదు."
+            }
+          },
+          {
+            "id": "l2",
+            "text": { "en": "Sum assured: ₹50,00,000", "hi": "बीमा राशि: ₹50,00,000", "te": "బీమా మొత్తం: ₹50,00,000" }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Premium: ₹11,000 a year for 25 years",
+              "hi": "प्रीमियम: 25 साल तक ₹11,000 सालाना",
+              "te": "ప్రీమియం: 25 ఏళ్లు ఏడాదికి ₹11,000"
+            }
+          },
+          { "id": "l4", "text": { "en": "Nominee: Amma", "hi": "नॉमिनी: अम्मा", "te": "నామినీ: అమ్మ" } },
+          {
+            "id": "l5",
+            "text": {
+              "en": "Free-look period: cancel within 30 days for a full refund",
+              "hi": "फ़्री-लुक अवधि: 30 दिन में रद्द करें तो पूरा पैसा वापस",
+              "te": "ఫ్రీ-లుక్ కాలం: 30 రోజుల్లో రద్దు చేస్తే మొత్తం డబ్బు వెనక్కి"
+            }
+          }
         ]
       },
       {
         "id": "mixed_lockin",
         "weight": 3,
         "lines": [
-          { "id": "l1", "text": { "en": "Plan type: insurance-cum-investment plan" } },
           {
-            "id": "l2", "text": { "en": "Sum assured: ₹3,00,000" }, "redFlag": "low_cover",
-            "explain": { "en": "₹3 lakh is about one year of family income. Real protection needs 10 times your yearly income." }
+            "id": "l1",
+            "text": {
+              "en": "Plan type: insurance-cum-investment plan",
+              "hi": "प्लान का प्रकार: बीमा-सह-निवेश प्लान",
+              "te": "ప్లాన్ రకం: బీమా-పెట్టుబడి ప్లాన్"
+            }
           },
-          { "id": "l3", "text": { "en": "Premium: ₹30,000 a year for 15 years" } },
           {
-            "id": "l4", "text": { "en": "Surrender in the first 5 years: you get back 30% of premiums paid" }, "redFlag": "surrender_charge",
-            "explain": { "en": "Quit early and you lose most of what you paid. Check this before signing." }
+            "id": "l2",
+            "text": { "en": "Sum assured: ₹3,00,000", "hi": "बीमा राशि: ₹3,00,000", "te": "బీమా మొత్తం: ₹3,00,000" },
+            "redFlag": "low_cover",
+            "explain": {
+              "en": "₹3 lakh is about one year of family income. Real protection needs 10 times your yearly income.",
+              "hi": "₹3 लाख परिवार की लगभग एक साल की आमदनी है। असली सुरक्षा के लिए सालाना आमदनी का 10 गुना चाहिए।",
+              "te": "₹3 లక్షలు కుటుంబానికి సుమారు ఒక ఏడాది ఆదాయం. నిజమైన రక్షణకు ఏడాది ఆదాయానికి 10 రెట్లు కావాలి."
+            }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Premium: ₹30,000 a year for 15 years",
+              "hi": "प्रीमियम: 15 साल तक ₹30,000 सालाना",
+              "te": "ప్రీమియం: 15 ఏళ్లు ఏడాదికి ₹30,000"
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Surrender in the first 5 years: you get back 30% of premiums paid",
+              "hi": "पहले 5 साल में छोड़ने पर: दिए गए प्रीमियम का 30% वापस",
+              "te": "మొదటి 5 ఏళ్లలో వదిలేస్తే: కట్టిన ప్రీమియంలో 30% వెనక్కి"
+            },
+            "redFlag": "surrender_charge",
+            "explain": {
+              "en": "Quit early and you lose most of what you paid. Check this before signing.",
+              "hi": "जल्दी छोड़ा तो दिया हुआ ज़्यादातर पैसा गया। साइन से पहले यह देखें।",
+              "te": "ముందే వదిలేస్తే కట్టినదాంట్లో చాలా భాగం పోతుంది. సంతకానికి ముందు ఇది చూడండి."
+            }
           }
         ],
         "consequence": { "inYears": 2, "card": "village.adult.surrender_value.a" }
@@ -148,15 +464,45 @@
         "id": "exclusions",
         "weight": 2,
         "lines": [
-          { "id": "l1", "text": { "en": "Plan type: family health insurance, ₹3,00,000 cover" } },
-          { "id": "l2", "text": { "en": "Premium: ₹9,500 a year" } },
           {
-            "id": "l3", "text": { "en": "Page 11: existing illnesses covered only after 4 years" }, "redFlag": "waiting_period",
-            "explain": { "en": "Amma's knee problem and Nanna's BP won't be covered for 4 years." }
+            "id": "l1",
+            "text": {
+              "en": "Plan type: family health insurance, ₹3,00,000 cover",
+              "hi": "प्लान का प्रकार: परिवार स्वास्थ्य बीमा, ₹3,00,000 कवर",
+              "te": "ప్లాన్ రకం: కుటుంబ ఆరోగ్య బీమా, ₹3,00,000 బీమా"
+            }
           },
           {
-            "id": "l4", "text": { "en": "Room rent limit: 1% of cover per day" }, "redFlag": "room_cap",
-            "explain": { "en": "A bigger room means the whole bill is cut in proportion. Check room limits." }
+            "id": "l2",
+            "text": { "en": "Premium: ₹9,500 a year", "hi": "प्रीमियम: ₹9,500 सालाना", "te": "ప్రీమియం: ఏడాదికి ₹9,500" }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Page 11: existing illnesses covered only after 4 years",
+              "hi": "पेज 11: पहले से मौजूद बीमारियाँ सिर्फ़ 4 साल बाद कवर",
+              "te": "పేజీ 11: ఇప్పటికే ఉన్న జబ్బులకు 4 ఏళ్ల తర్వాతే బీమా"
+            },
+            "redFlag": "waiting_period",
+            "explain": {
+              "en": "Amma's knee problem and Nanna's BP won't be covered for 4 years.",
+              "hi": "अम्मा के घुटने की तकलीफ़ और नान्ना का BP 4 साल तक कवर नहीं होगा।",
+              "te": "అమ్మ మోకాలి సమస్య, నాన్న BPకి 4 ఏళ్ల వరకు బీమా ఉండదు."
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Room rent limit: 1% of cover per day",
+              "hi": "कमरे के किराए की सीमा: रोज़ कवर का 1%",
+              "te": "గది అద్దె పరిమితి: రోజుకు బీమాలో 1%"
+            },
+            "redFlag": "room_cap",
+            "explain": {
+              "en": "A bigger room means the whole bill is cut in proportion. Check room limits.",
+              "hi": "बड़ा कमरा लिया तो पूरा बिल उसी अनुपात में कटता है। कमरे की सीमा देखें।",
+              "te": "పెద్ద గది తీసుకుంటే మొత్తం బిల్లు అదే నిష్పత్తిలో కోస్తారు. గది పరిమితులు చూడండి."
+            }
           }
         ],
         "consequence": { "inYears": 2, "card": "village.adult.claim_rejected.a" }
@@ -166,18 +512,64 @@
   {
     "id": "doc.chit_agreement",
     "type": "chit_agreement",
-    "title": { "en": "Chit agreement — ₹1,00,000 chit, 20 members" },
-    "verify": { "cost": 200, "label": { "en": "Check the registration at the Registrar of Chits office" } },
+    "title": {
+      "en": "Chit agreement — ₹1,00,000 chit, 20 members",
+      "hi": "कमेटी अनुबंध — ₹1,00,000 की कमेटी, 20 सदस्य",
+      "te": "చిట్టీ ఒప్పందం — ₹1,00,000 చిట్టీ, 20 మంది సభ్యులు"
+    },
+    "verify": {
+      "cost": 200,
+      "label": {
+        "en": "Check the registration at the Registrar of Chits office",
+        "hi": "चिट रजिस्ट्रार दफ़्तर में रजिस्ट्रेशन जाँचें",
+        "te": "రిజిస్ట్రార్ ఆఫ్ చిట్స్ ఆఫీసులో రిజిస్ట్రేషన్ తనిఖీ చేయండి"
+      }
+    },
     "variants": [
       {
         "id": "clean",
         "weight": 5,
         "lines": [
-          { "id": "l1", "text": { "en": "Registered under the Chit Funds Act, registration no. RC/NLG/2041" } },
-          { "id": "l2", "text": { "en": "Chit value ₹1,00,000: 20 members pay ₹5,000 a month for 20 months" } },
-          { "id": "l3", "text": { "en": "Organiser's commission: 5% of chit value" } },
-          { "id": "l4", "text": { "en": "Security deposit lodged with the Registrar: yes" } },
-          { "id": "l5", "text": { "en": "Monthly auction minutes signed by members, receipts for every payment" } }
+          {
+            "id": "l1",
+            "text": {
+              "en": "Registered under the Chit Funds Act, registration no. RC/NLG/2041",
+              "hi": "चिट फंड कानून के तहत रजिस्टर्ड, रजिस्ट्रेशन नं. RC/NLG/2041",
+              "te": "చిట్ ఫండ్స్ చట్టం కింద రిజిస్టర్ అయింది, రిజిస్ట్రేషన్ నం. RC/NLG/2041"
+            }
+          },
+          {
+            "id": "l2",
+            "text": {
+              "en": "Chit value ₹1,00,000: 20 members pay ₹5,000 a month for 20 months",
+              "hi": "कमेटी की रकम ₹1,00,000: 20 सदस्य 20 महीने तक ₹5,000 महीना देते हैं",
+              "te": "చిట్టీ విలువ ₹1,00,000: 20 మంది సభ్యులు 20 నెలలు నెలకు ₹5,000 కడతారు"
+            }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Organiser's commission: 5% of chit value",
+              "hi": "संचालक का कमीशन: कमेटी रकम का 5%",
+              "te": "నిర్వాహకుడి కమిషన్: చిట్టీ విలువలో 5%"
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Security deposit lodged with the Registrar: yes",
+              "hi": "रजिस्ट्रार के पास सुरक्षा जमा: हाँ",
+              "te": "రిజిస్ట్రార్ దగ్గర సెక్యూరిటీ డిపాజిట్: ఉంది"
+            }
+          },
+          {
+            "id": "l5",
+            "text": {
+              "en": "Monthly auction minutes signed by members, receipts for every payment",
+              "hi": "हर महीने की नीलामी का ब्योरा सदस्यों के साइन के साथ, हर भुगतान की रसीद",
+              "te": "ప్రతి నెలా వేలం వివరాలపై సభ్యుల సంతకాలు, ప్రతి చెల్లింపుకు రశీదు"
+            }
+          }
         ]
       },
       {
@@ -185,15 +577,49 @@
         "weight": 5,
         "lines": [
           {
-            "id": "l1", "text": { "en": "Registration: not needed, this is a friends' chit" }, "redFlag": "unregistered",
-            "explain": { "en": "Running an unregistered chit is illegal. If the organiser vanishes, nobody holds a security deposit." }
+            "id": "l1",
+            "text": {
+              "en": "Registration: not needed, this is a friends' chit",
+              "hi": "रजिस्ट्रेशन: ज़रूरत नहीं, यह दोस्तों की कमेटी है",
+              "te": "రిజిస్ట్రేషన్: అక్కర్లేదు, ఇది స్నేహితుల చిట్టీ"
+            },
+            "redFlag": "unregistered",
+            "explain": {
+              "en": "Running an unregistered chit is illegal. If the organiser vanishes, nobody holds a security deposit.",
+              "hi": "बिना रजिस्ट्रेशन कमेटी चलाना अवैध है। संचालक भाग गया तो किसी के पास सुरक्षा जमा नहीं।",
+              "te": "రిజిస్టర్ కాని చిట్టీ నడపడం చట్టవిరుద్ధం. నిర్వాహకుడు పారిపోతే సెక్యూరిటీ డిపాజిట్ ఎవరి దగ్గరా ఉండదు."
+            }
           },
-          { "id": "l2", "text": { "en": "Chit value ₹1,00,000: 20 members pay ₹5,000 a month for 20 months" } },
           {
-            "id": "l3", "text": { "en": "Organiser's commission: as decided by the organiser" }, "redFlag": "open_commission",
-            "explain": { "en": "The law caps the commission. \"As decided\" means it can be anything." }
+            "id": "l2",
+            "text": {
+              "en": "Chit value ₹1,00,000: 20 members pay ₹5,000 a month for 20 months",
+              "hi": "कमेटी की रकम ₹1,00,000: 20 सदस्य 20 महीने तक ₹5,000 महीना देते हैं",
+              "te": "చిట్టీ విలువ ₹1,00,000: 20 మంది సభ్యులు 20 నెలలు నెలకు ₹5,000 కడతారు"
+            }
           },
-          { "id": "l4", "text": { "en": "Receipts: written in the organiser's notebook" } }
+          {
+            "id": "l3",
+            "text": {
+              "en": "Organiser's commission: as decided by the organiser",
+              "hi": "संचालक का कमीशन: जो संचालक तय करे",
+              "te": "నిర్వాహకుడి కమిషన్: నిర్వాహకుడు నిర్ణయించినంత"
+            },
+            "redFlag": "open_commission",
+            "explain": {
+              "en": "The law caps the commission. \"As decided\" means it can be anything.",
+              "hi": "कानून कमीशन की सीमा तय करता है। \"जो तय करे\" मतलब कुछ भी हो सकता है।",
+              "te": "చట్టం కమిషన్‌కు పరిమితి పెడుతుంది. \"నిర్ణయించినంత\" అంటే ఏదైనా కావచ్చు."
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Receipts: written in the organiser's notebook",
+              "hi": "रसीदें: संचालक की कॉपी में लिखी",
+              "te": "రశీదులు: నిర్వాహకుడి పుస్తకంలో రాసినవి"
+            }
+          }
         ],
         "consequence": { "inYears": 1, "card": "village.adult.chit_vanished.a" }
       }
@@ -202,29 +628,81 @@
   {
     "id": "doc.phone_emi",
     "type": "loan_agreement",
-    "title": { "en": "Phone EMI form — 12 months" },
-    "verify": { "cost": 0, "label": { "en": "Ask the shop to write the full cost on one line" } },
+    "title": { "en": "Phone EMI form — 12 months", "hi": "फ़ोन EMI फ़ॉर्म — 12 महीने", "te": "ఫోన్ EMI ఫారం — 12 నెలలు" },
+    "verify": {
+      "cost": 0,
+      "label": {
+        "en": "Ask the shop to write the full cost on one line",
+        "hi": "दुकान से पूरी कीमत एक लाइन में लिखवाएँ",
+        "te": "మొత్తం ఖర్చు ఒకే లైన్‌లో రాయమని షాప్‌ను అడగండి"
+      }
+    },
     "variants": [
       {
         "id": "clean",
         "weight": 4,
         "lines": [
-          { "id": "l1", "text": { "en": "Phone price: ₹7,500" } },
-          { "id": "l2", "text": { "en": "EMI: ₹699 × 12 months = ₹8,388" } },
-          { "id": "l3", "text": { "en": "Processing fee: ₹1,200, added to the first bill" } },
-          { "id": "l4", "text": { "en": "Late fee: ₹500 per missed EMI" } }
+          { "id": "l1", "text": { "en": "Phone price: ₹7,500", "hi": "फ़ोन की कीमत: ₹7,500", "te": "ఫోన్ ధర: ₹7,500" } },
+          {
+            "id": "l2",
+            "text": {
+              "en": "EMI: ₹699 × 12 months = ₹8,388",
+              "hi": "EMI: ₹699 × 12 महीने = ₹8,388",
+              "te": "EMI: ₹699 × 12 నెలలు = ₹8,388"
+            }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Processing fee: ₹1,200, added to the first bill",
+              "hi": "प्रोसेसिंग फ़ीस: ₹1,200, पहले बिल में जुड़ी",
+              "te": "ప్రాసెసింగ్ ఫీజు: ₹1,200, మొదటి బిల్లులో కలిపి"
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Late fee: ₹500 per missed EMI",
+              "hi": "लेट फ़ीस: हर छूटी EMI पर ₹500",
+              "te": "లేట్ ఫీజు: తప్పిన ప్రతి EMIకి ₹500"
+            }
+          }
         ]
       },
       {
         "id": "addons",
         "weight": 6,
         "lines": [
-          { "id": "l1", "text": { "en": "Phone price: ₹7,500" } },
-          { "id": "l2", "text": { "en": "EMI: ₹699 × 12 months = ₹8,388" } },
-          { "id": "l3", "text": { "en": "Processing fee: ₹1,200, added to the first bill" } },
+          { "id": "l1", "text": { "en": "Phone price: ₹7,500", "hi": "फ़ोन की कीमत: ₹7,500", "te": "ఫోన్ ధర: ₹7,500" } },
           {
-            "id": "l4", "text": { "en": "Device protection plan: ₹99 a month, included by default" }, "redFlag": "auto_addon",
-            "explain": { "en": "An add-on you didn't choose: ₹1,188 more a year. Untick it before signing." }
+            "id": "l2",
+            "text": {
+              "en": "EMI: ₹699 × 12 months = ₹8,388",
+              "hi": "EMI: ₹699 × 12 महीने = ₹8,388",
+              "te": "EMI: ₹699 × 12 నెలలు = ₹8,388"
+            }
+          },
+          {
+            "id": "l3",
+            "text": {
+              "en": "Processing fee: ₹1,200, added to the first bill",
+              "hi": "प्रोसेसिंग फ़ीस: ₹1,200, पहले बिल में जुड़ी",
+              "te": "ప్రాసెసింగ్ ఫీజు: ₹1,200, మొదటి బిల్లులో కలిపి"
+            }
+          },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Device protection plan: ₹99 a month, included by default",
+              "hi": "डिवाइस प्रोटेक्शन प्लान: ₹99 महीना, अपने आप जुड़ा",
+              "te": "డివైస్ ప్రొటెక్షన్ ప్లాన్: నెలకు ₹99, ఆటోమేటిక్‌గా కలిపారు"
+            },
+            "redFlag": "auto_addon",
+            "explain": {
+              "en": "An add-on you didn't choose: ₹1,188 more a year. Untick it before signing.",
+              "hi": "ऐसा ऐड-ऑन जो आपने नहीं चुना: साल में ₹1,188 ज़्यादा। साइन से पहले हटवाएँ।",
+              "te": "మీరు ఎంచుకోని యాడ్-ఆన్: ఏడాదికి ₹1,188 ఎక్కువ. సంతకానికి ముందు తీసేయించండి."
+            }
           }
         ],
         "consequence": { "inYears": 1, "card": "village.teen.emi_extra_charges.a" }
@@ -234,17 +712,41 @@
   {
     "id": "doc.gold_purchase",
     "type": "gold_bill",
-    "title": { "en": "Jewellery bill — gold chain" },
-    "verify": { "cost": 100, "label": { "en": "Test the purity at the bank's gold-loan counter" } },
+    "title": { "en": "Jewellery bill — gold chain", "hi": "गहनों का बिल — सोने की चेन", "te": "నగల బిల్లు — బంగారు గొలుసు" },
+    "verify": {
+      "cost": 100,
+      "label": {
+        "en": "Test the purity at the bank's gold-loan counter",
+        "hi": "बैंक के गोल्ड लोन काउंटर पर शुद्धता जाँचें",
+        "te": "బ్యాంక్ గోల్డ్ లోన్ కౌంటర్‌లో స్వచ్ఛత పరీక్షించండి"
+      }
+    },
     "variants": [
       {
         "id": "clean",
         "weight": 6,
         "lines": [
-          { "id": "l1", "text": { "en": "Hallmark: BIS mark with a 6-digit HUID number" } },
-          { "id": "l2", "text": { "en": "Purity: 22 carat (916)" } },
-          { "id": "l3", "text": { "en": "Weight: 1 gram" } },
-          { "id": "l4", "text": { "en": "Making charges: 8%, shown separately" } }
+          {
+            "id": "l1",
+            "text": {
+              "en": "Hallmark: BIS mark with a 6-digit HUID number",
+              "hi": "हॉलमार्क: 6 अंकों वाले HUID नंबर के साथ BIS निशान",
+              "te": "హాల్‌మార్క్: 6 అంకెల HUID నంబర్‌తో BIS గుర్తు"
+            }
+          },
+          {
+            "id": "l2",
+            "text": { "en": "Purity: 22 carat (916)", "hi": "शुद्धता: 22 कैरेट (916)", "te": "స్వచ్ఛత: 22 క్యారెట్ (916)" }
+          },
+          { "id": "l3", "text": { "en": "Weight: 1 gram", "hi": "वज़न: 1 ग्राम", "te": "బరువు: 1 గ్రాము" } },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Making charges: 8%, shown separately",
+              "hi": "बनवाई: 8%, अलग से लिखी",
+              "te": "తయారీ ఛార్జీలు: 8%, వేరుగా చూపించారు"
+            }
+          }
         ]
       },
       {
@@ -252,14 +754,41 @@
         "weight": 4,
         "lines": [
           {
-            "id": "l1", "text": { "en": "Hallmark: not available on this piece" }, "redFlag": "no_hallmark",
-            "explain": { "en": "Without a hallmark, purity is only the shop's word. Buy hallmarked gold only." }
+            "id": "l1",
+            "text": {
+              "en": "Hallmark: not available on this piece",
+              "hi": "हॉलमार्क: इस गहने पर नहीं",
+              "te": "హాల్‌మార్క్: ఈ నగపై లేదు"
+            },
+            "redFlag": "no_hallmark",
+            "explain": {
+              "en": "Without a hallmark, purity is only the shop's word. Buy hallmarked gold only.",
+              "hi": "हॉलमार्क के बिना शुद्धता सिर्फ़ दुकान की ज़ुबानी है। सिर्फ़ हॉलमार्क वाला सोना खरीदें।",
+              "te": "హాల్‌మార్క్ లేకపోతే స్వచ్ఛత కొట్టు మాట మాత్రమే. హాల్‌మార్క్ ఉన్న బంగారమే కొనండి."
+            }
           },
-          { "id": "l2", "text": { "en": "Purity: 22 carat, as per shop" } },
-          { "id": "l3", "text": { "en": "Weight: 1 gram" } },
           {
-            "id": "l4", "text": { "en": "Making charges: included in price" }, "redFlag": "hidden_making",
-            "explain": { "en": "Hidden making charges make it hard to compare prices or resell fairly." }
+            "id": "l2",
+            "text": {
+              "en": "Purity: 22 carat, as per shop",
+              "hi": "शुद्धता: 22 कैरेट, दुकान के अनुसार",
+              "te": "స్వచ్ఛత: 22 క్యారెట్, కొట్టు చెప్పినట్టు"
+            }
+          },
+          { "id": "l3", "text": { "en": "Weight: 1 gram", "hi": "वज़न: 1 ग्राम", "te": "బరువు: 1 గ్రాము" } },
+          {
+            "id": "l4",
+            "text": {
+              "en": "Making charges: included in price",
+              "hi": "बनवाई: कीमत में शामिल",
+              "te": "తయారీ ఛార్జీలు: ధరలోనే కలిపారు"
+            },
+            "redFlag": "hidden_making",
+            "explain": {
+              "en": "Hidden making charges make it hard to compare prices or resell fairly.",
+              "hi": "छुपी बनवाई से कीमतों की तुलना या सही दाम पर दोबारा बेचना मुश्किल होता है।",
+              "te": "దాచిన తయారీ ఛార్జీలతో ధరలు పోల్చడం, సరైన ధరకు మళ్లీ అమ్మడం కష్టం."
+            }
           }
         ],
         "consequence": { "inYears": 1, "card": "village.young.gold_impure.a" }

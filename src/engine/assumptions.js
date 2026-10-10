@@ -101,15 +101,46 @@ export const ASSUMPTIONS = deepFreeze({
     // Pension (NPS / Atal Pension Yojana style): ~8% a year, locked until 60. Simplified:
     // closing early loses 20%.
     pension: { rate: 0.08, earlyPenalty: 0.2 },
+    // Mutual funds (fictional, returns already net of the yearly expense ratio):
+    // a short-term debt fund: 6–7.5% with small swings, expense ratio ~0.4%;
+    // an active equity fund: the index ± the manager's luck, minus a ~1.8% expense ratio, so on
+    // average it trails the cheap index fund (lesson L21).
+    mf_debt: { mean: 0.066, sd: 0.012, min: 0.03, max: 0.09, expenseRatio: 0.004 },
+    mf_active: { trackingSd: 0.05, expenseRatio: 0.018 },
+    // Single stocks of fictional companies: beta × the index + their own news. One bad-news year
+    // (−30% to −60%) happens to each company with this chance per year, which is why one stock is
+    // riskier than a fund holding fifty (lesson L19). Brokerage is a flat fee per trade.
+    stock_kisan: { beta: 1.1, sd: 0.15, badNewsChance: 0.06 },
+    stock_chai: { beta: 0.8, sd: 0.1, badNewsChance: 0.04 },
+    stock_spark: { beta: 1.5, sd: 0.3, badNewsChance: 0.1 },
+    stock_power: { beta: 0.6, sd: 0.08, badNewsChance: 0.03 },
+  },
+
+  // The phone's invest app. Investing in market products needs a phone and age 18 (PAN, KYC
+  // and a bank account in your own name). The expense ratio is shown, never charged twice.
+  market: {
+    minAge: 18,
+    brokerage: 20,
+    badNews: [-0.6, -0.3],
+    risk: { sip_index: 3, mf_debt: 1, mf_active: 3, stock_kisan: 4, stock_chai: 3, stock_spark: 5, stock_power: 2, fd: 1, rd: 1, gold: 2 },
+    expenseRatio: { sip_index: 0.002, mf_debt: 0.004, mf_active: 0.018 },
+  },
+
+  // Chapter mode: optional "life happens" events per chapter, and the phone gift.
+  chapters: {
+    fillers: { child: 1, teen: 2, young: 2, adult: 3, settle: 2 },
+    // A phone arrives as a gift at the start of this stage if the player has none.
+    phoneGiftStage: "young",
+    phoneFlag: "owns_phone",
   },
 
   // Order in which money is found when you must pay. `spend` is a choice you make, `shock` a
   // bill you cannot refuse (insurance has already paid its share), `auto` EMIs and premiums.
   // Only liquid holdings appear: PPF, pension, land and vehicles are never sold automatically.
   payOrder: {
-    spend: ["cash", "wallet", "bank", "goal", "emergency", "fd", "rd", "chit", "gold", "sip_index"],
-    shock: ["emergency", "cash", "wallet", "bank", "goal", "fd", "rd", "chit", "gold", "sip_index"],
-    auto: ["cash", "wallet", "bank", "emergency", "goal", "fd", "rd", "chit", "gold", "sip_index"],
+    spend: ["cash", "wallet", "bank", "goal", "emergency", "fd", "rd", "chit", "gold", "sip_index", "mf_debt", "mf_active", "stock_power", "stock_chai", "stock_kisan", "stock_spark"],
+    shock: ["emergency", "cash", "wallet", "bank", "goal", "fd", "rd", "chit", "gold", "sip_index", "mf_debt", "mf_active", "stock_power", "stock_chai", "stock_kisan", "stock_spark"],
+    auto: ["cash", "wallet", "bank", "emergency", "goal", "fd", "rd", "chit", "gold", "sip_index", "mf_debt", "mf_active", "stock_power", "stock_chai", "stock_kisan", "stock_spark"],
     open: ["cash", "wallet", "bank", "goal", "emergency"],
   },
 

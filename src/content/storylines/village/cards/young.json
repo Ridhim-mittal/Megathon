@@ -6,44 +6,94 @@
     "lesson": "L12",
     "ages": [19, 21],
     "weight": 1,
+    "location": "work",
     "speaker": "friend",
-    "title": { "en": "Your first payslip" },
+    "title": { "en": "Your first payslip", "hi": "आपकी पहली वेतन पर्ची", "te": "మీ మొదటి జీతం స్లిప్" },
     "text": {
-      "en": "Your first proper [[payslip]]: ₹14,000 gross, but only ₹12,560 in hand. {cast:friend} is outraged. \"They cut ₹1,440! Withdraw that PF and party, mama.\""
+      "en": "Your first proper [[payslip]]: ₹14,000 gross, but only ₹12,560 in hand. {cast:friend} is outraged. \"They cut ₹1,440! Withdraw that PF and party, mama.\"",
+      "hi": "आपकी पहली असली [[payslip]]: ₹14,000 ग्रॉस, पर हाथ में सिर्फ़ ₹12,560। {cast:friend} भड़क जाता है। \"₹1,440 काट लिए! वह PF निकालो और पार्टी करो, मामा।\"",
+      "te": "మీ మొదటి అసలైన [[payslip]]: గ్రాస్ ₹14,000, చేతికి ₹12,560 మాత్రమే. {cast:friend}కు కోపం. \"₹1,440 కోసేశారు! ఆ PF తీసి పార్టీ చేసుకో మామా.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "They cut ₹1,440!" },
-        "truth": { "en": "That's your [[pf]]: still your money. Your employer adds another ₹1,440 on top." },
+        "phrase": { "en": "They cut ₹1,440!", "hi": "₹1,440 काट लिए!", "te": "₹1,440 కోసేశారు!" },
+        "truth": {
+          "en": "That's your [[pf]]: still your money. Your employer adds another ₹1,440 on top.",
+          "hi": "वह आपका [[pf]] है: अब भी आपका पैसा। कंपनी ऊपर से ₹1,440 और डालती है।",
+          "te": "అది మీ [[pf]]: ఇప్పటికీ మీ డబ్బే. కంపెనీ పైన ఇంకో ₹1,440 వేస్తుంది."
+        },
         "lesson": "L12"
       }
     ],
     "choices": [
       {
         "id": "keep_pf",
-        "label": { "en": "Keep the PF and apply for a PAN card" },
+        "label": {
+          "en": "Keep the PF and apply for a PAN card",
+          "hi": "PF रखें और PAN कार्ड के लिए आवेदन करें",
+          "te": "PF ఉంచి, PAN కార్డుకు దరఖాస్తు చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "flags": { "add": ["has_pan", "pf_kept"] }, "gyaan": 3 },
-        "outcome": { "en": "₹2,880 a month goes into PF, half from your employer. That's ₹34,560 a year you never had to save." },
-        "why": { "en": "PF is forced saving with a free top-up. A [[pan]] lets you open accounts and track your income." }
+        "outcome": {
+          "en": "₹2,880 a month goes into PF, half from your employer. That's ₹34,560 a year you never had to save.",
+          "hi": "हर महीने ₹2,880 PF में जाते हैं, आधा कंपनी से। साल के ₹34,560, जो आपको खुद नहीं बचाने पड़े।",
+          "te": "నెలకు ₹2,880 PFలోకి, సగం కంపెనీ నుంచి. ఏడాదికి ₹34,560, మీరు సొంతంగా దాచనక్కర్లేకుండా."
+        },
+        "why": {
+          "en": "PF is forced saving with a free top-up. A [[pan]] lets you open accounts and track your income.",
+          "hi": "PF ज़बरदस्ती की बचत है, ऊपर से मुफ़्त हिस्सा। [[pan]] से खाते खुलते हैं और कमाई दर्ज होती है।",
+          "te": "PF బలవంతపు పొదుపు, పైగా ఉచిత అదనపు భాగం. [[pan]]తో ఖాతాలు తెరవొచ్చు, ఆదాయం నమోదవుతుంది."
+        }
       },
       {
         "id": "withdraw_pf",
-        "label": { "en": "Withdraw the PF every time you switch jobs" },
+        "label": {
+          "en": "Withdraw the PF every time you switch jobs",
+          "hi": "हर बार नौकरी बदलने पर PF निकालें",
+          "te": "ఉద్యోగం మారిన ప్రతిసారీ PF తీసేయండి"
+        },
         "quality": "risky",
         "effects": { "cash": 8000, "meters": { "joy": 4 }, "flags": { "add": ["pf_withdrawn"] } },
-        "echo": { "level": 2, "hint": { "en": "Each withdrawal resets the growing clock." } },
-        "outcome": { "en": "₹8,000 in hand now. Left alone at 8% for 15 years, it would have been about ₹25,000." },
-        "why": { "en": "Withdrawing retirement money early loses its compound growth. It's hard to rebuild." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Each withdrawal resets the growing clock.",
+            "hi": "हर निकासी बढ़त की घड़ी को फिर शून्य कर देती है।",
+            "te": "ప్రతిసారీ తీస్తే పెరుగుదల గడియారం మళ్లీ సున్నాకి."
+          }
+        },
+        "outcome": {
+          "en": "₹8,000 in hand now. Left alone at 8% for 15 years, it would have been about ₹25,000.",
+          "hi": "अभी हाथ में ₹8,000। 8% पर 15 साल छोड़ते तो लगभग ₹25,000 होते।",
+          "te": "ఇప్పుడు చేతిలో ₹8,000. 8% వద్ద 15 ఏళ్లు వదిలేస్తే సుమారు ₹25,000 అయ్యేది."
+        },
+        "why": {
+          "en": "Withdrawing retirement money early loses its compound growth. It's hard to rebuild.",
+          "hi": "रिटायरमेंट का पैसा जल्दी निकालने से उसकी चक्रवृद्धि बढ़त खत्म होती है। दोबारा बनाना मुश्किल है।",
+          "te": "రిటైర్మెంట్ డబ్బు ముందే తీస్తే చక్రవడ్డీ పెరుగుదల పోతుంది. మళ్లీ కూడబెట్టడం కష్టం."
+        }
       },
       {
         "id": "tax_tout",
-        "label": { "en": "Pay a man ₹2,000 for \"compulsory tax filing\"" },
+        "label": {
+          "en": "Pay a man ₹2,000 for \"compulsory tax filing\"",
+          "hi": "\"ज़रूरी टैक्स फ़ाइलिंग\" के लिए एक आदमी को ₹2,000 दें",
+          "te": "\"తప్పనిసరి ట్యాక్స్ ఫైలింగ్\" కోసం ఒకడికి ₹2,000 ఇవ్వండి"
+        },
         "quality": "risky",
         "effects": { "cash": -2000 },
-        "outcome": { "en": "Your yearly income is below the [[income_tax]] limit. You owed ₹0. The man earned ₹2,000." },
-        "why": { "en": "Know the rules before paying for help. Filing a return yourself is free on the government site." }
+        "outcome": {
+          "en": "Your yearly income is below the [[income_tax]] limit. You owed ₹0. The man earned ₹2,000.",
+          "hi": "आपकी सालाना कमाई [[income_tax]] की सीमा से नीचे है। आपका टैक्स ₹0 था। उस आदमी ने ₹2,000 कमाए।",
+          "te": "మీ ఏడాది ఆదాయం [[income_tax]] పరిమితి కంటే తక్కువ. మీ పన్ను ₹0. అతను ₹2,000 సంపాదించాడు."
+        },
+        "why": {
+          "en": "Know the rules before paying for help. Filing a return yourself is free on the government site.",
+          "hi": "मदद के लिए पैसे देने से पहले नियम जानें। सरकारी साइट पर रिटर्न खुद भरना मुफ़्त है।",
+          "te": "సహాయానికి డబ్బిచ్చే ముందు నియమాలు తెలుసుకోండి. ప్రభుత్వ సైట్‌లో రిటర్న్ మీరే వేయడం ఉచితం."
+        }
       }
     ]
   },
@@ -54,15 +104,22 @@
     "lesson": "L13",
     "ages": [19, 22],
     "weight": 1,
+    "location": "home",
     "speaker": "mentor",
-    "title": { "en": "Ammamma's rainy-day rule" },
+    "title": { "en": "Ammamma's rainy-day rule", "hi": "अम्मम्मा का बुरे दिनों का नियम", "te": "అమ్మమ్మ కష్టకాలపు నియమం" },
     "text": {
-      "en": "You spend about ₹8,000 a month. {cast:mentor}: \"Kanna, keep three months safe for bad days.\" The jeweller says, \"Buy gold, it never falls!\""
+      "en": "You spend about ₹8,000 a month. {cast:mentor}: \"Kanna, keep three months safe for bad days.\" The jeweller says, \"Buy gold, it never falls!\"",
+      "hi": "आप महीने में लगभग ₹8,000 खर्च करते हैं। {cast:mentor}: \"कन्ना, बुरे दिनों के लिए तीन महीने सुरक्षित रखो।\" सुनार कहता है, \"सोना खरीदो, यह कभी नहीं गिरता!\"",
+      "te": "మీ నెల ఖర్చు సుమారు ₹8,000. {cast:mentor}: \"కన్నా, కష్టకాలం కోసం మూడు నెలలది భద్రంగా ఉంచు.\" కంసాలి అంటాడు, \"బంగారం కొను, ఇది ఎప్పుడూ పడదు!\""
     },
     "clarity": [
       {
-        "phrase": { "en": "it never falls!" },
-        "truth": { "en": "Gold prices do fall, sometimes for years. And selling costs you making charges." },
+        "phrase": { "en": "it never falls!", "hi": "यह कभी नहीं गिरता!", "te": "ఇది ఎప్పుడూ పడదు!" },
+        "truth": {
+          "en": "Gold prices do fall, sometimes for years. And selling costs you making charges.",
+          "hi": "सोने के भाव गिरते हैं, कभी-कभी सालों तक। और बेचने पर बनवाई कटती है।",
+          "te": "బంగారం ధరలు పడతాయి, ఒక్కోసారి ఏళ్ల తరబడి. అమ్మితే తయారీ ఛార్జీలు పోతాయి."
+        },
         "lesson": "L13"
       }
     ],
@@ -70,30 +127,80 @@
     "choices": [
       {
         "id": "build_fund",
-        "label": { "en": "Save ₹2,000 a month in a separate bank account until ₹24,000" },
+        "label": {
+          "en": "Save ₹2,000 a month in a separate bank account until ₹24,000",
+          "hi": "अलग बैंक खाते में ₹2,000 महीना बचाएँ, ₹24,000 तक",
+          "te": "వేరే బ్యాంక్ ఖాతాలో నెలకు ₹2,000, ₹24,000 అయ్యే వరకు"
+        },
         "quality": "good",
         "default": true,
         "effects": { "jar": { "emergency": 2000 }, "flags": { "add": ["has_emergency_fund"] }, "gyaan": 2 },
-        "outcome": { "en": "In 12 months you have ₹24,000: three months of expenses, ready any day." },
-        "why": { "en": "An [[emergency_fund]] must be safe and quick to reach. It keeps you away from the sahukar." }
+        "outcome": {
+          "en": "In 12 months you have ₹24,000: three months of expenses, ready any day.",
+          "hi": "12 महीने में आपके पास ₹24,000: तीन महीने का खर्च, किसी भी दिन तैयार।",
+          "te": "12 నెలల్లో మీ దగ్గర ₹24,000: మూడు నెలల ఖర్చు, ఏ రోజైనా సిద్ధం."
+        },
+        "why": {
+          "en": "An [[emergency_fund]] must be safe and quick to reach. It keeps you away from the sahukar.",
+          "hi": "[[emergency_fund]] सुरक्षित और जल्दी मिलने वाला होना चाहिए। यह आपको साहूकार से दूर रखता है।",
+          "te": "[[emergency_fund]] భద్రంగా, త్వరగా అందేలా ఉండాలి. అది మిమ్మల్ని షావుకారు నుంచి దూరంగా ఉంచుతుంది."
+        }
       },
       {
         "id": "buy_gold",
-        "label": { "en": "Put ₹10,000 into a gold chain instead" },
+        "label": {
+          "en": "Put ₹10,000 into a gold chain instead",
+          "hi": "इसके बजाय ₹10,000 सोने की चेन में लगाएँ",
+          "te": "బదులుగా ₹10,000 బంగారు గొలుసులో పెట్టండి"
+        },
         "quality": "risky",
         "effects": { "open": { "product": "gold", "amount": 10000 }, "meters": { "joy": 3 } },
-        "echo": { "level": 1, "hint": { "en": "Jewellery is slow to turn back into cash." } },
-        "outcome": { "en": "When your bike needs ₹6,000, the jeweller buys the chain back for ₹1,200 less than you paid." },
-        "why": { "en": "Gold can be a savings, but not a quick, safe emergency fund. Keep that in the bank." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "Jewellery is slow to turn back into cash.",
+            "hi": "गहने धीरे-धीरे नकद बनते हैं।",
+            "te": "నగలు నగదుగా మారడం నెమ్మది."
+          }
+        },
+        "outcome": {
+          "en": "When your bike needs ₹6,000, the jeweller buys the chain back for ₹1,200 less than you paid.",
+          "hi": "जब बाइक को ₹6,000 चाहिए, सुनार चेन को आपकी कीमत से ₹1,200 कम में वापस लेता है।",
+          "te": "బైక్‌కు ₹6,000 కావాల్సినప్పుడు, కంసాలి మీరు కొన్న ధర కంటే ₹1,200 తక్కువకు గొలుసు తీసుకుంటాడు."
+        },
+        "why": {
+          "en": "Gold can be a savings, but not a quick, safe emergency fund. Keep that in the bank.",
+          "hi": "सोना बचत हो सकता है, पर जल्दी और सुरक्षित आपात फंड नहीं। वह बैंक में रखें।",
+          "te": "బంగారం పొదుపు కావచ్చు, కానీ త్వరితమైన, భద్రమైన అత్యవసర నిధి కాదు. దాన్ని బ్యాంక్‌లో ఉంచండి."
+        }
       },
       {
         "id": "spend",
-        "label": { "en": "Spend it. The sahukar is there in emergencies" },
+        "label": {
+          "en": "Spend it. The sahukar is there in emergencies",
+          "hi": "खर्च कर दें। मुसीबत में साहूकार है ना",
+          "te": "ఖర్చు చేసేయండి. అవసరానికి షావుకారు ఉన్నాడుగా"
+        },
         "quality": "bad",
         "effects": { "meters": { "joy": 5 }, "schedule": [{ "inYears": 1, "card": "village.young.no_cushion.a" }] },
-        "echo": { "level": 2, "hint": { "en": "Ammamma goes very quiet." } },
-        "outcome": { "en": "A ₹10,000 emergency from the sahukar costs ₹12,400 to clear in a year." },
-        "why": { "en": "Without a cushion, every surprise becomes an expensive loan." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Ammamma goes very quiet.",
+            "hi": "अम्मम्मा बिल्कुल चुप हो जाती हैं।",
+            "te": "అమ్మమ్మ పూర్తిగా మౌనంగా ఉంటుంది."
+          }
+        },
+        "outcome": {
+          "en": "A ₹10,000 emergency from the sahukar costs ₹12,400 to clear in a year.",
+          "hi": "साहूकार से ₹10,000 की मुसीबत साल भर में चुकाने पर ₹12,400 की पड़ती है।",
+          "te": "షావుకారు దగ్గర ₹10,000 అవసరానికి ఏడాదిలో తీర్చాలంటే ₹12,400."
+        },
+        "why": {
+          "en": "Without a cushion, every surprise becomes an expensive loan.",
+          "hi": "बिना गद्दी के हर अचानक खर्च महँगा कर्ज़ बन जाता है।",
+          "te": "భద్రతా నిధి లేకపోతే ప్రతి అనుకోని ఖర్చు ఖరీదైన అప్పు అవుతుంది."
+        }
       }
     ]
   },
@@ -104,16 +211,39 @@
     "lesson": "L14",
     "ages": [19, 24],
     "weight": 1,
+    "location": "home",
     "speaker": "father",
-    "title": { "en": "Four ways to borrow ₹20,000" },
+    "title": {
+      "en": "Four ways to borrow ₹20,000",
+      "hi": "₹20,000 उधार लेने के चार तरीके",
+      "te": "₹20,000 అప్పు తీసుకోవడానికి నాలుగు దారులు"
+    },
     "text": {
-      "en": "Nanna's motor pump is dead. Repair: ₹20,000. {cast:lender} offers \"just ₹2 per ₹100\". A [[loan_app]] says \"instant approval, no documents\". Amma's [[shg]] and a [[gold_loan]] are other options."
+      "en": "Nanna's motor pump is dead. Repair: ₹20,000. {cast:lender} offers \"just ₹2 per ₹100\". A [[loan_app]] says \"instant approval, no documents\". Amma's [[shg]] and a [[gold_loan]] are other options.",
+      "hi": "नान्ना का मोटर पंप खराब है। मरम्मत: ₹20,000। {cast:lender} कहते हैं \"बस ₹2 सैकड़ा\"। एक [[loan_app]] कहता है \"तुरंत मंज़ूरी, कोई कागज़ नहीं\"। अम्मा का [[shg]] और [[gold_loan]] भी विकल्प हैं।",
+      "te": "నాన్న మోటర్ పంప్ పాడైంది. రిపేర్: ₹20,000. {cast:lender} \"నూటికి ₹2 మాత్రమే\" అంటాడు. ఒక [[loan_app]] \"వెంటనే అప్రూవల్, కాగితాలు అక్కర్లేదు\" అంటుంది. అమ్మ [[shg]], [[gold_loan]] కూడా దారులు."
     },
     "clarity": [
-      { "phrase": { "en": "just ₹2 per ₹100" }, "truth": { "en": "Per month, on the full ₹20,000 even as you repay. 24% flat really costs about 42%." }, "lesson": "L14" },
       {
-        "phrase": { "en": "instant approval, no documents" },
-        "truth": { "en": "A 10% fee, then ₹3 per ₹100 a month on the full amount. Some apps also read your contacts." },
+        "phrase": { "en": "just ₹2 per ₹100", "hi": "बस ₹2 सैकड़ा", "te": "నూటికి ₹2 మాత్రమే" },
+        "truth": {
+          "en": "Per month, on the full ₹20,000 even as you repay. 24% flat really costs about 42%.",
+          "hi": "महीने का, पूरे ₹20,000 पर, चुकाते रहने पर भी। 24% फ़्लैट असल में लगभग 42% पड़ता है।",
+          "te": "నెలకు, కడుతున్నా మొత్తం ₹20,000 మీద. 24% ఫ్లాట్ నిజానికి సుమారు 42%."
+        },
+        "lesson": "L14"
+      },
+      {
+        "phrase": {
+          "en": "instant approval, no documents",
+          "hi": "तुरंत मंज़ूरी, कोई कागज़ नहीं",
+          "te": "వెంటనే అప్రూవల్, కాగితాలు అక్కర్లేదు"
+        },
+        "truth": {
+          "en": "A 10% fee, then ₹3 per ₹100 a month on the full amount. Some apps also read your contacts.",
+          "hi": "10% फ़ीस, फिर पूरी रकम पर ₹3 सैकड़ा महीना। कुछ ऐप आपके कॉन्टैक्ट भी पढ़ते हैं।",
+          "te": "10% ఫీజు, తర్వాత మొత్తం అప్పుపై నెలకు నూటికి ₹3. కొన్ని యాప్‌లు మీ కాంటాక్ట్‌లు కూడా చదువుతాయి."
+        },
         "lesson": "L14"
       }
     ],
@@ -121,28 +251,66 @@
     "choices": [
       {
         "id": "sahukar",
-        "label": { "en": "Narsaiah sahukar: ₹2 per ₹100 per month" },
+        "label": {
+          "en": "Narsaiah sahukar: ₹2 per ₹100 per month",
+          "hi": "नरसैया साहूकार: ₹2 सैकड़ा महीना",
+          "te": "నర్సయ్య షావుకారు: నెలకు నూటికి ₹2"
+        },
         "quality": "risky",
         "effects": { "loan": { "source": "moneylender", "principal": 20000, "months": 12, "disburse": "direct" } },
-        "echo": { "level": 2, "hint": { "en": "{cast:lender} never says the yearly rate." } },
-        "outcome": { "en": "EMI about ₹2,067 for 12 months. You repay ₹24,800 for ₹20,000." },
-        "why": { "en": "Turn monthly rates into yearly ones: ₹2 per ₹100 per month is 24% a year, on the full amount." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "{cast:lender} never says the yearly rate.",
+            "hi": "{cast:lender} कभी सालाना दर नहीं बताते।",
+            "te": "{cast:lender} ఎప్పుడూ ఏడాది రేటు చెప్పడు."
+          }
+        },
+        "outcome": {
+          "en": "EMI about ₹2,067 for 12 months. You repay ₹24,800 for ₹20,000.",
+          "hi": "12 महीने तक EMI लगभग ₹2,067। ₹20,000 के बदले ₹24,800 चुकाते हैं।",
+          "te": "12 నెలలు EMI సుమారు ₹2,067. ₹20,000కు ₹24,800 కడతారు."
+        },
+        "why": {
+          "en": "Turn monthly rates into yearly ones: ₹2 per ₹100 per month is 24% a year, on the full amount.",
+          "hi": "मासिक दर को सालाना में बदलें: ₹2 सैकड़ा महीना = पूरी रकम पर 24% सालाना।",
+          "te": "నెల రేటును ఏడాదికి మార్చండి: నెలకు నూటికి ₹2 = మొత్తం అప్పుపై ఏడాదికి 24%."
+        }
       },
       {
         "id": "loan_app",
-        "label": { "en": "Instant loan app" },
+        "label": { "en": "Instant loan app", "hi": "इंस्टेंट लोन ऐप", "te": "ఇన్‌స్టంట్ లోన్ యాప్" },
         "quality": "bad",
         "effects": {
           "loan": { "source": "loan_app", "principal": 20000, "months": 6, "disburse": "direct" },
           "meters": { "health": -3 }
         },
-        "echo": { "level": 3, "hint": { "en": "The app now knows everyone in your phone." } },
-        "outcome": { "en": "A ₹2,000 fee plus ₹3,600 interest: you repay ₹25,600 in just 6 months." },
-        "why": { "en": "Fast money is the most expensive money. Fees cut first make the real rate even higher." }
+        "echo": {
+          "level": 3,
+          "hint": {
+            "en": "The app now knows everyone in your phone.",
+            "hi": "ऐप अब आपके फ़ोन के हर व्यक्ति को जानता है।",
+            "te": "మీ ఫోన్‌లో ఉన్న ప్రతి ఒక్కరూ ఇప్పుడు యాప్‌కు తెలుసు."
+          }
+        },
+        "outcome": {
+          "en": "A ₹2,000 fee plus ₹3,600 interest: you repay ₹25,600 in just 6 months.",
+          "hi": "₹2,000 फ़ीस और ₹3,600 ब्याज: सिर्फ़ 6 महीने में ₹25,600 चुकाते हैं।",
+          "te": "₹2,000 ఫీజు, ₹3,600 వడ్డీ: 6 నెలల్లోనే ₹25,600 కడతారు."
+        },
+        "why": {
+          "en": "Fast money is the most expensive money. Fees cut first make the real rate even higher.",
+          "hi": "जल्दी का पैसा सबसे महँगा पैसा है। पहले कटी फ़ीस असली दर और बढ़ा देती है।",
+          "te": "త్వరిత డబ్బే అతి ఖరీదైన డబ్బు. ముందే కోసే ఫీజు అసలు రేటును ఇంకా పెంచుతుంది."
+        }
       },
       {
         "id": "shg",
-        "label": { "en": "Amma's SHG: ₹1 per ₹100 per month" },
+        "label": {
+          "en": "Amma's SHG: ₹1 per ₹100 per month",
+          "hi": "अम्मा का SHG: ₹1 सैकड़ा महीना",
+          "te": "అమ్మ పొదుపు సంఘం: నెలకు నూటికి ₹1"
+        },
         "quality": "good",
         "default": true,
         "effects": {
@@ -150,19 +318,39 @@
           "meters": { "family": 3 },
           "gyaan": 2
         },
-        "outcome": { "en": "EMI about ₹1,777 plus a ₹200 fee. You repay ₹21,520: about ₹3,280 less than the sahukar." },
-        "why": { "en": "Same ₹20,000, very different costs. Paying on time also builds your [[credit_score]]." }
+        "outcome": {
+          "en": "EMI about ₹1,777 plus a ₹200 fee. You repay ₹21,520: about ₹3,280 less than the sahukar.",
+          "hi": "EMI लगभग ₹1,777 और ₹200 फ़ीस। ₹21,520 चुकाते हैं: साहूकार से लगभग ₹3,280 कम।",
+          "te": "EMI సుమారు ₹1,777, ₹200 ఫీజు. ₹21,520 కడతారు: షావుకారు కంటే సుమారు ₹3,280 తక్కువ."
+        },
+        "why": {
+          "en": "Same ₹20,000, very different costs. Paying on time also builds your [[credit_score]].",
+          "hi": "वही ₹20,000, बहुत अलग कीमतें। समय पर चुकाने से आपका [[credit_score]] भी बनता है।",
+          "te": "అదే ₹20,000, చాలా వేరువేరు ఖర్చులు. సమయానికి కడితే మీ [[credit_score]] కూడా పెరుగుతుంది."
+        }
       },
       {
         "id": "gold_loan",
-        "label": { "en": "Gold loan on Amma's earrings, 10% a year" },
+        "label": {
+          "en": "Gold loan on Amma's earrings, 10% a year",
+          "hi": "अम्मा की बालियों पर गोल्ड लोन, 10% सालाना",
+          "te": "అమ్మ చెవిపోగులపై గోల్డ్ లోన్, ఏడాదికి 10%"
+        },
         "quality": "neutral",
         "effects": {
           "loan": { "source": "gold_loan", "principal": 20000, "months": 12, "disburse": "direct" },
           "meters": { "family": -2 }
         },
-        "outcome": { "en": "₹167 a month in interest, then ₹20,000 at the end: ₹22,100 in all. Miss it, and Amma's earrings are auctioned." },
-        "why": { "en": "Secured loans are cheaper than a sahukar, if you're sure you can repay. The risk is the gold." }
+        "outcome": {
+          "en": "₹167 a month in interest, then ₹20,000 at the end: ₹22,100 in all. Miss it, and Amma's earrings are auctioned.",
+          "hi": "हर महीने ₹167 ब्याज, फिर आखिर में ₹20,000: कुल ₹22,100। चूके तो अम्मा की बालियाँ नीलाम।",
+          "te": "నెలకు ₹167 వడ్డీ, చివర్లో ₹20,000: మొత్తం ₹22,100. తప్పితే అమ్మ చెవిపోగులు వేలం."
+        },
+        "why": {
+          "en": "Secured loans are cheaper than a sahukar, if you're sure you can repay. The risk is the gold.",
+          "hi": "गिरवी वाले कर्ज़ साहूकार से सस्ते हैं, अगर पक्का चुका सकें। जोखिम सोने का है।",
+          "te": "తాకట్టు అప్పులు షావుకారు కంటే చౌక, కట్టగలమనే నమ్మకం ఉంటే. రిస్క్ బంగారానిదే."
+        }
       }
     ]
   },
@@ -173,53 +361,107 @@
     "lesson": "L15",
     "ages": [18, 23],
     "weight": 1,
+    "location": "square",
     "speaker": "tempter",
-    "title": { "en": "Rent your bank account" },
+    "title": { "en": "Rent your bank account", "hi": "अपना बैंक खाता किराए पर दें", "te": "మీ బ్యాంక్ ఖాతాను అద్దెకు ఇవ్వండి" },
     "text": {
-      "en": "{cast:tempter}'s sunglasses now cover half his face. \"100% legal part-time work. You just forward the money. ₹5,000 a month commission.\""
+      "en": "{cast:tempter}'s sunglasses now cover half his face. \"100% legal part-time work. You just forward the money. ₹5,000 a month commission.\"",
+      "hi": "{cast:tempter} का काला चश्मा अब आधा चेहरा ढकता है। \"100% कानूनी पार्ट-टाइम काम। बस पैसा आगे भेजना है। ₹5,000 महीना कमीशन।\"",
+      "te": "{cast:tempter} నల్ల కళ్లద్దాలు ఇప్పుడు సగం ముఖాన్ని కప్పేస్తున్నాయి. \"100% చట్టబద్ధమైన పార్ట్-టైమ్ పని. డబ్బు ముందుకు పంపడమే. నెలకు ₹5,000 కమిషన్.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "100% legal part-time work." },
-        "truth": { "en": "Letting others move money through your account makes you a [[money_mule]]. It is a crime." },
+        "phrase": {
+          "en": "100% legal part-time work.",
+          "hi": "100% कानूनी पार्ट-टाइम काम।",
+          "te": "100% చట్టబద్ధమైన పార్ట్-టైమ్ పని."
+        },
+        "truth": {
+          "en": "Letting others move money through your account makes you a [[money_mule]]. It is a crime.",
+          "hi": "दूसरों को अपने खाते से पैसा घुमाने देना आपको [[money_mule]] बनाता है। यह अपराध है।",
+          "te": "ఇతరులు మీ ఖాతా ద్వారా డబ్బు తరలించనిస్తే మీరు [[money_mule]] అవుతారు. అది నేరం."
+        },
         "lesson": "L15"
       },
       {
-        "phrase": { "en": "You just forward the money." },
-        "truth": { "en": "The money is stolen from scam victims. Police trace it to your name, not his." },
+        "phrase": { "en": "You just forward the money.", "hi": "बस पैसा आगे भेजना है।", "te": "డబ్బు ముందుకు పంపడమే." },
+        "truth": {
+          "en": "The money is stolen from scam victims. Police trace it to your name, not his.",
+          "hi": "यह पैसा ठगी के शिकार लोगों से चुराया गया है। पुलिस इसे आपके नाम तक ढूँढती है, उसके नहीं।",
+          "te": "ఆ డబ్బు మోసపోయినవాళ్ల నుంచి దొంగిలించినది. పోలీసులు దాన్ని మీ పేరు వరకు కనుక్కుంటారు, అతని పేరు కాదు."
+        },
         "lesson": "L15"
       }
     ],
     "choices": [
       {
         "id": "agree",
-        "label": { "en": "Agree, just for one month" },
+        "label": { "en": "Agree, just for one month", "hi": "हाँ कहें, बस एक महीने के लिए", "te": "ఒప్పుకోండి, ఒక్క నెలకే" },
         "quality": "bad",
         "effects": {
           "cash": 5000,
           "flags": { "add": ["legal_mule"] },
           "schedule": [{ "inYears": 1, "card": "village.young.account_frozen.a" }]
         },
-        "echo": { "level": 3, "hint": { "en": "Your account remembers every rupee that passed through it." } },
-        "outcome": { "en": "₹5,000 arrives. So does ₹3.8 lakh from strangers, which you forward as told." },
-        "why": { "en": "That ₹3.8 lakh was stolen from scam victims. The trail leads to you, not to Prakash." }
+        "echo": {
+          "level": 3,
+          "hint": {
+            "en": "Your account remembers every rupee that passed through it.",
+            "hi": "आपके खाते को हर वह रुपया याद है जो उससे गुज़रा।",
+            "te": "మీ ఖాతా ద్వారా వెళ్లిన ప్రతి రూపాయీ దానికి గుర్తుంటుంది."
+          }
+        },
+        "outcome": {
+          "en": "₹5,000 arrives. So does ₹3.8 lakh from strangers, which you forward as told.",
+          "hi": "₹5,000 आते हैं। अजनबियों से ₹3.8 लाख भी, जिन्हें आप कहे मुताबिक आगे भेजते हैं।",
+          "te": "₹5,000 వస్తాయి. అపరిచితుల నుంచి ₹3.8 లక్షలు కూడా, చెప్పినట్టు ముందుకు పంపుతారు."
+        },
+        "why": {
+          "en": "That ₹3.8 lakh was stolen from scam victims. The trail leads to you, not to Prakash.",
+          "hi": "वे ₹3.8 लाख ठगी के शिकार लोगों से चुराए गए थे। रास्ता आप तक पहुँचता है, प्रकाश तक नहीं।",
+          "te": "ఆ ₹3.8 లక్షలు మోసపోయినవాళ్ల నుంచి దొంగిలించినవి. దారి మీ వరకు వస్తుంది, ప్రకాష్ వరకు కాదు."
+        }
       },
       {
         "id": "report",
-        "label": { "en": "Refuse and report him on 1930" },
+        "label": {
+          "en": "Refuse and report him on 1930",
+          "hi": "मना करें और 1930 पर उसकी रिपोर्ट करें",
+          "te": "వద్దని చెప్పి 1930కి అతనిపై రిపోర్ట్ చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 3, "meters": { "family": 2 } },
-        "outcome": { "en": "Your report helps freeze ₹2 lakh of stolen money. {cast:tempter} changes his number. Again." },
-        "why": { "en": "Your bank account is your identity. Never lend it, sell it or \"rent\" it." }
+        "outcome": {
+          "en": "Your report helps freeze ₹2 lakh of stolen money. {cast:tempter} changes his number. Again.",
+          "hi": "आपकी रिपोर्ट से ₹2 लाख चोरी का पैसा फ़्रीज़ होता है। {cast:tempter} फिर से नंबर बदलता है।",
+          "te": "మీ రిపోర్ట్‌తో ₹2 లక్షల దొంగ డబ్బు ఫ్రీజ్ అవుతుంది. {cast:tempter} మళ్లీ నంబర్ మారుస్తాడు."
+        },
+        "why": {
+          "en": "Your bank account is your identity. Never lend it, sell it or \"rent\" it.",
+          "hi": "आपका बैंक खाता आपकी पहचान है। उसे कभी उधार, बेचें या \"किराए\" पर न दें।",
+          "te": "మీ బ్యాంక్ ఖాతా మీ గుర్తింపు. ఎప్పుడూ అప్పుగా, అమ్మకంగా, \"అద్దెకు\" ఇవ్వకండి."
+        }
       },
       {
         "id": "refuse_quietly",
-        "label": { "en": "Refuse quietly and walk away" },
+        "label": {
+          "en": "Refuse quietly and walk away",
+          "hi": "चुपचाप मना करके चले जाएँ",
+          "te": "నిశ్శబ్దంగా వద్దని వెళ్లిపోండి"
+        },
         "quality": "neutral",
         "effects": { "schedule": [{ "inYears": 1, "card": "village.young.chintu_mule.a" }] },
-        "outcome": { "en": "You're safe, and ₹0 richer. Two months later, Chintu says yes to the same offer." },
-        "why": { "en": "Saying no protects you. Reporting protects the next person too." }
+        "outcome": {
+          "en": "You're safe, and ₹0 richer. Two months later, Chintu says yes to the same offer.",
+          "hi": "आप सुरक्षित हैं, और ₹0 अमीर। दो महीने बाद चिंटू उसी ऑफ़र को हाँ कह देता है।",
+          "te": "మీరు భద్రం, ₹0 లాభం. రెండు నెలల తర్వాత చింటూ అదే ఆఫర్‌కు ఒప్పుకుంటాడు."
+        },
+        "why": {
+          "en": "Saying no protects you. Reporting protects the next person too.",
+          "hi": "मना करना आपको बचाता है। रिपोर्ट करना अगले व्यक्ति को भी बचाता है।",
+          "te": "వద్దనడం మిమ్మల్ని కాపాడుతుంది. రిపోర్ట్ చేయడం తర్వాతి వ్యక్తిని కూడా కాపాడుతుంది."
+        }
       }
     ]
   },
@@ -230,27 +472,42 @@
     "lesson": "L16",
     "ages": [20, 24],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
-    "title": { "en": "₹20 a year?" },
+    "title": { "en": "₹20 a year?", "hi": "₹20 सालाना?", "te": "ఏడాదికి ₹20?" },
     "text": {
-      "en": "{cast:banker} explains: [[pmsby]] is ₹20 a year, [[pmjjby]] is ₹436. She can also update the family's [[aarogyasri]] card. Ammamma suddenly leaves the room."
+      "en": "{cast:banker} explains: [[pmsby]] is ₹20 a year, [[pmjjby]] is ₹436. She can also update the family's [[aarogyasri]] card. Ammamma suddenly leaves the room.",
+      "hi": "{cast:banker} समझाती हैं: [[pmsby]] ₹20 सालाना है, [[pmjjby]] ₹436 है। वे परिवार का [[aarogyasri]] कार्ड भी अपडेट कर सकती हैं। अम्मम्मा अचानक कमरे से चली जाती हैं।",
+      "te": "{cast:banker} వివరిస్తుంది: [[pmsby]] ఏడాదికి ₹20, [[pmjjby]] ₹436. కుటుంబ [[aarogyasri]] కార్డు కూడా అప్‌డేట్ చేయగలదు. అమ్మమ్మ హఠాత్తుగా గదిలోంచి వెళ్లిపోతుంది."
     },
     "clarity": [
       {
-        "phrase": { "en": "[[pmsby]] is ₹20 a year" },
-        "truth": { "en": "It pays ₹2 lakh on accidental death or disability. It doesn't pay hospital bills." },
+        "phrase": { "en": "[[pmsby]] is ₹20 a year", "hi": "[[pmsby]] ₹20 सालाना है", "te": "[[pmsby]] ఏడాదికి ₹20" },
+        "truth": {
+          "en": "It pays ₹2 lakh on accidental death or disability. It doesn't pay hospital bills.",
+          "hi": "दुर्घटना में मृत्यु या विकलांगता पर ₹2 लाख देता है। अस्पताल के बिल नहीं भरता।",
+          "te": "ప్రమాదంలో మరణం లేదా వైకల్యానికి ₹2 లక్షలు. ఆసుపత్రి బిల్లులు కట్టదు."
+        },
         "lesson": "L16"
       },
       {
-        "phrase": { "en": "[[pmjjby]] is ₹436" },
-        "truth": { "en": "₹2 lakh life cover per year. It only pays if premiums are kept up." },
+        "phrase": { "en": "[[pmjjby]] is ₹436", "hi": "[[pmjjby]] ₹436 है", "te": "[[pmjjby]] ₹436" },
+        "truth": {
+          "en": "₹2 lakh life cover per year. It only pays if premiums are kept up.",
+          "hi": "साल में ₹2 लाख जीवन कवर। प्रीमियम भरते रहें तभी मिलता है।",
+          "te": "ఏడాదికి ₹2 లక్షల జీవిత బీమా. ప్రీమియం కడుతూ ఉంటేనే."
+        },
         "lesson": "L16"
       }
     ],
     "choices": [
       {
         "id": "enrol_all",
-        "label": { "en": "Enrol in both and update the family health card" },
+        "label": {
+          "en": "Enrol in both and update the family health card",
+          "hi": "दोनों में जुड़ें और परिवार का हेल्थ कार्ड अपडेट करें",
+          "te": "రెండింటిలో చేరి, కుటుంబ హెల్త్ కార్డు అప్‌డేట్ చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": {
@@ -259,18 +516,39 @@
           "gyaan": 3
         },
         "outcome": {
-          "en": "₹456 a year buys ₹4 lakh of cover. Months later, Ammamma's ₹48,000 hospital stay is paid by the health card."
+          "en": "₹456 a year buys ₹4 lakh of cover. Months later, Ammamma's ₹48,000 hospital stay is paid by the health card.",
+          "hi": "₹456 सालाना में ₹4 लाख का कवर। कुछ महीने बाद अम्मम्मा का ₹48,000 का अस्पताल खर्च हेल्थ कार्ड भरता है।",
+          "te": "ఏడాదికి ₹456కు ₹4 లక్షల బీమా. కొన్ని నెలల తర్వాత అమ్మమ్మ ₹48,000 ఆసుపత్రి ఖర్చు హెల్త్ కార్డు కడుతుంది."
         },
-        "why": { "en": "[[insurance]] is a small, sure cost against a big, rare one. Government schemes make it cheap." }
+        "why": {
+          "en": "[[insurance]] is a small, sure cost against a big, rare one. Government schemes make it cheap.",
+          "hi": "[[insurance]] बड़े, कभी-कभार के खर्च के खिलाफ़ छोटा, पक्का खर्च है। सरकारी योजनाएँ इसे सस्ता बनाती हैं।",
+          "te": "[[insurance]] పెద్ద, అరుదైన ఖర్చుకు వ్యతిరేకంగా చిన్న, ఖచ్చితమైన ఖర్చు. ప్రభుత్వ పథకాలు దీన్ని చౌక చేస్తాయి."
+        }
       },
       {
         "id": "skip",
-        "label": { "en": "Skip it. Nothing bad will happen" },
+        "label": { "en": "Skip it. Nothing bad will happen", "hi": "छोड़ें। कुछ बुरा नहीं होगा", "te": "వదిలేయండి. ఏమీ కాదు" },
         "quality": "risky",
         "effects": { "shock": { "kind": "health", "cost": 48000 }, "meters": { "family": -4, "health": -3 } },
-        "echo": { "level": 2, "hint": { "en": "Ammamma looks at you the way she looks at the sahukar's house." } },
-        "outcome": { "en": "Months later, Ammamma's hospital stay costs ₹48,000. Without the card, you pay it all." },
-        "why": { "en": "Nobody plans a hospital visit. Insurance is how you plan for one anyway." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Ammamma looks at you the way she looks at the sahukar's house.",
+            "hi": "अम्मम्मा आपको वैसे देखती हैं जैसे साहूकार के घर को देखती हैं।",
+            "te": "అమ్మమ్మ షావుకారు ఇంటిని చూసినట్టే మిమ్మల్ని చూస్తుంది."
+          }
+        },
+        "outcome": {
+          "en": "Months later, Ammamma's hospital stay costs ₹48,000. Without the card, you pay it all.",
+          "hi": "कुछ महीने बाद अम्मम्मा का अस्पताल खर्च ₹48,000 आता है। कार्ड के बिना सब आप भरते हैं।",
+          "te": "కొన్ని నెలల తర్వాత అమ్మమ్మ ఆసుపత్రి ఖర్చు ₹48,000. కార్డు లేకపోవడంతో అంతా మీరే కడతారు."
+        },
+        "why": {
+          "en": "Nobody plans a hospital visit. Insurance is how you plan for one anyway.",
+          "hi": "अस्पताल जाने का प्लान कोई नहीं बनाता। बीमा ही उसका प्लान है।",
+          "te": "ఆసుపత్రికి వెళ్లడం ఎవరూ ప్లాన్ చేయరు. బీమాయే దానికి ప్లాన్."
+        }
       }
     ]
   },
@@ -281,46 +559,98 @@
     "lesson": "L17",
     "ages": [20, 24],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
-    "title": { "en": "₹1,000 a month, where?" },
+    "title": { "en": "₹1,000 a month, where?", "hi": "₹1,000 महीना, कहाँ?", "te": "నెలకు ₹1,000, ఎక్కడ?" },
     "text": {
-      "en": "{cast:banker} shows a chart: [[fd]], [[rd]], [[ppf]], gold, and an [[index_fund]] [[sip]]. \"Index funds are market-linked. They swing, but over long periods they've grown more.\""
+      "en": "{cast:banker} shows a chart: [[fd]], [[rd]], [[ppf]], gold, and an [[index_fund]] [[sip]]. \"Index funds are market-linked. They swing, but over long periods they've grown more.\"",
+      "hi": "{cast:banker} एक चार्ट दिखाती हैं: [[fd]], [[rd]], [[ppf]], सोना, और [[index_fund]] [[sip]]। \"इंडेक्स फंड बाज़ार से जुड़े हैं। ऊपर-नीचे होते हैं, पर लंबे समय में ज़्यादा बढ़े हैं।\"",
+      "te": "{cast:banker} ఒక చార్ట్ చూపిస్తుంది: [[fd]], [[rd]], [[ppf]], బంగారం, [[index_fund]] [[sip]]. \"ఇండెక్స్ ఫండ్లు మార్కెట్‌తో ముడిపడి ఉంటాయి. ఊగుతాయి, కానీ దీర్ఘకాలంలో ఎక్కువ పెరిగాయి.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "Index funds are market-linked." },
-        "truth": { "en": "Some years they fall 20–30%. No return is guaranteed. Only invest money you won't need soon." },
+        "phrase": {
+          "en": "Index funds are market-linked.",
+          "hi": "इंडेक्स फंड बाज़ार से जुड़े हैं।",
+          "te": "ఇండెక్స్ ఫండ్లు మార్కెట్‌తో ముడిపడి ఉంటాయి."
+        },
+        "truth": {
+          "en": "Some years they fall 20–30%. No return is guaranteed. Only invest money you won't need soon.",
+          "hi": "कुछ साल 20–30% गिरते हैं। कोई रिटर्न पक्का नहीं। सिर्फ़ वही पैसा लगाएँ जो जल्दी न चाहिए।",
+          "te": "కొన్ని ఏళ్లు 20–30% పడతాయి. ఏ రాబడికీ హామీ లేదు. త్వరలో అవసరం లేని డబ్బే పెట్టండి."
+        },
         "lesson": "L17"
       }
     ],
     "choices": [
       {
         "id": "start_sip",
-        "label": { "en": "Start a ₹1,000 monthly index fund SIP now" },
+        "label": {
+          "en": "Start a ₹1,000 monthly index fund SIP now",
+          "hi": "अभी ₹1,000 महीने की इंडेक्स फंड SIP शुरू करें",
+          "te": "ఇప్పుడే నెలకు ₹1,000 ఇండెక్స్ ఫండ్ SIP మొదలుపెట్టండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "open": { "product": "sip_index", "amount": 1000 }, "flags": { "add": ["sip_started"] }, "gyaan": 3 },
-        "outcome": { "en": "If it averages 10% a year, ₹1,000 a month from 22 to 36 grows to about ₹3.6 lakh." },
-        "why": { "en": "Start early: time does more work than the amount. Expect bad years along the way." }
+        "outcome": {
+          "en": "If it averages 10% a year, ₹1,000 a month from 22 to 36 grows to about ₹3.6 lakh.",
+          "hi": "अगर औसत 10% सालाना रहे, तो 22 से 36 तक ₹1,000 महीना लगभग ₹3.6 लाख बन जाता है।",
+          "te": "సగటున ఏడాదికి 10% వస్తే, 22 నుంచి 36 వరకు నెలకు ₹1,000 సుమారు ₹3.6 లక్షలు అవుతుంది."
+        },
+        "why": {
+          "en": "Start early: time does more work than the amount. Expect bad years along the way.",
+          "hi": "जल्दी शुरू करें: समय रकम से ज़्यादा काम करता है। रास्ते में बुरे साल आएँगे, मानकर चलें।",
+          "te": "త్వరగా మొదలుపెట్టండి: మొత్తం కంటే సమయం ఎక్కువ పని చేస్తుంది. దారిలో చెడ్డ ఏళ్లు వస్తాయని అనుకోండి."
+        }
       },
       {
         "id": "fd_only",
-        "label": { "en": "Only a recurring deposit. No risk, ever" },
+        "label": {
+          "en": "Only a recurring deposit. No risk, ever",
+          "hi": "सिर्फ़ रेकरिंग डिपॉज़िट। कोई जोखिम कभी नहीं",
+          "te": "రికరింగ్ డిపాజిట్ మాత్రమే. రిస్క్ ఎప్పుడూ వద్దు"
+        },
         "quality": "neutral",
         "effects": { "open": { "product": "rd", "amount": 1000 }, "gyaan": 1 },
-        "outcome": { "en": "At about 7%, ₹1,000 a month for 14 years becomes about ₹2.8 lakh. Safer, slower." },
-        "why": { "en": "Safe options are fine for short goals. For long goals, very low risk can mean low growth." }
+        "outcome": {
+          "en": "At about 7%, ₹1,000 a month for 14 years becomes about ₹2.8 lakh. Safer, slower.",
+          "hi": "लगभग 7% पर 14 साल तक ₹1,000 महीना लगभग ₹2.8 लाख बनता है। सुरक्षित, धीमा।",
+          "te": "సుమారు 7% వద్ద 14 ఏళ్లు నెలకు ₹1,000 సుమారు ₹2.8 లక్షలు. భద్రం, నెమ్మది."
+        },
+        "why": {
+          "en": "Safe options are fine for short goals. For long goals, very low risk can mean low growth.",
+          "hi": "छोटे लक्ष्यों के लिए सुरक्षित विकल्प ठीक हैं। लंबे लक्ष्यों में बहुत कम जोखिम मतलब कम बढ़त।",
+          "te": "చిన్న లక్ష్యాలకు భద్రమైనవి సరే. దీర్ఘ లక్ష్యాలకు చాలా తక్కువ రిస్క్ అంటే తక్కువ పెరుగుదల."
+        }
       },
       {
         "id": "wait",
-        "label": { "en": "Wait until 30, when you'll earn more" },
+        "label": {
+          "en": "Wait until 30, when you'll earn more",
+          "hi": "30 तक रुकें, तब ज़्यादा कमाएँगे",
+          "te": "30 వరకు ఆగండి, అప్పుడు ఎక్కువ సంపాదిస్తారు"
+        },
         "quality": "risky",
         "effects": { "meters": { "joy": 2 } },
-        "echo": { "level": 2, "hint": { "en": "Every year you wait, the finish line moves." } },
-        "outcome": {
-          "en": "Starting at 30 with ₹2,000 a month at 10% gives about ₹2 lakh by 36. Double the money, half the result."
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Every year you wait, the finish line moves.",
+            "hi": "हर साल रुकने पर मंज़िल आगे खिसकती है।",
+            "te": "ఆగిన ప్రతి ఏడాది గమ్యం దూరమవుతుంది."
+          }
         },
-        "why": { "en": "Compound growth needs time. Starting late costs more than starting small." }
+        "outcome": {
+          "en": "Starting at 30 with ₹2,000 a month at 10% gives about ₹2 lakh by 36. Double the money, half the result.",
+          "hi": "30 से ₹2,000 महीना, 10% पर, 36 तक लगभग ₹2 लाख देता है। पैसा दोगुना, नतीजा आधा।",
+          "te": "30 నుంచి నెలకు ₹2,000, 10% వద్ద, 36కి సుమారు ₹2 లక్షలు. డబ్బు రెట్టింపు, ఫలితం సగం."
+        },
+        "why": {
+          "en": "Compound growth needs time. Starting late costs more than starting small.",
+          "hi": "चक्रवृद्धि बढ़त को समय चाहिए। देर से शुरू करना छोटे से शुरू करने से महँगा है।",
+          "te": "చక్రవడ్డీ పెరుగుదలకు సమయం కావాలి. ఆలస్యంగా మొదలుపెట్టడం చిన్నగా మొదలుపెట్టడం కంటే ఖరీదు."
+        }
       }
     ]
   },
@@ -331,44 +661,94 @@
     "lesson": "L07",
     "ages": [19, 23],
     "weight": 1,
+    "location": "home",
     "speaker": "sibling",
-    "title": { "en": "Chinni wants a phone" },
+    "title": { "en": "Chinni wants a phone", "hi": "चिन्नी को फ़ोन चाहिए", "te": "చిన్నికి ఫోన్ కావాలి" },
     "text": {
-      "en": "{cast:sibling} holds up a flyer. \"Only ₹999 a month for 15 months! Everyone in my class has one. Can I?\""
+      "en": "{cast:sibling} holds up a flyer. \"Only ₹999 a month for 15 months! Everyone in my class has one. Can I?\"",
+      "hi": "{cast:sibling} एक पर्चा दिखाती है। \"15 महीने सिर्फ़ ₹999 महीना! मेरी क्लास में सबके पास है। ले लूँ?\"",
+      "te": "{cast:sibling} ఒక కరపత్రం చూపిస్తుంది. \"15 నెలలు నెలకు ₹999 మాత్రమే! మా క్లాస్‌లో అందరి దగ్గరా ఉంది. తీసుకోనా?\""
     },
     "clarity": [
       {
-        "phrase": { "en": "Only ₹999 a month for 15 months!" },
-        "truth": { "en": "₹999 × 15 = ₹14,985 for a ₹12,000 phone." },
+        "phrase": {
+          "en": "Only ₹999 a month for 15 months!",
+          "hi": "15 महीने सिर्फ़ ₹999 महीना!",
+          "te": "15 నెలలు నెలకు ₹999 మాత్రమే!"
+        },
+        "truth": {
+          "en": "₹999 × 15 = ₹14,985 for a ₹12,000 phone.",
+          "hi": "₹999 × 15 = ₹12,000 के फ़ोन के ₹14,985।",
+          "te": "₹999 × 15 = ₹12,000 ఫోన్‌కు ₹14,985."
+        },
         "lesson": "L07"
       }
     ],
     "choices": [
       {
         "id": "show_total",
-        "label": { "en": "Show her the total, then help her save for it" },
+        "label": {
+          "en": "Show her the total, then help her save for it",
+          "hi": "उसे कुल रकम दिखाएँ, फिर बचाने में मदद करें",
+          "te": "మొత్తం చూపించి, పొదుపులో సాయం చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "meters": { "family": 4 }, "gyaan": 2 },
-        "outcome": { "en": "She works it out: ₹2,985 extra. She saves ₹1,000 a month and buys it in a year." },
-        "why": { "en": "Teaching it proves you know it. Multiply the EMI by the months, every time." }
+        "outcome": {
+          "en": "She works it out: ₹2,985 extra. She saves ₹1,000 a month and buys it in a year.",
+          "hi": "वह हिसाब लगाती है: ₹2,985 ज़्यादा। वह ₹1,000 महीना बचाती है और एक साल में खरीद लेती है।",
+          "te": "ఆమె లెక్కిస్తుంది: ₹2,985 ఎక్కువ. నెలకు ₹1,000 పొదుపు చేసి ఏడాదిలో కొంటుంది."
+        },
+        "why": {
+          "en": "Teaching it proves you know it. Multiply the EMI by the months, every time.",
+          "hi": "सिखा पाना साबित करता है कि आप जानते हैं। हर बार EMI को महीनों से गुणा करें।",
+          "te": "నేర్పించగలిగితే మీకు తెలుసని రుజువు. ప్రతిసారీ EMIని నెలలతో గుణించండి."
+        }
       },
       {
         "id": "say_yes",
-        "label": { "en": "\"Sure, it's only ₹999\"" },
+        "label": { "en": "\"Sure, it's only ₹999\"", "hi": "\"हाँ, बस ₹999 ही तो है\"", "te": "\"సరే, ₹999 మాత్రమేగా\"" },
         "quality": "bad",
         "effects": { "meters": { "family": 2 } },
-        "outcome": { "en": "She pays ₹14,985 for a ₹12,000 phone, and misses two EMIs during exams." },
-        "why": { "en": "\"Only ₹X a month\" is the trick you once learnt. Don't pass it on." }
+        "outcome": {
+          "en": "She pays ₹14,985 for a ₹12,000 phone, and misses two EMIs during exams.",
+          "hi": "वह ₹12,000 के फ़ोन के ₹14,985 देती है, और परीक्षा के दौरान दो EMI चूक जाती है।",
+          "te": "ఆమె ₹12,000 ఫోన్‌కు ₹14,985 కడుతుంది, పరీక్షల సమయంలో రెండు EMIలు తప్పుతుంది."
+        },
+        "why": {
+          "en": "\"Only ₹X a month\" is the trick you once learnt. Don't pass it on.",
+          "hi": "\"सिर्फ़ ₹X महीना\" वही चाल है जो आपने कभी सीखी थी। इसे आगे मत बढ़ाइए।",
+          "te": "\"నెలకు ₹X మాత్రమే\" మీరు ఒకప్పుడు నేర్చుకున్న ట్రిక్కే. దాన్ని ముందుకు పంపకండి."
+        }
       },
       {
         "id": "buy_for_her",
-        "label": { "en": "Buy it for her on your credit card" },
+        "label": {
+          "en": "Buy it for her on your credit card",
+          "hi": "अपने क्रेडिट कार्ड से उसके लिए खरीद दें",
+          "te": "మీ క్రెడిట్ కార్డుతో ఆమెకు కొనివ్వండి"
+        },
         "quality": "risky",
         "effects": { "loan": { "source": "credit_card", "principal": 12000, "months": 12 }, "meters": { "family": 5 } },
-        "echo": { "level": 1, "hint": { "en": "A gift on credit is a debt with a bow on it." } },
-        "outcome": { "en": "She's thrilled. Paying only the minimum, the ₹12,000 costs you about ₹2,900 in interest." },
-        "why": { "en": "Kindness on a 42% card is expensive kindness." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "A gift on credit is a debt with a bow on it.",
+            "hi": "उधार का तोहफ़ा, रिबन बँधा कर्ज़ है।",
+            "te": "అప్పుతో బహుమతి అంటే రిబ్బన్ కట్టిన అప్పు."
+          }
+        },
+        "outcome": {
+          "en": "She's thrilled. Paying only the minimum, the ₹12,000 costs you about ₹2,900 in interest.",
+          "hi": "वह बहुत खुश है। सिर्फ़ मिनिमम चुकाने पर ₹12,000 आपको ब्याज में लगभग ₹2,900 पड़ते हैं।",
+          "te": "ఆమె చాలా సంతోషం. కనీసమే కడితే ₹12,000కు వడ్డీగా సుమారు ₹2,900 అవుతుంది."
+        },
+        "why": {
+          "en": "Kindness on a 42% card is expensive kindness.",
+          "hi": "42% वाले कार्ड पर दयालुता महँगी दयालुता है।",
+          "te": "42% కార్డుపై దయ ఖరీదైన దయ."
+        }
       }
     ]
   },
@@ -379,37 +759,70 @@
     "lesson": "L09",
     "ages": [20, 24],
     "weight": 1,
+    "location": "phone",
     "speaker": "sibling",
-    "title": { "en": "Chinni's scholarship QR" },
+    "title": { "en": "Chinni's scholarship QR", "hi": "चिन्नी का स्कॉलरशिप QR", "te": "చిన్ని స్కాలర్‌షిప్ QR" },
     "text": {
-      "en": "{cast:sibling} calls, excited. \"A scholarship office sent a [[qr_code]]. Scan and enter PIN to receive ₹5,000! Should I?\""
+      "en": "{cast:sibling} calls, excited. \"A scholarship office sent a [[qr_code]]. Scan and enter PIN to receive ₹5,000! Should I?\"",
+      "hi": "{cast:sibling} उत्साह में फ़ोन करती है। \"स्कॉलरशिप दफ़्तर ने [[qr_code]] भेजा है। स्कैन करो और ₹5,000 पाने के लिए PIN डालो! करूँ?\"",
+      "te": "{cast:sibling} ఉత్సాహంగా ఫోన్ చేస్తుంది. \"స్కాలర్‌షిప్ ఆఫీస్ [[qr_code]] పంపింది. స్కాన్ చేసి ₹5,000 కోసం PIN వేయి! చేయనా?\""
     },
     "clarity": [
       {
-        "phrase": { "en": "Scan and enter PIN to receive ₹5,000!" },
-        "truth": { "en": "Scanning a QR and entering a PIN always pays OUT. Scholarships go straight to your account." },
+        "phrase": {
+          "en": "Scan and enter PIN to receive ₹5,000!",
+          "hi": "स्कैन करो और ₹5,000 पाने के लिए PIN डालो!",
+          "te": "స్కాన్ చేసి ₹5,000 కోసం PIN వేయి!"
+        },
+        "truth": {
+          "en": "Scanning a QR and entering a PIN always pays OUT. Scholarships go straight to your account.",
+          "hi": "QR स्कैन करके PIN डालने से हमेशा पैसा जाता है। स्कॉलरशिप सीधे खाते में आती है।",
+          "te": "QR స్కాన్ చేసి PIN వేస్తే ఎప్పుడూ డబ్బు బయటికే. స్కాలర్‌షిప్ నేరుగా ఖాతాలోకి వస్తుంది."
+        },
         "lesson": "L09"
       }
     ],
     "choices": [
       {
         "id": "explain",
-        "label": { "en": "\"Never a PIN to receive. Let's check with your college.\"" },
+        "label": {
+          "en": "\"Never a PIN to receive. Let's check with your college.\"",
+          "hi": "\"पैसे लेने के लिए कभी PIN नहीं। चलो कॉलेज से पूछते हैं।\"",
+          "te": "\"డబ్బు తీసుకోవడానికి ఎప్పుడూ PIN కాదు. కాలేజీని అడుగుదాం.\""
+        },
         "quality": "good",
         "default": true,
         "effects": { "meters": { "family": 4 }, "gyaan": 3 },
         "outcome": {
-          "en": "The college confirms: scholarships come by bank transfer. Chinni keeps her ₹5,000 savings and warns her hostel."
+          "en": "The college confirms: scholarships come by bank transfer. Chinni keeps her ₹5,000 savings and warns her hostel.",
+          "hi": "कॉलेज पुष्टि करता है: स्कॉलरशिप बैंक ट्रांसफ़र से आती है। चिन्नी के ₹5,000 बचते हैं और वह हॉस्टल को सावधान करती है।",
+          "te": "కాలేజీ చెబుతుంది: స్కాలర్‌షిప్ బ్యాంక్ ట్రాన్స్‌ఫర్‌తో వస్తుంది. చిన్ని ₹5,000 భద్రం, హాస్టల్‌ను హెచ్చరిస్తుంది."
         },
-        "why": { "en": "You receive money with your UPI ID or account number only. A PIN means money is leaving." }
+        "why": {
+          "en": "You receive money with your UPI ID or account number only. A PIN means money is leaving.",
+          "hi": "पैसा सिर्फ़ UPI ID या खाता नंबर से आता है। PIN का मतलब है पैसा जा रहा है।",
+          "te": "UPI ID లేదా ఖాతా నంబర్‌తోనే డబ్బు వస్తుంది. PIN అంటే డబ్బు వెళ్తోందని."
+        }
       },
       {
         "id": "go_ahead",
-        "label": { "en": "\"Scholarships are real, go ahead\"" },
+        "label": {
+          "en": "\"Scholarships are real, go ahead\"",
+          "hi": "\"स्कॉलरशिप असली होती हैं, कर लो\"",
+          "te": "\"స్కాలర్‌షిప్‌లు నిజమే, చేసేయ్\""
+        },
         "quality": "bad",
         "effects": { "meters": { "family": -5 } },
-        "outcome": { "en": "₹5,000 leaves her account. You both call 1930 and ₹2,000 is frozen in time." },
-        "why": { "en": "The scam works because it sounds official. The PIN is always the giveaway." }
+        "outcome": {
+          "en": "₹5,000 leaves her account. You both call 1930 and ₹2,000 is frozen in time.",
+          "hi": "उसके खाते से ₹5,000 जाते हैं। आप दोनों 1930 पर फ़ोन करते हैं और ₹2,000 समय पर फ़्रीज़ हो जाते हैं।",
+          "te": "ఆమె ఖాతా నుంచి ₹5,000 పోతాయి. ఇద్దరూ 1930కి ఫోన్ చేస్తారు, ₹2,000 సమయానికి ఫ్రీజ్."
+        },
+        "why": {
+          "en": "The scam works because it sounds official. The PIN is always the giveaway.",
+          "hi": "ठगी इसलिए चलती है क्योंकि वह सरकारी लगती है। PIN हमेशा पोल खोल देता है।",
+          "te": "మోసం అధికారికంగా అనిపించడం వల్లే పని చేస్తుంది. PIN ఎప్పుడూ బయటపెట్టేస్తుంది."
+        }
       }
     ]
   },
@@ -420,28 +833,54 @@
     "lesson": "L10",
     "ages": [21, 22],
     "weight": 1,
+    "location": "school",
     "speaker": "mentor",
-    "title": { "en": "Graduation day" },
+    "title": { "en": "Graduation day", "hi": "दीक्षांत का दिन", "te": "స్నాతకోత్సవం రోజు" },
     "text": {
-      "en": "Degree done! A company in Hyderabad offers ₹18,000 a month. Your education loan EMI of about ₹3,580 starts next year, interest included."
+      "en": "Degree done! A company in Hyderabad offers ₹18,000 a month. Your education loan EMI of about ₹3,580 starts next year, interest included.",
+      "hi": "डिग्री पूरी! हैदराबाद की एक कंपनी ₹18,000 महीने का ऑफ़र देती है। ब्याज मिलाकर लगभग ₹3,580 की शिक्षा ऋण EMI अगले साल से शुरू।",
+      "te": "డిగ్రీ పూర్తి! హైదరాబాద్ కంపెనీ నెలకు ₹18,000 ఆఫర్ ఇస్తుంది. వడ్డీతో కలిపి సుమారు ₹3,580 విద్యా రుణం EMI వచ్చే ఏడాది నుంచి."
     },
     "choices": [
       {
         "id": "take_job",
-        "label": { "en": "Take the job and set up the EMI on auto-debit" },
+        "label": {
+          "en": "Take the job and set up the EMI on auto-debit",
+          "hi": "नौकरी लें और EMI ऑटो-डेबिट पर लगाएँ",
+          "te": "ఉద్యోగంలో చేరి, EMIని ఆటో-డెబిట్‌లో పెట్టండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "income": { "monthly": 18000, "source": "job_graduate" }, "meters": { "joy": 8, "family": 6 } },
-        "outcome": { "en": "Ammamma wears her best saree to the ceremony. The EMI is about 20% of your pay." },
-        "why": { "en": "Good debt: the loan raised your income far more than it costs." }
+        "outcome": {
+          "en": "Ammamma wears her best saree to the ceremony. The EMI is about 20% of your pay.",
+          "hi": "अम्मम्मा समारोह में अपनी सबसे अच्छी साड़ी पहनती हैं। EMI आपकी तनख्वाह का लगभग 20% है।",
+          "te": "అమ్మమ్మ వేడుకకు తన మంచి చీర కట్టుకుంటుంది. EMI మీ జీతంలో సుమారు 20%."
+        },
+        "why": {
+          "en": "Good debt: the loan raised your income far more than it costs.",
+          "hi": "अच्छा कर्ज़: कर्ज़ ने आपकी कमाई उसकी कीमत से कहीं ज़्यादा बढ़ाई।",
+          "te": "మంచి అప్పు: అప్పు ఖర్చు కంటే చాలా ఎక్కువగా మీ ఆదాయం పెరిగింది."
+        }
       },
       {
         "id": "wait_better",
-        "label": { "en": "Wait six months for a better offer" },
+        "label": {
+          "en": "Wait six months for a better offer",
+          "hi": "बेहतर ऑफ़र के लिए छह महीने रुकें",
+          "te": "మంచి ఆఫర్ కోసం ఆరు నెలలు ఆగండి"
+        },
         "quality": "risky",
         "effects": { "income": { "monthly": 4000, "source": "tuition_part_time" }, "meters": { "joy": -3 } },
-        "echo": { "level": 1, "hint": { "en": "The EMI won't wait with you." } },
-        "outcome": { "en": "Six months of ₹4,000 tuition income while the loan's interest keeps adding up." }
+        "echo": {
+          "level": 1,
+          "hint": { "en": "The EMI won't wait with you.", "hi": "EMI आपके साथ नहीं रुकेगी।", "te": "EMI మీతో పాటు ఆగదు." }
+        },
+        "outcome": {
+          "en": "Six months of ₹4,000 tuition income while the loan's interest keeps adding up.",
+          "hi": "छह महीने ₹4,000 की ट्यूशन कमाई, और कर्ज़ का ब्याज बढ़ता रहता है।",
+          "te": "ఆరు నెలలు ₹4,000 ట్యూషన్ ఆదాయం, అప్పు వడ్డీ పెరుగుతూనే ఉంది."
+        }
       }
     ]
   },
@@ -452,15 +891,18 @@
     "lesson": "L08",
     "ages": [21, 23],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
-    "title": { "en": "The ceiling" },
+    "title": { "en": "The ceiling", "hi": "छत", "te": "ఎదుగుదల పరిమితి" },
     "text": {
-      "en": "Four years at the mill. A supervisor post opens at ₹17,000, but only for diploma holders. An evening diploma costs ₹15,000 a year."
+      "en": "Four years at the mill. A supervisor post opens at ₹17,000, but only for diploma holders. An evening diploma costs ₹15,000 a year.",
+      "hi": "मिल में चार साल। ₹17,000 का सुपरवाइज़र पद खुलता है, पर सिर्फ़ डिप्लोमा वालों के लिए। शाम का डिप्लोमा ₹15,000 सालाना है।",
+      "te": "మిల్లులో నాలుగేళ్లు. ₹17,000 సూపర్‌వైజర్ పోస్ట్, కానీ డిప్లొమా ఉన్నవాళ్లకే. సాయంత్రం డిప్లొమా ఏడాదికి ₹15,000."
     },
     "choices": [
       {
         "id": "evening_diploma",
-        "label": { "en": "Do the evening diploma" },
+        "label": { "en": "Do the evening diploma", "hi": "शाम का डिप्लोमा करें", "te": "సాయంత్రం డిప్లొమా చేయండి" },
         "quality": "good",
         "default": true,
         "effects": {
@@ -469,15 +911,27 @@
           "meters": { "health": -3 },
           "gyaan": 2
         },
-        "outcome": { "en": "Tired evenings, ₹15,000 fees. A raise to ₹15,000 now, and the supervisor post is in sight." },
-        "why": { "en": "Paying for a skill is an investment. It pays back every month for years." }
+        "outcome": {
+          "en": "Tired evenings, ₹15,000 fees. A raise to ₹15,000 now, and the supervisor post is in sight.",
+          "hi": "थकी शामें, ₹15,000 फ़ीस। अभी ₹15,000 तक तरक्की, और सुपरवाइज़र पद नज़र में।",
+          "te": "అలసిన సాయంత్రాలు, ₹15,000 ఫీజు. ఇప్పుడే ₹15,000కి జీతం పెంపు, సూపర్‌వైజర్ పోస్ట్ కనుచూపులో."
+        },
+        "why": {
+          "en": "Paying for a skill is an investment. It pays back every month for years.",
+          "hi": "हुनर के लिए पैसा देना निवेश है। यह सालों तक हर महीने लौटता है।",
+          "te": "నైపుణ్యానికి కట్టడం పెట్టుబడి. ఏళ్ల పాటు ప్రతి నెలా తిరిగొస్తుంది."
+        }
       },
       {
         "id": "stay",
-        "label": { "en": "Stay as you are" },
+        "label": { "en": "Stay as you are", "hi": "जैसे हैं वैसे रहें", "te": "ఇలాగే ఉండండి" },
         "quality": "neutral",
         "effects": { "meters": { "joy": 1 } },
-        "outcome": { "en": "₹11,000 a month, steady. The new supervisor is 20 years old." }
+        "outcome": {
+          "en": "₹11,000 a month, steady. The new supervisor is 20 years old.",
+          "hi": "₹11,000 महीना, स्थिर। नया सुपरवाइज़र 20 साल का है।",
+          "te": "నెలకు ₹11,000, స్థిరం. కొత్త సూపర్‌వైజర్ వయసు 20."
+        }
       }
     ]
   },
@@ -488,26 +942,45 @@
     "lesson": "L08",
     "ages": [20, 21],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
-    "title": { "en": "Licensed electrician" },
+    "title": { "en": "Licensed electrician", "hi": "लाइसेंस वाला इलेक्ट्रीशियन", "te": "లైసెన్స్ ఎలక్ట్రీషియన్" },
     "text": {
-      "en": "ITI certificate in hand. A solar company hires you at ₹16,000 a month. The village calls you for every fan and fuse."
+      "en": "ITI certificate in hand. A solar company hires you at ₹16,000 a month. The village calls you for every fan and fuse.",
+      "hi": "हाथ में ITI सर्टिफ़िकेट। एक सोलर कंपनी ₹16,000 महीने पर रखती है। गाँव हर पंखे और फ़्यूज़ के लिए आपको बुलाता है।",
+      "te": "చేతిలో ITI సర్టిఫికెట్. ఒక సోలార్ కంపెనీ నెలకు ₹16,000కు పెట్టుకుంటుంది. ఊరు ప్రతి ఫ్యాన్, ఫ్యూజ్‌కు మిమ్మల్నే పిలుస్తుంది."
     },
     "choices": [
       {
         "id": "take_job",
-        "label": { "en": "Take the job, do village repairs on Sundays" },
+        "label": {
+          "en": "Take the job, do village repairs on Sundays",
+          "hi": "नौकरी लें, रविवार को गाँव की मरम्मत करें",
+          "te": "ఉద్యోగంలో చేరి, ఆదివారాల్లో ఊరి రిపేర్లు చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "income": { "monthly": 16000, "source": "job_electrician" }, "meters": { "joy": 6, "family": 5 } },
-        "outcome": { "en": "₹16,000 a month plus about ₹1,500 from Sunday repairs. Bujji's shed finally has a light." }
+        "outcome": {
+          "en": "₹16,000 a month plus about ₹1,500 from Sunday repairs. Bujji's shed finally has a light.",
+          "hi": "₹16,000 महीना और रविवार की मरम्मत से लगभग ₹1,500। बुज्जी के बाड़े में आखिर बल्ब लग गया।",
+          "te": "నెలకు ₹16,000, ఆదివారం రిపేర్లతో సుమారు ₹1,500. బుజ్జి పాకకు చివరికి లైట్ వచ్చింది."
+        }
       },
       {
         "id": "free_repairs",
-        "label": { "en": "Take the job, do village repairs for free" },
+        "label": {
+          "en": "Take the job, do village repairs for free",
+          "hi": "नौकरी लें, गाँव की मरम्मत मुफ़्त करें",
+          "te": "ఉద్యోగంలో చేరి, ఊరి రిపేర్లు ఉచితంగా చేయండి"
+        },
         "quality": "neutral",
         "effects": { "income": { "monthly": 16000, "source": "job_electrician" }, "meters": { "family": 8, "health": -3 } },
-        "outcome": { "en": "₹16,000 a month and the most popular person in Mallepalli. Also the most tired." }
+        "outcome": {
+          "en": "₹16,000 a month and the most popular person in Mallepalli. Also the most tired.",
+          "hi": "₹16,000 महीना और मल्लेपल्ली का सबसे लोकप्रिय व्यक्ति। सबसे थका हुआ भी।",
+          "te": "నెలకు ₹16,000, మల్లేపల్లిలో అందరికీ ఇష్టమైన వ్యక్తి. అందరికంటే అలసినవారు కూడా."
+        }
       }
     ]
   },
@@ -518,15 +991,22 @@
     "lesson": "L15",
     "ages": [19, 21],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
-    "title": { "en": "The office is raided" },
+    "title": { "en": "The office is raided", "hi": "दफ़्तर पर छापा", "te": "ఆఫీసుపై దాడి" },
     "text": {
-      "en": "Police raid Prakash's \"office\". It was a fake loan-app call centre. Prakash has vanished. You and Chintu are taken in for questioning."
+      "en": "Police raid Prakash's \"office\". It was a fake loan-app call centre. Prakash has vanished. You and Chintu are taken in for questioning.",
+      "hi": "पुलिस प्रकाश के \"दफ़्तर\" पर छापा मारती है। वह नकली लोन-ऐप कॉल सेंटर था। प्रकाश गायब है। आपको और चिंटू को पूछताछ के लिए ले जाया जाता है।",
+      "te": "పోలీసులు ప్రకాష్ \"ఆఫీసు\"పై దాడి చేస్తారు. అది నకిలీ లోన్-యాప్ కాల్ సెంటర్. ప్రకాష్ మాయం. మిమ్మల్ని, చింటూని విచారణకు తీసుకెళ్తారు."
     },
     "choices": [
       {
         "id": "tell_truth",
-        "label": { "en": "Tell the police everything you know" },
+        "label": {
+          "en": "Tell the police everything you know",
+          "hi": "पुलिस को जो जानते हैं सब बताएँ",
+          "te": "మీకు తెలిసింది అంతా పోలీసులకు చెప్పండి"
+        },
         "quality": "good",
         "default": true,
         "effects": {
@@ -536,22 +1016,47 @@
           "gyaan": 3
         },
         "outcome": {
-          "en": "You're let go as a witness. You return home, help on the farm for ₹6,000, and join an evening ITI class."
+          "en": "You're let go as a witness. You return home, help on the farm for ₹6,000, and join an evening ITI class.",
+          "hi": "गवाह के तौर पर छोड़ दिया जाता है। घर लौटकर ₹6,000 में खेत पर मदद करते हैं, और शाम की ITI क्लास में जाते हैं।",
+          "te": "సాక్షిగా వదిలేస్తారు. ఇంటికి వచ్చి ₹6,000కు పొలంలో సాయం చేస్తారు, సాయంత్రం ITI క్లాస్‌లో చేరతారు."
         },
-        "why": { "en": "Coming clean early is the way back. Easy money from a stranger always has a hidden price." }
+        "why": {
+          "en": "Coming clean early is the way back. Easy money from a stranger always has a hidden price.",
+          "hi": "जल्दी सच बोलना ही वापसी का रास्ता है। अजनबी के आसान पैसे की हमेशा छुपी कीमत होती है।",
+          "te": "త్వరగా నిజం చెప్పడమే తిరిగి రావడానికి దారి. అపరిచితుడి సులువు డబ్బుకు ఎప్పుడూ దాగిన ధర ఉంటుంది."
+        }
       },
       {
         "id": "run",
-        "label": { "en": "Say nothing and leave town" },
+        "label": {
+          "en": "Say nothing and leave town",
+          "hi": "कुछ न कहें और शहर छोड़ दें",
+          "te": "ఏమీ చెప్పకుండా ఊరు విడిచి వెళ్లండి"
+        },
         "quality": "bad",
         "effects": {
           "income": { "monthly": 7000, "source": "daily_wage" },
           "flags": { "add": ["legal_fraud"] },
           "meters": { "family": -8, "health": -5 }
         },
-        "echo": { "level": 3, "hint": { "en": "Your name is still in the office register." } },
-        "outcome": { "en": "Daily-wage work at ₹7,000 a month, and a police notice that follows you for years." },
-        "why": { "en": "Running makes you look guilty. There is still a way back: a lawyer and the truth." }
+        "echo": {
+          "level": 3,
+          "hint": {
+            "en": "Your name is still in the office register.",
+            "hi": "आपका नाम अब भी दफ़्तर के रजिस्टर में है।",
+            "te": "మీ పేరు ఇంకా ఆఫీసు రిజిస్టర్‌లో ఉంది."
+          }
+        },
+        "outcome": {
+          "en": "Daily-wage work at ₹7,000 a month, and a police notice that follows you for years.",
+          "hi": "₹7,000 महीने की दिहाड़ी, और पुलिस नोटिस जो सालों पीछा करता है।",
+          "te": "నెలకు ₹7,000 రోజు కూలీ పని, ఏళ్ల తరబడి వెంటాడే పోలీసు నోటీసు."
+        },
+        "why": {
+          "en": "Running makes you look guilty. There is still a way back: a lawyer and the truth.",
+          "hi": "भागने से आप दोषी लगते हैं। वापसी का रास्ता अब भी है: एक वकील और सच।",
+          "te": "పారిపోతే దోషిలా కనిపిస్తారు. తిరిగి రావడానికి ఇంకా దారి ఉంది: ఒక లాయర్, నిజం."
+        }
       }
     ]
   },
@@ -562,21 +1067,38 @@
     "lesson": "L13",
     "ages": [20, 24],
     "weight": 1,
+    "location": "square",
     "speaker": "narrator",
-    "title": { "en": "The bike breaks down" },
-    "text": { "en": "Your bike's engine seizes on the way to work. Repair: ₹10,000. Your emergency jar is almost empty." },
+    "title": { "en": "The bike breaks down", "hi": "बाइक खराब हो गई", "te": "బైక్ పాడైంది" },
+    "text": {
+      "en": "Your bike's engine seizes on the way to work. Repair: ₹10,000. Your emergency jar is almost empty.",
+      "hi": "काम पर जाते हुए बाइक का इंजन जाम हो जाता है। मरम्मत: ₹10,000। आपका आपात डिब्बा लगभग खाली है।",
+      "te": "పనికి వెళ్తుంటే బైక్ ఇంజన్ పట్టేసింది. రిపేర్: ₹10,000. మీ అత్యవసర డబ్బా దాదాపు ఖాళీ."
+    },
     "choices": [
       {
         "id": "pay_somehow",
-        "label": { "en": "Pay it, from whatever savings you have" },
+        "label": {
+          "en": "Pay it, from whatever savings you have",
+          "hi": "जो भी बचत है, उससे भरें",
+          "te": "ఉన్న పొదుపుతో కట్టేయండి"
+        },
         "quality": "neutral",
         "default": true,
         "effects": { "shock": { "kind": "repair", "cost": 10000 } },
-        "outcome": { "en": "Savings pay first. Whatever is short of ₹10,000 is borrowed, at whatever rate is available." }
+        "outcome": {
+          "en": "Savings pay first. Whatever is short of ₹10,000 is borrowed, at whatever rate is available.",
+          "hi": "पहले बचत। ₹10,000 में जो कम पड़े, वह जो दर मिले उस पर उधार लिया जाता है।",
+          "te": "ముందు పొదుపు. ₹10,000లో తక్కువపడింది దొరికిన రేటుకు అప్పు."
+        }
       },
       {
         "id": "bus_and_rebuild",
-        "label": { "en": "Take the bus for two months and start the emergency fund now" },
+        "label": {
+          "en": "Take the bus for two months and start the emergency fund now",
+          "hi": "दो महीने बस से जाएँ और अभी से आपात फंड शुरू करें",
+          "te": "రెండు నెలలు బస్సులో వెళ్లి, ఇప్పుడే అత్యవసర నిధి మొదలుపెట్టండి"
+        },
         "quality": "good",
         "effects": {
           "cash": -1200,
@@ -585,8 +1107,16 @@
           "flags": { "add": ["has_emergency_fund"] },
           "lesson": "applied"
         },
-        "outcome": { "en": "₹1,200 in bus fares instead of a ₹10,000 loan. Your fund starts at ₹2,000." },
-        "why": { "en": "A crisis is a good time to start a cushion, not a loan." }
+        "outcome": {
+          "en": "₹1,200 in bus fares instead of a ₹10,000 loan. Your fund starts at ₹2,000.",
+          "hi": "₹10,000 के कर्ज़ के बजाय ₹1,200 बस किराया। आपका फंड ₹2,000 से शुरू।",
+          "te": "₹10,000 అప్పు బదులు ₹1,200 బస్ ఛార్జీ. మీ నిధి ₹2,000తో మొదలు."
+        },
+        "why": {
+          "en": "A crisis is a good time to start a cushion, not a loan.",
+          "hi": "संकट गद्दी शुरू करने का अच्छा समय है, कर्ज़ का नहीं।",
+          "te": "కష్టకాలం భద్రతా నిధి మొదలుపెట్టడానికి మంచి సమయం, అప్పుకు కాదు."
+        }
       }
     ]
   },
@@ -597,15 +1127,22 @@
     "lesson": "L15",
     "ages": [19, 24],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
-    "title": { "en": "Account frozen" },
+    "title": { "en": "Account frozen", "hi": "खाता फ़्रीज़", "te": "ఖాతా ఫ్రీజ్" },
     "text": {
-      "en": "Your salary doesn't arrive. {cast:banker} looks worried. \"Your account is frozen. Cyber police traced ₹3.8 lakh of stolen money to it.\""
+      "en": "Your salary doesn't arrive. {cast:banker} looks worried. \"Your account is frozen. Cyber police traced ₹3.8 lakh of stolen money to it.\"",
+      "hi": "आपकी तनख्वाह नहीं आती। {cast:banker} चिंतित दिखती हैं। \"आपका खाता फ़्रीज़ है। साइबर पुलिस ने ₹3.8 लाख चोरी का पैसा इसमें ढूँढा है।\"",
+      "te": "మీ జీతం రాలేదు. {cast:banker} ఆందోళనగా ఉంది. \"మీ ఖాతా ఫ్రీజ్ అయింది. ₹3.8 లక్షల దొంగ డబ్బు దీనిలో ఉందని సైబర్ పోలీసులు కనుక్కున్నారు.\""
     },
     "choices": [
       {
         "id": "come_clean",
-        "label": { "en": "Go to the police with Kavitha akka and tell everything" },
+        "label": {
+          "en": "Go to the police with Kavitha akka and tell everything",
+          "hi": "कविता अक्का के साथ पुलिस के पास जाएँ और सब बताएँ",
+          "te": "కవిత అక్కతో పోలీసుల దగ్గరికి వెళ్లి అంతా చెప్పండి"
+        },
         "quality": "good",
         "default": true,
         "effects": {
@@ -615,17 +1152,40 @@
           "gyaan": 3,
           "lesson": "applied"
         },
-        "outcome": { "en": "You return the ₹5,000 and hand over Prakash's chats. After four months, your account opens again." },
-        "why": { "en": "The way back is the truth. Cooperating early made you a witness, not an accused." }
+        "outcome": {
+          "en": "You return the ₹5,000 and hand over Prakash's chats. After four months, your account opens again.",
+          "hi": "आप ₹5,000 लौटाते हैं और प्रकाश की चैट सौंपते हैं। चार महीने बाद खाता फिर खुलता है।",
+          "te": "₹5,000 తిరిగిచ్చి ప్రకాష్ చాట్‌లు అప్పగిస్తారు. నాలుగు నెలల తర్వాత ఖాతా మళ్లీ తెరుచుకుంటుంది."
+        },
+        "why": {
+          "en": "The way back is the truth. Cooperating early made you a witness, not an accused.",
+          "hi": "वापसी का रास्ता सच है। जल्दी सहयोग करने से आप गवाह बने, आरोपी नहीं।",
+          "te": "తిరిగి రావడానికి దారి నిజమే. త్వరగా సహకరించడంతో మీరు సాక్షి అయ్యారు, నిందితులు కాదు."
+        }
       },
       {
         "id": "deny",
-        "label": { "en": "Deny knowing anything" },
+        "label": { "en": "Deny knowing anything", "hi": "कुछ भी जानने से इनकार करें", "te": "ఏమీ తెలియదని చెప్పండి" },
         "quality": "bad",
         "effects": { "cash": -25000, "meters": { "family": -10, "health": -6 } },
-        "echo": { "level": 3, "hint": { "en": "The bank has every transaction." } },
-        "outcome": { "en": "The case drags on for two years. A lawyer costs ₹25,000. The truth comes out anyway." },
-        "why": { "en": "Bank records don't forget. It is still not too late to tell the truth." }
+        "echo": {
+          "level": 3,
+          "hint": {
+            "en": "The bank has every transaction.",
+            "hi": "बैंक के पास हर लेन-देन है।",
+            "te": "బ్యాంక్ దగ్గర ప్రతి లావాదేవీ ఉంది."
+          }
+        },
+        "outcome": {
+          "en": "The case drags on for two years. A lawyer costs ₹25,000. The truth comes out anyway.",
+          "hi": "केस दो साल चलता है। वकील ₹25,000 का पड़ता है। सच फिर भी सामने आता है।",
+          "te": "కేసు రెండేళ్లు సాగుతుంది. లాయర్‌కు ₹25,000. నిజం ఎలాగూ బయటపడుతుంది."
+        },
+        "why": {
+          "en": "Bank records don't forget. It is still not too late to tell the truth.",
+          "hi": "बैंक रिकॉर्ड नहीं भूलते। सच बताने में अब भी देर नहीं हुई।",
+          "te": "బ్యాంక్ రికార్డులు మర్చిపోవు. నిజం చెప్పడానికి ఇంకా ఆలస్యం కాలేదు."
+        }
       }
     ]
   },
@@ -636,28 +1196,55 @@
     "lesson": "L15",
     "ages": [19, 24],
     "weight": 1,
+    "location": "home",
     "speaker": "friend",
-    "title": { "en": "Chintu is scared" },
+    "title": { "en": "Chintu is scared", "hi": "चिंटू डरा हुआ है", "te": "చింటూ భయపడుతున్నాడు" },
     "text": {
-      "en": "{cast:friend} shows up at night, shaking. \"My account is frozen. Police called. Prakash isn't answering. What do I do, mama?\""
+      "en": "{cast:friend} shows up at night, shaking. \"My account is frozen. Police called. Prakash isn't answering. What do I do, mama?\"",
+      "hi": "{cast:friend} रात को काँपता हुआ आता है। \"मेरा खाता फ़्रीज़ है। पुलिस का फ़ोन आया। प्रकाश जवाब नहीं दे रहा। क्या करूँ, मामा?\"",
+      "te": "{cast:friend} రాత్రి వణుకుతూ వస్తాడు. \"నా ఖాతా ఫ్రీజ్ అయింది. పోలీసులు ఫోన్ చేశారు. ప్రకాష్ ఎత్తడం లేదు. ఏం చేయాలి మామా?\""
     },
     "choices": [
       {
         "id": "help_him",
-        "label": { "en": "Take him to the police and help him tell the truth" },
+        "label": {
+          "en": "Take him to the police and help him tell the truth",
+          "hi": "उसे पुलिस के पास ले जाएँ और सच बताने में मदद करें",
+          "te": "అతన్ని పోలీసుల దగ్గరికి తీసుకెళ్లి నిజం చెప్పడానికి సాయం చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "meters": { "family": 3, "joy": -2 }, "gyaan": 3, "lesson": "applied", "flags": { "add": ["helped_chintu"] } },
-        "outcome": { "en": "Chintu returns his ₹5,000 commission and gives Prakash's number. He's treated as a witness." },
-        "why": { "en": "Every bad path has a way back. Often it starts with one friend saying, \"Let's go together.\"" }
+        "outcome": {
+          "en": "Chintu returns his ₹5,000 commission and gives Prakash's number. He's treated as a witness.",
+          "hi": "चिंटू अपना ₹5,000 कमीशन लौटाता है और प्रकाश का नंबर देता है। उसे गवाह माना जाता है।",
+          "te": "చింటూ తన ₹5,000 కమిషన్ తిరిగిచ్చి ప్రకాష్ నంబర్ ఇస్తాడు. అతన్ని సాక్షిగా చూస్తారు."
+        },
+        "why": {
+          "en": "Every bad path has a way back. Often it starts with one friend saying, \"Let's go together.\"",
+          "hi": "हर बुरे रास्ते से वापसी है। अक्सर यह एक दोस्त के \"चलो साथ चलते हैं\" से शुरू होती है।",
+          "te": "ప్రతి చెడ్డ దారికీ తిరుగు దారి ఉంది. చాలాసార్లు ఒక స్నేహితుడి \"కలిసి వెళ్దాం\" తో మొదలవుతుంది."
+        }
       },
       {
         "id": "tell_him_run",
-        "label": { "en": "Tell him to switch off his phone and hide" },
+        "label": {
+          "en": "Tell him to switch off his phone and hide",
+          "hi": "उसे फ़ोन बंद करके छिपने को कहें",
+          "te": "ఫోన్ ఆపేసి దాక్కోమని చెప్పండి"
+        },
         "quality": "bad",
         "effects": { "meters": { "family": -4, "joy": -5 } },
-        "outcome": { "en": "Chintu hides for a month. His case gets worse, and his lawyer costs ₹30,000." },
-        "why": { "en": "Hiding makes a mule case look like a crime partner's. The truth works better." }
+        "outcome": {
+          "en": "Chintu hides for a month. His case gets worse, and his lawyer costs ₹30,000.",
+          "hi": "चिंटू एक महीने छिपा रहता है। उसका केस बिगड़ता है, और वकील ₹30,000 का पड़ता है।",
+          "te": "చింటూ నెల రోజులు దాక్కుంటాడు. కేసు దిగజారుతుంది, లాయర్‌కు ₹30,000."
+        },
+        "why": {
+          "en": "Hiding makes a mule case look like a crime partner's. The truth works better.",
+          "hi": "छिपने से म्यूल केस अपराध में साझेदार जैसा लगता है। सच बेहतर काम करता है।",
+          "te": "దాక్కుంటే మ్యూల్ కేసు నేరంలో భాగస్వామి కేసులా కనిపిస్తుంది. నిజమే బాగా పని చేస్తుంది."
+        }
       }
     ]
   },
@@ -668,26 +1255,41 @@
     "lesson": "L13",
     "ages": [20, 26],
     "weight": 1,
+    "location": "bank",
     "speaker": "narrator",
-    "title": { "en": "Not quite 22 carat" },
+    "title": { "en": "Not quite 22 carat", "hi": "पूरा 22 कैरेट नहीं", "te": "పూర్తిగా 22 క్యారెట్ కాదు" },
     "text": {
-      "en": "You try a [[gold_loan]] on your chain. The bank tests it: 18 carat, not 22. It's worth ₹2,000 less than you paid."
+      "en": "You try a [[gold_loan]] on your chain. The bank tests it: 18 carat, not 22. It's worth ₹2,000 less than you paid.",
+      "hi": "आप अपनी चेन पर [[gold_loan]] लेने जाते हैं। बैंक जाँचता है: 18 कैरेट, 22 नहीं। यह आपकी दी कीमत से ₹2,000 कम की है।",
+      "te": "గొలుసుపై [[gold_loan]] కోసం వెళ్తారు. బ్యాంక్ పరీక్షిస్తుంది: 18 క్యారెట్, 22 కాదు. మీరు కట్టిన దానికంటే ₹2,000 తక్కువ విలువ."
     },
     "choices": [
       {
         "id": "complain",
-        "label": { "en": "Go back to the jeweller with the bill" },
+        "label": {
+          "en": "Go back to the jeweller with the bill",
+          "hi": "बिल लेकर सुनार के पास वापस जाएँ",
+          "te": "బిల్లుతో కంసాలి దగ్గరికి తిరిగి వెళ్లండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -1000, "gyaan": 2 },
-        "outcome": { "en": "He returns ₹1,000 after an argument. Next time, only hallmarked gold with a proper bill." }
+        "outcome": {
+          "en": "He returns ₹1,000 after an argument. Next time, only hallmarked gold with a proper bill.",
+          "hi": "बहस के बाद वह ₹1,000 लौटाता है। अगली बार सिर्फ़ हॉलमार्क वाला सोना, सही बिल के साथ।",
+          "te": "వాదన తర్వాత ₹1,000 తిరిగిస్తాడు. ఈసారి హాల్‌మార్క్ బంగారమే, సరైన బిల్లుతో."
+        }
       },
       {
         "id": "accept",
-        "label": { "en": "Accept the loss" },
+        "label": { "en": "Accept the loss", "hi": "नुकसान मान लें", "te": "నష్టం ఒప్పుకోండి" },
         "quality": "neutral",
         "effects": { "cash": -2000 },
-        "outcome": { "en": "₹2,000 lost to a missing hallmark you never checked." }
+        "outcome": {
+          "en": "₹2,000 lost to a missing hallmark you never checked.",
+          "hi": "हॉलमार्क न जाँचने पर ₹2,000 का नुकसान।",
+          "te": "హాల్‌మార్క్ చూడకపోవడంతో ₹2,000 నష్టం."
+        }
       }
     ]
   },
@@ -698,20 +1300,31 @@
     "lesson": "L14",
     "ages": [20, 24],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
-    "title": { "en": "Beach trip with colleagues" },
+    "title": { "en": "Beach trip with colleagues", "hi": "साथियों के साथ समुद्र तट की सैर", "te": "సహోద్యోగులతో బీచ్ ట్రిప్" },
     "text": {
-      "en": "Your colleagues plan a beach trip: ₹12,000 each. \"Use your new [[credit_card]]! No-cost EMI, and the minimum due is only ₹600.\""
+      "en": "Your colleagues plan a beach trip: ₹12,000 each. \"Use your new [[credit_card]]! No-cost EMI, and the minimum due is only ₹600.\"",
+      "hi": "आपके साथी समुद्र तट की सैर का प्लान बनाते हैं: हर एक ₹12,000। \"अपना नया [[credit_card]] इस्तेमाल करो! नो-कॉस्ट EMI, और मिनिमम ड्यू सिर्फ़ ₹600 है।\"",
+      "te": "మీ సహోద్యోగులు బీచ్ ట్రిప్ ప్లాన్ చేస్తారు: ఒక్కొక్కరికి ₹12,000. \"నీ కొత్త [[credit_card]] వాడు! నో-కాస్ట్ EMI, కనీస బాకీ ₹600 మాత్రమే.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "No-cost EMI" },
-        "truth": { "en": "The cost hides in a processing fee and lost discounts. Miss a payment and 42% interest starts." },
+        "phrase": { "en": "No-cost EMI", "hi": "नो-कॉस्ट EMI", "te": "నో-కాస్ట్ EMI" },
+        "truth": {
+          "en": "The cost hides in a processing fee and lost discounts. Miss a payment and 42% interest starts.",
+          "hi": "कीमत प्रोसेसिंग फ़ीस और खोई छूट में छुपी है। एक भुगतान चूका तो 42% ब्याज शुरू।",
+          "te": "ఖర్చు ప్రాసెసింగ్ ఫీజులో, పోయిన డిస్కౌంట్లలో దాగి ఉంది. ఒక్క చెల్లింపు తప్పితే 42% వడ్డీ మొదలు."
+        },
         "lesson": "L14"
       },
       {
-        "phrase": { "en": "the minimum due is only ₹600" },
-        "truth": { "en": "Pay only the minimum and interest runs on the rest at about 3.5% a month." },
+        "phrase": { "en": "the minimum due is only ₹600", "hi": "मिनिमम ड्यू सिर्फ़ ₹600 है", "te": "కనీస బాకీ ₹600 మాత్రమే" },
+        "truth": {
+          "en": "Pay only the minimum and interest runs on the rest at about 3.5% a month.",
+          "hi": "सिर्फ़ मिनिमम दिया तो बाकी पर लगभग 3.5% महीना ब्याज चलता है।",
+          "te": "కనీసమే కడితే మిగతాదానిపై నెలకు సుమారు 3.5% వడ్డీ."
+        },
         "lesson": "L14"
       }
     ],
@@ -719,26 +1332,57 @@
     "choices": [
       {
         "id": "pay_full",
-        "label": { "en": "Go, and pay the card bill in full next month" },
+        "label": {
+          "en": "Go, and pay the card bill in full next month",
+          "hi": "जाएँ, और अगले महीने कार्ड का पूरा बिल भरें",
+          "te": "వెళ్లండి, వచ్చే నెల కార్డు బిల్లు పూర్తిగా కట్టండి"
+        },
         "quality": "neutral",
         "effects": { "cash": -12000, "meters": { "joy": 9 } },
-        "outcome": { "en": "₹12,000 spent, ₹0 interest. A great trip, and next month is tight." }
+        "outcome": {
+          "en": "₹12,000 spent, ₹0 interest. A great trip, and next month is tight.",
+          "hi": "₹12,000 खर्च, ₹0 ब्याज। शानदार सैर, और अगला महीना तंग।",
+          "te": "₹12,000 ఖర్చు, ₹0 వడ్డీ. అద్భుత ట్రిప్, వచ్చే నెల కొంచెం ఇబ్బంది."
+        }
       },
       {
         "id": "minimum_due",
-        "label": { "en": "Go, and pay just the minimum each month" },
+        "label": {
+          "en": "Go, and pay just the minimum each month",
+          "hi": "जाएँ, और हर महीने सिर्फ़ मिनिमम भरें",
+          "te": "వెళ్లండి, ప్రతి నెలా కనీసమే కట్టండి"
+        },
         "quality": "bad",
         "effects": { "loan": { "source": "credit_card", "principal": 12000, "months": 24 }, "meters": { "joy": 9 } },
-        "echo": { "level": 2, "hint": { "en": "The trip lasts four days. The bill lasts two years." } },
-        "outcome": { "en": "Spread over two years at 42%, the ₹12,000 trip costs about ₹17,900." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "The trip lasts four days. The bill lasts two years.",
+            "hi": "सैर चार दिन की। बिल दो साल का।",
+            "te": "ట్రిప్ నాలుగు రోజులు. బిల్లు రెండేళ్లు."
+          }
+        },
+        "outcome": {
+          "en": "Spread over two years at 42%, the ₹12,000 trip costs about ₹17,900.",
+          "hi": "42% पर दो साल में फैलकर ₹12,000 की सैर लगभग ₹17,900 की पड़ती है।",
+          "te": "42% వద్ద రెండేళ్లలో ₹12,000 ట్రిప్ సుమారు ₹17,900 అవుతుంది."
+        }
       },
       {
         "id": "day_trip",
-        "label": { "en": "Skip it. Plan a ₹1,500 day trip with friends instead" },
+        "label": {
+          "en": "Skip it. Plan a ₹1,500 day trip with friends instead",
+          "hi": "न जाएँ। दोस्तों के साथ ₹1,500 की एक दिन की सैर बनाएँ",
+          "te": "వెళ్లకండి. స్నేహితులతో ₹1,500 ఒక్క రోజు ట్రిప్ ప్లాన్ చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -1500, "meters": { "joy": 5 } },
-        "outcome": { "en": "₹1,500, a waterfall, and Chintu falling in it. Still the funniest day of the year." }
+        "outcome": {
+          "en": "₹1,500, a waterfall, and Chintu falling in it. Still the funniest day of the year.",
+          "hi": "₹1,500, एक झरना, और उसमें गिरता चिंटू। साल का सबसे मज़ेदार दिन।",
+          "te": "₹1,500, ఒక జలపాతం, అందులో పడిన చింటూ. ఏడాదిలో అతి సరదా రోజు."
+        }
       }
     ]
   },
@@ -749,39 +1393,81 @@
     "lesson": "L22",
     "ages": [19, 30],
     "weight": 1,
+    "location": "phone",
     "speaker": "headline",
-    "title": { "en": "Your account will be blocked today" },
+    "title": {
+      "en": "Your account will be blocked today",
+      "hi": "आपका खाता आज बंद हो जाएगा",
+      "te": "మీ ఖాతా ఈ రోజు బ్లాక్ అవుతుంది"
+    },
     "text": {
-      "en": "SMS: \"Dear customer, your KYC expires today. Click this link to update, or your account will be blocked.\""
+      "en": "SMS: \"Dear customer, your KYC expires today. Click this link to update, or your account will be blocked.\"",
+      "hi": "SMS: \"प्रिय ग्राहक, आपका KYC आज खत्म हो रहा है। अपडेट के लिए यह लिंक क्लिक करें, वरना आपका खाता बंद हो जाएगा।\"",
+      "te": "SMS: \"ప్రియమైన కస్టమర్, మీ KYC ఈ రోజు ముగుస్తోంది. అప్‌డేట్ కోసం ఈ లింక్ నొక్కండి, లేకపోతే మీ ఖాతా బ్లాక్ అవుతుంది.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "your KYC expires today." },
-        "truth": { "en": "[[kyc]] doesn't expire by SMS. Banks update it at the branch or in their official app." },
+        "phrase": { "en": "your KYC expires today.", "hi": "आपका KYC आज खत्म हो रहा है।", "te": "మీ KYC ఈ రోజు ముగుస్తోంది." },
+        "truth": {
+          "en": "[[kyc]] doesn't expire by SMS. Banks update it at the branch or in their official app.",
+          "hi": "[[kyc]] SMS से खत्म नहीं होता। बैंक इसे ब्रांच या अपने आधिकारिक ऐप में अपडेट करते हैं।",
+          "te": "[[kyc]] SMSతో ముగియదు. బ్యాంకులు దాన్ని బ్రాంచ్‌లో లేదా అధికారిక యాప్‌లో అప్‌డేట్ చేస్తాయి."
+        },
         "lesson": "L22"
       },
       {
-        "phrase": { "en": "or your account will be blocked." },
-        "truth": { "en": "Fear and hurry are the scammer's tools. Slow down and call the bank yourself." },
+        "phrase": {
+          "en": "or your account will be blocked.",
+          "hi": "वरना आपका खाता बंद हो जाएगा।",
+          "te": "లేకపోతే మీ ఖాతా బ్లాక్ అవుతుంది."
+        },
+        "truth": {
+          "en": "Fear and hurry are the scammer's tools. Slow down and call the bank yourself.",
+          "hi": "डर और जल्दी ठग के हथियार हैं। धीरे चलें और खुद बैंक को फ़ोन करें।",
+          "te": "భయం, తొందర మోసగాళ్ల ఆయుధాలు. నెమ్మదించి మీరే బ్యాంక్‌కు ఫోన్ చేయండి."
+        },
         "lesson": "L22"
       }
     ],
     "choices": [
       {
         "id": "ignore",
-        "label": { "en": "Ignore it and check with the bank branch" },
+        "label": {
+          "en": "Ignore it and check with the bank branch",
+          "hi": "अनदेखा करें और बैंक ब्रांच से पूछें",
+          "te": "పట్టించుకోకుండా బ్యాంక్ బ్రాంచ్‌లో అడగండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 2 },
-        "outcome": { "en": "The branch laughs. \"Your KYC is fine. That's the fifth fake SMS this week.\" ₹0 lost." }
+        "outcome": {
+          "en": "The branch laughs. \"Your KYC is fine. That's the fifth fake SMS this week.\" ₹0 lost.",
+          "hi": "ब्रांच वाले हँसते हैं। \"आपका KYC ठीक है। इस हफ़्ते का यह पाँचवाँ नकली SMS है।\" ₹0 का नुकसान।",
+          "te": "బ్రాంచ్‌లో నవ్వుతారు. \"మీ KYC బాగానే ఉంది. ఈ వారంలో ఇది ఐదో నకిలీ SMS.\" ₹0 నష్టం."
+        }
       },
       {
         "id": "click",
-        "label": { "en": "Click the link and fill in the details" },
+        "label": {
+          "en": "Click the link and fill in the details",
+          "hi": "लिंक क्लिक करके जानकारी भरें",
+          "te": "లింక్ నొక్కి వివరాలు నింపండి"
+        },
         "quality": "bad",
         "effects": { "cash": -12000, "meters": { "joy": -5 } },
-        "echo": { "level": 2, "hint": { "en": "The link knew your bank's colours. Not your bank." } },
-        "outcome": { "en": "₹12,000 is gone in two transfers. You call 1930 and ₹5,000 is frozen." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "The link knew your bank's colours. Not your bank.",
+            "hi": "लिंक को आपके बैंक के रंग पता थे। आपका बैंक नहीं।",
+            "te": "లింక్‌కు మీ బ్యాంక్ రంగులు తెలుసు. మీ బ్యాంక్ కాదు."
+          }
+        },
+        "outcome": {
+          "en": "₹12,000 is gone in two transfers. You call 1930 and ₹5,000 is frozen.",
+          "hi": "दो ट्रांसफ़र में ₹12,000 गए। आप 1930 पर फ़ोन करते हैं और ₹5,000 फ़्रीज़ होते हैं।",
+          "te": "రెండు ట్రాన్స్‌ఫర్లలో ₹12,000 పోయాయి. 1930కి ఫోన్ చేస్తారు, ₹5,000 ఫ్రీజ్."
+        }
       }
     ]
   },
@@ -792,25 +1478,49 @@
     "lesson": "L13",
     "ages": [20, 30],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
-    "title": { "en": "Festival bonus!" },
-    "text": { "en": "A festival bonus: ₹8,000 extra this month. The phone shop has a big \"festival sale\" banner." },
+    "title": { "en": "Festival bonus!", "hi": "त्योहार बोनस!", "te": "పండుగ బోనస్!" },
+    "text": {
+      "en": "A festival bonus: ₹8,000 extra this month. The phone shop has a big \"festival sale\" banner.",
+      "hi": "त्योहार बोनस: इस महीने ₹8,000 ज़्यादा। फ़ोन की दुकान पर बड़ा \"फ़ेस्टिवल सेल\" बैनर है।",
+      "te": "పండుగ బోనస్: ఈ నెల ₹8,000 అదనం. ఫోన్ షాప్‌లో పెద్ద \"ఫెస్టివల్ సేల్\" బ్యానర్."
+    },
     "choices": [
       {
         "id": "cushion",
-        "label": { "en": "₹6,000 to the emergency jar, ₹2,000 for sweets and gifts" },
+        "label": {
+          "en": "₹6,000 to the emergency jar, ₹2,000 for sweets and gifts",
+          "hi": "₹6,000 आपात डिब्बे में, ₹2,000 मिठाई और तोहफ़ों पर",
+          "te": "₹6,000 అత్యవసర డబ్బాలోకి, ₹2,000 స్వీట్లు, బహుమతులకు"
+        },
         "quality": "good",
         "default": true,
         "effects": { "jar": { "emergency": 6000 }, "meters": { "joy": 4, "family": 4 }, "cash": 6000 },
-        "outcome": { "en": "₹6,000 saved, ₹2,000 of sweets. Ammamma gets the softest laddus." }
+        "outcome": {
+          "en": "₹6,000 saved, ₹2,000 of sweets. Ammamma gets the softest laddus.",
+          "hi": "₹6,000 बचे, ₹2,000 की मिठाई। अम्मम्मा को सबसे नरम लड्डू मिलते हैं।",
+          "te": "₹6,000 పొదుపు, ₹2,000 స్వీట్లు. అమ్మమ్మకు అతి మెత్తని లడ్డూలు."
+        }
       },
       {
         "id": "phone_sale",
-        "label": { "en": "New phone on festival sale" },
+        "label": { "en": "New phone on festival sale", "hi": "फ़ेस्टिवल सेल में नया फ़ोन", "te": "ఫెస్టివల్ సేల్‌లో కొత్త ఫోన్" },
         "quality": "risky",
         "effects": { "meters": { "joy": 6 } },
-        "echo": { "level": 1, "hint": { "en": "The sale comes every year. So does the urge." } },
-        "outcome": { "en": "₹8,000 becomes a phone that's 10% better than your old one." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "The sale comes every year. So does the urge.",
+            "hi": "सेल हर साल आती है। चाहत भी।",
+            "te": "సేల్ ప్రతి ఏడాది వస్తుంది. కోరిక కూడా."
+          }
+        },
+        "outcome": {
+          "en": "₹8,000 becomes a phone that's 10% better than your old one.",
+          "hi": "₹8,000 एक ऐसा फ़ोन बन जाते हैं जो पुराने से 10% बेहतर है।",
+          "te": "₹8,000 పాతదాని కంటే 10% మెరుగైన ఫోన్‌గా మారతాయి."
+        }
       }
     ]
   },
@@ -821,28 +1531,56 @@
     "lesson": "L16",
     "ages": [20, 26],
     "weight": 1,
+    "location": "hospital",
     "speaker": "headline",
-    "title": { "en": "A wet road" },
-    "text": { "en": "Your bike skids on a wet road. Broken arm. Hospital bill: ₹25,000. Two months off work." },
+    "title": { "en": "A wet road", "hi": "गीली सड़क", "te": "తడి రోడ్డు" },
+    "text": {
+      "en": "Your bike skids on a wet road. Broken arm. Hospital bill: ₹25,000. Two months off work.",
+      "hi": "गीली सड़क पर आपकी बाइक फिसलती है। हाथ टूटा। अस्पताल बिल: ₹25,000। दो महीने काम बंद।",
+      "te": "తడి రోడ్డుపై బైక్ జారుతుంది. చేయి విరిగింది. ఆసుపత్రి బిల్లు: ₹25,000. రెండు నెలలు పని లేదు."
+    },
     "choices": [
       {
         "id": "pay",
-        "label": { "en": "Pay with insurance and savings first" },
+        "label": {
+          "en": "Pay with insurance and savings first",
+          "hi": "पहले बीमा और बचत से भरें",
+          "te": "ముందు బీమా, పొదుపుతో కట్టండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "shock": { "kind": "health", "cost": 25000 }, "meters": { "health": -10 } },
-        "outcome": { "en": "Health cover pays first, then your emergency fund. Whatever's left is borrowed." }
+        "outcome": {
+          "en": "Health cover pays first, then your emergency fund. Whatever's left is borrowed.",
+          "hi": "पहले स्वास्थ्य कवर, फिर आपात फंड। जो बचे, वह उधार।",
+          "te": "ముందు ఆరోగ్య బీమా, తర్వాత అత్యవసర నిధి. మిగిలింది అప్పు."
+        }
       },
       {
         "id": "loan_app",
-        "label": { "en": "Borrow from a loan app, keep your savings" },
+        "label": {
+          "en": "Borrow from a loan app, keep your savings",
+          "hi": "लोन ऐप से उधार लें, बचत रखें",
+          "te": "లోన్ యాప్ నుంచి అప్పు తీసుకుని, పొదుపు ఉంచండి"
+        },
         "quality": "bad",
         "effects": {
           "loan": { "source": "loan_app", "principal": 25000, "months": 6, "disburse": "direct" },
           "meters": { "health": -10 }
         },
-        "echo": { "level": 2, "hint": { "en": "Savings exist for days like this." } },
-        "outcome": { "en": "Your savings sit untouched while you repay ₹32,000 for ₹25,000 in 6 months." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Savings exist for days like this.",
+            "hi": "बचत ऐसे ही दिनों के लिए होती है।",
+            "te": "పొదుపు ఇలాంటి రోజుల కోసమే."
+          }
+        },
+        "outcome": {
+          "en": "Your savings sit untouched while you repay ₹32,000 for ₹25,000 in 6 months.",
+          "hi": "आपकी बचत यूँ ही पड़ी रहती है, जबकि 6 महीने में ₹25,000 के बदले ₹32,000 चुकाते हैं।",
+          "te": "మీ పొదుపు అలాగే ఉంటుంది, 6 నెలల్లో ₹25,000కు ₹32,000 కడతారు."
+        }
       }
     ]
   },
@@ -853,38 +1591,72 @@
     "lesson": "L15",
     "ages": [19, 26],
     "weight": 1,
+    "location": "square",
     "speaker": "tempter",
-    "title": { "en": "Just carry the bag" },
+    "title": { "en": "Just carry the bag", "hi": "बस बैग ले जाओ", "te": "బ్యాగ్ తీసుకెళ్లు చాలు" },
     "text": {
-      "en": "A friend of {cast:tempter}'s offers ₹3,000 to carry a sealed bag on the bus to Hyderabad. \"No questions, just deliver.\""
+      "en": "A friend of {cast:tempter}'s offers ₹3,000 to carry a sealed bag on the bus to Hyderabad. \"No questions, just deliver.\"",
+      "hi": "{cast:tempter} का एक दोस्त हैदराबाद की बस में एक सीलबंद बैग ले जाने के ₹3,000 देता है। \"कोई सवाल नहीं, बस पहुँचा दो।\"",
+      "te": "{cast:tempter} స్నేహితుడు హైదరాబాద్ బస్సులో సీల్ చేసిన బ్యాగ్ తీసుకెళ్తే ₹3,000 ఇస్తానంటాడు. \"ప్రశ్నలు వద్దు, అందించు చాలు.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "No questions, just deliver." },
-        "truth": { "en": "Unrecorded cash moved for others is [[hawala]]. Carriers are the first to be caught." },
+        "phrase": {
+          "en": "No questions, just deliver.",
+          "hi": "कोई सवाल नहीं, बस पहुँचा दो।",
+          "te": "ప్రశ్నలు వద్దు, అందించు చాలు."
+        },
+        "truth": {
+          "en": "Unrecorded cash moved for others is [[hawala]]. Carriers are the first to be caught.",
+          "hi": "दूसरों के लिए बिना रिकॉर्ड ले जाया गया नकद [[hawala]] है। ढोने वाले सबसे पहले पकड़े जाते हैं।",
+          "te": "ఇతరుల కోసం రికార్డు లేని నగదు తరలించడం [[hawala]]. మోసేవాళ్లే ముందు దొరుకుతారు."
+        },
         "lesson": "L15"
       }
     ],
     "choices": [
       {
         "id": "carry",
-        "label": { "en": "Carry it. ₹3,000 for one bus ride" },
+        "label": {
+          "en": "Carry it. ₹3,000 for one bus ride",
+          "hi": "ले जाएँ। एक बस सफ़र के ₹3,000",
+          "te": "తీసుకెళ్లండి. ఒక్క బస్సు ప్రయాణానికి ₹3,000"
+        },
         "quality": "bad",
         "effects": {
           "cash": 3000,
           "flags": { "add": ["legal_hawala"] },
           "schedule": [{ "inYears": 1, "card": "village.young.hawala_caught.a" }]
         },
-        "echo": { "level": 3, "hint": { "en": "You never saw what was inside. The police will." } },
-        "outcome": { "en": "₹3,000 for a nervous four-hour ride. The man at the other end takes the bag without a word." }
+        "echo": {
+          "level": 3,
+          "hint": {
+            "en": "You never saw what was inside. The police will.",
+            "hi": "अंदर क्या था, आपने कभी नहीं देखा। पुलिस देखेगी।",
+            "te": "లోపల ఏముందో మీరు చూడలేదు. పోలీసులు చూస్తారు."
+          }
+        },
+        "outcome": {
+          "en": "₹3,000 for a nervous four-hour ride. The man at the other end takes the bag without a word.",
+          "hi": "घबराहट भरे चार घंटे के सफ़र के ₹3,000। दूसरी तरफ़ का आदमी बिना एक शब्द बोले बैग ले लेता है।",
+          "te": "భయంతో నాలుగు గంటల ప్రయాణానికి ₹3,000. అవతలి మనిషి ఒక్క మాట లేకుండా బ్యాగ్ తీసుకుంటాడు."
+        }
       },
       {
         "id": "refuse",
-        "label": { "en": "Refuse. \"No questions\" is the question" },
+        "label": {
+          "en": "Refuse. \"No questions\" is the question",
+          "hi": "मना करें। \"कोई सवाल नहीं\" ही सवाल है",
+          "te": "వద్దనండి. \"ప్రశ్నలు వద్దు\" అనడమే ప్రశ్న"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 2 },
-        "outcome": { "en": "You say no. Ammamma, hearing the story, gives you ₹30 for an ice cream. \"For being sensible.\"" }
+        "outcome": {
+          "en": "You say no. Ammamma, hearing the story, gives you ₹30 for an ice cream. \"For being sensible.\"",
+          "hi": "आप मना करते हैं। कहानी सुनकर अम्मम्मा आपको आइसक्रीम के ₹30 देती हैं। \"समझदारी के लिए।\"",
+          "te": "మీరు వద్దంటారు. కథ విని అమ్మమ్మ ఐస్‌క్రీమ్‌కు ₹30 ఇస్తుంది. \"తెలివిగా ఉన్నందుకు.\""
+        }
       }
     ]
   },
@@ -895,26 +1667,41 @@
     "lesson": "L15",
     "ages": [20, 27],
     "weight": 1,
+    "location": "square",
     "speaker": "narrator",
-    "title": { "en": "Your number in his phone" },
+    "title": { "en": "Your number in his phone", "hi": "उसके फ़ोन में आपका नंबर", "te": "అతని ఫోన్‌లో మీ నంబర్" },
     "text": {
-      "en": "Police arrest the man you delivered to. The bag held ₹18 lakh of unrecorded cash. Your number is in his phone."
+      "en": "Police arrest the man you delivered to. The bag held ₹18 lakh of unrecorded cash. Your number is in his phone.",
+      "hi": "जिस आदमी को आपने बैग दिया, पुलिस उसे गिरफ़्तार करती है। बैग में ₹18 लाख बिना रिकॉर्ड का नकद था। आपका नंबर उसके फ़ोन में है।",
+      "te": "మీరు బ్యాగ్ ఇచ్చిన మనిషిని పోలీసులు అరెస్ట్ చేస్తారు. బ్యాగ్‌లో ₹18 లక్షల లెక్కలేని నగదు. మీ నంబర్ అతని ఫోన్‌లో ఉంది."
     },
     "choices": [
       {
         "id": "truth",
-        "label": { "en": "Go to the station and tell the truth" },
+        "label": {
+          "en": "Go to the station and tell the truth",
+          "hi": "थाने जाकर सच बताएँ",
+          "te": "స్టేషన్‌కు వెళ్లి నిజం చెప్పండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "cash": -3000, "flags": { "add": ["came_clean"] }, "meters": { "family": -4, "joy": -5 }, "gyaan": 3 },
-        "outcome": { "en": "You hand back the ₹3,000 and give a statement. You're let off with a warning." }
+        "outcome": {
+          "en": "You hand back the ₹3,000 and give a statement. You're let off with a warning.",
+          "hi": "आप ₹3,000 लौटाकर बयान देते हैं। चेतावनी देकर छोड़ दिया जाता है।",
+          "te": "₹3,000 తిరిగిచ్చి స్టేట్‌మెంట్ ఇస్తారు. హెచ్చరికతో వదిలేస్తారు."
+        }
       },
       {
         "id": "hide",
-        "label": { "en": "Change your SIM and hope" },
+        "label": { "en": "Change your SIM and hope", "hi": "सिम बदलें और उम्मीद करें", "te": "సిమ్ మార్చి ఆశపడండి" },
         "quality": "bad",
         "effects": { "cash": -20000, "meters": { "family": -8, "health": -5 } },
-        "outcome": { "en": "They find you anyway. A lawyer costs ₹20,000, and the case takes a year." }
+        "outcome": {
+          "en": "They find you anyway. A lawyer costs ₹20,000, and the case takes a year.",
+          "hi": "वे फिर भी ढूँढ लेते हैं। वकील ₹20,000 का पड़ता है, और केस एक साल चलता है।",
+          "te": "అయినా కనుక్కుంటారు. లాయర్‌కు ₹20,000, కేసు ఏడాది సాగుతుంది."
+        }
       }
     ]
   },
@@ -925,44 +1712,94 @@
     "lesson": "L13",
     "ages": [19, 22],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
-    "title": { "en": "The rainy-day RD" },
+    "title": { "en": "The rainy-day RD", "hi": "बुरे दिनों की RD", "te": "కష్టకాలపు RD" },
     "text": {
-      "en": "A colleague just lost his job and is borrowing from everyone. {cast:banker} suggests a ₹1,500 monthly [[rd]] as your [[emergency_fund]]. Friends want a trip instead."
+      "en": "A colleague just lost his job and is borrowing from everyone. {cast:banker} suggests a ₹1,500 monthly [[rd]] as your [[emergency_fund]]. Friends want a trip instead.",
+      "hi": "एक साथी की नौकरी गई और वह सबसे उधार ले रहा है। {cast:banker} आपके [[emergency_fund]] के लिए ₹1,500 महीने की [[rd]] का सुझाव देती हैं। दोस्त इसके बजाय सैर चाहते हैं।",
+      "te": "ఒక సహోద్యోగి ఉద్యోగం పోయి అందరి దగ్గరా అప్పు అడుగుతున్నాడు. మీ [[emergency_fund]] కోసం {cast:banker} నెలకు ₹1,500 [[rd]] సూచిస్తుంది. స్నేహితులు బదులుగా ట్రిప్ కావాలంటున్నారు."
     },
     "clarity": [
       {
-        "phrase": { "en": "a ₹1,500 monthly [[rd]]" },
-        "truth": { "en": "An RD locks a fixed amount each month. Breaking it early costs a small penalty, not your savings." },
+        "phrase": { "en": "a ₹1,500 monthly [[rd]]", "hi": "₹1,500 महीने की [[rd]]", "te": "నెలకు ₹1,500 [[rd]]" },
+        "truth": {
+          "en": "An RD locks a fixed amount each month. Breaking it early costs a small penalty, not your savings.",
+          "hi": "RD हर महीने तय रकम बंद करती है। जल्दी तोड़ने पर छोटा जुर्माना लगता है, बचत नहीं जाती।",
+          "te": "RD ప్రతి నెలా స్థిర మొత్తాన్ని లాక్ చేస్తుంది. ముందే తెంచితే చిన్న జరిమానా, పొదుపు పోదు."
+        },
         "lesson": "L13"
       }
     ],
     "choices": [
       {
         "id": "start_rd",
-        "label": { "en": "Start the RD and keep it only for emergencies" },
+        "label": {
+          "en": "Start the RD and keep it only for emergencies",
+          "hi": "RD शुरू करें और सिर्फ़ मुसीबत के लिए रखें",
+          "te": "RD మొదలుపెట్టి, అత్యవసరాలకే ఉంచండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "jar": { "emergency": 1500 }, "flags": { "add": ["has_emergency_fund"] }, "gyaan": 2 },
-        "outcome": { "en": "₹1,500 a month becomes about ₹18,500 in a year. When your turn comes, you won't need to borrow." },
-        "why": { "en": "An emergency fund turns a crisis into an inconvenience. Build it before you need it." }
+        "outcome": {
+          "en": "₹1,500 a month becomes about ₹18,500 in a year. When your turn comes, you won't need to borrow.",
+          "hi": "₹1,500 महीना साल में लगभग ₹18,500 बन जाता है। आपकी बारी आएगी, तो उधार नहीं लेना पड़ेगा।",
+          "te": "నెలకు ₹1,500 ఏడాదిలో సుమారు ₹18,500. మీ వంతు వచ్చినప్పుడు అప్పు అక్కర్లేదు."
+        },
+        "why": {
+          "en": "An emergency fund turns a crisis into an inconvenience. Build it before you need it.",
+          "hi": "आपात फंड संकट को बस एक परेशानी बना देता है। ज़रूरत से पहले बनाएँ।",
+          "te": "అత్యవసర నిధి కష్టాన్ని చిన్న ఇబ్బందిగా మారుస్తుంది. అవసరం రాకముందే కూడబెట్టండి."
+        }
       },
       {
         "id": "trip",
-        "label": { "en": "Go on the trip, start saving later" },
+        "label": {
+          "en": "Go on the trip, start saving later",
+          "hi": "सैर पर जाएँ, बचत बाद में शुरू करें",
+          "te": "ట్రిప్‌కు వెళ్లండి, పొదుపు తర్వాత"
+        },
         "quality": "risky",
         "effects": { "cash": -4000, "meters": { "joy": 7 } },
-        "echo": { "level": 2, "hint": { "en": "Your colleague had planned to start later too." } },
-        "outcome": { "en": "₹4,000 on a great weekend. Your emergency fund stays at ₹0." },
-        "why": { "en": "Emergencies don't wait for \"later\". The cushion has to come first." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Your colleague had planned to start later too.",
+            "hi": "आपके साथी ने भी बाद में शुरू करने की सोची थी।",
+            "te": "మీ సహోద్యోగి కూడా తర్వాత మొదలుపెడదామనుకున్నాడు."
+          }
+        },
+        "outcome": {
+          "en": "₹4,000 on a great weekend. Your emergency fund stays at ₹0.",
+          "hi": "एक शानदार वीकेंड पर ₹4,000। आपका आपात फंड ₹0 पर ही।",
+          "te": "ఒక అద్భుత వారాంతానికి ₹4,000. మీ అత్యవసర నిధి ₹0 వద్దే."
+        },
+        "why": {
+          "en": "Emergencies don't wait for \"later\". The cushion has to come first.",
+          "hi": "मुसीबत \"बाद में\" का इंतज़ार नहीं करती। गद्दी पहले आनी चाहिए।",
+          "te": "అత్యవసరాలు \"తర్వాత\" కోసం ఆగవు. భద్రతా నిధి ముందు రావాలి."
+        }
       },
       {
         "id": "wallet",
-        "label": { "en": "Keep ₹1,500 a month aside in your wallet" },
+        "label": {
+          "en": "Keep ₹1,500 a month aside in your wallet",
+          "hi": "हर महीने ₹1,500 बटुए में अलग रखें",
+          "te": "నెలకు ₹1,500 పర్సులో పక్కన పెట్టండి"
+        },
         "quality": "neutral",
         "effects": { "meters": { "joy": 2 } },
-        "outcome": { "en": "By month three, the wallet money has paid for snacks, fuel and a gift. ₹600 remains." },
-        "why": { "en": "Money within reach gets spent. Keep the cushion separate, safe and slightly hard to touch." }
+        "outcome": {
+          "en": "By month three, the wallet money has paid for snacks, fuel and a gift. ₹600 remains.",
+          "hi": "तीसरे महीने तक बटुए का पैसा नाश्ते, पेट्रोल और एक तोहफ़े में चला गया। ₹600 बचे हैं।",
+          "te": "మూడో నెలకల్లా పర్సు డబ్బు స్నాక్స్, పెట్రోల్, ఒక బహుమతికి పోయింది. ₹600 మిగిలాయి."
+        },
+        "why": {
+          "en": "Money within reach gets spent. Keep the cushion separate, safe and slightly hard to touch.",
+          "hi": "पहुँच में रखा पैसा खर्च हो जाता है। गद्दी अलग, सुरक्षित और थोड़ी मुश्किल से छूने वाली जगह रखें।",
+          "te": "చేతికి అందే డబ్బు ఖర్చవుతుంది. భద్రతా నిధిని వేరుగా, భద్రంగా, కొంచెం అందకుండా ఉంచండి."
+        }
       }
     ]
   },
@@ -973,15 +1810,22 @@
     "lesson": "L14",
     "ages": [19, 24],
     "weight": 1,
+    "location": "bank",
     "speaker": "narrator",
-    "title": { "en": "A ₹30,000 laptop for work" },
+    "title": { "en": "A ₹30,000 laptop for work", "hi": "काम के लिए ₹30,000 का लैपटॉप", "te": "పనికి ₹30,000 ల్యాప్‌టాప్" },
     "text": {
-      "en": "You need a ₹30,000 laptop for a better job. A mall stall offers a \"lifetime free\" [[credit_card]]. The bank offers a personal loan at 13%."
+      "en": "You need a ₹30,000 laptop for a better job. A mall stall offers a \"lifetime free\" [[credit_card]]. The bank offers a personal loan at 13%.",
+      "hi": "बेहतर नौकरी के लिए ₹30,000 का लैपटॉप चाहिए। मॉल का एक स्टॉल \"लाइफ़टाइम फ़्री\" [[credit_card]] देता है। बैंक 13% पर पर्सनल लोन देता है।",
+      "te": "మంచి ఉద్యోగానికి ₹30,000 ల్యాప్‌టాప్ కావాలి. మాల్‌లో ఒక స్టాల్ \"లైఫ్‌టైమ్ ఫ్రీ\" [[credit_card]] ఇస్తుంది. బ్యాంక్ 13%కు పర్సనల్ లోన్ ఇస్తుంది."
     },
     "clarity": [
       {
-        "phrase": { "en": "\"lifetime free\"" },
-        "truth": { "en": "No yearly fee, but 42% a year on anything you don't pay in full." },
+        "phrase": { "en": "\"lifetime free\"", "hi": "\"लाइफ़टाइम फ़्री\"", "te": "\"లైఫ్‌టైమ్ ఫ్రీ\"" },
+        "truth": {
+          "en": "No yearly fee, but 42% a year on anything you don't pay in full.",
+          "hi": "कोई सालाना फ़ीस नहीं, पर जो पूरा न चुकाएँ उस पर 42% सालाना।",
+          "te": "వార్షిక ఫీజు లేదు, కానీ పూర్తిగా కట్టనిదానిపై ఏడాదికి 42%."
+        },
         "lesson": "L14"
       }
     ],
@@ -989,29 +1833,72 @@
     "choices": [
       {
         "id": "save_first",
-        "label": { "en": "Save for three months, borrow ₹10,000 from Amma's SHG" },
+        "label": {
+          "en": "Save for three months, borrow ₹10,000 from Amma's SHG",
+          "hi": "तीन महीने बचाएँ, अम्मा के SHG से ₹10,000 उधार लें",
+          "te": "మూడు నెలలు పొదుపు చేసి, అమ్మ పొదుపు సంఘం నుంచి ₹10,000 అప్పు"
+        },
         "quality": "good",
         "default": true,
         "effects": { "loan": { "source": "shg", "principal": 10000, "months": 6, "disburse": "direct" }, "gyaan": 2 },
-        "outcome": { "en": "₹20,000 saved and ₹10,000 at 12% from the SHG. Interest: about ₹350 in total." },
-        "why": { "en": "Borrowing less, for less time, at a lower rate is the cheapest way to borrow." }
+        "outcome": {
+          "en": "₹20,000 saved and ₹10,000 at 12% from the SHG. Interest: about ₹350 in total.",
+          "hi": "₹20,000 बचाए और SHG से 12% पर ₹10,000। कुल ब्याज: लगभग ₹350।",
+          "te": "₹20,000 పొదుపు, పొదుపు సంఘం నుంచి 12%కు ₹10,000. మొత్తం వడ్డీ: సుమారు ₹350."
+        },
+        "why": {
+          "en": "Borrowing less, for less time, at a lower rate is the cheapest way to borrow.",
+          "hi": "कम उधार, कम समय, कम दर पर लेना ही सबसे सस्ता उधार है।",
+          "te": "తక్కువ అప్పు, తక్కువ సమయం, తక్కువ రేటు: అదే అతి చౌక అప్పు."
+        }
       },
       {
         "id": "bank_loan",
-        "label": { "en": "Bank personal loan, 13% for 12 months" },
+        "label": {
+          "en": "Bank personal loan, 13% for 12 months",
+          "hi": "बैंक पर्सनल लोन, 12 महीने के लिए 13%",
+          "te": "బ్యాంక్ పర్సనల్ లోన్, 12 నెలలకు 13%"
+        },
         "quality": "neutral",
         "effects": { "loan": { "source": "bank_personal", "principal": 30000, "months": 12, "disburse": "direct" } },
-        "outcome": { "en": "EMI about ₹2,680 plus a ₹600 fee. You repay about ₹32,750. On-time payments build your [[credit_score]]." },
-        "why": { "en": "A bank loan is fair and clear. It still costs ₹2,750 for not waiting." }
+        "outcome": {
+          "en": "EMI about ₹2,680 plus a ₹600 fee. You repay about ₹32,750. On-time payments build your [[credit_score]].",
+          "hi": "EMI लगभग ₹2,680 और ₹600 फ़ीस। लगभग ₹32,750 चुकाते हैं। समय पर भुगतान से [[credit_score]] बनता है।",
+          "te": "EMI సుమారు ₹2,680, ₹600 ఫీజు. సుమారు ₹32,750 కడతారు. సమయానికి కడితే [[credit_score]] పెరుగుతుంది."
+        },
+        "why": {
+          "en": "A bank loan is fair and clear. It still costs ₹2,750 for not waiting.",
+          "hi": "बैंक कर्ज़ सही और साफ़ है। फिर भी न रुकने की कीमत ₹2,750।",
+          "te": "బ్యాంక్ అప్పు న్యాయంగా, స్పష్టంగా ఉంటుంది. అయినా ఆగనందుకు ₹2,750 ఖర్చు."
+        }
       },
       {
         "id": "card_minimum",
-        "label": { "en": "Credit card, pay the minimum each month" },
+        "label": {
+          "en": "Credit card, pay the minimum each month",
+          "hi": "क्रेडिट कार्ड, हर महीने मिनिमम भरें",
+          "te": "క్రెడిట్ కార్డు, ప్రతి నెలా కనీసం కట్టండి"
+        },
         "quality": "bad",
         "effects": { "loan": { "source": "credit_card", "principal": 30000, "months": 24 } },
-        "echo": { "level": 2, "hint": { "en": "The laptop will be old before the bill is paid." } },
-        "outcome": { "en": "Spread over two years at 42%, the ₹30,000 laptop costs about ₹44,800." },
-        "why": { "en": "The same ₹30,000 can cost ₹350 or ₹14,800 in interest. Compare before you borrow." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "The laptop will be old before the bill is paid.",
+            "hi": "बिल चुकने से पहले लैपटॉप पुराना हो जाएगा।",
+            "te": "బిల్లు తీరకముందే ల్యాప్‌టాప్ పాతదైపోతుంది."
+          }
+        },
+        "outcome": {
+          "en": "Spread over two years at 42%, the ₹30,000 laptop costs about ₹44,800.",
+          "hi": "42% पर दो साल में फैलकर ₹30,000 का लैपटॉप लगभग ₹44,800 का पड़ता है।",
+          "te": "42% వద్ద రెండేళ్లలో ₹30,000 ల్యాప్‌టాప్ సుమారు ₹44,800 అవుతుంది."
+        },
+        "why": {
+          "en": "The same ₹30,000 can cost ₹350 or ₹14,800 in interest. Compare before you borrow.",
+          "hi": "वही ₹30,000 ब्याज में ₹350 या ₹14,800 पड़ सकते हैं। उधार से पहले तुलना करें।",
+          "te": "అదే ₹30,000కు వడ్డీ ₹350 కావచ్చు లేదా ₹14,800. అప్పుకు ముందు పోల్చండి."
+        }
       }
     ]
   },
@@ -1022,38 +1909,70 @@
     "lesson": "L15",
     "ages": [18, 23],
     "weight": 1,
+    "location": "phone",
     "speaker": "headline",
-    "title": { "en": "A data-entry job, from home" },
+    "title": { "en": "A data-entry job, from home", "hi": "घर से डेटा-एंट्री की नौकरी", "te": "ఇంటి నుంచి డేటా-ఎంట్రీ ఉద్యోగం" },
     "text": {
-      "en": "A job message: \"Data entry, ₹20,000 a month! Send your net-banking login and a new SIM in your name for salary processing.\""
+      "en": "A job message: \"Data entry, ₹20,000 a month! Send your net-banking login and a new SIM in your name for salary processing.\"",
+      "hi": "नौकरी का मैसेज: \"डेटा एंट्री, ₹20,000 महीना! तनख्वाह प्रोसेसिंग के लिए अपना नेट-बैंकिंग लॉगिन और अपने नाम का नया सिम भेजो।\"",
+      "te": "ఉద్యోగ మెసేజ్: \"డేటా ఎంట్రీ, నెలకు ₹20,000! జీతం ప్రాసెసింగ్ కోసం మీ నెట్-బ్యాంకింగ్ లాగిన్, మీ పేరు మీద కొత్త సిమ్ పంపండి.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "for salary processing" },
-        "truth": { "en": "Employers only need your account number. Your login and SIM let them run stolen money through you." },
+        "phrase": { "en": "for salary processing", "hi": "तनख्वाह प्रोसेसिंग के लिए", "te": "జీతం ప్రాసెసింగ్ కోసం" },
+        "truth": {
+          "en": "Employers only need your account number. Your login and SIM let them run stolen money through you.",
+          "hi": "कंपनी को सिर्फ़ खाता नंबर चाहिए। आपका लॉगिन और सिम उन्हें आपके ज़रिए चोरी का पैसा घुमाने देता है।",
+          "te": "యజమానులకు ఖాతా నంబర్ చాలు. మీ లాగిన్, సిమ్‌తో వాళ్లు మీ ద్వారా దొంగ డబ్బు తరలిస్తారు."
+        },
         "lesson": "L15"
       }
     ],
     "choices": [
       {
         "id": "send",
-        "label": { "en": "Send them. ₹20,000 is a lot" },
+        "label": { "en": "Send them. ₹20,000 is a lot", "hi": "भेज दें। ₹20,000 बहुत है", "te": "పంపేయండి. ₹20,000 చాలా ఎక్కువ" },
         "quality": "bad",
         "effects": { "flags": { "add": ["legal_mule"] }, "schedule": [{ "inYears": 1, "card": "village.young.account_frozen.a" }] },
-        "echo": { "level": 3, "hint": { "en": "There is no job. There is only your account." } },
-        "outcome": { "en": "No salary ever comes. But ₹3.8 lakh of stolen money passes through your account in a week." },
-        "why": { "en": "Whoever controls your account makes you a [[money_mule]], even if you never touch the money." }
+        "echo": {
+          "level": 3,
+          "hint": {
+            "en": "There is no job. There is only your account.",
+            "hi": "कोई नौकरी नहीं है। सिर्फ़ आपका खाता है।",
+            "te": "ఉద్యోగం లేదు. మీ ఖాతా మాత్రమే ఉంది."
+          }
+        },
+        "outcome": {
+          "en": "No salary ever comes. But ₹3.8 lakh of stolen money passes through your account in a week.",
+          "hi": "कोई तनख्वाह कभी नहीं आती। पर एक हफ़्ते में ₹3.8 लाख चोरी का पैसा आपके खाते से गुज़र जाता है।",
+          "te": "జీతం ఎప్పుడూ రాదు. కానీ వారంలో ₹3.8 లక్షల దొంగ డబ్బు మీ ఖాతా ద్వారా వెళ్తుంది."
+        },
+        "why": {
+          "en": "Whoever controls your account makes you a [[money_mule]], even if you never touch the money.",
+          "hi": "जो आपका खाता चलाता है, वह आपको [[money_mule]] बनाता है, चाहे आप पैसा कभी न छुएँ।",
+          "te": "మీ ఖాతాను ఎవరు నడిపితే వాళ్లు మిమ్మల్ని [[money_mule]] చేస్తారు, మీరు డబ్బు ముట్టకపోయినా."
+        }
       },
       {
         "id": "refuse",
-        "label": { "en": "Refuse, and report the message on 1930" },
+        "label": {
+          "en": "Refuse, and report the message on 1930",
+          "hi": "मना करें, और 1930 पर मैसेज की रिपोर्ट करें",
+          "te": "వద్దని, 1930కి మెసేజ్ రిపోర్ట్ చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 3 },
         "outcome": {
-          "en": "You lose ₹0. The number is blocked within a day, but 2 students in your batch had already sent theirs."
+          "en": "You lose ₹0. The number is blocked within a day, but 2 students in your batch had already sent theirs.",
+          "hi": "₹0 का नुकसान। एक दिन में नंबर ब्लॉक, पर आपके बैच के 2 छात्र पहले ही अपना भेज चुके थे।",
+          "te": "₹0 నష్టం. ఒక్క రోజులో నంబర్ బ్లాక్, కానీ మీ బ్యాచ్‌లో 2 విద్యార్థులు ఇప్పటికే పంపేశారు."
         },
-        "why": { "en": "Never share your login, SIM or ATM card. Your account is your identity." }
+        "why": {
+          "en": "Never share your login, SIM or ATM card. Your account is your identity.",
+          "hi": "अपना लॉगिन, सिम या ATM कार्ड कभी न दें। आपका खाता आपकी पहचान है।",
+          "te": "మీ లాగిన్, సిమ్, ATM కార్డు ఎప్పుడూ ఇవ్వకండి. మీ ఖాతా మీ గుర్తింపు."
+        }
       }
     ]
   }

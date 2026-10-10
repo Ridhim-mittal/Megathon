@@ -1,27 +1,51 @@
 [
   {
     "id": "house",
-    "title": { "en": "A pucca house" },
-    "description": { "en": "A strong house with a cement roof that doesn't leak in the monsoon. A room for Ammamma, a room for books." }
+    "title": { "en": "A pucca house", "hi": "पक्का घर", "te": "పక్కా ఇల్లు" },
+    "description": {
+      "en": "A strong house with a cement roof that doesn't leak in the monsoon. A room for Ammamma, a room for books.",
+      "hi": "सीमेंट की छत वाला मज़बूत घर, जो बारिश में न टपके। अम्मम्मा के लिए एक कमरा, किताबों के लिए एक कमरा।",
+      "te": "వానాకాలంలో కారని సిమెంట్ పైకప్పున్న గట్టి ఇల్లు. అమ్మమ్మకు ఒక గది, పుస్తకాలకు ఒక గది."
+    }
   },
   {
     "id": "business",
-    "title": { "en": "My own business" },
-    "description": { "en": "A small shop or workshop of your own in Mallepalli. Your name on the board, your rules." }
+    "title": { "en": "My own business", "hi": "मेरा अपना कारोबार", "te": "నా సొంత వ్యాపారం" },
+    "description": {
+      "en": "A small shop or workshop of your own in Mallepalli. Your name on the board, your rules.",
+      "hi": "मल्लेपल्ली में अपनी छोटी दुकान या वर्कशॉप। बोर्ड पर आपका नाम, नियम आपके।",
+      "te": "మల్లేపల్లిలో మీ సొంత చిన్న షాప్ లేదా వర్క్‌షాప్. బోర్డు మీద మీ పేరు, మీ నియమాలు."
+    }
   },
   {
     "id": "education",
-    "title": { "en": "Debt-free education" },
-    "description": { "en": "Chinni's nursing degree, fully paid, with no sahukar knocking on the door." }
+    "title": { "en": "Debt-free education", "hi": "कर्ज़ के बिना पढ़ाई", "te": "అప్పు లేని చదువు" },
+    "description": {
+      "en": "Chinni's nursing degree, fully paid, with no sahukar knocking on the door.",
+      "hi": "चिन्नी की नर्सिंग डिग्री, पूरी तरह चुकाई हुई, दरवाज़े पर कोई साहूकार नहीं।",
+      "te": "చిన్ని నర్సింగ్ డిగ్రీ, పూర్తిగా కట్టేసినది, తలుపు తట్టే షావుకారు లేకుండా."
+    }
   },
   {
     "id": "vehicle",
-    "title": { "en": "A vehicle that earns" },
-    "description": { "en": "A goods auto or small tractor that earns money every day, for you and for the village." }
+    "title": { "en": "A vehicle that earns", "hi": "कमाई करने वाली गाड़ी", "te": "సంపాదించే వాహనం" },
+    "description": {
+      "en": "A goods auto or small tractor that earns money every day, for you and for the village.",
+      "hi": "माल ढोने वाला ऑटो या छोटा ट्रैक्टर, जो रोज़ कमाए, आपके लिए और गाँव के लिए।",
+      "te": "రోజూ సంపాదించే సరుకుల ఆటో లేదా చిన్న ట్రాక్టర్, మీ కోసం, ఊరి కోసం."
+    }
   },
   {
     "id": "parents",
-    "title": { "en": "Amma and Nanna's safe old age" },
-    "description": { "en": "A pension, health cover and savings, so Amma and Nanna never have to borrow again." }
+    "title": {
+      "en": "Amma and Nanna's safe old age",
+      "hi": "अम्मा और नान्ना का सुरक्षित बुढ़ापा",
+      "te": "అమ్మానాన్నల భద్రమైన వృద్ధాప్యం"
+    },
+    "description": {
+      "en": "A pension, health cover and savings, so Amma and Nanna never have to borrow again.",
+      "hi": "पेंशन, स्वास्थ्य कवर और बचत, ताकि अम्मा और नान्ना को फिर कभी उधार न लेना पड़े।",
+      "te": "పెన్షన్, ఆరోగ్య బీమా, పొదుపు, అమ్మానాన్నలు మళ్లీ ఎప్పుడూ అప్పు చేయకుండా."
+    }
   }
 ]

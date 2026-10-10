@@ -1,31 +1,172 @@
 {
   "id": "village",
   "playable": true,
-  "title": { "en": "The Village" },
-  "tagline": { "en": "No money. No knowledge. One grandmother with very thick glasses." },
-  "persona": { "en": "A tenant-farming family in Mallepalli, a cotton village in Telangana. Nobody in the house has a bank account, and the kirana shop's khata is always open." },
+  "title": { "en": "The Village", "hi": "गाँव", "te": "ఊరు" },
+  "tagline": {
+    "en": "No money. No knowledge. One grandmother with very thick glasses.",
+    "hi": "न पैसा। न जानकारी। बस एक दादी, बहुत मोटे चश्मे वाली।",
+    "te": "డబ్బు లేదు. తెలివి లేదు. చాలా మందపాటి కళ్లద్దాలున్న ఒక అమ్మమ్మ."
+  },
+  "persona": {
+    "en": "A tenant-farming family in Mallepalli, a cotton village in Telangana. Nobody in the house has a bank account, and the kirana shop's khata is always open.",
+    "hi": "मल्लेपल्ली का एक बटाईदार किसान परिवार, तेलंगाना का कपास वाला गाँव। घर में किसी का बैंक खाता नहीं, और किराने की दुकान का खाता हमेशा खुला।",
+    "te": "తెలంగాణలోని పత్తి ఊరు మల్లేపల్లిలో ఒక కౌలు రైతు కుటుంబం. ఇంట్లో ఎవరికీ బ్యాంక్ ఖాతా లేదు, కిరాణా కొట్టు ఖాతా ఎప్పుడూ తెరిచే ఉంటుంది."
+  },
   "cast": {
-    "mentor": { "name": { "en": "Rajamma Ammamma" }, "role": { "en": "Your grandmother. Thick glasses, tied with black thread. Calls you kanna." } },
-    "sibling": { "name": { "en": "Chinni" }, "role": { "en": "Your little sister. Wants to be a nurse. Copies everything you do." } },
-    "friend": { "name": { "en": "Chintu" }, "role": { "en": "Your best friend. Funny, generous, always in a hurry." } },
-    "tempter": { "name": { "en": "Lucky Prakash" }, "role": { "en": "A smooth talker from town. His sunglasses get bigger every visit." } },
-    "agent": { "name": { "en": "Policy Ramana" }, "role": { "en": "An agent who sells whatever pays the best commission. Arrives at lunchtime." } },
-    "father": { "name": { "en": "Nanna" }, "role": { "en": "Your father, Yadagiri. Farms two rented acres. Scared of paperwork." } },
-    "mother": { "name": { "en": "Amma" }, "role": { "en": "Your mother, Saroja. Field worker, savings-group member, mental-maths champion." } },
-    "shopkeeper": { "name": { "en": "Anjamma aunty" }, "role": { "en": "Runs the kirana shop. Her khata notebook remembers everything." } },
-    "lender": { "name": { "en": "Narsaiah sahukar" }, "role": { "en": "The village moneylender. Polite, patient, very expensive." } },
-    "teacher": { "name": { "en": "Swapna madam" }, "role": { "en": "Your school teacher. Turns every problem into a sum." } },
-    "banker": { "name": { "en": "Kavitha akka" }, "role": { "en": "The Bank Mitra and savings-group leader. Her bank office is also a tailoring shop." } },
-    "buffalo": { "name": { "en": "Bujji" }, "role": { "en": "The family buffalo. Survives everything. Judges everyone." } }
+    "mentor": {
+      "name": { "en": "Rajamma Ammamma", "hi": "राजम्मा अम्मम्मा", "te": "రాజమ్మ అమ్మమ్మ" },
+      "role": {
+        "en": "Your grandmother. Thick glasses, tied with black thread. Calls you kanna.",
+        "hi": "आपकी नानी। मोटा चश्मा, काले धागे से बँधा। आपको कन्ना बुलाती हैं।",
+        "te": "మీ అమ్మమ్మ. మందపాటి కళ్లద్దాలు, నల్ల దారంతో కట్టినవి. మిమ్మల్ని కన్నా అని పిలుస్తుంది."
+      }
+    },
+    "sibling": {
+      "name": { "en": "Chinni", "hi": "चिन्नी", "te": "చిన్ని" },
+      "role": {
+        "en": "Your little sister. Wants to be a nurse. Copies everything you do.",
+        "hi": "आपकी छोटी बहन। नर्स बनना चाहती है। आपकी हर बात की नकल करती है।",
+        "te": "మీ చెల్లెలు. నర్సు కావాలనుకుంటుంది. మీరు చేసే ప్రతిదీ అనుకరిస్తుంది."
+      }
+    },
+    "friend": {
+      "name": { "en": "Chintu", "hi": "चिंटू", "te": "చింటూ" },
+      "role": {
+        "en": "Your best friend. Funny, generous, always in a hurry.",
+        "hi": "आपका पक्का दोस्त। मज़ाकिया, दिलदार, हमेशा जल्दी में।",
+        "te": "మీ ప్రాణ స్నేహితుడు. సరదా మనిషి, మంచి మనసు, ఎప్పుడూ తొందరలో."
+      }
+    },
+    "tempter": {
+      "name": { "en": "Lucky Prakash", "hi": "लकी प्रकाश", "te": "లక్కీ ప్రకాష్" },
+      "role": {
+        "en": "A smooth talker from town. His sunglasses get bigger every visit.",
+        "hi": "शहर का चिकनी-चुपड़ी बातें करने वाला। हर बार उसका काला चश्मा बड़ा होता जाता है।",
+        "te": "పట్నం నుంచి వచ్చే మాటకారి. ప్రతిసారీ అతని నల్ల కళ్లద్దాలు పెద్దవవుతాయి."
+      }
+    },
+    "agent": {
+      "name": { "en": "Policy Ramana", "hi": "पॉलिसी रमणा", "te": "పాలసీ రమణ" },
+      "role": {
+        "en": "An agent who sells whatever pays the best commission. Arrives at lunchtime.",
+        "hi": "एजेंट जो वही बेचता है जिसमें सबसे ज़्यादा कमीशन हो। हमेशा खाने के वक्त आता है।",
+        "te": "ఏది ఎక్కువ కమిషన్ ఇస్తే అదే అమ్మే ఏజెంట్. ఎప్పుడూ భోజనం టైమ్‌కే వస్తాడు."
+      }
+    },
+    "father": {
+      "name": { "en": "Nanna", "hi": "नान्ना", "te": "నాన్న" },
+      "role": {
+        "en": "Your father, Yadagiri. Farms two rented acres. Scared of paperwork.",
+        "hi": "आपके पिता, यादगिरी। दो एकड़ किराए की ज़मीन पर खेती। कागज़ों से डरते हैं।",
+        "te": "మీ నాన్న, యాదగిరి. రెండెకరాల కౌలు భూమిలో వ్యవసాయం. కాగితాలంటే భయం."
+      }
+    },
+    "mother": {
+      "name": { "en": "Amma", "hi": "अम्मा", "te": "అమ్మ" },
+      "role": {
+        "en": "Your mother, Saroja. Field worker, savings-group member, mental-maths champion.",
+        "hi": "आपकी माँ, सरोजा। खेत मज़दूर, बचत समूह की सदस्य, मन में हिसाब लगाने में चैंपियन।",
+        "te": "మీ అమ్మ, సరోజ. కూలీ పని, పొదుపు సంఘం సభ్యురాలు, మనసులో లెక్కలు వేయడంలో ఛాంపియన్."
+      }
+    },
+    "shopkeeper": {
+      "name": { "en": "Anjamma aunty", "hi": "अंजम्मा आंटी", "te": "అంజమ్మ ఆంటీ" },
+      "role": {
+        "en": "Runs the kirana shop. Her khata notebook remembers everything.",
+        "hi": "किराने की दुकान चलाती हैं। उनकी खाता बही सब कुछ याद रखती है।",
+        "te": "కిరాణా కొట్టు నడుపుతుంది. ఆమె ఖాతా పుస్తకం అన్నీ గుర్తుపెట్టుకుంటుంది."
+      }
+    },
+    "lender": {
+      "name": { "en": "Narsaiah sahukar", "hi": "नरसैया साहूकार", "te": "నర్సయ్య షావుకారు" },
+      "role": {
+        "en": "The village moneylender. Polite, patient, very expensive.",
+        "hi": "गाँव का साहूकार। विनम्र, धैर्यवान, बहुत महँगा।",
+        "te": "ఊరి వడ్డీ వ్యాపారి. మర్యాదస్తుడు, ఓపికమంతుడు, చాలా ఖరీదు."
+      }
+    },
+    "teacher": {
+      "name": { "en": "Swapna madam", "hi": "स्वप्ना मैडम", "te": "స్వప్న మేడమ్" },
+      "role": {
+        "en": "Your school teacher. Turns every problem into a sum.",
+        "hi": "आपकी स्कूल टीचर। हर मुश्किल को एक सवाल बना देती हैं।",
+        "te": "మీ స్కూల్ టీచర్. ప్రతి సమస్యను ఒక లెక్కగా మార్చేస్తుంది."
+      }
+    },
+    "banker": {
+      "name": { "en": "Kavitha akka", "hi": "कविता अक्का", "te": "కవిత అక్క" },
+      "role": {
+        "en": "The Bank Mitra and savings-group leader. Her bank office is also a tailoring shop.",
+        "hi": "बैंक मित्र और बचत समूह की नेता। उनका बैंक दफ़्तर दर्ज़ी की दुकान भी है।",
+        "te": "బ్యాంక్ మిత్ర, పొదుపు సంఘం నాయకురాలు. ఆమె బ్యాంక్ ఆఫీసే టైలరింగ్ షాప్ కూడా."
+      }
+    },
+    "buffalo": {
+      "name": { "en": "Bujji", "hi": "बुज्जी", "te": "బుజ్జి" },
+      "role": {
+        "en": "The family buffalo. Survives everything. Judges everyone.",
+        "hi": "परिवार की भैंस। हर मुसीबत झेल जाती है। सबको परखती है।",
+        "te": "ఇంటి గేదె. అన్నిటినీ తట్టుకుంటుంది. అందరినీ గమనిస్తుంది."
+      }
+    }
   },
   "intro": [
-    { "speaker": "narrator", "text": { "en": "Mallepalli. One kirana shop, one bus a day, and one big tank that floods or dries up." } },
-    { "speaker": "narrator", "text": { "en": "Your family rents two acres. {cast:father} grows cotton. {cast:mother} works in other people's fields." } },
-    { "speaker": "narrator", "text": { "en": "Nobody in your house has ever been inside a bank. The kirana [[khata]] is always open." } },
-    { "speaker": "narrator", "text": { "en": "Everyone says the family lost Thatha's land the year the rains failed. Ammamma never says anything at all." } },
-    { "speaker": "narrator", "text": { "en": "You are 11. You have ₹50, a little sister called {cast:sibling}, and a best friend called {cast:friend}." } },
-    { "speaker": "mentor", "text": { "en": "Kanna, money is like water. Plan where it goes, or it goes wherever it likes." } },
-    { "speaker": "narrator", "text": { "en": "I know this story well. I was there for all of it. Let's begin." } }
+    {
+      "speaker": "narrator",
+      "text": {
+        "en": "Mallepalli. One kirana shop, one bus a day, and one big tank that floods or dries up.",
+        "hi": "मल्लेपल्ली। एक किराने की दुकान, दिन में एक बस, और एक बड़ा तालाब जो या तो उफनता है या सूख जाता है।",
+        "te": "మల్లేపల్లి. ఒక కిరాణా కొట్టు, రోజుకు ఒక బస్సు, ఒక పెద్ద చెరువు, అది పొంగుతుంది లేదా ఎండిపోతుంది."
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": {
+        "en": "Your family rents two acres. {cast:father} grows cotton. {cast:mother} works in other people's fields.",
+        "hi": "आपका परिवार दो एकड़ किराए पर लेता है। {cast:father} कपास उगाते हैं। {cast:mother} दूसरों के खेतों में काम करती हैं।",
+        "te": "మీ కుటుంబం రెండెకరాలు కౌలుకు తీసుకుంది. {cast:father} పత్తి పండిస్తాడు. {cast:mother} ఇతరుల పొలాల్లో పని చేస్తుంది."
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": {
+        "en": "Nobody in your house has ever been inside a bank. The kirana [[khata]] is always open.",
+        "hi": "आपके घर में कोई कभी बैंक के अंदर नहीं गया। किराने का [[khata]] हमेशा खुला रहता है।",
+        "te": "మీ ఇంట్లో ఎవరూ ఎప్పుడూ బ్యాంక్ లోపలికి వెళ్లలేదు. కిరాణా [[khata]] ఎప్పుడూ తెరిచే ఉంటుంది."
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": {
+        "en": "Everyone says the family lost Thatha's land the year the rains failed. Ammamma never says anything at all.",
+        "hi": "सब कहते हैं, जिस साल बारिश नहीं हुई, उस साल परिवार की ज़मीन चली गई। अम्मम्मा कुछ नहीं कहतीं।",
+        "te": "వానలు పడని ఏడాది తాతయ్య భూమి పోయిందని అందరూ అంటారు. అమ్మమ్మ మాత్రం ఏమీ మాట్లాడదు."
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": {
+        "en": "You are 11. You have ₹50, a little sister called {cast:sibling}, and a best friend called {cast:friend}.",
+        "hi": "आप 11 साल के हैं। आपके पास ₹50 हैं, एक छोटी बहन {cast:sibling}, और पक्का दोस्त {cast:friend}।",
+        "te": "మీ వయసు 11. మీ దగ్గర ₹50 ఉన్నాయి, చెల్లెలు {cast:sibling}, ప్రాణ స్నేహితుడు {cast:friend}."
+      }
+    },
+    {
+      "speaker": "mentor",
+      "text": {
+        "en": "Kanna, money is like water. Plan where it goes, or it goes wherever it likes.",
+        "hi": "कन्ना, पैसा पानी जैसा है। तय करो कहाँ जाए, वरना जहाँ मन होगा वहाँ बह जाएगा।",
+        "te": "కన్నా, డబ్బు నీళ్ల లాంటిది. ఎక్కడికి వెళ్లాలో నువ్వే నిర్ణయించు, లేకపోతే ఇష్టమొచ్చిన చోటుకి పారిపోతుంది."
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": {
+        "en": "I know this story well. I was there for all of it. Let's begin.",
+        "hi": "मैं यह कहानी अच्छी तरह जानती हूँ। मैं पूरे समय वहीं थी। चलिए, शुरू करते हैं।",
+        "te": "ఈ కథ నాకు బాగా తెలుసు. మొదటి నుంచీ నేను అక్కడే ఉన్నాను. మొదలుపెడదాం."
+      }
+    }
   ],
   "start": {
     "cash": 50,
@@ -37,14 +178,70 @@
   "rival": {
     "roleId": "friend",
     "milestones": [
-      { "age": 12, "text": { "en": "Shares his father's OTP for free game gems. Loses ₹2,500 in a minute." } },
-      { "age": 16, "text": { "en": "Buys a phone on EMI. Pays ₹9,588 for a ₹7,500 phone." } },
-      { "age": 17, "text": { "en": "Downloads a betting app. Wins ₹300, then loses ₹6,000 chasing it." } },
-      { "age": 18, "text": { "en": "Drops out and follows Lucky Prakash to the city for quick cash." } },
-      { "age": 21, "text": { "en": "Borrows from three loan apps to repay one. Recovery agents call his mother." } },
-      { "age": 22, "text": { "en": "His bank account is frozen as a money mule. He calls 1930 and tells the truth." } },
-      { "age": 26, "text": { "en": "Delivery rider. Saves ₹1,000 a month in an RD. Laughs again." } },
-      { "age": 34, "text": { "en": "Opens a mobile repair stall with a Mudra loan. His dream is six years late, but real." } }
+      {
+        "age": 12,
+        "text": {
+          "en": "Shares his father's OTP for free game gems. Loses ₹2,500 in a minute.",
+          "hi": "मुफ़्त गेम जेम्स के लिए पापा का OTP बता देता है। एक मिनट में ₹2,500 गँवाता है।",
+          "te": "ఉచిత గేమ్ జెమ్స్ కోసం నాన్న OTP చెప్పేస్తాడు. ఒక్క నిమిషంలో ₹2,500 పోగొట్టుకుంటాడు."
+        }
+      },
+      {
+        "age": 16,
+        "text": {
+          "en": "Buys a phone on EMI. Pays ₹9,588 for a ₹7,500 phone.",
+          "hi": "EMI पर फ़ोन खरीदता है। ₹7,500 के फ़ोन के ₹9,588 देता है।",
+          "te": "EMIలో ఫోన్ కొంటాడు. ₹7,500 ఫోన్‌కు ₹9,588 కడతాడు."
+        }
+      },
+      {
+        "age": 17,
+        "text": {
+          "en": "Downloads a betting app. Wins ₹300, then loses ₹6,000 chasing it.",
+          "hi": "सट्टे का ऐप डाउनलोड करता है। ₹300 जीतता है, फिर पीछा करते-करते ₹6,000 हारता है।",
+          "te": "బెట్టింగ్ యాప్ డౌన్‌లోడ్ చేస్తాడు. ₹300 గెలుస్తాడు, తర్వాత దాని వెంటపడి ₹6,000 పోగొట్టుకుంటాడు."
+        }
+      },
+      {
+        "age": 18,
+        "text": {
+          "en": "Drops out and follows Lucky Prakash to the city for quick cash.",
+          "hi": "पढ़ाई छोड़ देता है और जल्दी पैसे के लिए लकी प्रकाश के साथ शहर जाता है।",
+          "te": "చదువు మానేసి త్వరిత డబ్బు కోసం లక్కీ ప్రకాష్‌తో పట్నం వెళ్తాడు."
+        }
+      },
+      {
+        "age": 21,
+        "text": {
+          "en": "Borrows from three loan apps to repay one. Recovery agents call his mother.",
+          "hi": "एक कर्ज़ चुकाने के लिए तीन लोन ऐप से उधार लेता है। रिकवरी वाले उसकी माँ को फ़ोन करते हैं।",
+          "te": "ఒక అప్పు తీర్చడానికి మూడు లోన్ యాప్‌ల నుంచి అప్పు తీసుకుంటాడు. రికవరీ వాళ్లు వాళ్లమ్మకు ఫోన్ చేస్తారు."
+        }
+      },
+      {
+        "age": 22,
+        "text": {
+          "en": "His bank account is frozen as a money mule. He calls 1930 and tells the truth.",
+          "hi": "मनी म्यूल बनने पर उसका खाता फ़्रीज़ होता है। वह 1930 पर फ़ोन करके सच बताता है।",
+          "te": "మనీ మ్యూల్‌గా మారడంతో అతని ఖాతా ఫ్రీజ్ అవుతుంది. 1930కి ఫోన్ చేసి నిజం చెబుతాడు."
+        }
+      },
+      {
+        "age": 26,
+        "text": {
+          "en": "Delivery rider. Saves ₹1,000 a month in an RD. Laughs again.",
+          "hi": "डिलीवरी राइडर। RD में ₹1,000 महीना बचाता है। फिर से हँसता है।",
+          "te": "డెలివరీ రైడర్. RDలో నెలకు ₹1,000 పొదుపు చేస్తాడు. మళ్లీ నవ్వుతాడు."
+        }
+      },
+      {
+        "age": 34,
+        "text": {
+          "en": "Opens a mobile repair stall with a Mudra loan. His dream is six years late, but real.",
+          "hi": "मुद्रा लोन से मोबाइल रिपेयर की दुकान खोलता है। उसका सपना छह साल देर से, पर सच हुआ।",
+          "te": "ముద్ర లోన్‌తో మొబైల్ రిపేర్ షాప్ పెడతాడు. అతని కల ఆరేళ్లు ఆలస్యమైనా నిజమైంది."
+        }
+      }
     ]
   }
 }

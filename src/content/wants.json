@@ -1,53 +1,282 @@
 [
-  { "id": "chocolate", "stage": "child", "title": { "en": "Chocolate bar" }, "price": 20, "joy": 2 },
-  { "id": "ice_candy", "stage": "child", "title": { "en": "Ice candy after school" }, "price": 10, "joy": 1 },
-  { "id": "kite", "stage": "child", "title": { "en": "Kite and manja for Sankranti" }, "price": 60, "joy": 4 },
-  { "id": "sticker_album", "stage": "child", "title": { "en": "Cricket sticker album" }, "price": 80, "joy": 3 },
-  { "id": "toy_car", "stage": "child", "title": { "en": "Remote-control toy car" }, "price": 250, "joy": 5 },
-  { "id": "cricket_bat", "stage": "child", "title": { "en": "Cricket bat (proper wood!)" }, "price": 400, "joy": 8 },
   {
-    "id": "game_gems", "stage": "child", "title": { "en": "Game top-up: 100 gems" }, "price": 99, "joy": 4,
-    "echo": { "level": 1, "hint": { "en": "The gems vanish in a week. The habit stays." } }
+    "id": "chocolate",
+    "stage": "child",
+    "title": { "en": "Chocolate bar", "hi": "चॉकलेट बार", "te": "చాక్లెట్ బార్" },
+    "price": 20,
+    "joy": 2
   },
-
-  { "id": "movie_town", "stage": "teen", "title": { "en": "Movie in town with friends" }, "price": 150, "joy": 4 },
-  { "id": "jeans", "stage": "teen", "title": { "en": "New jeans" }, "price": 700, "joy": 6 },
-  { "id": "recharge", "stage": "teen", "title": { "en": "Mobile recharge, 28 days" }, "price": 199, "joy": 3 },
-  { "id": "earphones", "stage": "teen", "title": { "en": "Wireless earphones" }, "price": 900, "joy": 5 },
-  { "id": "biryani_party", "stage": "teen", "title": { "en": "Biryani for the cricket team" }, "price": 600, "joy": 6 },
-  { "id": "used_phone", "stage": "teen", "title": { "en": "Second-hand smartphone" }, "price": 4000, "joy": 10 },
   {
-    "id": "game_pass", "stage": "teen", "title": { "en": "Monthly game battle pass" }, "price": 299, "joy": 4,
-    "echo": { "level": 1, "hint": { "en": "₹299 a month is ₹3,588 a year, every year." } }
+    "id": "ice_candy",
+    "stage": "child",
+    "title": { "en": "Ice candy after school", "hi": "स्कूल के बाद आइस कैंडी", "te": "స్కూల్ తర్వాత ఐస్ క్యాండీ" },
+    "price": 10,
+    "joy": 1
   },
-
-  { "id": "eating_out", "stage": "young", "title": { "en": "Dinner out with colleagues" }, "price": 600, "joy": 4 },
-  { "id": "shoes", "stage": "young", "title": { "en": "Good shoes for work" }, "price": 1500, "joy": 4 },
-  { "id": "trip_friends", "stage": "young", "title": { "en": "Trip to the hills with friends" }, "price": 5000, "joy": 10 },
-  { "id": "used_bike", "stage": "young", "title": { "en": "Second-hand motorbike" }, "price": 35000, "joy": 14 },
-  { "id": "gift_amma", "stage": "young", "title": { "en": "A new saree for Amma" }, "price": 1800, "joy": 6 },
   {
-    "id": "phone_upgrade", "stage": "young", "title": { "en": "Latest phone upgrade" }, "price": 18000, "joy": 8,
-    "echo": { "level": 1, "hint": { "en": "A new phone every year is a small EMI forever." } }
+    "id": "kite",
+    "stage": "child",
+    "title": { "en": "Kite and manja for Sankranti", "hi": "संक्रांति के लिए पतंग और मांझा", "te": "సంక్రాంతికి గాలిపటం, మాంజా" },
+    "price": 60,
+    "joy": 4
   },
-
-  { "id": "festival_clothes", "stage": "adult", "title": { "en": "Festival clothes for the whole family" }, "price": 6000, "joy": 7 },
-  { "id": "tv", "stage": "adult", "title": { "en": "Big LED TV" }, "price": 20000, "joy": 8 },
-  { "id": "beach_trip", "stage": "adult", "title": { "en": "Family trip to the beach" }, "price": 15000, "joy": 12 },
-  { "id": "gold_chain", "stage": "adult", "title": { "en": "Gold chain for Amma" }, "price": 30000, "joy": 9 },
-  { "id": "wedding_gift", "stage": "adult", "title": { "en": "Gift for a cousin's wedding" }, "price": 5000, "joy": 5 },
   {
-    "id": "new_scooter", "stage": "adult", "title": { "en": "Brand-new scooter" }, "price": 85000, "joy": 12,
-    "echo": { "level": 2, "hint": { "en": "Vehicles lose value the day they leave the showroom." } }
+    "id": "sticker_album",
+    "stage": "child",
+    "title": { "en": "Cricket sticker album", "hi": "क्रिकेट स्टिकर एल्बम", "te": "క్రికెట్ స్టిక్కర్ ఆల్బమ్" },
+    "price": 80,
+    "joy": 3
   },
-
-  { "id": "fridge", "stage": "settle", "title": { "en": "A fridge for the house" }, "price": 22000, "joy": 7 },
-  { "id": "school_kit", "stage": "settle", "title": { "en": "School bags and books for the nephews" }, "price": 2500, "joy": 6 },
-  { "id": "family_holiday", "stage": "settle", "title": { "en": "Family holiday in the hills" }, "price": 25000, "joy": 12 },
-  { "id": "anniversary", "stage": "settle", "title": { "en": "Anniversary dinner for Amma and Nanna" }, "price": 2500, "joy": 8 },
-  { "id": "tiled_floor", "stage": "settle", "title": { "en": "Tiles for the floor" }, "price": 40000, "joy": 8 },
   {
-    "id": "big_party", "stage": "settle", "title": { "en": "Grand birthday party for the whole street" }, "price": 20000, "joy": 9,
-    "echo": { "level": 1, "hint": { "en": "The street eats for one night. The savings take a year to grow back." } }
+    "id": "toy_car",
+    "stage": "child",
+    "title": { "en": "Remote-control toy car", "hi": "रिमोट कंट्रोल खिलौना कार", "te": "రిమోట్ కంట్రోల్ బొమ్మ కారు" },
+    "price": 250,
+    "joy": 5
+  },
+  {
+    "id": "cricket_bat",
+    "stage": "child",
+    "title": { "en": "Cricket bat (proper wood!)", "hi": "क्रिकेट बैट (असली लकड़ी!)", "te": "క్రికెట్ బ్యాట్ (అసలైన చెక్క!)" },
+    "price": 400,
+    "joy": 8
+  },
+  {
+    "id": "game_gems",
+    "stage": "child",
+    "title": { "en": "Game top-up: 100 gems", "hi": "गेम टॉप-अप: 100 जेम्स", "te": "గేమ్ టాప్-అప్: 100 జెమ్స్" },
+    "price": 99,
+    "joy": 4,
+    "echo": {
+      "level": 1,
+      "hint": {
+        "en": "The gems vanish in a week. The habit stays.",
+        "hi": "जेम्स एक हफ़्ते में खत्म। आदत बनी रहती है।",
+        "te": "జెమ్స్ వారంలో అయిపోతాయి. అలవాటు మాత్రం ఉండిపోతుంది."
+      }
+    }
+  },
+  {
+    "id": "movie_town",
+    "stage": "teen",
+    "title": { "en": "Movie in town with friends", "hi": "दोस्तों के साथ शहर में फ़िल्म", "te": "స్నేహితులతో పట్నంలో సినిమా" },
+    "price": 150,
+    "joy": 4
+  },
+  {
+    "id": "jeans",
+    "stage": "teen",
+    "title": { "en": "New jeans", "hi": "नई जींस", "te": "కొత్త జీన్స్" },
+    "price": 700,
+    "joy": 6
+  },
+  {
+    "id": "recharge",
+    "stage": "teen",
+    "title": { "en": "Mobile recharge, 28 days", "hi": "मोबाइल रिचार्ज, 28 दिन", "te": "మొబైల్ రీఛార్జ్, 28 రోజులు" },
+    "price": 199,
+    "joy": 3
+  },
+  {
+    "id": "earphones",
+    "stage": "teen",
+    "title": { "en": "Wireless earphones", "hi": "वायरलेस ईयरफ़ोन", "te": "వైర్‌లెస్ ఇయర్‌ఫోన్స్" },
+    "price": 900,
+    "joy": 5
+  },
+  {
+    "id": "biryani_party",
+    "stage": "teen",
+    "title": { "en": "Biryani for the cricket team", "hi": "क्रिकेट टीम के लिए बिरयानी", "te": "క్రికెట్ టీమ్‌కు బిర్యానీ" },
+    "price": 600,
+    "joy": 6
+  },
+  {
+    "id": "used_phone",
+    "stage": "teen",
+    "title": { "en": "Second-hand smartphone", "hi": "पुराना स्मार्टफ़ोन", "te": "సెకండ్ హ్యాండ్ స్మార్ట్‌ఫోన్" },
+    "price": 4000,
+    "joy": 10
+  },
+  {
+    "id": "game_pass",
+    "stage": "teen",
+    "title": { "en": "Monthly game battle pass", "hi": "महीने का गेम बैटल पास", "te": "నెలవారీ గేమ్ బ్యాటిల్ పాస్" },
+    "price": 299,
+    "joy": 4,
+    "echo": {
+      "level": 1,
+      "hint": {
+        "en": "₹299 a month is ₹3,588 a year, every year.",
+        "hi": "₹299 महीना मतलब ₹3,588 साल, हर साल।",
+        "te": "నెలకు ₹299 అంటే ఏడాదికి ₹3,588, ప్రతి ఏడాది."
+      }
+    }
+  },
+  {
+    "id": "eating_out",
+    "stage": "young",
+    "title": { "en": "Dinner out with colleagues", "hi": "साथियों के साथ बाहर खाना", "te": "సహోద్యోగులతో బయట భోజనం" },
+    "price": 600,
+    "joy": 4
+  },
+  {
+    "id": "shoes",
+    "stage": "young",
+    "title": { "en": "Good shoes for work", "hi": "काम के लिए अच्छे जूते", "te": "పనికి మంచి చెప్పులు" },
+    "price": 1500,
+    "joy": 4
+  },
+  {
+    "id": "trip_friends",
+    "stage": "young",
+    "title": { "en": "Trip to the hills with friends", "hi": "दोस्तों के साथ पहाड़ों की सैर", "te": "స్నేహితులతో కొండల ట్రిప్" },
+    "price": 5000,
+    "joy": 10
+  },
+  {
+    "id": "used_bike",
+    "stage": "young",
+    "title": { "en": "Second-hand motorbike", "hi": "पुरानी मोटरसाइकिल", "te": "సెకండ్ హ్యాండ్ మోటర్‌బైక్" },
+    "price": 35000,
+    "joy": 14
+  },
+  {
+    "id": "gift_amma",
+    "stage": "young",
+    "title": { "en": "A new saree for Amma", "hi": "अम्मा के लिए नई साड़ी", "te": "అమ్మకు కొత్త చీర" },
+    "price": 1800,
+    "joy": 6
+  },
+  {
+    "id": "phone_upgrade",
+    "stage": "young",
+    "title": { "en": "Latest phone upgrade", "hi": "सबसे नया फ़ोन", "te": "లేటెస్ట్ ఫోన్ అప్‌గ్రేడ్" },
+    "price": 18000,
+    "joy": 8,
+    "echo": {
+      "level": 1,
+      "hint": {
+        "en": "A new phone every year is a small EMI forever.",
+        "hi": "हर साल नया फ़ोन मतलब हमेशा की एक छोटी EMI।",
+        "te": "ప్రతి ఏడాది కొత్త ఫోన్ అంటే ఎప్పటికీ ఒక చిన్న EMI."
+      }
+    }
+  },
+  {
+    "id": "festival_clothes",
+    "stage": "adult",
+    "title": {
+      "en": "Festival clothes for the whole family",
+      "hi": "पूरे परिवार के लिए त्योहार के कपड़े",
+      "te": "కుటుంబమంతటికీ పండుగ బట్టలు"
+    },
+    "price": 6000,
+    "joy": 7
+  },
+  {
+    "id": "tv",
+    "stage": "adult",
+    "title": { "en": "Big LED TV", "hi": "बड़ा LED टीवी", "te": "పెద్ద LED టీవీ" },
+    "price": 20000,
+    "joy": 8
+  },
+  {
+    "id": "beach_trip",
+    "stage": "adult",
+    "title": { "en": "Family trip to the beach", "hi": "परिवार के साथ समुद्र तट की सैर", "te": "కుటుంబంతో బీచ్ ట్రిప్" },
+    "price": 15000,
+    "joy": 12
+  },
+  {
+    "id": "gold_chain",
+    "stage": "adult",
+    "title": { "en": "Gold chain for Amma", "hi": "अम्मा के लिए सोने की चेन", "te": "అమ్మకు బంగారు గొలుసు" },
+    "price": 30000,
+    "joy": 9
+  },
+  {
+    "id": "wedding_gift",
+    "stage": "adult",
+    "title": { "en": "Gift for a cousin's wedding", "hi": "चचेरे भाई की शादी का तोहफ़ा", "te": "కజిన్ పెళ్లికి బహుమతి" },
+    "price": 5000,
+    "joy": 5
+  },
+  {
+    "id": "new_scooter",
+    "stage": "adult",
+    "title": { "en": "Brand-new scooter", "hi": "बिल्कुल नया स्कूटर", "te": "సరికొత్త స్కూటర్" },
+    "price": 85000,
+    "joy": 12,
+    "echo": {
+      "level": 2,
+      "hint": {
+        "en": "Vehicles lose value the day they leave the showroom.",
+        "hi": "गाड़ी शोरूम से निकलते ही कीमत खोने लगती है।",
+        "te": "షోరూమ్ నుంచి బయటికి రాగానే వాహనం విలువ తగ్గడం మొదలవుతుంది."
+      }
+    }
+  },
+  {
+    "id": "fridge",
+    "stage": "settle",
+    "title": { "en": "A fridge for the house", "hi": "घर के लिए फ़्रिज", "te": "ఇంటికి ఫ్రిజ్" },
+    "price": 22000,
+    "joy": 7
+  },
+  {
+    "id": "school_kit",
+    "stage": "settle",
+    "title": {
+      "en": "School bags and books for the nephews",
+      "hi": "भतीजों के लिए स्कूल बैग और किताबें",
+      "te": "మేనల్లుళ్లకు స్కూల్ బ్యాగులు, పుస్తకాలు"
+    },
+    "price": 2500,
+    "joy": 6
+  },
+  {
+    "id": "family_holiday",
+    "stage": "settle",
+    "title": { "en": "Family holiday in the hills", "hi": "पहाड़ों में परिवार की छुट्टी", "te": "కొండల్లో కుటుంబ సెలవులు" },
+    "price": 25000,
+    "joy": 12
+  },
+  {
+    "id": "anniversary",
+    "stage": "settle",
+    "title": {
+      "en": "Anniversary dinner for Amma and Nanna",
+      "hi": "अम्मा और नान्ना की सालगिरह का खाना",
+      "te": "అమ్మానాన్నల పెళ్లి రోజు భోజనం"
+    },
+    "price": 2500,
+    "joy": 8
+  },
+  {
+    "id": "tiled_floor",
+    "stage": "settle",
+    "title": { "en": "Tiles for the floor", "hi": "फ़र्श के लिए टाइलें", "te": "నేలకు టైల్స్" },
+    "price": 40000,
+    "joy": 8
+  },
+  {
+    "id": "big_party",
+    "stage": "settle",
+    "title": {
+      "en": "Grand birthday party for the whole street",
+      "hi": "पूरी गली के लिए बड़ी जन्मदिन पार्टी",
+      "te": "వీధి మొత్తానికి గ్రాండ్ బర్త్‌డే పార్టీ"
+    },
+    "price": 20000,
+    "joy": 9,
+    "echo": {
+      "level": 1,
+      "hint": {
+        "en": "The street eats for one night. The savings take a year to grow back.",
+        "hi": "गली एक रात खाती है। बचत को दोबारा बढ़ने में एक साल लगता है।",
+        "te": "వీధి ఒక్క రాత్రి తింటుంది. పొదుపు మళ్లీ పెరగడానికి ఏడాది పడుతుంది."
+      }
+    }
   }
 ]

@@ -89,7 +89,7 @@ export function applyEffects(A, s, effects, out, { origin = null, cashCategory =
   for (const item of list(e.schedule)) {
     if (!item?.card) continue;
     const inYears = Math.max(0, num(item.inYears ?? 1));
-    const entry = { age: s.age + inYears, card: item.card, unlessFlag: item.unlessFlag ?? null, origin };
+    const entry = { age: (s.current?.age ?? s.age) + inYears, card: item.card, unlessFlag: item.unlessFlag ?? null, origin };
     if (inYears === 0) s.queue.unshift({ type: "scheduled", card: entry.card, unlessFlag: entry.unlessFlag, origin });
     else s.scheduled.push(entry);
     out.push({ type: "scheduled", card: item.card, age: entry.age });
