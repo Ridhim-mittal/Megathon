@@ -93,12 +93,7 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
   if (showIntro) {
     // ChapterIntro brings its own full-screen layer.
   } else if (phase === "budget") {
-    dialog = (
-      <>
-        <BudgetView key={`budget-${life.age}`} life={life} dispatch={dispatch} />
-        <p className="quiet chapter-split">{t("chapter.split")}</p>
-      </>
-    );
+    dialog = <BudgetView key={`budget-${life.age}`} life={life} dispatch={dispatch} repeats />;
   } else if (phase === "card") dialog = <CardView key={card?.id} life={life} dispatch={dispatch} />;
   else if (phase === "outcome")
     dialog = <OutcomeView key={`o-${card?.id}`} life={life} dispatch={dispatch} onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })} />;
