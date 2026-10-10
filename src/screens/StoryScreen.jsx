@@ -13,6 +13,7 @@ import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
 import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { sounds } from "../ui/sound.js";
+import { CHOICE_GAMES, InterestRace } from "../ui/games/InterestRace.jsx";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
 import { CardView } from "./life/CardView.jsx";
@@ -103,10 +104,19 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
 
   // ---------- choices: locks and STOP warnings ----------
   const card = select.currentCard(life);
+  const [game, setGame] = useState(null); // a choice that needs a mini-game won first
+  const gameOpen = useRef(false);
+  gameOpen.current = Boolean(game);
   const storyDispatch = useCallback(
     (action) => {
+      // While a mini-game is open its own keys (1–3) must not pick a card choice.
+      if (action.type === "CHOOSE" && gameOpen.current && !action.wonGame) return null;
       if (action.type === "CHOOSE" && !action.ignoredWarning) {
         const c = select.currentCard(life)?.choices.find((x) => x.id === action.choiceId);
+        if (c && !c.locked && CHOICE_GAMES[c.id] && !action.wonGame) {
+          setGame({ choiceId: c.id, kind: CHOICE_GAMES[c.id] });
+          return null;
+        }
         if (c?.locked) {
           onToast(c.lockedHint ? pick(c.lockedHint) : t("story.locked"));
           return null;
@@ -170,7 +180,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           <TimerBar
             key={`timer-${card.id}`}
             seconds={card.timer.seconds}
-            paused={Boolean(warning)}
+            paused={Boolean(warning || game)}
             label={t("story.decideFast")}
             onTimeout={() => {
               setWarning(null);
@@ -316,6 +326,19 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
             {dialog}
           </section>
         </div>
+      )}
+      {game?.kind === "interest" && (
+        <InterestRace
+          mode="story"
+          avatar={life.avatar ?? "boy"}
+          onClose={() => setGame(null)}
+          onGiveUp={() => setGame(null)}
+          onWin={() => {
+            const choiceId = game.choiceId;
+            setGame(null);
+            storyDispatch({ type: "CHOOSE", choiceId, wonGame: true });
+          }}
+        />
       )}
       {warning && (
         <WarningFlash
