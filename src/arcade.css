@@ -2286,3 +2286,64 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ---------- The arcade menu's two shelves: quick games, then the story's mini-games ---------- */
+.arcade-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 2px -2px;
+  font-family: var(--px-font);
+  font-size: 15px;
+  color: #6b4a24;
+}
+.arcade-section::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg, #d8c39a 0 6px, transparent 6px 10px);
+}
+.arcade-section.story {
+  margin-top: 10px;
+  color: #7a3f6b;
+}
+.arcade-tiles.story {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (max-width: 760px) {
+  .arcade-tiles.story {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+}
+.story-tile {
+  padding: 12px 8px 10px;
+  background: #fff6fb;
+  border-color: #8a5a7a;
+}
+.story-tile .arcade-icon {
+  width: 52px;
+  height: 52px;
+}
+.story-tile b {
+  font-size: 15px;
+}
+.story-tile small {
+  font-size: 12px;
+  text-align: center;
+}
+.story-ratGuard { --game-color: #8a6a4a; }
+.story-interest { --game-color: #2f8a6a; }
+.story-fake { --game-color: #6a4fb8; }
+.story-salary { --game-color: #c9792a; }
+.story-baskets { --game-color: #c8506e; }
+.title-game.title-arcade-btn {
+  border-color: #7a3f6b;
+  background: #fbe8f4;
+  color: #7a3f6b;
+  box-shadow: 0 4px 0 #7a3f6b;
+}
+.title-game.title-arcade-btn:active {
+  box-shadow: 0 1px 0 #7a3f6b;
+}

@@ -1392,6 +1392,17 @@
       "tin": "₹100 in a tin box",
       "chart": "Prices grew from {from} to {to} in {n} years",
       "buys": "₹100 kept in a tin box now buys only {pct}% of that bag."
+    },
+    "sections": {
+      "quick": "Quick games",
+      "story": "Story mini-games"
+    },
+    "storyTags": {
+      "ratGuard": "Guard the savings",
+      "interest": "Find the best interest",
+      "fake": "Catch the fake adviser",
+      "salary": "Split your salary",
+      "baskets": "Spread your eggs"
     }
   },
   "salary": {

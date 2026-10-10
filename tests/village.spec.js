@@ -21,6 +21,13 @@ async function start(page, { lang = "English" } = {}) {
 }
 
 // Storyline → intro → dream → the prologue's title card → budget.
+// Every mini-game lives in the Arcade; each one shows a skippable ad as it starts.
+async function openFromArcade(page, tile) {
+  await page.getByRole("button", { name: "Arcade" }).click();
+  await page.getByRole("button", { name: tile }).click();
+  await page.getByRole("button", { name: /^Skip ad/ }).click({ timeout: 10000 });
+}
+
 async function toPrologue(page) {
   await expect(page.getByRole("heading", { name: "Choose your life" })).toBeVisible();
   await expect(page.getByText("Coming soon")).toBeVisible();
@@ -219,8 +226,8 @@ test("the interest race mini-game opens from the title: a wrong run offers Try a
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
-  await page.getByRole("button", { name: "Mini-game: Interest race" }).click();
-  const game = page.getByRole("dialog");
+  await openFromArcade(page, /Interest race/);
+  const game = page.locator(".ir-layer");
   await expect(game.getByRole("heading", { name: "Interest race" })).toBeVisible();
   await game.getByRole("button", { name: "Start the race" }).click();
   const interest = async () =>
@@ -247,7 +254,7 @@ test("Rat Guard opens from the title: the bank unlocks after the cutscene, rats 
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
-  await page.getByRole("button", { name: "Mini-game: Rat Guard" }).click();
+  await openFromArcade(page, /Rat Guard/);
   const game = page.getByRole("dialog", { name: "Rat Guard" });
   await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
   await game.getByRole("button", { name: /Tin box/ }).click();
@@ -286,8 +293,7 @@ test("the price snake opens from the arcade, and a crash shows how prices grew",
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
-  await page.getByRole("button", { name: "Arcade" }).click();
-  await page.getByRole("button", { name: /Price Snake/ }).click();
+  await openFromArcade(page, /Price Snake/);
   await expect(page.getByText("Meet Mehngai, the price snake.")).toBeVisible();
   await page.locator(".snake-go").click();
   await expect(page.locator(".snake-weight")).toContainText("₹100");
