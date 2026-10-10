@@ -16,8 +16,9 @@ cp .env.example .env   # fill in your keys
 ```
 
 ## Workflow
-Everyone works on their own branch (`<name>/<task>`) and merges into `main` through a pull
-request every 1–2 hours. Nobody pushes to `main` directly. Full rules are in [`CLAUDE.md`](CLAUDE.md).
+Everyone works on their own branch (`<name>/<task>`). After every prompt that changes code,
+Claude pushes the branch and reminds you to merge it into `main` through a pull request — do it
+right away. Nobody pushes to `main` directly. Full rules are in [`CLAUDE.md`](CLAUDE.md).
 
 ## Working with Claude Code
 Team rules for Claude Code sessions live in [`CLAUDE.md`](CLAUDE.md) — Claude reads it

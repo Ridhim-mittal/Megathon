@@ -8,8 +8,13 @@ same time. These rules exist to keep us out of merge-conflict hell. Follow them 
 - Each person works on their own branch, named `<name>/<task>` (e.g. `alice/login-form`).
   In a Claude Code cloud session the branch is pre-assigned — use that one.
 - One Claude session = one branch. Never commit to a teammate's branch.
-- Merge your branch into `main` via a PR **every 1–2 hours** (whenever something works),
-  not once at the end. Then start the next task on a fresh branch from the new `main`.
+- **At the end of every prompt that changed code**: merge `origin/main` into your branch, run
+  the checks, commit, push your branch, and then finish your reply with this reminder:
+  > ✅ Pushed to `<branch>`. **Merge it into `main` now:** open a PR from `<branch>` → `main`
+  > on GitHub and merge it (link: `https://github.com/Ridhim-mittal/Megathon/compare/main...<branch>`).
+  If the merge of `origin/main` had conflicts you could not safely resolve, say so instead of
+  giving the reminder. Skip the reminder for prompts that changed nothing (questions, reviews).
+- After the user merges, the next task starts again from the latest `origin/main`.
 - To pick up teammates' work, merge `main` into your branch: `git fetch origin main && git merge origin/main`.
   Use merge, not rebase — rebasing a pushed branch needs a force-push, which is blocked.
 
