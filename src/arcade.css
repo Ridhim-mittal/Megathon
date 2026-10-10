@@ -1770,3 +1770,30 @@
 @media (max-width: 640px) {
   .swipe-legend, .swipe-sum-grid { grid-template-columns: 1fr; }
 }
+/* Swipe Bazaar juice: HUD reactions */
+.swipe-hud { padding: 6px 8px; border-radius: 12px; background: rgba(255, 250, 238, 0.85); border: 2px solid #ead9b0; }
+.swipe-wallet.bump { animation: swipe-pop 0.35s ease-out; }
+.swipe-wallet.down b { color: #b4372f; }
+.swipe-wallet.up b { color: #23784a; }
+.swipe-savings.bump { animation: swipe-bounce 0.45s cubic-bezier(0.2, 1.8, 0.4, 1); }
+.swipe-chains { animation: swipe-clink 0.4s ease-out; }
+.swipe-wallet b, .swipe-savings { font-variant-numeric: tabular-nums; transition: color 0.2s; }
+@keyframes swipe-pop { 0% { transform: scale(1); } 40% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes swipe-bounce { 0% { transform: translateY(0) scale(1); } 40% { transform: translateY(-5px) scale(1.15); } 100% { transform: translateY(0) scale(1); } }
+@keyframes swipe-clink { 0% { transform: translateX(0); } 25% { transform: translateX(-3px) rotate(-2deg); } 50% { transform: translateX(3px) rotate(2deg); } 100% { transform: translateX(0); } }
+.swipe-think { position: relative; overflow: hidden; }
+.swipe-think.on::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: calc(var(--p, 0) * 100%);
+  background: #0a8fa3;
+}
+.arcade-field canvas.swipe-canvas { border-radius: 12px; box-shadow: 0 6px 0 rgba(90, 60, 20, 0.18); }
+.swipe-summary { animation: swipe-in 0.3s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+@keyframes swipe-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
+@media (prefers-reduced-motion: reduce) {
+  .swipe-wallet.bump, .swipe-savings.bump, .swipe-chains, .swipe-summary { animation: none; }
+}

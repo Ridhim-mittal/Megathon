@@ -18,6 +18,12 @@ const R = { need: 30, want: 30, emi: 44, loan: 34, coin: 22 };
 const money = formatMoney;
 const pick = (list) => list[Math.floor(Math.random() * list.length)];
 const lerp = (a, b, k) => a + (b - a) * k;
+// Step a shown number toward its target (snaps when close).
+const roll = (shown, target) => {
+  const tgt = Math.round(target);
+  if (shown == null || Math.abs(tgt - shown) < 3) return tgt;
+  return Math.round(shown + (tgt - shown) * 0.35);
+};
 
 // What an item really costs, for "Think first" and for the summaries.
 function trueCost(item) {
@@ -119,11 +125,18 @@ export function SwipeBazaar({ running, onEnd }) {
       log: freshLog(),
       months: [],
       totals: { extraPaid: 0, interestPaid: 0, lateFees: 0, fines: 0, needsMissed: 0, needsPaid: 0, wants: 0, emiBought: [], loans: 0, loanRepaid: 0, saidNo: 0 },
-      startNotes: [],
+      slashes: [], // bright streaks along each cut
+      drops: [], // juice splashes from a cut
+      flyers: [], // coins flying to the piggy bank, chains flying to the wallet
+      banner: null, // the month-start card: pay day and deductions
+      streak: null, // big "Saver streak!" text
+      flash: null, // full-field colour flash { color, t }
+      freeze: 0, // hit-stop on traps, in seconds
+      bumps: { cash: 0, save: 0, chain: 0 }, // HUD bounce counters
     };
     game.current = g;
 
-    const float = (text, x, y, color = "#2b2238") => g.floats.push({ text, x, y, color, t: 0 });
+    const float = (text, x, y, color = "#2b2238", style = "pop") => g.floats.push({ text, x, y, color, style, t: 0 });
 
     // Start of a month: pay day, then EMIs, loan repayments and last month's fines.
     const startMonth = () => {
@@ -134,14 +147,18 @@ export function SwipeBazaar({ running, onEnd }) {
       g.items = [];
       g.halves = [];
       g.threats = [];
-      g.startNotes = [];
+      g.slashes = [];
+      g.drops = [];
+      g.flyers = [];
+      g.streak = null;
+      const lines = [{ text: tr("banner.pay", { amount: money(C.income) }), tone: "good" }];
       g.cash += C.income;
       if (g.fines > 0) {
         const pay = Math.min(g.cash, g.fines);
         g.cash -= pay;
         g.log.fees += pay;
         g.totals.fines += pay;
-        g.startNotes.push({ tone: "bad", text: tr("note.fine", { amount: money(pay) }) });
+        lines.push({ tone: "bad", text: tr("note.fine", { amount: money(pay) }) });
         g.fines -= pay;
       }
       for (const e of g.emis) {
@@ -151,6 +168,7 @@ export function SwipeBazaar({ running, onEnd }) {
         e.paid += pay;
         g.log.emiPaid += pay;
         if (e.kind === "loan") g.totals.loanRepaid += pay;
+        if (pay > 0) lines.push({ tone: "bad", text: tr("banner.emi", { amount: money(pay), item: tr(`items.${e.id}`) }) });
         const unpaid = due - pay;
         const lateFee = unpaid > 0 ? (e.kind === "loan" ? C.loanApp.lateFee : C.lateFee) : 0;
         e.overdue = unpaid + lateFee;
@@ -158,7 +176,7 @@ export function SwipeBazaar({ running, onEnd }) {
         if (lateFee) {
           g.totals.lateFees += lateFee;
           g.log.fees += lateFee;
-          g.startNotes.push({ tone: "bad", text: tr("note.late", { item: tr(`items.${e.id}`), fee: money(lateFee) }) });
+          lines.push({ tone: "late", text: tr("note.late", { item: tr(`items.${e.id}`), fee: money(lateFee) }) });
           if (e.kind === "loan") g.shake = 0.5;
         }
       }
@@ -167,7 +185,12 @@ export function SwipeBazaar({ running, onEnd }) {
       const slot = (C.monthSeconds - 6) / C.needs.length;
       g.needQueue = [...C.needs].sort(() => Math.random() - 0.5).map((d, i) => ({ d, at: 1.5 + slot * (i + Math.random() * 0.7) }));
       g.wave = null;
-      g.gapLeft = 0.9;
+      // Show the month card first: pay day, then each deduction ticking out.
+      const shown = lines.slice(0, 6);
+      if (lines.length > 6) shown[5] = { tone: "bad", text: tr("banner.more", { n: lines.length - 5 }) };
+      g.banner = { title: tr("banner.month", { n: g.month, total: C.rounds }), lines: shown, t: 0, left: g.cash };
+      g.gapLeft = 1.1 + 0.3 * shown.length;
+      g.bumps.cash += 1;
       if (g.emis.some((e) => e.kind === "loan")) g.nextThreat = 2 + Math.random() * 3;
       else g.nextThreat = Infinity;
     };
@@ -319,6 +342,7 @@ export function SwipeBazaar({ running, onEnd }) {
           float(`−${money(d.price)}`, it.x, it.y, "#d66a12");
           sounds.spend?.();
         } else {
+          it.noCash = true;
           float(tr("float.cantAfford"), it.x, it.y, "#b4372f");
           sounds.thud?.();
         }
@@ -361,14 +385,32 @@ export function SwipeBazaar({ running, onEnd }) {
             g.savings += d.comboBonus;
             g.log.saved += d.comboBonus;
             text = tr("float.combo", { n: g.combo, bonus: money(d.comboBonus) });
+            g.streak = { text: tr("streak", { n: g.combo }), sub: `+${money(d.comboBonus)}`, t: 0 };
             sounds.chime?.();
           } else sounds.coin?.();
           float(text, it.x, it.y, "#0a8fa3");
           for (let i = 0; i < 8; i++) g.sparks.push({ x: it.x, y: it.y, vx: Math.cos((i / 8) * Math.PI * 2) * 120, vy: Math.sin((i / 8) * Math.PI * 2) * 120, t: 0, c: i % 2 ? "#ffd23f" : "#fff6b0" });
         } else {
+          it.noCash = true;
           float(tr("float.noCash"), it.x, it.y, "#b4372f");
         }
       }
+      // A bright streak along the cut, a little splash, and things flying to the HUD.
+      const reach = it.r + 26;
+      g.slashes.push({ x1: it.x - Math.cos(angle) * reach, y1: it.y - Math.sin(angle) * reach, x2: it.x + Math.cos(angle) * reach, y2: it.y + Math.sin(angle) * reach, t: 0 });
+      const juice = KIND_STYLE[it.kind].ring;
+      for (let i = 0; i < 6; i++) {
+        const a = angle + Math.PI / 2 + (Math.random() - 0.5) * 2.2 + (i % 2 ? Math.PI : 0);
+        const sp = 90 + Math.random() * 140;
+        g.drops.push({ x: it.x, y: it.y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 60, t: 0, c: juice, r: 2 + Math.random() * 3 });
+      }
+      if (it.kind === "coin" && !it.noCash) g.flyers.push({ kind: "coin", x: it.x, y: it.y, tx: FW * 0.47, ty: -14, t: 0, dur: 0.55 });
+      if (it.kind === "emi" || it.kind === "loan") {
+        g.flyers.push({ kind: "chain", x: it.x, y: it.y, tx: FW * 0.27, ty: -14, t: 0, dur: 0.6 });
+        g.freeze = 0.07;
+        g.flash = { color: it.kind === "loan" ? "200,66,59" : "201,151,27", t: 0 };
+      }
+      if (it.kind === "want" && !it.noCash) g.bumps.cash += 1;
       // Two halves fly apart along the cut.
       const nx = Math.cos(angle + Math.PI / 2);
       const ny = Math.sin(angle + Math.PI / 2);
@@ -381,11 +423,13 @@ export function SwipeBazaar({ running, onEnd }) {
         g.log.needsMissed += 1;
         g.totals.needsMissed += 1;
         g.fines += C.needFine;
-        float(tr("float.needMissed", { item: tr(`items.${it.def.id}`) }), it.x, FH - 30, "#b4372f");
+        float(tr("float.needMissed", { item: tr(`items.${it.def.id}`) }), it.x, FH - 44, "#b4372f", "stamp");
+        g.shake = Math.max(g.shake, 0.18);
+        sounds.thud?.();
       } else if (it.kind !== "coin") {
         g.log.saidNo += 1;
         g.totals.saidNo += 1;
-        float(tr("float.saidNo"), it.x, FH - 30, "#23784a");
+        float(tr("float.saidNo"), Math.max(50, Math.min(FW - 50, it.x)), FH - 44, "#23784a", "check");
       }
     };
 
@@ -505,7 +549,10 @@ export function SwipeBazaar({ running, onEnd }) {
       prev = now;
       const live = runningRef.current && g.phase === "play";
       if (g.thinkT > 0 && live) g.thinkT = Math.max(0, g.thinkT - realDt);
-      const dt = live ? realDt * (g.thinkT > 0 ? C.thinkSlowdown : 1) : 0;
+      // Hit-stop: a trap freezes the items for a moment (effects keep moving).
+      const frozen = g.freeze > 0;
+      if (frozen) g.freeze = Math.max(0, g.freeze - realDt);
+      const dt = live && !frozen ? realDt * (g.thinkT > 0 ? C.thinkSlowdown : 1) : 0;
 
       if (live) {
         g.time += realDt; // the month clock runs at real speed; only the items slow down
@@ -554,24 +601,57 @@ export function SwipeBazaar({ running, onEnd }) {
       for (const p of g.trail) p.t += realDt;
       g.trail = g.trail.filter((p) => p.t < 0.16);
       g.shake = Math.max(0, g.shake - realDt);
+      for (const sl of g.slashes) sl.t += realDt;
+      g.slashes = g.slashes.filter((sl) => sl.t < 0.22);
+      for (const dr of g.drops) {
+        dr.vy += C.gravity * realDt;
+        dr.x += dr.vx * realDt;
+        dr.y += dr.vy * realDt;
+        dr.t += realDt;
+      }
+      g.drops = g.drops.filter((dr) => dr.t < 0.7);
+      for (const f of g.flyers) {
+        f.t += realDt;
+        if (f.t >= f.dur && !f.landed) {
+          f.landed = true;
+          if (f.kind === "coin") g.bumps.save += 1;
+          else g.bumps.chain += 1;
+        }
+      }
+      g.flyers = g.flyers.filter((f) => !f.landed);
+      if (g.flash) {
+        g.flash.t += realDt;
+        if (g.flash.t > 0.3) g.flash = null;
+      }
+      if (g.banner && live) {
+        g.banner.t += realDt;
+        if (g.banner.t > 1.4 + 0.3 * g.banner.lines.length) g.banner = null;
+      }
+      if (g.streak) {
+        g.streak.t += realDt;
+        if (g.streak.t > 1.1) g.streak = null;
+      }
 
       draw(ctx, g, now, tRef.current);
 
       hudTick += realDt;
-      if (hudTick > 0.1) {
+      if (hudTick > 0.06) {
         hudTick = 0;
-        setHud({
+        // Money on the HUD rolls toward its new value instead of jumping.
+        setHud((prev) => ({
           month: g.month,
           left: Math.max(0, C.monthSeconds - g.time),
-          cash: Math.round(g.cash),
-          savings: Math.round(g.savings),
+          cash: roll(prev?.cash, g.cash),
+          savings: roll(prev?.savings, g.savings),
+          cashTarget: Math.round(g.cash),
+          bumps: { ...g.bumps },
+          thinkP: g.thinkT / C.thinkSeconds,
           status: g.status,
           emis: g.emis.map((e) => ({ id: e.id, icon: e.icon, monthly: e.monthly, overdue: e.overdue, kind: e.kind })),
           thinkLeft: g.thinkLeft,
           thinking: g.thinkT > 0,
           combo: g.combo,
-          notes: g.startNotes,
-        });
+        }));
       }
       raf = requestAnimationFrame(frame);
     };
@@ -608,7 +688,8 @@ export function SwipeBazaar({ running, onEnd }) {
   };
 
   const tr = (k, v) => t(`arcade.swipe.${k}`, v);
-  const h = hud ?? { month: 1, left: C.monthSeconds, cash: C.income, savings: 0, status: 20, emis: [], thinkLeft: C.thinkUses, thinking: false, combo: 0, notes: [] };
+  const h = hud ?? { month: 1, left: C.monthSeconds, cash: C.income, cashTarget: C.income, savings: 0, status: 20, emis: [], thinkLeft: C.thinkUses, thinking: false, thinkP: 0, combo: 0, bumps: { cash: 0, save: 0, chain: 0 } };
+  const face = h.status > 66 ? "😎" : h.status > 33 ? "🙂" : "😐";
   const emiTotal = h.emis.reduce((a, e) => a + e.monthly, 0);
   return (
     <div className="arcade-field swipe-field">
@@ -619,10 +700,10 @@ export function SwipeBazaar({ running, onEnd }) {
             <i style={{ width: `${(h.left / C.monthSeconds) * 100}%` }} />
           </span>
         </span>
-        <span className={`swipe-wallet${h.emis.length ? " chained" : ""}`} title={tr("hud.wallet")}>
+        <span key={`w${h.bumps.cash}`} className={`swipe-wallet bump${h.emis.length ? " chained" : ""}${h.cashTarget < h.cash ? " down" : h.cashTarget > h.cash ? " up" : ""}`} title={tr("hud.wallet")}>
           <b>👛 {money(h.cash)}</b>
           {h.emis.length > 0 && (
-            <small className="swipe-chains">
+            <small className="swipe-chains" key={`c${h.bumps.chain}`}>
               {Object.values(
                 h.emis.reduce((acc, e) => {
                   const k = acc[e.id] ?? (acc[e.id] = { id: e.id, icon: e.icon, n: 0, late: false });
@@ -641,32 +722,25 @@ export function SwipeBazaar({ running, onEnd }) {
             </small>
           )}
         </span>
-        <span className="swipe-savings" title={tr("hud.savings")}>
+        <span key={`s${h.bumps.save}`} className={`swipe-savings${h.bumps.save ? " bump" : ""}`} title={tr("hud.savings")}>
           <PiggyBank size={16} aria-hidden="true" /> {money(h.savings)}
           {h.combo >= 2 && <em className="swipe-combo">×{h.combo}</em>}
         </span>
         <span className="swipe-status" title={tr("hud.statusHint")}>
-          <small>{tr("hud.status")}</small>
+          <small>
+            <span aria-hidden="true">{face}</span> {tr("hud.status")}
+          </small>
           <span className="swipe-status-bar">
             <i style={{ width: `${h.status}%` }} />
           </span>
         </span>
-        <button type="button" className={`secondary-button swipe-think${h.thinking ? " on" : ""}`} onClick={think} disabled={h.thinkLeft <= 0 || h.thinking}>
+        <button type="button" className={`secondary-button swipe-think${h.thinking ? " on" : ""}`} style={{ "--p": h.thinkP }} onClick={think} disabled={h.thinkLeft <= 0 || h.thinking}>
           <Brain size={16} aria-hidden="true" /> {tr("hud.think", { n: h.thinkLeft })}
         </button>
       </div>
 
       <div className="swipe-stage">
         <canvas ref={canvasRef} className="swipe-canvas" aria-label={t("arcade.games.swipeBazaar.how")} />
-        {screen.kind === "play" && h.notes.length > 0 && h.left > C.monthSeconds - 4 && (
-          <ul className="swipe-notes" aria-live="polite">
-            {h.notes.map((n, i) => (
-              <li key={i} className={n.tone}>
-                {n.text}
-              </li>
-            ))}
-          </ul>
-        )}
         {screen.kind === "month" && <MonthSummary r={screen.report} onNext={nextMonth} />}
         {screen.kind === "final" && <FinalSummary r={screen.report} onDone={() => onEndRef.current({ id: "swipeBazaar", ...screen.report })} />}
       </div>
@@ -761,89 +835,190 @@ function FinalSummary({ r, onDone }) {
 
 // ---------- drawing ----------
 const KIND_STYLE = {
-  need: { fill: "#e7f4dc", ring: "#4f9a43" },
-  want: { fill: "#fde6cc", ring: "#e08a2e" },
-  emi: { fill: "#fff2b8", ring: "#c9971b" },
-  loan: { fill: "#f8d3cf", ring: "#c8423b" },
-  coin: { fill: "#ffd24a", ring: "#b07a12" },
+  need: { fill: "#eaf6e2", ring: "#4f9a43", tag: "#ffffff", ink: "#2f5e28" },
+  want: { fill: "#fff0dc", ring: "#e08a2e", tag: "#ffffff", ink: "#7a4512" },
+  emi: { fill: "#fff4c2", ring: "#c9971b", tag: "#7a55c4", ink: "#ffffff" },
+  loan: { fill: "#fde2df", ring: "#c8423b", tag: "#c8423b", ink: "#ffffff" },
+  coin: { fill: "#ffd24a", ring: "#b07a12", tag: "#0a8fa3", ink: "#ffffff" },
 };
+const GROUND = FH - 22;
+const easeOutBack = (k) => 1 + 2.7 * (k - 1) ** 3 + 1.7 * (k - 1) ** 2;
 
-function drawBall(ctx, kind, def, x, y, r, now, clipSide, angle) {
+function pill(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  if (ctx.roundRect) ctx.roundRect(x, y, w, h, r);
+  else ctx.rect(x, y, w, h);
+}
+
+// The bazaar backdrop is drawn once into its own canvas.
+let BG = null;
+function background() {
+  if (BG) return BG;
+  const c = document.createElement("canvas");
+  c.width = FW;
+  c.height = FH;
+  const ctx = c.getContext("2d");
+  const sky = ctx.createLinearGradient(0, 0, 0, FH);
+  sky.addColorStop(0, "#fff4dc");
+  sky.addColorStop(0.65, "#fde3b3");
+  sky.addColorStop(1, "#f4c98c");
+  ctx.fillStyle = sky;
+  ctx.fillRect(0, 0, FW, FH);
+  // A soft sun and distant stall rooftops.
+  ctx.fillStyle = "rgba(255,255,255,0.55)";
+  ctx.beginPath();
+  ctx.arc(FW * 0.82, 70, 46, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "rgba(196,140,82,0.16)";
+  for (let x = -20; x < FW; x += 92) {
+    const h = 40 + ((x * 37) % 30);
+    ctx.beginPath();
+    ctx.moveTo(x, GROUND - 30);
+    ctx.lineTo(x + 46, GROUND - 30 - h);
+    ctx.lineTo(x + 92, GROUND - 30);
+    ctx.fill();
+    ctx.fillRect(x + 8, GROUND - 30, 76, 30);
+  }
+  // Stall awnings along the bottom.
+  const colours = ["#d9534a", "#f2c14e", "#2a9d8f", "#6dbb5c", "#e2833a", "#8f6bd1"];
+  for (let i = 0; i < 11; i++) {
+    const x = i * 60 - 12;
+    const col = colours[i % colours.length];
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    ctx.moveTo(x, GROUND - 16);
+    ctx.lineTo(x + 60, GROUND - 16);
+    ctx.lineTo(x + 54, GROUND - 2);
+    ctx.lineTo(x + 6, GROUND - 2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = "rgba(255,255,255,0.4)";
+    ctx.fillRect(x + 20, GROUND - 16, 10, 14);
+    for (let k = 0; k < 4; k++) {
+      ctx.fillStyle = col;
+      ctx.beginPath();
+      ctx.arc(x + 9 + k * 14, GROUND - 2, 7, 0, Math.PI);
+      ctx.fill();
+    }
+  }
+  ctx.fillStyle = "#b07d48";
+  ctx.fillRect(0, GROUND, FW, FH - GROUND);
+  ctx.fillStyle = "rgba(0,0,0,0.08)";
+  ctx.fillRect(0, GROUND, FW, 3);
+  // A gentle vignette keeps the eye in the middle.
+  const v = ctx.createRadialGradient(FW / 2, FH / 2, FH * 0.35, FW / 2, FH / 2, FW * 0.7);
+  v.addColorStop(0, "rgba(0,0,0,0)");
+  v.addColorStop(1, "rgba(80,40,0,0.12)");
+  ctx.fillStyle = v;
+  ctx.fillRect(0, 0, FW, FH);
+  BG = c;
+  return c;
+}
+
+function drawBunting(ctx, now) {
+  const colours = ["#d9534a", "#f2c14e", "#2a9d8f", "#8f6bd1", "#6dbb5c"];
+  ctx.strokeStyle = "rgba(90,60,30,0.45)";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (let x = 0; x <= FW; x += 16) ctx.lineTo(x, 10 + Math.sin(x / FW * Math.PI) * 12);
+  ctx.stroke();
+  for (let i = 0; i < 20; i++) {
+    const x = 12 + i * 32;
+    const y = 10 + Math.sin((x / FW) * Math.PI) * 12;
+    const sway = Math.sin(now / 700 + i) * 2.5;
+    ctx.fillStyle = colours[i % colours.length];
+    ctx.beginPath();
+    ctx.moveTo(x - 7, y);
+    ctx.lineTo(x + 7, y);
+    ctx.lineTo(x + sway, y + 14);
+    ctx.closePath();
+    ctx.fill();
+  }
+}
+
+function drawBall(ctx, kind, def, x, y, r, now, clipSide, angle, rot = 0) {
   const st = KIND_STYLE[kind];
   ctx.save();
   ctx.translate(x, y);
   if (clipSide) {
     ctx.rotate(angle);
     ctx.beginPath();
-    ctx.rect(-r - 4, clipSide < 0 ? -r - 4 : 0, r * 2 + 8, r + 4);
+    ctx.rect(-r - 6, clipSide < 0 ? -r - 6 : 0, r * 2 + 12, r + 6);
     ctx.clip();
     ctx.rotate(-angle);
   }
-  ctx.fillStyle = "rgba(0,0,0,0.12)";
-  ctx.beginPath();
-  ctx.arc(2, 4, r, 0, Math.PI * 2);
-  ctx.fill();
+  // Body: soft fill, crisp ring, a highlight in the top-left.
   ctx.fillStyle = st.fill;
   ctx.strokeStyle = st.ring;
-  ctx.lineWidth = kind === "emi" ? 5 : 3;
+  ctx.lineWidth = kind === "emi" ? 4.5 : 3;
   ctx.beginPath();
   ctx.arc(0, 0, r, 0, Math.PI * 2);
   ctx.fill();
   ctx.stroke();
+  ctx.fillStyle = "rgba(255,255,255,0.55)";
+  ctx.beginPath();
+  ctx.ellipse(-r * 0.35, -r * 0.42, r * 0.32, r * 0.18, -0.6, 0, Math.PI * 2);
+  ctx.fill();
   if (kind === "emi") {
-    // Big and shiny: a light sweep across the ball.
-    const k = 0.15 + ((now / 900) % 1) * 0.7; // sweep position, kept inside 0–1 with its edges
+    // Big and shiny: a light sweep, and a gold glint that twinkles.
+    const k = 0.15 + ((now / 900) % 1) * 0.7;
     const grad = ctx.createLinearGradient(-r, -r, r, r);
     grad.addColorStop(k - 0.15, "rgba(255,255,255,0)");
-    grad.addColorStop(k, "rgba(255,255,255,0.75)");
+    grad.addColorStop(k, "rgba(255,255,255,0.7)");
     grad.addColorStop(k + 0.15, "rgba(255,255,255,0)");
     ctx.fillStyle = grad;
     ctx.beginPath();
     ctx.arc(0, 0, r - 3, 0, Math.PI * 2);
     ctx.fill();
+    const tw = (Math.sin(now / 160) + 1) / 2;
+    ctx.fillStyle = `rgba(255,236,150,${0.4 + tw * 0.6})`;
+    ctx.save();
+    ctx.translate(r * 0.62, -r * 0.62);
+    ctx.rotate(Math.PI / 4);
+    ctx.fillRect(-2, -7 * tw - 3, 4, 14 * tw + 6);
+    ctx.fillRect(-7 * tw - 3, -2, 14 * tw + 6, 4);
+    ctx.restore();
   }
-  ctx.font = `${Math.round(r * (kind === "coin" ? 1.0 : 1.05))}px system-ui, "Noto Color Emoji", sans-serif`;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillStyle = kind === "coin" ? "#7a4f00" : "#2b2238"; // emoji keep their own colours
-  if (kind === "coin") ctx.font = `800 ${Math.round(r * 1.05)}px system-ui, sans-serif`;
-  ctx.fillText(kind === "loan" ? "💸" : kind === "coin" ? "₹" : def.icon, 0, kind === "coin" ? 1 : 2);
+  if (kind === "coin") {
+    ctx.fillStyle = "#7a4f00";
+    ctx.font = `800 ${Math.round(r * 1.05)}px system-ui, sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("₹", 0, 1);
+  } else {
+    ctx.rotate(rot * 0.25);
+    ctx.font = `${Math.round(r * 1.05)}px system-ui, "Noto Color Emoji", sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#2b2238";
+    ctx.fillText(kind === "loan" ? "💸" : def.icon, 0, 2);
+  }
   ctx.restore();
 }
 
 function draw(ctx, g, now, t) {
+  const tr = (k, v) => t(`arcade.swipe.${k}`, v);
+  const thinking = g.thinkT > 0;
   ctx.save();
   if (g.shake > 0) ctx.translate((Math.random() - 0.5) * 14 * g.shake, (Math.random() - 0.5) * 14 * g.shake);
-  // The bazaar: a warm sky, a strip of stall awnings at the bottom.
-  const sky = ctx.createLinearGradient(0, 0, 0, FH);
-  sky.addColorStop(0, "#fde9c4");
-  sky.addColorStop(1, "#f6d29a");
-  ctx.fillStyle = sky;
-  ctx.fillRect(-10, -10, FW + 20, FH + 20);
-  const awnings = ["#c8423b", "#f2c14e", "#0a8fa3", "#5aa95a", "#d66a12", "#7a55c4"];
-  for (let i = 0; i < 10; i++) {
-    const x = i * 66 - 10;
-    ctx.fillStyle = awnings[i % awnings.length];
-    ctx.beginPath();
-    ctx.moveTo(x, FH - 34);
-    ctx.lineTo(x + 66, FH - 34);
-    ctx.lineTo(x + 60, FH - 20);
-    ctx.lineTo(x + 6, FH - 20);
-    ctx.closePath();
-    ctx.fill();
-    ctx.fillStyle = "rgba(255,255,255,0.35)";
-    ctx.fillRect(x + 22, FH - 34, 12, 14);
-  }
-  ctx.fillStyle = "#a8743f";
-  ctx.fillRect(0, FH - 20, FW, 20);
+  ctx.drawImage(background(), 0, 0, FW, FH);
+  drawBunting(ctx, now);
 
-  const thinking = g.thinkT > 0;
-  const tr = (k, v) => t(`arcade.swipe.${k}`, v);
+  // Ground shadows first, so every item sits above the bazaar floor.
   for (const it of g.items) {
-    drawBall(ctx, it.kind, it.def, it.x, it.y, it.r, now);
-    // Label under the item: its price (or the true cost while thinking).
-    let label;
+    const height = Math.max(0, GROUND - it.y);
+    const k = Math.max(0.25, 1 - height / FH);
+    ctx.fillStyle = `rgba(80,45,10,${0.18 * k})`;
+    ctx.beginPath();
+    ctx.ellipse(it.x, GROUND + 6, it.r * k, it.r * 0.25 * k, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  for (const it of g.items) {
+    drawBall(ctx, it.kind, it.def, it.x, it.y, it.r, now, 0, 0, it.rot);
+    const st = KIND_STYLE[it.kind];
     const d = it.def;
+    let label;
     if (thinking) {
       const c = trueCost(it);
       if (it.kind === "emi") label = tr("think.emi", { price: formatMoney(c.sticker), total: formatMoney(c.total), months: d.months });
@@ -855,92 +1030,269 @@ function draw(ctx, g, now, t) {
     else if (it.kind === "loan") label = tr("label.loan", { amount: formatMoney(d.cash) });
     else if (it.kind === "coin") label = tr("label.coin", { amount: formatMoney(d.amount) });
     else label = formatMoney(d.price);
-    ctx.font = `700 ${thinking ? 12 : 12}px system-ui, sans-serif`;
+    // A clean pill tag under each item.
+    ctx.font = "700 11.5px system-ui, sans-serif";
     ctx.textAlign = "center";
-    ctx.textBaseline = "top";
-    const w = ctx.measureText(label).width + 12;
-    ctx.fillStyle = thinking ? "rgba(43,34,56,0.92)" : it.kind === "loan" ? "#c8423b" : it.kind === "emi" ? "#7a55c4" : "rgba(255,255,255,0.9)";
-    ctx.fillRect(it.x - w / 2, it.y + it.r + 4, w, 18);
-    ctx.fillStyle = thinking || it.kind === "loan" || it.kind === "emi" ? "#fff8e7" : "#2b2238";
-    ctx.fillText(label, it.x, it.y + it.r + 7);
-    // A friend's push next to tempting items.
+    ctx.textBaseline = "middle";
+    const w = ctx.measureText(label).width + 14;
+    const ty = it.y + it.r + 6;
+    const bg = thinking ? "#06606e" : st.tag;
+    ctx.fillStyle = "rgba(60,35,10,0.18)";
+    pill(ctx, it.x - w / 2, ty + 2, w, 18, 9);
+    ctx.fill();
+    ctx.fillStyle = bg;
+    pill(ctx, it.x - w / 2, ty, w, 18, 9);
+    ctx.fill();
+    if (bg === "#ffffff") {
+      ctx.strokeStyle = st.ring;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+    ctx.fillStyle = thinking ? "#ffffff" : st.ink;
+    ctx.fillText(label, it.x, ty + 9.5);
+    // A friend's push: a speech bubble with a little tail.
     if (it.bubble && !thinking) {
       ctx.font = "600 12px system-ui, sans-serif";
-      const bw = ctx.measureText(it.bubble).width + 16;
-      const bx = Math.min(FW - bw - 4, Math.max(4, it.x + it.r - 6));
-      const by = it.y - it.r - 30;
+      const text = `🧑 ${it.bubble}`;
+      const bw = ctx.measureText(text).width + 18;
+      const bx = Math.min(FW - bw - 6, Math.max(6, it.x - bw / 2 + it.r));
+      const by = Math.max(30, it.y - it.r - 34);
       ctx.fillStyle = "#ffffff";
-      ctx.strokeStyle = "#2b2238";
+      ctx.strokeStyle = "#3a2a18";
       ctx.lineWidth = 2;
-      ctx.beginPath();
-      if (ctx.roundRect) ctx.roundRect(bx, by, bw, 22, 8);
-      else ctx.rect(bx, by, bw, 22);
+      pill(ctx, bx, by, bw, 24, 12);
       ctx.fill();
       ctx.stroke();
-      ctx.fillStyle = "#2b2238";
+      const tx = Math.max(bx + 14, Math.min(bx + bw - 14, it.x));
+      ctx.beginPath();
+      ctx.moveTo(tx - 6, by + 23);
+      ctx.lineTo(tx, by + 31);
+      ctx.lineTo(tx + 6, by + 23);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(tx - 5, by + 21, 10, 3);
+      ctx.fillStyle = "#3a2a18";
       ctx.textAlign = "left";
-      ctx.textBaseline = "middle";
-      ctx.fillText(`🧑 ${it.bubble}`, bx + 6, by + 11);
+      ctx.fillText(text, bx + 9, by + 12.5);
     }
   }
+
   for (const h of g.halves) {
     ctx.save();
     ctx.globalAlpha = Math.max(0, 1 - h.t / 1.2);
     drawBall(ctx, h.kind, h.def, h.x, h.y, h.r, now, h.side, h.angle + h.rot);
     ctx.restore();
   }
-  for (const s of g.sparks) {
-    ctx.fillStyle = s.c;
-    ctx.fillRect(s.x - 3, s.y - 3, 6, 6);
+  for (const dr of g.drops) {
+    ctx.globalAlpha = Math.max(0, 1 - dr.t / 0.7);
+    ctx.fillStyle = dr.c;
+    ctx.beginPath();
+    ctx.arc(dr.x, dr.y, dr.r, 0, Math.PI * 2);
+    ctx.fill();
   }
-  // Swipe trail.
-  if (g.trail.length > 1) {
-    ctx.strokeStyle = "rgba(255,255,255,0.9)";
+  ctx.globalAlpha = 1;
+  for (const s of g.sparks) {
+    ctx.globalAlpha = Math.max(0, 1 - s.t / 0.5);
+    ctx.fillStyle = s.c;
+    ctx.save();
+    ctx.translate(s.x, s.y);
+    ctx.rotate(Math.PI / 4);
+    ctx.fillRect(-3, -3, 6, 6);
+    ctx.restore();
+  }
+  ctx.globalAlpha = 1;
+  // The cut itself: a bright streak that shrinks away.
+  for (const sl of g.slashes) {
+    const k = sl.t / 0.22;
+    ctx.strokeStyle = `rgba(255,255,255,${1 - k})`;
+    ctx.lineWidth = 5 * (1 - k) + 1;
     ctx.lineCap = "round";
-    for (let i = 1; i < g.trail.length; i++) {
-      ctx.lineWidth = 2 + i * 0.6;
-      ctx.beginPath();
-      ctx.moveTo(g.trail[i - 1].x, g.trail[i - 1].y);
-      ctx.lineTo(g.trail[i].x, g.trail[i].y);
-      ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(lerp(sl.x1, sl.x2, k * 0.5), lerp(sl.y1, sl.y2, k * 0.5));
+    ctx.lineTo(lerp(sl.x2, sl.x1, k * 0.5), lerp(sl.y2, sl.y1, k * 0.5));
+    ctx.stroke();
+  }
+  // The blade trail: a tapered stroke, wide and soft under thin and bright.
+  if (g.trail.length > 1) {
+    ctx.lineCap = "round";
+    for (const [width, colour] of [[10, "rgba(10,143,163,0.22)"], [3.5, "rgba(255,255,255,0.95)"]]) {
+      for (let i = 1; i < g.trail.length; i++) {
+        ctx.strokeStyle = colour;
+        ctx.lineWidth = width * (i / g.trail.length);
+        ctx.beginPath();
+        ctx.moveTo(g.trail[i - 1].x, g.trail[i - 1].y);
+        ctx.lineTo(g.trail[i].x, g.trail[i].y);
+        ctx.stroke();
+      }
     }
   }
+  // Coins flying to the piggy bank, chains flying to the wallet.
+  for (const f of g.flyers) {
+    const k = Math.min(1, f.t / f.dur);
+    const e = k * k * (3 - 2 * k);
+    const x = lerp(f.x, f.tx, e);
+    const y = lerp(f.y, f.ty, e) - Math.sin(k * Math.PI) * 50;
+    if (f.kind === "coin") {
+      const r = lerp(14, 8, k);
+      ctx.fillStyle = "#ffd24a";
+      ctx.strokeStyle = "#b07a12";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    } else {
+      ctx.strokeStyle = "#8a2a22";
+      ctx.lineWidth = 3;
+      for (const dx of [-6, 6]) {
+        ctx.beginPath();
+        ctx.ellipse(x + dx, y, 7, 4.5, 0, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
+  }
+  // Floating texts: pop in, drift up, fade.
   for (const f of g.floats) {
-    ctx.globalAlpha = Math.max(0, 1 - f.t / 1.3);
-    ctx.font = "800 15px system-ui, sans-serif";
+    const k = f.t / 1.3;
+    const scale = f.t < 0.25 ? easeOutBack(f.t / 0.25) : 1;
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, 1 - Math.max(0, k - 0.5) * 2);
+    ctx.translate(f.x, f.y - (f.style === "stamp" ? 0 : f.t * 36));
+    ctx.scale(scale, scale);
+    if (f.style === "stamp") ctx.rotate(-0.12);
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = "rgba(255,255,255,0.9)";
-    ctx.strokeText(f.text, f.x, f.y - f.t * 40);
+    ctx.font = f.style === "stamp" ? "900 15px system-ui, sans-serif" : f.style === "check" ? "700 12px system-ui, sans-serif" : "800 15px system-ui, sans-serif";
+    if (f.style === "stamp") {
+      const w = ctx.measureText(f.text).width + 18;
+      ctx.strokeStyle = f.color;
+      ctx.lineWidth = 2.5;
+      pill(ctx, -w / 2, -13, w, 26, 6);
+      ctx.fillStyle = "rgba(255,255,255,0.85)";
+      ctx.fill();
+      ctx.stroke();
+    } else {
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = "rgba(255,255,255,0.92)";
+      ctx.strokeText(f.text, 0, 0);
+    }
     ctx.fillStyle = f.color;
-    ctx.fillText(f.text, f.x, f.y - f.t * 40);
-    ctx.globalAlpha = 1;
+    ctx.fillText(f.text, 0, 1);
+    ctx.restore();
   }
+  // Loan-app threats: dark message cards that slide in.
   for (const th of g.threats) {
-    ctx.globalAlpha = Math.min(1, th.t * 4, (2.8 - th.t) * 2);
-    ctx.font = "700 13px system-ui, sans-serif";
-    const w = Math.min(300, ctx.measureText(th.text).width + 50);
+    const k = Math.min(1, th.t * 5);
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, (2.8 - th.t) * 2);
+    ctx.translate(0, (1 - easeOutBack(k)) * -20);
+    ctx.font = "700 12px system-ui, sans-serif";
+    const w = Math.min(320, ctx.measureText(th.text).width + 40);
+    ctx.fillStyle = "rgba(30,20,30,0.25)";
+    pill(ctx, th.x + 3, th.y + 4, w, 50, 10);
+    ctx.fill();
     ctx.fillStyle = "#2b2238";
-    ctx.fillRect(th.x, th.y, w, 46);
+    pill(ctx, th.x, th.y, w, 50, 10);
+    ctx.fill();
     ctx.fillStyle = "#c8423b";
-    ctx.fillRect(th.x, th.y, w, 16);
+    pill(ctx, th.x, th.y, w, 18, [10, 10, 0, 0]);
+    ctx.fill();
     ctx.fillStyle = "#fff";
     ctx.textAlign = "left";
     ctx.textBaseline = "middle";
     ctx.font = "800 10px system-ui, sans-serif";
-    ctx.fillText(t("arcade.swipe.threatFrom"), th.x + 8, th.y + 8);
-    ctx.font = "700 12px system-ui, sans-serif";
-    ctx.fillText(th.text, th.x + 8, th.y + 31, w - 14);
-    ctx.globalAlpha = 1;
+    ctx.fillText(`⚠ ${t("arcade.swipe.threatFrom")}`, th.x + 10, th.y + 9.5);
+    ctx.font = "700 12.5px system-ui, sans-serif";
+    ctx.fillText(th.text, th.x + 10, th.y + 34, w - 18);
+    ctx.restore();
   }
   ctx.restore();
+
+  // Think first: a cool tint, a vignette and a label.
   if (thinking) {
-    ctx.fillStyle = "rgba(10,143,163,0.10)";
+    ctx.fillStyle = "rgba(10,143,163,0.12)";
     ctx.fillRect(0, 0, FW, FH);
-    ctx.font = "800 14px system-ui, sans-serif";
-    ctx.textAlign = "center";
+    const v = ctx.createRadialGradient(FW / 2, FH / 2, FH * 0.3, FW / 2, FH / 2, FW * 0.62);
+    v.addColorStop(0, "rgba(6,96,110,0)");
+    v.addColorStop(1, "rgba(6,96,110,0.35)");
+    ctx.fillStyle = v;
+    ctx.fillRect(0, 0, FW, FH);
+    ctx.font = "800 13px system-ui, sans-serif";
+    const label = `🧠 ${t("arcade.swipe.thinking")}`;
+    const w = ctx.measureText(label).width + 24;
     ctx.fillStyle = "#06606e";
-    ctx.fillText(t("arcade.swipe.thinking"), FW / 2, 18);
+    pill(ctx, FW / 2 - w / 2, 30, w, 24, 12);
+    ctx.fill();
+    ctx.fillStyle = "#fff";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(label, FW / 2, 42.5);
+  }
+  if (g.flash) {
+    ctx.fillStyle = `rgba(${g.flash.color},${0.28 * (1 - g.flash.t / 0.3)})`;
+    ctx.fillRect(0, 0, FW, FH);
+  }
+
+  // Saver streak: big, bouncy, centred.
+  if (g.streak) {
+    const k = g.streak.t;
+    const scale = k < 0.3 ? easeOutBack(k / 0.3) : 1;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, (1.1 - k) * 3);
+    ctx.translate(FW / 2, FH * 0.36);
+    ctx.scale(scale, scale);
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = "900 30px system-ui, sans-serif";
+    ctx.lineWidth = 7;
+    ctx.strokeStyle = "#ffffff";
+    ctx.strokeText(g.streak.text, 0, 0);
+    ctx.fillStyle = "#0a8fa3";
+    ctx.fillText(g.streak.text, 0, 0);
+    ctx.font = "800 17px system-ui, sans-serif";
+    ctx.lineWidth = 5;
+    ctx.strokeText(g.streak.sub, 0, 28);
+    ctx.fillStyle = "#b07a12";
+    ctx.fillText(g.streak.sub, 0, 28);
+    ctx.restore();
+  }
+
+  // Month card: the title drops in, then pay day and each deduction tick out one by one.
+  if (g.banner) {
+    const b = g.banner;
+    const total = 1.4 + 0.3 * b.lines.length;
+    const inK = Math.min(1, b.t / 0.35);
+    const outK = Math.max(0, (b.t - (total - 0.3)) / 0.3);
+    const lineH = 22;
+    const h = 52 + b.lines.length * lineH;
+    const w = 330;
+    const x = FW / 2 - w / 2;
+    const y = FH / 2 - h / 2 - 10 + (1 - easeOutBack(inK)) * -40;
+    ctx.save();
+    ctx.globalAlpha = 1 - outK;
+    ctx.fillStyle = "rgba(60,35,10,0.25)";
+    pill(ctx, x + 4, y + 6, w, h, 14);
+    ctx.fill();
+    ctx.fillStyle = "#fffaf0";
+    ctx.strokeStyle = "#8a5a2b";
+    ctx.lineWidth = 3;
+    pill(ctx, x, y, w, h, 14);
+    ctx.fill();
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#3a2a18";
+    ctx.font = "900 20px system-ui, sans-serif";
+    ctx.fillText(b.title, FW / 2, y + 26);
+    b.lines.forEach((ln, i) => {
+      const appear = (b.t - 0.35 - i * 0.3) / 0.2;
+      if (appear <= 0) return;
+      ctx.globalAlpha = Math.min(1, appear) * (1 - outK);
+      ctx.font = "700 14px system-ui, sans-serif";
+      ctx.fillStyle = ln.tone === "good" ? "#23784a" : ln.tone === "late" ? "#b4372f" : "#8a3b1f";
+      ctx.fillText(ln.text, FW / 2, y + 52 + i * lineH + 8 - Math.max(0, 1 - appear) * 6);
+    });
+    ctx.restore();
   }
 }

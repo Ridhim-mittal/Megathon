@@ -1433,7 +1433,14 @@
         "needs": "You missed {n} needs. Pay needs first, then think about wants.",
         "saver": "You said no {no} times and saved {amount}. That's real freedom.",
         "default": "Every swipe is a choice. Pausing before you buy is a superpower."
-      }
+      },
+      "banner": {
+        "month": "Month {n} of {total}",
+        "pay": "+{amount} pay day",
+        "emi": "−{amount} {item} EMI",
+        "more": "…and {n} more payments"
+      },
+      "streak": "Saver streak ×{n}!"
     }
   }
 }
