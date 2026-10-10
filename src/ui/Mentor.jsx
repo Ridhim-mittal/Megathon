@@ -1,5 +1,5 @@
 import React from "react";
-import { Portrait } from "./Portrait.jsx";
+import { PixelPortrait as Portrait } from "./PixelPortrait.jsx";
 
 // Ammamma's little wisdom: a quiet bubble, never a modal. `look` gives her a knowing glance
 // (used for echoes).

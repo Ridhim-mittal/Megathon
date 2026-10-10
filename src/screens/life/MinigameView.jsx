@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight, Coins, FastForward } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { select } from "../../ui/gameAdapter.js";
-import { Portrait } from "../../ui/Portrait.jsx";
+import { PixelPortrait as Portrait } from "../../ui/PixelPortrait.jsx";
 
 // Sahukar's chair (inspired by Shady Sam): pick one of three offers for each borrower, score the
 // lender's profit, then see what each loan did to its borrower.

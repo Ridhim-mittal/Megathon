@@ -152,7 +152,13 @@
     "insurance_health": "Health cover",
     "insurance_term": "Life cover",
     "insurance_crop": "Crop cover",
-    "insurance_accident": "Accident cover"
+    "insurance_accident": "Accident cover",
+    "mf_debt": "Short-term Debt Fund",
+    "mf_active": "Star Active Equity Fund",
+    "stock_kisan": "Kisan Tractors",
+    "stock_chai": "Chai Express",
+    "stock_spark": "Spark Mobile",
+    "stock_power": "Safe Power"
   },
   "loans": {
     "family": "family",
@@ -423,5 +429,147 @@
       "At the end, replay one decision in a Parallel Life."
     ],
     "start": "Let's begin"
+  },
+  "chapter": {
+    "names": {
+      "child": "School life",
+      "teen": "College life",
+      "young": "First job",
+      "adult": "Marriage & family",
+      "settle": "The dream"
+    },
+    "number": "Chapter {n} of {total}",
+    "ages": "Ages {from}–{to}",
+    "intro": {
+      "child": "Pocket money, a tin box and a big fair in town. Small choices now become habits for life.",
+      "teen": "Phones, friends with shortcuts and your first earnings. The choice after Class 12 is coming.",
+      "young": "Your first payslip, your first loan offers, and a bank that finally knows your name.",
+      "adult": "Weddings, storms and markets that fall. Insurance and an emergency fund decide the damage.",
+      "settle": "The dream is close. Read every paper twice and plan for the years after 36."
+    },
+    "howTo": "Walk to places with a ! to live this chapter's events. A yellow ! must be lived; a white ! is optional. Then go home to finish the chapter.",
+    "start": "Let's go",
+    "endTitle": "Chapter complete",
+    "next": "Start chapter {n}",
+    "final": "See how my life turned out",
+    "years": "How the years went",
+    "market": "Top-50 Index Fund, year by year",
+    "badNews": "Bad news hit {name} at age {age}.",
+    "dream": "Dream {from}% → {to}%",
+    "split": "Your jar split repeats every year of this chapter.",
+    "phoneGift": "Amma gave you a phone for your first job! Open it with the phone button or press P."
+  },
+  "quest": {
+    "title": "This chapter",
+    "left": "{n} events waiting",
+    "optional": "+{n} optional",
+    "done": "All events lived! Go home to finish the chapter.",
+    "finish": "Finish the chapter",
+    "goHome": "Walk home",
+    "goThere": "Walk there"
+  },
+  "places": {
+    "home": "Home",
+    "school": "School",
+    "bank": "Bank",
+    "hospital": "Hospital",
+    "shop": "Kirana shop",
+    "sahukar": "Sahukar's house",
+    "post": "Post office",
+    "work": "Workplace",
+    "panchayat": "Panchayat office",
+    "square": "Village square",
+    "field": "Cotton field",
+    "phone": "Phone"
+  },
+  "placeInfo": {
+    "home": "Ammamma's kitchen smells of rasam. Big family decisions happen here.",
+    "school": "Swapna madam turns every problem into a sum. Come here to learn how money grows.",
+    "bank": "Kavitha akka runs the bank counter. Savings accounts, FDs, RDs and fair loans live here.",
+    "hospital": "When illness strikes, insurance and an emergency fund decide how big the bill feels.",
+    "shop": "Anjamma aunty's khata remembers everything. Spend your little-joys jar here.",
+    "sahukar": "Narsaiah sahukar is polite, patient and very expensive: ₹2 per ₹100 per month.",
+    "post": "The post office keeps safe schemes: savings, PPF and pensions for old age.",
+    "work": "Earn here. Every hour of work has a price, and so does every hour you don't work.",
+    "panchayat": "Land records and documents. Read every line before you sign anything.",
+    "square": "Everyone meets at the banyan tree, including people with schemes that sound too good.",
+    "field": "Nanna's cotton field. Rain, drought and crop insurance live here.",
+    "phone": "Messages, banking and investing, in your pocket."
+  },
+  "map": {
+    "label": "The village. Use the arrow keys or WASD to walk, Enter to go in, or click a place.",
+    "controls": "Arrows / WASD to walk · Enter to go in · or click a place",
+    "nothing": "Nothing new here right now.",
+    "waiting": "Events are waiting at: {places}",
+    "close": "Back to the village",
+    "shop": "Open the shop",
+    "finishConfirm": "Finish this chapter? The rest of its years will pass.",
+    "finish": "Finish chapter",
+    "notYet": "Not yet"
+  },
+  "phone": {
+    "open": "Phone",
+    "close": "Close the phone",
+    "locked": "No phone yet",
+    "apps": {
+      "messages": "Messages",
+      "bank": "Bank",
+      "invest": "Invest",
+      "gyaan": "Gyaan"
+    },
+    "noMessages": "No new messages.",
+    "buy": "Buy",
+    "sell": "Sell",
+    "amount": "Amount (₹)",
+    "minAge": "Investing in the market needs a PAN and KYC: from age {age}.",
+    "needBank": "Open a bank account first.",
+    "value": "Your holding: {value}",
+    "invested": "You put in {amount}",
+    "profit": "Gain/loss: {amount}",
+    "risk": "Risk",
+    "fee": "Yearly fee {pct}%",
+    "lastYear": "Last year {pct}%",
+    "brokerage": "Brokerage {amount} per trade",
+    "concentration": "{pct}% of your investments are in one thing. Spread them out.",
+    "loans": "Loans",
+    "noLoans": "No loans. Debt-free!",
+    "prepay": "Prepay {amount}",
+    "prepayAll": "Pay off",
+    "move": "Move money",
+    "from": "From",
+    "to": "To",
+    "moveButton": "Move",
+    "funds": "Mutual funds",
+    "stocks": "Shares",
+    "deposits": "Safe deposits",
+    "cash": "Cash to invest: {amount}",
+    "noTicker": "Prices move once a year. This is a long-term game, not a casino.",
+    "badNews": "Bad news at age {ages}"
+  },
+  "instruments": {
+    "sip_index": "Top-50 Index Fund",
+    "mf_debt": "Short-term Debt Fund",
+    "mf_active": "Star Active Equity Fund",
+    "stock_kisan": "Kisan Tractors",
+    "stock_chai": "Chai Express",
+    "stock_spark": "Spark Mobile",
+    "stock_power": "Safe Power",
+    "fd": "Fixed deposit",
+    "rd": "Recurring deposit",
+    "gold": "Gold"
+  },
+  "gyaan": {
+    "learnMore": "Learn more",
+    "title": "Gyaan",
+    "keyNumber": "Key number",
+    "example": "Worked example",
+    "quiz": "Quick check",
+    "right": "Right!",
+    "wrong": "Not quite."
+  },
+  "avatar": {
+    "label": "Choose your look",
+    "boy": "Boy",
+    "girl": "Girl"
   }
 }
