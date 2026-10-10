@@ -6,6 +6,7 @@
     "lesson": "L23",
     "ages": [31, 33],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
     "title": { "en": "Pre-approved!" },
     "text": {
@@ -61,6 +62,7 @@
     "lesson": "L23",
     "ages": [32, 34],
     "weight": 1,
+    "location": "home",
     "speaker": "mentor",
     "title": { "en": "The tin box" },
     "text": {
@@ -95,6 +97,7 @@
     "lesson": "L23",
     "ages": [34, 35],
     "weight": 1,
+    "location": "panchayat",
     "speaker": "tempter",
     "title": { "en": "Crossroads: Survey No. 212" },
     "text": {
@@ -180,6 +183,7 @@
     "lesson": "L24",
     "ages": [33, 36],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
     "title": { "en": "Kavitha akka's checklist" },
     "text": {
@@ -235,6 +239,7 @@
     "lesson": "L23",
     "ages": [33, 36],
     "weight": 1,
+    "location": "panchayat",
     "speaker": "narrator",
     "title": { "en": "Someone else's plot" },
     "text": {
@@ -267,6 +272,7 @@
     "lesson": "L23",
     "ages": [33, 36],
     "weight": 1,
+    "location": "panchayat",
     "speaker": "narrator",
     "title": { "en": "The seller wasn't the owner" },
     "text": {
@@ -298,6 +304,7 @@
     "lesson": "L20",
     "ages": [31, 36],
     "weight": 1,
+    "location": "hospital",
     "speaker": "mother",
     "title": { "en": "Nanna's heart" },
     "text": {
@@ -329,6 +336,7 @@
     "lesson": "L22",
     "ages": [28, 34],
     "weight": 1,
+    "location": "phone",
     "speaker": "headline",
     "title": { "en": "Stock Masters VIP group" },
     "text": {
@@ -372,6 +380,7 @@
     "lesson": "L14",
     "ages": [31, 36],
     "weight": 2,
+    "location": "square",
     "speaker": "friend",
     "title": { "en": "Chintu's comeback" },
     "text": {
@@ -418,6 +427,7 @@
     "lesson": "L02",
     "ages": [31, 36],
     "weight": 1,
+    "location": "home",
     "speaker": "mentor",
     "title": { "en": "Ammamma's secret RD" },
     "text": { "en": "Ammamma hands you a passbook. \"₹200 a month for 15 years, kanna. For your dream.\" It says ₹60,700." },
@@ -446,6 +456,7 @@
     "lesson": "L18",
     "ages": [31, 35],
     "weight": 1,
+    "location": "home",
     "speaker": "sibling",
     "title": { "en": "Chinni's wedding" },
     "text": {

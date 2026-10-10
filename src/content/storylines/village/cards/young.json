@@ -6,6 +6,7 @@
     "lesson": "L12",
     "ages": [19, 21],
     "weight": 1,
+    "location": "work",
     "speaker": "friend",
     "title": { "en": "Your first payslip" },
     "text": {
@@ -54,6 +55,7 @@
     "lesson": "L13",
     "ages": [19, 22],
     "weight": 1,
+    "location": "home",
     "speaker": "mentor",
     "title": { "en": "Ammamma's rainy-day rule" },
     "text": {
@@ -104,13 +106,18 @@
     "lesson": "L14",
     "ages": [19, 24],
     "weight": 1,
+    "location": "home",
     "speaker": "father",
     "title": { "en": "Four ways to borrow ₹20,000" },
     "text": {
       "en": "Nanna's motor pump is dead. Repair: ₹20,000. {cast:lender} offers \"just ₹2 per ₹100\". A [[loan_app]] says \"instant approval, no documents\". Amma's [[shg]] and a [[gold_loan]] are other options."
     },
     "clarity": [
-      { "phrase": { "en": "just ₹2 per ₹100" }, "truth": { "en": "Per month, on the full ₹20,000 even as you repay. 24% flat really costs about 42%." }, "lesson": "L14" },
+      {
+        "phrase": { "en": "just ₹2 per ₹100" },
+        "truth": { "en": "Per month, on the full ₹20,000 even as you repay. 24% flat really costs about 42%." },
+        "lesson": "L14"
+      },
       {
         "phrase": { "en": "instant approval, no documents" },
         "truth": { "en": "A 10% fee, then ₹3 per ₹100 a month on the full amount. Some apps also read your contacts." },
@@ -161,7 +168,9 @@
           "loan": { "source": "gold_loan", "principal": 20000, "months": 12, "disburse": "direct" },
           "meters": { "family": -2 }
         },
-        "outcome": { "en": "₹167 a month in interest, then ₹20,000 at the end: ₹22,100 in all. Miss it, and Amma's earrings are auctioned." },
+        "outcome": {
+          "en": "₹167 a month in interest, then ₹20,000 at the end: ₹22,100 in all. Miss it, and Amma's earrings are auctioned."
+        },
         "why": { "en": "Secured loans are cheaper than a sahukar, if you're sure you can repay. The risk is the gold." }
       }
     ]
@@ -173,6 +182,7 @@
     "lesson": "L15",
     "ages": [18, 23],
     "weight": 1,
+    "location": "square",
     "speaker": "tempter",
     "title": { "en": "Rent your bank account" },
     "text": {
@@ -230,6 +240,7 @@
     "lesson": "L16",
     "ages": [20, 24],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
     "title": { "en": "₹20 a year?" },
     "text": {
@@ -281,6 +292,7 @@
     "lesson": "L17",
     "ages": [20, 24],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
     "title": { "en": "₹1,000 a month, where?" },
     "text": {
@@ -331,6 +343,7 @@
     "lesson": "L07",
     "ages": [19, 23],
     "weight": 1,
+    "location": "home",
     "speaker": "sibling",
     "title": { "en": "Chinni wants a phone" },
     "text": {
@@ -379,6 +392,7 @@
     "lesson": "L09",
     "ages": [20, 24],
     "weight": 1,
+    "location": "phone",
     "speaker": "sibling",
     "title": { "en": "Chinni's scholarship QR" },
     "text": {
@@ -420,6 +434,7 @@
     "lesson": "L10",
     "ages": [21, 22],
     "weight": 1,
+    "location": "school",
     "speaker": "mentor",
     "title": { "en": "Graduation day" },
     "text": {
@@ -452,6 +467,7 @@
     "lesson": "L08",
     "ages": [21, 23],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
     "title": { "en": "The ceiling" },
     "text": {
@@ -488,6 +504,7 @@
     "lesson": "L08",
     "ages": [20, 21],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
     "title": { "en": "Licensed electrician" },
     "text": {
@@ -518,6 +535,7 @@
     "lesson": "L15",
     "ages": [19, 21],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
     "title": { "en": "The office is raided" },
     "text": {
@@ -562,6 +580,7 @@
     "lesson": "L13",
     "ages": [20, 24],
     "weight": 1,
+    "location": "square",
     "speaker": "narrator",
     "title": { "en": "The bike breaks down" },
     "text": { "en": "Your bike's engine seizes on the way to work. Repair: ₹10,000. Your emergency jar is almost empty." },
@@ -597,6 +616,7 @@
     "lesson": "L15",
     "ages": [19, 24],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
     "title": { "en": "Account frozen" },
     "text": {
@@ -636,6 +656,7 @@
     "lesson": "L15",
     "ages": [19, 24],
     "weight": 1,
+    "location": "home",
     "speaker": "friend",
     "title": { "en": "Chintu is scared" },
     "text": {
@@ -668,6 +689,7 @@
     "lesson": "L13",
     "ages": [20, 26],
     "weight": 1,
+    "location": "bank",
     "speaker": "narrator",
     "title": { "en": "Not quite 22 carat" },
     "text": {
@@ -698,6 +720,7 @@
     "lesson": "L14",
     "ages": [20, 24],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
     "title": { "en": "Beach trip with colleagues" },
     "text": {
@@ -749,6 +772,7 @@
     "lesson": "L22",
     "ages": [19, 30],
     "weight": 1,
+    "location": "phone",
     "speaker": "headline",
     "title": { "en": "Your account will be blocked today" },
     "text": {
@@ -792,6 +816,7 @@
     "lesson": "L13",
     "ages": [20, 30],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
     "title": { "en": "Festival bonus!" },
     "text": { "en": "A festival bonus: ₹8,000 extra this month. The phone shop has a big \"festival sale\" banner." },
@@ -821,6 +846,7 @@
     "lesson": "L16",
     "ages": [20, 26],
     "weight": 1,
+    "location": "hospital",
     "speaker": "headline",
     "title": { "en": "A wet road" },
     "text": { "en": "Your bike skids on a wet road. Broken arm. Hospital bill: ₹25,000. Two months off work." },
@@ -853,6 +879,7 @@
     "lesson": "L15",
     "ages": [19, 26],
     "weight": 1,
+    "location": "square",
     "speaker": "tempter",
     "title": { "en": "Just carry the bag" },
     "text": {
@@ -895,6 +922,7 @@
     "lesson": "L15",
     "ages": [20, 27],
     "weight": 1,
+    "location": "square",
     "speaker": "narrator",
     "title": { "en": "Your number in his phone" },
     "text": {
@@ -925,6 +953,7 @@
     "lesson": "L13",
     "ages": [19, 22],
     "weight": 1,
+    "location": "bank",
     "speaker": "banker",
     "title": { "en": "The rainy-day RD" },
     "text": {
@@ -973,6 +1002,7 @@
     "lesson": "L14",
     "ages": [19, 24],
     "weight": 1,
+    "location": "bank",
     "speaker": "narrator",
     "title": { "en": "A ₹30,000 laptop for work" },
     "text": {
@@ -1001,7 +1031,9 @@
         "label": { "en": "Bank personal loan, 13% for 12 months" },
         "quality": "neutral",
         "effects": { "loan": { "source": "bank_personal", "principal": 30000, "months": 12, "disburse": "direct" } },
-        "outcome": { "en": "EMI about ₹2,680 plus a ₹600 fee. You repay about ₹32,750. On-time payments build your [[credit_score]]." },
+        "outcome": {
+          "en": "EMI about ₹2,680 plus a ₹600 fee. You repay about ₹32,750. On-time payments build your [[credit_score]]."
+        },
         "why": { "en": "A bank loan is fair and clear. It still costs ₹2,750 for not waiting." }
       },
       {
@@ -1022,6 +1054,7 @@
     "lesson": "L15",
     "ages": [18, 23],
     "weight": 1,
+    "location": "phone",
     "speaker": "headline",
     "title": { "en": "A data-entry job, from home" },
     "text": {

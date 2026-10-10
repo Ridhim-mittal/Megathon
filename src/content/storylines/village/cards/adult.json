@@ -6,6 +6,7 @@
     "lesson": "L18",
     "ages": [24, 28],
     "weight": 1,
+    "location": "home",
     "speaker": "mother",
     "title": { "en": "Cousin Ravi's grand wedding" },
     "text": {
@@ -55,6 +56,7 @@
     "lesson": "L18",
     "ages": [25, 27],
     "weight": 1,
+    "location": "home",
     "speaker": "narrator",
     "title": { "en": "Crossroads: go or stay?" },
     "text": {
@@ -135,6 +137,7 @@
     "lesson": "L19",
     "ages": [25, 30],
     "weight": 1,
+    "location": "phone",
     "requires": { "owns": ["sip_index"] },
     "speaker": "headline",
     "title": { "en": "Markets crash 30%!" },
@@ -185,6 +188,7 @@
     "lesson": "L19",
     "ages": [25, 30],
     "weight": 1,
+    "location": "work",
     "speaker": "narrator",
     "title": { "en": "The hot share" },
     "text": {
@@ -233,6 +237,7 @@
     "lesson": "L20",
     "ages": [25, 30],
     "weight": 1,
+    "location": "field",
     "speaker": "headline",
     "title": { "en": "The tank overflows" },
     "text": {
@@ -286,6 +291,7 @@
     "lesson": "L21",
     "ages": [26, 30],
     "weight": 1,
+    "location": "home",
     "speaker": "agent",
     "title": { "en": "The Golden Future Plan" },
     "text": {
@@ -351,6 +357,7 @@
     "lesson": "L22",
     "ages": [24, 32],
     "weight": 1,
+    "location": "square",
     "speaker": "tempter",
     "title": { "en": "The Lucky Wealth Club" },
     "text": {
@@ -420,6 +427,7 @@
     "lesson": "L22",
     "ages": [24, 32],
     "weight": 1,
+    "location": "phone",
     "speaker": "headline",
     "title": { "en": "A video call from \"police\"" },
     "text": {
@@ -473,6 +481,7 @@
     "lesson": "L13",
     "ages": [25, 30],
     "weight": 1,
+    "location": "home",
     "speaker": "friend",
     "title": { "en": "Chintu asks for advice" },
     "text": {
@@ -513,6 +522,7 @@
     "lesson": "L17",
     "ages": [27, 33],
     "weight": 1,
+    "location": "home",
     "speaker": "sibling",
     "title": { "en": "Chinni's first salary" },
     "text": {
@@ -553,6 +563,7 @@
     "lesson": "L21",
     "ages": [27, 33],
     "weight": 1,
+    "location": "bank",
     "speaker": "agent",
     "title": { "en": "Surrender value" },
     "text": {
@@ -585,6 +596,7 @@
     "lesson": "L22",
     "ages": [25, 33],
     "weight": 1,
+    "location": "square",
     "speaker": "headline",
     "title": { "en": "The club shuts down" },
     "text": {
@@ -624,6 +636,7 @@
     "lesson": "L22",
     "ages": [25, 33],
     "weight": 1,
+    "location": "home",
     "speaker": "mother",
     "title": { "en": "Your cousins' money" },
     "text": {
@@ -662,6 +675,7 @@
     "lesson": "L22",
     "ages": [25, 28],
     "weight": 1,
+    "location": "square",
     "speaker": "narrator",
     "title": { "en": "Caught at the airport" },
     "text": {
@@ -697,6 +711,7 @@
     "lesson": "L21",
     "ages": [26, 36],
     "weight": 1,
+    "location": "hospital",
     "speaker": "agent",
     "title": { "en": "Claim rejected" },
     "text": {
@@ -730,6 +745,7 @@
     "lesson": "L22",
     "ages": [25, 36],
     "weight": 1,
+    "location": "square",
     "speaker": "mother",
     "title": { "en": "The organiser has gone" },
     "text": {
@@ -761,6 +777,7 @@
     "lesson": "L14",
     "ages": [19, 36],
     "weight": 1,
+    "location": "bank",
     "speaker": "narrator",
     "title": { "en": "Charges you didn't see" },
     "text": {
@@ -791,6 +808,7 @@
     "lesson": "L14",
     "ages": [19, 36],
     "weight": 1,
+    "location": "phone",
     "speaker": "mother",
     "title": { "en": "They called everyone" },
     "text": {
@@ -829,6 +847,7 @@
     "lesson": "L22",
     "ages": [24, 27],
     "weight": 1,
+    "location": "square",
     "speaker": "tempter",
     "title": { "en": "A Gulf job, fast" },
     "text": {
@@ -857,7 +876,9 @@
           "schedule": [{ "inYears": 1, "card": "village.adult.visa_rejected.a" }]
         },
         "echo": { "level": 3, "hint": { "en": "A certificate for a job you never did." } },
-        "outcome": { "en": "₹1,77,600 to repay the sahukar. A ticket is booked. The certificate is from a company that doesn't exist." }
+        "outcome": {
+          "en": "₹1,77,600 to repay the sahukar. A ticket is booked. The certificate is from a company that doesn't exist."
+        }
       },
       {
         "id": "check_licence",
@@ -883,6 +904,7 @@
     "lesson": "L10",
     "ages": [24, 28],
     "weight": 2,
+    "location": "home",
     "speaker": "sibling",
     "title": { "en": "Chinni got in!" },
     "text": {
@@ -907,7 +929,9 @@
           "meters": { "family": 10 },
           "flags": { "add": ["chinni_nursing"] }
         },
-        "outcome": { "en": "About ₹5,700 a month once repayment starts, as interest adds up while she studies. A staff nurse earns ₹22,000. Chinni hugs Bujji." },
+        "outcome": {
+          "en": "About ₹5,700 a month once repayment starts, as interest adds up while she studies. A staff nurse earns ₹22,000. Chinni hugs Bujji."
+        },
         "why": { "en": "An education loan is good debt when the course leads to steady work." }
       },
       {
@@ -938,6 +962,7 @@
     "lesson": "L20",
     "ages": [25, 32],
     "weight": 1,
+    "location": "field",
     "speaker": "father",
     "title": { "en": "The rains don't come" },
     "text": { "en": "No rain in July. No rain in August. The cotton dries in the field. The family loses ₹40,000 of crop." },
@@ -970,6 +995,7 @@
     "lesson": "L14",
     "ages": [24, 32],
     "weight": 1,
+    "location": "home",
     "speaker": "mother",
     "title": { "en": "Amma's friend's chitti" },
     "text": {
@@ -1023,6 +1049,7 @@
     "lesson": "L18",
     "ages": [25, 30],
     "weight": 1,
+    "location": "field",
     "speaker": "father",
     "title": { "en": "Best cotton price in years" },
     "text": {

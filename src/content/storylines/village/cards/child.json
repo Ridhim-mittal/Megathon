@@ -6,6 +6,7 @@
     "lesson": "L01",
     "ages": [11, 12],
     "weight": 1,
+    "location": "square",
     "speaker": "mentor",
     "title": { "en": "₹100 and a jatara" },
     "text": {
@@ -51,6 +52,7 @@
     "lesson": "L02",
     "ages": [11, 13],
     "weight": 1,
+    "location": "home",
     "speaker": "mother",
     "title": { "en": "Amma's savings-group rule" },
     "text": {
@@ -92,6 +94,7 @@
     "lesson": "L03",
     "ages": [12, 14],
     "weight": 1,
+    "location": "shop",
     "speaker": "shopkeeper",
     "title": { "en": "The chocolate got expensive" },
     "text": {
@@ -135,6 +138,7 @@
     "lesson": "L04",
     "ages": [12, 14],
     "weight": 1,
+    "location": "school",
     "speaker": "banker",
     "title": { "en": "The rat ate ₹50" },
     "text": {
@@ -183,6 +187,7 @@
     "lesson": "L05",
     "ages": [13, 14],
     "weight": 1,
+    "location": "sahukar",
     "speaker": "lender",
     "title": { "en": "Only ₹2 per ₹100" },
     "text": {
@@ -238,6 +243,7 @@
     "lesson": "L06",
     "ages": [11, 14],
     "weight": 1,
+    "location": "square",
     "speaker": "tempter",
     "title": { "en": "5,000 free gems!" },
     "text": {
@@ -293,6 +299,7 @@
     "lesson": "L01",
     "ages": [12, 14],
     "weight": 1,
+    "location": "shop",
     "speaker": "shopkeeper",
     "title": { "en": "The notebook remembers everything" },
     "text": {
@@ -325,6 +332,7 @@
     "lesson": "L05",
     "ages": [13, 16],
     "weight": 1,
+    "location": "home",
     "speaker": "lender",
     "title": { "en": "A polite visit" },
     "text": {
@@ -358,6 +366,7 @@
     "lesson": "L06",
     "ages": [12, 15],
     "weight": 1,
+    "location": "home",
     "speaker": "sibling",
     "title": { "en": "Chinni found a link" },
     "text": {
@@ -390,6 +399,7 @@
     "lesson": "L02",
     "ages": [12, 14],
     "weight": 1,
+    "location": "school",
     "speaker": "teacher",
     "title": { "en": "First in maths!" },
     "text": { "en": "{cast:teacher} announces it in assembly: you topped the district maths test. A ₹1,000 merit scholarship!" },
@@ -419,6 +429,7 @@
     "lesson": "L13",
     "ages": [11, 14],
     "weight": 1,
+    "location": "home",
     "speaker": "father",
     "title": { "en": "Bujji won't eat" },
     "text": { "en": "Bujji the buffalo lies down and won't eat. The vet's medicine costs ₹1,500. Nanna has ₹1,100." },
@@ -448,6 +459,7 @@
     "lesson": "L06",
     "ages": [11, 14],
     "weight": 1,
+    "location": "home",
     "speaker": "headline",
     "title": { "en": "You won ₹25 lakh!" },
     "text": {
@@ -490,6 +502,7 @@
     "lesson": "L01",
     "ages": [11, 14],
     "weight": 1,
+    "location": "shop",
     "speaker": "sibling",
     "title": { "en": "Chinni's torn uniform" },
     "text": {
@@ -522,6 +535,7 @@
     "lesson": "L06",
     "ages": [11, 14],
     "weight": 1,
+    "location": "square",
     "speaker": "friend",
     "title": { "en": "Chintu's level-up offer" },
     "text": {
