@@ -3,11 +3,40 @@
   "stage": "young",
   "from": 18,
   "to": 21,
-  "part": { "en": "Chapter 2 · College life" },
-  "title": { "en": "The Telegram Guru" },
-  "intro": { "en": "Age 18. You join the degree college in town and share a hostel room with Chintu. Amma gives you your first smartphone. Somewhere on that phone, {cast:tempter} is waiting." },
-  "placeNames": { "school": { "en": "Town college" }, "work": { "en": "Delivery hub" } },
-  "startEffects": { "flags": { "add": ["owns_phone"] } },
+  "part": {
+    "en": "Chapter 2 · College life",
+    "hi": "अध्याय 2 · कॉलेज की ज़िंदगी",
+    "te": "అధ్యాయం 2 · కాలేజీ జీవితం"
+  },
+  "title": {
+    "en": "The Telegram Guru",
+    "hi": "टेलीग्राम वाला गुरु",
+    "te": "టెలిగ్రామ్ గురు"
+  },
+  "intro": {
+    "en": "Age 18. You join the degree college in town and share a hostel room with Chintu. Amma gives you your first smartphone. Somewhere on that phone, {cast:tempter} is waiting.",
+    "hi": "उम्र 18। आप शहर के डिग्री कॉलेज में दाखिला लेते हैं और हॉस्टल का कमरा चिंटू के साथ बाँटते हैं। अम्मा आपको आपका पहला स्मार्टफ़ोन देती हैं। उसी फ़ोन में कहीं {cast:tempter} इंतज़ार कर रहा है।",
+    "te": "వయసు 18. మీరు పట్నంలోని డిగ్రీ కాలేజీలో చేరుతారు, హాస్టల్ రూమ్‌లో చింటూతో కలిసి ఉంటారు. అమ్మ మీకు మొదటి స్మార్ట్‌ఫోన్ ఇస్తుంది. ఆ ఫోన్‌లో ఎక్కడో {cast:tempter} కాచుకుని ఉన్నాడు."
+  },
+  "placeNames": {
+    "school": {
+      "en": "Town college",
+      "hi": "शहर का कॉलेज",
+      "te": "పట్నం కాలేజీ"
+    },
+    "work": {
+      "en": "Delivery hub",
+      "hi": "डिलीवरी हब",
+      "te": "డెలివరీ హబ్"
+    }
+  },
+  "startEffects": {
+    "flags": {
+      "add": [
+        "owns_phone"
+      ]
+    }
+  },
   "start": "m2_college",
   "nodes": [
     {
@@ -16,36 +45,123 @@
       "location": "school",
       "speaker": "teacher",
       "lesson": "L10",
-      "objective": { "en": "First day at the town college. Find the admission desk." },
-      "title": { "en": "Fees: ₹38,000 a year" },
-      "text": { "en": "The fee is ₹38,000 a year. Nanna's cotton money covers half. The clerk shows you three ways to pay the rest." },
+      "objective": {
+        "en": "First day at the town college. Find the admission desk.",
+        "hi": "शहर के कॉलेज में पहला दिन। एडमिशन डेस्क ढूँढें।",
+        "te": "పట్నం కాలేజీలో మొదటి రోజు. అడ్మిషన్ డెస్క్ వెతకండి."
+      },
+      "title": {
+        "en": "Fees: ₹38,000 a year",
+        "hi": "फ़ीस: ₹38,000 सालाना",
+        "te": "ఫీజు: ఏడాదికి ₹38,000"
+      },
+      "text": {
+        "en": "The fee is ₹38,000 a year. Nanna's cotton money covers half. The clerk shows you three ways to pay the rest.",
+        "hi": "फ़ीस ₹38,000 सालाना है। नान्ना के कपास के पैसे से आधी भर जाएगी। क्लर्क बाकी भरने के तीन तरीके बताता है।",
+        "te": "ఫీజు ఏడాదికి ₹38,000. నాన్న పత్తి డబ్బుతో సగం సరిపోతుంది. మిగతాది కట్టడానికి క్లర్క్ మూడు దారులు చూపిస్తాడు."
+      },
       "choices": [
         {
           "id": "scholarship_job",
-          "label": { "en": "Apply for the state scholarship and work evenings at the delivery hub" },
+          "label": {
+            "en": "Apply for the state scholarship and work evenings at the delivery hub",
+            "hi": "राज्य की स्कॉलरशिप के लिए अर्ज़ी दें और शाम को डिलीवरी हब पर काम करें",
+            "te": "రాష్ట్ర స్కాలర్‌షిప్‌కు అప్లై చేసి, సాయంత్రాలు డెలివరీ హబ్‌లో పని చేయండి"
+          },
           "quality": "good",
-          "effects": { "income": { "monthly": 4000, "source": "part_time" }, "meters": { "joy": -2 }, "flags": { "add": ["part_time"] }, "gyaan": 2 },
-          "outcome": { "en": "The scholarship pays the fee. The hub pays ₹4,000 a month for 3 hours an evening. You learn to sleep on buses." },
-          "why": { "en": "Free money first (scholarships), earned money second, borrowed money last." },
+          "effects": {
+            "income": {
+              "monthly": 4000,
+              "source": "part_time"
+            },
+            "meters": {
+              "joy": -2
+            },
+            "flags": {
+              "add": [
+                "part_time"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "The scholarship pays the fee. The hub pays ₹4,000 a month for 3 hours an evening. You learn to sleep on buses.",
+            "hi": "स्कॉलरशिप से फ़ीस भर जाती है। हब हर शाम 3 घंटे के काम के ₹4,000 महीना देता है। आप बस में सोना सीख जाते हैं।",
+            "te": "స్కాలర్‌షిప్ ఫీజు కడుతుంది. రోజూ సాయంత్రం 3 గంటల పనికి హబ్ నెలకు ₹4,000 ఇస్తుంది. బస్సుల్లోనే నిద్రపోవడం నేర్చుకుంటారు."
+          },
+          "why": {
+            "en": "Free money first (scholarships), earned money second, borrowed money last.",
+            "hi": "पहले मुफ़्त पैसा (स्कॉलरशिप), फिर कमाया हुआ पैसा, और उधार का पैसा सबसे आखिर में।",
+            "te": "ముందు ఉచిత డబ్బు (స్కాలర్‌షిప్‌లు), తర్వాత సంపాదించిన డబ్బు, చివరగా అప్పు."
+          },
           "next": "m2_hostel"
         },
         {
           "id": "edu_loan",
-          "label": { "en": "Take a bank [[education_loan]], to repay after you get a job" },
+          "label": {
+            "en": "Take a bank [[education_loan]], to repay after you get a job",
+            "hi": "बैंक से [[education_loan]] लें, नौकरी लगने के बाद चुकाएँ",
+            "te": "బ్యాంకు [[education_loan]] తీసుకోండి, ఉద్యోగం వచ్చాక తీర్చేలా"
+          },
           "quality": "ok",
-          "effects": { "loan": { "source": "education", "principal": 60000 }, "flags": { "add": ["edu_loan"] } },
-          "outcome": { "en": "The bank pays the college directly. Repayment starts after your course. You can focus on studying." },
-          "why": { "en": "An education loan is 'good debt' if it raises your income. It's cheap (about 9.5%) and waits until you earn." },
+          "effects": {
+            "loan": {
+              "source": "education",
+              "principal": 60000
+            },
+            "flags": {
+              "add": [
+                "edu_loan"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The bank pays the college directly. Repayment starts after your course. You can focus on studying.",
+            "hi": "बैंक सीधे कॉलेज को पैसा देता है। चुकाना कोर्स खत्म होने के बाद शुरू होगा। आप पढ़ाई पर ध्यान दे सकते हैं।",
+            "te": "బ్యాంకు నేరుగా కాలేజీకే కడుతుంది. కోర్సు అయిపోయాకే తిరిగి కట్టడం మొదలవుతుంది. మీరు చదువు మీద దృష్టి పెట్టొచ్చు."
+          },
+          "why": {
+            "en": "An education loan is 'good debt' if it raises your income. It's cheap (about 9.5%) and waits until you earn.",
+            "hi": "शिक्षा ऋण 'अच्छा कर्ज़' है, अगर उससे आपकी कमाई बढ़े। यह सस्ता है (लगभग 9.5%) और आपके कमाने तक रुकता है।",
+            "te": "మీ ఆదాయాన్ని పెంచితే విద్యా రుణం 'మంచి అప్పు'. వడ్డీ తక్కువ (సుమారు 9.5%), మీరు సంపాదించేదాకా ఆగుతుంది."
+          },
           "next": "m2_hostel"
         },
         {
           "id": "sahukar_fee",
-          "label": { "en": "Borrow ₹20,000 from Narsaiah sahukar. It's quick" },
+          "label": {
+            "en": "Borrow ₹20,000 from Narsaiah sahukar. It's quick",
+            "hi": "नरसैया साहूकार से ₹20,000 उधार लें। जल्दी मिल जाएगा",
+            "te": "నర్సయ్య షావుకారు దగ్గర ₹20,000 అప్పు తీసుకోండి. తొందరగా వస్తుంది"
+          },
           "quality": "bad",
-          "warn": { "en": "A bank education loan costs about 9.5% a year and waits until you have a job. The [[sahukar]] charges 24% from day one, and adds it every month." },
-          "effects": { "loan": { "source": "moneylender", "principal": 20000 }, "cash": -20000, "flags": { "add": ["sahukar_fee"] } },
-          "outcome": { "en": "Narsaiah counts out the notes and opens his red ledger. \"Study well, beta. I'll be here every month.\"" },
-          "why": { "en": "Quick money is usually the most expensive money. Always compare the yearly interest rate." },
+          "warn": {
+            "en": "A bank education loan costs about 9.5% a year and waits until you have a job. The [[sahukar]] charges 24% from day one, and adds it every month.",
+            "hi": "बैंक का शिक्षा ऋण लगभग 9.5% सालाना पड़ता है और नौकरी लगने तक रुकता है। [[sahukar]] पहले ही दिन से 24% लेता है, और हर महीने ब्याज जोड़ता जाता है।",
+            "te": "బ్యాంకు విద్యా రుణానికి ఏడాదికి సుమారు 9.5% వడ్డీ, అదీ ఉద్యోగం వచ్చేదాకా ఆగుతుంది. [[sahukar]] మొదటి రోజు నుంచే 24% వేస్తాడు, ప్రతి నెలా అసలుకు కలుపుతాడు."
+          },
+          "effects": {
+            "loan": {
+              "source": "moneylender",
+              "principal": 20000
+            },
+            "cash": -20000,
+            "flags": {
+              "add": [
+                "sahukar_fee"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Narsaiah counts out the notes and opens his red ledger. \"Study well, beta. I'll be here every month.\"",
+            "hi": "नरसैया नोट गिनकर देता है और अपनी लाल बही खोलता है। \"अच्छे से पढ़ना, बेटा। मैं हर महीने यहीं मिलूँगा।\"",
+            "te": "నర్సయ్య నోట్లు లెక్కపెట్టి ఇచ్చి, తన ఎర్ర ఖాతా పుస్తకం తెరుస్తాడు. \"బాగా చదువుకో బిడ్డా. ప్రతి నెలా ఇక్కడే ఉంటా.\""
+          },
+          "why": {
+            "en": "Quick money is usually the most expensive money. Always compare the yearly interest rate.",
+            "hi": "जल्दी मिलने वाला पैसा अक्सर सबसे महँगा होता है। हमेशा सालाना ब्याज दर की तुलना करें।",
+            "te": "తొందరగా వచ్చే డబ్బే సాధారణంగా అన్నిటికంటే ఖరీదైనది. ఎప్పుడూ ఏడాది వడ్డీ రేటు పోల్చి చూడండి."
+          },
           "next": "m2_hostel"
         }
       ]
@@ -56,35 +172,101 @@
       "location": "school",
       "speaker": "friend",
       "lesson": "L22",
-      "objective": { "en": "Back to the hostel. Chintu has 'big news'." },
-      "title": { "en": "Lucky Prakash Capital" },
-      "text": { "en": "Chintu shows you a Telegram channel: \"LUCKY PRAKASH CAPITAL. 30% a month GUARANTEED. 2 lakh members.\" Lamborghini photos. VIP tips: ₹5,000. \"Bro, it's {cast:tempter}! From our village!\"" },
+      "objective": {
+        "en": "Back to the hostel. Chintu has 'big news'.",
+        "hi": "हॉस्टल लौटें। चिंटू के पास 'बड़ी खबर' है।",
+        "te": "హాస్టల్‌కు తిరిగి వెళ్లండి. చింటూ దగ్గర 'పెద్ద వార్త' ఉంది."
+      },
+      "title": {
+        "en": "Lucky Prakash Capital",
+        "hi": "लकी प्रकाश कैपिटल",
+        "te": "లక్కీ ప్రకాష్ క్యాపిటల్"
+      },
+      "text": {
+        "en": "Chintu shows you a Telegram channel: \"LUCKY PRAKASH CAPITAL. 30% a month GUARANTEED. 2 lakh members.\" Lamborghini photos. VIP tips: ₹5,000. \"Bro, it's {cast:tempter}! From our village!\"",
+        "hi": "चिंटू आपको एक टेलीग्राम चैनल दिखाता है: \"लकी प्रकाश कैपिटल। हर महीने 30% की पक्की गारंटी! 2 लाख मेंबर।\" लैम्बॉर्गिनी की फ़ोटो। VIP टिप्स: ₹5,000। \"भाई, ये तो {cast:tempter} है! अपने गाँव वाला!\"",
+        "te": "చింటూ ఒక టెలిగ్రామ్ ఛానల్ చూపిస్తాడు: \"లక్కీ ప్రకాష్ క్యాపిటల్. నెలకు 30% గ్యారంటీ! 2 లక్షల మెంబర్లు.\" లాంబోర్గినీ ఫోటోలు. VIP టిప్స్: ₹5,000. \"బ్రో, ఇది మన {cast:tempter}! మన ఊరోడే!\""
+      },
       "choices": [
         {
           "id": "vip",
-          "label": { "en": "Pay ₹5,000 for the VIP tips" },
+          "label": {
+            "en": "Pay ₹5,000 for the VIP tips",
+            "hi": "VIP टिप्स के लिए ₹5,000 दें",
+            "te": "VIP టిప్స్ కోసం ₹5,000 కట్టండి"
+          },
           "quality": "bad",
-          "warn": { "en": "30% a month would turn ₹10,000 into ₹1.2 crore in 3 years. Nobody can guarantee that. Real advisers are SEBI-registered and never promise returns." },
-          "effects": { "cash": -5000, "flags": { "add": ["vip"] } },
-          "outcome": { "en": "Welcome to VIP! Your first message arrives at 2 a.m.: \"BIG TIP COMING. KEEP CASH READY.\"" },
-          "why": { "en": "Guaranteed high returns are the clearest sign of a scam. Risk and return always travel together." },
+          "warn": {
+            "en": "30% a month would turn ₹10,000 into ₹1.2 crore in 3 years. Nobody can guarantee that. Real advisers are SEBI-registered and never promise returns.",
+            "hi": "हर महीने 30% का मतलब है 3 साल में ₹10,000 का ₹1.2 करोड़ बनना। कोई इसकी गारंटी नहीं दे सकता। असली सलाहकार SEBI में रजिस्टर्ड होते हैं और कभी रिटर्न का वादा नहीं करते।",
+            "te": "నెలకు 30% అంటే ₹10,000 కేవలం 3 ఏళ్లలో ₹1.2 కోట్లు అవ్వాలి. అలా ఎవరూ గ్యారంటీ ఇవ్వలేరు. నిజమైన సలహాదారులు SEBIలో రిజిస్టర్ అయి ఉంటారు, లాభాలకు ఎప్పుడూ హామీ ఇవ్వరు."
+          },
+          "effects": {
+            "cash": -5000,
+            "flags": {
+              "add": [
+                "vip"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Welcome to VIP! Your first message arrives at 2 a.m.: \"BIG TIP COMING. KEEP CASH READY.\"",
+            "hi": "VIP में स्वागत है! पहला मैसेज रात 2 बजे आता है: \"बड़ी टिप आने वाली है। कैश तैयार रखो।\"",
+            "te": "VIPకి స్వాగతం! మొదటి మెసేజ్ రాత్రి 2 గంటలకు వస్తుంది: \"పెద్ద టిప్ వస్తోంది. క్యాష్ రెడీగా పెట్టుకోండి.\""
+          },
+          "why": {
+            "en": "Guaranteed high returns are the clearest sign of a scam. Risk and return always travel together.",
+            "hi": "ऊँचे रिटर्न की 'गारंटी' धोखे की सबसे साफ़ निशानी है। जोखिम और रिटर्न हमेशा साथ चलते हैं।",
+            "te": "ఎక్కువ లాభాలకు 'గ్యారంటీ' అంటేనే అది మోసం అని చెప్పే అతి పెద్ద గుర్తు. రిస్క్, లాభం ఎప్పుడూ కలిసే నడుస్తాయి."
+          },
           "next": "m2_vip"
         },
         {
           "id": "check",
-          "label": { "en": "Check SEBI's website: is he a registered adviser?" },
+          "label": {
+            "en": "Check SEBI's website: is he a registered adviser?",
+            "hi": "SEBI की वेबसाइट देखें: क्या वह रजिस्टर्ड सलाहकार है?",
+            "te": "SEBI వెబ్‌సైట్ చూడండి: అతను రిజిస్టర్డ్ సలహాదారుడా?"
+          },
           "quality": "good",
-          "effects": { "flags": { "add": ["evidence_telegram"] }, "gyaan": 3 },
-          "outcome": { "en": "Not registered. The 'Lamborghini' is from a Dubai car show. You screenshot everything, and show Chintu." },
-          "why": { "en": "Anyone giving investment advice for money must be SEBI-registered. Checking takes two minutes." },
+          "effects": {
+            "flags": {
+              "add": [
+                "evidence_telegram"
+              ]
+            },
+            "gyaan": 3
+          },
+          "outcome": {
+            "en": "Not registered. The 'Lamborghini' is from a Dubai car show. You screenshot everything, and show Chintu.",
+            "hi": "रजिस्टर्ड नहीं है। वह 'लैम्बॉर्गिनी' दुबई के एक कार शो की है। आप हर चीज़ का स्क्रीनशॉट लेते हैं, और चिंटू को दिखाते हैं।",
+            "te": "రిజిస్టర్ కాలేదు. ఆ 'లాంబోర్గినీ' దుబాయ్ కార్ షోలోది. మీరు అన్నిటికీ స్క్రీన్‌షాట్ తీసి చింటూకు చూపిస్తారు."
+          },
+          "why": {
+            "en": "Anyone giving investment advice for money must be SEBI-registered. Checking takes two minutes.",
+            "hi": "जो भी पैसे लेकर निवेश की सलाह देता है, उसका SEBI में रजिस्टर्ड होना ज़रूरी है। जाँचने में बस दो मिनट लगते हैं।",
+            "te": "డబ్బు తీసుకుని పెట్టుబడి సలహా ఇచ్చే ఎవరైనా SEBIలో రిజిస్టర్ అయి ఉండాలి. చెక్ చేయడానికి రెండు నిమిషాలే పడుతుంది."
+          },
           "next": "m2_sip"
         },
         {
           "id": "ignore",
-          "label": { "en": "Ignore it and go to class" },
+          "label": {
+            "en": "Ignore it and go to class",
+            "hi": "अनदेखा करें और क्लास जाएँ",
+            "te": "పట్టించుకోకుండా క్లాస్‌కు వెళ్లండి"
+          },
           "quality": "ok",
-          "outcome": { "en": "You go to class. Chintu joins VIP. Every night, his phone glows green and red." },
-          "why": { "en": "Ignoring a scam keeps you safe. Warning your friends keeps them safe too." },
+          "outcome": {
+            "en": "You go to class. Chintu joins VIP. Every night, his phone glows green and red.",
+            "hi": "आप क्लास जाते हैं। चिंटू VIP में जुड़ जाता है। हर रात उसका फ़ोन हरा-लाल चमकता है।",
+            "te": "మీరు క్లాస్‌కు వెళ్తారు. చింటూ VIPలో చేరుతాడు. ప్రతి రాత్రి వాడి ఫోన్ ఆకుపచ్చ, ఎరుపు రంగుల్లో మెరుస్తూ ఉంటుంది."
+          },
+          "why": {
+            "en": "Ignoring a scam keeps you safe. Warning your friends keeps them safe too.",
+            "hi": "धोखे को अनदेखा करना आपको बचाता है। दोस्तों को चेताना उन्हें भी बचाता है।",
+            "te": "మోసాన్ని పట్టించుకోకపోతే మీరు సేఫ్. స్నేహితులను కూడా హెచ్చరిస్తే వాళ్లూ సేఫ్."
+          },
           "next": "m2_sip"
         }
       ]
@@ -95,36 +277,112 @@
       "location": "phone",
       "speaker": "tempter",
       "lesson": "L15",
-      "objective": { "en": "A VIP message just arrived. Open your phone (press P)." },
-      "title": { "en": "\"Rent us your account\"" },
-      "text": { "en": "VIP tip: \"Buy Spark Mobile shares NOW, they'll go 5x!\" Then a private message: \"Earn ₹5,000 a month! Just let us route trading profits through your bank account. 100% legal, bro.\"" },
+      "objective": {
+        "en": "A VIP message just arrived. Open your phone (press P).",
+        "hi": "एक VIP मैसेज आया है। अपना फ़ोन खोलें (P दबाएँ)।",
+        "te": "ఇప్పుడే ఒక VIP మెసేజ్ వచ్చింది. ఫోన్ తెరవండి (P నొక్కండి)."
+      },
+      "title": {
+        "en": "\"Rent us your account\"",
+        "hi": "\"अपना खाता हमें किराए पर दो\"",
+        "te": "\"నీ అకౌంట్ మాకు అద్దెకియ్యి\""
+      },
+      "text": {
+        "en": "VIP tip: \"Buy Spark Mobile shares NOW, they'll go 5x!\" Then a private message: \"Earn ₹5,000 a month! Just let us route trading profits through your bank account. 100% legal, bro.\"",
+        "hi": "VIP टिप: \"स्पार्क मोबाइल के शेयर अभी खरीदो, 5 गुना हो जाएँगे!\" फिर एक प्राइवेट मैसेज: \"हर महीने ₹5,000 कमाओ! बस ट्रेडिंग का मुनाफ़ा अपने बैंक खाते से गुज़रने दो। 100% लीगल है, भाई।\"",
+        "te": "VIP టిప్: \"స్పార్క్ మొబైల్ షేర్లు ఇప్పుడే కొనండి, 5 రెట్లు అవుతాయి!\" తర్వాత ఒక ప్రైవేట్ మెసేజ్: \"నెలకు ₹5,000 సంపాదించు! మా ట్రేడింగ్ లాభాలను నీ బ్యాంక్ అకౌంట్ ద్వారా పంపనియ్యి, అంతే. 100% లీగల్, బ్రో.\""
+      },
       "choices": [
         {
           "id": "rent",
-          "label": { "en": "Rent them your account for ₹5,000 a month" },
+          "label": {
+            "en": "Rent them your account for ₹5,000 a month",
+            "hi": "₹5,000 महीने पर अपना खाता किराए पर दें",
+            "te": "నెలకు ₹5,000కు మీ అకౌంట్ అద్దెకివ్వండి"
+          },
           "quality": "bad",
-          "warn": { "en": "Letting strangers move money through your account makes you a [[money_mule]]. That money is stolen from scam victims. Your account gets frozen and YOU face the police case." },
-          "effects": { "cash": 5000, "flags": { "add": ["money_mule"] } },
-          "outcome": { "en": "₹5,000 arrives on the first of every month. So do strange credits of ₹40,000, ₹75,000, ₹1,20,000... and debits, minutes later." },
-          "why": { "en": "Mule accounts are how stolen money disappears. The account holder is the one the police find first." },
+          "warn": {
+            "en": "Letting strangers move money through your account makes you a [[money_mule]]. That money is stolen from scam victims. Your account gets frozen and YOU face the police case.",
+            "hi": "अजनबियों को अपने खाते से पैसा घुमाने देना आपको [[money_mule]] बना देता है। वह पैसा धोखे के शिकार लोगों से चुराया गया है। आपका खाता फ़्रीज़ होगा और पुलिस केस आप पर ही बनेगा।",
+            "te": "తెలియని వాళ్లు మీ అకౌంట్ ద్వారా డబ్బు తిప్పితే, మీరు [[money_mule]] అవుతారు. ఆ డబ్బు మోసపోయిన వాళ్ల దగ్గర దోచుకున్నది. మీ అకౌంట్ ఫ్రీజ్ అవుతుంది, పోలీస్ కేసు మీ మీదే పడుతుంది."
+          },
+          "effects": {
+            "cash": 5000,
+            "flags": {
+              "add": [
+                "money_mule"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "₹5,000 arrives on the first of every month. So do strange credits of ₹40,000, ₹75,000, ₹1,20,000... and debits, minutes later.",
+            "hi": "हर महीने की पहली तारीख को ₹5,000 आते हैं। साथ में ₹40,000, ₹75,000, ₹1,20,000 की अजीब रकमें भी आती हैं... और कुछ ही मिनट में निकल जाती हैं।",
+            "te": "ప్రతి నెలా ఒకటో తారీఖున ₹5,000 వస్తుంది. దానితో పాటు ₹40,000, ₹75,000, ₹1,20,000... అంటూ వింత క్రెడిట్లు కూడా. నిమిషాల్లోనే అవి డెబిట్ అయిపోతాయి."
+          },
+          "why": {
+            "en": "Mule accounts are how stolen money disappears. The account holder is the one the police find first.",
+            "hi": "चोरी का पैसा म्यूल खातों से होकर ही गायब होता है। पुलिस सबसे पहले खाते वाले तक ही पहुँचती है।",
+            "te": "దొంగ డబ్బు మాయం అయ్యేది మ్యూల్ అకౌంట్ల ద్వారానే. పోలీసులు ముందు పట్టుకునేది అకౌంట్ ఎవరి పేరు మీద ఉందో వాళ్లనే."
+          },
           "next": "m2_frozen"
         },
         {
           "id": "tip",
-          "label": { "en": "Just buy the Spark Mobile tip with ₹5,000" },
+          "label": {
+            "en": "Just buy the Spark Mobile tip with ₹5,000",
+            "hi": "बस ₹5,000 से स्पार्क मोबाइल वाली टिप पर खरीद लें",
+            "te": "టిప్ ప్రకారం ₹5,000తో స్పార్క్ మొబైల్ కొనండి, అంతే"
+          },
           "quality": "bad",
-          "effects": { "open": { "product": "stock_spark", "amount": 5000 }, "flags": { "add": ["tip_stock"] } },
-          "outcome": { "en": "Spark Mobile jumps 20% in a day. The VIP group cheers. You don't know the admins are selling to you." },
-          "why": { "en": "In 'pump and dump' tips, the group buys first, tells you to buy, then sells to you at the top." },
+          "effects": {
+            "open": {
+              "product": "stock_spark",
+              "amount": 5000
+            },
+            "flags": {
+              "add": [
+                "tip_stock"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Spark Mobile jumps 20% in a day. The VIP group cheers. You don't know the admins are selling to you.",
+            "hi": "स्पार्क मोबाइल एक दिन में 20% उछलता है। VIP ग्रुप में जश्न होता है। आपको पता ही नहीं कि एडमिन आपको ही बेच रहे हैं।",
+            "te": "స్పార్క్ మొబైల్ ఒక్క రోజులో 20% ఎగురుతుంది. VIP గ్రూప్ సంబరపడుతుంది. అడ్మిన్లు మీకే అమ్ముతున్నారని మీకు తెలియదు."
+          },
+          "why": {
+            "en": "In 'pump and dump' tips, the group buys first, tells you to buy, then sells to you at the top.",
+            "hi": "'पंप एंड डंप' टिप्स में ग्रुप पहले खुद खरीदता है, फिर आपको खरीदने को कहता है, और सबसे ऊँचे दाम पर आपको बेच देता है।",
+            "te": "'పంప్ అండ్ డంప్' టిప్స్‌లో గ్రూప్ ముందే కొంటుంది, మిమ్మల్ని కొనమంటుంది, ధర పైకి వెళ్లాక మీకే అమ్మేస్తుంది."
+          },
           "next": "m2_sip"
         },
         {
           "id": "report",
-          "label": { "en": "Leave the group and report it on the cyber-crime portal" },
+          "label": {
+            "en": "Leave the group and report it on the cyber-crime portal",
+            "hi": "ग्रुप छोड़ें और साइबर-क्राइम पोर्टल पर रिपोर्ट करें",
+            "te": "గ్రూప్ నుంచి బయటకు వచ్చి సైబర్ క్రైమ్ పోర్టల్‌లో రిపోర్ట్ చేయండి"
+          },
           "quality": "good",
-          "effects": { "flags": { "add": ["evidence_telegram"] }, "gyaan": 2 },
-          "outcome": { "en": "You save every screenshot and report the channel. VIP money lost: ₹5,000. Lesson learned: priceless." },
-          "why": { "en": "Reporting helps the police connect complaints. Your evidence may matter later." },
+          "effects": {
+            "flags": {
+              "add": [
+                "evidence_telegram"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "You save every screenshot and report the channel. VIP money lost: ₹5,000. Lesson learned: priceless.",
+            "hi": "आप हर स्क्रीनशॉट सँभालकर रखते हैं और चैनल की रिपोर्ट करते हैं। VIP में गया पैसा: ₹5,000। मिली सीख: अनमोल।",
+            "te": "ప్రతి స్క్రీన్‌షాట్ దాచి, ఛానల్‌ను రిపోర్ట్ చేస్తారు. VIPకి పోయిన డబ్బు: ₹5,000. నేర్చుకున్న పాఠం: వెలకట్టలేనిది."
+          },
+          "why": {
+            "en": "Reporting helps the police connect complaints. Your evidence may matter later.",
+            "hi": "रिपोर्ट करने से पुलिस अलग-अलग शिकायतों को जोड़ पाती है। आपका सबूत आगे काम आ सकता है।",
+            "te": "రిపోర్ట్ చేస్తే పోలీసులు ఫిర్యాదులన్నీ కలిపి చూడగలుగుతారు. మీ సాక్ష్యం తర్వాత పనికి రావచ్చు."
+          },
           "next": "m2_sip"
         }
       ]
@@ -134,27 +392,88 @@
       "age": 20,
       "location": "bank",
       "speaker": "banker",
-      "objective": { "en": "The bank called. Come immediately: your account is frozen." },
-      "title": { "en": "Account frozen" },
-      "text": { "en": "Two cyber-police officers are waiting at the bank. Your account moved ₹8,40,000 of scam money in three months. {cast:banker} looks at you like she doesn't know you." },
+      "objective": {
+        "en": "The bank called. Come immediately: your account is frozen.",
+        "hi": "बैंक से फ़ोन आया। तुरंत आइए: आपका खाता फ़्रीज़ हो गया है।",
+        "te": "బ్యాంకు నుంచి ఫోన్ వచ్చింది. వెంటనే రండి: మీ అకౌంట్ ఫ్రీజ్ అయింది."
+      },
+      "title": {
+        "en": "Account frozen",
+        "hi": "खाता फ़्रीज़",
+        "te": "అకౌంట్ ఫ్రీజ్"
+      },
+      "text": {
+        "en": "Two cyber-police officers are waiting at the bank. Your account moved ₹8,40,000 of scam money in three months. {cast:banker} looks at you like she doesn't know you.",
+        "hi": "बैंक में दो साइबर पुलिस वाले इंतज़ार कर रहे हैं। तीन महीने में आपके खाते से धोखे का ₹8,40,000 गुज़रा है। {cast:banker} आपको ऐसे देखती हैं जैसे पहचानती ही न हों।",
+        "te": "బ్యాంకులో ఇద్దరు సైబర్ పోలీసులు ఎదురుచూస్తున్నారు. మూడు నెలల్లో మీ అకౌంట్ ద్వారా ₹8,40,000 మోసం డబ్బు తిరిగింది. {cast:banker} మిమ్మల్ని ఎప్పుడూ చూడనట్టు చూస్తుంది."
+      },
       "choices": [
         {
           "id": "cooperate",
-          "label": { "en": "Tell the police everything and hand over the chats" },
+          "label": {
+            "en": "Tell the police everything and hand over the chats",
+            "hi": "पुलिस को सब कुछ बताएँ और चैट्स सौंप दें",
+            "te": "పోలీసులకు అంతా చెప్పి, చాట్‌లన్నీ ఇచ్చేయండి"
+          },
           "quality": "ok",
-          "effects": { "flags": { "add": ["evidence_mule", "legal_record"] }, "meters": { "family": -12, "joy": -8 } },
-          "outcome": { "en": "Your chats lead the police to a call centre in Hyderabad. You're let off with a warning, and your account stays frozen for a year." },
-          "why": { "en": "If you are ever used as a mule, stop, report and cooperate. It's the only way out." },
+          "effects": {
+            "flags": {
+              "add": [
+                "evidence_mule",
+                "legal_record"
+              ]
+            },
+            "meters": {
+              "family": -12,
+              "joy": -8
+            }
+          },
+          "outcome": {
+            "en": "Your chats lead the police to a call centre in Hyderabad. You're let off with a warning, and your account stays frozen for a year.",
+            "hi": "आपकी चैट्स से पुलिस हैदराबाद के एक कॉल सेंटर तक पहुँचती है। आपको चेतावनी देकर छोड़ दिया जाता है, और आपका खाता एक साल तक फ़्रीज़ रहता है।",
+            "te": "మీ చాట్‌ల సాయంతో పోలీసులు హైదరాబాద్‌లోని ఒక కాల్ సెంటర్‌ను పట్టుకుంటారు. మిమ్మల్ని హెచ్చరించి వదిలేస్తారు, కానీ మీ అకౌంట్ ఏడాది పాటు ఫ్రీజ్‌లోనే ఉంటుంది."
+          },
+          "why": {
+            "en": "If you are ever used as a mule, stop, report and cooperate. It's the only way out.",
+            "hi": "अगर कभी आपको म्यूल बनाया जाए, तो रुकें, रिपोर्ट करें और पुलिस का साथ दें। बाहर निकलने का यही एक रास्ता है।",
+            "te": "ఎప్పుడైనా మిమ్మల్ని మ్యూల్‌గా వాడుకుంటే, ఆపండి, రిపోర్ట్ చేయండి, పోలీసులకు సహకరించండి. బయటపడే దారి అదొక్కటే."
+          },
           "next": "m2_sip"
         },
         {
           "id": "deny",
-          "label": { "en": "Say you know nothing about it" },
+          "label": {
+            "en": "Say you know nothing about it",
+            "hi": "कहें कि आपको इस बारे में कुछ नहीं पता",
+            "te": "నాకేం తెలియదు అని చెప్పండి"
+          },
           "quality": "bad",
-          "warn": { "en": "Lying to the police in a fraud case makes you look like part of the gang. Telling the truth is your only way out." },
-          "effects": { "flags": { "add": ["legal_trouble"] }, "meters": { "family": -20, "joy": -10 } },
-          "outcome": { "en": "The chats are on your phone anyway. You're named in the charge sheet as an accused." },
-          "why": { "en": "A money-mule case can mean arrest, a criminal record, and no bank account for years." },
+          "warn": {
+            "en": "Lying to the police in a fraud case makes you look like part of the gang. Telling the truth is your only way out.",
+            "hi": "धोखाधड़ी के केस में पुलिस से झूठ बोलने पर आप गिरोह का हिस्सा लगते हैं। सच बताना ही बचने का इकलौता रास्ता है।",
+            "te": "మోసం కేసులో పోలీసులకు అబద్ధం చెబితే, మీరు కూడా ముఠాలో భాగమే అనిపిస్తుంది. నిజం చెప్పడమే మీకు ఉన్న ఒకే దారి."
+          },
+          "effects": {
+            "flags": {
+              "add": [
+                "legal_trouble"
+              ]
+            },
+            "meters": {
+              "family": -20,
+              "joy": -10
+            }
+          },
+          "outcome": {
+            "en": "The chats are on your phone anyway. You're named in the charge sheet as an accused.",
+            "hi": "चैट्स तो आपके फ़ोन में ही हैं। चार्जशीट में आपका नाम आरोपी के तौर पर आता है।",
+            "te": "ఎలాగూ చాట్‌లన్నీ మీ ఫోన్‌లోనే ఉన్నాయి. ఛార్జ్‌షీట్‌లో నిందితుల జాబితాలో మీ పేరు చేరుతుంది."
+          },
+          "why": {
+            "en": "A money-mule case can mean arrest, a criminal record, and no bank account for years.",
+            "hi": "मनी-म्यूल केस का मतलब हो सकता है गिरफ़्तारी, आपराधिक रिकॉर्ड, और सालों तक कोई बैंक खाता नहीं।",
+            "te": "మనీ మ్యూల్ కేసు అంటే అరెస్ట్, క్రిమినల్ రికార్డ్, ఏళ్ల తరబడి బ్యాంక్ అకౌంట్ లేకపోవడం."
+          },
           "next": "m2_end_mule"
         }
       ]
@@ -165,44 +484,134 @@
       "location": "bank",
       "speaker": "banker",
       "lesson": "L17",
-      "objective": { "en": "Kavitha akka has opened a mutual fund desk. Go to the bank." },
-      "title": { "en": "Your first SIP" },
-      "text": { "en": "{cast:banker}: \"A [[sip]] puts a fixed amount into a [[mutual_fund]] every month. An [[index_fund]] just buys India's top 50 companies. Low fee, no star manager.\" You have about ₹1,000 a month spare." },
+      "objective": {
+        "en": "Kavitha akka has opened a mutual fund desk. Go to the bank.",
+        "hi": "कविता अक्का ने म्यूचुअल फंड डेस्क खोला है। बैंक जाएँ।",
+        "te": "కవిత అక్క మ్యూచువల్ ఫండ్ డెస్క్ పెట్టింది. బ్యాంకుకు వెళ్లండి."
+      },
+      "title": {
+        "en": "Your first SIP",
+        "hi": "आपकी पहली SIP",
+        "te": "మీ మొదటి SIP"
+      },
+      "text": {
+        "en": "{cast:banker}: \"A [[sip]] puts a fixed amount into a [[mutual_fund]] every month. An [[index_fund]] just buys India's top 50 companies. Low fee, no star manager.\" You have about ₹1,000 a month spare.",
+        "hi": "{cast:banker}: \"[[sip]] हर महीने एक तय रकम [[mutual_fund]] में डालती है। [[index_fund]] बस भारत की सबसे बड़ी 50 कंपनियाँ खरीदता है। कम फ़ीस, कोई स्टार मैनेजर नहीं।\" आपके पास हर महीने लगभग ₹1,000 बचते हैं।",
+        "te": "{cast:banker}: \"[[sip]] అంటే ప్రతి నెలా ఒక స్థిరమైన మొత్తాన్ని ఒక [[mutual_fund]] స్కీమ్‌లో వేయడం. [[index_fund]] భారతదేశంలోని టాప్ 50 కంపెనీలను కొంటుంది, అంతే. ఫీజు తక్కువ, స్టార్ మేనేజర్ ఉండడు.\" మీ దగ్గర నెలకు సుమారు ₹1,000 మిగులుతుంది."
+      },
       "choices": [
         {
           "id": "index",
-          "label": { "en": "Start a ₹1,000 SIP in the Top-50 Index Fund" },
+          "label": {
+            "en": "Start a ₹1,000 SIP in the Top-50 Index Fund",
+            "hi": "टॉप-50 इंडेक्स फंड में ₹1,000 की SIP शुरू करें",
+            "te": "టాప్-50 ఇండెక్స్ ఫండ్‌లో ₹1,000 SIP మొదలుపెట్టండి"
+          },
           "quality": "good",
-          "effects": { "open": { "product": "sip_index", "amount": 1000 }, "flags": { "add": ["sip_started"] }, "gyaan": 2 },
-          "outcome": { "en": "Your first units! ₹1,000 buys 9.6 units. Next month, the same ₹1,000 buys whatever the price allows." },
-          "why": { "en": "Starting at 20 instead of 30 can nearly double what you have at 50. Time does the heavy lifting." },
+          "effects": {
+            "open": {
+              "product": "sip_index",
+              "amount": 1000
+            },
+            "flags": {
+              "add": [
+                "sip_started"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "Your first units! ₹1,000 buys 9.6 units. Next month, the same ₹1,000 buys whatever the price allows.",
+            "hi": "आपकी पहली यूनिट्स! ₹1,000 में 9.6 यूनिट्स आती हैं। अगले महीने वही ₹1,000 उस समय के दाम के हिसाब से जितनी यूनिट्स आएँ, उतनी खरीदेंगे।",
+            "te": "మీ మొదటి యూనిట్లు! ₹1,000కు 9.6 యూనిట్లు వస్తాయి. వచ్చే నెల అదే ₹1,000కు, ఆ రోజు ధరను బట్టి ఎన్ని వస్తే అన్ని."
+          },
+          "why": {
+            "en": "Starting at 20 instead of 30 can nearly double what you have at 50. Time does the heavy lifting.",
+            "hi": "30 की जगह 20 की उम्र में शुरू करने से 50 की उम्र तक आपका पैसा लगभग दोगुना हो सकता है। भारी काम समय करता है।",
+            "te": "30కి బదులు 20 ఏళ్లకే మొదలుపెడితే, 50 ఏళ్లు వచ్చేసరికి మీ దగ్గర ఉండేది దాదాపు రెట్టింపు అవుతుంది. అసలు బరువు మోసేది కాలమే."
+          },
           "next": "m2_crash"
         },
         {
           "id": "star",
-          "label": { "en": "Pick the 'Star Active Fund': 40% return last year!" },
+          "label": {
+            "en": "Pick the 'Star Active Fund': 40% return last year!",
+            "hi": "'स्टार एक्टिव फंड' चुनें: पिछले साल 40% रिटर्न!",
+            "te": "'స్టార్ యాక్టివ్ ఫండ్' ఎంచుకోండి: పోయిన ఏడాది 40% లాభం!"
+          },
           "quality": "ok",
-          "effects": { "open": { "product": "mf_active", "amount": 1000 }, "flags": { "add": ["star_fund"] } },
-          "outcome": { "en": "The star fund's brochure is very shiny. Its 1.8% yearly fee is in very small print." },
-          "why": { "en": "Last year's star rarely repeats. A high [[expense_ratio]] is charged every year, good or bad." },
+          "effects": {
+            "open": {
+              "product": "mf_active",
+              "amount": 1000
+            },
+            "flags": {
+              "add": [
+                "star_fund"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The star fund's brochure is very shiny. Its 1.8% yearly fee is in very small print.",
+            "hi": "स्टार फंड का ब्रोशर बहुत चमकीला है। उसकी 1.8% सालाना फ़ीस बहुत छोटे अक्षरों में लिखी है।",
+            "te": "స్టార్ ఫండ్ బ్రోచర్ బాగా మెరుస్తోంది. దాని ఏడాది ఫీజు 1.8% మాత్రం చాలా చిన్న అక్షరాల్లో ఉంది."
+          },
+          "why": {
+            "en": "Last year's star rarely repeats. A high [[expense_ratio]] is charged every year, good or bad.",
+            "hi": "पिछले साल का स्टार शायद ही दोबारा चमकता है। ऊँचा [[expense_ratio]] हर साल कटता है, साल अच्छा हो या बुरा।",
+            "te": "పోయిన ఏడాది స్టార్ మళ్లీ స్టార్ అవ్వడం అరుదు. ఎక్కువ [[expense_ratio]] మాత్రం ఏడాది బాగున్నా, బాగోలేకపోయినా ప్రతి ఏడాదీ కట్ అవుతుంది."
+          },
           "next": "m2_crash"
         },
         {
           "id": "fd",
-          "label": { "en": "Shares are scary. Put it in an FD" },
+          "label": {
+            "en": "Shares are scary. Put it in an FD",
+            "hi": "शेयर डरावने हैं। FD में डाल दें",
+            "te": "షేర్లంటే భయం. FDలో వేయండి"
+          },
           "quality": "ok",
-          "effects": { "open": { "product": "fd", "amount": 1000 } },
-          "outcome": { "en": "Safe and boring. The FD grows about 7% a year, just above rising prices." },
-          "why": { "en": "FDs are great for money you need soon. For money you won't touch for 10+ years, growth funds usually do better." },
+          "effects": {
+            "open": {
+              "product": "fd",
+              "amount": 1000
+            }
+          },
+          "outcome": {
+            "en": "Safe and boring. The FD grows about 7% a year, just above rising prices.",
+            "hi": "सुरक्षित और बोरिंग। FD लगभग 7% सालाना बढ़ती है, बढ़ते दामों से बस थोड़ा ऊपर।",
+            "te": "సేఫ్, కానీ బోరింగ్. FD ఏడాదికి సుమారు 7% పెరుగుతుంది, పెరిగే ధరల కంటే కొంచెం ఎక్కువ."
+          },
+          "why": {
+            "en": "FDs are great for money you need soon. For money you won't touch for 10+ years, growth funds usually do better.",
+            "hi": "जो पैसा जल्दी चाहिए, उसके लिए FD बढ़िया है। जिस पैसे को 10+ साल नहीं छूना, उसके लिए ग्रोथ फंड अक्सर बेहतर करते हैं।",
+            "te": "త్వరలో అవసరమయ్యే డబ్బుకు FDలు బాగుంటాయి. 10+ ఏళ్లు ముట్టుకోని డబ్బుకు సాధారణంగా గ్రోత్ ఫండ్లే మేలు."
+          },
           "next": "m2_crash"
         },
         {
           "id": "spend",
-          "label": { "en": "Spend it. You're only young once" },
+          "label": {
+            "en": "Spend it. You're only young once",
+            "hi": "खर्च कर दें। जवानी एक ही बार आती है",
+            "te": "ఖర్చు పెట్టేయండి. యవ్వనం ఒక్కసారే"
+          },
           "quality": "bad",
-          "effects": { "meters": { "joy": 4 } },
-          "outcome": { "en": "Biryani Fridays, new shoes, movie nights. Fun! In 30 years, that ₹1,000 a month could have been ₹20 lakh." },
-          "why": { "en": "The cost of starting late is huge, because the earliest rupees have the longest time to grow." },
+          "effects": {
+            "meters": {
+              "joy": 4
+            }
+          },
+          "outcome": {
+            "en": "Biryani Fridays, new shoes, movie nights. Fun! In 30 years, that ₹1,000 a month could have been ₹20 lakh.",
+            "hi": "हर शुक्रवार बिरयानी, नए जूते, मूवी नाइट्स। मज़ा! 30 साल में वही ₹1,000 महीना ₹20 लाख बन सकता था।",
+            "te": "శుక్రవారం బిర్యానీ, కొత్త షూస్, సినిమా రాత్రులు. మజా! కానీ నెలకు ఆ ₹1,000, 30 ఏళ్లలో ₹20 లక్షలు అయ్యుండేది."
+          },
+          "why": {
+            "en": "The cost of starting late is huge, because the earliest rupees have the longest time to grow.",
+            "hi": "देर से शुरू करने की कीमत बहुत बड़ी है, क्योंकि सबसे पहले लगाए रुपयों को बढ़ने का सबसे लंबा समय मिलता है।",
+            "te": "ఆలస్యంగా మొదలుపెడితే నష్టం చాలా పెద్దది, ఎందుకంటే మొదట వేసిన రూపాయలకే పెరగడానికి ఎక్కువ కాలం ఉంటుంది."
+          },
           "next": "m2_crash"
         }
       ]
@@ -213,45 +622,179 @@
       "location": "phone",
       "speaker": "headline",
       "lesson": "L19",
-      "objective": { "en": "Breaking news on your phone! Open it (press P)." },
-      "title": { "en": "Black Monday" },
-      "text": { "en": "Markets fall 22% in a month. Spark Mobile falls 70%: the VIP admins sold at the top. Chintu is crying in the hostel corridor. Everyone says: \"Sell before it goes to zero!\"" },
+      "objective": {
+        "en": "Breaking news on your phone! Open it (press P).",
+        "hi": "फ़ोन पर ब्रेकिंग न्यूज़! उसे खोलें (P दबाएँ)।",
+        "te": "మీ ఫోన్‌లో బ్రేకింగ్ న్యూస్! తెరవండి (P నొక్కండి)."
+      },
+      "title": {
+        "en": "Black Monday",
+        "hi": "काला सोमवार",
+        "te": "బ్లాక్ మండే"
+      },
+      "text": {
+        "en": "Markets fall 22% in a month. Spark Mobile falls 70%: the VIP admins sold at the top. Chintu is crying in the hostel corridor. Everyone says: \"Sell before it goes to zero!\"",
+        "hi": "एक महीने में बाज़ार 22% गिर जाता है। स्पार्क मोबाइल 70% गिरता है: VIP एडमिन ऊँचे दाम पर बेचकर निकल गए। चिंटू हॉस्टल के गलियारे में रो रहा है। सब कह रहे हैं: \"ज़ीरो होने से पहले बेच दो!\"",
+        "te": "ఒక్క నెలలో మార్కెట్లు 22% పడిపోతాయి. స్పార్క్ మొబైల్ 70% పడుతుంది: VIP అడ్మిన్లు పైనే అమ్మేశారు. చింటూ హాస్టల్ వరండాలో ఏడుస్తున్నాడు. అందరిదీ ఒకటే మాట: \"సున్నా అయ్యేలోపు అమ్మేయ్!\""
+      },
       "choices": [
         {
           "id": "hold",
-          "label": { "en": "Do nothing. Keep the SIP running" },
+          "label": {
+            "en": "Do nothing. Keep the SIP running",
+            "hi": "कुछ न करें। SIP चालू रखें",
+            "te": "ఏమీ చేయకండి. SIP నడవనివ్వండి"
+          },
           "quality": "good",
-          "effects": { "flags": { "add": ["held_crash"] } },
-          "outcome": { "en": "You delete the market app for a month. Your SIP keeps buying, now at lower prices." },
-          "why": { "en": "Crashes are normal. Selling turns a temporary fall into a permanent loss. SIPs buy more units when prices are low." },
+          "effects": {
+            "flags": {
+              "add": [
+                "held_crash"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "You delete the market app for a month. Your SIP keeps buying, now at lower prices.",
+            "hi": "आप एक महीने के लिए मार्केट ऐप डिलीट कर देते हैं। आपकी SIP खरीदती रहती है, अब कम दाम पर।",
+            "te": "ఒక నెల పాటు మార్కెట్ యాప్ డిలీట్ చేస్తారు. మీ SIP కొంటూనే ఉంటుంది, ఇప్పుడు తక్కువ ధరలకు."
+          },
+          "why": {
+            "en": "Crashes are normal. Selling turns a temporary fall into a permanent loss. SIPs buy more units when prices are low.",
+            "hi": "गिरावट आम बात है। बेचने से थोड़े समय की गिरावट पक्का नुकसान बन जाती है। दाम कम हों तो SIP ज़्यादा यूनिट्स खरीदती है।",
+            "te": "క్రాష్‌లు మామూలే. అమ్మేస్తే తాత్కాలిక పతనం శాశ్వత నష్టం అవుతుంది. ధరలు తక్కువున్నప్పుడు SIPలు ఎక్కువ యూనిట్లు కొంటాయి."
+          },
           "next": [
-            { "if": { "flags": ["money_mule"] }, "to": "m2_end_frozen" },
-            { "if": { "flags": ["evidence_telegram"] }, "to": "m2_end_whistle" },
-            { "if": { "flags": ["sip_started"] }, "to": "m2_end_steady" },
-            { "to": "m2_end_ok" }
+            {
+              "if": {
+                "flags": [
+                  "money_mule"
+                ]
+              },
+              "to": "m2_end_frozen"
+            },
+            {
+              "if": {
+                "flags": [
+                  "evidence_telegram"
+                ]
+              },
+              "to": "m2_end_whistle"
+            },
+            {
+              "if": {
+                "flags": [
+                  "sip_started"
+                ]
+              },
+              "to": "m2_end_steady"
+            },
+            {
+              "to": "m2_end_ok"
+            }
           ]
         },
         {
           "id": "more",
-          "label": { "en": "Invest ₹2,000 more while prices are low" },
+          "label": {
+            "en": "Invest ₹2,000 more while prices are low",
+            "hi": "दाम कम हैं, ₹2,000 और लगाएँ",
+            "te": "ధరలు తక్కువగా ఉన్నప్పుడే ఇంకో ₹2,000 పెట్టుబడి పెట్టండి"
+          },
           "quality": "good",
-          "effects": { "open": { "product": "sip_index", "amount": 2000 }, "flags": { "add": ["held_crash", "bought_dip"] }, "gyaan": 2 },
-          "outcome": { "en": "Your ₹2,000 buys 30% more units than last month. Kavitha akka nods: \"Sale season.\"" },
-          "why": { "en": "For long-term money, a crash is a sale. Only invest money you won't need for years." },
+          "effects": {
+            "open": {
+              "product": "sip_index",
+              "amount": 2000
+            },
+            "flags": {
+              "add": [
+                "held_crash",
+                "bought_dip"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "Your ₹2,000 buys 30% more units than last month. Kavitha akka nods: \"Sale season.\"",
+            "hi": "आपके ₹2,000 से पिछले महीने से 30% ज़्यादा यूनिट्स आती हैं। कविता अक्का सिर हिलाती हैं: \"सेल का मौसम है।\"",
+            "te": "మీ ₹2,000కు పోయిన నెల కంటే 30% ఎక్కువ యూనిట్లు వస్తాయి. కవిత అక్క తల ఊపుతుంది: \"సేల్ సీజన్.\""
+          },
+          "why": {
+            "en": "For long-term money, a crash is a sale. Only invest money you won't need for years.",
+            "hi": "लंबे समय के पैसे के लिए गिरावट एक सेल है। बस वही पैसा लगाएँ जिसकी सालों तक ज़रूरत न हो।",
+            "te": "చాలా ఏళ్లు ఉంచే డబ్బుకు క్రాష్ అంటే సేల్. ఏళ్ల తరబడి అవసరం లేని డబ్బునే పెట్టుబడి పెట్టండి."
+          },
           "next": [
-            { "if": { "flags": ["money_mule"] }, "to": "m2_end_frozen" },
-            { "if": { "flags": ["evidence_telegram"] }, "to": "m2_end_whistle" },
-            { "to": "m2_end_steady" }
+            {
+              "if": {
+                "flags": [
+                  "money_mule"
+                ]
+              },
+              "to": "m2_end_frozen"
+            },
+            {
+              "if": {
+                "flags": [
+                  "evidence_telegram"
+                ]
+              },
+              "to": "m2_end_whistle"
+            },
+            {
+              "to": "m2_end_steady"
+            }
           ]
         },
         {
           "id": "sell",
-          "label": { "en": "Sell everything NOW" },
+          "label": {
+            "en": "Sell everything NOW",
+            "hi": "अभी सब कुछ बेच दें",
+            "te": "ఇప్పుడే అన్నీ అమ్మేయండి"
+          },
           "quality": "bad",
-          "effects": { "close": [{ "product": "sip_index" }, { "product": "mf_active" }, { "product": "stock_spark" }], "flags": { "add": ["panic_sold"] } },
-          "outcome": { "en": "You sell at the bottom. Eight months later, the market is back up. You aren't in it." },
-          "why": { "en": "Panic selling locks in the loss. Markets have always recovered; panicked investors often don't." },
-          "next": [{ "if": { "flags": ["money_mule"] }, "to": "m2_end_frozen" }, { "to": "m2_end_panic" }]
+          "effects": {
+            "close": [
+              {
+                "product": "sip_index"
+              },
+              {
+                "product": "mf_active"
+              },
+              {
+                "product": "stock_spark"
+              }
+            ],
+            "flags": {
+              "add": [
+                "panic_sold"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "You sell at the bottom. Eight months later, the market is back up. You aren't in it.",
+            "hi": "आप सबसे नीचे के दाम पर बेच देते हैं। आठ महीने बाद बाज़ार फिर ऊपर है। पर आप उसमें नहीं हैं।",
+            "te": "అట్టడుగు ధరకు అమ్మేస్తారు. ఎనిమిది నెలల తర్వాత మార్కెట్ మళ్లీ పైకి వస్తుంది. మీరు అందులో లేరు."
+          },
+          "why": {
+            "en": "Panic selling locks in the loss. Markets have always recovered; panicked investors often don't.",
+            "hi": "घबराकर बेचने से नुकसान पक्का हो जाता है। बाज़ार हमेशा संभले हैं; घबराए निवेशक अक्सर नहीं संभलते।",
+            "te": "భయంతో అమ్మితే నష్టం శాశ్వతం అవుతుంది. మార్కెట్లు ఎప్పుడూ కోలుకున్నాయి; భయపడిన పెట్టుబడిదారులు చాలాసార్లు కోలుకోలేదు."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "money_mule"
+                ]
+              },
+              "to": "m2_end_frozen"
+            },
+            {
+              "to": "m2_end_panic"
+            }
+          ]
         }
       ]
     },
@@ -259,45 +802,102 @@
       "id": "m2_end_whistle",
       "type": "outcome",
       "tone": "good",
-      "title": { "en": "The hostel whistleblower" },
-      "text": { "en": "Your screenshots get Lucky Prakash Capital banned from Telegram. Forty students get their money back from the bank. Chintu still owes you a biryani." },
-      "effects": { "meters": { "gyaan": 4, "joy": 3 } }
+      "title": {
+        "en": "The hostel whistleblower",
+        "hi": "हॉस्टल का व्हिसलब्लोअर",
+        "te": "హాస్టల్‌లో మోగిన విజిల్"
+      },
+      "text": {
+        "en": "Your screenshots get Lucky Prakash Capital banned from Telegram. Forty students get their money back from the bank. Chintu still owes you a biryani.",
+        "hi": "आपके स्क्रीनशॉट्स की वजह से लकी प्रकाश कैपिटल टेलीग्राम पर बैन हो जाता है। चालीस छात्रों को बैंक से अपना पैसा वापस मिलता है। चिंटू पर अब भी आपकी एक बिरयानी उधार है।",
+        "te": "మీ స్క్రీన్‌షాట్‌ల వల్ల లక్కీ ప్రకాష్ క్యాపిటల్‌ను టెలిగ్రామ్ బ్యాన్ చేస్తుంది. నలభై మంది విద్యార్థులకు బ్యాంకు నుంచి డబ్బు తిరిగి వస్తుంది. చింటూ మాత్రం మీకు ఇంకా ఒక బిర్యానీ బాకీ."
+      },
+      "effects": {
+        "meters": {
+          "gyaan": 4,
+          "joy": 3
+        }
+      }
     },
     {
       "id": "m2_end_steady",
       "type": "outcome",
       "tone": "good",
-      "title": { "en": "Steady through the storm" },
-      "text": { "en": "You held through the crash. By graduation your SIP is back in the green, and you've learned the hardest investing skill: doing nothing when everyone panics." }
+      "title": {
+        "en": "Steady through the storm",
+        "hi": "तूफ़ान में भी डटे रहे",
+        "te": "తుఫానులోనూ తడబడలేదు"
+      },
+      "text": {
+        "en": "You held through the crash. By graduation your SIP is back in the green, and you've learned the hardest investing skill: doing nothing when everyone panics.",
+        "hi": "आप गिरावट में डटे रहे। ग्रेजुएशन तक आपकी SIP फिर से हरे निशान में है, और आपने निवेश का सबसे मुश्किल हुनर सीख लिया: जब सब घबराएँ, तब कुछ न करना।",
+        "te": "క్రాష్ అంతా మీరు నిలబడ్డారు. డిగ్రీ అయ్యేసరికి మీ SIP మళ్లీ లాభాల్లోకి వచ్చింది. పెట్టుబడిలో అన్నిటికంటే కష్టమైన విద్య నేర్చుకున్నారు: అందరూ కంగారుపడుతున్నప్పుడు ఏమీ చేయకుండా ఉండటం."
+      }
     },
     {
       "id": "m2_end_ok",
       "type": "outcome",
       "tone": "mixed",
-      "title": { "en": "A careful graduate" },
-      "text": { "en": "You graduate safe, with a degree and a little money. You didn't lose much, but you didn't grow much either." }
+      "title": {
+        "en": "A careful graduate",
+        "hi": "एक सावधान ग्रेजुएट",
+        "te": "జాగ్రత్తగా డిగ్రీ పూర్తి"
+      },
+      "text": {
+        "en": "You graduate safe, with a degree and a little money. You didn't lose much, but you didn't grow much either.",
+        "hi": "आप सुरक्षित ग्रेजुएट होते हैं, एक डिग्री और थोड़े पैसों के साथ। आपने ज़्यादा खोया नहीं, पर ज़्यादा बढ़ाया भी नहीं।",
+        "te": "డిగ్రీతో, కొంచెం డబ్బుతో సురక్షితంగా బయటకు వస్తారు. పెద్దగా పోగొట్టుకోలేదు, కానీ పెద్దగా పెరగలేదు కూడా."
+      }
     },
     {
       "id": "m2_end_panic",
       "type": "outcome",
       "tone": "bad",
-      "title": { "en": "Sold at the bottom" },
-      "text": { "en": "You sold in the crash and watched the recovery from outside. Chintu, who held, gets his money back. You swear off markets. That's the real loss." }
+      "title": {
+        "en": "Sold at the bottom",
+        "hi": "सबसे नीचे बेच दिया",
+        "te": "అట్టడుగున అమ్మేశారు"
+      },
+      "text": {
+        "en": "You sold in the crash and watched the recovery from outside. Chintu, who held, gets his money back. You swear off markets. That's the real loss.",
+        "hi": "आपने गिरावट में बेच दिया और बाज़ार को बाहर से संभलते देखा। चिंटू टिका रहा, और उसे अपना पैसा वापस मिल गया। आप बाज़ार से तौबा कर लेते हैं। असली नुकसान यही है।",
+        "te": "క్రాష్‌లో అమ్మేసి, మార్కెట్ కోలుకోవడం బయటి నుంచి చూశారు. ఆగిన చింటూకు డబ్బు తిరిగి వస్తుంది. మీరు ఇక మార్కెట్ జోలికి వెళ్లనని ఒట్టు పెట్టుకుంటారు. అసలు నష్టం అదే."
+      }
     },
     {
       "id": "m2_end_frozen",
       "type": "outcome",
       "tone": "bad",
-      "title": { "en": "Frozen at twenty" },
-      "text": { "en": "No case, but a police record, a frozen account and a family that looks at you differently. Every bank form now asks a question you hate answering." }
+      "title": {
+        "en": "Frozen at twenty",
+        "hi": "बीस की उम्र में फ़्रीज़",
+        "te": "ఇరవై ఏళ్లకే ఫ్రీజ్"
+      },
+      "text": {
+        "en": "No case, but a police record, a frozen account and a family that looks at you differently. Every bank form now asks a question you hate answering.",
+        "hi": "कोई केस नहीं, पर पुलिस रिकॉर्ड, फ़्रीज़ खाता और एक परिवार जो अब आपको अलग नज़र से देखता है। अब हर बैंक फ़ॉर्म एक ऐसा सवाल पूछता है जिसका जवाब देना आपको बहुत बुरा लगता है।",
+        "te": "కేసు లేదు, కానీ పోలీస్ రికార్డ్ ఉంది, అకౌంట్ ఫ్రీజ్‌లో ఉంది, ఇంట్లో వాళ్లు మిమ్మల్ని వేరేలా చూస్తున్నారు. ఇప్పుడు ప్రతి బ్యాంక్ ఫారమ్, మీకు జవాబు చెప్పడం అస్సలు ఇష్టం లేని ఒక ప్రశ్న అడుగుతుంది."
+      }
     },
     {
       "id": "m2_end_mule",
       "type": "outcome",
       "tone": "tragic",
-      "title": { "en": "Charge-sheeted" },
-      "text": { "en": "You are named as an accused in a ₹40 crore fraud case. You miss your final exams for court dates. Lucky Prakash's photo is nowhere in the file." },
-      "effects": { "meters": { "joy": -10 } }
+      "title": {
+        "en": "Charge-sheeted",
+        "hi": "चार्जशीट में नाम",
+        "te": "ఛార్జ్‌షీట్‌లో పేరు"
+      },
+      "text": {
+        "en": "You are named as an accused in a ₹40 crore fraud case. You miss your final exams for court dates. Lucky Prakash's photo is nowhere in the file.",
+        "hi": "₹40 करोड़ के धोखाधड़ी केस में आपका नाम आरोपी के तौर पर है। कोर्ट की तारीखों की वजह से आपके फ़ाइनल एग्ज़ाम छूट जाते हैं। फ़ाइल में लकी प्रकाश की फ़ोटो कहीं नहीं है।",
+        "te": "₹40 కోట్ల మోసం కేసులో నిందితుల జాబితాలో మీ పేరు ఉంది. కోర్టు వాయిదాల వల్ల ఫైనల్ పరీక్షలు రాయలేకపోతారు. ఫైల్‌లో ఎక్కడా లక్కీ ప్రకాష్ ఫోటో లేదు."
+      },
+      "effects": {
+        "meters": {
+          "joy": -10
+        }
+      }
     }
   ]
 }
