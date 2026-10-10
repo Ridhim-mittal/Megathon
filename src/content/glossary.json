@@ -512,7 +512,7 @@
     }
   },
   "sale_deed": {
-    "name": { "en": "sale deed", "hi": "बैनामा" },
+    "name": { "en": "sale deed", "hi": "बैनामा", "te": "క్రయ దస్తావేజు" },
     "short": {
       "en": "The registered paper that transfers land from seller to buyer.",
       "hi": "रजिस्टर्ड कागज़ जिससे ज़मीन बेचने वाले से खरीदने वाले के नाम होती है।",

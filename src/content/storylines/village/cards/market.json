@@ -8,41 +8,92 @@
     "weight": 2,
     "location": "phone",
     "speaker": "banker",
-    "title": { "en": "Your first SIP, on the phone" },
-    "text": { "en": "{cast:banker} helps you finish [[kyc]] with your [[pan]] on the invest app. \"Pick a fund. The Top-50 Index Fund is market-linked, so it goes up and down.\"" },
+    "title": { "en": "Your first SIP, on the phone", "hi": "फ़ोन पर आपकी पहली SIP", "te": "ఫోన్‌లో మీ మొదటి SIP" },
+    "text": {
+      "en": "{cast:banker} helps you finish [[kyc]] with your [[pan]] on the invest app. \"Pick a fund. The Top-50 Index Fund is market-linked, so it goes up and down.\"",
+      "hi": "{cast:banker} इन्वेस्ट ऐप पर आपके [[pan]] के साथ [[kyc]] पूरा करवाती हैं। \"एक फंड चुनो। टॉप-50 इंडेक्स फंड बाज़ार से जुड़ा है, तो यह ऊपर-नीचे होता है।\"",
+      "te": "{cast:banker} ఇన్వెస్ట్ యాప్‌లో మీ [[pan]]తో [[kyc]] పూర్తి చేయిస్తారు. \"ఒక ఫండ్ ఎంచుకో. టాప్-50 ఇండెక్స్ ఫండ్ మార్కెట్‌తో ముడిపడినది, కాబట్టి ఇది పెరుగుతుంది, తగ్గుతుంది.\""
+    },
     "clarity": [
       {
-        "phrase": { "en": "market-linked" },
-        "truth": { "en": "No fixed return. Some years it falls 15–35%. It suits money you won't need for years." },
+        "phrase": { "en": "market-linked", "hi": "बाज़ार से जुड़ा", "te": "మార్కెట్‌తో ముడిపడినది" },
+        "truth": {
+          "en": "No fixed return. Some years it falls 15–35%. It suits money you won't need for years.",
+          "hi": "कोई तय रिटर्न नहीं। कुछ सालों में यह 15–35% गिरता है। यह उस पैसे के लिए ठीक है जिसकी सालों तक ज़रूरत न हो।",
+          "te": "నిర్ణీత రాబడి లేదు. కొన్ని ఏళ్లు ఇది 15–35% పడిపోతుంది. ఏళ్ల తరబడి అవసరం లేని డబ్బుకు ఇది సరిపోతుంది."
+        },
         "lesson": "L17"
       }
     ],
     "choices": [
       {
         "id": "index_sip",
-        "label": { "en": "Start a ₹500 monthly SIP in the Top-50 Index Fund" },
+        "label": {
+          "en": "Start a ₹500 monthly SIP in the Top-50 Index Fund",
+          "hi": "टॉप-50 इंडेक्स फंड में ₹500 महीने की SIP शुरू करें",
+          "te": "టాప్-50 ఇండెక్స్ ఫండ్‌లో నెలకు ₹500 SIP మొదలుపెట్టండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "open": { "product": "sip_index", "amount": 500 }, "flags": { "add": ["sip_started"] }, "gyaan": 2 },
-        "outcome": { "en": "₹500 a month. If it averages 10%, 15 years of this grows ₹90,000 into about ₹2 lakh." },
-        "why": { "en": "An [[sip]] buys a few units every month, more when prices are low. Time does the heavy lifting." }
+        "outcome": {
+          "en": "₹500 a month. If it averages 10%, 15 years of this grows ₹90,000 into about ₹2 lakh.",
+          "hi": "₹500 महीना। अगर औसत 10% रहे, तो 15 साल में ₹90,000 लगभग ₹2 लाख बन जाते हैं।",
+          "te": "నెలకు ₹500. సగటున 10% వస్తే, 15 ఏళ్లలో ₹90,000 దాదాపు ₹2 లక్షలు అవుతాయి."
+        },
+        "why": {
+          "en": "An [[sip]] buys a few units every month, more when prices are low. Time does the heavy lifting.",
+          "hi": "[[sip]] हर महीने कुछ यूनिट खरीदती है, दाम कम हों तो ज़्यादा। भारी काम समय करता है।",
+          "te": "[[sip]] ప్రతి నెలా కొన్ని యూనిట్లు కొంటుంది, ధరలు తక్కువైతే ఎక్కువ. బరువు పని కాలమే చేస్తుంది."
+        }
       },
       {
         "id": "debt_fund",
-        "label": { "en": "Put ₹500 in the Short-term Debt Fund instead" },
+        "label": {
+          "en": "Put ₹500 in the Short-term Debt Fund instead",
+          "hi": "इसके बजाय ₹500 शॉर्ट-टर्म डेट फंड में डालें",
+          "te": "బదులుగా ₹500 షార్ట్-టర్మ్ డెట్ ఫండ్‌లో పెట్టండి"
+        },
         "quality": "neutral",
         "effects": { "open": { "product": "mf_debt", "amount": 500 }, "gyaan": 1 },
-        "outcome": { "en": "About 6.5% a year with small swings. Steady, but slower for a goal 15 years away." },
-        "why": { "en": "Debt funds suit goals 1–3 years away. Long goals usually need some growth." }
+        "outcome": {
+          "en": "About 6.5% a year with small swings. Steady, but slower for a goal 15 years away.",
+          "hi": "लगभग 6.5% सालाना, छोटे उतार-चढ़ाव के साथ। स्थिर, पर 15 साल दूर के लक्ष्य के लिए धीमा।",
+          "te": "ఏడాదికి సుమారు 6.5%, చిన్న ఒడిదుడుకులతో. స్థిరంగా ఉంటుంది, కానీ 15 ఏళ్ల దూరపు లక్ష్యానికి నెమ్మది."
+        },
+        "why": {
+          "en": "Debt funds suit goals 1–3 years away. Long goals usually need some growth.",
+          "hi": "डेट फंड 1–3 साल दूर के लक्ष्यों के लिए ठीक हैं। लंबे लक्ष्यों को आमतौर पर कुछ बढ़त चाहिए।",
+          "te": "డెట్ ఫండ్లు 1–3 ఏళ్ల దూరపు లక్ష్యాలకు సరిపోతాయి. దీర్ఘ లక్ష్యాలకు సాధారణంగా కొంత వృద్ధి కావాలి."
+        }
       },
       {
         "id": "close_app",
-        "label": { "en": "Close the app. Shares are scary" },
+        "label": {
+          "en": "Close the app. Shares are scary",
+          "hi": "ऐप बंद करें। शेयर डरावने हैं",
+          "te": "యాప్ మూసేయండి. షేర్లు భయంకరం"
+        },
         "quality": "risky",
         "effects": {},
-        "echo": { "level": 1, "hint": { "en": "Every year you wait, the finish line moves." } },
-        "outcome": { "en": "₹0 invested. The ₹500 a month goes to snacks and recharges instead." },
-        "why": { "en": "A fund is not a single share. A small, steady SIP spreads the risk across 50 companies." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "Every year you wait, the finish line moves.",
+            "hi": "आप जितना हर साल रुकते हैं, मंज़िल उतनी दूर खिसकती है।",
+            "te": "మీరు ఆగే ప్రతి ఏడాదీ, గమ్యం ఇంకా దూరం జరుగుతుంది."
+          }
+        },
+        "outcome": {
+          "en": "₹0 invested. The ₹500 a month goes to snacks and recharges instead.",
+          "hi": "₹0 निवेश। ₹500 महीना नाश्ते और रिचार्ज में चला जाता है।",
+          "te": "₹0 పెట్టుబడి. నెలకు ₹500 స్నాక్స్, రీఛార్జ్‌లకు పోతుంది."
+        },
+        "why": {
+          "en": "A fund is not a single share. A small, steady SIP spreads the risk across 50 companies.",
+          "hi": "फंड एक अकेला शेयर नहीं है। छोटी, नियमित SIP जोखिम को 50 कंपनियों में बाँट देती है।",
+          "te": "ఫండ్ ఒక్క షేర్ కాదు. చిన్న, క్రమమైన SIP రిస్క్‌ను 50 కంపెనీల్లో పంచుతుంది."
+        }
       }
     ]
   },
@@ -55,46 +106,105 @@
     "weight": 2,
     "location": "bank",
     "speaker": "agent",
-    "title": { "en": "Policy Ramana now sells funds" },
-    "text": { "en": "{cast:agent} has a new brochure. \"Star Active Equity Fund! Last year it gave 28%! Much better than a boring index fund.\"" },
+    "title": {
+      "en": "Policy Ramana now sells funds",
+      "hi": "पॉलिसी रमना अब फंड बेचते हैं",
+      "te": "పాలసీ రమణ ఇప్పుడు ఫండ్లు అమ్ముతున్నాడు"
+    },
+    "text": {
+      "en": "{cast:agent} has a new brochure. \"Star Active Equity Fund! Last year it gave 28%! Much better than a boring index fund.\"",
+      "hi": "{cast:agent} के पास नया ब्रोशर है। \"स्टार एक्टिव इक्विटी फंड! पिछले साल इसने 28% दिया! किसी बोरिंग इंडेक्स फंड से कहीं बेहतर।\"",
+      "te": "{cast:agent} దగ్గర కొత్త బ్రోచర్ ఉంది. \"స్టార్ యాక్టివ్ ఈక్విటీ ఫండ్! గత ఏడాది ఇది 28% ఇచ్చింది! ఏదో బోరింగ్ ఇండెక్స్ ఫండ్ కంటే చాలా మెరుగు.\""
+    },
     "clarity": [
       {
-        "phrase": { "en": "Last year it gave 28%!" },
-        "truth": { "en": "Last year's star is often ordinary next year. Its 1.8% fee is charged every year, good or bad." },
+        "phrase": { "en": "Last year it gave 28%!", "hi": "पिछले साल इसने 28% दिया!", "te": "గత ఏడాది ఇది 28% ఇచ్చింది!" },
+        "truth": {
+          "en": "Last year's star is often ordinary next year. Its 1.8% fee is charged every year, good or bad.",
+          "hi": "पिछले साल का स्टार अगले साल अक्सर मामूली निकलता है। इसकी 1.8% फ़ीस हर साल कटती है, अच्छा हो या बुरा।",
+          "te": "గత ఏడాది స్టార్ తర్వాతి ఏడాది తరచూ మామూలుగా ఉంటుంది. దీని 1.8% ఫీజు ప్రతి ఏడాదీ కోతపడుతుంది, మంచైనా చెడైనా."
+        },
         "lesson": "L21"
       },
       {
-        "phrase": { "en": "boring index fund" },
-        "truth": { "en": "The Top-50 Index Fund charges 0.2% and pays Ramana no [[commission]]. That's why he calls it boring." },
+        "phrase": { "en": "boring index fund", "hi": "बोरिंग इंडेक्स फंड", "te": "బోరింగ్ ఇండెక్స్ ఫండ్" },
+        "truth": {
+          "en": "The Top-50 Index Fund charges 0.2% and pays Ramana no [[commission]]. That's why he calls it boring.",
+          "hi": "टॉप-50 इंडेक्स फंड 0.2% लेता है और रमना को कोई [[commission]] नहीं देता। इसीलिए वे इसे बोरिंग कहते हैं।",
+          "te": "టాప్-50 ఇండెక్స్ ఫండ్ 0.2% తీసుకుంటుంది, రమణకు ఏ [[commission]] ఇవ్వదు. అందుకే అతను దాన్ని బోరింగ్ అంటాడు."
+        },
         "lesson": "L21"
       }
     ],
     "choices": [
       {
         "id": "star_fund",
-        "label": { "en": "Put ₹5,000 in the Star Active Equity Fund through Ramana" },
+        "label": {
+          "en": "Put ₹5,000 in the Star Active Equity Fund through Ramana",
+          "hi": "रमना के ज़रिए ₹5,000 स्टार एक्टिव इक्विटी फंड में डालें",
+          "te": "రమణ ద్వారా ₹5,000 స్టార్ యాక్టివ్ ఈక్విటీ ఫండ్‌లో పెట్టండి"
+        },
         "quality": "risky",
         "effects": { "open": { "product": "mf_active", "amount": 5000 } },
-        "echo": { "level": 1, "hint": { "en": "1.8% a year, every year, quietly." } },
-        "outcome": { "en": "At 10% before fees, ₹5,000 left for 20 years becomes about ₹24,200 after the 1.8% fee." },
-        "why": { "en": "Fees come off every year. To be worth it, the manager must beat the index by more than the fee." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "1.8% a year, every year, quietly.",
+            "hi": "1.8% सालाना, हर साल, चुपचाप।",
+            "te": "ఏడాదికి 1.8%, ప్రతి ఏడాదీ, నిశ్శబ్దంగా."
+          }
+        },
+        "outcome": {
+          "en": "At 10% before fees, ₹5,000 left for 20 years becomes about ₹24,200 after the 1.8% fee.",
+          "hi": "फ़ीस से पहले 10% पर, 20 साल छोड़ा गया ₹5,000 1.8% फ़ीस के बाद लगभग ₹24,200 बनता है।",
+          "te": "ఫీజుకు ముందు 10% వద్ద, 20 ఏళ్లు ఉంచిన ₹5,000, 1.8% ఫీజు తర్వాత సుమారు ₹24,200 అవుతుంది."
+        },
+        "why": {
+          "en": "Fees come off every year. To be worth it, the manager must beat the index by more than the fee.",
+          "hi": "फ़ीस हर साल कटती है। फ़ायदा तभी है जब मैनेजर इंडेक्स को फ़ीस से ज़्यादा पीछे छोड़े।",
+          "te": "ఫీజు ప్రతి ఏడాదీ కోతపడుతుంది. విలువ ఉండాలంటే మేనేజర్ ఇండెక్స్‌ను ఫీజు కంటే ఎక్కువగా దాటాలి."
+        }
       },
       {
         "id": "index_fund",
-        "label": { "en": "Compare fees, then buy the Top-50 Index Fund yourself" },
+        "label": {
+          "en": "Compare fees, then buy the Top-50 Index Fund yourself",
+          "hi": "फ़ीस मिलाएँ, फिर टॉप-50 इंडेक्स फंड खुद खरीदें",
+          "te": "ఫీజులు పోల్చి, టాప్-50 ఇండెక్స్ ఫండ్ మీరే కొనండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "open": { "product": "sip_index", "amount": 5000 }, "gyaan": 3 },
-        "outcome": { "en": "The same ₹5,000 for 20 years with a 0.2% fee: about ₹32,400. That's ₹8,200 more." },
-        "why": { "en": "[[expense_ratio]] matters more than last year's return. Cheap and broad usually wins over time." }
+        "outcome": {
+          "en": "The same ₹5,000 for 20 years with a 0.2% fee: about ₹32,400. That's ₹8,200 more.",
+          "hi": "वही ₹5,000, 20 साल, 0.2% फ़ीस के साथ: लगभग ₹32,400। यानी ₹8,200 ज़्यादा।",
+          "te": "అదే ₹5,000, 20 ఏళ్లు, 0.2% ఫీజుతో: సుమారు ₹32,400. అంటే ₹8,200 ఎక్కువ."
+        },
+        "why": {
+          "en": "[[expense_ratio]] matters more than last year's return. Cheap and broad usually wins over time.",
+          "hi": "[[expense_ratio]] पिछले साल के रिटर्न से ज़्यादा मायने रखता है। सस्ता और फैला हुआ समय के साथ अक्सर जीतता है।",
+          "te": "[[expense_ratio]] గత ఏడాది రాబడి కంటే ఎక్కువ ముఖ్యం. చౌకగా, విస్తృతంగా ఉండేదే కాలక్రమంలో తరచూ గెలుస్తుంది."
+        }
       },
       {
         "id": "ask_fee",
-        "label": { "en": "Ask Ramana for the fee and his commission first" },
+        "label": {
+          "en": "Ask Ramana for the fee and his commission first",
+          "hi": "पहले रमना से फ़ीस और उनका कमीशन पूछें",
+          "te": "ముందు రమణను ఫీజు, అతని కమీషన్ అడగండి"
+        },
         "quality": "neutral",
         "effects": { "gyaan": 2 },
-        "outcome": { "en": "\"1.8%, and about 1% of it comes to me,\" he admits, reaching for the last vada. You keep your ₹5,000 for now." },
-        "why": { "en": "Always ask how a seller is paid. It explains what they recommend." }
+        "outcome": {
+          "en": "\"1.8%, and about 1% of it comes to me,\" he admits, reaching for the last vada. You keep your ₹5,000 for now.",
+          "hi": "\"1.8%, और उसमें से लगभग 1% मुझे मिलता है,\" वे आख़िरी वड़ा उठाते हुए मानते हैं। आप अपने ₹5,000 अभी रख लेते हैं।",
+          "te": "\"1.8%, అందులో సుమారు 1% నాకు వస్తుంది,\" చివరి వడ అందుకుంటూ ఒప్పుకుంటాడు. మీరు మీ ₹5,000 ప్రస్తుతానికి ఉంచుకుంటారు."
+        },
+        "why": {
+          "en": "Always ask how a seller is paid. It explains what they recommend.",
+          "hi": "हमेशा पूछें कि बेचने वाले को पैसा कैसे मिलता है। उसी से समझ आता है कि वह क्या सुझाता है।",
+          "te": "అమ్మేవాళ్లకు డబ్బు ఎలా వస్తుందో ఎప్పుడూ అడగండి. వాళ్లు ఏం సూచిస్తారో అదే వివరిస్తుంది."
+        }
       }
     ]
   },
@@ -107,46 +217,105 @@
     "weight": 2,
     "location": "phone",
     "speaker": "headline",
-    "title": { "en": "Stock Gurus VIP group" },
-    "text": { "en": "A WhatsApp group adds you. \"Spark Mobile will triple this month! Buy now at ₹60. 100% sure. Only for VIP members.\"" },
+    "title": { "en": "Stock Gurus VIP group", "hi": "स्टॉक गुरु VIP ग्रुप", "te": "స్టాక్ గురు VIP గ్రూప్" },
+    "text": {
+      "en": "A WhatsApp group adds you. \"Spark Mobile will triple this month! Buy now at ₹60. 100% sure. Only for VIP members.\"",
+      "hi": "एक WhatsApp ग्रुप आपको जोड़ लेता है। \"स्पार्क मोबाइल इस महीने तिगुना होगा! अभी ₹60 पर खरीदो। 100% पक्का। सिर्फ़ VIP सदस्यों के लिए।\"",
+      "te": "ఒక WhatsApp గ్రూప్ మిమ్మల్ని చేర్చుకుంటుంది. \"స్పార్క్ మొబైల్ ఈ నెల మూడింతలు అవుతుంది! ఇప్పుడే ₹60కి కొనండి. 100% ఖాయం. VIP సభ్యులకు మాత్రమే.\""
+    },
     "clarity": [
       {
-        "phrase": { "en": "Spark Mobile will triple this month!" },
-        "truth": { "en": "Nobody knows next month's price. Groups like this buy first, hype it, then sell to you." },
+        "phrase": {
+          "en": "Spark Mobile will triple this month!",
+          "hi": "स्पार्क मोबाइल इस महीने तिगुना होगा!",
+          "te": "స్పార్క్ మొబైల్ ఈ నెల మూడింతలు అవుతుంది!"
+        },
+        "truth": {
+          "en": "Nobody knows next month's price. Groups like this buy first, hype it, then sell to you.",
+          "hi": "अगले महीने का दाम कोई नहीं जानता। ऐसे ग्रुप पहले खरीदते हैं, शोर मचाते हैं, फिर आपको बेच देते हैं।",
+          "te": "వచ్చే నెల ధర ఎవరికీ తెలియదు. ఇలాంటి గ్రూపులు ముందు కొంటాయి, హడావిడి చేస్తాయి, తర్వాత మీకు అమ్మేస్తాయి."
+        },
         "lesson": "L22"
       },
       {
-        "phrase": { "en": "100% sure." },
-        "truth": { "en": "Registered advisers never promise returns. \"Sure\" tips are how pump-and-dump works." },
+        "phrase": { "en": "100% sure.", "hi": "100% पक्का।", "te": "100% ఖాయం." },
+        "truth": {
+          "en": "Registered advisers never promise returns. \"Sure\" tips are how pump-and-dump works.",
+          "hi": "रजिस्टर्ड सलाहकार कभी रिटर्न का वादा नहीं करते। \"पक्के\" टिप्स से ही पंप-एंड-डंप चलता है।",
+          "te": "రిజిస్టర్డ్ సలహాదారులు ఎప్పుడూ రాబడి హామీ ఇవ్వరు. \"ఖాయం\" టిప్స్‌తోనే పంప్-అండ్-డంప్ నడుస్తుంది."
+        },
         "lesson": "L22"
       }
     ],
     "choices": [
       {
         "id": "buy_big",
-        "label": { "en": "Buy ₹10,000 of Spark Mobile now" },
+        "label": {
+          "en": "Buy ₹10,000 of Spark Mobile now",
+          "hi": "अभी ₹10,000 के स्पार्क मोबाइल खरीदें",
+          "te": "ఇప్పుడే ₹10,000 స్పార్క్ మొబైల్ కొనండి"
+        },
         "quality": "bad",
         "effects": { "cash": -5000, "meters": { "joy": -5 } },
-        "echo": { "level": 2, "hint": { "en": "The group went quiet the day you bought." } },
-        "outcome": { "en": "You buy at ₹60. The group sells. It drops to ₹30, and you sell scared. ₹5,000 gone." },
-        "why": { "en": "In a pump-and-dump, your buying is their exit. The tip was the product." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "The group went quiet the day you bought.",
+            "hi": "जिस दिन आपने खरीदा, ग्रुप चुप हो गया।",
+            "te": "మీరు కొన్న రోజే గ్రూప్ మౌనంగా మారింది."
+          }
+        },
+        "outcome": {
+          "en": "You buy at ₹60. The group sells. It drops to ₹30, and you sell scared. ₹5,000 gone.",
+          "hi": "आप ₹60 पर खरीदते हैं। ग्रुप बेच देता है। दाम ₹30 पर गिरता है, और आप डरकर बेच देते हैं। ₹5,000 गए।",
+          "te": "మీరు ₹60కి కొంటారు. గ్రూప్ అమ్మేస్తుంది. ధర ₹30కి పడిపోతుంది, మీరు భయంతో అమ్మేస్తారు. ₹5,000 పోయాయి."
+        },
+        "why": {
+          "en": "In a pump-and-dump, your buying is their exit. The tip was the product.",
+          "hi": "पंप-एंड-डंप में आपकी ख़रीद उनका निकलने का रास्ता है। टिप ही असली माल था।",
+          "te": "పంప్-అండ్-డంప్‌లో మీ కొనుగోలే వాళ్లు బయటపడే దారి. టిప్పే అసలు సరుకు."
+        }
       },
       {
         "id": "leave_report",
-        "label": { "en": "Leave the group and report it" },
+        "label": {
+          "en": "Leave the group and report it",
+          "hi": "ग्रुप छोड़ें और रिपोर्ट करें",
+          "te": "గ్రూప్ వదిలి రిపోర్ట్ చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 3 },
-        "outcome": { "en": "₹0 lost. Two weeks later Spark Mobile is back at ₹32. The group has a new name." },
-        "why": { "en": "If someone sells \"sure\" tips, ask why they need your money to get rich." }
+        "outcome": {
+          "en": "₹0 lost. Two weeks later Spark Mobile is back at ₹32. The group has a new name.",
+          "hi": "₹0 का नुकसान। दो हफ़्ते बाद स्पार्क मोबाइल फिर ₹32 पर है। ग्रुप का नया नाम है।",
+          "te": "₹0 నష్టం. రెండు వారాల తర్వాత స్పార్క్ మొబైల్ మళ్లీ ₹32 వద్ద. గ్రూప్‌కు కొత్త పేరు."
+        },
+        "why": {
+          "en": "If someone sells \"sure\" tips, ask why they need your money to get rich.",
+          "hi": "अगर कोई \"पक्के\" टिप्स बेचे, तो पूछें कि अमीर बनने के लिए उसे आपके पैसे क्यों चाहिए।",
+          "te": "ఎవరైనా \"ఖాయం\" టిప్స్ అమ్మితే, ధనవంతులు కావడానికి వాళ్లకు మీ డబ్బు ఎందుకో అడగండి."
+        }
       },
       {
         "id": "buy_small",
-        "label": { "en": "Buy just ₹1,000 to test it" },
+        "label": {
+          "en": "Buy just ₹1,000 to test it",
+          "hi": "आज़माने के लिए सिर्फ़ ₹1,000 के खरीदें",
+          "te": "పరీక్షించడానికి కేవలం ₹1,000 కొనండి"
+        },
         "quality": "risky",
         "effects": { "cash": -520 },
-        "outcome": { "en": "It halves, and the ₹20 brokerage stings too. ₹520 lost on a \"small test\"." },
-        "why": { "en": "A scam doesn't become safe in small amounts. It just teaches you more cheaply." }
+        "outcome": {
+          "en": "It halves, and the ₹20 brokerage stings too. ₹520 lost on a \"small test\".",
+          "hi": "आधा हो जाता है, और ₹20 की ब्रोकरेज भी चुभती है। \"छोटे टेस्ट\" में ₹520 गए।",
+          "te": "సగం అవుతుంది, ₹20 బ్రోకరేజ్ కూడా గుచ్చుతుంది. \"చిన్న టెస్ట్\"లో ₹520 పోయాయి."
+        },
+        "why": {
+          "en": "A scam doesn't become safe in small amounts. It just teaches you more cheaply.",
+          "hi": "छोटी रकम में भी ठगी सुरक्षित नहीं बनती। बस सबक सस्ता मिलता है।",
+          "te": "చిన్న మొత్తంలోనూ మోసం సురక్షితం కాదు. పాఠం చౌకగా నేర్పుతుంది అంతే."
+        }
       }
     ]
   },
@@ -159,41 +328,91 @@
     "weight": 2,
     "location": "phone",
     "speaker": "friend",
-    "title": { "en": "All in Kisan Tractors?" },
-    "text": { "en": "You have ₹20,000 saved. {cast:friend}: \"My uncle's tractor is a Kisan. Put it all in Kisan Tractors shares, mama. Can't go wrong!\"" },
+    "title": { "en": "All in Kisan Tractors?", "hi": "सब कुछ किसान ट्रैक्टर्स में?", "te": "అంతా కిసాన్ ట్రాక్టర్స్‌లోనా?" },
+    "text": {
+      "en": "You have ₹20,000 saved. {cast:friend}: \"My uncle's tractor is a Kisan. Put it all in Kisan Tractors shares, mama. Can't go wrong!\"",
+      "hi": "आपके पास ₹20,000 बचे हैं। {cast:friend}: \"मेरे चाचा का ट्रैक्टर किसान का है। सब किसान ट्रैक्टर्स के शेयरों में डाल दो, मामा। गलत हो ही नहीं सकता!\"",
+      "te": "మీ దగ్గర ₹20,000 పొదుపు ఉంది. {cast:friend}: \"మా బాబాయ్ ట్రాక్టర్ కిసాన్‌దే. మొత్తం కిసాన్ ట్రాక్టర్స్ షేర్లలో పెట్టు మామా. తప్పు అయ్యే ఛాన్సే లేదు!\""
+    },
     "clarity": [
       {
-        "phrase": { "en": "Can't go wrong!" },
-        "truth": { "en": "A good product isn't a safe share. One company can have a bad-news year and fall 30–60%." },
+        "phrase": { "en": "Can't go wrong!", "hi": "गलत हो ही नहीं सकता!", "te": "తప్పు అయ్యే ఛాన్సే లేదు!" },
+        "truth": {
+          "en": "A good product isn't a safe share. One company can have a bad-news year and fall 30–60%.",
+          "hi": "अच्छा प्रोडक्ट सुरक्षित शेयर नहीं होता। एक कंपनी का बुरी ख़बरों वाला साल हो सकता है और वह 30–60% गिर सकती है।",
+          "te": "మంచి ప్రోడక్ట్ అంటే సురక్షిత షేర్ కాదు. ఒక కంపెనీకి చెడు వార్తల ఏడాది రావచ్చు, 30–60% పడిపోవచ్చు."
+        },
         "lesson": "L19"
       }
     ],
     "choices": [
       {
         "id": "all_kisan",
-        "label": { "en": "Put all ₹20,000 in Kisan Tractors" },
+        "label": {
+          "en": "Put all ₹20,000 in Kisan Tractors",
+          "hi": "पूरे ₹20,000 किसान ट्रैक्टर्स में डालें",
+          "te": "మొత్తం ₹20,000 కిసాన్ ట్రాక్టర్స్‌లో పెట్టండి"
+        },
         "quality": "risky",
         "effects": { "open": { "product": "stock_kisan", "amount": 20000 } },
-        "echo": { "level": 2, "hint": { "en": "One company, one basket." } },
-        "outcome": { "en": "If Kisan has a bad-news year, you lose ₹6,000 to ₹12,000. If not, it moves with the market." },
-        "why": { "en": "A single share carries the company's own risks on top of the market's." }
+        "echo": {
+          "level": 2,
+          "hint": { "en": "One company, one basket.", "hi": "एक कंपनी, एक टोकरी।", "te": "ఒకే కంపెనీ, ఒకే బుట్ట." }
+        },
+        "outcome": {
+          "en": "If Kisan has a bad-news year, you lose ₹6,000 to ₹12,000. If not, it moves with the market.",
+          "hi": "अगर किसान का बुरी ख़बरों वाला साल आया, तो आप ₹6,000 से ₹12,000 खोएँगे। नहीं तो यह बाज़ार के साथ चलेगा।",
+          "te": "కిసాన్‌కు చెడు వార్తల ఏడాది వస్తే, మీరు ₹6,000 నుంచి ₹12,000 కోల్పోతారు. లేకపోతే ఇది మార్కెట్‌తో పాటు కదులుతుంది."
+        },
+        "why": {
+          "en": "A single share carries the company's own risks on top of the market's.",
+          "hi": "अकेले शेयर में बाज़ार के जोखिम के ऊपर कंपनी के अपने जोखिम भी होते हैं।",
+          "te": "ఒక్క షేర్‌లో మార్కెట్ రిస్క్‌పైన కంపెనీ సొంత రిస్కులు కూడా ఉంటాయి."
+        }
       },
       {
         "id": "index_fund",
-        "label": { "en": "Put it in the Top-50 Index Fund" },
+        "label": {
+          "en": "Put it in the Top-50 Index Fund",
+          "hi": "टॉप-50 इंडेक्स फंड में डालें",
+          "te": "టాప్-50 ఇండెక్స్ ఫండ్‌లో పెట్టండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "open": { "product": "sip_index", "amount": 20000 }, "gyaan": 3 },
-        "outcome": { "en": "Kisan is about 2% of the fund. The same bad news would cost you about ₹200, not ₹10,000." },
-        "why": { "en": "[[diversification]]: fifty companies rarely all have a bad year at once." }
+        "outcome": {
+          "en": "Kisan is about 2% of the fund. The same bad news would cost you about ₹200, not ₹10,000.",
+          "hi": "किसान फंड का लगभग 2% है। वही बुरी ख़बर आपको लगभग ₹200 की पड़ेगी, ₹10,000 की नहीं।",
+          "te": "ఫండ్‌లో కిసాన్ సుమారు 2%. అదే చెడు వార్త మీకు సుమారు ₹200 నష్టం, ₹10,000 కాదు."
+        },
+        "why": {
+          "en": "[[diversification]]: fifty companies rarely all have a bad year at once.",
+          "hi": "[[diversification]]: पचास कंपनियों का बुरा साल एक साथ शायद ही आता है।",
+          "te": "[[diversification]]: యాభై కంపెనీలకు ఒకేసారి చెడు ఏడాది అరుదు."
+        }
       },
       {
         "id": "split",
-        "label": { "en": "₹2,000 in Kisan for fun, ₹18,000 in the index fund" },
+        "label": {
+          "en": "₹2,000 in Kisan for fun, ₹18,000 in the index fund",
+          "hi": "मज़े के लिए ₹2,000 किसान में, ₹18,000 इंडेक्स फंड में",
+          "te": "సరదాకు ₹2,000 కిసాన్‌లో, ₹18,000 ఇండెక్స్ ఫండ్‌లో"
+        },
         "quality": "neutral",
-        "effects": { "open": [{ "product": "stock_kisan", "amount": 2000 }, { "product": "sip_index", "amount": 18000 }], "gyaan": 1 },
-        "outcome": { "en": "Chintu is happy, and the worst Kisan news can now cost you about ₹1,200." },
-        "why": { "en": "If you want a single share, keep it a small part of your money." }
+        "effects": {
+          "open": [{ "product": "stock_kisan", "amount": 2000 }, { "product": "sip_index", "amount": 18000 }],
+          "gyaan": 1
+        },
+        "outcome": {
+          "en": "Chintu is happy, and the worst Kisan news can now cost you about ₹1,200.",
+          "hi": "चिंटू खुश है, और किसान की सबसे बुरी ख़बर अब आपको लगभग ₹1,200 की ही पड़ेगी।",
+          "te": "చింటూ సంతోషంగా ఉన్నాడు, కిసాన్ చెత్త వార్త ఇప్పుడు మీకు సుమారు ₹1,200 మాత్రమే నష్టం."
+        },
+        "why": {
+          "en": "If you want a single share, keep it a small part of your money.",
+          "hi": "अगर अकेला शेयर चाहिए, तो उसे अपने पैसे का छोटा हिस्सा रखें।",
+          "te": "ఒక్క షేర్ కావాలంటే, దాన్ని మీ డబ్బులో చిన్న భాగంగా ఉంచండి."
+        }
       }
     ]
   },
@@ -206,46 +425,93 @@
     "weight": 2,
     "location": "bank",
     "speaker": "narrator",
-    "title": { "en": "A brand-new fund at only ₹10" },
-    "text": { "en": "The bank's sales officer calls you in. \"New fund launch! Only ₹10 a unit, very cheap. Old funds cost ₹80. Assured growth!\"" },
+    "title": { "en": "A brand-new fund at only ₹10", "hi": "सिर्फ़ ₹10 में बिल्कुल नया फंड", "te": "కేవలం ₹10కి సరికొత్త ఫండ్" },
+    "text": {
+      "en": "The bank's sales officer calls you in. \"New fund launch! Only ₹10 a unit, very cheap. Old funds cost ₹80. Assured growth!\"",
+      "hi": "बैंक का सेल्स अफ़सर आपको बुलाता है। \"नए फंड का लॉन्च! सिर्फ़ ₹10 एक यूनिट, बहुत सस्ता। पुराने फंड ₹80 के हैं। पक्की बढ़त!\"",
+      "te": "బ్యాంకు సేల్స్ ఆఫీసర్ మిమ్మల్ని పిలుస్తాడు. \"కొత్త ఫండ్ లాంచ్! యూనిట్ కేవలం ₹10, చాలా చౌక. పాత ఫండ్లు ₹80. ఖచ్చితమైన పెరుగుదల!\""
+    },
     "clarity": [
       {
-        "phrase": { "en": "Only ₹10 a unit, very cheap." },
-        "truth": { "en": "A low [[nav]] isn't cheaper. ₹1,000 grows the same 10% whether the unit costs ₹10 or ₹80." },
+        "phrase": {
+          "en": "Only ₹10 a unit, very cheap.",
+          "hi": "सिर्फ़ ₹10 एक यूनिट, बहुत सस्ता।",
+          "te": "యూనిట్ కేవలం ₹10, చాలా చౌక."
+        },
+        "truth": {
+          "en": "A low [[nav]] isn't cheaper. ₹1,000 grows the same 10% whether the unit costs ₹10 or ₹80.",
+          "hi": "कम [[nav]] सस्ता नहीं होता। ₹1,000 उतना ही 10% बढ़ता है, यूनिट ₹10 की हो या ₹80 की।",
+          "te": "తక్కువ [[nav]] అంటే చౌక కాదు. యూనిట్ ₹10 అయినా ₹80 అయినా, ₹1,000 అదే 10% పెరుగుతుంది."
+        },
         "lesson": "L21"
       },
       {
-        "phrase": { "en": "Assured growth!" },
-        "truth": { "en": "Equity funds can't assure anything. A seller who says so is mis-selling." },
+        "phrase": { "en": "Assured growth!", "hi": "पक्की बढ़त!", "te": "ఖచ్చితమైన పెరుగుదల!" },
+        "truth": {
+          "en": "Equity funds can't assure anything. A seller who says so is mis-selling.",
+          "hi": "इक्विटी फंड किसी चीज़ की गारंटी नहीं दे सकते। जो ऐसा कहे, वह गलत बिक्री कर रहा है।",
+          "te": "ఈక్విటీ ఫండ్లు దేనికీ హామీ ఇవ్వలేవు. అలా చెప్పే అమ్మకందారు తప్పుడు అమ్మకం చేస్తున్నాడు."
+        },
         "lesson": "L21"
       }
     ],
     "choices": [
       {
         "id": "buy_nfo",
-        "label": { "en": "Buy ₹10,000 of the new fund" },
+        "label": { "en": "Buy ₹10,000 of the new fund", "hi": "नए फंड के ₹10,000 खरीदें", "te": "కొత్త ఫండ్ ₹10,000 కొనండి" },
         "quality": "risky",
         "effects": { "open": { "product": "mf_active", "amount": 10000 } },
-        "echo": { "level": 1, "hint": { "en": "Cheap units, expensive fees." } },
-        "outcome": { "en": "1,000 units at ₹10. Its fee is 1.8% a year, and it has no track record at all." },
-        "why": { "en": "Judge a fund by its fee and what it holds, never by its unit price." }
+        "echo": {
+          "level": 1,
+          "hint": { "en": "Cheap units, expensive fees.", "hi": "सस्ती यूनिट, महँगी फ़ीस।", "te": "చౌక యూనిట్లు, ఖరీదైన ఫీజు." }
+        },
+        "outcome": {
+          "en": "1,000 units at ₹10. Its fee is 1.8% a year, and it has no track record at all.",
+          "hi": "₹10 पर 1,000 यूनिट। इसकी फ़ीस 1.8% सालाना है, और इसका कोई रिकॉर्ड ही नहीं।",
+          "te": "₹10 చొప్పున 1,000 యూనిట్లు. దీని ఫీజు ఏడాదికి 1.8%, దీనికి ఏ ట్రాక్ రికార్డూ లేదు."
+        },
+        "why": {
+          "en": "Judge a fund by its fee and what it holds, never by its unit price.",
+          "hi": "फंड को उसकी फ़ीस और उसमें क्या है उससे परखें, यूनिट के दाम से कभी नहीं।",
+          "te": "ఫండ్‌ను దాని ఫీజు, అందులో ఏముందో చూసి అంచనా వేయండి, యూనిట్ ధరతో ఎప్పుడూ కాదు."
+        }
       },
       {
         "id": "compare",
-        "label": { "en": "Ask for the fee, then pick the Top-50 Index Fund at ₹80 a unit" },
+        "label": {
+          "en": "Ask for the fee, then pick the Top-50 Index Fund at ₹80 a unit",
+          "hi": "फ़ीस पूछें, फिर ₹80 प्रति यूनिट पर टॉप-50 इंडेक्स फंड चुनें",
+          "te": "ఫీజు అడిగి, యూనిట్ ₹80 వద్ద టాప్-50 ఇండెక్స్ ఫండ్ ఎంచుకోండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "open": { "product": "sip_index", "amount": 10000 }, "gyaan": 3 },
-        "outcome": { "en": "125 units at ₹80, with a 0.2% fee. Same ₹10,000, 1.6% a year less in fees." },
-        "why": { "en": "Fewer units at a higher NAV is fine. Growth is in percent, and fees decide what you keep." }
+        "outcome": {
+          "en": "125 units at ₹80, with a 0.2% fee. Same ₹10,000, 1.6% a year less in fees.",
+          "hi": "₹80 पर 125 यूनिट, 0.2% फ़ीस के साथ। वही ₹10,000, फ़ीस में 1.6% सालाना कम।",
+          "te": "₹80 చొప్పున 125 యూనిట్లు, 0.2% ఫీజుతో. అదే ₹10,000, ఫీజులో ఏడాదికి 1.6% తక్కువ."
+        },
+        "why": {
+          "en": "Fewer units at a higher NAV is fine. Growth is in percent, and fees decide what you keep.",
+          "hi": "ऊँचे NAV पर कम यूनिट ठीक हैं। बढ़त प्रतिशत में होती है, और जो आपके पास बचता है वह फ़ीस तय करती है।",
+          "te": "ఎక్కువ NAV వద్ద తక్కువ యూనిట్లు ఫరవాలేదు. వృద్ధి శాతంలో ఉంటుంది, మీకు ఎంత మిగులుతుందో ఫీజు నిర్ణయిస్తుంది."
+        }
       },
       {
         "id": "leave",
-        "label": { "en": "Say no and leave" },
+        "label": { "en": "Say no and leave", "hi": "मना करें और चले जाएँ", "te": "వద్దని చెప్పి వెళ్లిపోండి" },
         "quality": "neutral",
         "effects": { "meters": { "joy": 1 } },
-        "outcome": { "en": "₹0 spent. The officer's sales target is not your problem." },
-        "why": { "en": "You can always walk away from a pitch." }
+        "outcome": {
+          "en": "₹0 spent. The officer's sales target is not your problem.",
+          "hi": "₹0 खर्च। अफ़सर का सेल्स टारगेट आपकी समस्या नहीं।",
+          "te": "₹0 ఖర్చు. ఆఫీసర్ సేల్స్ టార్గెట్ మీ సమస్య కాదు."
+        },
+        "why": {
+          "en": "You can always walk away from a pitch.",
+          "hi": "आप किसी भी पिच से हमेशा उठकर जा सकते हैं।",
+          "te": "ఏ అమ్మకపు మాటల నుంచైనా మీరు ఎప్పుడైనా లేచి వెళ్లొచ్చు."
+        }
       }
     ]
   },
@@ -258,41 +524,92 @@
     "weight": 2,
     "location": "bank",
     "speaker": "banker",
-    "title": { "en": "The down payment, two years away" },
-    "text": { "en": "You have ₹50,000 for the dream's down payment, needed in two years. {cast:friend} says Spark Mobile could double it. {cast:banker} suggests a [[debt_fund]]." },
+    "title": { "en": "The down payment, two years away", "hi": "डाउन पेमेंट, दो साल दूर", "te": "డౌన్ పేమెంట్, రెండేళ్ల దూరంలో" },
+    "text": {
+      "en": "You have ₹50,000 for the dream's down payment, needed in two years. {cast:friend} says Spark Mobile could double it. {cast:banker} suggests a [[debt_fund]].",
+      "hi": "सपने के डाउन पेमेंट के लिए आपके पास ₹50,000 हैं, जो दो साल में चाहिए। {cast:friend} कहता है स्पार्क मोबाइल इसे दोगुना कर सकता है। {cast:banker} [[debt_fund]] सुझाती हैं।",
+      "te": "కల డౌన్ పేమెంట్ కోసం మీ దగ్గర ₹50,000 ఉన్నాయి, రెండేళ్లలో కావాలి. స్పార్క్ మొబైల్ దీన్ని రెట్టింపు చేయగలదు అని {cast:friend} అంటాడు. {cast:banker} [[debt_fund]] సూచిస్తారు."
+    },
     "clarity": [
       {
-        "phrase": { "en": "Spark Mobile could double it" },
-        "truth": { "en": "It could also halve it, just when you need it. Shares suit goals many years away." },
+        "phrase": {
+          "en": "Spark Mobile could double it",
+          "hi": "स्पार्क मोबाइल इसे दोगुना कर सकता है",
+          "te": "స్పార్క్ మొబైల్ దీన్ని రెట్టింపు చేయగలదు"
+        },
+        "truth": {
+          "en": "It could also halve it, just when you need it. Shares suit goals many years away.",
+          "hi": "यह आधा भी कर सकता है, ठीक तब जब आपको ज़रूरत हो। शेयर कई साल दूर के लक्ष्यों के लिए ठीक हैं।",
+          "te": "ఇది సగం కూడా చేయొచ్చు, సరిగ్గా మీకు అవసరమైనప్పుడు. షేర్లు చాలా ఏళ్ల దూరపు లక్ష్యాలకు సరిపోతాయి."
+        },
         "lesson": "L17"
       }
     ],
     "choices": [
       {
         "id": "debt_fund",
-        "label": { "en": "Short-term Debt Fund until the purchase" },
+        "label": {
+          "en": "Short-term Debt Fund until the purchase",
+          "hi": "ख़रीद तक शॉर्ट-टर्म डेट फंड",
+          "te": "కొనుగోలు వరకు షార్ట్-టర్మ్ డెట్ ఫండ్"
+        },
         "quality": "good",
         "default": true,
         "effects": { "open": { "product": "mf_debt", "amount": 50000 }, "gyaan": 3 },
-        "outcome": { "en": "At about 6.6% a year, ₹50,000 is likely about ₹56,800 in two years, with small swings." },
-        "why": { "en": "Match the product to the date. Money with a fixed date needs steady products." }
+        "outcome": {
+          "en": "At about 6.6% a year, ₹50,000 is likely about ₹56,800 in two years, with small swings.",
+          "hi": "लगभग 6.6% सालाना पर, ₹50,000 दो साल में शायद लगभग ₹56,800 होंगे, छोटे उतार-चढ़ाव के साथ।",
+          "te": "ఏడాదికి సుమారు 6.6% వద్ద, ₹50,000 రెండేళ్లలో దాదాపు ₹56,800 అవుతాయి, చిన్న ఒడిదుడుకులతో."
+        },
+        "why": {
+          "en": "Match the product to the date. Money with a fixed date needs steady products.",
+          "hi": "प्रोडक्ट को तारीख़ से मिलाएँ। तय तारीख़ वाले पैसे को स्थिर प्रोडक्ट चाहिए।",
+          "te": "ప్రోడక్ట్‌ను తేదీకి సరిపోల్చండి. నిర్ణీత తేదీ ఉన్న డబ్బుకు స్థిరమైన ప్రోడక్ట్‌లు కావాలి."
+        }
       },
       {
         "id": "spark",
-        "label": { "en": "All in Spark Mobile, to double it" },
+        "label": {
+          "en": "All in Spark Mobile, to double it",
+          "hi": "दोगुना करने के लिए सब स्पार्क मोबाइल में",
+          "te": "రెట్టింపు కోసం మొత్తం స్పార్క్ మొబైల్‌లో"
+        },
         "quality": "bad",
         "effects": { "open": { "product": "stock_spark", "amount": 50000 } },
-        "echo": { "level": 3, "hint": { "en": "The seller of the plot won't wait for a recovery." } },
-        "outcome": { "en": "Spark is the most volatile share in town. A bad-news year could leave ₹20,000 to ₹35,000." },
-        "why": { "en": "High risk with a short deadline means you may have to sell at the worst time." }
+        "echo": {
+          "level": 3,
+          "hint": {
+            "en": "The seller of the plot won't wait for a recovery.",
+            "hi": "प्लॉट बेचने वाला बाज़ार सँभलने का इंतज़ार नहीं करेगा।",
+            "te": "ప్లాట్ అమ్మేవాళ్లు మార్కెట్ కోలుకునే వరకు ఆగరు."
+          }
+        },
+        "outcome": {
+          "en": "Spark is the most volatile share in town. A bad-news year could leave ₹20,000 to ₹35,000.",
+          "hi": "स्पार्क शहर का सबसे उछलने वाला शेयर है। बुरी ख़बरों वाला साल ₹20,000 से ₹35,000 ही छोड़ सकता है।",
+          "te": "స్పార్క్ ఊర్లోనే అత్యంత ఊగిసలాడే షేర్. చెడు వార్తల ఏడాది ₹20,000 నుంచి ₹35,000 మాత్రమే మిగల్చవచ్చు."
+        },
+        "why": {
+          "en": "High risk with a short deadline means you may have to sell at the worst time.",
+          "hi": "छोटी समय-सीमा के साथ ऊँचा जोखिम मतलब आपको सबसे बुरे समय पर बेचना पड़ सकता है।",
+          "te": "తక్కువ గడువుతో ఎక్కువ రిస్క్ అంటే చెత్త సమయంలో అమ్మాల్సి రావచ్చు."
+        }
       },
       {
         "id": "index",
-        "label": { "en": "Top-50 Index Fund" },
+        "label": { "en": "Top-50 Index Fund", "hi": "टॉप-50 इंडेक्स फंड", "te": "టాప్-50 ఇండెక్స్ ఫండ్" },
         "quality": "risky",
         "effects": { "open": { "product": "sip_index", "amount": 50000 } },
-        "outcome": { "en": "Could be ₹60,000, or ₹35,000 after a crash. In two years, nobody can say which." },
-        "why": { "en": "Good for long goals, but two years is too short to ride out a crash." }
+        "outcome": {
+          "en": "Could be ₹60,000, or ₹35,000 after a crash. In two years, nobody can say which.",
+          "hi": "₹60,000 हो सकते हैं, या गिरावट के बाद ₹35,000। दो साल में, कोई नहीं कह सकता कौन सा।",
+          "te": "₹60,000 కావచ్చు, లేదా క్రాష్ తర్వాత ₹35,000. రెండేళ్లలో ఏది అవుతుందో ఎవరూ చెప్పలేరు."
+        },
+        "why": {
+          "en": "Good for long goals, but two years is too short to ride out a crash.",
+          "hi": "लंबे लक्ष्यों के लिए अच्छा, पर गिरावट झेलने के लिए दो साल बहुत कम हैं।",
+          "te": "దీర్ఘ లక్ష్యాలకు మంచిది, కానీ క్రాష్ తట్టుకోవడానికి రెండేళ్లు చాలా తక్కువ."
+        }
       }
     ]
   },
@@ -306,41 +623,92 @@
     "location": "phone",
     "requires": { "owns": ["sip_index"] },
     "speaker": "headline",
-    "title": { "en": "Markets fall 20%, again" },
-    "text": { "en": "The invest app is red. Your index fund is down from ₹60,000 to ₹48,000. The TV says \"worst week in years, sell before it's too late\"." },
+    "title": { "en": "Markets fall 20%, again", "hi": "बाज़ार फिर 20% गिरा", "te": "మార్కెట్ మళ్లీ 20% పడింది" },
+    "text": {
+      "en": "The invest app is red. Your index fund is down from ₹60,000 to ₹48,000. The TV says \"worst week in years, sell before it's too late\".",
+      "hi": "इन्वेस्ट ऐप लाल है। आपका इंडेक्स फंड ₹60,000 से ₹48,000 पर आ गया। TV कहता है \"सालों का सबसे बुरा हफ़्ता, देर होने से पहले बेच दो\"।",
+      "te": "ఇన్వెస్ట్ యాప్ ఎర్రగా ఉంది. మీ ఇండెక్స్ ఫండ్ ₹60,000 నుంచి ₹48,000కి పడిపోయింది. TV \"ఏళ్లలో చెత్త వారం, ఆలస్యం కాకముందే అమ్మేయండి\" అంటోంది."
+    },
     "clarity": [
       {
-        "phrase": { "en": "sell before it's too late" },
-        "truth": { "en": "Nobody knows the bottom. Selling makes the fall permanent for you." },
+        "phrase": { "en": "sell before it's too late", "hi": "देर होने से पहले बेच दो", "te": "ఆలస్యం కాకముందే అమ్మేయండి" },
+        "truth": {
+          "en": "Nobody knows the bottom. Selling makes the fall permanent for you.",
+          "hi": "तल कोई नहीं जानता। बेचने से गिरावट आपके लिए स्थायी हो जाती है।",
+          "te": "అడుగు ఎక్కడో ఎవరికీ తెలియదు. అమ్మితే పతనం మీకు శాశ్వతమవుతుంది."
+        },
         "lesson": "L19"
       }
     ],
     "choices": [
       {
         "id": "hold",
-        "label": { "en": "Hold, and keep the SIP running" },
+        "label": {
+          "en": "Hold, and keep the SIP running",
+          "hi": "टिके रहें, और SIP चालू रखें",
+          "te": "నిలబడండి, SIP కొనసాగించండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 3, "meters": { "health": -1 } },
-        "outcome": { "en": "You sleep badly for a month. Your ₹1,000 SIP now buys 25% more units than before." },
-        "why": { "en": "For money you won't need for years, a fall is a sale. Panic is the expensive part." }
+        "outcome": {
+          "en": "You sleep badly for a month. Your ₹1,000 SIP now buys 25% more units than before.",
+          "hi": "एक महीना आप ठीक से नहीं सोते। आपकी ₹1,000 की SIP अब पहले से 25% ज़्यादा यूनिट खरीदती है।",
+          "te": "ఒక నెల సరిగా నిద్రపోరు. మీ ₹1,000 SIP ఇప్పుడు ముందు కంటే 25% ఎక్కువ యూనిట్లు కొంటుంది."
+        },
+        "why": {
+          "en": "For money you won't need for years, a fall is a sale. Panic is the expensive part.",
+          "hi": "जिस पैसे की सालों तक ज़रूरत नहीं, उसके लिए गिरावट एक सेल है। घबराहट ही महँगी पड़ती है।",
+          "te": "ఏళ్ల తరబడి అవసరం లేని డబ్బుకు పతనం ఒక సేల్. భయమే ఖరీదైనది."
+        }
       },
       {
         "id": "sell_all",
-        "label": { "en": "Sell everything now" },
+        "label": { "en": "Sell everything now", "hi": "अभी सब बेच दें", "te": "ఇప్పుడే అంతా అమ్మేయండి" },
         "quality": "bad",
         "effects": { "close": { "product": "sip_index" }, "meters": { "health": 2 } },
-        "echo": { "level": 2, "hint": { "en": "Fear sells low. Every time." } },
-        "outcome": { "en": "You lock in a ₹12,000 loss. The fall may reverse, but you won't be in it." },
-        "why": { "en": "Selling in a crash turns a paper loss into a real one." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Fear sells low. Every time.",
+            "hi": "डर सस्ते में बेचता है। हर बार।",
+            "te": "భయం తక్కువకు అమ్ముతుంది. ప్రతిసారీ."
+          }
+        },
+        "outcome": {
+          "en": "You lock in a ₹12,000 loss. The fall may reverse, but you won't be in it.",
+          "hi": "आप ₹12,000 का नुकसान पक्का कर लेते हैं। गिरावट पलट सकती है, पर आप उसमें नहीं होंगे।",
+          "te": "మీరు ₹12,000 నష్టాన్ని ఖాయం చేసుకుంటారు. పతనం తిరగబడొచ్చు, కానీ మీరు అందులో ఉండరు."
+        },
+        "why": {
+          "en": "Selling in a crash turns a paper loss into a real one.",
+          "hi": "गिरावट में बेचना काग़ज़ी नुकसान को असली बना देता है।",
+          "te": "క్రాష్‌లో అమ్మడం కాగితపు నష్టాన్ని నిజమైనదిగా మారుస్తుంది."
+        }
       },
       {
         "id": "move_needed",
-        "label": { "en": "Move only the part needed next year to the debt fund" },
+        "label": {
+          "en": "Move only the part needed next year to the debt fund",
+          "hi": "सिर्फ़ अगले साल चाहिए उतना हिस्सा डेट फंड में ले जाएँ",
+          "te": "వచ్చే ఏడాది కావలసిన భాగాన్ని మాత్రమే డెట్ ఫండ్‌కు మార్చండి"
+        },
         "quality": "good",
-        "effects": { "close": { "product": "sip_index" }, "open": [{ "product": "mf_debt", "amount": 15000 }, { "product": "sip_index", "amount": 33000 }], "gyaan": 2 },
-        "outcome": { "en": "₹15,000 for next year's need is now steady. ₹33,000 stays invested for the long run." },
-        "why": { "en": "Near goals in safe products, far goals in growth. Decide by date, not by fear." }
+        "effects": {
+          "close": { "product": "sip_index" },
+          "open": [{ "product": "mf_debt", "amount": 15000 }, { "product": "sip_index", "amount": 33000 }],
+          "gyaan": 2
+        },
+        "outcome": {
+          "en": "₹15,000 for next year's need is now steady. ₹33,000 stays invested for the long run.",
+          "hi": "अगले साल की ज़रूरत के ₹15,000 अब स्थिर हैं। ₹33,000 लंबे समय के लिए लगे रहते हैं।",
+          "te": "వచ్చే ఏడాది అవసరానికి ₹15,000 ఇప్పుడు స్థిరంగా ఉన్నాయి. ₹33,000 దీర్ఘకాలం పెట్టుబడిలో ఉంటాయి."
+        },
+        "why": {
+          "en": "Near goals in safe products, far goals in growth. Decide by date, not by fear.",
+          "hi": "पास के लक्ष्य सुरक्षित प्रोडक्ट में, दूर के बढ़त में। तारीख़ से तय करें, डर से नहीं।",
+          "te": "దగ్గరి లక్ష్యాలు సురక్షిత ప్రోడక్ట్‌లలో, దూరపువి వృద్ధిలో. తేదీతో నిర్ణయించండి, భయంతో కాదు."
+        }
       }
     ]
   }
