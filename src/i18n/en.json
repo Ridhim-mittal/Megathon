@@ -49,7 +49,8 @@
     "skip": "Skip the story",
     "begin": "Choose my dream",
     "panel": "Panel {n} of {total}",
-    "storyteller": "The storyteller"
+    "storyteller": "The storyteller",
+    "you": "You"
   },
   "dream": {
     "eyebrow": "STEP 2 · YOUR BIG DREAM",
@@ -136,7 +137,8 @@
         "note": "Grows over time",
         "hint": "Time matters more than amount."
       }
-    }
+    },
+    "min": "at least {amount}"
   },
   "products": {
     "bank": "Bank savings",
@@ -271,6 +273,12 @@
       "caught": "You caught the problem in the papers before signing.",
       "missed": "There was a problem in the papers. Nobody caught it… yet.",
       "clean": "The papers were clean."
+    },
+    "react": {
+      "good": "Smart move!",
+      "risky": "Hmm, risky…",
+      "bad": "Ouch!",
+      "neutral": "Fair enough"
     }
   },
   "shock": {

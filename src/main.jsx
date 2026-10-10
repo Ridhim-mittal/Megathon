@@ -10,6 +10,9 @@ import "./styles.css";
 import "./game-scene.css";
 import "./life.css";
 import "./pixel.css";
+import "./dialog.css";
+import "./storybook.css";
+import "./budget.css";
 import "./story.css";
 import { App } from "./screens/App.jsx";
 
