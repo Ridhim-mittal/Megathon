@@ -1039,6 +1039,13 @@
         "goal": "It's Sankranti! Fly your kite through ten years of a share's price. Each ₹500 coin buys shares at that moment's price.",
         "how": "Press Space or tap to lift the kite. Dodge the candles and the SELL NOW! panic.",
         "lesson": "A dip is a sale: the same ₹500 buys more. Selling in panic turns a dip into a real loss."
+      },
+      "priceSnake": {
+        "name": "Price Snake",
+        "tag": "Eat the years, watch prices grow",
+        "goal": "Mehngai the price snake eats years. Each +1 year makes a bag of groceries cost more. How many years can you last?",
+        "how": "Steer with the arrow keys or WASD (or the buttons). Eat the +1 year calendars. Don't hit the walls or yourself.",
+        "lesson": "Prices grow a little every year, and it adds up: at 6% a year they double in about 12 years. Money kept in a tin box can buy less and less, so your savings need to grow too."
       }
     },
     "msg": {
@@ -1361,6 +1368,30 @@
           "does": "flings you up"
         }
       }
+    },
+    "snake": {
+      "year": "Year {n}",
+      "age": "Age {n}",
+      "weight": "Grocery bag costs",
+      "weightHint": "The snake's weight: what a ₹100 bag of groceries costs now",
+      "win": "Age 36! 🎉",
+      "bonk": "Bonk! 💫",
+      "left": "Left",
+      "up": "Up",
+      "down": "Down",
+      "right": "Right",
+      "lead": "Meet Mehngai, the price snake. He is rising prices, and he only gets heavier with time.",
+      "step1": "Steer with the arrow keys or WASD.",
+      "step2": "Eat a +1 calendar: one year passes and the snake grows.",
+      "step3": "Each year, a ₹100 bag of groceries costs 6% more. Watch the snake's weight go up.",
+      "fact": "At 6% a year, prices double in about 12 years.",
+      "stars": "⭐ 5 years · ⭐⭐ 12 years · ⭐⭐⭐ 20 years",
+      "best": "Best: {n} years",
+      "headline": "{n} years later, the same bag of groceries costs {price}.",
+      "headlineZero": "Eat a +1 calendar to make a year pass!",
+      "tin": "₹100 in a tin box",
+      "chart": "Prices grew from {from} to {to} in {n} years",
+      "buys": "₹100 kept in a tin box now buys only {pct}% of that bag."
     }
   },
   "salary": {

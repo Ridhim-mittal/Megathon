@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, CarFront, Gamepad2, Heart, Lightbulb, PiggyBank, RotateCcw, ShieldBan, Snowflake, Star, Wind, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, CarFront, Gamepad2, Heart, Lightbulb, PiggyBank, RotateCcw, ShieldBan, Snowflake, Star, Weight, Wind, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -8,10 +8,11 @@ import { nextAd, wantsInterstitial } from "./ads.js";
 import { AdBanner, AdInterstitial, ScamSite } from "./ScamAds.jsx";
 import { InsuranceRush } from "./InsuranceRush.jsx";
 import { PatangIntro, PatangMarket, PatangReport } from "./PatangMarket.jsx";
+import { PriceSnake, SnakeIntro, SnakeResult } from "./PriceSnake.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
-export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind };
-const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], patangMarket: [8000, 18000, 25000] };
+export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind, priceSnake: Weight };
+const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], patangMarket: [8000, 18000, 25000], priceSnake: [5, 12, 20] };
 export const starsFor = (id, score) => STARS[id].filter((x) => score >= x).length;
 
 // A list of the three games (the phone's Arcade app).
@@ -158,7 +159,9 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
         />
       )}
 
-      {stage === "intro" && gameId !== "snowball" && gameId !== "patangMarket" && (
+      {stage === "intro" && gameId === "priceSnake" && <SnakeIntro best={best} startRef={start} onStart={begin} />}
+
+      {stage === "intro" && gameId !== "snowball" && gameId !== "patangMarket" && gameId !== "priceSnake" && (
         <div className="arcade-intro">
           <span className="arcade-icon huge" aria-hidden="true">
             <Icon size={64} />
@@ -180,6 +183,8 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
         <div className="arcade-stage">
           {gameId === "scamSmash" ? (
             <ScamSmash key={round} running={stage === "play"} onEnd={finish} />
+          ) : gameId === "priceSnake" ? (
+            <PriceSnake key={round} running={stage === "play"} onEnd={finish} />
           ) : gameId === "insuranceRush" ? (
             <InsuranceRush key={round} running={stage === "play"} onEnd={finish} />
           ) : gameId === "patangMarket" ? (
@@ -198,19 +203,24 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
       {stage === "done" && final && (
         <div className="arcade-done">
           <Stars n={starsFor(gameId, final.score)} big />
-          <p className="arcade-score">
-            <CountUp value={final.score} prefix={gameId === "scamSmash" || gameId === "insuranceRush" ? "" : "₹"} />
-            {final.isNew && <span className="arcade-new">{t("arcade.newBest")}</span>}
-          </p>
-          <ul className="arcade-chips">
-            {Object.entries(final)
-              .filter(([k, v]) => typeof v === "number" && k !== "score" && !(["shielded", "claims", "renewals"].includes(k) && !v))
-              .map(([k, v]) => (
-                <li key={k} className={`chip-${k}`}>
-                  {t(`arcade.stat.${k}`, { n: v })}
-                </li>
-              ))}
-          </ul>
+          {gameId === "priceSnake" && <SnakeResult final={final} />}
+          {gameId !== "priceSnake" && (
+            <>
+              <p className="arcade-score">
+                <CountUp value={final.score} prefix={gameId === "scamSmash" || gameId === "insuranceRush" ? "" : "₹"} />
+                {final.isNew && <span className="arcade-new">{t("arcade.newBest")}</span>}
+              </p>
+              <ul className="arcade-chips">
+                {Object.entries(final)
+                  .filter(([k, v]) => typeof v === "number" && k !== "score" && !(["shielded", "claims", "renewals"].includes(k) && !v))
+                  .map(([k, v]) => (
+                    <li key={k} className={`chip-${k}`}>
+                      {t(`arcade.stat.${k}`, { n: v })}
+                    </li>
+                  ))}
+              </ul>
+            </>
+          )}
           {gameId === "patangMarket" && final.report && <PatangReport report={final.report} reason={final.reason} />}
           <p className="arcade-lesson">
             <Lightbulb size={20} aria-hidden="true" />
