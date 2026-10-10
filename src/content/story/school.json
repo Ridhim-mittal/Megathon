@@ -1,0 +1,381 @@
+{
+  "id": "school",
+  "stage": "teen",
+  "from": 15,
+  "to": 17,
+  "part": { "en": "Chapter 1 · School life" },
+  "title": { "en": "The OTP Heist" },
+  "intro": { "en": "Age 15. Ammamma now gets her pension in the bank. Chintu bought a phone on EMI. And {cast:tempter} is back in the village, in bigger sunglasses, with a brand-new 'business'." },
+  "start": "m1_treasurer",
+  "nodes": [
+    {
+      "id": "m1_treasurer",
+      "age": 15,
+      "location": "school",
+      "speaker": "teacher",
+      "lesson": "L05",
+      "objective": { "en": "Go to school. Swapna madam wants to see you." },
+      "title": { "en": "The class treasurer" },
+      "text": { "en": "{cast:teacher} hands you a fat envelope: ₹24,000, the whole class's farewell-trip fund. \"You're good with money, {player}. Keep it safe for two years.\"" },
+      "choices": [
+        {
+          "id": "rd",
+          "label": { "en": "Put it in a [[rd]] at the bank so it earns interest" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["fund_bank"] }, "gyaan": 2 },
+          "outcome": { "en": "By the trip, ₹24,000 grows to about ₹27,000. The extra buys the whole class a boat ride." },
+          "why": { "en": "Interest earns interest too. That's [[chakravaddi]], and it works best when money stays put." },
+          "next": "m1_call"
+        },
+        {
+          "id": "tin_box",
+          "label": { "en": "Hide it at home, under the rice sack" },
+          "quality": "ok",
+          "effects": { "flags": { "add": ["fund_home"] } },
+          "outcome": { "en": "The envelope sleeps under the rice. Every time a mouse squeaks, your heart jumps." },
+          "why": { "en": "Cash at home earns nothing and is easy to lose, or to 'borrow' when tempted." },
+          "next": "m1_call"
+        },
+        {
+          "id": "chintu",
+          "label": { "en": "Give it to Chintu. He has UPI, so it's 'digital'" },
+          "quality": "bad",
+          "effects": { "flags": { "add": ["fund_chintu"] } },
+          "outcome": { "en": "Chintu salutes. \"Safe in my wallet app, boss!\" Somewhere, a [[betting_app]] notification pings." },
+          "why": { "en": "Money you are responsible for should stay where you control it, and where it leaves a record." },
+          "next": "m1_call"
+        }
+      ]
+    },
+    {
+      "id": "m1_call",
+      "age": 15,
+      "location": "home",
+      "speaker": "headline",
+      "lesson": "L06",
+      "objective": { "en": "Hurry home! Ammamma's phone won't stop ringing." },
+      "title": { "en": "\"Your pension will be BLOCKED\"" },
+      "text": { "en": "A man shouts on Ammamma's phone: \"Bank KYC department! Pension BLOCKED in 2 minutes! Tell me the OTP!\" The SMS says: \"OTP 482913 to ADD BENEFICIARY. Do not share.\" Ammamma's hands shake." },
+      "timer": { "seconds": 15, "choice": "freeze" },
+      "choices": [
+        {
+          "id": "read_otp",
+          "label": { "en": "Read the OTP aloud. Save the pension!" },
+          "quality": "bad",
+          "warn": { "en": "Read the SMS again: \"Do not share.\" No bank, police or government office ever asks for an [[otp]]. An OTP is the key to the account." },
+          "effects": { "flags": { "add": ["shared_otp"] } },
+          "outcome": { "en": "\"Thank you, madam,\" says the man, sweetly. The line goes dead. Then Ammamma's phone buzzes. And buzzes. And buzzes." },
+          "why": { "en": "Scammers create panic and a countdown so you can't think. The OTP was for adding THEIR account as a payee." },
+          "next": "m1_drained"
+        },
+        {
+          "id": "hang_up",
+          "label": { "en": "Hang up. Call the bank on the passbook number" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["refused_otp"] }, "meters": { "family": 4 } },
+          "outcome": { "en": "The real bank says: \"We never ask for OTPs.\" That caller's number was already reported 300 times." },
+          "why": { "en": "Slow down, hang up, and call the official number yourself. Hanging up is always allowed." },
+          "next": "m1_trap"
+        },
+        {
+          "id": "record",
+          "label": { "en": "Keep him talking and secretly record the call" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["refused_otp", "evidence_call"] }, "meters": { "family": 4 }, "gyaan": 2 },
+          "outcome": { "en": "He gets angry and slips: \"Prakash sir's office will block you!\" You save the recording. Then you hang up." },
+          "why": { "en": "Never share the OTP, but evidence helps police catch the gang. Report numbers to [[helpline_1930]]." },
+          "next": "m1_trap"
+        },
+        {
+          "id": "freeze",
+          "hidden": true,
+          "label": { "en": "Freeze" },
+          "quality": "bad",
+          "effects": { "flags": { "add": ["shared_otp"] } },
+          "outcome": { "en": "While you hesitate, Ammamma grabs the phone and reads the OTP herself. The line goes dead." },
+          "why": { "en": "The countdown is the trick. When someone rushes you about money, the safest move is to hang up." },
+          "next": "m1_drained"
+        }
+      ]
+    },
+    {
+      "id": "m1_drained",
+      "age": 15,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L09",
+      "objective": { "en": "RUN to the bank! Report the fraud before the money disappears." },
+      "rush": { "seconds": 40, "fail": "m1_too_late" },
+      "title": { "en": "The golden hour" },
+      "text": { "en": "Three messages: ₹15,000 debited. ₹15,000 debited. ₹10,000 debited. Ammamma's whole pension saving. {cast:banker} grabs the phone: \"Call 1930 now! I'll freeze the account!\"" },
+      "choices": [
+        {
+          "id": "report",
+          "label": { "en": "Call [[helpline_1930]] and file a cyber-crime complaint" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["reported_1930"] }, "meters": { "family": -4 } },
+          "outcome": { "en": "₹25,000 is frozen in the scammer's account before it can be withdrawn. It comes back in four months. ₹15,000 is gone forever." },
+          "why": { "en": "Report within the first hour. Banks can freeze money that is still moving between accounts." },
+          "next": "m1_trap"
+        },
+        {
+          "id": "hide",
+          "label": { "en": "Don't report it. It's too embarrassing" },
+          "quality": "bad",
+          "effects": { "flags": { "add": ["ammamma_robbed"] }, "meters": { "family": -10 } },
+          "outcome": { "en": "Nobody reports it. The money is gone, and the same gang calls fifty more grandmothers this week." },
+          "why": { "en": "Shame helps only the scammer. Reporting fast can freeze the money, and protects the next victim." },
+          "next": "m1_trap"
+        }
+      ]
+    },
+    {
+      "id": "m1_too_late",
+      "age": 15,
+      "location": "bank",
+      "speaker": "banker",
+      "objective": { "en": "Too slow. Go to the bank anyway and file the complaint." },
+      "title": { "en": "Too late" },
+      "text": { "en": "By the time you reach the bank, the money has jumped through six accounts and been withdrawn at an ATM in another state. {cast:banker} files the complaint anyway." },
+      "choices": [
+        {
+          "id": "promise",
+          "label": { "en": "Promise Ammamma you'll make it up to her, one day" },
+          "quality": "ok",
+          "effects": { "flags": { "add": ["ammamma_robbed", "reported_1930"] }, "meters": { "family": -8, "joy": -4 } },
+          "outcome": { "en": "Ammamma pats your head. \"Money comes and goes, kanna. Only don't let them fool you twice.\"" },
+          "why": { "en": "In cyber fraud, the first hour decides almost everything. Speed matters more than anything else." },
+          "next": "m1_trap"
+        }
+      ]
+    },
+    {
+      "id": "m1_trap",
+      "age": 16,
+      "location": "square",
+      "speaker": "tempter",
+      "lesson": "L11",
+      "objective": { "en": "Lucky Prakash is showing off at the village square. Go and see." },
+      "title": { "en": "Double in 10 days" },
+      "text": { "en": "{cast:tempter} has a new phone, a gold chain and bigger sunglasses. \"Crypto, bro! Put ₹10,000 in my group, get ₹20,000 in 10 days. Your trip fund could become a Goa trip!\"" },
+      "choices": [
+        {
+          "id": "invest_fund",
+          "label": { "en": "Put ₹10,000 of the trip fund in. Goa!" },
+          "quality": "bad",
+          "requires": { "notFlags": ["fund_bank"] },
+          "lockedHint": { "en": "The trip fund is locked safely in the RD." },
+          "warn": { "en": "This is not your money: it belongs to 40 classmates. And nobody can double money in 10 days. That promise IS the scam." },
+          "effects": { "flags": { "add": ["invested_fund"] } },
+          "outcome": { "en": "Day 3: the app shows ₹14,200! Day 9: the app won't open. Day 10: the group is deleted." },
+          "why": { "en": "Fake profit screens make you trust them, and add more. Then the 'company' disappears." },
+          "next": "m1_vanished"
+        },
+        {
+          "id": "invest_own",
+          "label": { "en": "Try it with ₹2,000 of your own savings" },
+          "quality": "bad",
+          "effects": { "cash": -2000, "flags": { "add": ["lost_crypto"] } },
+          "outcome": { "en": "Your 'balance' shows ₹3,100 on day 3. On day 9 the group is gone, and so is your ₹2,000." },
+          "why": { "en": "Easy-money apps show fake gains so you put in more. 'Double in 10 days' never works for the investor." },
+          "next": [{ "if": { "flags": ["fund_chintu"] }, "to": "m1_chintu_fund" }, { "to": "m1_chintu" }]
+        },
+        {
+          "id": "ask_name",
+          "label": { "en": "\"What's your group called? Is it registered?\"" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["evidence_prakash"] }, "gyaan": 2 },
+          "outcome": { "en": "\"Lucky Golden Crypto. Registered in... Dubai!\" You quietly note the name and his UPI ID. You may need them one day." },
+          "why": { "en": "Real investments are registered with regulators like SEBI and RBI. Asking simple questions scares scammers." },
+          "next": [{ "if": { "flags": ["fund_chintu"] }, "to": "m1_chintu_fund" }, { "to": "m1_chintu" }]
+        },
+        {
+          "id": "walk",
+          "label": { "en": "Walk away" },
+          "quality": "ok",
+          "outcome": { "en": "Prakash shrugs. \"Your loss, bro.\" Three boys from your class sign up anyway." },
+          "why": { "en": "Walking away from 'too good to be true' is always a good move." },
+          "next": [{ "if": { "flags": ["fund_chintu"] }, "to": "m1_chintu_fund" }, { "to": "m1_chintu" }]
+        }
+      ]
+    },
+    {
+      "id": "m1_vanished",
+      "age": 16,
+      "location": "school",
+      "speaker": "teacher",
+      "lesson": "L08",
+      "objective": { "en": "Prakash's phone is switched off. Face Swapna madam at school." },
+      "title": { "en": "₹10,000 short" },
+      "text": { "en": "The trip is in a year and ₹10,000 of your classmates' money is gone. {cast:teacher} is asking to see the fund 'just to check'." },
+      "choices": [
+        {
+          "id": "confess",
+          "label": { "en": "Tell her everything. Repay by working weekends at the shop" },
+          "quality": "ok",
+          "effects": { "loan": { "source": "family", "principal": 10000 }, "cash": -10000, "meters": { "joy": -6, "family": -3 }, "flags": { "add": ["confessed"] } },
+          "outcome": { "en": "Madam is quiet for a long time. Then: \"Thank you for the truth.\" Amma lends you ₹10,000. You stack rice sacks every Sunday for a year." },
+          "why": { "en": "Every weekend at the shop is a weekend not studying: that's [[opportunity_cost]]. Honesty kept the damage small." },
+          "next": "m1_chintu"
+        },
+        {
+          "id": "sahukar",
+          "label": { "en": "Secretly borrow ₹10,000 from Narsaiah sahukar" },
+          "quality": "bad",
+          "warn": { "en": "₹2 per ₹100 per month sounds tiny. It is 24% a year, and the [[sahukar]] wants your family's papers. Hiding a mistake with costly debt makes it bigger." },
+          "effects": { "loan": { "source": "moneylender", "principal": 10000 }, "cash": -10000, "flags": { "add": ["secret_debt"] } },
+          "outcome": { "en": "Narsaiah writes your name in his red ledger, smiling. The envelope is full again. Your stomach is not." },
+          "why": { "en": "The sahukar's interest is added every month, even when you can't pay. A secret loan at 17 follows you for years." },
+          "next": "m1_chintu"
+        }
+      ]
+    },
+    {
+      "id": "m1_chintu",
+      "age": 17,
+      "location": "shop",
+      "speaker": "friend",
+      "lesson": "L07",
+      "objective": { "en": "Chintu is waiting behind Anjamma aunty's shop. He looks scared." },
+      "title": { "en": "Chintu's 'sure win'" },
+      "text": { "en": "Chintu pays ₹799 a month for his phone [[emi]], and he's been chasing losses on a [[betting_app]]. ₹6,000 of his father's money is gone. \"Lend me ₹3,000. Tonight's match is a sure win!\"" },
+      "choices": [
+        {
+          "id": "lend",
+          "label": { "en": "Lend him ₹3,000. He's your best friend" },
+          "quality": "bad",
+          "effects": { "cash": -3000, "flags": { "add": ["lent_chintu"] } },
+          "outcome": { "en": "India loses by four runs. So does Chintu. \"Next month, promise!\" he says. He doesn't." },
+          "why": { "en": "Lending to cover gambling only feeds the habit. Chasing losses is how ₹300 becomes ₹30,000." },
+          "next": "m1_trip"
+        },
+        {
+          "id": "help",
+          "label": { "en": "Refuse, but go with him to tell his father, and delete the app together" },
+          "quality": "good",
+          "effects": { "meters": { "family": 3, "joy": -2 }, "flags": { "add": ["helped_chintu"] } },
+          "outcome": { "en": "His father shouts for a day, then hugs him. Chintu deletes the app. \"You're a real friend, re.\"" },
+          "why": { "en": "Peer pressure works both ways. One friend saying 'stop' can break a debt spiral early." },
+          "next": "m1_trip"
+        },
+        {
+          "id": "bet_too",
+          "label": { "en": "Bet ₹2,000 of your own on the match too" },
+          "quality": "bad",
+          "warn": { "en": "[[betting_app]]s are built so the app wins over time. Betting to fix a friend's loss doubles the loss. This is how debt traps start at 17." },
+          "effects": { "cash": -2000, "meters": { "joy": -4 }, "flags": { "add": ["gambled"] } },
+          "outcome": { "en": "You both lose. Then the app sends a '₹500 bonus to win it back!' Chintu reaches for his phone again." },
+          "why": { "en": "Bonuses and near-misses are designed to keep you playing. The house always wins in the end." },
+          "next": "m1_trip"
+        }
+      ]
+    },
+    {
+      "id": "m1_chintu_fund",
+      "age": 17,
+      "location": "shop",
+      "speaker": "friend",
+      "lesson": "L07",
+      "objective": { "en": "Chintu isn't answering calls about the trip fund. Find him behind Anjamma aunty's shop." },
+      "title": { "en": "Where is the trip fund?" },
+      "text": { "en": "Chintu can't look at you. \"I only borrowed a little... to win it back.\" Of the ₹24,000, ₹8,000 is gone into a [[betting_app]]. The trip is in four months." },
+      "choices": [
+        {
+          "id": "cover",
+          "label": { "en": "Cover the ₹8,000 yourself, quietly" },
+          "quality": "ok",
+          "effects": { "cash": -8000, "flags": { "add": ["covered_chintu"] } },
+          "outcome": { "en": "Your savings, and then some, refill the fund. Chintu swears he's done. You're not sure he is." },
+          "why": { "en": "Rescuing a friend with money can hide the real problem. Talking to an adult is usually better." },
+          "next": "m1_trip"
+        },
+        {
+          "id": "tell_madam",
+          "label": { "en": "Go with Chintu to tell Swapna madam the truth" },
+          "quality": "good",
+          "effects": { "meters": { "family": -2 }, "flags": { "add": ["confessed", "helped_chintu"] } },
+          "outcome": { "en": "Madam is disappointed, but fair: Chintu repays by tutoring juniors. The trip goes ahead, a little smaller." },
+          "why": { "en": "The truth early is cheaper than a lie later. Adults can help fix money problems before they grow." },
+          "next": "m1_trip"
+        }
+      ]
+    },
+    {
+      "id": "m1_trip",
+      "age": 17,
+      "location": "school",
+      "speaker": "teacher",
+      "objective": { "en": "It's farewell day! The bus is waiting at school." },
+      "title": { "en": "Farewell day" },
+      "text": { "en": "Forty classmates. One bus. {cast:teacher} asks you to count the trip fund in front of everyone. Ravi, at the back, whispers that he can't pay his ₹600 share." },
+      "choices": [
+        {
+          "id": "pay_ravi",
+          "label": { "en": "Quietly pay Ravi's ₹600 from your savings" },
+          "quality": "good",
+          "effects": { "cash": -600, "meters": { "joy": 4, "family": 2 } },
+          "outcome": { "en": "Ravi sits next to you on the bus and doesn't stop smiling for four hours." },
+          "why": { "en": "Generosity you can afford, planned from savings, is money well spent." },
+          "next": [
+            { "if": { "flags": ["secret_debt"] }, "to": "m1_end_debt" },
+            { "if": { "flags": ["ammamma_robbed"], "notFlags": ["reported_1930"] }, "to": "m1_end_robbed" },
+            { "if": { "flags": ["invested_fund"] }, "to": "m1_end_short" },
+            { "if": { "flags": ["refused_otp"], "notFlags": ["gambled", "lent_chintu"] }, "to": "m1_end_hero" },
+            { "to": "m1_end_ok" }
+          ]
+        },
+        {
+          "id": "count",
+          "label": { "en": "Just count the money out loud" },
+          "quality": "ok",
+          "outcome": { "en": "Every rupee is counted twice. The class claps. Ravi stays home." },
+          "why": { "en": "Keeping clear accounts of other people's money builds trust that lasts for years." },
+          "next": [
+            { "if": { "flags": ["secret_debt"] }, "to": "m1_end_debt" },
+            { "if": { "flags": ["ammamma_robbed"], "notFlags": ["reported_1930"] }, "to": "m1_end_robbed" },
+            { "if": { "flags": ["invested_fund"] }, "to": "m1_end_short" },
+            { "if": { "flags": ["refused_otp"], "notFlags": ["gambled", "lent_chintu"] }, "to": "m1_end_hero" },
+            { "to": "m1_end_ok" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1_end_hero",
+      "type": "outcome",
+      "tone": "good",
+      "title": { "en": "The OTP wall" },
+      "text": { "en": "No OTP left your house, the trip fund arrived in full, and Chintu is off the betting app. Swapna madam asks you to teach the juniors how scams work." },
+      "effects": { "meters": { "gyaan": 4, "joy": 4 }, "flags": { "add": ["scam_spotter"] } }
+    },
+    {
+      "id": "m1_end_ok",
+      "type": "outcome",
+      "tone": "mixed",
+      "title": { "en": "Bruised, but wiser" },
+      "text": { "en": "Not everything went right, but the class reached Hyderabad and you came back knowing how scammers think. Some of those lessons cost real money." }
+    },
+    {
+      "id": "m1_end_robbed",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": { "en": "Ammamma's pension stolen" },
+      "text": { "en": "₹40,000 of Ammamma's savings is gone for good, and nobody even reported it. She stops answering unknown numbers, and stops smiling at her phone. You promise yourself: never again." },
+      "effects": { "meters": { "family": -6 } }
+    },
+    {
+      "id": "m1_end_short",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "Honest, but broke" },
+      "text": { "en": "Prakash's 'crypto group' took ₹10,000 of your classmates' money. You told the truth and you are still repaying Amma. For a year, nobody sits next to you on the bus." }
+    },
+    {
+      "id": "m1_end_debt",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": { "en": "In the sahukar's book at 17" },
+      "text": { "en": "The trip went ahead. Nobody knows your secret, except Narsaiah sahukar, whose red ledger now has your name in it. ₹10,000 at 24% a year follows you to college." }
+    }
+  ]
+}

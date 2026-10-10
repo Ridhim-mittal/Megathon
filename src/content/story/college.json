@@ -1,0 +1,303 @@
+{
+  "id": "college",
+  "stage": "young",
+  "from": 18,
+  "to": 21,
+  "part": { "en": "Chapter 2 · College life" },
+  "title": { "en": "The Telegram Guru" },
+  "intro": { "en": "Age 18. You join the degree college in town and share a hostel room with Chintu. Amma gives you your first smartphone. Somewhere on that phone, {cast:tempter} is waiting." },
+  "placeNames": { "school": { "en": "Town college" }, "work": { "en": "Delivery hub" } },
+  "startEffects": { "flags": { "add": ["owns_phone"] } },
+  "start": "m2_college",
+  "nodes": [
+    {
+      "id": "m2_college",
+      "age": 18,
+      "location": "school",
+      "speaker": "teacher",
+      "lesson": "L10",
+      "objective": { "en": "First day at the town college. Find the admission desk." },
+      "title": { "en": "Fees: ₹38,000 a year" },
+      "text": { "en": "The fee is ₹38,000 a year. Nanna's cotton money covers half. The clerk shows you three ways to pay the rest." },
+      "choices": [
+        {
+          "id": "scholarship_job",
+          "label": { "en": "Apply for the state scholarship and work evenings at the delivery hub" },
+          "quality": "good",
+          "effects": { "income": { "monthly": 4000, "source": "part_time" }, "meters": { "joy": -2 }, "flags": { "add": ["part_time"] }, "gyaan": 2 },
+          "outcome": { "en": "The scholarship pays the fee. The hub pays ₹4,000 a month for 3 hours an evening. You learn to sleep on buses." },
+          "why": { "en": "Free money first (scholarships), earned money second, borrowed money last." },
+          "next": "m2_hostel"
+        },
+        {
+          "id": "edu_loan",
+          "label": { "en": "Take a bank [[education_loan]], to repay after you get a job" },
+          "quality": "ok",
+          "effects": { "loan": { "source": "education", "principal": 60000 }, "flags": { "add": ["edu_loan"] } },
+          "outcome": { "en": "The bank pays the college directly. Repayment starts after your course. You can focus on studying." },
+          "why": { "en": "An education loan is 'good debt' if it raises your income. It's cheap (about 9.5%) and waits until you earn." },
+          "next": "m2_hostel"
+        },
+        {
+          "id": "sahukar_fee",
+          "label": { "en": "Borrow ₹20,000 from Narsaiah sahukar. It's quick" },
+          "quality": "bad",
+          "warn": { "en": "A bank education loan costs about 9.5% a year and waits until you have a job. The [[sahukar]] charges 24% from day one, and adds it every month." },
+          "effects": { "loan": { "source": "moneylender", "principal": 20000 }, "cash": -20000, "flags": { "add": ["sahukar_fee"] } },
+          "outcome": { "en": "Narsaiah counts out the notes and opens his red ledger. \"Study well, beta. I'll be here every month.\"" },
+          "why": { "en": "Quick money is usually the most expensive money. Always compare the yearly interest rate." },
+          "next": "m2_hostel"
+        }
+      ]
+    },
+    {
+      "id": "m2_hostel",
+      "age": 19,
+      "location": "school",
+      "speaker": "friend",
+      "lesson": "L22",
+      "objective": { "en": "Back to the hostel. Chintu has 'big news'." },
+      "title": { "en": "Lucky Prakash Capital" },
+      "text": { "en": "Chintu shows you a Telegram channel: \"LUCKY PRAKASH CAPITAL. 30% a month GUARANTEED. 2 lakh members.\" Lamborghini photos. VIP tips: ₹5,000. \"Bro, it's {cast:tempter}! From our village!\"" },
+      "choices": [
+        {
+          "id": "vip",
+          "label": { "en": "Pay ₹5,000 for the VIP tips" },
+          "quality": "bad",
+          "warn": { "en": "30% a month would turn ₹10,000 into ₹1.2 crore in 3 years. Nobody can guarantee that. Real advisers are SEBI-registered and never promise returns." },
+          "effects": { "cash": -5000, "flags": { "add": ["vip"] } },
+          "outcome": { "en": "Welcome to VIP! Your first message arrives at 2 a.m.: \"BIG TIP COMING. KEEP CASH READY.\"" },
+          "why": { "en": "Guaranteed high returns are the clearest sign of a scam. Risk and return always travel together." },
+          "next": "m2_vip"
+        },
+        {
+          "id": "check",
+          "label": { "en": "Check SEBI's website: is he a registered adviser?" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["evidence_telegram"] }, "gyaan": 3 },
+          "outcome": { "en": "Not registered. The 'Lamborghini' is from a Dubai car show. You screenshot everything, and show Chintu." },
+          "why": { "en": "Anyone giving investment advice for money must be SEBI-registered. Checking takes two minutes." },
+          "next": "m2_sip"
+        },
+        {
+          "id": "ignore",
+          "label": { "en": "Ignore it and go to class" },
+          "quality": "ok",
+          "outcome": { "en": "You go to class. Chintu joins VIP. Every night, his phone glows green and red." },
+          "why": { "en": "Ignoring a scam keeps you safe. Warning your friends keeps them safe too." },
+          "next": "m2_sip"
+        }
+      ]
+    },
+    {
+      "id": "m2_vip",
+      "age": 19,
+      "location": "phone",
+      "speaker": "tempter",
+      "lesson": "L15",
+      "objective": { "en": "A VIP message just arrived. Open your phone (press P)." },
+      "title": { "en": "\"Rent us your account\"" },
+      "text": { "en": "VIP tip: \"Buy Spark Mobile shares NOW, they'll go 5x!\" Then a private message: \"Earn ₹5,000 a month! Just let us route trading profits through your bank account. 100% legal, bro.\"" },
+      "choices": [
+        {
+          "id": "rent",
+          "label": { "en": "Rent them your account for ₹5,000 a month" },
+          "quality": "bad",
+          "warn": { "en": "Letting strangers move money through your account makes you a [[money_mule]]. That money is stolen from scam victims. Your account gets frozen and YOU face the police case." },
+          "effects": { "cash": 5000, "flags": { "add": ["money_mule"] } },
+          "outcome": { "en": "₹5,000 arrives on the first of every month. So do strange credits of ₹40,000, ₹75,000, ₹1,20,000... and debits, minutes later." },
+          "why": { "en": "Mule accounts are how stolen money disappears. The account holder is the one the police find first." },
+          "next": "m2_frozen"
+        },
+        {
+          "id": "tip",
+          "label": { "en": "Just buy the Spark Mobile tip with ₹5,000" },
+          "quality": "bad",
+          "effects": { "open": { "product": "stock_spark", "amount": 5000 }, "flags": { "add": ["tip_stock"] } },
+          "outcome": { "en": "Spark Mobile jumps 20% in a day. The VIP group cheers. You don't know the admins are selling to you." },
+          "why": { "en": "In 'pump and dump' tips, the group buys first, tells you to buy, then sells to you at the top." },
+          "next": "m2_sip"
+        },
+        {
+          "id": "report",
+          "label": { "en": "Leave the group and report it on the cyber-crime portal" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["evidence_telegram"] }, "gyaan": 2 },
+          "outcome": { "en": "You save every screenshot and report the channel. VIP money lost: ₹5,000. Lesson learned: priceless." },
+          "why": { "en": "Reporting helps the police connect complaints. Your evidence may matter later." },
+          "next": "m2_sip"
+        }
+      ]
+    },
+    {
+      "id": "m2_frozen",
+      "age": 20,
+      "location": "bank",
+      "speaker": "banker",
+      "objective": { "en": "The bank called. Come immediately: your account is frozen." },
+      "title": { "en": "Account frozen" },
+      "text": { "en": "Two cyber-police officers are waiting at the bank. Your account moved ₹8,40,000 of scam money in three months. {cast:banker} looks at you like she doesn't know you." },
+      "choices": [
+        {
+          "id": "cooperate",
+          "label": { "en": "Tell the police everything and hand over the chats" },
+          "quality": "ok",
+          "effects": { "flags": { "add": ["evidence_mule", "legal_record"] }, "meters": { "family": -12, "joy": -8 } },
+          "outcome": { "en": "Your chats lead the police to a call centre in Hyderabad. You're let off with a warning, and your account stays frozen for a year." },
+          "why": { "en": "If you are ever used as a mule, stop, report and cooperate. It's the only way out." },
+          "next": "m2_sip"
+        },
+        {
+          "id": "deny",
+          "label": { "en": "Say you know nothing about it" },
+          "quality": "bad",
+          "warn": { "en": "Lying to the police in a fraud case makes you look like part of the gang. Telling the truth is your only way out." },
+          "effects": { "flags": { "add": ["legal_trouble"] }, "meters": { "family": -20, "joy": -10 } },
+          "outcome": { "en": "The chats are on your phone anyway. You're named in the charge sheet as an accused." },
+          "why": { "en": "A money-mule case can mean arrest, a criminal record, and no bank account for years." },
+          "next": "m2_end_mule"
+        }
+      ]
+    },
+    {
+      "id": "m2_sip",
+      "age": 20,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L17",
+      "objective": { "en": "Kavitha akka has opened a mutual fund desk. Go to the bank." },
+      "title": { "en": "Your first SIP" },
+      "text": { "en": "{cast:banker}: \"A [[sip]] puts a fixed amount into a [[mutual_fund]] every month. An [[index_fund]] just buys India's top 50 companies. Low fee, no star manager.\" You have about ₹1,000 a month spare." },
+      "choices": [
+        {
+          "id": "index",
+          "label": { "en": "Start a ₹1,000 SIP in the Top-50 Index Fund" },
+          "quality": "good",
+          "effects": { "open": { "product": "sip_index", "amount": 1000 }, "flags": { "add": ["sip_started"] }, "gyaan": 2 },
+          "outcome": { "en": "Your first units! ₹1,000 buys 9.6 units. Next month, the same ₹1,000 buys whatever the price allows." },
+          "why": { "en": "Starting at 20 instead of 30 can nearly double what you have at 50. Time does the heavy lifting." },
+          "next": "m2_crash"
+        },
+        {
+          "id": "star",
+          "label": { "en": "Pick the 'Star Active Fund': 40% return last year!" },
+          "quality": "ok",
+          "effects": { "open": { "product": "mf_active", "amount": 1000 }, "flags": { "add": ["star_fund"] } },
+          "outcome": { "en": "The star fund's brochure is very shiny. Its 1.8% yearly fee is in very small print." },
+          "why": { "en": "Last year's star rarely repeats. A high [[expense_ratio]] is charged every year, good or bad." },
+          "next": "m2_crash"
+        },
+        {
+          "id": "fd",
+          "label": { "en": "Shares are scary. Put it in an FD" },
+          "quality": "ok",
+          "effects": { "open": { "product": "fd", "amount": 1000 } },
+          "outcome": { "en": "Safe and boring. The FD grows about 7% a year, just above rising prices." },
+          "why": { "en": "FDs are great for money you need soon. For money you won't touch for 10+ years, growth funds usually do better." },
+          "next": "m2_crash"
+        },
+        {
+          "id": "spend",
+          "label": { "en": "Spend it. You're only young once" },
+          "quality": "bad",
+          "effects": { "meters": { "joy": 4 } },
+          "outcome": { "en": "Biryani Fridays, new shoes, movie nights. Fun! In 30 years, that ₹1,000 a month could have been ₹20 lakh." },
+          "why": { "en": "The cost of starting late is huge, because the earliest rupees have the longest time to grow." },
+          "next": "m2_crash"
+        }
+      ]
+    },
+    {
+      "id": "m2_crash",
+      "age": 21,
+      "location": "phone",
+      "speaker": "headline",
+      "lesson": "L19",
+      "objective": { "en": "Breaking news on your phone! Open it (press P)." },
+      "title": { "en": "Black Monday" },
+      "text": { "en": "Markets fall 22% in a month. Spark Mobile falls 70%: the VIP admins sold at the top. Chintu is crying in the hostel corridor. Everyone says: \"Sell before it goes to zero!\"" },
+      "choices": [
+        {
+          "id": "hold",
+          "label": { "en": "Do nothing. Keep the SIP running" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["held_crash"] } },
+          "outcome": { "en": "You delete the market app for a month. Your SIP keeps buying, now at lower prices." },
+          "why": { "en": "Crashes are normal. Selling turns a temporary fall into a permanent loss. SIPs buy more units when prices are low." },
+          "next": [
+            { "if": { "flags": ["money_mule"] }, "to": "m2_end_frozen" },
+            { "if": { "flags": ["evidence_telegram"] }, "to": "m2_end_whistle" },
+            { "if": { "flags": ["sip_started"] }, "to": "m2_end_steady" },
+            { "to": "m2_end_ok" }
+          ]
+        },
+        {
+          "id": "more",
+          "label": { "en": "Invest ₹2,000 more while prices are low" },
+          "quality": "good",
+          "effects": { "open": { "product": "sip_index", "amount": 2000 }, "flags": { "add": ["held_crash", "bought_dip"] }, "gyaan": 2 },
+          "outcome": { "en": "Your ₹2,000 buys 30% more units than last month. Kavitha akka nods: \"Sale season.\"" },
+          "why": { "en": "For long-term money, a crash is a sale. Only invest money you won't need for years." },
+          "next": [
+            { "if": { "flags": ["money_mule"] }, "to": "m2_end_frozen" },
+            { "if": { "flags": ["evidence_telegram"] }, "to": "m2_end_whistle" },
+            { "to": "m2_end_steady" }
+          ]
+        },
+        {
+          "id": "sell",
+          "label": { "en": "Sell everything NOW" },
+          "quality": "bad",
+          "effects": { "close": [{ "product": "sip_index" }, { "product": "mf_active" }, { "product": "stock_spark" }], "flags": { "add": ["panic_sold"] } },
+          "outcome": { "en": "You sell at the bottom. Eight months later, the market is back up. You aren't in it." },
+          "why": { "en": "Panic selling locks in the loss. Markets have always recovered; panicked investors often don't." },
+          "next": [{ "if": { "flags": ["money_mule"] }, "to": "m2_end_frozen" }, { "to": "m2_end_panic" }]
+        }
+      ]
+    },
+    {
+      "id": "m2_end_whistle",
+      "type": "outcome",
+      "tone": "good",
+      "title": { "en": "The hostel whistleblower" },
+      "text": { "en": "Your screenshots get Lucky Prakash Capital banned from Telegram. Forty students get their money back from the bank. Chintu still owes you a biryani." },
+      "effects": { "meters": { "gyaan": 4, "joy": 3 } }
+    },
+    {
+      "id": "m2_end_steady",
+      "type": "outcome",
+      "tone": "good",
+      "title": { "en": "Steady through the storm" },
+      "text": { "en": "You held through the crash. By graduation your SIP is back in the green, and you've learned the hardest investing skill: doing nothing when everyone panics." }
+    },
+    {
+      "id": "m2_end_ok",
+      "type": "outcome",
+      "tone": "mixed",
+      "title": { "en": "A careful graduate" },
+      "text": { "en": "You graduate safe, with a degree and a little money. You didn't lose much, but you didn't grow much either." }
+    },
+    {
+      "id": "m2_end_panic",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "Sold at the bottom" },
+      "text": { "en": "You sold in the crash and watched the recovery from outside. Chintu, who held, gets his money back. You swear off markets. That's the real loss." }
+    },
+    {
+      "id": "m2_end_frozen",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "Frozen at twenty" },
+      "text": { "en": "No case, but a police record, a frozen account and a family that looks at you differently. Every bank form now asks a question you hate answering." }
+    },
+    {
+      "id": "m2_end_mule",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": { "en": "Charge-sheeted" },
+      "text": { "en": "You are named as an accused in a ₹40 crore fraud case. You miss your final exams for court dates. Lucky Prakash's photo is nowhere in the file." },
+      "effects": { "meters": { "joy": -10 } }
+    }
+  ]
+}

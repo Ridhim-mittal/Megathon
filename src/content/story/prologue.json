@@ -1,0 +1,154 @@
+{
+  "id": "prologue",
+  "stage": "child",
+  "from": 11,
+  "to": 14,
+  "part": { "en": "Prologue · Childhood" },
+  "title": { "en": "The Tin Box" },
+  "intro": { "en": "Age 11. Your family rents two rooms behind Anjamma aunty's shop. Every rupee the family saves lives in Ammamma's old tin box. Tonight, something has been eating it." },
+  "start": "p_tin",
+  "nodes": [
+    {
+      "id": "p_tin",
+      "age": 11,
+      "location": "home",
+      "speaker": "mentor",
+      "lesson": "L02",
+      "objective": { "en": "Walk home. Ammamma is calling you." },
+      "title": { "en": "The rat and the tin box" },
+      "text": { "en": "{cast:mentor} opens her tin box: ₹12,000 saved for Chinni's future, and one chewed ₹500 note. \"A rat ate my savings, kanna! What do we do?\"" },
+      "choices": [
+        {
+          "id": "bank",
+          "label": { "en": "\"Put it in a bank, Ammamma. Rats can't open banks.\"" },
+          "quality": "good",
+          "effects": { "meters": { "family": 3 } },
+          "outcome": { "en": "Ammamma frowns. \"Banks are for rich people.\" But she ties the notes in a cloth and takes your hand." },
+          "why": { "en": "A goal needs a safe home. A bank keeps money safe from rats, fire and thieves, and pays [[interest]]." },
+          "next": "p_bank"
+        },
+        {
+          "id": "steel_box",
+          "label": { "en": "\"Buy a steel box with a lock.\"" },
+          "quality": "ok",
+          "outcome": { "en": "\"Clever!\" Ammamma counts out ₹150 for a steel box from Anjamma aunty's shop." },
+          "why": { "en": "A lock stops rats. It does not stop thieves, fire, or prices that climb every year." },
+          "next": "p_shop"
+        }
+      ]
+    },
+    {
+      "id": "p_shop",
+      "age": 12,
+      "location": "shop",
+      "speaker": "shopkeeper",
+      "lesson": "L03",
+      "objective": { "en": "Go to Anjamma aunty's kirana shop to buy the steel box." },
+      "title": { "en": "Why is everything costlier?" },
+      "text": { "en": "The steel box costs ₹150. \"Last year it was ₹120,\" sighs {cast:shopkeeper}. \"Jalebi was ₹10, now ₹12. Prices climb like Bujji up the haystack.\"" },
+      "choices": [
+        {
+          "id": "to_bank",
+          "label": { "en": "\"Then money sleeping in a box gets weaker. Let's try the bank.\"" },
+          "quality": "good",
+          "outcome": { "en": "Anjamma aunty laughs. \"Smart child! Kavitha akka's bank is right there, behind the tailoring machine.\"" },
+          "why": { "en": "[[inflation]] makes the same ₹100 buy less every year. Money that earns nothing quietly loses value." },
+          "next": "p_bank"
+        },
+        {
+          "id": "buy_box",
+          "label": { "en": "Buy the steel box" },
+          "quality": "ok",
+          "effects": { "flags": { "add": ["tin_box"] } },
+          "outcome": { "en": "The box is shiny and heavy. Ammamma hides the key in her blouse. The rats are defeated, for now." },
+          "why": { "en": "Safe from rats is not safe from rising prices. ₹12,000 in a box buys less every single year." },
+          "next": "p_jatara"
+        }
+      ]
+    },
+    {
+      "id": "p_bank",
+      "age": 12,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L04",
+      "objective": { "en": "Take Ammamma to the bank. Kavitha akka is waiting." },
+      "title": { "en": "Ammamma's first passbook" },
+      "text": { "en": "{cast:banker} counts ₹11,500 twice. \"In a savings account this grows a little every year, and no rat can reach it.\" She smiles at you. \"And you? A [[minor_account]]?\"" },
+      "choices": [
+        {
+          "id": "both",
+          "label": { "en": "Open Ammamma's account, and one for me with my ₹200" },
+          "quality": "good",
+          "effects": { "open": { "product": "bank", "amount": 200 }, "flags": { "add": ["ammamma_bank", "has_bank"] }, "gyaan": 2 },
+          "outcome": { "en": "Ammamma signs with her thumb. You sign your name, slowly. Two passbooks! The tin box now holds only paper." },
+          "why": { "en": "A bank pays [[interest]] and keeps a record of every rupee. Starting young builds the habit." },
+          "next": "p_jatara"
+        },
+        {
+          "id": "only_her",
+          "label": { "en": "Open only Ammamma's account" },
+          "quality": "ok",
+          "effects": { "flags": { "add": ["ammamma_bank"] } },
+          "outcome": { "en": "Ammamma holds her passbook like a temple prasadam. \"My name, printed!\"" },
+          "why": { "en": "Ammamma's money is safe now. Your own savings still sleep in your pocket." },
+          "next": "p_jatara"
+        }
+      ]
+    },
+    {
+      "id": "p_jatara",
+      "age": 13,
+      "location": "square",
+      "speaker": "tempter",
+      "lesson": "L01",
+      "objective": { "en": "The jatara fair has started at the village square. Go!" },
+      "title": { "en": "₹100 and a rigged game" },
+      "text": { "en": "Ammamma gave you ₹100 for the fair. Your school notebook is finished too: ₹40. A skinny teen in tiny sunglasses shouts: \"Ring the bottle, win a PHONE! Only ₹20!\" It's {cast:tempter}." },
+      "choices": [
+        {
+          "id": "notebook_first",
+          "label": { "en": "Buy the notebook first, then enjoy ₹60 of fair" },
+          "quality": "good",
+          "effects": { "meters": { "joy": 4 } },
+          "outcome": { "en": "Notebook ₹40. Giant wheel ₹30. Hot jalebi ₹20. ₹10 left, and zero guilt." },
+          "why": { "en": "A need can't wait; a want can. Cover the need first and the want becomes guilt-free." },
+          "next": [{ "if": { "flags": ["ammamma_bank"] }, "to": "p_end_bank" }, { "to": "p_end_box" }]
+        },
+        {
+          "id": "ring_game",
+          "label": { "en": "Try the ring game. A phone for ₹20!" },
+          "quality": "bad",
+          "effects": { "meters": { "joy": -3 }, "flags": { "add": ["lost_to_prakash"] } },
+          "outcome": { "en": "Four tries. Every ring bounces off: the bottles are a little too wide. ₹80 gone, no notebook. Prakash grins: \"Better luck next time, chhotu!\"" },
+          "why": { "en": "Fair games that look easy are built so the stall wins. Easy money is usually someone else's plan." },
+          "next": [{ "if": { "flags": ["ammamma_bank"] }, "to": "p_end_bank" }, { "to": "p_end_box" }]
+        },
+        {
+          "id": "save_all",
+          "label": { "en": "Save all ₹100 for later" },
+          "quality": "ok",
+          "effects": { "meters": { "joy": -2 }, "jar": { "goal": 100 } },
+          "outcome": { "en": "You watch your friends on the giant wheel. Your ₹100 is safe. Your notebook is still finished." },
+          "why": { "en": "Saving is good, but a plan with zero joy, and a missing notebook, is hard to keep." },
+          "next": [{ "if": { "flags": ["ammamma_bank"] }, "to": "p_end_bank" }, { "to": "p_end_box" }]
+        }
+      ]
+    },
+    {
+      "id": "p_end_bank",
+      "type": "outcome",
+      "tone": "good",
+      "title": { "en": "The tin box retired" },
+      "text": { "en": "Ammamma's savings live in a bank now, earning a little every year. Rats, thieves and fire can't touch them. Four years pass, and you remember one rule: needs, then joy, then savings." }
+    },
+    {
+      "id": "p_end_box",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "The rat's second dinner" },
+      "text": { "en": "Two years later the rats are back, and this time someone breaks the lock too. Ammamma loses ₹3,000. \"Next time, I'll listen to you, kanna,\" she says." },
+      "effects": { "meters": { "family": -4 }, "flags": { "add": ["ammamma_bank"] } }
+    }
+  ]
+}

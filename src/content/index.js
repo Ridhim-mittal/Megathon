@@ -21,6 +21,13 @@ import villageMarket from "./storylines/village/cards/market.json" with { type: 
 
 import city from "./storylines/city/storyline.json" with { type: "json" };
 
+import storyPrologue from "./story/prologue.json" with { type: "json" };
+import storySchool from "./story/school.json" with { type: "json" };
+import storyCollege from "./story/college.json" with { type: "json" };
+import storyJob from "./story/job.json" with { type: "json" };
+import storyFamily from "./story/family.json" with { type: "json" };
+import storyDream from "./story/dream.json" with { type: "json" };
+
 const minigames = { sahukar };
 
 const storylines = {
@@ -41,4 +48,7 @@ const storylines = {
   city: { ...city, cards: [], endings: {} },
 };
 
-export { lessons, glossary, goals, wants, documents, quiz, faq, gyaan, minigames, storylines };
+// Story mode: the life as missions, in order (src/engine/story.js).
+const story = { missions: [storyPrologue, storySchool, storyCollege, storyJob, storyFamily, storyDream] };
+
+export { lessons, glossary, goals, wants, documents, quiz, faq, gyaan, minigames, storylines, story };

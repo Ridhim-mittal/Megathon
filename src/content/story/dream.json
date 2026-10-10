@@ -1,0 +1,279 @@
+{
+  "id": "dream",
+  "stage": "settle",
+  "from": 31,
+  "to": 36,
+  "part": { "en": "Chapter 5 · The dream" },
+  "title": { "en": "Golden Harvest" },
+  "intro": { "en": "Age 31. Golden Harvest has 3,000 investors in twelve villages. Your dream is finally within reach. Then, one Monday morning, the payments stop." },
+  "start": "m5_collapse",
+  "nodes": [
+    {
+      "id": "m5_collapse",
+      "age": 31,
+      "location": "square",
+      "speaker": "friend",
+      "lesson": "L22",
+      "objective": { "en": "Shouting at the village square. Something has happened to Golden Harvest." },
+      "title": { "en": "The payments stop" },
+      "text": { "en": "Golden Harvest's office is locked. {cast:tempter}'s phone is off. 3,000 people have lost ₹14 crore. Chintu is hiding in Anjamma aunty's storeroom, shaking. The crowd wants someone to blame." },
+      "choices": [
+        {
+          "id": "protect",
+          "label": { "en": "Hide Chintu, then walk him to the police to tell the truth" },
+          "quality": "good",
+          "effects": { "meters": { "family": 2 }, "flags": { "add": ["chintu_witness"] } },
+          "outcome": { "en": "Chintu holds your arm all the way to the panchayat office. \"He used me too, re. I'll tell them everything.\"" },
+          "why": { "en": "Small agents are often victims too. Witnesses who come forward can help recover money for everyone." },
+          "next": "m5_panchayat"
+        },
+        {
+          "id": "mob",
+          "label": { "en": "Join the crowd hunting for Chintu" },
+          "quality": "bad",
+          "effects": { "meters": { "family": -6, "joy": -4 }, "flags": { "add": ["mob"] } },
+          "outcome": { "en": "The crowd breaks the storeroom door. Chintu is gone, out the back. Anjamma aunty's shop is wrecked." },
+          "why": { "en": "Anger at the wrong person helps the real scammer escape. The money trail matters more than revenge." },
+          "next": "m5_panchayat"
+        },
+        {
+          "id": "home",
+          "label": { "en": "Stay out of it. Go home" },
+          "quality": "ok",
+          "outcome": { "en": "You lock the door. Through the window you hear the crowd move from house to house." },
+          "why": { "en": "Staying safe is fine. But what you know may help others." },
+          "next": "m5_panchayat"
+        }
+      ]
+    },
+    {
+      "id": "m5_panchayat",
+      "age": 32,
+      "location": "panchayat",
+      "speaker": "narrator",
+      "objective": { "en": "The police inspector has set up a desk at the panchayat office. Go there." },
+      "title": { "en": "Who has proof?" },
+      "text": { "en": "The inspector sighs: \"Prakash is in Dubai. Without proof linking him to the money, I can't seize his property here.\" The whole village stares at the floor." },
+      "choices": [
+        {
+          "id": "evidence",
+          "label": { "en": "Open your evidence file: everything you've saved over the years" },
+          "quality": "good",
+          "requires": { "minCount": { "flags": ["evidence_call", "evidence_prakash", "evidence_telegram", "evidence_mule", "evidence_loanapp", "evidence_goldharvest"], "n": 2 } },
+          "lockedHint": { "en": "You need at least two pieces of evidence from your past: recordings, screenshots, documents. You don't have enough." },
+          "effects": { "flags": { "add": ["exposed_prakash"] }, "meters": { "family": 6, "joy": 6 }, "gyaan": 4 },
+          "outcome": { "en": "The call recording from when you were 15. The Telegram screenshots. The fake certificate. The inspector stops sighing. \"This... this is a case.\"" },
+          "why": { "en": "Saving evidence of every scam you meet (numbers, chats, receipts) is how gangs are finally caught." },
+          "next": "m5_dream"
+        },
+        {
+          "id": "witness",
+          "label": { "en": "Bring Chintu to give his statement" },
+          "quality": "good",
+          "requires": { "flags": ["chintu_witness"] },
+          "lockedHint": { "en": "Chintu ran away. Nobody can find him." },
+          "effects": { "flags": { "add": ["witness_given"] }, "meters": { "family": 3 } },
+          "outcome": { "en": "Chintu names every agent and every bank account. It's a start, but the inspector says he needs more than one witness." },
+          "why": { "en": "Witness statements help, but documents and digital records are stronger evidence." },
+          "next": "m5_dream"
+        },
+        {
+          "id": "nothing",
+          "label": { "en": "You have nothing to give" },
+          "quality": "ok",
+          "outcome": { "en": "The inspector closes his notebook. \"Then we wait.\" Everyone knows what that means." },
+          "why": { "en": "Without evidence, scams are very hard to prosecute. Next time, save the proof." },
+          "next": "m5_dream"
+        }
+      ]
+    },
+    {
+      "id": "m5_dream",
+      "age": 33,
+      "location": "panchayat",
+      "speaker": "lender",
+      "lesson": "L23",
+      "document": "doc.plot_sale",
+      "objective": { "en": "A plot near the highway is for sale, cheap. The seller is waiting at the panchayat office." },
+      "title": { "en": "The deal of your life" },
+      "text": { "en": "A highway plot, ₹3 lakh below market, perfect for your dream. The seller, a friend of {cast:lender}, is in a hurry: \"Sign today, or another buyer takes it.\" Read the sale deed before you decide." },
+      "choices": [
+        {
+          "id": "buy",
+          "label": { "en": "Buy it: ₹1 lakh down, ₹2 lakh home loan" },
+          "quality": "ok",
+          "effects": { "loan": { "source": "home", "principal": 200000, "months": 120 }, "open": { "product": "land", "amount": 300000 }, "flags": { "add": ["bought_plot"] } },
+          "outcome": { "en": "You sign. The seller counts the money very fast and leaves even faster." },
+          "why": { "en": "A big purchase needs a clean title. Check the [[encumbrance]] certificate and records before any money moves." },
+          "next": [{ "if": { "lastDoc": { "problem": true, "caught": false } }, "to": "m5_fraud" }, { "to": "m5_future" }]
+        },
+        {
+          "id": "walk",
+          "label": { "en": "Walk away. 'Sign today' is a red flag" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["walked_away"] }, "gyaan": 2 },
+          "outcome": { "en": "The seller shouts that you'll regret it. Two months later, you see the same plot advertised by three different people." },
+          "why": { "en": "Pressure to decide today is a classic warning sign. A real deal survives a week of checking." },
+          "next": "m5_future"
+        }
+      ]
+    },
+    {
+      "id": "m5_fraud",
+      "age": 34,
+      "location": "panchayat",
+      "speaker": "narrator",
+      "objective": { "en": "A stranger is building a wall on 'your' plot. Go to the panchayat office!" },
+      "title": { "en": "Sold three times" },
+      "text": { "en": "The same plot was sold to three families. The real owner has papers older than yours. The seller has vanished, and your ₹3 lakh with him." },
+      "choices": [
+        {
+          "id": "court",
+          "label": { "en": "File a police case and fight it in court" },
+          "quality": "ok",
+          "effects": { "cash": -20000, "meters": { "joy": -6 }, "flags": { "add": ["land_fraud"] } },
+          "outcome": { "en": "The lawyer says it could take eight years. You still pay the home loan EMI on land you don't own." },
+          "why": { "en": "Land fraud is expensive to undo. A ₹2,000 records check before buying would have caught it." },
+          "next": "m5_future"
+        }
+      ]
+    },
+    {
+      "id": "m5_future",
+      "age": 35,
+      "location": "post",
+      "speaker": "mentor",
+      "lesson": "L24",
+      "objective": { "en": "Ammamma wants you to take her to the post office. She says it's important." },
+      "title": { "en": "Ammamma's last lesson" },
+      "text": { "en": "Ammamma is 87. At the post office she pats her old passbook. \"Kanna, you'll be old one day too. Who will pay you then?\" The clerk explains [[ppf]], [[nps]] and [[apy]]." },
+      "choices": [
+        {
+          "id": "pension",
+          "label": { "en": "Start a pension plan with ₹3,000 a month, starting now" },
+          "quality": "good",
+          "effects": { "open": { "product": "pension", "amount": 3000 }, "flags": { "add": ["retirement"] }, "gyaan": 2 },
+          "outcome": { "en": "Ammamma makes you show her the receipt twice. Then she buys you both a cup of tea, for once." },
+          "why": { "en": "Money for old age needs the longest time to grow. Every year you wait makes it more expensive." },
+          "next": "m5_final"
+        },
+        {
+          "id": "later",
+          "label": { "en": "Later. I'm only 35" },
+          "quality": "bad",
+          "effects": { "meters": { "family": -2 } },
+          "outcome": { "en": "Ammamma says nothing. She just holds your hand a little tighter on the walk home." },
+          "why": { "en": "Starting at 45 instead of 35 can halve what you have at 60. 'Later' is the most expensive word in money." },
+          "next": "m5_final"
+        },
+        {
+          "id": "children",
+          "label": { "en": "My children will look after me" },
+          "quality": "bad",
+          "outcome": { "en": "\"That's what I thought too,\" says Ammamma, \"and look who's looking after whom.\"" },
+          "why": { "en": "Planning for your own old age is a gift to your children, not a lack of trust in them." },
+          "next": "m5_final"
+        }
+      ]
+    },
+    {
+      "id": "m5_final",
+      "age": 36,
+      "location": "home",
+      "speaker": "mentor",
+      "objective": { "en": "It's Ammamma's birthday. Everyone is coming home." },
+      "title": { "en": "Ammamma's birthday" },
+      "text": { "en": "The whole family is home, Bujji included. Ammamma lights the lamp and looks at you. \"So, kanna. After all these years, what did money teach you?\"" },
+      "choices": [
+        {
+          "id": "slow",
+          "label": { "en": "\"Slow money is safe money. Fast money is someone else's plan.\"" },
+          "quality": "ok",
+          "outcome": { "en": "Ammamma laughs until her glasses fall off." },
+          "next": [
+            { "if": { "anyFlags": ["legal_trouble"] }, "to": "end_jail" },
+            { "if": { "anyFlags": ["bankrupt"] }, "to": "end_bankrupt" },
+            { "if": { "ending": ["debt_trap"] }, "to": "end_debt" },
+            { "if": { "flags": ["exposed_prakash"] }, "to": "end_buster" },
+            { "if": { "anyFlags": ["gh_big", "land_fraud"] }, "to": "end_lost" },
+            { "if": { "flags": ["nanna_gh"] }, "to": "end_nanna" },
+            { "if": { "dreamReached": true }, "to": "end_dream" },
+            { "to": "end_quiet" }
+          ]
+        },
+        {
+          "id": "people",
+          "label": { "en": "\"Money is for people. And people are not for money.\"" },
+          "quality": "ok",
+          "outcome": { "en": "Ammamma nods slowly, and gives you the first piece of payasam." },
+          "next": [
+            { "if": { "anyFlags": ["legal_trouble"] }, "to": "end_jail" },
+            { "if": { "anyFlags": ["bankrupt"] }, "to": "end_bankrupt" },
+            { "if": { "ending": ["debt_trap"] }, "to": "end_debt" },
+            { "if": { "flags": ["exposed_prakash"] }, "to": "end_buster" },
+            { "if": { "anyFlags": ["gh_big", "land_fraud"] }, "to": "end_lost" },
+            { "if": { "flags": ["nanna_gh"] }, "to": "end_nanna" },
+            { "if": { "dreamReached": true }, "to": "end_dream" },
+            { "to": "end_quiet" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "end_buster",
+      "type": "outcome",
+      "tone": "good",
+      "title": { "en": "The Scam Buster" },
+      "text": { "en": "Your evidence file puts Lucky Prakash on an Interpol notice. His village property is seized and ₹6 crore is returned to 3,000 families. The newspaper calls you 'the OTP kid who grew up'." }
+    },
+    {
+      "id": "end_dream",
+      "type": "outcome",
+      "tone": "good",
+      "title": { "en": "The dream, paid for" },
+      "text": { "en": "Your dream is real, and nobody's ledger has your name in it. Prakash got away, but not with your money. Ammamma sleeps well these days." }
+    },
+    {
+      "id": "end_quiet",
+      "type": "outcome",
+      "tone": "mixed",
+      "title": { "en": "A quiet, careful life" },
+      "text": { "en": "No villain caught, no fortune made, no disaster either. The dream is still a few years away, but you're walking toward it on solid ground." }
+    },
+    {
+      "id": "end_nanna",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "The lost harvest" },
+      "text": { "en": "Nanna's ₹4 lakh vanished with Golden Harvest. He still goes to the square every Monday, in case the office opens. You quietly pay for his medicines." }
+    },
+    {
+      "id": "end_lost",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "Fooled by the big promise" },
+      "text": { "en": "A 'sure' deal took the biggest money you ever had. You rebuild, slowly. The lesson cost more than any school fee." }
+    },
+    {
+      "id": "end_debt",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": { "en": "The debt trap" },
+      "text": { "en": "At 36, your EMIs eat most of your salary and the sahukar knows your name. There is a way out: list every loan, close the costliest first, and talk to the bank tomorrow." }
+    },
+    {
+      "id": "end_bankrupt",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": { "en": "Bankrupt" },
+      "text": { "en": "The loan apps took everything, including your family's trust. You're rebuilding from zero at 36, with a credit record that won't let any bank help." }
+    },
+    {
+      "id": "end_jail",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": { "en": "On the wrong side of the case" },
+      "text": { "en": "The money-mule case finally reaches court. You're not the criminal who planned it, but your account moved the money. Lucky Prakash is still in Dubai." }
+    }
+  ]
+}

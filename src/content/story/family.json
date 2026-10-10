@@ -1,0 +1,245 @@
+{
+  "id": "family",
+  "stage": "adult",
+  "from": 26,
+  "to": 30,
+  "part": { "en": "Chapter 4 · Marriage & family" },
+  "title": { "en": "Wedding Season" },
+  "intro": { "en": "Age 26. You're marrying Kiran, a nurse at the town hospital. Two families, one wedding, and 800 relatives who all expect biryani. Meanwhile, Golden Harvest's white SUVs are everywhere." },
+  "startEffects": { "income": { "monthly": 30000, "source": "job" } },
+  "start": "m4_wedding",
+  "nodes": [
+    {
+      "id": "m4_wedding",
+      "age": 26,
+      "location": "home",
+      "speaker": "mother",
+      "lesson": "L18",
+      "objective": { "en": "Both families are meeting at home to plan the wedding." },
+      "title": { "en": "800 guests and a horse" },
+      "text": { "en": "Kiran's uncle wants 800 guests, a horse and a DJ: ₹6 lakh. Your uncle says a small wedding will 'shame the family'. Kiran whispers: \"What do YOU want?\"" },
+      "choices": [
+        {
+          "id": "simple",
+          "label": { "en": "A temple wedding, registered, and lunch for 150. The rest goes to our future" },
+          "quality": "good",
+          "effects": { "cash": -60000, "meters": { "joy": 6, "family": -2 }, "flags": { "add": ["simple_wedding"] }, "gyaan": 2 },
+          "outcome": { "en": "The uncles grumble for a week. Kiran laughs the whole day. Your photos are lovely, and your bank balance survives." },
+          "why": { "en": "Social pressure to spend is real. The people judging you won't pay your EMIs." },
+          "next": "m4_joint"
+        },
+        {
+          "id": "grand_loan",
+          "label": { "en": "The full ₹6 lakh wedding, with a ₹4 lakh personal loan" },
+          "quality": "bad",
+          "warn": { "en": "A ₹4 lakh loan at 13% costs about ₹9,000 a month for five years. That's your future house, spent in one night." },
+          "effects": { "loan": { "source": "bank_personal", "principal": 400000, "months": 60 }, "cash": -600000, "meters": { "family": 8, "joy": 4 }, "flags": { "add": ["wedding_debt"] } },
+          "outcome": { "en": "The horse is magnificent. The DJ is loud. The EMI begins next month, and lasts until you're 31." },
+          "why": { "en": "Borrowing for one day of celebration means years of payments. 'Everyone does it' is how it spreads." },
+          "next": "m4_joint"
+        },
+        {
+          "id": "middle",
+          "label": { "en": "A middle path: 300 guests, ₹2 lakh from savings" },
+          "quality": "ok",
+          "effects": { "cash": -200000, "meters": { "family": 4, "joy": 3 } },
+          "outcome": { "en": "Nobody is fully happy, so everybody is a little happy. Your savings take a big hit, but no loan." },
+          "why": { "en": "Spending your own savings is better than borrowing. Spending less is better still." },
+          "next": "m4_joint"
+        }
+      ]
+    },
+    {
+      "id": "m4_joint",
+      "age": 27,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L21",
+      "objective": { "en": "Kiran wants to make a family money plan at the bank." },
+      "title": { "en": "Two salaries, one plan" },
+      "text": { "en": "Together you earn about ₹45,000 a month. {cast:banker} draws three pots: safe money, growth money, dream money. Outside, {cast:agent} waves an 'NFO at only ₹10 a unit!' brochure." },
+      "choices": [
+        {
+          "id": "spread",
+          "label": { "en": "Spread it: index fund SIP, a [[debt_fund]], and an RD for the dream" },
+          "quality": "good",
+          "effects": { "open": [{ "product": "sip_index", "amount": 15000 }, { "product": "mf_debt", "amount": 10000 }, { "product": "rd", "amount": 10000 }], "flags": { "add": ["diversified"] }, "gyaan": 2 },
+          "outcome": { "en": "Three pots, three jobs. When one has a bad year, the others hold the family steady." },
+          "why": { "en": "[[diversification]]: different investments fall at different times. Low fees keep more of the growth for you." },
+          "next": "m4_flood"
+        },
+        {
+          "id": "all_stock",
+          "label": { "en": "Put ₹35,000 into Spark Mobile shares. They doubled last year" },
+          "quality": "bad",
+          "effects": { "open": { "product": "stock_spark", "amount": 35000 }, "flags": { "add": ["one_basket"] } },
+          "outcome": { "en": "All eggs, one basket. The basket is very exciting." },
+          "why": { "en": "One company can fall 70% on one bad news day. Never put money you need into a single share." },
+          "next": "m4_flood"
+        },
+        {
+          "id": "nfo",
+          "label": { "en": "Ramana's new fund: 'Only ₹10 a unit, so cheap!'" },
+          "quality": "bad",
+          "effects": { "open": { "product": "mf_active", "amount": 35000 }, "flags": { "add": ["nfo"] } },
+          "outcome": { "en": "A ₹10 unit is not 'cheaper' than a ₹300 unit: the price per unit means nothing. The 2.3% fee and Ramana's commission mean a lot." },
+          "why": { "en": "Judge funds by fees ([[expense_ratio]]) and long-term record, never by the unit price or the agent's smile." },
+          "next": "m4_flood"
+        }
+      ]
+    },
+    {
+      "id": "m4_flood",
+      "age": 28,
+      "location": "field",
+      "speaker": "father",
+      "lesson": "L20",
+      "objective": { "en": "Flood warning! The canal is overflowing. Run to Nanna's cotton field!" },
+      "rush": { "seconds": 45, "effects": { "shock": { "kind": "other", "cost": 15000 } }, "note": { "en": "You arrived late. The water took the cotton bales stored by the gate: ₹15,000." } },
+      "title": { "en": "The water rises" },
+      "text": { "en": "The canal bursts at midnight. Nanna's whole crop is under water and the house walls are cracking. Damage: ₹1,50,000. Bujji is standing on the haystack, unimpressed." },
+      "choices": [
+        {
+          "id": "crop_claim",
+          "label": { "en": "Claim the [[pmfby]] crop insurance, then use savings for the walls" },
+          "quality": "good",
+          "requires": { "owns": ["insurance_crop"] },
+          "lockedHint": { "en": "Nobody enrolled Nanna's crop for insurance." },
+          "effects": { "shock": { "kind": "flood", "cost": 150000 } },
+          "outcome": { "en": "The crop claim pays ₹50,000 in six weeks. Your savings cover the walls. Nanna can't stop talking about 'that cheap insurance'." },
+          "why": { "en": "Crop insurance costs farmers very little, because the government pays most of the premium." },
+          "next": "m4_harvest"
+        },
+        {
+          "id": "savings",
+          "label": { "en": "Pay from your emergency fund and savings" },
+          "quality": "ok",
+          "effects": { "shock": { "kind": "flood", "cost": 150000 } },
+          "outcome": { "en": "Your savings take the hit. The walls are rebuilt before the next rain. No loan." },
+          "why": { "en": "This is why an emergency fund matters: disasters don't wait until you're ready." },
+          "next": "m4_harvest"
+        },
+        {
+          "id": "sahukar",
+          "label": { "en": "Narsaiah sahukar is already at the gate with cash" },
+          "quality": "bad",
+          "warn": { "en": "After a disaster, the [[sahukar]] arrives first, because desperate families sign anything. 24% a year on ₹1.5 lakh is ₹36,000 a year in interest alone." },
+          "effects": { "loan": { "source": "moneylender", "principal": 150000 }, "shock": { "kind": "flood", "cost": 150000 }, "flags": { "add": ["flood_sahukar"] } },
+          "outcome": { "en": "Narsaiah is very kind tonight. His ledger is very patient. It will be there for years." },
+          "why": { "en": "Expensive debt after a calamity is how one bad year becomes ten bad years." },
+          "next": "m4_harvest"
+        }
+      ]
+    },
+    {
+      "id": "m4_harvest",
+      "age": 30,
+      "location": "square",
+      "speaker": "tempter",
+      "lesson": "L22",
+      "objective": { "en": "Drums at the village square! Lucky Prakash has arrived in a white SUV." },
+      "title": { "en": "The Golden Harvest festival" },
+      "text": { "en": "{cast:tempter}, in gold sunglasses the size of plates, hands out sweets. Golden Harvest pays '5% a month, on time, every time'. Nanna got ₹4 lakh for selling half his land. \"Should I put it in, {player}?\"" },
+      "choices": [
+        {
+          "id": "stop_nanna",
+          "label": { "en": "Stop Nanna. Show him the maths: 60% a year is impossible" },
+          "quality": "good",
+          "effects": { "meters": { "family": 4 }, "flags": { "add": ["saved_nanna"] } },
+          "outcome": { "en": "You write it out: ₹4 lakh at 60% a year would be ₹27 lakh in four years. Nanna goes quiet. \"Then where does the money come from?\"" },
+          "why": { "en": "If returns are far above what banks and markets pay, the money is coming from new investors. That's a [[ponzi]]." },
+          "next": [
+            { "if": { "flags": ["flood_sahukar", "wedding_debt"] }, "to": "m4_end_wiped" },
+            { "if": { "flags": ["wedding_debt"] }, "to": "m4_end_emi" },
+            { "if": { "flags": ["diversified"], "notFlags": ["flood_sahukar"] }, "to": "m4_end_fortress" },
+            { "to": "m4_end_ok" }
+          ]
+        },
+        {
+          "id": "nanna_invests",
+          "label": { "en": "Let him invest. Everyone else did" },
+          "quality": "bad",
+          "warn": { "en": "Nanna's land money is the family's safety net. A scheme paying 60% a year can only pay old investors with new investors' money, until it can't." },
+          "effects": { "flags": { "add": ["nanna_gh"] }, "meters": { "family": 2 } },
+          "outcome": { "en": "Nanna signs with a gold pen. Prakash hugs him for the camera. The first ₹20,000 arrives next month." },
+          "why": { "en": "Early payouts are bait. Ponzi schemes pay the first investors so they recruit others." },
+          "next": [
+            { "if": { "flags": ["flood_sahukar", "wedding_debt"] }, "to": "m4_end_wiped" },
+            { "to": "m4_end_nanna" }
+          ]
+        },
+        {
+          "id": "invest_too",
+          "label": { "en": "Invest ₹1 lakh of your own too. The payouts are real!" },
+          "quality": "bad",
+          "warn": { "en": "Payouts being 'real' proves nothing: they're paid from newer investors' money. When recruitment slows, everyone loses together." },
+          "effects": { "cash": -100000, "flags": { "add": ["gh_investor", "gh_big"] } },
+          "outcome": { "en": "Your Golden Harvest card is gold-coloured. Prakash calls you 'partner'. You feel important." },
+          "why": { "en": "Feeling like an insider is part of the trap. Real investments don't need you to recruit anyone." },
+          "next": [
+            { "if": { "flags": ["flood_sahukar", "wedding_debt"] }, "to": "m4_end_wiped" },
+            { "to": "m4_end_partner" }
+          ]
+        },
+        {
+          "id": "collect",
+          "label": { "en": "Smile, take a brochure, and quietly collect evidence" },
+          "quality": "good",
+          "effects": { "flags": { "add": ["evidence_goldharvest", "saved_nanna"] }, "gyaan": 3 },
+          "outcome": { "en": "Brochures, receipts, the agents' list, a video of Prakash promising '5% guaranteed'. You hide the file at Kavitha akka's bank." },
+          "why": { "en": "Written promises of guaranteed returns are evidence. Regulators and police need proof to act." },
+          "next": [
+            { "if": { "flags": ["flood_sahukar", "wedding_debt"] }, "to": "m4_end_wiped" },
+            { "if": { "flags": ["wedding_debt"] }, "to": "m4_end_emi" },
+            { "if": { "flags": ["diversified"], "notFlags": ["flood_sahukar"] }, "to": "m4_end_fortress" },
+            { "to": "m4_end_ok" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m4_end_fortress",
+      "type": "outcome",
+      "tone": "good",
+      "title": { "en": "The family fortress" },
+      "text": { "en": "A wedding without debt, money in three pots, a flood survived, and Nanna's land money safe. The village starts asking you for advice." },
+      "effects": { "meters": { "joy": 4, "family": 4 } }
+    },
+    {
+      "id": "m4_end_ok",
+      "type": "outcome",
+      "tone": "mixed",
+      "title": { "en": "Holding on" },
+      "text": { "en": "Some good calls, some costly ones. The family is together, the walls are standing, and Nanna's money is safe. For now." }
+    },
+    {
+      "id": "m4_end_emi",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "The wedding EMI" },
+      "text": { "en": "Every month, ₹9,000 leaves for a party nobody remembers. Kiran picks up night shifts. The dream jar stays almost empty." }
+    },
+    {
+      "id": "m4_end_nanna",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "Nanna's land money" },
+      "text": { "en": "Nanna's ₹4 lakh is in Golden Harvest. The payouts arrive on time, and he tells everyone at the tea stall. You lie awake at night, doing the maths." }
+    },
+    {
+      "id": "m4_end_partner",
+      "type": "outcome",
+      "tone": "bad",
+      "title": { "en": "Prakash's 'partner'" },
+      "text": { "en": "Your name is on Golden Harvest's 'top investors' board at the square. Three neighbours joined because they saw it." }
+    },
+    {
+      "id": "m4_end_wiped",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": { "en": "Drowning in debt" },
+      "text": { "en": "A wedding loan, a sahukar's flood loan, and EMIs bigger than your salary. Kiran's salary goes to interest. The dream feels like a story about someone else." },
+      "effects": { "meters": { "joy": -8 } }
+    }
+  ]
+}
