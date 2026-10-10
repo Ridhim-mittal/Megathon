@@ -270,6 +270,12 @@
       "caught": "You caught the problem in the papers before signing.",
       "missed": "There was a problem in the papers. Nobody caught it… yet.",
       "clean": "The papers were clean."
+    },
+    "react": {
+      "good": "Smart move!",
+      "risky": "Hmm, risky…",
+      "bad": "Ouch!",
+      "neutral": "Fair enough"
     }
   },
   "shock": {
