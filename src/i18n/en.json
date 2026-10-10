@@ -270,6 +270,10 @@
       "caught": "You caught the problem in the papers before signing.",
       "missed": "There was a problem in the papers. Nobody caught it… yet.",
       "clean": "The papers were clean."
+    },
+    "delayed": {
+      "title": "Done! It seems to have worked.",
+      "note": "Nothing has changed… for now. Keep an eye on your phone's messages."
     }
   },
   "shock": {
@@ -666,5 +670,42 @@
         "shop": "You check the name before paying the kirana"
       }
     }
+  },
+  "inbox": {
+    "title": "Notifications",
+    "open": "Open",
+    "dismiss": "Dismiss",
+    "phoneEvent": "New on your phone",
+    "from": {
+      "game": "Lakshyam",
+      "amma": "Amma",
+      "alert": "Safety alert"
+    },
+    "chapter": "{name} begins! {n} events are waiting on the map. Places with a yellow ! must be visited.",
+    "year": "Age {age} is over.",
+    "hookFrom": {
+      "default": "Unknown number",
+      "kyc_sms": "VK-KYCUPD",
+      "vip_tips": "VIP Stock Club 🚀",
+      "lottery_sms": "LOTTERY-WIN"
+    },
+    "hook": {
+      "default": "Payment received. Your request is being processed.",
+      "kyc_sms": "Dear customer, your KYC is updated successfully. Thank you for banking with us.",
+      "vip_tips": "Welcome to VIP! Spark Mobile target ₹180 🚀🚀 HOLD tight, don't sell!",
+      "lottery_sms": "Tax received. Your ₹25 lakh prize will reach your account in 3 days."
+    },
+    "debitFrom": {
+      "default": "BANK-ALERT",
+      "vip_tips": "Market alert"
+    },
+    "debit": {
+      "default": "{amount} debited from your account. Not you? Call 1930 now.",
+      "kyc_sms": "{amount} debited from A/c XX4417 in two UPI transfers. Not you? Call 1930 now.",
+      "vip_tips": "Spark Mobile crashed 50% after the VIP group sold. Your loss: {amount}. The group has been deleted."
+    },
+    "reveal": "It was a scam: {title}",
+    "revealLost": "Lost: {amount}",
+    "help": "Fell for a scam? Call 1930 (cyber-crime helpline) at once and tell your bank. A fast call can freeze the money."
   }
 }

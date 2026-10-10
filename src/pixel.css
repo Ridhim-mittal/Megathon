@@ -1151,3 +1151,145 @@
     display: none;
   }
 }
+
+/* ---------- notifications over the map ---------- */
+.notif-tray {
+  position: absolute;
+  top: 66px;
+  right: 10px;
+  width: min(320px, calc(100vw - 20px));
+  z-index: 4;
+  display: grid;
+  gap: 6px;
+  pointer-events: none;
+}
+.notif-tray > *,
+.notif-pops > * {
+  pointer-events: auto;
+}
+.notif-head {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--px-font);
+  font-size: 14px;
+  color: var(--px-ink);
+  background: var(--px-paper);
+  border: 3px solid var(--px-wood);
+  border-radius: 6px;
+  box-shadow: 0 3px 0 rgba(40, 25, 10, 0.35);
+  padding: 3px 9px;
+  cursor: pointer;
+}
+.notif-head .badge {
+  position: static;
+}
+.notif-pops {
+  display: grid;
+  gap: 6px;
+}
+.notif {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--px-ink);
+  background: #fffaf0;
+  border: 2px solid var(--px-wood);
+  border-radius: 10px;
+  box-shadow: 0 3px 0 rgba(40, 25, 10, 0.3);
+  padding: 7px 9px;
+}
+.notif > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.notif > span {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.notif small {
+  color: #7a6a4f;
+  font-size: 10.5px;
+}
+.notif.pop {
+  animation: notif-in 0.35s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+}
+.notif.todo {
+  cursor: pointer;
+  background: #ffe9a8;
+}
+.notif.todo:hover,
+.notif.todo:focus-visible {
+  background: #ffdf80;
+}
+.notif.todo em {
+  font-style: normal;
+  font-weight: 700;
+  align-self: center;
+  white-space: nowrap;
+}
+.notif.down {
+  border-color: #b5523f;
+}
+.notif.alert {
+  background: #ffe3dc;
+  border-color: #b5523f;
+}
+.notif.alert b {
+  color: #8f2d1f;
+}
+.notif-help {
+  font-weight: 600;
+  color: #5c3b16;
+}
+.notif .text-button {
+  justify-self: start;
+  padding: 0;
+  font-size: 11.5px;
+}
+.notif-x {
+  flex-shrink: 0;
+  background: none;
+  border: 0;
+  color: #7a6a4f;
+  padding: 0;
+  cursor: pointer;
+}
+.notif-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  display: grid;
+  gap: 5px;
+  max-height: min(52vh, 440px);
+  overflow: auto;
+  background: var(--px-paper);
+  border: 3px solid var(--px-wood);
+  border-radius: 6px;
+  box-shadow: 0 4px 0 rgba(40, 25, 10, 0.35);
+  pointer-events: auto;
+}
+@keyframes notif-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+/* A delayed scam's "success" screen. */
+.sms-bubble {
+  background: #e9f3dc;
+  border: 2px solid #8fb36d;
+  border-radius: 14px 14px 14px 4px;
+  padding: 10px 13px;
+  max-width: 460px;
+  font-size: 14px;
+}

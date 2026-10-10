@@ -18,6 +18,31 @@ export function OutcomeView({ life, dispatch, onLearn }) {
   const nw = out.money.netWorthChange;
   const lesson = out.lesson && out.lesson.from !== out.lesson.to ? out.lesson : null;
 
+  // A delayed scam looks like it worked; the truth arrives later on the phone.
+  if (out.delayed) {
+    const id = String(out.cardId).split(".")[2];
+    const hook = t(`inbox.hook.${id}`);
+    return (
+      <div className="view outcome-view">
+        <article className="outcome-card delayed">
+          <span className="eyebrow">{t("outcome.eyebrow")}</span>
+          {card && <p className="outcome-choice">{plain(card.title)} · <b>{plain(chosen?.label)}</b></p>}
+          <h2 ref={heading} tabIndex={-1} className="outcome-text">
+            {t("outcome.delayed.title")}
+          </h2>
+          <p className="sms-bubble">{hook.startsWith("inbox.") ? t("inbox.hook.default") : hook}</p>
+          <p className="quiet">{t("outcome.delayed.note")}</p>
+          <div className="action-row">
+            <span />
+            <button ref={next} className="primary-button big" onClick={() => dispatch({ type: "ADVANCE" })}>
+              {t("outcome.next")} <ArrowRight size={18} />
+            </button>
+          </div>
+        </article>
+      </div>
+    );
+  }
+
   return (
     <div className="view outcome-view">
       <article className="outcome-card">

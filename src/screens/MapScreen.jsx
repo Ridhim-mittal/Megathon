@@ -6,6 +6,7 @@ import { GyaanLite } from "../ui/GyaanLite.jsx";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
 import { START, placeById } from "../ui/map/village.js";
 import { PhoneLite as Phone } from "../ui/PhoneLite.jsx";
+import { NotificationTray } from "../ui/Notifications.jsx";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
 import { CardView } from "./life/CardView.jsx";
@@ -149,6 +150,15 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
       />
       {phase === "map" && !overlay && <QuestLog chapter={chapter} onGo={go} onFinish={() => go("home", { finish: true })} />}
       {phase === "map" && !overlay && <p className="map-controls">{t("map.controls")}</p>}
+      <NotificationTray
+        messages={phone.messages}
+        phoneEvents={phone.unlocked ? phone.notifications : []}
+        canFinish={Boolean(chapter?.canEnd)}
+        active={phase === "map" && !overlay && !showIntro}
+        onOpenPhoneEvent={() => dispatch({ type: "VISIT", location: "phone" })}
+        onGoHome={() => go("home", { finish: true })}
+        onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })}
+      />
       {showIntro && <ChapterIntro chapter={chapter} avatar={avatar} phoneGift={chapter.phoneGift} onStart={() => setIntroDone(chapter.id)} />}
       {dialog && (
         <div className="dialog-layer">
