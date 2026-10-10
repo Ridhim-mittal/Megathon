@@ -5,7 +5,7 @@ import { goals, select } from "../ui/gameAdapter.js";
 import { AskAmmamma } from "../ui/AskAmmamma.jsx";
 import { GyaanLite } from "../ui/GyaanLite.jsx";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
-import { START, placeById } from "../ui/map/village.js";
+import { mapForMission } from "../ui/map/maps.js";
 import { PhoneLite as Phone } from "../ui/PhoneLite.jsx";
 import { NotificationTray } from "../ui/Notifications.jsx";
 import { StockExchange } from "../ui/exchange/StockExchange.jsx";
@@ -41,15 +41,16 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   const [goTo, setGoTo] = useState(null);
   const [warning, setWarning] = useState(null);
   const [discovered, setDiscovered] = useState(loadDiscovered);
-  const [spawn, setSpawn] = useState(() => ({ ...START, dir: "down", key: story?.mission.id }));
+  const map = mapForMission(story?.mission.id);
+  const [spawn, setSpawn] = useState(() => ({ ...map.START, dir: "down", key: story?.mission.id }));
 
   // Every scene and choice this life touches is remembered for the flowcharts.
   useEffect(() => setDiscovered(recordDiscovered(life)), [life.story?.visited.length, life.story?.path.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // A new chapter starts in front of home.
   useEffect(() => {
-    setSpawn({ ...START, dir: "down", key: story?.mission.id });
-  }, [story?.mission.id]);
+    setSpawn({ ...map.START, dir: "down", key: story?.mission.id });
+  }, [story?.mission.id]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!toast) return undefined;
     const id = setTimeout(() => onToast(null), 4500);
@@ -57,7 +58,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   }, [toast, onToast]);
 
   const placeName = useCallback((id) => (story?.mission.placeNames?.[id] ? pick(story.mission.placeNames[id]) : t(`places.${id}`)), [story, pick, t]);
-  const labels = useMemo(() => Object.fromEntries(Object.keys(placeById).map((id) => [id, gameAtPlace(id) ? `${placeName(id)} 🎮` : placeName(id)])), [placeName]);
+  const labels = useMemo(() => Object.fromEntries(Object.keys(map.placeById).map((id) => [id, gameAtPlace(id) ? `${placeName(id)} 🎮` : placeName(id)])), [placeName, map]);
 
   const showIntro = phase === "budget" && story && introDone !== story.mission.id;
   const engineDialog = ["budget", "card", "outcome", "minigame", "chapterEnd"].includes(phase);
@@ -271,6 +272,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   return (
     <div className={`mapgame storygame phase-${phase} ${busy ? "is-busy" : ""} ${objective?.rush && phase === "map" ? "rushing" : ""}`}>
       <MapCanvas
+        map={map}
         avatar={avatar}
         stage={hud.stage}
         markers={markers}

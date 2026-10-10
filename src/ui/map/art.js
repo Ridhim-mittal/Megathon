@@ -1,9 +1,9 @@
 // Pixel art, drawn in code at native resolution (16 px tiles). The canvas is scaled up with
 // nearest-neighbour sampling, so every rect here is a crisp "pixel".
 
-import { GRID, H, PLACES, TILE, W, hash } from "./village.js";
+import { GRID, H, PLACES, TILE, VILLAGE, W, hash } from "./village.js";
 
-const C = {
+export const C = {
   grass: "#5da444",
   grassDark: "#4a8a36",
   grassLight: "#79c055",
@@ -37,7 +37,7 @@ const C = {
 };
 const FLOWERS = ["#e0504a", "#f2d14a", "#f4f4f4", "#f08ac0", "#a77be0"];
 
-function px(ctx, x, y, w = 1, h = 1, color) {
+export function px(ctx, x, y, w = 1, h = 1, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, w, h);
 }
@@ -45,7 +45,7 @@ function px(ctx, x, y, w = 1, h = 1, color) {
 const tileAt = (x, y) => GRID[y]?.[x] ?? "tree";
 const isGround = (t) => t === "path" || t === "plaza";
 
-function grass(ctx, ox, oy, tx, ty) {
+export function grass(ctx, ox, oy, tx, ty) {
   px(ctx, ox, oy, TILE, TILE, C.grass);
   for (let i = 0; i < 6; i++) {
     const x = Math.floor(hash(tx, ty, i) * 15);
@@ -739,7 +739,7 @@ function groundDecals(ctx) {
 }
 
 // The outline pass: every transparent pixel touching an opaque one becomes the warm outline.
-function outline(canvas) {
+export function outline(canvas) {
   const ctx = canvas.getContext("2d");
   const { width, height } = canvas;
   const img = ctx.getImageData(0, 0, width, height);
@@ -762,7 +762,7 @@ function outline(canvas) {
   ctx.putImageData(img, 0, 0);
 }
 
-function shadowFor(ctx, x, y, w, h) {
+export function shadowFor(ctx, x, y, w, h) {
   ctx.fillStyle = "rgba(30, 50, 20, 0.22)";
   ctx.beginPath();
   ctx.ellipse(x + w / 2 + 3, y + h, w / 2 + 2, Math.max(3, h / 7), 0, 0, Math.PI * 2);
@@ -1290,3 +1290,6 @@ export function drawMarker(ctx, x, y, kind, t) {
     ctx.fillRect(x - 1, yy + 8, 2, 2);
   }
 }
+
+VILLAGE.render = renderVillage;
+VILLAGE.ambient = drawAmbient;

@@ -43,7 +43,7 @@ The top bar switches language and sound at any time. Sound is on by default: the
 - `src/content/`: storylines, cards, lessons, glossary, documents and endings; `src/content/story/` holds the six story chapters (scenes, choices, routing, outcomes) in en/hi/te.
 - `src/ui/gameAdapter.js`: the only door from the UI to the engine and content.
 - `src/screens/`: one file per screen (`App.jsx` routes them). `StoryScreen.jsx` is the game (story mode) and `src/screens/story/` its objective panel, STOP warning, timers, chapter title cards, flowcharts and story ending; `MapScreen.jsx` is the older free-roam chapter mode; `src/screens/map/` holds its HUD, quest log and chapter cards, and `src/screens/life/` the card, outcome, budget, shop and mini-game views.
-- `src/ui/map/`: the pixel village: `village.js` (tile map, places, paths), `art.js` (code-drawn pixel art and characters), `MapCanvas.jsx` (movement, camera, clicks).
+- `src/ui/map/`: the pixel maps: `village.js` (village tile map, places, paths), `art.js` (code-drawn village art and characters), `city.js` and `cityArt.js` (the town of the First Job chapter: roads you cross at zebra crossings, the PG hostel, supermarket and ATM, park, hospital, bank and tech park, with moving cars), `mapkit.js` (shared path finding), `maps.js` (which map each story mission uses) and `MapCanvas.jsx` (movement, camera, clicks).
 - `src/ui/PhoneLite.jsx`, `src/ui/GyaanLite.jsx`: the in-game phone and the lesson reader.
 - `src/ui/exchange/`: the phone's practice stock exchange: `orderbook.js` (matching engine and simulated traders, tested in `orderbook.test.js`) and `StockExchange.jsx`.
 - `src/ui/Notifications.jsx`: phone notifications over the map.

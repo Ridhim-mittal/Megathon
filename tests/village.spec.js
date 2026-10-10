@@ -224,3 +224,13 @@ test("the interest race mini-game opens from the title: a wrong run offers Try a
   await expect(game.getByRole("heading", { name: "Scholarship won!" })).toBeVisible();
   await expect(game).toContainText("5 of 5 right");
 });
+
+test("the title can jump straight to the town of the first job without touching the saved life", async ({ page }) => {
+  await page.goto("/?seed=demo");
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+  await page.getByRole("button", { name: "Visit the town (First Job)" }).click();
+  await expect(page.locator(".mapgame")).toBeVisible({ timeout: 20000 });
+  await expect(page.locator(".hud-chapter")).toContainText("Age 22");
+  expect(await page.evaluate(() => window.localStorage.getItem("lakshyam.life"))).toBeNull();
+});

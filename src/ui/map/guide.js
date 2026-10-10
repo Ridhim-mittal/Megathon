@@ -2,17 +2,18 @@
 // door, a gently bobbing arrow over the door, and an arrow at the screen edge when the target is
 // off screen.
 
-import { TILE, findPath } from "./village.js";
+import { TILE, findPath as villagePath } from "./village.js";
 
 const GOLD = "#ffd84a";
 const INK = "#2b1d0e";
 
-export function drawGuide(ctx, view, cache, player, place, now, { urgent = false } = {}) {
+export function drawGuide(ctx, view, cache, player, place, now, { urgent = false, findPath = villagePath } = {}) {
   if (!place?.entrance) return;
   // Keep one path while the player follows it; find a new one only when they leave it, so the
   // trail never jumps between equally short routes.
   const here = { x: player.x, y: player.y };
-  if (cache.place !== place.id || !cache.path) {
+  if (cache.place !== place.id || !cache.path || cache.finder !== findPath) {
+    cache.finder = findPath;
     cache.place = place.id;
     cache.path = findPath(here, place.entrance) ?? [];
   } else {
