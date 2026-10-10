@@ -169,7 +169,18 @@ Selectors: `select.chapter(s)` (slots with title, kind, location, required, done
 `select.locations(s)` (`{ id, unlocked, pending, required, special }`), `select.market(s)` (funds,
 stocks, deposits with yearly price history from 100, value, invested, risk, fee, bad-news years;
 `unlocked`/`reason`, `concentration`, `lastTrade`) and `select.phone(s)` (`unlocked`,
-`notifications`, `loans`, `accounts`). `select.hud(s)` adds `mode`, `chapter`, `hasPhone`, `avatar`.
+`notifications`, `messages`, `loans`, `accounts`). `select.hud(s)` adds `mode`, `chapter`, `hasPhone`, `avatar`.
+
+**Inbox.** `select.inbox(s)` (also `select.phone(s).messages`) lists the phone's messages, newest
+first: `{ id, age, kind, … }`, language-neutral (the UI writes the words). Kinds: `chapter`
+(`chapterId, required`), `phoneGift`, `year` (`yearAge, headline, netWorthChange`), and for delayed
+scams `scamHook`, `debit` (`amount, paidFrom, borrowed`) and `scamReveal` (`amount, outcome`). Card
+messages carry `cardId`, `title` and `lesson`. At most `ASSUMPTIONS.chapters.inboxSize` are kept.
+
+**Delayed scams.** The scam choices listed in `ASSUMPTIONS.chapters.delayedScams` (a phishing link,
+a pump-and-dump) do not take their cash or meter loss at `CHOOSE`: `lastOutcome.delayed` is `true`
+and nothing moves. The loss lands `scamDelayEvents` events later (or at `END_CHAPTER`) as a
+`debit` and a `scamReveal` message. Scams where you knowingly hand money over stay immediate.
 
 Markets: three fictional mutual funds (`sip_index` Top-50 Index Fund, `mf_debt`, `mf_active` with a
 1.8% fee) and four fictional shares (`stock_kisan`, `stock_chai`, `stock_spark`, `stock_power`) move

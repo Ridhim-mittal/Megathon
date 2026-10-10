@@ -6,6 +6,8 @@ import { GyaanLite } from "../ui/GyaanLite.jsx";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
 import { START, placeById } from "../ui/map/village.js";
 import { PhoneLite as Phone } from "../ui/PhoneLite.jsx";
+import { NotificationTray } from "../ui/Notifications.jsx";
+import { StockExchange } from "../ui/exchange/StockExchange.jsx";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
 import { CardView } from "./life/CardView.jsx";
@@ -100,6 +102,8 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
   else if (phase === "minigame") dialog = <MinigameView life={life} dispatch={dispatch} />;
   else if (phase === "chapterEnd")
     dialog = <ChapterEnd chapter={chapter} castName={castName} last={chapter?.id === "settle"} onNext={() => dispatch({ type: "ADVANCE" })} />;
+  else if (overlay?.type === "exchange")
+    dialog = <StockExchange onClose={() => setOverlay({ type: "phone" })} onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })} />;
   else if (overlay?.type === "shop") dialog = <ShopView life={life} dispatch={dispatch} onDone={() => setOverlay(null)} />;
   else if (overlay?.type === "info")
     dialog = (
@@ -144,6 +148,15 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
       />
       {phase === "map" && !overlay && <QuestLog chapter={chapter} onGo={go} onFinish={() => go("home", { finish: true })} />}
       {phase === "map" && !overlay && <p className="map-controls">{t("map.controls")}</p>}
+      <NotificationTray
+        messages={phone.messages}
+        phoneEvents={phone.unlocked ? phone.notifications : []}
+        canFinish={Boolean(chapter?.canEnd)}
+        active={phase === "map" && !overlay && !showIntro}
+        onOpenPhoneEvent={() => dispatch({ type: "VISIT", location: "phone" })}
+        onGoHome={() => go("home", { finish: true })}
+        onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })}
+      />
       {showIntro && <ChapterIntro chapter={chapter} avatar={avatar} phoneGift={chapter.phoneGift} onStart={() => setIntroDone(chapter.id)} />}
       {dialog && (
         <div className="dialog-layer">
@@ -163,6 +176,7 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
             dispatch({ type: "VISIT", location: "phone" });
           }}
           onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })}
+          onExchange={() => setOverlay({ type: "exchange" })}
         />
       )}
       {overlay?.type === "gyaan" && <GyaanLite life={life} lessonId={overlay.lesson} onClose={() => setOverlay(null)} />}

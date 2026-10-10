@@ -132,6 +132,17 @@ export const ASSUMPTIONS = deepFreeze({
     // A phone arrives as a gift at the start of this stage if the player has none.
     phoneGiftStage: "young",
     phoneFlag: "owns_phone",
+    // Scams whose loss lands later, as phone messages: victims of a phishing link or a
+    // pump-and-dump find out from a debit alert or a price crash, not at the moment they click.
+    // Card id → choice ids. Scams where you knowingly hand money over stay immediate.
+    delayedScams: {
+      "village.young.kyc_sms.a": ["click"],
+      "village.young.vip_tips.a": ["buy_big"],
+    },
+    // The loss lands this many events after the choice, or when the chapter ends.
+    scamDelayEvents: 2,
+    // The phone's inbox keeps the latest messages only.
+    inboxSize: 60,
   },
 
   // Order in which money is found when you must pay. `spend` is a choice you make, `shock` a
