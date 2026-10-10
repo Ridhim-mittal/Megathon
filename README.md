@@ -28,7 +28,7 @@ Deploy as a static Vite site: build command `npm run build`, output directory `d
 2. **Each chapter** opens with a title card, then your jar split (needs first) for its years.
 3. **Walk the village:** arrow keys or WASD to move, **Enter** to go in, or click a place (or a line in the quest log) to walk there. A yellow **!** is a must-live event, a white **!** is optional. Each event is a story card: press **1–4** or click to choose; **Why?** explains every outcome with numbers, and **Learn more** opens the Gyaan lesson.
 4. When the quest log says so, **go home** to finish the chapter and see how its years went (money, dream, the index fund year by year).
-5. **The phone** arrives with your first job (or buy one). Press **P** or the phone button: messages (some events arrive here), the bank (move money, prepay loans) and invest (index, debt and active mutual funds and four shares, from age 18, with fees, risk and a concentration warning).
+5. **The phone** arrives with your first job (or buy one). Press **P** or the phone button: messages (some events arrive here), the bank (move money, prepay loans) and invest (index, debt and active mutual funds and four shares, from age 18, with fees, risk and a concentration warning). The **Exchange** app is a practice stock market: a live order book with simulated traders, market and limit orders, and seven missions that teach the spread, queues, slippage and how news moves prices (practice money only). New messages and updates also pop up on the map without opening the phone; some scams (a phishing link, VIP stock tips) take your money later, and you find out from an SMS.
 6. **Ammamma's glasses**, **documents**, **Ask Ammamma** (top bar, or click her on the road) and **echoes** work as before. At 36: your **ending**, your **Gyaan report**, **Parallel Life** and the **ending gallery**.
 
 The top bar switches language and sound (off by default) at any time. Progress is saved in this browser's `localStorage` only; `?seed=demo` gives a fixed, rehearsed life. All numbers are illustrative teaching assumptions, not advice.
@@ -41,6 +41,8 @@ The top bar switches language and sound (off by default) at any time. Progress i
 - `src/screens/`: one file per screen (`App.jsx` routes them). `MapScreen.jsx` is the game; `src/screens/map/` holds its HUD, quest log and chapter cards, and `src/screens/life/` the card, outcome, budget, shop and mini-game views.
 - `src/ui/map/`: the pixel village: `village.js` (tile map, places, paths), `art.js` (code-drawn pixel art and characters), `MapCanvas.jsx` (movement, camera, clicks).
 - `src/ui/PhoneLite.jsx`, `src/ui/GyaanLite.jsx`: the in-game phone and the lesson reader.
+- `src/ui/exchange/`: the phone's practice stock exchange: `orderbook.js` (matching engine and simulated traders, tested in `orderbook.test.js`) and `StockExchange.jsx`.
+- `src/ui/Notifications.jsx`: phone notifications over the map.
 - `src/ui/`: shared components (HUD, jars, portraits, document viewer, Ask Ammamma, rich text).
 - `src/i18n/`: UI strings in `en.json`, `hi.json`, `te.json` and the `useT()` hook.
 - `src/World.jsx`: the earlier SVG village (no longer routed).
