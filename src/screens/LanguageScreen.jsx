@@ -1,12 +1,12 @@
 import React from "react";
-import { LANGS, useT } from "../i18n/index.jsx";
+import { LANGS, useT, withName } from "../i18n/index.jsx";
 import { Sheet, ScreenBar } from "../ui/Sheet.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 
 const SAMPLE = { en: "Hello, kanna!", hi: "नमस्ते, कन्ना!", te: "నమస్తే, కన్నా!" };
 
 export function LanguageScreen({ settings, onPick, onMenu }) {
-  const { t } = useT();
+  const { t, playerName } = useT();
   return (
     <>
       <ScreenBar>
@@ -23,7 +23,7 @@ export function LanguageScreen({ settings, onPick, onMenu }) {
               aria-pressed={settings.lang === l}
             >
               <strong>{t(`lang.${l}`)}</strong>
-              <span>{SAMPLE[l]}</span>
+              <span>{withName(SAMPLE[l], playerName === "Kanna" ? "" : playerName)}</span>
             </button>
           ))}
         </div>
