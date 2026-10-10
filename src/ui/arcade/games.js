@@ -7,6 +7,8 @@
 //   insuranceRush  endless drive; keep your policy renewed (see InsuranceRush.jsx)    (insurance must be active)
 //   priceSnake     the phone snake; each +1 year makes prices heavier (see priceSnake.js)  (inflation)
 
+import { createPatang, patangResult, stepPatang } from "./patang.js";
+
 export const FIELD = { w: 480, h: 270 };
 
 export const GAMES = [
@@ -15,6 +17,7 @@ export const GAMES = [
   { id: "snowball", place: "bank", seconds: 40 },
   // Endless: runs until a crash with an expired policy. Its logic lives in InsuranceRush.jsx.
   { id: "insuranceRush", place: null, seconds: null },
+  { id: "patangMarket", place: null, seconds: 54 },
   // Endless too: the classic snake, logic in priceSnake.js.
   { id: "priceSnake", place: null, seconds: null },
 ];
@@ -264,8 +267,8 @@ export const laneY = (i) => LANES[i];
 
 // ---------- shared ----------
 
-const MAKERS = { jarDash, scamSmash, snowball };
-const STEPS = { jarDash: stepJarDash, scamSmash: stepScamSmash, snowball: stepSnowball };
+const MAKERS = { jarDash, scamSmash, snowball, patangMarket: createPatang };
+const STEPS = { jarDash: stepJarDash, scamSmash: stepScamSmash, snowball: stepSnowball, patangMarket: stepPatang };
 
 export function createGame(id, rng = Math.random) {
   return MAKERS[id](rng);
@@ -278,6 +281,7 @@ export function stepGame(s, dt, input = {}) {
 
 // The final score and the numbers the result screen shows.
 export function result(s) {
+  if (s.id === "patangMarket") return patangResult(s);
   if (s.id === "jarDash") return { score: s.score, caught: s.caught, spent: s.spent };
   if (s.id === "scamSmash") return { score: s.score, blocked: s.blocked, passed: s.passed, mistakes: s.mistakes };
   if (s.id === "priceSnake") return { score: s.score, years: s.years, price: s.price, history: s.history, reason: s.reason };
