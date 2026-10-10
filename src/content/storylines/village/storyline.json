@@ -113,6 +113,7 @@
   "intro": [
     {
       "speaker": "narrator",
+      "scene": "village",
       "text": {
         "en": "Mallepalli. One kirana shop, one bus a day, and one big tank that floods or dries up.",
         "hi": "मल्लेपल्ली। एक किराने की दुकान, दिन में एक बस, और एक बड़ा तालाब जो या तो उफनता है या सूख जाता है।",
@@ -121,6 +122,7 @@
     },
     {
       "speaker": "narrator",
+      "scene": "field",
       "text": {
         "en": "Your family rents two acres. {cast:father} grows cotton. {cast:mother} works in other people's fields.",
         "hi": "आपका परिवार दो एकड़ किराए पर लेता है। {cast:father} कपास उगाते हैं। {cast:mother} दूसरों के खेतों में काम करती हैं।",
@@ -129,6 +131,7 @@
     },
     {
       "speaker": "narrator",
+      "scene": "khata",
       "text": {
         "en": "Nobody in your house has ever been inside a bank. The kirana [[khata]] is always open.",
         "hi": "आपके घर में कोई कभी बैंक के अंदर नहीं गया। किराने का [[khata]] हमेशा खुला रहता है।",
@@ -137,6 +140,7 @@
     },
     {
       "speaker": "narrator",
+      "scene": "secret",
       "text": {
         "en": "Everyone says the family lost Thatha's land the year the rains failed. Ammamma never says anything at all.",
         "hi": "सब कहते हैं, जिस साल बारिश नहीं हुई, उस साल परिवार की ज़मीन चली गई। अम्मम्मा कुछ नहीं कहतीं।",
@@ -145,6 +149,7 @@
     },
     {
       "speaker": "narrator",
+      "scene": "you",
       "text": {
         "en": "You are 11. You have ₹50, a little sister called {cast:sibling}, and a best friend called {cast:friend}.",
         "hi": "आप 11 साल के हैं। आपके पास ₹50 हैं, एक छोटी बहन {cast:sibling}, और पक्का दोस्त {cast:friend}।",
@@ -153,6 +158,7 @@
     },
     {
       "speaker": "mentor",
+      "scene": "mentor",
       "text": {
         "en": "Kanna, money is like water. Plan where it goes, or it goes wherever it likes.",
         "hi": "कन्ना, पैसा पानी जैसा है। तय करो कहाँ जाए, वरना जहाँ मन होगा वहाँ बह जाएगा।",
@@ -161,6 +167,7 @@
     },
     {
       "speaker": "narrator",
+      "scene": "storyteller",
       "text": {
         "en": "I know this story well. I was there for all of it. Let's begin.",
         "hi": "मैं यह कहानी अच्छी तरह जानती हूँ। मैं पूरे समय वहीं थी। चलिए, शुरू करते हैं।",
