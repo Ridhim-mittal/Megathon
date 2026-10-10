@@ -60,7 +60,8 @@
     "namePlaceholder": "Kanna",
     "cost": "About {amount} at today's prices",
     "costNote": "Prices rise every year, so the target will grow.",
-    "start": "Start my life at 11"
+    "start": "Start my life at 11",
+    "pick": "Tap a dream to see what it means."
   },
   "stage": {
     "child": "Pocket money",
