@@ -1701,3 +1701,171 @@
 .rush-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: min(420px, 100%); }
 .rush-controls button { justify-content: center; user-select: none; touch-action: none; }
 @media (prefers-reduced-motion: reduce) { .rush-policy.is-low { animation: none; } }
+
+/* ---------- Patang Market (src/ui/arcade/PatangMarket.jsx) ---------- */
+.game-patangMarket {
+  --game-color: #d6336c;
+}
+.patang canvas {
+  cursor: pointer;
+}
+.patang-bar {
+  gap: 12px;
+}
+.patang-year {
+  font-family: var(--px-font);
+  font-size: 16px;
+  min-width: 7.5em;
+}
+.patang-units {
+  flex: 1;
+  color: #7a6a4f;
+  font-size: 13px;
+}
+.patang-report {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+}
+.patang-chart {
+  width: 100%;
+  height: auto;
+  background: #fffaf0;
+  border: 2px solid #e0cb98;
+  border-radius: 10px;
+}
+.patang-chart .crash {
+  fill: rgba(220, 70, 50, 0.12);
+}
+.patang-chart .price {
+  fill: none;
+  stroke: #a06e14;
+  stroke-width: 1.6;
+}
+.patang-chart .buy {
+  fill: rgba(47, 125, 58, 0.55);
+  stroke: #2f7d3a;
+  stroke-width: 0.6;
+}
+.patang-chart .exit circle {
+  fill: none;
+  stroke-width: 2;
+}
+.patang-chart .exit.stayed circle {
+  stroke: #2f7d3a;
+}
+.patang-chart .exit.quit circle {
+  stroke: #c0392b;
+}
+.patang-chart .exit text {
+  font-size: 9px;
+  text-anchor: middle;
+}
+.patang-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.patang-compare p {
+  margin: 0;
+  display: grid;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 2px solid;
+  text-align: left;
+}
+.patang-compare p.good {
+  background: #eaf6e2;
+  border-color: #8fb36d;
+}
+.patang-compare p.bad {
+  background: #fff0ec;
+  border-color: #f0b7aa;
+}
+.patang-compare small {
+  font-size: 12px;
+  color: #5d5040;
+}
+.patang-compare b {
+  font-family: var(--px-font);
+  font-size: 22px;
+}
+.patang-dip {
+  margin: 0;
+  font-weight: 700;
+  font-size: 13.5px;
+}
+/* Numbers in a clear font: the pixel font's 5 reads like an 8. */
+.game-patangMarket .arcade-live,
+.game-patangMarket .arcade-score b,
+.patang-compare b {
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  font-weight: 800;
+}
+
+/* Patang Market start card: the goal and the symbols */
+.patang-intro {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.patang-lead {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+.patang-rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.patang-rules li {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 6px;
+  border-radius: 12px;
+  border: 2px solid;
+  animation: calm-rise 0.4s both;
+}
+.patang-rules li.how {
+  background: #f4f0ff;
+  border-color: #c4b5f5;
+}
+.patang-rules li.good {
+  background: #eaf6e2;
+  border-color: #b5d69c;
+}
+.patang-rules li.bad {
+  background: #fff0ec;
+  border-color: #f0b7aa;
+}
+.patang-rules b {
+  font-size: 14px;
+}
+.patang-rules small {
+  font-size: 12px;
+  color: #5d5040;
+}
+.patang-icon {
+  width: 64px;
+  height: 48px;
+}
+.patang-icon.heart {
+  display: grid;
+  place-items: center;
+  color: #d0453a;
+}
+.patang-icon.heart svg {
+  fill: #ff7a6b;
+}
+@media (max-width: 560px) {
+  .patang-rules {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
