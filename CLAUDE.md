@@ -36,9 +36,9 @@ same time. These rules exist to keep us out of merge-conflict hell. Follow them 
 
 ## Before you push
 1. Run the project's checks (fill these in once the stack is chosen):
-   - Install: `TODO`
-   - Run dev: `TODO`
-   - Lint / test: `TODO`
+   - Install: `npm ci` (Node.js 22.12+ or 24 LTS)
+   - Run dev: `npm run dev`
+   - Checks: `npm test` and `npm run build`
 2. `git fetch origin main && git merge origin/main`, resolve any conflicts, re-run checks.
 3. `git push -u origin <your-branch>` — never `main`.
 4. When the work is usable, open a PR into `main`. The human merges it on GitHub.
@@ -57,4 +57,4 @@ same time. These rules exist to keep us out of merge-conflict hell. Follow them 
 | Infra, docs, integration | root, `docs/` | TODO |
 
 ## Project overview
-TODO: one paragraph on what we are building, the stack, and how the pieces talk to each other.
+Lakshyam is a 2D financial-literacy browser game for Class 11–12 students. React + Vite render an illustrated budgeting scene; pure functions in `src/game.js` calculate a fixed bicycle repair and a fair parallel-life comparison. `src/main.jsx` owns the chapter UI; `src/World.jsx` owns the title screen and interactive village; `src/game-scene.css` styles the laptop game scene. Shared jar and story visuals live in `src/styles.css`. Browser checks run with `npm run test:e2e` after installing Playwright Chromium. There is no backend or API key requirement. See README.md for scope and teaching assumptions.
