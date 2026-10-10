@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { ArrowLeft, BookOpen, CandlestickChart, Landmark, MessageSquare, TrendingUp, X } from "lucide-react";
+import { ArrowLeft, BookOpen, CandlestickChart, Gamepad2, Landmark, MessageSquare, TrendingUp, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { select } from "./gameAdapter.js";
 
 // A small in-game phone: messages, bank and invest apps. It is the stand-in until the full
 // phone (src/ui/phone/Phone.jsx) lands; both take the same props.
-export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, onExchange, initialApp = null }) {
+export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, onExchange, onArcade, initialApp = null }) {
   const { t, plain, money } = useT();
   const [app, setApp] = useState(initialApp);
   const phone = select.phone(life);
@@ -23,6 +23,7 @@ export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, on
     { id: "bank", icon: Landmark },
     { id: "invest", icon: TrendingUp },
     { id: "exchange", icon: CandlestickChart },
+    { id: "arcade", icon: Gamepad2 },
     { id: "gyaan", icon: BookOpen },
   ];
 
@@ -40,7 +41,7 @@ export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, on
           {!app && (
             <div className="app-grid">
               {APPS.map((a) => (
-                <button key={a.id} className={`app-icon app-${a.id}`} onClick={() => (a.id === "gyaan" ? onLearn?.(null) : a.id === "exchange" ? onExchange?.() : setApp(a.id))}>
+                <button key={a.id} className={`app-icon app-${a.id}`} onClick={() => (a.id === "gyaan" ? onLearn?.(null) : a.id === "exchange" ? onExchange?.() : a.id === "arcade" ? onArcade?.() : setApp(a.id))}>
                   <a.icon size={26} />
                   <span>{t(`phone.apps.${a.id}`)}</span>
                   {a.badge > 0 && <b className="badge">{a.badge}</b>}

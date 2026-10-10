@@ -536,7 +536,8 @@
       "bank": "Bank",
       "invest": "Invest",
       "gyaan": "Gyaan",
-      "exchange": "Exchange"
+      "exchange": "Exchange",
+      "arcade": "Arcade"
     },
     "noMessages": "No new messages.",
     "buy": "Buy",
@@ -589,7 +590,21 @@
     "wrong": "Not quite.",
     "topics": "Market basics",
     "myth": "Myth:",
-    "truth": "Truth:"
+    "truth": "Truth:",
+    "all": "All lessons",
+    "nextStep": "Next step",
+    "tapToFlip": "Tap to flip",
+    "prev": "Back",
+    "next": "Next",
+    "slide": {
+      "idea": "Big idea",
+      "points": "Key points",
+      "example": "Example",
+      "myth": "Myth or truth?",
+      "try": "Try it",
+      "quiz": "Quick check",
+      "summary": "In short"
+    }
   },
   "avatar": {
     "label": "Choose your look",
@@ -907,5 +922,67 @@
     "greet": "Namaste, {name}! Come, your story is waiting.",
     "start": "Let's go!",
     "newHint": "Pick your look and name"
+  },
+  "arcade": {
+    "title": "Arcade",
+    "back": "All games",
+    "play": "Play ({s} s)",
+    "go": "Go!",
+    "again": "Play again",
+    "done": "Done",
+    "best": "Best: {score}",
+    "newBest": "New best!",
+    "hearts": "{n} hearts left",
+    "here": "Play here",
+    "invite": "Mini-game here!",
+    "hint": "New: mini-games! Look for 🎮 at the post office, the village square and the bank.",
+    "stat": {
+      "caught": "🪙 Caught ₹{n}",
+      "spent": "🍬 Lost ₹{n} to impulse buys",
+      "blocked": "🛡️ {n} scams blocked",
+      "passed": "💸 {n} got through",
+      "mistakes": "🙈 {n} real messages blocked",
+      "added": "🪙 Coins ₹{n}",
+      "interest": "📈 Growth ₹{n}",
+      "lost": "🛍️ Sales took ₹{n}"
+    },
+    "games": {
+      "jarDash": {
+        "name": "Jar Dash",
+        "tag": "Catch coins, dodge spends",
+        "goal": "Fill your jar with coins. Dodge the sweets, toys and game top-ups!",
+        "how": "Move the jar with the arrow keys or the mouse.",
+        "lesson": "Small spends add up. Every impulse buy you dodge stays in your jar."
+      },
+      "scamSmash": {
+        "name": "Scam Smash",
+        "tag": "Block the scams",
+        "goal": "Messages pop up on six phones. Block the scams, let real messages through.",
+        "how": "Tap a phone or press its number to block it.",
+        "lesson": "A prize, a panic, an OTP or \"pay first\"? It's a scam. Block it."
+      },
+      "snowball": {
+        "name": "Savings Snowball",
+        "tag": "Roll it bigger",
+        "goal": "Roll your savings ball, collect coins and dodge the SALE! signs.",
+        "how": "Change lanes with the arrow keys or the mouse.",
+        "lesson": "Savings grow on their own growth. Breaking them early for a sale costs the most."
+      }
+    },
+    "msg": {
+      "prize": "🎁 You won ₹25 lakh!",
+      "otp": "🔑 Send me your OTP",
+      "kyc": "⚠️ KYC ends today! Click",
+      "tips": "📈 300% profit, join VIP",
+      "jobFee": "💼 Job! Pay ₹500 first",
+      "loanApp": "💸 Instant loan, no papers",
+      "refund": "↩️ Refund: enter UPI PIN",
+      "amma": "🍛 Amma: dinner at 8",
+      "salary": "🏦 Salary credited",
+      "exam": "📚 Exam moved to Monday",
+      "match": "🏏 Cricket at 5?",
+      "busTime": "🚌 Bus leaves at 7:30",
+      "bankReal": "🏦 Branch shut on Sunday"
+    }
   }
 }
