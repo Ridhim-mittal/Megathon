@@ -1,0 +1,607 @@
+[
+  {
+    "id": "village.teen.phone_emi.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L07",
+    "ages": [15, 17],
+    "weight": 1,
+    "requires": { "flags": [], "notFlags": ["owns_phone"] },
+    "speaker": "friend",
+    "title": { "en": "Only ₹699 a month!" },
+    "text": { "en": "{cast:friend} shows off a new phone. \"Zero down payment, only ₹699 a month on [[emi]] for 12 months. Easy! Trust me, mama.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Zero down payment" },
+        "truth": { "en": "Nothing today, but a ₹1,200 processing fee is added to your first bill." },
+        "lesson": "L07"
+      },
+      {
+        "phrase": { "en": "only ₹699 a month" },
+        "truth": { "en": "₹699 × 12 = ₹8,388. Add the fee: ₹9,588 for a ₹7,500 phone." },
+        "lesson": "L07"
+      }
+    ],
+    "document": "doc.phone_emi",
+    "choices": [
+      {
+        "id": "buy",
+        "label": { "en": "Buy it on EMI" },
+        "quality": "risky",
+        "effects": {
+          "loan": { "source": "bnpl_emi", "principal": 7500, "months": 12, "emi": 699, "fee": 1200 },
+          "meters": { "joy": 8 },
+          "flags": { "add": ["owns_phone"] },
+          "schedule": [{ "inYears": 1, "card": "village.teen.emi_pinch.a" }]
+        },
+        "echo": { "level": 2, "hint": { "en": "₹699 feels small. Twelve of them don't." } },
+        "outcome": { "en": "You pay ₹8,388 in EMIs plus a ₹1,200 fee: ₹9,588 for a ₹7,500 phone." },
+        "why": { "en": "An EMI spreads the cost; it doesn't shrink it. Add up every payment before you say yes." }
+      },
+      {
+        "id": "save",
+        "label": { "en": "Save ₹700 a month instead" },
+        "quality": "good",
+        "default": true,
+        "effects": {
+          "flags": { "add": ["saving_for_phone"] },
+          "schedule": [{ "inYears": 1, "card": "village.teen.phone_bought_cash.a" }]
+        },
+        "outcome": { "en": "In 11 months you buy it outright and keep the ₹2,088 the EMI would have cost." },
+        "why": { "en": "Waiting a little often costs less than paying a lot later." }
+      },
+      {
+        "id": "used_phone",
+        "label": { "en": "Buy a good second-hand phone for ₹4,000 cash" },
+        "quality": "good",
+        "effects": { "cash": -4000, "meters": { "joy": 5 }, "flags": { "add": ["owns_phone"] } },
+        "outcome": { "en": "₹4,000, no EMI, no fee. Chintu's phone is shinier. Yours is paid for." },
+        "why": { "en": "The cheapest EMI is the one you never take. A smaller want, paid in full, is freedom." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.cotton_or_tuition.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L08",
+    "ages": [15, 18],
+    "weight": 1,
+    "speaker": "father",
+    "title": { "en": "Cotton season" },
+    "text": { "en": "Cotton-picking season. The contractor pays ₹300 a day. Board exams are in four months. Evening tuition in town costs ₹500 a month." },
+    "choices": [
+      {
+        "id": "pick_daily",
+        "label": { "en": "Pick cotton every day, skip tuition" },
+        "quality": "risky",
+        "effects": { "cash": 6000, "meters": { "family": 4, "health": -4 }, "income": { "monthly": 1800, "source": "farm_work" } },
+        "echo": { "level": 1, "hint": { "en": "Money now, marks later." } },
+        "outcome": { "en": "You earn ₹6,000 in 20 days. Your maths marks fall from 78 to 54." },
+        "why": { "en": "The real price of the field work was your marks. That's [[opportunity_cost]]: what you give up." }
+      },
+      {
+        "id": "weekends",
+        "label": { "en": "Pick on weekends, tuition on weekdays" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": 2400, "meters": { "health": -2, "family": 2 }, "gyaan": 2, "income": { "monthly": 1200, "source": "odd_jobs" } },
+        "outcome": { "en": "₹2,400 earned in 8 days. After paying ₹500 tuition, your marks rise to 85." },
+        "why": { "en": "Good choices weigh both sides. A little earning now, a bigger skill later." }
+      },
+      {
+        "id": "only_study",
+        "label": { "en": "Only study, no field work" },
+        "quality": "neutral",
+        "effects": { "meters": { "family": -4, "joy": -1 }, "gyaan": 1 },
+        "outcome": { "en": "Marks rise to 88. But Nanna pays a labourer ₹6,000 to pick the cotton you didn't." },
+        "why": { "en": "Every choice costs something. Here, your study time cost the family ₹6,000." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.cycle_sale.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L09",
+    "ages": [15, 18],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "Selling your old cycle" },
+    "text": { "en": "You list your old cycle online for ₹1,500. A \"buyer\" replies fast: \"I'm posted far away. I sent a [[collect_request]]. Enter your PIN to receive the money.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Enter your PIN to receive the money." },
+        "truth": { "en": "A [[pin]] only ever sends money out. Receiving money needs no PIN at all." },
+        "lesson": "L09"
+      },
+      {
+        "phrase": { "en": "I'm posted far away." },
+        "truth": { "en": "A common story so you never meet. Real buyers come and see the cycle." },
+        "lesson": "L09"
+      }
+    ],
+    "choices": [
+      {
+        "id": "enter_pin",
+        "label": { "en": "Enter the PIN to get your ₹1,500" },
+        "quality": "bad",
+        "effects": { "cash": -1500, "meters": { "joy": -4 }, "schedule": [{ "inYears": 1, "card": "village.teen.cyber_cell.a" }] },
+        "echo": { "level": 2, "hint": { "en": "You still have the cycle. And a lesson." } },
+        "outcome": { "en": "₹1,500 leaves your account. The buyer blocks you. You still have the cycle, and no money." },
+        "why": { "en": "A collect request asks YOU to pay. Your PIN approves money going out, never coming in." }
+      },
+      {
+        "id": "cash_only",
+        "label": { "en": "Refuse. Cash or a normal UPI transfer, on pickup only" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": 1400, "gyaan": 2 },
+        "outcome": { "en": "A neighbour's son buys it for ₹1,400 in cash. You lose ₹100 of price and keep all your savings." },
+        "why": { "en": "To receive money, you only share your UPI ID. Anyone asking for a PIN is taking, not giving." }
+      },
+      {
+        "id": "test_rupee",
+        "label": { "en": "Accept his ₹1 \"test payment\" first" },
+        "quality": "risky",
+        "effects": { "cash": -1499, "meters": { "joy": -3 } },
+        "outcome": { "en": "₹1 arrives, so you trust the next request. It takes ₹1,500. You are ₹1,499 down." },
+        "why": { "en": "A tiny real payment builds trust for the big fake one. Never enter a PIN to receive." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.career_fair.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L10",
+    "ages": [17, 18],
+    "weight": 1,
+    "speaker": "teacher",
+    "title": { "en": "Swapna madam's career fair" },
+    "text": { "en": "{cast:teacher} draws on the board: \"Good debt vs bad debt.\" A bank officer says an [[education_loan]] has no repayment until you finish. A bike dealer has a stall too." },
+    "clarity": [
+      {
+        "phrase": { "en": "no repayment until you finish" },
+        "truth": { "en": "Interest still adds up while you study. Repayment starts 6–12 months after the course." },
+        "lesson": "L10"
+      }
+    ],
+    "choices": [
+      {
+        "id": "ask_edu_loan",
+        "label": { "en": "Ask the bank officer about an education loan" },
+        "quality": "good",
+        "default": true,
+        "effects": { "flags": { "add": ["knows_edu_loan"] }, "gyaan": 3 },
+        "outcome": { "en": "A ₹2 lakh loan at 10% is about ₹3,300 a month for 7 years, after the course. A nurse earns ₹20,000+." },
+        "why": { "en": "[[good_debt]]: a loan that raises your future income can pay for itself. Check the job first." }
+      },
+      {
+        "id": "bike_loan",
+        "label": { "en": "Book a ₹60,000 bike on a loan to look good at college" },
+        "quality": "risky",
+        "effects": { "meters": { "joy": 4 }, "flags": { "add": ["wants_bike_loan"] } },
+        "echo": { "level": 2, "hint": { "en": "The bike will be old before the loan is." } },
+        "outcome": { "en": "At 18% for 3 years, you'd pay about ₹78,000 for a bike worth ₹30,000 by then." },
+        "why": { "en": "Bad debt pays for things that lose value. Ask: will this loan help me earn more?" }
+      },
+      {
+        "id": "no_debt_ever",
+        "label": { "en": "Decide: no debt ever, for anything" },
+        "quality": "neutral",
+        "effects": { "flags": { "add": ["debt_averse"] } },
+        "outcome": { "en": "Safe. But a ₹2 lakh course is now out of reach, and so is a ₹20,000-a-month job." },
+        "why": { "en": "Some debts open doors. The skill is telling good debt from bad." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.after_school.a",
+    "storyline": "village",
+    "kind": "crossroads",
+    "lesson": "L10",
+    "ages": [18, 18],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "Crossroads: after school" },
+    "text": { "en": "Results are out. Four roads lead out of Mallepalli. {cast:mentor} says nothing, but polishes her glasses twice." },
+    "clarity": [
+      {
+        "phrase": { "en": "Four roads lead out of Mallepalli." },
+        "truth": { "en": "Compare each road by what it pays in 5 years, not this month." },
+        "lesson": "L10"
+      }
+    ],
+    "document": "doc.loan_agreement",
+    "choices": [
+      {
+        "id": "degree",
+        "label": { "en": "Study a degree in town with an education loan" },
+        "quality": "good",
+        "default": true,
+        "effects": {
+          "loan": { "source": "education", "principal": 150000, "months": 84 },
+          "income": { "monthly": 3000, "source": "tuition_part_time" },
+          "flags": { "add": ["path_degree"] },
+          "schedule": [{ "inYears": 3, "card": "village.young.degree_done.a" }]
+        },
+        "outcome": { "en": "A ₹1.5 lakh loan pays the fees. You teach evening tuition for ₹3,000 a month. Three years of buses." },
+        "why": { "en": "An education loan is [[good_debt]] if the course leads to a better-paid job. Yours does." }
+      },
+      {
+        "id": "mill",
+        "label": { "en": "Work at the spinning mill now" },
+        "quality": "neutral",
+        "effects": {
+          "income": { "monthly": 11000, "source": "job_mill" },
+          "meters": { "family": 3 },
+          "flags": { "add": ["path_mill"] },
+          "schedule": [{ "inYears": 4, "card": "village.young.mill_ceiling.a" }]
+        },
+        "echo": { "level": 1, "hint": { "en": "Money now. The ceiling is low." } },
+        "outcome": { "en": "₹11,000 a month from day one. Amma cries happy tears. Promotions need a diploma." },
+        "why": { "en": "Earning early helps the family now. The [[opportunity_cost]] is higher pay later." }
+      },
+      {
+        "id": "iti",
+        "label": { "en": "Join the ITI electrician course" },
+        "quality": "good",
+        "effects": {
+          "income": { "monthly": 2500, "source": "helper_part_time" },
+          "flags": { "add": ["path_iti"] },
+          "schedule": [{ "inYears": 2, "card": "village.young.iti_job.a" }]
+        },
+        "outcome": { "en": "Two years, about ₹2,000 a year in fees. Weekend helper work pays ₹2,500 a month. Then a trade." },
+        "why": { "en": "A cheap, short course that leads to a skill can beat both a degree and a job." }
+      },
+      {
+        "id": "shortcut",
+        "label": { "en": "Go to the city with Chintu and Lucky Prakash" },
+        "quality": "bad",
+        "effects": {
+          "income": { "monthly": 15000, "source": "shortcut_cash" },
+          "meters": { "family": -6, "joy": 5 },
+          "flags": { "add": ["path_shortcut"] },
+          "schedule": [{ "inYears": 2, "card": "village.young.shortcut_raid.a" }]
+        },
+        "echo": { "level": 3, "hint": { "en": "{cast:tempter} pays in cash. Ask yourself why." } },
+        "outcome": { "en": "₹15,000 a month in cash for \"office work\". No payslip, no PF, no questions allowed." },
+        "why": { "en": "A job that pays well, needs no skill and gives no papers is usually not a job." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.betting_app.a",
+    "storyline": "village",
+    "kind": "lesson",
+    "lesson": "L11",
+    "ages": [15, 19],
+    "weight": 1,
+    "speaker": "tempter",
+    "title": { "en": "Cricket league fever" },
+    "text": { "en": "{cast:tempter} is back, in bigger sunglasses. \"New [[betting_app]]! Guaranteed winning tips. ₹50 joining bonus. My cousin won a bike!\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Guaranteed winning tips." },
+        "truth": { "en": "No one can guarantee a match. The tip-seller earns from your losses." },
+        "lesson": "L11"
+      },
+      {
+        "phrase": { "en": "₹50 joining bonus." },
+        "truth": { "en": "Bonus money can't be withdrawn. It only works for more betting." },
+        "lesson": "L11"
+      }
+    ],
+    "choices": [
+      {
+        "id": "try_100",
+        "label": { "en": "Try with ₹100, just for fun" },
+        "quality": "risky",
+        "effects": { "cash": -1600, "meters": { "joy": -2 }, "flags": { "add": ["betting_habit"] }, "schedule": [{ "inYears": 1, "card": "village.teen.chasing_losses.a" }] },
+        "echo": { "level": 2, "hint": { "en": "The first win is the hook." } },
+        "outcome": { "en": "You win ₹300 on day one. By month-end you've bet ₹2,800 chasing more and lost ₹1,600." },
+        "why": { "en": "Apps let you win early to hook you. Over time, the house always wins." }
+      },
+      {
+        "id": "show_maths",
+        "label": { "en": "Say no, and show Chintu the maths" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3, "meters": { "joy": 1 } },
+        "outcome": { "en": "If the app keeps ₹10 of every ₹100, then 50 bets of ₹100 cost about ₹500 on average." },
+        "why": { "en": "Betting apps are built so players lose on average. Many are also illegal." }
+      },
+      {
+        "id": "big_tip",
+        "label": { "en": "Bet ₹1,000 on the \"sure\" tip" },
+        "quality": "bad",
+        "effects": { "cash": -1000, "meters": { "joy": -5, "family": -3 }, "flags": { "add": ["betting_habit", "wrong_betting"] }, "schedule": [{ "inYears": 1, "card": "village.teen.chasing_losses.a" }] },
+        "echo": { "level": 3, "hint": { "en": "A \"sure\" tip is only sure for the seller." } },
+        "outcome": { "en": "The team loses. ₹1,000 gone in three hours. The tip-seller's number is switched off." },
+        "why": { "en": "Paid tips and fixed-match promises are scams on top of a gamble." }
+      }
+    ]
+  },
+
+  {
+    "id": "village.teen.phone_bought_cash.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L07",
+    "ages": [16, 18],
+    "weight": 1,
+    "speaker": "friend",
+    "title": { "en": "Paid in full" },
+    "text": { "en": "Eleven months of ₹700. You walk into the shop and pay ₹7,500 cash. {cast:friend} is still paying his EMIs." },
+    "choices": [
+      {
+        "id": "buy_it",
+        "label": { "en": "Buy the phone" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -7500, "meters": { "joy": 8 }, "flags": { "add": ["owns_phone"], "remove": ["saving_for_phone"] } },
+        "outcome": { "en": "It's yours, fully. You kept the ₹2,088 that the EMI and fee would have cost." },
+        "why": { "en": "Saving first and buying later is slower, but much cheaper." }
+      },
+      {
+        "id": "keep_saving",
+        "label": { "en": "Keep the savings. The old phone still works" },
+        "quality": "good",
+        "effects": { "jar": { "goal": 7500 }, "meters": { "joy": 2 }, "flags": { "remove": ["saving_for_phone"] } },
+        "outcome": { "en": "₹7,500 moves to your dream jar. Ammamma looks over her glasses and smiles." },
+        "why": { "en": "Waiting changed how much you wanted it. That's worth noticing." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.emi_pinch.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L07",
+    "ages": [16, 18],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "Month seven" },
+    "text": { "en": "Month seven of 12. The ₹699 EMI is due, and you have ₹420. Miss it, and there's a ₹500 late fee and calls every day." },
+    "choices": [
+      {
+        "id": "skip_wants",
+        "label": { "en": "Skip movies and recharges until it's paid" },
+        "quality": "good",
+        "default": true,
+        "effects": { "meters": { "joy": -5 }, "gyaan": 2 },
+        "outcome": { "en": "No movies for two months. You pay on time, and the late fee never comes." },
+        "why": { "en": "An EMI is a promise for every month, including the hard ones." }
+      },
+      {
+        "id": "miss_it",
+        "label": { "en": "Miss this one, pay next month" },
+        "quality": "bad",
+        "effects": { "cash": -500, "meters": { "joy": -4, "family": -3 } },
+        "echo": { "level": 2, "hint": { "en": "A missed payment is remembered by more than Anjamma aunty." } },
+        "outcome": { "en": "₹500 late fee, 14 reminder calls, and a mark on your [[credit_score]]." },
+        "why": { "en": "Late payments cost fees now and harder loans later." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.emi_extra_charges.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L07",
+    "ages": [16, 18],
+    "weight": 1,
+    "speaker": "narrator",
+    "title": { "en": "The small print arrives" },
+    "text": { "en": "Your phone EMI statement shows ₹99 a month for \"device protection\" you never asked for. It was in the papers you didn't read." },
+    "choices": [
+      {
+        "id": "complain",
+        "label": { "en": "Complain to the lender and ask to cancel it" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -198, "gyaan": 2 },
+        "outcome": { "en": "It takes two calls and one email. You lose ₹198, but stop the remaining ₹990." },
+        "why": { "en": "You can question add-ons you didn't choose. Reading first is easier." }
+      },
+      {
+        "id": "ignore",
+        "label": { "en": "Ignore it. It's only ₹99" },
+        "quality": "risky",
+        "effects": { "cash": -1188 },
+        "outcome": { "en": "₹99 × 12 = ₹1,188 for protection you never used." },
+        "why": { "en": "Small monthly charges hide big yearly totals." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.cyber_cell.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L09",
+    "ages": [16, 19],
+    "weight": 1,
+    "speaker": "banker",
+    "title": { "en": "The 1930 call" },
+    "text": { "en": "{cast:banker} hears about the cycle scam. \"Next time, call the [[helpline_1930]] within an hour. Banks can freeze the money fast.\"" },
+    "choices": [
+      {
+        "id": "save_number",
+        "label": { "en": "Save 1930 in every phone in the house" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 3, "meters": { "family": 2 }, "lesson": "applied" },
+        "outcome": { "en": "1930 goes into four phones. Chinni writes it on the kitchen wall too." },
+        "why": { "en": "The first hour matters most. Fast reports often freeze the stolen money." }
+      },
+      {
+        "id": "too_late",
+        "label": { "en": "It's too late anyway" },
+        "quality": "neutral",
+        "effects": { "meters": { "joy": -2 } },
+        "outcome": { "en": "The ₹1,500 is gone. The lesson stays, if you let it." },
+        "why": { "en": "Reporting late still helps police catch the scammers." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.chasing_losses.a",
+    "storyline": "village",
+    "kind": "consequence",
+    "lesson": "L11",
+    "ages": [16, 20],
+    "weight": 1,
+    "speaker": "friend",
+    "title": { "en": "Just one more bet" },
+    "text": { "en": "{cast:friend} is down ₹6,000. \"One big win and I'm even, mama. Lend me ₹2,000?\" The app shows a \"comeback bonus\"." },
+    "choices": [
+      {
+        "id": "delete_both",
+        "label": { "en": "Delete the app together, and tell his mother" },
+        "quality": "good",
+        "default": true,
+        "effects": { "flags": { "remove": ["betting_habit"] }, "meters": { "family": 2, "joy": -2 }, "gyaan": 3, "lesson": "applied" },
+        "outcome": { "en": "Chintu sulks for a week. Then he admits the ₹6,000 was his sister's fee money." },
+        "why": { "en": "Chasing losses digs deeper. The only winning move is to stop." }
+      },
+      {
+        "id": "lend",
+        "label": { "en": "Lend him ₹2,000 for the comeback" },
+        "quality": "bad",
+        "effects": { "cash": -2000, "meters": { "joy": -3 } },
+        "echo": { "level": 2, "hint": { "en": "Your ₹2,000 just became the app's ₹2,000." } },
+        "outcome": { "en": "He loses it in two days. Now he owes you ₹2,000 and the app ₹0. Guess who gets paid back?" },
+        "why": { "en": "Money lent for gambling is usually money lost, and sometimes a friendship too." }
+      }
+    ]
+  },
+
+  {
+    "id": "village.teen.cricket_prize.a",
+    "storyline": "village",
+    "kind": "windfall",
+    "lesson": "L02",
+    "ages": [15, 18],
+    "weight": 1,
+    "speaker": "friend",
+    "title": { "en": "Man of the match!" },
+    "text": { "en": "You score 64 in the mandal cricket final. Prize: ₹3,000 and a very shiny plastic trophy." },
+    "choices": [
+      {
+        "id": "split",
+        "label": { "en": "Save ₹2,000, buy the team biryani with ₹1,000" },
+        "quality": "good",
+        "default": true,
+        "effects": { "jar": { "goal": 2000 }, "meters": { "joy": 6 } },
+        "outcome": { "en": "₹2,000 saved. The biryani is legendary. The trophy goes next to Ammamma's glasses case." }
+      },
+      {
+        "id": "all_party",
+        "label": { "en": "Throw a ₹3,000 party" },
+        "quality": "risky",
+        "effects": { "meters": { "joy": 9 } },
+        "echo": { "level": 1, "hint": { "en": "Parties end. Habits don't." } },
+        "outcome": { "en": "Best party in Mallepalli history. By Monday, ₹0 left." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.nanna_injury.a",
+    "storyline": "village",
+    "kind": "calamity",
+    "lesson": "L13",
+    "ages": [15, 18],
+    "weight": 1,
+    "speaker": "mother",
+    "title": { "en": "Nanna's hand" },
+    "text": { "en": "Nanna cuts his hand badly on the motor pump. The town hospital wants ₹8,000. He can't work for six weeks." },
+    "choices": [
+      {
+        "id": "use_savings",
+        "label": { "en": "Give your savings and take extra weekend work" },
+        "quality": "good",
+        "default": true,
+        "effects": { "shock": { "kind": "health", "cost": 8000 }, "meters": { "family": 8, "health": -3 } },
+        "outcome": { "en": "Your savings pay part of the ₹8,000. Weekend work covers the rest. No sahukar this time." }
+      },
+      {
+        "id": "sahukar",
+        "label": { "en": "Let Nanna borrow from Narsaiah sahukar" },
+        "quality": "risky",
+        "effects": { "meters": { "family": -2 }, "flags": { "add": ["family_owes_sahukar"] } },
+        "echo": { "level": 2, "hint": { "en": "₹3 per ₹100 per month, again." } },
+        "outcome": { "en": "₹8,000 at 36% a year becomes ₹10,880 if repaid in a year." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.school_trip.a",
+    "storyline": "village",
+    "kind": "random",
+    "lesson": "L08",
+    "ages": [15, 17],
+    "weight": 1,
+    "speaker": "teacher",
+    "title": { "en": "The school trip" },
+    "text": { "en": "The class trip to the science museum in Hyderabad costs ₹1,200. The same weekend, a shop pays ₹400 a day for helpers." },
+    "choices": [
+      {
+        "id": "go_trip",
+        "label": { "en": "Go on the trip" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -1200, "meters": { "joy": 7 }, "gyaan": 2 },
+        "outcome": { "en": "₹1,200 spent and ₹800 of wages given up. You come back wanting to be an engineer." }
+      },
+      {
+        "id": "work_weekend",
+        "label": { "en": "Work at the shop instead" },
+        "quality": "neutral",
+        "effects": { "cash": 800, "meters": { "joy": -3 } },
+        "outcome": { "en": "₹800 earned. Your friends' photos look like another planet." }
+      }
+    ]
+  },
+  {
+    "id": "village.teen.like_videos_job.a",
+    "storyline": "village",
+    "kind": "scam",
+    "lesson": "L11",
+    "ages": [15, 19],
+    "weight": 1,
+    "speaker": "headline",
+    "title": { "en": "Earn ₹5,000 a day!" },
+    "text": { "en": "A message: \"Part-time job! Like videos, earn ₹5,000 a day from home. Pay ₹500 to unlock premium tasks.\"" },
+    "clarity": [
+      {
+        "phrase": { "en": "Like videos, earn ₹5,000 a day from home." },
+        "truth": { "en": "No one pays ₹5,000 a day for likes. That is more than a doctor earns." },
+        "lesson": "L11"
+      },
+      {
+        "phrase": { "en": "Pay ₹500 to unlock premium tasks." },
+        "truth": { "en": "Real jobs pay you. Jobs that ask you to pay first are scams." },
+        "lesson": "L11"
+      }
+    ],
+    "choices": [
+      {
+        "id": "block",
+        "label": { "en": "Block and report the number" },
+        "quality": "good",
+        "default": true,
+        "effects": { "gyaan": 2 },
+        "outcome": { "en": "Blocked. Two classmates lose ₹3,000 each to the same message that week." }
+      },
+      {
+        "id": "pay_500",
+        "label": { "en": "Pay ₹500. The first task paid ₹150!" },
+        "quality": "bad",
+        "effects": { "cash": -2500, "meters": { "joy": -4 } },
+        "echo": { "level": 2, "hint": { "en": "The ₹150 was bait, not pay." } },
+        "outcome": { "en": "₹500 unlocks a \"₹2,000 level\". Then a frozen wallet. You paid ₹2,500 and got back ₹150." }
+      }
+    ]
+  }
+]
