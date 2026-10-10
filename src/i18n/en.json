@@ -985,7 +985,10 @@
       "added": "🪙 Coins ₹{n}",
       "interest": "📈 Growth ₹{n}",
       "lost": "🛍️ Traps took ₹{n}",
-      "shielded": "☂️ Insurance saved you {n}×"
+      "shielded": "☂️ Insurance saved you {n}×",
+      "distance": "🛣️ {n} m driven",
+      "claims": "🛡️ Insurance paid for {n} crashes",
+      "renewals": "🪙 Renewed {n}×"
     },
     "games": {
       "jarDash": {
@@ -1008,6 +1011,13 @@
         "goal": "Roll your savings ball, grab coins and dodge the money traps.",
         "how": "Change lanes with the arrow keys or the mouse.",
         "lesson": "Savings grow on their own growth. Breaking them early for a sale costs the most."
+      },
+      "insuranceRush": {
+        "name": "Insurance Rush",
+        "tag": "Drive, crash, claim",
+        "goal": "Drive as far as you can. While your insurance is active, a crash is a claim: the car gets fixed and you keep going. Crash with an expired policy and it's over!",
+        "how": "Hold the arrow keys (or the buttons) to steer. Grab 🛡️ to renew your policy: it costs 3 coins.",
+        "lesson": "Insurance only helps if it's active when the accident happens. Keep money for the premium and renew on time."
       }
     },
     "msg": {
@@ -1264,6 +1274,26 @@
         ],
         "help": "For real: stop paying, call 1930 and report the UPI ID."
       }
+    },
+    "playEndless": "Play (endless)",
+    "rush": {
+      "insured": "🛡️ Insured",
+      "expiring": "⚠ Policy expiring!",
+      "notInsured": "❌ NOT insured",
+      "secondsLeft": "{s}s",
+      "renewCost": "Renewal costs {n} 🪙",
+      "grab": "Grab a 🛡️ to renew ({n} coins)",
+      "needCoins": "Need {n} coins to renew: collect 🪙",
+      "coins": "Coins",
+      "claim": "Crash! Claim approved, car repaired",
+      "notInsuredPop": "Not insured!",
+      "full": "Already fully covered",
+      "need": "Need {n} coins to renew (you have {have})",
+      "renewed": "Policy renewed for {s}s (−{n} coins)",
+      "gameOver": "Game over",
+      "gameOverWhy": "You crashed with an expired policy. Repair bill: {bill}.",
+      "steerLeft": "Steer left",
+      "steerRight": "Steer right"
     }
   }
 }

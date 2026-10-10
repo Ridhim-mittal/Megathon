@@ -1652,3 +1652,52 @@
   font-family: "Manrope Variable", sans-serif;
   font-weight: 800;
 }
+
+/* ---------- Insurance Rush (src/ui/arcade/InsuranceRush.jsx): a tall pixel road ---------- */
+.rush-field { justify-items: center; }
+.rush-bar { width: min(560px, 100%); align-items: stretch; }
+.rush-policy {
+  flex: 1;
+  display: grid;
+  gap: 3px;
+  padding: 4px 10px;
+  border: 2px solid #3f8f86;
+  border-radius: 8px;
+  background: #e5f4f1;
+  font-size: 13px;
+}
+.rush-policy b { font-size: 14px; }
+.rush-policy small { color: #6b5d45; }
+.rush-policy .arcade-timer i { background: linear-gradient(90deg, #0a8fa3, #57c2c9); }
+.rush-policy.is-low { border-color: #d66a12; background: #fde8cf; animation: rush-blink 0.5s steps(2) infinite; }
+.rush-policy.is-low .arcade-timer i { background: linear-gradient(90deg, #d66a12, #f2a65a); }
+.rush-policy.is-off { border-color: #b4372f; background: #f8d9d4; color: #8a2a22; }
+@keyframes rush-blink { 50% { border-color: #3a2a18; } }
+.rush-coins { align-self: center; font-family: var(--px-font); font-size: 20px; white-space: nowrap; }
+.rush-stage { position: relative; line-height: 0; }
+.arcade-field canvas.rush-canvas {
+  aspect-ratio: 1;
+  width: auto !important;
+  height: min(52vh, 420px) !important;
+  max-width: 100%;
+  image-rendering: pixelated;
+  cursor: default;
+}
+.rush-over {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  padding: 20px;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: 10px;
+  background: rgba(40, 30, 15, 0.72);
+  color: #fff8e7;
+}
+.rush-over p { margin: 0; }
+.rush-big { font-family: var(--px-font); font-size: 30px; }
+.rush-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: min(420px, 100%); }
+.rush-controls button { justify-content: center; user-select: none; touch-action: none; }
+@media (prefers-reduced-motion: reduce) { .rush-policy.is-low { animation: none; } }
