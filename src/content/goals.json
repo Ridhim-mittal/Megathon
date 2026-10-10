@@ -1,7 +1,7 @@
 [
   {
     "id": "house",
-    "title": { "en": "A pucca house", "hi": "पक्का घर", "te": "పక్కా ఇల్లు" },
+    "title": { "en": "A pakka house", "hi": "पक्का घर", "te": "పక్కా ఇల్లు" },
     "description": {
       "en": "A strong house with a cement roof that doesn't leak in the monsoon. A room for Ammamma, a room for books.",
       "hi": "सीमेंट की छत वाला मज़बूत घर, जो बारिश में न टपके। अम्मम्मा के लिए एक कमरा, किताबों के लिए एक कमरा।",
