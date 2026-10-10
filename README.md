@@ -15,6 +15,11 @@ cp .env.example .env   # fill in your keys
 # TODO: install + run commands
 ```
 
+## Workflow
+Everyone works on their own branch (`<name>/<task>`). After every prompt that changes code,
+Claude pushes the branch and reminds you to merge it into `main` through a pull request — do it
+right away. Nobody pushes to `main` directly. Full rules are in [`CLAUDE.md`](CLAUDE.md).
+
 ## Working with Claude Code
 Team rules for Claude Code sessions live in [`CLAUDE.md`](CLAUDE.md) — Claude reads it
 automatically at the start of every session. Shared permissions (including a block on
