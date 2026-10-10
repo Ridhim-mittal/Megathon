@@ -229,7 +229,7 @@ export const ASSUMPTIONS = deepFreeze({
   },
 
   // Goal costs at age-11 prices (they grow with inflation, ~3.4× by age 36):
-  // house: making a village home pucca or a small flat's down payment;
+  // house: making a village home pakka or a small flat's down payment;
   // business: a small shop, tailoring or repair unit; education: a degree for you or a
   // sibling without loans; vehicle: an auto-rickshaw or a tractor share that earns;
   // parents: a corpus for their old age.
