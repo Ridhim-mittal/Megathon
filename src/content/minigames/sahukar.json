@@ -1,0 +1,104 @@
+{
+  "id": "sahukar",
+  "lesson": "L14",
+  "title": { "en": "A day in the sahukar's chair" },
+  "intro": [
+    { "speaker": "lender", "text": { "en": "Three borrowers are coming today. Each one gets three offers. You pick one offer for each." } },
+    { "speaker": "lender", "text": { "en": "Your score is my profit. Don't tell them the yearly rate. Nobody asks." } }
+  ],
+  "scoring": { "en": "Score = total profit from the three loans you choose. The highest possible is ₹18,300." },
+  "borrowers": [
+    {
+      "id": "lakshmi",
+      "name": { "en": "Lakshmi" },
+      "story": { "en": "Sells vegetables from a basket. Needs ₹10,000 for a pushcart so she can sell twice as much." },
+      "amount": 10000,
+      "offers": [
+        {
+          "id": "small_emi",
+          "label": { "en": "Only ₹550 a month!" },
+          "payment": 550, "period": "month", "count": 30, "fee": 0,
+          "totalPaid": 16500, "profit": 6500, "rateYearly": 53,
+          "reveal": { "en": "She chose the smallest payment, thinking it was kind. She paid ₹16,500 for ₹10,000: about 53% a year." }
+        },
+        {
+          "id": "fee_emi",
+          "label": { "en": "₹950 a month for 12 months, small ₹500 fee" },
+          "payment": 950, "period": "month", "count": 12, "fee": 500,
+          "totalPaid": 11400, "profit": 1900, "rateYearly": 41,
+          "reveal": { "en": "The ₹500 fee was cut first, so she got only ₹9,500. Real cost: about 41% a year." }
+        },
+        {
+          "id": "short_emi",
+          "label": { "en": "₹1,800 a month for 6 months" },
+          "payment": 1800, "period": "month", "count": 6, "fee": 0,
+          "totalPaid": 10800, "profit": 800, "rateYearly": 31,
+          "reveal": { "en": "The biggest EMI was the cheapest loan: ₹800 in interest. Her cart paid for itself in four months." }
+        }
+      ]
+    },
+    {
+      "id": "raju",
+      "name": { "en": "Raju" },
+      "story": { "en": "A small farmer. Needs ₹30,000 for seeds and fertiliser. Harvest is six months away, if the rain comes." },
+      "amount": 30000,
+      "offers": [
+        {
+          "id": "interest_only",
+          "label": { "en": "Just ₹900 a month interest, return the ₹30,000 whenever" },
+          "payment": 900, "period": "month", "count": 12, "fee": 0, "balloon": 30000,
+          "totalPaid": 40800, "profit": 10800, "rateYearly": 43,
+          "reveal": { "en": "The rain failed. He paid ₹900 every month for three years, ₹32,400, and still owed all ₹30,000." }
+        },
+        {
+          "id": "monthly_emi",
+          "label": { "en": "₹2,900 a month for 12 months" },
+          "payment": 2900, "period": "month", "count": 12, "fee": 0,
+          "totalPaid": 34800, "profit": 4800, "rateYearly": 32,
+          "reveal": { "en": "Hard months before the harvest. He sold two goats to keep paying. ₹4,800 in interest." }
+        },
+        {
+          "id": "harvest_loan",
+          "label": { "en": "Pay ₹33,000 once, after the harvest" },
+          "payment": 33000, "period": "once", "count": 1, "fee": 0,
+          "totalPaid": 33000, "profit": 3000, "rateYearly": 21,
+          "reveal": { "en": "Matched to his harvest, like a bank's Kisan Credit Card. About 21% a year, still three times the KCC rate." }
+        }
+      ]
+    },
+    {
+      "id": "renuka",
+      "name": { "en": "Renuka" },
+      "story": { "en": "Her son's exam fee is due on Friday. She needs ₹5,000 this week, urgently." },
+      "amount": 5000,
+      "offers": [
+        {
+          "id": "weekly",
+          "label": { "en": "₹500 a week for 12 weeks" },
+          "payment": 500, "period": "week", "count": 12, "fee": 0,
+          "totalPaid": 6000, "profit": 1000, "rateYearly": 347,
+          "reveal": { "en": "₹1,000 profit in under three months. Turned into a yearly rate, that's over 300%." }
+        },
+        {
+          "id": "monthly",
+          "label": { "en": "₹1,000 a month for 6 months" },
+          "payment": 1000, "period": "month", "count": 6, "fee": 0,
+          "totalPaid": 6000, "profit": 1000, "rateYearly": 90,
+          "reveal": { "en": "The same ₹6,000 total as the weekly offer, but over six months. Time changes the rate: about 90% a year." }
+        },
+        {
+          "id": "one_month",
+          "label": { "en": "Pay back ₹5,250 next month" },
+          "payment": 5250, "period": "once", "count": 1, "fee": 0,
+          "totalPaid": 5250, "profit": 250, "rateYearly": 80,
+          "reveal": { "en": "Only ₹250 extra. But ₹5 per ₹100 for one month is still about 80% a year." }
+        }
+      ]
+    }
+  ],
+  "outro": [
+    { "speaker": "lender", "text": { "en": "Now you know my secret. People look at the monthly payment. I look at the total." } },
+    { "speaker": "mentor", "text": { "en": "Kanna, when you borrow, always ask three things: the total, the time, and the yearly rate." } }
+  ],
+  "rewards": { "gyaan": 4, "lesson": "applied" }
+}

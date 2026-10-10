@@ -1,0 +1,50 @@
+{
+  "id": "village",
+  "playable": true,
+  "title": { "en": "The Village" },
+  "tagline": { "en": "No money. No knowledge. One grandmother with very thick glasses." },
+  "persona": { "en": "A tenant-farming family in Mallepalli, a cotton village in Telangana. Nobody in the house has a bank account, and the kirana shop's khata is always open." },
+  "cast": {
+    "mentor": { "name": { "en": "Rajamma Ammamma" }, "role": { "en": "Your grandmother. Thick glasses, tied with black thread. Calls you kanna." } },
+    "sibling": { "name": { "en": "Chinni" }, "role": { "en": "Your little sister. Wants to be a nurse. Copies everything you do." } },
+    "friend": { "name": { "en": "Chintu" }, "role": { "en": "Your best friend. Funny, generous, always in a hurry." } },
+    "tempter": { "name": { "en": "Lucky Prakash" }, "role": { "en": "A smooth talker from town. His sunglasses get bigger every visit." } },
+    "agent": { "name": { "en": "Policy Ramana" }, "role": { "en": "An agent who sells whatever pays the best commission. Arrives at lunchtime." } },
+    "father": { "name": { "en": "Nanna" }, "role": { "en": "Your father, Yadagiri. Farms two rented acres. Scared of paperwork." } },
+    "mother": { "name": { "en": "Amma" }, "role": { "en": "Your mother, Saroja. Field worker, savings-group member, mental-maths champion." } },
+    "shopkeeper": { "name": { "en": "Anjamma aunty" }, "role": { "en": "Runs the kirana shop. Her khata notebook remembers everything." } },
+    "lender": { "name": { "en": "Narsaiah sahukar" }, "role": { "en": "The village moneylender. Polite, patient, very expensive." } },
+    "teacher": { "name": { "en": "Swapna madam" }, "role": { "en": "Your school teacher. Turns every problem into a sum." } },
+    "banker": { "name": { "en": "Kavitha akka" }, "role": { "en": "The Bank Mitra and savings-group leader. Her bank office is also a tailoring shop." } },
+    "buffalo": { "name": { "en": "Bujji" }, "role": { "en": "The family buffalo. Survives everything. Judges everyone." } }
+  },
+  "intro": [
+    { "speaker": "narrator", "text": { "en": "Mallepalli. One kirana shop, one bus a day, and one big tank that floods or dries up." } },
+    { "speaker": "narrator", "text": { "en": "Your family rents two acres. {cast:father} grows cotton. {cast:mother} works in other people's fields." } },
+    { "speaker": "narrator", "text": { "en": "Nobody in your house has ever been inside a bank. The kirana [[khata]] is always open." } },
+    { "speaker": "narrator", "text": { "en": "Everyone says the family lost Thatha's land the year the rains failed. Ammamma never says anything at all." } },
+    { "speaker": "narrator", "text": { "en": "You are 11. You have ₹50, a little sister called {cast:sibling}, and a best friend called {cast:friend}." } },
+    { "speaker": "mentor", "text": { "en": "Kanna, money is like water. Plan where it goes, or it goes wherever it likes." } },
+    { "speaker": "narrator", "text": { "en": "I know this story well. I was there for all of it. Let's begin." } }
+  ],
+  "start": {
+    "cash": 50,
+    "jars": { "emergency": 0, "goal": 0 },
+    "income": { "monthly": 200, "source": "pocket_money" },
+    "meters": { "joy": 60, "health": 70, "family": 65, "gyaan": 5 },
+    "flags": ["tenant_family"]
+  },
+  "rival": {
+    "roleId": "friend",
+    "milestones": [
+      { "age": 12, "text": { "en": "Shares his father's OTP for free game gems. Loses ₹2,500 in a minute." } },
+      { "age": 16, "text": { "en": "Buys a phone on EMI. Pays ₹9,588 for a ₹7,500 phone." } },
+      { "age": 17, "text": { "en": "Downloads a betting app. Wins ₹300, then loses ₹6,000 chasing it." } },
+      { "age": 18, "text": { "en": "Drops out and follows Lucky Prakash to the city for quick cash." } },
+      { "age": 21, "text": { "en": "Borrows from three loan apps to repay one. Recovery agents call his mother." } },
+      { "age": 22, "text": { "en": "His bank account is frozen as a money mule. He calls 1930 and tells the truth." } },
+      { "age": 26, "text": { "en": "Delivery rider. Saves ₹1,000 a month in an RD. Laughs again." } },
+      { "age": 34, "text": { "en": "Opens a mobile repair stall with a Mudra loan. His dream is six years late, but real." } }
+    ]
+  }
+}

@@ -1,87 +1,65 @@
-# Lakshyam 🏡
+# Lakshyam 🌱
 
-A financial-literacy **life-sim** for Class 11–12 students. Live ages 17–32 on one illustrated
-Cheriyal-style scroll: fill four clay pots, spend three action points a year, face event cards,
-dodge phone scams, reach crossroads, and hear your ending as a folk tale. Then rewind one choice
-in a **Parallel Life** and run **100 lives** to see what was luck and what was you.
+A cosy 2D financial-literacy game for Class 11–12 students, designed for laptops. Press Play, enter a village, and visit your home to budget, handle a surprise, and explore how a different choice changes your story.
 
-Mobile-first (360 px), works offline after the first visit, saves to `localStorage`. English,
-हिन्दी and తెలుగు; Telangana or North region pack — both switch live.
+## Run locally
 
-## Run
-
-Node.js 22.12+ (or 24 LTS).
+Use Node.js 22.12+ (or Node 24 LTS) and npm.
 
 ```bash
 npm ci
-npm run dev            # Vite dev server
-npm test               # engine tests + card validator
-npm run validate:cards # card rules only (fails on a dominant option)
-npm run build          # static site in dist/
-npm run test:e2e       # Playwright at 360×740 (needs Chromium, see below)
+npm run dev
 ```
 
-Browser tests: `npx playwright install chromium` once, or point at an existing Chromium with
-`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/path/to/chrome`.
+Vite prints the development address. From another device on the same network, use the host machine's IP and the printed port. No API keys, database, or `.env` file are required.
 
-Deploy as a static Vite site (`dist/`). On Vercel, `api/mentor.js` becomes the mentor's server
-function; set `ANTHROPIC_API_KEY` there (see `.env.example`). Without it — or offline — Ammamma
-answers from `src/data/mentor.json`.
+```bash
+npm test          # Financial rules, invalid inputs, and every allowed allocation
+npm run build    # Production bundle in dist/
+npm run preview  # Serve the production bundle for local verification
+```
 
-## How a year plays
+Deploy as a static Vite site: build command `npm run build`, output directory `dist`. Fonts, illustrations, and icons are bundled; gameplay makes no external requests.
 
-1. **Income coin** drops into the year's panel.
-2. **Four clay pots** — Needs / Wants / Savings / Goal. Drag coins (5% each) or use sliders. Asked
-   only when the life stage or income source changes; otherwise the plan auto-splits. EMIs due
-   this year come off the top first.
-3. **3 action points** (ages 17–25): bank account, learn (Gyaan lessons), FD, RD, chitti auction,
-   gold, SIP in the fictional *Banyan 50* index, health insurance, loan, repay. Tools unlock by
-   age: bank 18 · FD/RD/chitti 20 · SIP 22 (after the risk lesson) · insurance 23.
-4. **1–2 event cards.** Every option shows its effect on money and at least one other meter before
-   the tap; `?` means something may follow later. Loans always show the EMI small and
-   **TOTAL YOU WILL PAY** large in red, with "₹2 per ₹100 per month = 24% a year".
-5. **Phone inbox** buzzes mid-year: swipe left to flag 🚩, right to reply. Tenali Rama hints.
-   Correct flags give Gyaan and a real fact (1930, cybercrime.gov.in, RBI Sachet).
-6. **Year-end stamp** with "Why?" for the mentor.
+## Village controls
 
-Ages 26–32 fast-forward: the plan runs itself and only events and crossroads stop you.
+- Click **Play** on the title screen to enter the village.
+- Click **Your home** or **Open my jars** to divide the allowance. The budgeting and story screens open inside an in-game panel.
+- Click the ground to move your character around the village path.
+- Click **Ammamma** or the **Kirana shop** for dialogue. Shopping is not implemented in this chapter.
+- Press **Escape** or the panel's close button to return to the village. Your current choices stay intact.
+- Use the top-right controls for help, fullscreen, or the title screen. **Continue** returns to the same session.
+- Designed and tested for laptop windows at 1024×768, 1280×720, and 1366×768. Mobile is outside the current scope.
 
-Risky choices plant a 🌱 on that year's panel; when the consequence fires, a thread is drawn from
-the seed to the panel. Crossroads at 19, 24, 27 and 30. At 21, the dream **Instant Loan Pvt Ltd —
-Day 1** makes you the lender; your most-picked offer becomes your next real loan offer.
+## First playable chapter
 
-The ending: storyteller, tale title, Life Review (Luck vs Your Choices, Threads), Parallel Life
-(same seed, one choice changed, synced scrolls, divergence in yellow), 100 Lives (same 100 seeds
-for both strategies), a two-line letter to your 17-year-old self, a mock teacher summary, and the
-tales collection. No money leaderboard.
+1. Allocate a ₹2,000 monthly allowance across everyday needs, little joys, emergency savings, and a laptop goal. Use − and + to move ₹100 at a time. Cover at least ₹800 in essentials.
+2. A bicycle repair costs ₹600. Needs and wants have already been spent this month.
+3. Use emergency savings and then laptop savings, borrowing only an uncovered shortfall; or use emergency savings and borrow the remainder to protect the laptop jar.
+4. See the exact money movements, remaining savings, borrowing costs, and next month's allowance after repayment.
+5. Replay with another budget. The repair and payment approach stay identical, isolating the effect of the allocation. Compare both outcomes, including savings minus debt and changes to spending on enjoyment.
 
-## Design rules (kept by code and tests)
-
-- Engine = pure functions over one state object (`src/engine/`). Luck is a hash of
-  (seed, age, tag), so a parallel life meets the same luck.
-- All text lives in JSON with `en`/`hi`/`te`: `src/data/*.json`.
-- `scripts/validate-cards.js` fails if a card has a dominant option, misses a meter preview or a
-  translation.
-- No spin-wheels, loot boxes or tickers; companies and the index are fictional; wrong paths give a
-  small gain now, a hidden seed, a bigger loss later, and always a recovery option.
-- Every number is a teaching assumption (book icon in the HUD); projections are ranges with
-  Sheikh Chilli's pot 🏺 — "not a promise".
+The starting budget is editable, not a recommended allocation. All amounts are fictional teaching assumptions: the laptop target is ₹12,000 and the example expensive loan charges 10% once, due next month. This is a one-month chapter, not an investment projection. Progress is held in memory and resets on refresh. There are no accounts or analytics.
 
 ## Files
 
-| Path | What |
-|---|---|
-| `src/engine/engine.js` | state, year flow, money, loans, chitti, role-flip, endings |
-| `src/engine/simulate.js` | replay, strategy from command log, parallel life, 100 lives |
-| `src/engine/rng.js`, `finance.js`, `data.js` | seeded luck, EMI maths, data loading |
-| `src/data/` | cards, messages, crossroads, endings, lessons, mentor, regions, strings, finance assumptions |
-| `src/ui/` | HUD + wheel + house, scroll panels & threads, pots, actions, chitti, events, crossroads, role-flip, phone, mentor, panels, ending |
-| `api/mentor.js` | Vercel server function (game state only → Claude) |
-| `public/sw.js` | offline cache |
-| `scripts/` | card validator and shared balance rules |
-| `tests/life.spec.js` | Playwright checks at 360 px |
+- `src/game.js`: pure financial rules and constants; UI-independent.
+- `src/game.test.js`: Node test suite, including fund-conservation checks over every allowed budget.
+- `src/main.jsx`: title/village navigation, in-game panels, four jars, repair choices, results, and comparison.
+- `src/World.jsx`: village artwork, character, building interactions, and title screen.
+- `src/game-scene.css`: full-window village, HUD, scene animation, and in-game panels.
+- `src/styles.css`: shared jar and story styles. Scene styles take precedence in the laptop game.
+- `public/favicon.svg`: sprout mark.
+
+## Browser checks
+
+```bash
+npx playwright install chromium  # One-time browser installation for developers
+npm run test:e2e
+```
+
+The browser suite checks Play → village → jars, movement, dialogue, preserving a budget when leaving a room, title/Continue, both repair routes, replay, budget constraints, Escape behavior, and laptop viewport layouts. It starts its own Vite server on port 5180. To use an existing Chromium installation in a cloud machine, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to that browser's executable path.
 
 ## Team workflow
 
-Use the assigned cloud branch or a personal `<name>/<task>` branch. Do not push to `main`.
-Team rules are in [CLAUDE.md](CLAUDE.md).
+Use the assigned cloud branch or a personal `<name>/<task>` branch. Do not push to `main`. Team rules are in [CLAUDE.md](CLAUDE.md). Each cloud task already has an isolated checkout; an additional worktree is unnecessary unless explicitly requested.

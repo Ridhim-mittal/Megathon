@@ -1,0 +1,562 @@
+[
+  {
+    "id": "faq01",
+    "q": {
+      "en": "What is the difference between a need and a want?"
+    },
+    "a": {
+      "en": "A need is something you must have, like food, school things or bus fare. A want makes life nicer but can wait."
+    },
+    "lesson": "L01"
+  },
+  {
+    "id": "faq02",
+    "q": {
+      "en": "Is it wrong to spend on wants?"
+    },
+    "a": {
+      "en": "No, kanna. Wants are part of a good life. Just pay for needs first and keep wants inside your plan."
+    },
+    "lesson": "L01"
+  },
+  {
+    "id": "faq03",
+    "q": {
+      "en": "How do I start saving with very little money?"
+    },
+    "a": {
+      "en": "Save first, the day money comes. Even ₹5 a day becomes ₹1,825 in a year."
+    },
+    "lesson": "L02"
+  },
+  {
+    "id": "faq04",
+    "q": {
+      "en": "What does \"pay yourself first\" mean?"
+    },
+    "a": {
+      "en": "Put your savings aside before you spend anything. Whatever you never see, you never spend."
+    },
+    "lesson": "L02"
+  },
+  {
+    "id": "faq05",
+    "q": {
+      "en": "Why do prices keep going up?"
+    },
+    "a": {
+      "en": "That's inflation. In this game prices rise about 6% a year, so ₹10 today is about ₹18 in 10 years."
+    },
+    "lesson": "L03"
+  },
+  {
+    "id": "faq06",
+    "q": {
+      "en": "Is it safe to keep cash at home?"
+    },
+    "a": {
+      "en": "It's safe from the bank, but not from rats, thieves or inflation. Idle cash buys less every year."
+    },
+    "lesson": "L03"
+  },
+  {
+    "id": "faq07",
+    "q": {
+      "en": "Can a child open a bank account?"
+    },
+    "a": {
+      "en": "Yes. A minor's savings account is opened with a parent or guardian. Many need zero balance."
+    },
+    "lesson": "L04"
+  },
+  {
+    "id": "faq08",
+    "q": {
+      "en": "Why is a bank better than a tin box?"
+    },
+    "a": {
+      "en": "A bank keeps money safe and pays interest, about 3% in a savings account. A tin box pays nothing."
+    },
+    "lesson": "L04"
+  },
+  {
+    "id": "faq09",
+    "q": {
+      "en": "What is compound interest?"
+    },
+    "a": {
+      "en": "Interest on interest. ₹1,000 at 10% for 10 years becomes ₹2,594, not just ₹2,000."
+    },
+    "lesson": "L05"
+  },
+  {
+    "id": "faq10",
+    "q": {
+      "en": "Why is compound interest dangerous on loans?"
+    },
+    "a": {
+      "en": "Unpaid interest joins the loan and earns more interest. ₹2,000 at ₹2 per ₹100 a month, compounded, becomes ₹2,536 in a year."
+    },
+    "lesson": "L05"
+  },
+  {
+    "id": "faq11",
+    "q": {
+      "en": "Someone asks for my OTP. What do I do?"
+    },
+    "a": {
+      "en": "Never share it. An OTP is a key to your money. Real banks and games never ask for it."
+    },
+    "lesson": "L06"
+  },
+  {
+    "id": "faq12",
+    "q": {
+      "en": "I got a link for free game coins. Is it real?"
+    },
+    "a": {
+      "en": "Almost never. \"Free\" plus a request for an OTP or password is always a trap. Delete it."
+    },
+    "lesson": "L06"
+  },
+  {
+    "id": "faq13",
+    "q": {
+      "en": "How do I find the real cost of an EMI?"
+    },
+    "a": {
+      "en": "Multiply the EMI by the number of months, then add every fee. ₹699 × 12 + ₹1,200 = ₹9,588."
+    },
+    "lesson": "L07"
+  },
+  {
+    "id": "faq14",
+    "q": {
+      "en": "Is \"zero down payment\" really free?"
+    },
+    "a": {
+      "en": "No. The cost is hidden in fees and interest. Always ask for the total in writing."
+    },
+    "lesson": "L07"
+  },
+  {
+    "id": "faq15",
+    "q": {
+      "en": "What is opportunity cost?"
+    },
+    "a": {
+      "en": "The best thing you give up when you choose something. A day of work can cost a day of study."
+    },
+    "lesson": "L08"
+  },
+  {
+    "id": "faq16",
+    "q": {
+      "en": "Should I work or study?"
+    },
+    "a": {
+      "en": "Compare what each pays over many years, not just this month. A skill can pay for 40 years."
+    },
+    "lesson": "L08"
+  },
+  {
+    "id": "faq17",
+    "q": {
+      "en": "Do I need a PIN to receive money on UPI?"
+    },
+    "a": {
+      "en": "Never. You only share your UPI ID. A PIN is only for sending money."
+    },
+    "lesson": "L09"
+  },
+  {
+    "id": "faq18",
+    "q": {
+      "en": "What is a UPI collect request?"
+    },
+    "a": {
+      "en": "A request asking you to pay. Entering your PIN on it sends money away from you."
+    },
+    "lesson": "L09"
+  },
+  {
+    "id": "faq19",
+    "q": {
+      "en": "I was cheated on UPI. What now?"
+    },
+    "a": {
+      "en": "Call 1930 at once, within the hour if possible. Fast reports often freeze the stolen money."
+    },
+    "lesson": "L09"
+  },
+  {
+    "id": "faq20",
+    "q": {
+      "en": "What is good debt?"
+    },
+    "a": {
+      "en": "A loan that helps you earn more later, like a fair education loan for a course with good jobs."
+    },
+    "lesson": "L10"
+  },
+  {
+    "id": "faq21",
+    "q": {
+      "en": "How does an education loan work?"
+    },
+    "a": {
+      "en": "The bank pays the fees. You repay in EMIs after the course, but interest adds up while you study."
+    },
+    "lesson": "L10"
+  },
+  {
+    "id": "faq22",
+    "q": {
+      "en": "Can I make money on betting apps?"
+    },
+    "a": {
+      "en": "On average, no. They are built so players lose. Many are illegal, and early wins are bait."
+    },
+    "lesson": "L11"
+  },
+  {
+    "id": "faq23",
+    "q": {
+      "en": "My friend keeps betting to win back losses. What should I say?"
+    },
+    "a": {
+      "en": "Chasing losses digs deeper. The only winning move is to stop and delete the app."
+    },
+    "lesson": "L11"
+  },
+  {
+    "id": "faq24",
+    "q": {
+      "en": "Why is money cut from my salary for PF?"
+    },
+    "a": {
+      "en": "PF is your own savings for later. You put in 12% of basic pay, and your employer adds 12% more."
+    },
+    "lesson": "L12"
+  },
+  {
+    "id": "faq25",
+    "q": {
+      "en": "Do I have to pay income tax on my first job?"
+    },
+    "a": {
+      "en": "Only above a yearly limit. Most first jobs fall below it. Filing a return yourself is free."
+    },
+    "lesson": "L12"
+  },
+  {
+    "id": "faq26",
+    "q": {
+      "en": "What is a PAN card for?"
+    },
+    "a": {
+      "en": "It's your tax ID. You need it for bank accounts, salaries and big purchases."
+    },
+    "lesson": "L12"
+  },
+  {
+    "id": "faq27",
+    "q": {
+      "en": "How big should my emergency fund be?"
+    },
+    "a": {
+      "en": "About 3 to 6 months of expenses. If you spend ₹8,000 a month, aim for ₹24,000 to ₹48,000."
+    },
+    "lesson": "L13"
+  },
+  {
+    "id": "faq28",
+    "q": {
+      "en": "Where should I keep my emergency fund?"
+    },
+    "a": {
+      "en": "Somewhere safe and quick to reach, like a separate savings account. Not in gold or shares."
+    },
+    "lesson": "L13"
+  },
+  {
+    "id": "faq29",
+    "q": {
+      "en": "How do I compare loans?"
+    },
+    "a": {
+      "en": "Turn every rate into a yearly number and add all fees. ₹2 per ₹100 per month is 24% a year."
+    },
+    "lesson": "L14"
+  },
+  {
+    "id": "faq30",
+    "q": {
+      "en": "What is a credit score?"
+    },
+    "a": {
+      "en": "A number from 300 to 900 showing how well you repay. Paying every EMI on time raises it."
+    },
+    "lesson": "L14"
+  },
+  {
+    "id": "faq31",
+    "q": {
+      "en": "Are loan apps safe?"
+    },
+    "a": {
+      "en": "Many charge huge fees and some harass borrowers. Use only lenders registered with the banking regulator."
+    },
+    "lesson": "L14"
+  },
+  {
+    "id": "faq32",
+    "q": {
+      "en": "Someone wants to rent my bank account. Is it okay?"
+    },
+    "a": {
+      "en": "No. That makes you a money mule, which is a crime. The stolen money is traced to you."
+    },
+    "lesson": "L15"
+  },
+  {
+    "id": "faq33",
+    "q": {
+      "en": "I already let someone use my account. What do I do?"
+    },
+    "a": {
+      "en": "Stop now. Go to the police or call 1930 and tell the truth. Coming clean early is the way back."
+    },
+    "lesson": "L15"
+  },
+  {
+    "id": "faq34",
+    "q": {
+      "en": "Why do I need insurance?"
+    },
+    "a": {
+      "en": "It's a small, sure cost against a big, rare one. One hospital bill can cost more than years of premiums."
+    },
+    "lesson": "L16"
+  },
+  {
+    "id": "faq35",
+    "q": {
+      "en": "What cheap government insurance exists?"
+    },
+    "a": {
+      "en": "PMSBY gives ₹2 lakh accident cover for ₹20 a year. PMJJBY gives ₹2 lakh life cover for ₹436."
+    },
+    "lesson": "L16"
+  },
+  {
+    "id": "faq36",
+    "q": {
+      "en": "Does the family need health insurance?"
+    },
+    "a": {
+      "en": "Check if you qualify for Ayushman Bharat or Aarogyasri. They cover big hospital bills for eligible families."
+    },
+    "lesson": "L16"
+  },
+  {
+    "id": "faq37",
+    "q": {
+      "en": "What is an SIP?"
+    },
+    "a": {
+      "en": "A fixed amount put into a fund every month. It builds the habit and spreads your buying over time."
+    },
+    "lesson": "L17"
+  },
+  {
+    "id": "faq38",
+    "q": {
+      "en": "Is investing in an index fund safe?"
+    },
+    "a": {
+      "en": "It can fall 20–30% in a bad year. It's for long-term money, not money you need soon."
+    },
+    "lesson": "L17"
+  },
+  {
+    "id": "faq39",
+    "q": {
+      "en": "Should I wait until I earn more to invest?"
+    },
+    "a": {
+      "en": "Start small now. ₹1,000 a month from 22 grows much more than ₹2,000 a month from 30."
+    },
+    "lesson": "L17"
+  },
+  {
+    "id": "faq40",
+    "q": {
+      "en": "How much should I spend on a wedding?"
+    },
+    "a": {
+      "en": "What you have saved, not what you can borrow. A loan for one day can take years to repay."
+    },
+    "lesson": "L18"
+  },
+  {
+    "id": "faq41",
+    "q": {
+      "en": "My salary went up. Should my spending go up too?"
+    },
+    "a": {
+      "en": "A little, yes. But save part of every raise first, or the raise disappears."
+    },
+    "lesson": "L18"
+  },
+  {
+    "id": "faq42",
+    "q": {
+      "en": "The market fell 30%. Should I sell?"
+    },
+    "a": {
+      "en": "Panic-selling turns a paper loss into a real one. Broad markets have usually recovered in time."
+    },
+    "lesson": "L19"
+  },
+  {
+    "id": "faq43",
+    "q": {
+      "en": "What is diversification?"
+    },
+    "a": {
+      "en": "Not keeping all your eggs in one basket. Spread money across FD, gold and funds."
+    },
+    "lesson": "L19"
+  },
+  {
+    "id": "faq44",
+    "q": {
+      "en": "How do I prepare for a flood or hospital bill?"
+    },
+    "a": {
+      "en": "Insurance first, an emergency fund second. Together they decide how much a disaster hurts."
+    },
+    "lesson": "L20"
+  },
+  {
+    "id": "faq45",
+    "q": {
+      "en": "The crop failed. Where can we get help?"
+    },
+    "a": {
+      "en": "Claim crop insurance, ask about government relief, and use a bank or SHG loan, never the costliest lender."
+    },
+    "lesson": "L20"
+  },
+  {
+    "id": "faq46",
+    "q": {
+      "en": "How do I know if an agent is mis-selling?"
+    },
+    "a": {
+      "en": "Ask how much commission they earn. Mixed insurance-plus-investment plans often pay agents the most."
+    },
+    "lesson": "L21"
+  },
+  {
+    "id": "faq47",
+    "q": {
+      "en": "What is better: term insurance or a money-back plan?"
+    },
+    "a": {
+      "en": "Usually term cover for protection, plus a low-cost fund for growth. Each does one job well."
+    },
+    "lesson": "L21"
+  },
+  {
+    "id": "faq48",
+    "q": {
+      "en": "How do I spot a Ponzi scheme?"
+    },
+    "a": {
+      "en": "Very high \"guaranteed\" returns and bonuses for bringing friends. Old members are paid with new members' money."
+    },
+    "lesson": "L22"
+  },
+  {
+    "id": "faq49",
+    "q": {
+      "en": "I got a video call from police saying I'm under digital arrest. What do I do?"
+    },
+    "a": {
+      "en": "Hang up. There is no digital arrest. Real police never ask for money on a call. Call 1930."
+    },
+    "lesson": "L22"
+  },
+  {
+    "id": "faq50",
+    "q": {
+      "en": "An app shows my investment tripled, but I must pay tax to withdraw. Is it real?"
+    },
+    "a": {
+      "en": "No. Fake trading apps show fake numbers. Never pay to withdraw. Report it on 1930."
+    },
+    "lesson": "L22"
+  },
+  {
+    "id": "faq51",
+    "q": {
+      "en": "How big an EMI can I afford?"
+    },
+    "a": {
+      "en": "Keep all EMIs together under about 30–40% of your take-home pay."
+    },
+    "lesson": "L23"
+  },
+  {
+    "id": "faq52",
+    "q": {
+      "en": "What papers should I check before buying land?"
+    },
+    "a": {
+      "en": "The sale deed, the pahani and an encumbrance certificate. The seller's name must match the records."
+    },
+    "lesson": "L23"
+  },
+  {
+    "id": "faq53",
+    "q": {
+      "en": "What is a down payment?"
+    },
+    "a": {
+      "en": "The part you pay from your own savings. A bigger down payment means a smaller loan and EMI."
+    },
+    "lesson": "L23"
+  },
+  {
+    "id": "faq54",
+    "q": {
+      "en": "What is the Atal Pension Yojana?"
+    },
+    "a": {
+      "en": "A government pension: pay a small amount monthly and get ₹1,000 to ₹5,000 a month from 60."
+    },
+    "lesson": "L24"
+  },
+  {
+    "id": "faq55",
+    "q": {
+      "en": "Why should I add a nominee?"
+    },
+    "a": {
+      "en": "So your family gets your money quickly if something happens to you. It takes two minutes."
+    },
+    "lesson": "L24"
+  },
+  {
+    "id": "faq56",
+    "q": {
+      "en": "How do I update my KYC safely?"
+    },
+    "a": {
+      "en": "At your bank branch or its official app. Never through an SMS link."
+    },
+    "lesson": "L24"
+  }
+]

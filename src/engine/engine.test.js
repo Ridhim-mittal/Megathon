@@ -1,278 +1,329 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {
-  newLife,
-  apply,
-  dispatch,
-  currentStep,
-  actionAvailable,
-  loanQuote,
-  roleflipTable,
-  scoreRoleflip,
-  chittiSchedule,
-  chittiOutcome,
-  validBudget,
-  hud,
-  computeEnding,
-  endStats,
-  previewOption,
-  wheelState,
-  isFastForward,
-} from "./engine.js";
-import { runLife, strategyFromLog, turningPoints, parallelLife, hundredLives } from "./simulate.js";
-import { loanTerms, monthlyToYearly, emi } from "./finance.js";
-import { cardById, crossById, msgById, CFG } from "./data.js";
-import { mulberry32 } from "./rng.js";
-import { dominantOption } from "../../scripts/card-rules.js";
+import { createEngine } from "./engine.js";
+import { hashSeed, makeRandom } from "./rng.js";
+import { fixtureContent } from "./__fixtures__/content.js";
+import { assertConserved, playLife } from "./__fixtures__/players.js";
 
-// A pretend player: random but reproducible choices for every kind of step.
-function playRandom(seed, pickSeed = 7) {
-  const rnd = mulberry32(pickSeed);
-  let s = newLife(seed);
-  const pick = (xs) => xs[Math.floor(rnd() * xs.length)];
-  let guard = 0;
-  while (s.phase !== "ending" && guard++ < 3000) {
-    const step = currentStep(s);
-    let cmd;
-    if (step.kind === "budget") cmd = { type: "budget", budget: pick([{ needs: 55, wants: 15, savings: 15, goal: 15 }, { needs: 50, wants: 30, savings: 10, goal: 10 }]), autoRepay: rnd() < 0.5 };
-    else if (step.kind === "crossroads") cmd = { type: "crossroads", id: step.id, optionId: pick(crossById[step.id].options).id };
-    else if (step.kind === "roleflip") cmd = { type: "roleflip", picks: { student: pick(["short", "mid", "long"]), mother: "long", youth: pick(["mid", "long"]) } };
-    else if (step.kind === "actions") {
-      const kinds = ["bank", "learn", "fd", "rd", "chitti", "gold", "sip", "insurance", "loan", "repay"].filter((k) => actionAvailable(s, k).ok);
-      cmd = kinds.length && rnd() < 0.7 ? { type: "action", action: { kind: pick(kinds), frac: 0.5, monthly: 1000, amount: 10000, source: "bank", bidPct: pick([0, 20, 29]) } } : { type: "endActions" };
-    } else if (step.kind === "event") cmd = { type: "choose", cardId: step.cardId, optionId: pick(cardById[step.cardId].options).id };
-    else if (step.kind === "message") cmd = { type: "message", msgId: step.msgId, verdict: pick(["flag", "reply"]) };
-    else if (step.kind === "yearEnd") cmd = { type: "nextYear" };
-    const next = dispatch(s, cmd);
-    if (next === s && step.kind === "actions") s = dispatch(s, { type: "endActions" });
-    else s = next;
+const E = createEngine(fixtureContent);
+const params = { storylineId: "village", goalId: "house", seed: 1234, playerName: "Sravani" };
+
+// Advance until a predicate holds, choosing each card's choice with `pick`.
+function runUntil(s, done, pick = (card) => card.choices[0].id) {
+  for (let i = 0; !done(s) && s.phase !== "ending" && i < 5000; i++) {
+    const action = s.phase === "card" ? { type: "CHOOSE", choiceId: pick(E.select.currentCard(s), s) } : { type: "ADVANCE" };
+    const next = E.step(s, action);
+    assert.equal(next.error, null, next.error?.message);
+    s = next;
   }
   return s;
 }
 
-const core = (s) => ({ ...hud(s), loans: s.loans.length, seeds: s.seeds.map((x) => x.status), ending: s.ending, years: s.years.length });
+const deepFreeze = (o) => {
+  if (o && typeof o === "object") {
+    for (const v of Object.values(o)) deepFreeze(v);
+    Object.freeze(o);
+  }
+  return o;
+};
 
-test("a full life runs from 17 to 32 and ends with a tale", () => {
-  const s = playRandom(42);
-  assert.equal(s.phase, "ending");
-  assert.equal(s.years.length, 16);
-  assert.ok(s.ending);
-  assert.deepEqual(s.years.map((y) => y.age), Array.from({ length: 16 }, (_, i) => 17 + i));
+test("the seeded RNG is reproducible and spread out", () => {
+  const a = makeRandom({ rng: hashSeed("demo") });
+  const b = makeRandom({ rng: hashSeed("demo") });
+  const xs = Array.from({ length: 1000 }, () => a());
+  assert.deepEqual(xs, Array.from({ length: 1000 }, () => b()));
+  assert.ok(xs.every((x) => x >= 0 && x < 1));
+  const mean = xs.reduce((p, q) => p + q, 0) / xs.length;
+  assert.ok(Math.abs(mean - 0.5) < 0.05);
+  assert.notEqual(hashSeed("demo"), hashSeed("demo2"));
 });
 
-test("dispatch is pure: the old state is untouched", () => {
-  const s = newLife(1);
-  const before = JSON.stringify(s);
-  const next = dispatch(s, { type: "budget", budget: { needs: 50, wants: 20, savings: 15, goal: 15 } });
-  assert.notEqual(next, s);
-  assert.equal(JSON.stringify(s), before);
-  assert.equal(dispatch(s, { type: "nextYear" }), s, "an out-of-turn command is ignored");
+test("the same seed and choices give an identical life", () => {
+  const a = playLife(E, params, { seed: 99 });
+  const b = playLife(E, params, { seed: 99 });
+  assert.deepEqual(a, b);
+  assert.equal(a.phase, "ending");
+  const c = playLife(E, { ...params, seed: 4321 }, { seed: 99 });
+  assert.notDeepEqual(c.world, a.world);
 });
 
-test("replaying the command log rebuilds the exact same life", () => {
-  for (const seed of [3, 99, 2024]) {
-    const life = playRandom(seed, seed + 1);
-    const again = runLife(seed, strategyFromLog(life.commands));
-    assert.deepEqual(core(again), core(life));
-    assert.deepEqual(again.commands.map((c) => c.type), life.commands.map((c) => c.type));
+test("a string seed (?seed=demo) works and is stable", () => {
+  const a = E.createLife({ ...params, seed: "demo" });
+  const b = E.createLife({ ...params, seed: "demo" });
+  assert.deepEqual(a, b);
+  assert.equal(a.seed, hashSeed("demo"));
+});
+
+test("step is pure: the input state is never changed", () => {
+  let s = E.createLife(params);
+  for (let i = 0; i < 400 && s.phase !== "ending"; i++) {
+    const frozen = deepFreeze(structuredClone(s));
+    const action = s.phase === "card" ? { type: "CHOOSE", choiceId: E.select.currentCard(frozen).choices.at(-1).id } : { type: "ADVANCE" };
+    s = E.step(frozen, action); // throws in strict mode if it tried to mutate
+    assert.equal(s.error, null);
   }
 });
 
-test("luck is fixed by the seed: a different choice meets the same ordinary events", () => {
-  const life = playRandom(11, 5);
-  const point = turningPoints(life).find((p) => p.kind === "crossroads");
-  const { alt } = parallelLife(life, point, point.alternatives[0]);
-  const ordinary = (s) => s.years.map((y) => y.events.map((e) => e.cardId).filter((id) => !cardById[id].consequence).join(","));
-  assert.deepEqual(ordinary(alt), ordinary(life));
-  assert.notEqual(alt.crossroads[point.id], life.crossroads[point.id]);
+test("phases run intro → budget → shop → card ↔ outcome → yearEnd, from 11 to 36", () => {
+  let s = E.createLife(params);
+  assert.equal(s.phase, "intro");
+  assert.equal(s.age, 11);
+  s = E.step(s, { type: "ADVANCE" });
+  assert.equal(s.phase, "budget");
+  s = E.step(s, { type: "ADVANCE" });
+  assert.equal(s.phase, "shop");
+  s = E.step(s, { type: "SKIP_SHOP" });
+  assert.equal(s.phase, "card");
+  s = E.step(s, { type: "CHOOSE", choiceId: E.select.currentCard(s).choices[0].id });
+  assert.equal(s.phase, "outcome");
+  assert.ok(E.select.lastOutcome(s).why);
+  s = runUntil(s, (x) => x.phase === "yearEnd");
+  assert.equal(E.select.yearSummary(s).age, 11);
+  s = E.step(s, { type: "ADVANCE" });
+  assert.equal(s.age, 12);
+  s = runUntil(s, (x) => x.phase === "ending");
+  assert.equal(s.age, 36);
+  assert.equal(s.years.length, 26);
+  assert.ok(E.select.ending(s).id);
+  assert.match(E.step(s, { type: "ADVANCE" }).error.message, /over/);
 });
 
-test("village phrase ₹2 per ₹100 per month equals 24% a year", () => {
-  assert.equal(monthlyToYearly(2), 24);
-  const q = loanQuote(newLife(1), 10000, "lender");
-  assert.equal(q.annualPct, 24);
-  assert.equal(q.perHundredMonthly, 2);
-  assert.equal(q.totalRepay, q.emi * q.months + q.fee);
-  assert.ok(q.totalRepay > 10000);
+test("invalid actions return the same state with an error", () => {
+  const s = E.step(E.createLife(params), { type: "ADVANCE" });
+  const bad = E.step(s, { type: "CHOOSE", choiceId: "nope" });
+  assert.ok(bad.error);
+  assert.equal(bad.phase, s.phase);
+  assert.deepEqual({ ...bad, error: null }, s);
+  assert.ok(E.step(s, { type: "NOPE" }).error);
+  const ok = E.step(s, { type: "ADVANCE" });
+  assert.equal(ok.error, null);
 });
 
-test("EMI maths: zero rate splits evenly, interest makes total larger", () => {
-  assert.equal(emi(12000, 0, 12), 1000);
-  const t = loanTerms({ amount: 100000, annualPct: 12, months: 12, feePct: 1 });
-  assert.equal(t.emi, 8885);
-  assert.equal(t.fee, 1000);
-  assert.equal(t.totalRepay, 8885 * 12 + 1000);
+test("budget rules: jars must sum to take-home income, needs above the minimum, invest locked until L17", () => {
+  let s = E.step(E.createLife(params), { type: "ADVANCE" });
+  const rules = E.select.budgetRules(s);
+  assert.equal(rules.grossMonthly, 200);
+  assert.equal(rules.monthlyIncome, 200);
+  assert.equal(rules.step, 10);
+  assert.equal(rules.minNeeds, 40);
+  assert.ok(!rules.jarsUnlocked.includes("invest"));
+  assert.ok(rules.required);
+  assert.ok(E.checkBudget(s, rules.suggested).ok);
+  const tooMuch = E.step(s, { type: "SET_BUDGET", jars: { needs: 100, wants: 100, emergency: 10, goal: 0 } });
+  assert.match(tooMuch.error.message, /add up/);
+  assert.match(E.step(s, { type: "SET_BUDGET", jars: { needs: 30, wants: 170 } }).error.message, /at least/);
+  assert.match(E.step(s, { type: "SET_BUDGET", jars: { needs: 45, wants: 155 } }).error.message, /steps/);
+  assert.match(E.step(s, { type: "SET_BUDGET", jars: { needs: 40, wants: 0, invest: 160 } }).error.message, /invest/);
+  s = E.step(s, { type: "SET_BUDGET", jars: { needs: 40, wants: 0, emergency: 60, goal: 100 } });
+  assert.equal(s.error, null);
+  assert.equal(s.money.jars.goal, 1200);
+  assert.equal(s.money.jars.emergency, 720);
+  assert.equal(s.money.wallet, 0);
+  assertConserved(s);
 });
 
-test("role flip: lowest EMI + longest term is always the most profitable offer", () => {
-  for (const c of roleflipTable()) {
-    const byEmi = [...c.offers].sort((a, b) => a.emi - b.emi)[0];
-    const byProfit = [...c.offers].sort((a, b) => b.profit - a.profit)[0];
-    const byTerm = [...c.offers].sort((a, b) => b.months - a.months)[0];
-    assert.equal(byEmi.id, byProfit.id);
-    assert.equal(byTerm.id, byProfit.id);
+test("EMIs and premiums come out first: take-home shrinks by the auto-paid amount", () => {
+  let s = runUntil(E.createLife(params), (x) => x.loans.length > 0 && x.phase === "yearEnd");
+  s = E.step(s, { type: "ADVANCE" });
+  const rules = E.select.budgetRules(s);
+  assert.ok(rules.autoPaidMonthly > 0);
+  assert.ok(rules.monthlyIncome <= rules.grossMonthly - rules.autoPaidMonthly);
+  assert.ok(rules.monthlyIncome > rules.grossMonthly - rules.autoPaidMonthly - rules.step);
+});
+
+test("the wants shop spends only the wants jar and inflates prices", () => {
+  let s = E.step(E.createLife(params), { type: "ADVANCE" });
+  s = E.step(s, { type: "SET_BUDGET", jars: { needs: 40, wants: 160, emergency: 0, goal: 0 } });
+  const items = E.select.shopItems(s);
+  assert.ok(items.length > 0);
+  const bat = items.find((i) => i.id === "want.cricket_bat");
+  const joy = s.meters.joy;
+  s = E.step(s, { type: "BUY_WANT", itemId: bat.id });
+  assert.equal(s.error, null);
+  assert.equal(s.money.wallet, 1920 - 300);
+  assert.equal(s.meters.joy, joy + 5);
+  assert.match(E.step(s, { type: "BUY_WANT", itemId: bat.id }).error.message, /Already/);
+  s = runUntil(s, (x) => x.age === 20 && x.phase === "shop");
+  const trip = E.select.shopItems(s).find((i) => i.id === "want.trip");
+  assert.ok(trip.price > 4000, "prices rise with inflation");
+});
+
+test("lesson status follows the choice quality and gyaan grows", () => {
+  let s = runUntil(E.createLife(params), (x) => x.phase === "card" && E.select.currentCard(x).kind === "lesson");
+  const card = E.select.currentCard(s);
+  const gyaan = s.meters.gyaan;
+  const good = fixtureContent.storylines.village.cards.find((c) => c.id === card.id).choices.find((c) => c.quality === "good");
+  s = E.step(s, { type: "CHOOSE", choiceId: good.id });
+  assert.equal(s.lessons[card.lesson], "applied");
+  assert.equal(E.select.lastOutcome(s).lesson.to, "applied");
+  assert.ok(s.meters.gyaan >= gyaan + 4);
+  const report = E.select.lessonReport(s);
+  assert.equal(report.totals.applied, 1);
+  assert.equal(report.gyaanCards, 1);
+});
+
+test("every lesson is drawn inside its window, crossroads always appear", () => {
+  const s = runUntil(E.createLife(params), () => false);
+  for (const l of E.select.lessonReport(s).lessons) {
+    assert.ok(l.age >= l.ages[0] && l.age <= l.ages[1], `${l.id} at ${l.age}`);
+    assert.notEqual(l.status, "unseen");
   }
-  const score = scoreRoleflip({ student: "short", mother: "long", youth: "long" });
-  assert.equal(score.mostPicked, "long");
-  assert.ok(score.profit < score.maxProfit);
-  assert.equal(scoreRoleflip({ student: "short", mother: "mid", youth: "long" }).mostPicked, "long");
+  const crossroads = s.history.filter((h) => h.kind === "crossroads").map((h) => h.cardId);
+  assert.equal(crossroads.length, 3);
 });
 
-test("role flip terms come back as the player's next loan offer, once", () => {
-  let s = runUntil(newLife(8), (x) => currentStep(x).kind === "roleflip");
-  s = dispatch(s, { type: "roleflip", picks: { student: "short", mother: "short", youth: "mid" } });
-  const q = loanQuote(s, 20000, "bank");
-  assert.equal(q.fromRoleflip, true);
-  assert.equal(q.annualPct, CFG.roleflip.offers.find((o) => o.id === "short").annualPct);
-  s = dispatch(s, { type: "action", action: { kind: "loan", amount: 20000, source: "bank" } });
-  assert.equal(s.loans.at(-1).fromRoleflip, true);
-  assert.equal(loanQuote(s, 20000, "bank").fromRoleflip, false);
-});
-
-test("chitti auction: deterministic NPC bids and an honest early-vs-wait comparison", () => {
-  assert.deepEqual(chittiSchedule(5, 20), chittiSchedule(5, 20));
-  const { npcMax } = chittiSchedule(5, 20);
-  const lose = chittiOutcome(5, 20, 2000, npcMax);
-  const win = chittiOutcome(5, 20, 2000, npcMax + 1);
-  assert.equal(lose.won, false);
-  assert.equal(win.won, true);
-  assert.equal(win.received, win.takeEarly);
-  assert.equal(win.earlyTotal + win.gaveUp, win.waitTotal);
-  assert.ok(win.gaveUp > 0 && win.yearlyCostPct > 0);
-  assert.equal(lose.received, lose.pot);
-});
-
-test("tools unlock by age, SIP needs the risk lesson, fast-forward has no actions", () => {
-  let s = newLife(4);
-  s = dispatch(s, { type: "budget", budget: { needs: 50, wants: 20, savings: 15, goal: 15 } });
-  assert.equal(currentStep(s).kind, "actions");
-  assert.equal(actionAvailable(s, "bank").reason, "age");
-  assert.equal(actionAvailable(s, "learn").ok, true);
-  assert.equal(CFG.unlocks.sip, 22);
-  assert.equal(CFG.unlocks.insurance, 23);
-  const at22 = { ...s, age: 22, bank: true, lessons: 2, energy: 3 };
-  assert.equal(actionAvailable(at22, "sip").reason, "lesson");
-  assert.equal(actionAvailable({ ...at22, lessons: 3 }, "sip").ok, true);
-  assert.equal(isFastForward(25), false);
-  assert.equal(isFastForward(26), true);
-  const life = playRandom(21);
-  for (const y of life.years.filter((y) => y.age >= 26)) assert.equal(y.actions.length, 0);
-});
-
-test("budget jars are asked rarely: at stage or income-source changes only", () => {
-  const life = playRandom(77);
-  const prompts = life.years.filter((y) => y.budgetPrompted).map((y) => y.age);
-  assert.ok(prompts.length >= 4 && prompts.length <= 8, `prompts at ${prompts}`);
-  for (const age of [17, 18, 21, 26]) assert.ok(prompts.includes(age));
-  assert.equal(validBudget({ needs: 50, wants: 20, savings: 15, goal: 15 }), true);
-  assert.equal(validBudget({ needs: 50, wants: 20, savings: 15, goal: 10 }), false);
-  assert.equal(validBudget({ needs: 52, wants: 18, savings: 15, goal: 15 }), false);
-});
-
-test("costs are paid from cash, then savings; only then the moneylender", () => {
-  const s = newLife(2);
-  apply(s, { type: "budget", budget: { needs: 50, wants: 20, savings: 15, goal: 15 } });
-  const before = hud(s);
-  const spendOpt = { effects: { money: -10000, family: 1 } };
-  const p = previewOption(s, spendOpt);
-  assert.equal(p.fx.money, -10000);
-  apply(s, { type: "endActions" });
-  // Force a big cost through the same pipeline used by cards.
-  const step = currentStep(s);
-  if (step.kind === "event") {
-    const card = cardById[step.cardId];
-    const opt = card.options.reduce((a, b) => ((a.effects.money || 0) <= (b.effects.money || 0) ? a : b));
-    apply(s, { type: "choose", cardId: card.id, optionId: opt.id });
+test("Ammamma's glasses: a charge reveals a card; applied lessons are revealed for free", () => {
+  const tinBox = (x) => x.phase === "card" && x.current.cardId === "village.child.tin_box.a";
+  for (let seed = 1; seed < 50; seed++) {
+    let s = runUntil(E.createLife({ ...params, seed }), tinBox);
+    if (!tinBox(s)) continue;
+    let card = E.select.currentCard(s);
+    assert.equal(card.clarity[0].revealed, false);
+    assert.equal(card.clarity[0].truth, null);
+    const charges = s.glasses.charges;
+    s = E.step(s, { type: "USE_GLASSES" });
+    card = E.select.currentCard(s);
+    assert.equal(s.glasses.charges, charges - 1);
+    assert.equal(card.clarity[0].revealed, true);
+    assert.ok(card.clarity[0].truth.en);
+    assert.ok(E.step(s, { type: "USE_GLASSES" }).error);
+    // Once L04 is applied, the phrase is free.
+    const applied = structuredClone(s);
+    applied.lessons.L04 = "applied";
+    applied.current.glasses = false;
+    const free = E.select.currentCard(applied);
+    assert.equal(free.clarity[0].free, true);
+    assert.equal(free.clarity[0].revealed, true);
+    assert.match(E.step(applied, { type: "USE_GLASSES" }).error.message, /already see/);
+    return;
   }
-  assert.ok(hud(s).wallet <= before.wallet);
-  assert.ok(s.wallet >= 0 && s.goalJar >= 0);
+  assert.fail("tin box card never drawn");
 });
 
-test("insurance pays 80% of an insurable bill", () => {
-  const s = newLife(3);
-  const card = cardById.medical;
-  const opt = card.options.find((o) => o.id === "private");
-  s.income = 200000;
-  assert.equal(previewOption(s, opt, card).fx.money, -60000);
-  s.insured = true;
-  const p = previewOption(s, opt, card);
-  assert.equal(p.fx.money, -12000);
-  assert.equal(p.covered, 48000);
-});
-
-test("risky choices plant seeds that fire as threads or wither", () => {
-  let found = false;
-  for (let seed = 1; seed < 40 && !found; seed++) {
-    const life = playRandom(seed, seed);
-    for (const sd of life.seeds) {
-      if (sd.status === "fired") {
-        const year = life.years.find((y) => y.age === sd.fireAge);
-        assert.ok(year.threads.includes(sd.id));
-        assert.ok(year.events.some((e) => e.seedId === sd.id && e.cardId === sd.consequence));
-        assert.ok(life.years.find((y) => y.age === sd.age).seeds.includes(sd.id));
-        found = true;
-      }
+test("documents: an uncaught problem schedules its consequence; catching it does not", () => {
+  const plot = (x) => x.phase === "card" && x.current.cardId === "village.settle.plot.a";
+  let checked = { caught: false, missed: false };
+  for (let seed = 1; seed < 200 && !(checked.caught && checked.missed); seed++) {
+    const s = runUntil(E.createLife({ ...params, seed }), plot, (c) => c.choices.at(-1).id);
+    if (!plot(s) || s.docs["doc.plot_sale"].variant !== "double_sold") continue;
+    let open = E.step(s, { type: "OPEN_DOCUMENT", docId: "doc.plot_sale" });
+    assert.equal(open.meters.gyaan, Math.min(100, s.meters.gyaan + 1));
+    const doc = E.select.currentCard(open).document;
+    assert.equal(doc.problem, null, "the problem stays hidden until caught");
+    // Missed: buy without flagging.
+    const missed = E.step(open, { type: "CHOOSE", choiceId: "buy" });
+    assert.equal(missed.lastOutcome.document.caught, false);
+    assert.equal(missed.lastOutcome.document.consequence.card, "village.settle.plot_dispute.a");
+    assert.ok(missed.scheduled.some((x) => x.card === "village.settle.plot_dispute.a"));
+    // Caught: flag the red line first.
+    open = E.step(open, { type: "FLAG_LINE", docId: "doc.plot_sale", lineId: "l2" });
+    const line = E.select.currentCard(open).document.lines.find((l) => l.id === "l2");
+    assert.equal(line.isRedFlag, true);
+    assert.ok(line.explain.en);
+    const caught = E.step(open, { type: "CHOOSE", choiceId: "buy" });
+    assert.equal(caught.lastOutcome.document.caught, true);
+    assert.equal(caught.lastOutcome.document.consequence, null);
+    assert.ok(!caught.scheduled.some((x) => x.card === "village.settle.plot_dispute.a"));
+    // Verifying costs money and reveals everything.
+    const verified = E.step(s, { type: "VERIFY_DOCUMENT", docId: "doc.plot_sale" });
+    if (!verified.error) {
+      assert.equal(E.select.currentCard(verified).document.verified, true);
+      assertConserved(verified);
     }
+    checked = { caught: true, missed: true };
   }
-  assert.ok(found);
+  assert.ok(checked.caught && checked.missed, "no double-sold plot found");
 });
 
-test("every turn offers 1–3 events; scam replies are logged as falls", () => {
-  const life = playRandom(55, 3);
-  for (const y of life.years) assert.ok(y.events.length >= 1 && y.events.length <= 4, `age ${y.age}`);
-  const replies = life.years.filter((y) => y.message && y.message.verdict === "reply" && msgById[y.message.msgId].scam).length;
-  assert.equal(life.stats.scamsFallen, replies);
-});
-
-test("end stats never rank by net worth", () => {
-  const life = playRandom(9);
-  const stats = endStats(life);
-  assert.deepEqual(Object.keys(stats).sort(), ["debtFree", "goalAge", "goalMet", "goalPct", "metersAboveFloor", "scamsFallen", "scamsFlagged"].sort());
-  assert.equal(computeEnding(life), life.ending);
-});
-
-test("wheel spins against you when debt interest beats savings interest", () => {
-  const s = newLife(1);
-  s.wallet = 1000;
-  s.bank = true;
-  s.loans.push({ balance: 50000, annualPct: 24, source: "lender" });
-  const w = wheelState(s);
-  assert.equal(w.dir, -1);
-  assert.equal(w.rate, 24);
-});
-
-test("100 lives: same seeds for both strategies, counts out of 100", () => {
-  const life = playRandom(12);
-  const point = turningPoints(life)[0];
-  const r = hundredLives(life, point, point.alternatives[0], 40);
-  assert.equal(r.n, 40);
-  for (const side of [r.mine, r.other]) {
-    assert.ok(side.met >= 0 && side.met <= 40);
-    assert.ok(side.p10 <= side.median && side.median <= side.p90);
+test("echoes: a scheduled consequence points back to the choice that caused it", () => {
+  const bet = (x) => x.phase === "card" && x.current.cardId === "village.teen.betting.a";
+  for (let seed = 1; seed < 100; seed++) {
+    let s = runUntil(E.createLife({ ...params, seed }), bet);
+    if (!bet(s)) continue;
+    s = E.step(s, { type: "CHOOSE", choiceId: "bet" });
+    assert.equal(s.echoes.at(-1).level, 3);
+    s = runUntil(s, (x) => x.phase === "card" && x.current.cardId === "village.teen.betting_debt.a");
+    const card = E.select.currentCard(s);
+    assert.equal(card.echoFrom.cardId, "village.teen.betting.a");
+    assert.equal(card.echoFrom.age, s.age - 1);
+    assert.ok(card.echoFrom.hint.en);
+    assert.ok(E.select.echoes(s).choices.find((e) => e.cardId === "village.teen.betting.a").fired);
+    return;
   }
-  assert.deepEqual(hundredLives(life, point, point.alternatives[0], 40), r);
+  assert.fail("betting card never drawn");
 });
 
-test("validator spots a dominant option", () => {
-  const good = [{ effects: { money: -100, peace: 2 } }, { effects: { money: 0, peace: -1 } }];
-  const bad = [{ effects: { money: 0, peace: 2 } }, { effects: { money: -100, peace: 1 } }];
-  assert.equal(dominantOption(good), undefined);
-  assert.equal(dominantOption(bad), bad[0]);
+test("a crisis card is drawn when joy hits 0", () => {
+  let s = runUntil(E.createLife(params), (x) => x.phase === "outcome" && x.age >= 13);
+  const low = structuredClone(s);
+  low.meters.joy = 0;
+  const next = runUntil(E.step(low, { type: "ADVANCE" }), (x) => x.phase === "card" || x.phase === "yearEnd");
+  assert.equal(next.current.cardId, "village.any.crisis_joy_low.a");
+  assert.equal(E.select.currentCard(next).crisis, "joy_low");
+  assert.ok(next.flags.includes("crisis_joy_low"));
+  const after = E.step(next, { type: "CHOOSE", choiceId: "care" });
+  assert.ok(!after.flags.includes("crisis_joy_low"));
+  assert.equal(after.meters.joy, 30);
 });
 
-function runUntil(s, done) {
-  let guard = 0;
-  while (!done(s) && guard++ < 500) {
-    const step = currentStep(s);
-    const cmd =
-      step.kind === "budget" ? { type: "budget", budget: { needs: 55, wants: 15, savings: 15, goal: 15 } }
-      : step.kind === "crossroads" ? { type: "crossroads", id: step.id, optionId: crossById[step.id].options[0].id }
-      : step.kind === "actions" ? { type: "endActions" }
-      : step.kind === "event" ? { type: "choose", cardId: step.cardId, optionId: cardById[step.cardId].options[1].id }
-      : step.kind === "message" ? { type: "message", msgId: step.msgId, verdict: "flag" }
-      : step.kind === "roleflip" ? { type: "roleflip", picks: {} }
-      : { type: "nextYear" };
-    s = dispatch(s, cmd);
-  }
-  return s;
-}
+test("Sahukar's chair runs once in the teen or young stage", () => {
+  let s = runUntil(E.createLife(params), (x) => x.phase === "minigame");
+  assert.equal(s.phase, "minigame");
+  assert.ok(s.age >= 17 && s.age <= 22);
+  const mg = E.select.minigame(s);
+  assert.equal(mg.id, "sahukar");
+  assert.ok(mg.config);
+  const gyaan = s.meters.gyaan;
+  s = E.step(s, { type: "MINIGAME_RESULT", id: "sahukar", score: 4200 });
+  assert.equal(s.phase, "yearEnd");
+  assert.equal(s.meters.gyaan, Math.min(100, gyaan + 3));
+  assert.notEqual(s.lessons.L14, "unseen");
+  assert.ok(E.select.minigame(s).done);
+});
+
+test("mentor and glossary gyaan is capped per year", () => {
+  let s = E.step(E.createLife(params), { type: "ADVANCE" });
+  const g = s.meters.gyaan;
+  for (let i = 0; i < 6; i++) s = E.step(s, { type: i % 2 ? "USED_GLOSSARY" : "ASKED_MENTOR" });
+  assert.equal(s.meters.gyaan, g + 3);
+});
+
+test("endings: the dream flag with no debt is dream_on_time; the wrong path adds a modifier", () => {
+  const goodOrFirst = (card) => {
+    if (card.id === "village.settle.crossroads_dream.a") return "loan"; // sets goal_reached
+    const raw = fixtureContent.storylines.village.cards.find((c) => c.id === card.id);
+    return (raw.choices.find((c) => c.quality === "good") ?? raw.choices[0]).id;
+  };
+  const s = runUntil(E.createLife(params), () => false, goodOrFirst);
+  const ending = E.select.ending(s);
+  assert.ok(s.flags.includes("goal_reached"));
+  assert.equal(ending.id, "dream_on_time");
+  assert.equal(ending.reached, true);
+  assert.equal(ending.highInterestDebt, 0);
+  assert.ok(ending.debt > 0, "a home loan is debt, but manageable");
+  assert.deepEqual(ending.modifiers, []);
+  assert.ok(ending.text.en);
+  assert.ok(ending.storyteller.en);
+
+  const mule = (card) => (card.id === "village.young.mule.a" ? "lend" : card.choices.at(-1).id);
+  const bad = runUntil(E.createLife(params), () => false, mule);
+  assert.ok(bad.flags.includes("money_mule"));
+  assert.ok(E.select.ending(bad).modifiers.includes("wrong_path"));
+});
+
+test("selectors return plain data the UI can render", () => {
+  let s = runUntil(E.createLife(params), (x) => x.phase === "card" && x.age >= 16);
+  const hud = E.select.hud(s);
+  for (const k of ["age", "cash", "savings", "investments", "debt", "netWorth"]) assert.equal(typeof hud[k], "number");
+  assert.equal(hud.stage, "teen");
+  assert.equal(hud.netWorth, hud.cash + hud.wallet + hud.jars.emergency + hud.jars.goal + Object.values(hud.products).reduce((a, b) => a + b, 0) - hud.debt);
+  assert.deepEqual(Object.keys(hud.dream).sort(), ["goalId", "pct", "reached", "reachedAge", "saved", "target"]);
+  const card = E.select.currentCard(s);
+  assert.ok(card.title.en && card.text.en && card.choices.length >= 2);
+  assert.ok(!("quality" in card.choices[0]) && !("effects" in card.choices[0]), "choices do not leak their quality");
+  s = runUntil(s, (x) => x.phase === "ending");
+  assert.equal(E.select.timeline(s).length, s.history.length);
+  assert.ok(E.select.timeline(s)[0].chosen.label.en);
+  assert.ok(Object.keys(E.select.world(s).inflation).length === 26);
+  assert.ok(Array.isArray(E.select.echoes(s).habits));
+});

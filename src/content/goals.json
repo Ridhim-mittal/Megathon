@@ -1,0 +1,27 @@
+[
+  {
+    "id": "house",
+    "title": { "en": "A pucca house" },
+    "description": { "en": "A strong house with a cement roof that doesn't leak in the monsoon. A room for Ammamma, a room for books." }
+  },
+  {
+    "id": "business",
+    "title": { "en": "My own business" },
+    "description": { "en": "A small shop or workshop of your own in Mallepalli. Your name on the board, your rules." }
+  },
+  {
+    "id": "education",
+    "title": { "en": "Debt-free education" },
+    "description": { "en": "Chinni's nursing degree, fully paid, with no sahukar knocking on the door." }
+  },
+  {
+    "id": "vehicle",
+    "title": { "en": "A vehicle that earns" },
+    "description": { "en": "A goods auto or small tractor that earns money every day, for you and for the village." }
+  },
+  {
+    "id": "parents",
+    "title": { "en": "Amma and Nanna's safe old age" },
+    "description": { "en": "A pension, health cover and savings, so Amma and Nanna never have to borrow again." }
+  }
+]

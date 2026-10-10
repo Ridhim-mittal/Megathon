@@ -1,0 +1,194 @@
+[
+  {
+    "id": "L01",
+    "pillar": "PLAN",
+    "ages": [11, 12],
+    "title": { "en": "Needs vs wants" },
+    "summary": { "en": "Needs come first: food, school, the bus. Wants are fine too, once they fit inside your plan." },
+    "keyNumber": { "en": "₹10 a day on wants = ₹3,650 a year." }
+  },
+  {
+    "id": "L02",
+    "pillar": "SAVE",
+    "ages": [11, 13],
+    "title": { "en": "Saving habit and goals" },
+    "summary": { "en": "Pay yourself first. Put the savings aside the day money comes, not with whatever is left." },
+    "keyNumber": { "en": "₹5 a day saved = ₹1,825 a year." }
+  },
+  {
+    "id": "L03",
+    "pillar": "PLAN",
+    "ages": [12, 14],
+    "title": { "en": "Inflation" },
+    "summary": { "en": "Prices rise a little every year. Cash kept idle buys less and less." },
+    "keyNumber": { "en": "At 6% a year, a ₹10 chocolate costs about ₹18 in 10 years." }
+  },
+  {
+    "id": "L04",
+    "pillar": "SAVE",
+    "ages": [12, 14],
+    "title": { "en": "Bank vs tin box" },
+    "summary": { "en": "A bank keeps money safe from rats, thieves and quick spending. It also pays interest. Children can open a minor's savings account." },
+    "keyNumber": { "en": "₹1,000 in a savings account at 3% becomes ₹1,030 in a year. In a tin box it stays ₹1,000." }
+  },
+  {
+    "id": "L05",
+    "pillar": "SAVE",
+    "ages": [13, 14],
+    "title": { "en": "Simple vs compound interest" },
+    "summary": { "en": "Compound interest is interest on interest. It makes savings grow fast. It makes debts grow fast too." },
+    "keyNumber": { "en": "₹1,000 at 10% for 10 years: ₹2,000 with simple interest, ₹2,594 with compound." }
+  },
+  {
+    "id": "L06",
+    "pillar": "SAFE",
+    "ages": [11, 14],
+    "title": { "en": "Online safety" },
+    "summary": { "en": "Never share an OTP, PIN or password. \"Free\" game coins and recharge links are bait." },
+    "keyNumber": { "en": "0: the number of times a real bank or game will ask for your OTP." }
+  },
+  {
+    "id": "L07",
+    "pillar": "PLAN",
+    "ages": [15, 17],
+    "title": { "en": "Peer pressure and EMIs" },
+    "summary": { "en": "\"Only ₹X a month\" hides the total. Multiply the EMI by the months and add every fee." },
+    "keyNumber": { "en": "₹699 × 12 months + ₹1,200 fee = ₹9,588 for a ₹7,500 phone." }
+  },
+  {
+    "id": "L08",
+    "pillar": "PLAN",
+    "ages": [15, 18],
+    "title": { "en": "Earning and opportunity cost" },
+    "summary": { "en": "Every choice has a hidden price: the best thing you gave up for it. Time is money too." },
+    "keyNumber": { "en": "₹300 a day picking cotton today vs a skill that can pay ₹500 a day for 40 years." }
+  },
+  {
+    "id": "L09",
+    "pillar": "SAFE",
+    "ages": [15, 18],
+    "title": { "en": "UPI safely" },
+    "summary": { "en": "You never enter a PIN to receive money. A collect request or QR code that asks for your PIN takes money out." },
+    "keyNumber": { "en": "₹0: the PIN needed to receive money." }
+  },
+  {
+    "id": "L10",
+    "pillar": "PLAN",
+    "ages": [17, 18],
+    "title": { "en": "Education and career crossroads" },
+    "summary": { "en": "Good debt builds your earning power. Bad debt buys things that lose value. An education loan can be good debt." },
+    "keyNumber": { "en": "A ₹2 lakh study loan at 10% is about ₹3,300 a month for 7 years." }
+  },
+  {
+    "id": "L11",
+    "pillar": "SAFE",
+    "ages": [15, 19],
+    "title": { "en": "Betting and easy-money apps" },
+    "summary": { "en": "Betting and \"earning\" apps are built to win. Small early wins hook you. Chasing losses digs deeper." },
+    "keyNumber": { "en": "On average, betting apps give back less than ₹90 of every ₹100 bet." }
+  },
+  {
+    "id": "L12",
+    "pillar": "PLAN",
+    "ages": [19, 21],
+    "title": { "en": "First income" },
+    "summary": { "en": "Read your payslip. PF is your savings, not a cut. PAN tracks your income. Income tax starts only above a limit." },
+    "keyNumber": { "en": "On a ₹12,000 basic pay, you put ₹1,440 into PF and your employer adds ₹1,440 more." }
+  },
+  {
+    "id": "L13",
+    "pillar": "SAVE",
+    "ages": [19, 22],
+    "title": { "en": "Emergency fund" },
+    "summary": { "en": "Keep 3 to 6 months of expenses safe and easy to reach. It turns a crisis into an inconvenience." },
+    "keyNumber": { "en": "Spending ₹10,000 a month? Keep ₹30,000 to ₹60,000 ready." }
+  },
+  {
+    "id": "L14",
+    "pillar": "SAVE",
+    "ages": [19, 24],
+    "title": { "en": "Borrowing compared" },
+    "summary": { "en": "The same ₹10,000 can cost very different amounts. Always turn the rate into a yearly number. Paying on time builds your credit score." },
+    "keyNumber": { "en": "\"₹2 per ₹100 per month\" = 24% a year." }
+  },
+  {
+    "id": "L15",
+    "pillar": "SAFE",
+    "ages": [18, 23],
+    "title": { "en": "Money mule" },
+    "summary": { "en": "Letting someone use your bank account for \"commission\" is a crime. The money is traced to you, not them." },
+    "keyNumber": { "en": "A ₹5,000 \"commission\" can bring a frozen account and a police case." }
+  },
+  {
+    "id": "L16",
+    "pillar": "SAFE",
+    "ages": [20, 24],
+    "title": { "en": "Insurance basics" },
+    "summary": { "en": "Insurance is a small, sure cost that protects you from a big, rare one. Government schemes make it cheap." },
+    "keyNumber": { "en": "₹20 a year buys ₹2 lakh accident cover under PMSBY." }
+  },
+  {
+    "id": "L17",
+    "pillar": "INVEST",
+    "ages": [20, 24],
+    "title": { "en": "Risk vs return; start early" },
+    "summary": { "en": "Safe options grow slowly. Riskier ones swing but can grow more. Time matters more than the amount." },
+    "keyNumber": { "en": "₹1,000 a month from 22 to 36 at 10% ≈ ₹3.6 lakh. Starting at 27: about ₹1.7 lakh." }
+  },
+  {
+    "id": "L18",
+    "pillar": "PLAN",
+    "ages": [24, 28],
+    "title": { "en": "Lifestyle inflation and social spending" },
+    "summary": { "en": "When income grows, spending tries to grow faster. Weddings and festivals matter, but they need a budget too." },
+    "keyNumber": { "en": "A ₹3 lakh wedding on ₹15,000 a month = 20 months of full pay." }
+  },
+  {
+    "id": "L19",
+    "pillar": "INVEST",
+    "ages": [25, 30],
+    "title": { "en": "Diversification and crashes" },
+    "summary": { "en": "Markets fall sometimes. Selling in panic locks in the loss. Spread money across different things." },
+    "keyNumber": { "en": "A 30% fall feels huge. History shows broad markets usually recovered within a few years." }
+  },
+  {
+    "id": "L20",
+    "pillar": "SAVE",
+    "ages": [25, 30],
+    "title": { "en": "Calamity" },
+    "summary": { "en": "Floods, droughts and hospitals don't ask permission. Insurance and an emergency fund decide how much it hurts." },
+    "keyNumber": { "en": "A ₹60,000 hospital bill: with cover, you pay almost nothing. Without it, you may borrow at ₹2 per ₹100 a month." }
+  },
+  {
+    "id": "L21",
+    "pillar": "INVEST",
+    "ages": [26, 30],
+    "title": { "en": "Fees and mis-selling" },
+    "summary": { "en": "Ask how the seller is paid. Mixed insurance-plus-investment plans often give low cover and high fees." },
+    "keyNumber": { "en": "A 2% yearly fee eats about a quarter of 15 years of growth." }
+  },
+  {
+    "id": "L22",
+    "pillar": "SAFE",
+    "ages": [24, 32],
+    "title": { "en": "Too good to be true" },
+    "summary": { "en": "\"Guaranteed\" high returns, fake trading apps and \"digital arrest\" calls are scams. Real police never arrest on video calls." },
+    "keyNumber": { "en": "\"Double in one year\" = 100% a year. Honest savings pay about 7%." }
+  },
+  {
+    "id": "L23",
+    "pillar": "PLAN",
+    "ages": [31, 35],
+    "title": { "en": "The big purchase" },
+    "summary": { "en": "Save a good down payment, keep EMIs affordable, and read and verify every document before you sign." },
+    "keyNumber": { "en": "Keep all EMIs together under about 30–40% of take-home pay." }
+  },
+  {
+    "id": "L24",
+    "pillar": "PLAN",
+    "ages": [33, 36],
+    "title": { "en": "Planning ahead" },
+    "summary": { "en": "A pension plan, a nominee on every account and updated KYC protect your family's future." },
+    "keyNumber": { "en": "APY: ₹42 a month from age 18, or ₹116 from age 30, for a ₹1,000 pension at 60." }
+  }
+]

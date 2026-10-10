@@ -1,0 +1,267 @@
+[
+  {
+    "id": "village.any.crisis_joy_low_young.a",
+    "storyline": "village",
+    "kind": "crisis",
+    "lesson": "L01",
+    "ages": [11, 18],
+    "weight": 1,
+    "requires": { "flags": ["crisis_joy_low"] },
+    "speaker": "sibling",
+    "title": { "en": "You forgot how to have fun" },
+    "text": {
+      "en": "{cast:sibling} pulls your sleeve. \"You never play anymore. You just count coins.\" Even Bujji looks bored of you."
+    },
+    "choices": [
+      {
+        "id": "jatara",
+        "label": { "en": "Spend ₹100 on a day of fun with Chinni" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -100, "meters": { "joy": 30, "family": 5 } },
+        "outcome": { "en": "Kites, ice candy and a muddy cricket match. ₹100 well spent." },
+        "why": { "en": "Wants are part of a good budget. Saving every rupee isn't a plan, it's a punishment." }
+      },
+      {
+        "id": "keep_saving",
+        "label": { "en": "Keep saving. Fun can wait" },
+        "quality": "risky",
+        "effects": { "meters": { "joy": 10, "health": -5, "family": -4 } },
+        "outcome": { "en": "You save ₹100 more and catch a fever from exhaustion." },
+        "why": { "en": "A plan you can't live with won't last. Leave room for small joys." }
+      }
+    ]
+  },
+  {
+    "id": "village.any.crisis_joy_low_grown.a",
+    "storyline": "village",
+    "kind": "crisis",
+    "lesson": "L18",
+    "ages": [19, 36],
+    "weight": 1,
+    "requires": { "flags": ["crisis_joy_low"] },
+    "speaker": "mentor",
+    "title": { "en": "A calculator, not a person" },
+    "text": {
+      "en": "You haven't laughed in months. {cast:mentor}: \"Kanna, money is for living. You've stopped living.\" Chinni calls you \"the calculator\"."
+    },
+    "choices": [
+      {
+        "id": "family_trip",
+        "label": { "en": "Take the family on a ₹3,000 day trip" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -3000, "meters": { "joy": 30, "family": 8 } },
+        "outcome": { "en": "₹3,000, one waterfall and Ammamma's first ride on a boat. Everyone talks about it for a year." },
+        "why": { "en": "Joy is a need too. A budget with no wants breaks sooner or later." }
+      },
+      {
+        "id": "work_more",
+        "label": { "en": "Take more overtime instead" },
+        "quality": "risky",
+        "effects": { "cash": 3000, "meters": { "joy": 8, "health": -8, "family": -5 } },
+        "outcome": { "en": "₹3,000 more and a back that hurts every morning." },
+        "why": { "en": "Health and family are wealth too. Spend a little on them." }
+      }
+    ]
+  },
+  {
+    "id": "village.any.crisis_joy_high_young.a",
+    "storyline": "village",
+    "kind": "crisis",
+    "lesson": "L01",
+    "ages": [11, 18],
+    "weight": 1,
+    "requires": { "flags": ["crisis_joy_high"] },
+    "speaker": "shopkeeper",
+    "title": { "en": "The khata is full" },
+    "text": {
+      "en": "Snacks, top-ups, movies. {cast:shopkeeper} turns her [[khata]] around. \"₹640, kanna. That's a whole page with your name.\""
+    },
+    "choices": [
+      {
+        "id": "pay_back",
+        "label": { "en": "Pay it back and cut wants for two months" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -640, "meters": { "joy": -25 }, "gyaan": 2 },
+        "outcome": { "en": "₹640 repaid in two months. The page is crossed out. You feel lighter." },
+        "why": { "en": "Too many wants means the needs end up on credit. Balance is the goal." }
+      },
+      {
+        "id": "more_credit",
+        "label": { "en": "Ask for one more week of credit" },
+        "quality": "bad",
+        "effects": { "cash": -900, "meters": { "joy": -15, "family": -6 } },
+        "outcome": { "en": "One more week becomes ₹900. Anjamma aunty tells Amma." },
+        "why": { "en": "Credit for wants grows quietly until someone else has to pay." }
+      }
+    ]
+  },
+  {
+    "id": "village.any.crisis_joy_high_grown.a",
+    "storyline": "village",
+    "kind": "crisis",
+    "lesson": "L18",
+    "ages": [19, 36],
+    "weight": 1,
+    "requires": { "flags": ["crisis_joy_high"] },
+    "speaker": "narrator",
+    "title": { "en": "Living like a film hero" },
+    "text": {
+      "en": "New clothes, eating out, trips, gadgets. Life is fantastic. Then the month ends ₹12,000 short, and the card bill arrives."
+    },
+    "choices": [
+      {
+        "id": "reset",
+        "label": { "en": "Pay the bill in full and cut wants to 10% for three months" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -12000, "meters": { "joy": -30 }, "gyaan": 2 },
+        "outcome": { "en": "Three quiet months. ₹12,000 cleared, ₹0 interest. The fun comes back slowly, and paid for." },
+        "why": { "en": "When spending runs ahead of income, the gap becomes debt. Reset early." }
+      },
+      {
+        "id": "minimum",
+        "label": { "en": "Pay the minimum and keep going" },
+        "quality": "bad",
+        "effects": { "loan": { "source": "credit_card", "principal": 12000, "months": 12 }, "meters": { "joy": -15 } },
+        "echo": { "level": 2, "hint": { "en": "The party is over. The bill isn't." } },
+        "outcome": { "en": "At 42%, the ₹12,000 becomes about ₹14,900 over a year." },
+        "why": { "en": "Lifestyle on credit costs you twice: once now, and again in interest." }
+      }
+    ]
+  },
+  {
+    "id": "village.any.crisis_family_low_young.a",
+    "storyline": "village",
+    "kind": "crisis",
+    "lesson": "L01",
+    "ages": [11, 18],
+    "weight": 1,
+    "requires": { "flags": ["crisis_family_low"] },
+    "speaker": "mother",
+    "title": { "en": "Nobody's talking" },
+    "text": { "en": "Dinner is silent. Amma says, \"You count rupees, not people.\" Chinni won't sit next to you." },
+    "choices": [
+      {
+        "id": "make_up",
+        "label": { "en": "Buy sweets for everyone and say sorry" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -150, "meters": { "family": 30, "joy": 5 } },
+        "outcome": { "en": "₹150 of jalebis and one honest sorry. Chinni sits next to you again." },
+        "why": { "en": "Money spent on people you love is not wasted. Needs, wants and family all fit in a plan." }
+      },
+      {
+        "id": "ignore",
+        "label": { "en": "Ignore it. They'll get over it" },
+        "quality": "risky",
+        "effects": { "meters": { "family": 8, "joy": -6 } },
+        "outcome": { "en": "They do, slowly, over two cold weeks." },
+        "why": { "en": "Saving money while losing people isn't a good trade." }
+      }
+    ]
+  },
+  {
+    "id": "village.any.crisis_family_low_grown.a",
+    "storyline": "village",
+    "kind": "crisis",
+    "lesson": "L18",
+    "ages": [19, 36],
+    "weight": 1,
+    "requires": { "flags": ["crisis_family_low"] },
+    "speaker": "father",
+    "title": { "en": "Nanna stops calling" },
+    "text": { "en": "You skipped the festival, the wedding and Ammamma's birthday to save money. Nanna has stopped calling." },
+    "choices": [
+      {
+        "id": "go_home",
+        "label": { "en": "Go home for a week with gifts for everyone" },
+        "quality": "good",
+        "default": true,
+        "effects": { "cash": -5000, "meters": { "family": 30, "joy": 8 } },
+        "outcome": { "en": "₹5,000 and a week of Amma's cooking. Nanna pretends he wasn't waiting at the bus stop." },
+        "why": { "en": "A budget includes people. Social spending is fine when it's planned." }
+      },
+      {
+        "id": "send_money",
+        "label": { "en": "Just send ₹5,000 by UPI" },
+        "quality": "neutral",
+        "effects": { "cash": -5000, "meters": { "family": 12 } },
+        "outcome": { "en": "The money arrives. You don't. Amma says thank you, politely." },
+        "why": { "en": "Money helps, but it doesn't replace being there." }
+      }
+    ]
+  },
+  {
+    "id": "village.any.crisis_family_high_young.a",
+    "storyline": "village",
+    "kind": "crisis",
+    "lesson": "L02",
+    "ages": [11, 18],
+    "weight": 1,
+    "requires": { "flags": ["crisis_family_high"] },
+    "speaker": "sibling",
+    "title": { "en": "Everyone's favourite bank" },
+    "text": {
+      "en": "You've given your savings to everyone: Chinni, cousins, Chintu. Your dream jar is empty, and nobody has paid back."
+    },
+    "choices": [
+      {
+        "id": "kind_no",
+        "label": { "en": "Say a kind no, and start saving again" },
+        "quality": "good",
+        "default": true,
+        "effects": { "meters": { "family": -20 }, "gyaan": 2 },
+        "outcome": { "en": "Chinni sulks for a day. In three months your jar is back to ₹300." },
+        "why": { "en": "You can only help others if you keep something for yourself. Pay yourself first." }
+      },
+      {
+        "id": "keep_giving",
+        "label": { "en": "Keep giving. They need it more" },
+        "quality": "risky",
+        "effects": { "meters": { "family": -10, "joy": -8 } },
+        "outcome": { "en": "Your jar stays at ₹0. Your cricket bat dream moves another year away." },
+        "why": { "en": "Generosity without a limit leaves nothing for your own goals." }
+      }
+    ]
+  },
+  {
+    "id": "village.any.crisis_family_high_grown.a",
+    "storyline": "village",
+    "kind": "crisis",
+    "lesson": "L13",
+    "ages": [19, 36],
+    "weight": 1,
+    "requires": { "flags": ["crisis_family_high"] },
+    "speaker": "mother",
+    "title": { "en": "The family ATM" },
+    "text": {
+      "en": "Uncles, cousins and neighbours queue up. You've lent ₹40,000 with no paper. Your own emergency fund is gone."
+    },
+    "choices": [
+      {
+        "id": "family_budget",
+        "label": { "en": "Set a family-help budget of ₹2,000 a month, and stick to it" },
+        "quality": "good",
+        "default": true,
+        "effects": { "meters": { "family": -20 }, "gyaan": 3 },
+        "outcome": { "en": "Some relatives grumble. Your fund rebuilds to ₹24,000 in a year, and you still help ₹2,000 a month." },
+        "why": { "en": "Your emergency fund protects the family too. Help from a budget, not from the cushion." }
+      },
+      {
+        "id": "borrow_to_lend",
+        "label": { "en": "Borrow so you can keep lending" },
+        "quality": "bad",
+        "effects": {
+          "loan": { "source": "loan_app", "principal": 20000, "months": 6, "disburse": "direct" },
+          "meters": { "family": -10, "health": -6 }
+        },
+        "echo": { "level": 3, "hint": { "en": "Borrowing to be generous is still borrowing." } },
+        "outcome": { "en": "₹20,000 from a loan app (₹25,600 to repay), lent to a cousin who repays ₹5,000." },
+        "why": { "en": "Never borrow at high interest to lend for free." }
+      }
+    ]
+  }
+]
