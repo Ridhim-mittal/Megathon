@@ -585,7 +585,7 @@ function CoinsSite({ ad, step, go }) {
 }
 
 function GiveawaySite({ ad, step, go }) {
-  const { t } = useT();
+  const { t, playerName } = useT();
   const k = "arcade.ads.giveaway";
   const c = COSTS.giveaway;
   if (step === "land")
@@ -617,7 +617,7 @@ function GiveawaySite({ ad, step, go }) {
         <h4>{t(`${k}.addressTitle`)}</h4>
         <label>
           {t(`${k}.name`)}
-          <input defaultValue="Kanna" />
+          <input defaultValue={playerName} />
         </label>
         <label>
           {t(`${k}.village`)}
