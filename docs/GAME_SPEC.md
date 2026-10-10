@@ -537,6 +537,17 @@ These fill gaps in the contract with the smallest sensible rule. Content can rel
   75% funded; else `debt_trap` if there is any high-interest debt; else `secure_no_dream` with the
   `no_safety_net` modifier.
 
+### Chapter mode (the map game)
+The game the UI ships plays a life in **five chapters** instead of 26 separate years: School life
+(11–14), College life (15–18), First job (19–24), Marriage & family (25–30) and The dream (31–36).
+Every lesson keeps its age window. The chapter's cards wait at places on the village map (home,
+school, bank, hospital, kirana shop, sahukar, post office, workplace, panchayat, village square,
+cotton field, phone); a card's place follows its lesson (e.g. L12 bank, L14 sahukar, L23 panchayat)
+or its kind (crises and windfalls at home, teach-backs at school, scams on the phone). Living the
+required events moves the money clock through the chapter's years; going home ends the chapter.
+The phone (a gift with the first job, or bought) opens mutual funds (index, debt, active) and four
+fictional shares from age 18. Full API: `src/engine/README.md`, "Chapter mode".
+
 ### Assumptions
 Every number lives in `src/engine/assumptions.js`, with a comment saying what it is based on:
 - inflation
