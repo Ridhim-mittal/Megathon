@@ -1,0 +1,369 @@
+/* Story mini-games built on MiniShell (src/ui/games/): Salary Split, Basket Juggle, Spot the Fake.
+   The frame (ir-card, intro steps, result) comes from games.css. */
+
+.mg-art {
+  display: grid;
+  place-items: center;
+  color: var(--px-wood, #6b4423);
+}
+.choice-game {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 3px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #6b3bd0;
+}
+.mg-play {
+  display: grid;
+  gap: 12px;
+  animation: fade-in 0.3s ease both;
+}
+.mg-play kbd {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* ---------- Salary Split ---------- */
+.ss-top,
+.bj-top,
+.sf-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+.ss-left {
+  font-size: 20px;
+}
+.ss-dots {
+  display: flex;
+  gap: 3px;
+  margin-left: auto;
+}
+.ss-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd84a;
+  border: 1.5px solid #8a5a00;
+}
+.ss-dots i.used {
+  background: transparent;
+  border-color: #c9b07a;
+}
+.ss-chute,
+.bj-chute {
+  position: relative;
+  height: 92px;
+  border-radius: 10px;
+  background: linear-gradient(#fff8e0, #f4e6c0);
+  border: 2px dashed #d9c08a;
+  overflow: hidden;
+}
+.ss-coin {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #ffd84a;
+  border: 2px solid #8a5a00;
+  font-weight: 800;
+  color: #5a3a00;
+  transform: translateX(-50%);
+  animation-name: coin-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.ss-jars,
+.bj-baskets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.ss-jar,
+.bj-basket {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 12px 8px 10px;
+  border-radius: 12px;
+  border: 3px solid var(--px-wood, #6b4423);
+  background: #fffaf0;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.ss-jar:hover,
+.bj-basket:hover {
+  transform: translateY(-3px);
+}
+.ss-jar.bump {
+  animation: jar-bump 0.3s ease;
+}
+.jar-save {
+  background: #eaf6e2;
+}
+.jar-needs {
+  background: #e6f0fb;
+}
+.jar-wants {
+  background: #fdebf1;
+}
+.ss-jar.ok {
+  box-shadow: 0 0 0 3px #57b85a;
+}
+.ss-fill {
+  position: relative;
+  width: 46px;
+  height: 52px;
+  border: 2px solid #8a7a5a;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.6);
+}
+.ss-fill i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffd84a;
+  transition: height 0.3s;
+}
+.ss-jar small,
+.bj-basket small {
+  font-size: 12px;
+  font-weight: 700;
+}
+.ss-plus {
+  position: absolute;
+  top: -6px;
+  font-weight: 900;
+  color: #2f7a3a;
+  animation: fx-rise 0.7s ease-out forwards;
+}
+.ss-plus.auto {
+  color: #c0392b;
+}
+
+/* ---------- Basket Juggle ---------- */
+.bj-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+}
+.bj-storms {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: auto;
+  color: #4a5068;
+}
+.bj-storms .past {
+  color: #c9c3b8;
+}
+.bj-left {
+  min-width: 28px;
+  text-align: right;
+  color: #8a7a5a;
+}
+.bj-egg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  color: #b88a4a;
+  fill: #fff6e6;
+  transform: translateX(-50%);
+  animation-name: coin-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.bj-egg svg {
+  fill: #fff6e6;
+}
+.bj-storm-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 100%;
+  margin: 0;
+  font-weight: 800;
+  color: #fff;
+  background: #3a3f58;
+  animation: fade-in 0.2s ease both;
+}
+.bj-basket.heavy {
+  border-color: #d0602a;
+}
+.bj-basket.hit {
+  animation: shake 0.5s ease;
+  background: #e9e3f5;
+}
+.bj-bolt {
+  position: absolute;
+  top: -30px;
+  color: #ffd84a;
+  fill: #ffd84a;
+  animation: fade-in 0.15s ease both;
+}
+.bj-eggs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  min-height: 28px;
+  max-width: 120px;
+}
+.bj-eggs i {
+  width: 10px;
+  height: 13px;
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  background: #fff6e6;
+  border: 1.5px solid #b88a4a;
+}
+.bj-warn {
+  color: #d0602a;
+}
+.bj-cracked {
+  margin: 0;
+  font-size: 12.5px;
+  color: #8a7a5a;
+  text-align: center;
+}
+
+/* ---------- Spot the Fake ---------- */
+.sf-found {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 17px;
+}
+.sf-clock {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 18px;
+}
+.sf-clock.hurry {
+  color: #c0392b;
+}
+.sf-certs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sf-cert {
+  position: relative;
+  padding: 12px 12px 10px;
+  border-radius: 8px;
+  border: 3px double #b89a5a;
+  background: #fffdf4;
+  font-size: 13px;
+}
+.sf-cert.fake {
+  background: #fff8f0;
+  border-color: #c98a5a;
+}
+.sf-seal {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #2f7a3a;
+}
+.sf-cert.fake .sf-seal {
+  color: #c98a5a;
+}
+.sf-head {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+  padding-right: 26px;
+}
+.sf-cert ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.sf-cert.real li {
+  padding: 5px 8px;
+  border-radius: 5px;
+  background: #f2efe2;
+}
+.sf-cert.fake button {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1.5px dashed #d9c08a;
+  background: #fff;
+  cursor: pointer;
+}
+.sf-cert.fake button:hover {
+  border-color: #6b3bd0;
+}
+.sf-cert.fake button.found {
+  border: 2px solid #c0392b;
+  background: #fde4df;
+  color: #8e1c12;
+  font-weight: 700;
+  animation: jar-bump 0.3s ease;
+}
+.sf-cert.fake button.wrong {
+  animation: shake 0.4s ease;
+  background: #eee;
+}
+
+@keyframes coin-fall {
+  from {
+    top: -10px;
+  }
+  to {
+    top: 60px;
+  }
+}
+@keyframes jar-bump {
+  50% {
+    transform: scale(1.06);
+  }
+}
+@keyframes fx-rise {
+  to {
+    transform: translateY(-22px);
+    opacity: 0;
+  }
+}
+@keyframes shake {
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+@media (max-width: 640px) {
+  .sf-certs {
+    grid-template-columns: 1fr;
+  }
+  .sf-cert.real {
+    display: none;
+  }
+}

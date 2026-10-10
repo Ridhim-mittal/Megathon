@@ -13,7 +13,7 @@ import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
 import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { sounds } from "../ui/sound.js";
-import { CHOICE_GAMES, InterestRace } from "../ui/games/InterestRace.jsx";
+import { CHOICE_GAMES, GAME_COMPONENTS } from "../ui/games/choiceGames.js";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
 import { CardView } from "./life/CardView.jsx";
@@ -329,19 +329,18 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           </section>
         </div>
       )}
-      {game?.kind === "interest" && (
-        <InterestRace
-          mode="story"
-          avatar={life.avatar ?? "boy"}
-          onClose={() => setGame(null)}
-          onGiveUp={() => setGame(null)}
-          onWin={() => {
+      {game && GAME_COMPONENTS[game.kind] &&
+        React.createElement(GAME_COMPONENTS[game.kind], {
+          mode: "story",
+          avatar: life.avatar ?? "boy",
+          onClose: () => setGame(null),
+          onGiveUp: () => setGame(null),
+          onWin: () => {
             const choiceId = game.choiceId;
             setGame(null);
             storyDispatch({ type: "CHOOSE", choiceId, wonGame: true });
-          }}
-        />
-      )}
+          },
+        })}
       {warning && (
         <WarningFlash
           choice={warning}
