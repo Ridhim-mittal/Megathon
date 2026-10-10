@@ -6,6 +6,8 @@
 //   snowball  roll your savings ball, collect coins, dodge money traps  (growth grows on growth)
 //   insuranceRush  endless drive; keep your policy renewed (see InsuranceRush.jsx)    (insurance must be active)
 
+import { createPatang, patangResult, stepPatang } from "./patang.js";
+
 export const FIELD = { w: 480, h: 270 };
 
 export const GAMES = [
@@ -14,6 +16,7 @@ export const GAMES = [
   { id: "snowball", place: "bank", seconds: 40 },
   // Endless: runs until a crash with an expired policy. Its logic lives in InsuranceRush.jsx.
   { id: "insuranceRush", place: null, seconds: null },
+  { id: "patangMarket", place: null, seconds: 54 },
 ];
 export const gameById = Object.fromEntries(GAMES.map((g) => [g.id, g]));
 export const gameAtPlace = (place) => GAMES.find((g) => g.place === place) ?? null;
@@ -261,8 +264,8 @@ export const laneY = (i) => LANES[i];
 
 // ---------- shared ----------
 
-const MAKERS = { jarDash, scamSmash, snowball };
-const STEPS = { jarDash: stepJarDash, scamSmash: stepScamSmash, snowball: stepSnowball };
+const MAKERS = { jarDash, scamSmash, snowball, patangMarket: createPatang };
+const STEPS = { jarDash: stepJarDash, scamSmash: stepScamSmash, snowball: stepSnowball, patangMarket: stepPatang };
 
 export function createGame(id, rng = Math.random) {
   return MAKERS[id](rng);
@@ -275,6 +278,7 @@ export function stepGame(s, dt, input = {}) {
 
 // The final score and the numbers the result screen shows.
 export function result(s) {
+  if (s.id === "patangMarket") return patangResult(s);
   if (s.id === "jarDash") return { score: s.score, caught: s.caught, spent: s.spent };
   if (s.id === "scamSmash") return { score: s.score, blocked: s.blocked, passed: s.passed, mistakes: s.mistakes };
   if (s.id === "insuranceRush") return { score: s.score, distance: s.distance, claims: s.claims, renewals: s.renewals };

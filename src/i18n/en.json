@@ -988,7 +988,9 @@
       "shielded": "☂️ Insurance saved you {n}×",
       "distance": "🛣️ {n} m driven",
       "claims": "🛡️ Insurance paid for {n} crashes",
-      "renewals": "🪙 Renewed {n}×"
+      "renewals": "🪙 Renewed {n}×",
+      "invested": "🪙 Invested ₹{n}",
+      "coins": "🎯 Coins caught: {n}"
     },
     "games": {
       "jarDash": {
@@ -1018,6 +1020,13 @@
         "goal": "Drive as far as you can. While your insurance is active, a crash is a claim: the car gets fixed and you keep going. Crash with an expired policy and it's over!",
         "how": "Hold the arrow keys (or the buttons) to steer. Grab 🛡️ to renew your policy: it costs 3 coins.",
         "lesson": "Insurance only helps if it's active when the accident happens. Keep money for the premium and renew on time."
+      },
+      "patangMarket": {
+        "name": "Patang Market",
+        "tag": "Fly through the ups and downs",
+        "goal": "It's Sankranti! Fly your kite through ten years of a share's price. Each ₹500 coin buys shares at that moment's price.",
+        "how": "Press Space or tap to lift the kite. Dodge the candles and the SELL NOW! panic.",
+        "lesson": "A dip is a sale: the same ₹500 buys more. Selling in panic turns a dip into a real loss."
       }
     },
     "msg": {
@@ -1294,6 +1303,25 @@
       "gameOverWhy": "You crashed with an expired policy. Repair bill: {bill}.",
       "steerLeft": "Steer left",
       "steerRight": "Steer right"
+    },
+    "patang": {
+      "year": "Year {n} of {total}",
+      "units": "{n} units",
+      "unitsShort": "units",
+      "shield": "One \"breathe\" shield: forgives one bump",
+      "breathe": "breathe",
+      "crash": "CRASH",
+      "sellNow": "SELL NOW!",
+      "soldPanic": "You panicked and sold",
+      "soldCrash": "You crashed out and sold",
+      "stayedBanner": "You stayed invested!",
+      "chart": "Your ten years on the chart",
+      "youStayed": "You stayed for all ten years",
+      "youQuit": "You quit and sold",
+      "youPanicked": "You sold in a panic",
+      "ifBottom": "If you'd sold at the bottom of the crash",
+      "ifStayed": "If you'd stayed to the end",
+      "dip": "In the dip, ₹500 bought {cheap} units. Near the top, only {dear}."
     }
   }
 }

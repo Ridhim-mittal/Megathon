@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, CarFront, Gamepad2, Heart, Lightbulb, PiggyBank, RotateCcw, ShieldBan, Snowflake, Star, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, CarFront, Gamepad2, Heart, Lightbulb, PiggyBank, RotateCcw, ShieldBan, Snowflake, Star, Wind, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -7,10 +7,11 @@ import { FIELD, GAMES, ballRadius, createGame, gameById, laneY, result, stepGame
 import { nextAd, wantsInterstitial } from "./ads.js";
 import { AdBanner, AdInterstitial, ScamSite } from "./ScamAds.jsx";
 import { InsuranceRush } from "./InsuranceRush.jsx";
+import { PatangMarket, PatangReport } from "./PatangMarket.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
-export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront };
-const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000] };
+export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind };
+const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], patangMarket: [8000, 18000, 25000] };
 export const starsFor = (id, score) => STARS[id].filter((x) => score >= x).length;
 
 // A list of the three games (the phone's Arcade app).
@@ -170,6 +171,8 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
             <ScamSmash key={round} running={stage === "play"} onEnd={finish} />
           ) : gameId === "insuranceRush" ? (
             <InsuranceRush key={round} running={stage === "play"} onEnd={finish} />
+          ) : gameId === "patangMarket" ? (
+            <PatangMarket key={round} running={stage === "play"} onEnd={finish} />
           ) : (
             <CanvasGame key={round} gameId={gameId} running={stage === "play"} onEnd={finish} />
           )}
@@ -190,13 +193,14 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
           </p>
           <ul className="arcade-chips">
             {Object.entries(final)
-              .filter(([k, v]) => k !== "score" && k !== "isNew" && !(["shielded", "claims", "renewals"].includes(k) && !v))
+              .filter(([k, v]) => typeof v === "number" && k !== "score" && !(["shielded", "claims", "renewals"].includes(k) && !v))
               .map(([k, v]) => (
                 <li key={k} className={`chip-${k}`}>
                   {t(`arcade.stat.${k}`, { n: v })}
                 </li>
               ))}
           </ul>
+          {gameId === "patangMarket" && final.report && <PatangReport report={final.report} reason={final.reason} />}
           <p className="arcade-lesson">
             <Lightbulb size={20} aria-hidden="true" />
             <span>{t(`arcade.games.${gameId}.lesson`)}</span>
@@ -323,7 +327,7 @@ function SnowballIntro({ best, startRef, onStart }) {
 
 function HowTo({ gameId }) {
   const { t } = useT();
-  const keys = { jarDash: ["←", "→"], scamSmash: ["1", "…", "6"], snowball: ["↑", "↓"], insuranceRush: ["←", "→"] }[gameId];
+  const keys = { jarDash: ["←", "→"], scamSmash: ["1", "…", "6"], snowball: ["↑", "↓"], insuranceRush: ["←", "→"], patangMarket: ["Space", "↑"] }[gameId];
   return (
     <p className="arcade-howto">
       <span className="keys" aria-hidden="true">
