@@ -760,3 +760,20 @@
     transition: none !important;
   }
 }
+
+.title-extras {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.title-game.town {
+  border-color: #3b6b28;
+  background: #e6f3d8;
+  color: #3b6b28;
+  box-shadow: 0 4px 0 #3b6b28;
+  animation-delay: 0.3s;
+}
+.title-game.town:active {
+  box-shadow: 0 1px 0 #3b6b28;
+}

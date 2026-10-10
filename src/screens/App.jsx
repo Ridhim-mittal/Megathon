@@ -36,6 +36,7 @@ export function App() {
   const [picking, setPicking] = useState(false);
   const [life, setLife] = useState(null);
   const [parallel, setParallel] = useState(null);
+  const [visit, setVisit] = useState(false); // a jump straight to the town: not saved over your real life
   const [endings, setEndings] = useState(loadEndings);
   const [help, setHelp] = useState(false);
   const [toast, setToast] = useState(null);
@@ -47,7 +48,7 @@ export function App() {
   }, [settings]);
 
   useEffect(() => {
-    if (life) saveLife({ route: ["life", "ending", "report", "parallel"].includes(route) ? route : "life", life });
+    if (life && !visit) saveLife({ route: ["life", "ending", "report", "parallel"].includes(route) ? route : "life", life });
   }, [life, route]);
 
   const go = useCallback((r) => {
@@ -91,17 +92,43 @@ export function App() {
     const seed = urlSeed() ?? `${Date.now()}`;
     let s = createLife({ storylineId: setup.storylineId, goalId, seed, playerName: playerName || "", mode: "story", avatar: avatar ?? "boy" });
     s = step(s, { type: "ADVANCE" });
+    setVisit(false);
     setSetup((x) => ({ ...x, goalId, playerName }));
     setLife(s);
     setParallel(null);
     go("life");
   }
 
+  // From the title: jump straight to the First Job chapter in the town (a visit; your saved life stays).
+  function visitTown() {
+    const hero = life ?? saved?.life;
+    let s = createLife({ storylineId: "village", goalId: hero?.goalId ?? "house", seed: urlSeed() ?? `${Date.now()}`, playerName: hero?.playerName || setup.playerName || "", mode: "story", avatar: hero?.avatar ?? setup.avatar ?? "boy" });
+    for (let n = 0; n < 3000 && !(s.phase === "budget" && select.story(s)?.mission.id === "job"); n++) {
+      let a = { type: "ADVANCE" };
+      if (s.phase === "map") a = { type: "VISIT", location: select.story(s).objective.location };
+      else if (s.phase === "card") {
+        const open = select.currentCard(s).choices.filter((c) => !c.locked);
+        const c = open.find((x) => x.default) ?? open[0];
+        a = { type: "CHOOSE", choiceId: c.id, ignoredWarning: true };
+      }
+      const next = step(s, a);
+      if (next.error) break;
+      s = next;
+    }
+    setVisit(true);
+    setLife(s);
+    setParallel(null);
+    go("life");
+  }
+
   function continueLife() {
-    if (!saved) return;
-    setLife(saved.life);
-    setSetup({ storylineId: saved.life.storylineId, goalId: saved.life.goalId, playerName: saved.life.playerName, avatar: saved.life.avatar ?? "boy" });
-    go(saved.route ?? "life");
+    // Read the save fresh: a town visit is never saved, so this is always the real life.
+    const real = loadLife() ?? saved;
+    if (!real) return life ? go("life") : go("language");
+    setVisit(false);
+    setLife(real.life);
+    setSetup({ storylineId: real.life.storylineId, goalId: real.life.goalId, playerName: real.life.playerName, avatar: real.life.avatar ?? "boy" });
+    go(real.route ?? "life");
   }
 
   // The title screen's "Who are you?" card hands over the look and name; then language and story.
@@ -150,8 +177,9 @@ export function App() {
         {route === "title" && (
           <TitleScreen
             canContinue={Boolean(saved || life)}
-            onPlay={() => (saved || life ? (life ? go("life") : continueLife()) : go("language"))}
+            onPlay={() => (saved || life ? (life && !visit ? go("life") : continueLife()) : go("language"))}
             onNew={newLife}
+            onTown={visitTown}
             onHelp={() => setHelp(true)}
             settings={settingsApi}
             picking={picking}
