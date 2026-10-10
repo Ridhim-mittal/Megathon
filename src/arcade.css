@@ -1165,3 +1165,291 @@
   font-size: 11.5px;
   color: #7a6a4f;
 }
+
+/* ---------- ads dressed as the game's own posters ---------- */
+.ad-banner {
+  --ad-color: #e8913a;
+  background:
+    repeating-linear-gradient(0deg, rgba(160, 120, 60, 0.05) 0 2px, transparent 2px 6px),
+    var(--px-paper);
+  border: 3px solid var(--px-wood);
+  border-top: 7px solid var(--ad-color);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 0 2px var(--px-paper-edge),
+    0 4px 0 rgba(40, 25, 10, 0.35);
+  color: var(--px-ink);
+}
+.ad-banner.ad-spin {
+  --ad-color: #e8913a;
+  background:
+    repeating-linear-gradient(0deg, rgba(160, 120, 60, 0.05) 0 2px, transparent 2px 6px),
+    var(--px-paper);
+}
+.ad-banner.ad-task {
+  --ad-color: #5f9e46;
+  background:
+    repeating-linear-gradient(0deg, rgba(160, 120, 60, 0.05) 0 2px, transparent 2px 6px),
+    var(--px-paper);
+}
+.ad-banner.ad-autopay {
+  --ad-color: #c79a1c;
+  background:
+    repeating-linear-gradient(0deg, rgba(160, 120, 60, 0.05) 0 2px, transparent 2px 6px),
+    var(--px-paper);
+}
+.ad-banner.ad-loan {
+  --ad-color: #b8453a;
+}
+.ad-banner.ad-coins {
+  --ad-color: #e0b52a;
+}
+.ad-banner.ad-giveaway {
+  --ad-color: #3b82b8;
+}
+.ad-tag {
+  top: 3px;
+  left: auto;
+  right: 36px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #9c8a68;
+  background: none;
+  padding: 0;
+}
+.ad-body {
+  color: var(--px-ink);
+  padding: 10px 44px 10px 10px;
+}
+.ad-copy b {
+  font-family: var(--px-font);
+  font-size: 16.5px;
+  font-weight: 600;
+  text-shadow: none;
+}
+.ad-copy small {
+  color: #7a6a4f;
+  opacity: 1;
+}
+.ad-stamp {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  background: var(--ad-color);
+  border: 3px solid var(--px-wood);
+  border-radius: 8px;
+  box-shadow: 0 3px 0 rgba(40, 25, 10, 0.3);
+  transform: rotate(-4deg);
+}
+.ad-stamp span {
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.25));
+}
+.ad-stamp.stamp-spin span {
+  animation: ad-spin 3s linear infinite;
+}
+.ad-cta {
+  font-family: var(--px-font);
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff8de;
+  background: var(--px-green);
+  border: 2px solid var(--px-green-dark);
+  border-radius: 6px;
+  box-shadow: 0 3px 0 var(--px-green-dark);
+  padding: 6px 14px;
+}
+.ad-report {
+  color: #9c8a68;
+  background: rgba(201, 176, 122, 0.25);
+}
+.ad-report:hover,
+.ad-report:focus-visible {
+  color: var(--px-ink);
+  background: rgba(201, 176, 122, 0.5);
+}
+.ad-reported {
+  background: #eaf6e2;
+}
+.ad-banner.big .ad-stamp {
+  width: 96px;
+  height: 96px;
+  font-size: 54px;
+}
+.ad-banner.big .ad-copy b {
+  font-size: 26px;
+}
+
+/* ---------- the new scam sites ---------- */
+.site-loan {
+  background: linear-gradient(#fff4f0, #fff);
+}
+.loan-logo {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  font: 900 30px system-ui, sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5a36, #b8453a);
+}
+.loan-logo.small {
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  border-radius: 12px;
+}
+.loan-amount {
+  width: 100%;
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #f0d4cc;
+}
+.loan-amount b {
+  font-size: 28px;
+  color: #b8453a;
+}
+.loan-amount i {
+  height: 6px;
+  border-radius: 3px;
+  background: #f3e1db;
+}
+.loan-amount i span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  background: #ff5a36;
+}
+.site-loan .pro-perks {
+  color: #3c4250;
+}
+.site-perms {
+  justify-content: center;
+  background: #f6f7f9;
+}
+.site-perms h4 {
+  margin: 0;
+  font-size: 17px;
+}
+.perm-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+.perm-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 14px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  text-align: left;
+}
+.perm-list li:last-child {
+  border-bottom: 0;
+}
+.perm-toggle {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: #cbd0d8;
+}
+.perm-toggle.on {
+  background: #2e3a8c;
+}
+.perm-toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.2s;
+}
+.perm-toggle.on::after {
+  left: 18px;
+}
+.site-cta.blue {
+  background: linear-gradient(#3b4bd8, #2e3a8c);
+  box-shadow: 0 4px 0 #1d2560;
+  animation: none;
+}
+.site-coins {
+  background: radial-gradient(circle at 50% 25%, #fff6c8, #ffe9a8 60%, #fff);
+}
+.site-bank {
+  justify-content: flex-start;
+  align-items: stretch;
+  text-align: left;
+  background: #f4f7fb;
+}
+.bank-head {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(120deg, #0b5c8a, #1b84b8);
+}
+.bank-head b {
+  font-size: 19px;
+}
+.site-bank label {
+  display: grid;
+  gap: 4px;
+  font-size: 12.5px;
+  color: #4b5563;
+}
+.site-bank input {
+  font: inherit;
+  font-size: 15px;
+  padding: 9px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+}
+.otp-sms {
+  margin: 0;
+  padding: 9px 11px;
+  border-radius: 14px 14px 14px 4px;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.35;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: smash-in 0.35s both;
+}
+.otp-sms small {
+  display: block;
+  color: #6b7280;
+  font-size: 10.5px;
+}
+.site-gift {
+  background: radial-gradient(circle at 50% 20%, #e4f1ff, #fff);
+}
+.gift-rank {
+  font-weight: 800;
+  color: #3b82b8;
+}
+.gift-form h4 {
+  margin: 0;
+  font-size: 18px;
+}
+.gift-fee {
+  font-weight: 700;
+  color: #b8453a;
+}

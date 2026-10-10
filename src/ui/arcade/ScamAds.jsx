@@ -12,22 +12,13 @@ const rs = (n) => `₹${Number(n).toLocaleString("en-IN")}`;
 
 // ---------- the ads ----------
 
+// Each ad looks like one of the game's own posters: a stamp, a pixel headline, a game button.
+const AD_STAMP = { spin: "🎡", task: "🕹️", autopay: "⭐", loan: "💸", coins: "🪙", giveaway: "📱" };
+
 function AdVisual({ id }) {
-  if (id === "spin")
-    return (
-      <span className="ad-wheel" aria-hidden="true">
-        <i />
-      </span>
-    );
-  if (id === "task")
-    return (
-      <span className="ad-art task" aria-hidden="true">
-        🎮<b>💰</b>
-      </span>
-    );
   return (
-    <span className="ad-art pro" aria-hidden="true">
-      PRO
+    <span className={`ad-stamp stamp-${id}`} aria-hidden="true">
+      <span>{AD_STAMP[id]}</span>
     </span>
   );
 }
@@ -439,8 +430,236 @@ function AutopaySite({ ad, step, go }) {
   );
 }
 
-const SITES = { spin: SpinSite, task: TaskSite, autopay: AutopaySite };
-const APP_STEPS = new Set(["pin", "payJoin", "payVip", "mandate", "sms"]);
+function Toggle({ on }) {
+  return <span className={`perm-toggle ${on ? "on" : ""}`} aria-hidden="true" />;
+}
+
+function LoanSite({ ad, step, go }) {
+  const { t } = useT();
+  const k = "arcade.ads.loan";
+  const c = COSTS.loan;
+  if (step === "land")
+    return (
+      <div className="site site-loan">
+        <span className="loan-logo" aria-hidden="true">
+          ₹
+        </span>
+        <h3>{t(`${k}.landTitle`)}</h3>
+        <p>{t(`${k}.landText`)}</p>
+        <div className="loan-amount">
+          <small>{t(`${k}.amount`)}</small>
+          <b>₹50,000</b>
+          <i aria-hidden="true">
+            <span />
+          </i>
+        </div>
+        <ul className="pro-perks">
+          <li>✅ {t(`${k}.perk1`)}</li>
+          <li>✅ {t(`${k}.perk2`)}</li>
+          <li>✅ {t(`${k}.perk3`)}</li>
+        </ul>
+        <button className="site-cta" onClick={() => go("perms")}>
+          {t(`${k}.get`)}
+        </button>
+        <p className="site-small">{t(`${k}.rating`)}</p>
+      </div>
+    );
+  if (step === "perms")
+    return (
+      <div className="site site-perms">
+        <span className="loan-logo small" aria-hidden="true">
+          ₹
+        </span>
+        <h4>{t(`${k}.permsTitle`, { app: ad.brand })}</h4>
+        <ul className="perm-list">
+          {["contacts", "photos", "sms", "location"].map((x) => (
+            <li key={x}>
+              <span>{t(`${k}.perm.${x}`)}</span>
+              <Toggle on />
+            </li>
+          ))}
+        </ul>
+        <button className="site-cta blue" onClick={() => go("approved", "perms")}>
+          {t(`${k}.allow`)}
+        </button>
+      </div>
+    );
+  if (step === "approved")
+    return (
+      <div className="site site-loan">
+        <p className="site-confetti big" aria-hidden="true">
+          ✅
+        </p>
+        <h3>{t(`${k}.approvedTitle`)}</h3>
+        <p>{t(`${k}.approvedText`, { fee: rs(c.fee) })}</p>
+        <button className="site-cta" onClick={() => go("pin")}>
+          {t(`${k}.payFee`, { fee: rs(c.fee) })}
+        </button>
+      </div>
+    );
+  if (step === "pin") return <UpiPin ad={ad} amount={c.fee} heading={t(`${k}.feeHeading`)} note={t(`${k}.feeNote`)} onPaid={() => go("sms", "fee")} />;
+  return (
+    <Sms
+      items={[
+        { when: t("arcade.ads.now"), text: t(`${k}.sms1`) },
+        { when: t(`${k}.day`, { n: 3 }), text: t(`${k}.sms2`) },
+        { when: t(`${k}.day`, { n: 4 }), text: t(`${k}.sms3`) },
+      ]}
+      onDone={() => go("end")}
+    />
+  );
+}
+
+function CoinsSite({ ad, step, go }) {
+  const { t } = useT();
+  const k = "arcade.ads.coins";
+  const [otp, setOtp] = useState("");
+  if (step === "land")
+    return (
+      <div className="site site-coins">
+        <p className="site-confetti big" aria-hidden="true">
+          🪙
+        </p>
+        <h3>{t(`${k}.landTitle`)}</h3>
+        <p>{t(`${k}.landText`)}</p>
+        <button className="site-cta" onClick={() => go("login")}>
+          {t(`${k}.claim`)}
+        </button>
+        <p className="site-small">
+          {t("arcade.ads.offerEnds")} <Countdown from={179} />
+        </p>
+      </div>
+    );
+  if (step === "login")
+    return (
+      <form
+        key="login"
+        className="site site-bank"
+        onSubmit={(e) => {
+          e.preventDefault();
+          go("otp", "login");
+        }}
+      >
+        <div className="bank-head">
+          <b>GramBank</b> <small>NetBanking</small>
+        </div>
+        <p className="site-small">{t(`${k}.loginNote`)}</p>
+        <label>
+          {t(`${k}.customerId`)}
+          <input defaultValue="44170912" />
+        </label>
+        <label>
+          {t(`${k}.password`)}
+          <input type="password" defaultValue="lakshyam" />
+        </label>
+        <button className="site-cta blue" type="submit">
+          {t(`${k}.login`)}
+        </button>
+      </form>
+    );
+  return (
+    <form
+      key="otp"
+      className="site site-bank"
+      onSubmit={(e) => {
+        e.preventDefault();
+        go("end", "otp");
+      }}
+    >
+      <p className="sms otp-sms">
+        <small>{t("arcade.ads.bankSender")}</small>
+        {t(`${k}.otpSms`, { amount: rs(COSTS.coins.transfer) })}
+      </p>
+      <div className="bank-head">
+        <b>GramBank</b> <small>NetBanking</small>
+      </div>
+      <label>
+        {t(`${k}.otpLabel`)}
+        <input value={otp} onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))} inputMode="numeric" placeholder="••••••" autoFocus />
+      </label>
+      <button className="site-cta blue" type="submit" disabled={otp.length < 4}>
+        {t(`${k}.verify`)}
+      </button>
+    </form>
+  );
+}
+
+function GiveawaySite({ ad, step, go }) {
+  const { t } = useT();
+  const k = "arcade.ads.giveaway";
+  const c = COSTS.giveaway;
+  if (step === "land")
+    return (
+      <div className="site site-gift">
+        <p className="site-confetti" aria-hidden="true">
+          🏆 📱 🏆
+        </p>
+        <h3>{t(`${k}.landTitle`)}</h3>
+        <p className="gift-rank">{t(`${k}.rank`, { n: 37 })}</p>
+        <p>{t(`${k}.landText`)}</p>
+        <button className="site-cta" onClick={() => go("address")}>
+          {t(`${k}.claim`)}
+        </button>
+        <p className="site-small">
+          {t(`${k}.left`, { n: 3 })} · {t("arcade.ads.offerEnds")} <Countdown from={239} />
+        </p>
+      </div>
+    );
+  if (step === "address")
+    return (
+      <form
+        className="site site-bank gift-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          go("payDelivery");
+        }}
+      >
+        <h4>{t(`${k}.addressTitle`)}</h4>
+        <label>
+          {t(`${k}.name`)}
+          <input defaultValue="Kanna" />
+        </label>
+        <label>
+          {t(`${k}.village`)}
+          <input defaultValue="Ramapuram" />
+        </label>
+        <p className="gift-fee">{t(`${k}.deliveryFee`, { fee: rs(c.delivery) })}</p>
+        <button className="site-cta" type="submit">
+          {t(`${k}.pay`, { fee: rs(c.delivery) })}
+        </button>
+      </form>
+    );
+  if (step === "payDelivery") return <UpiPin ad={ad} amount={c.delivery} heading={t(`${k}.deliveryHeading`)} note={t(`${k}.payNote`)} onPaid={() => go("customs", "delivery")} />;
+  if (step === "customs")
+    return (
+      <div className="site site-gift">
+        <p className="site-confetti big" aria-hidden="true">
+          📦
+        </p>
+        <h3>{t(`${k}.customsTitle`)}</h3>
+        <p>{t(`${k}.customsText`, { fee: rs(c.customs) })}</p>
+        <button className="site-cta" onClick={() => go("payCustoms")}>
+          {t(`${k}.pay`, { fee: rs(c.customs) })}
+        </button>
+      </div>
+    );
+  if (step === "payCustoms") return <UpiPin ad={ad} amount={c.customs} heading={t(`${k}.customsHeading`)} note={t(`${k}.payNote`)} onPaid={() => go("gone", "customs")} />;
+  return (
+    <div className="site site-gift">
+      <p className="site-confetti big" aria-hidden="true">
+        🚫
+      </p>
+      <h3>{t(`${k}.goneTitle`)}</h3>
+      <p>{t(`${k}.goneText`)}</p>
+      <button className="site-cta" onClick={() => go("end")}>
+        {t(`${k}.track`)}
+      </button>
+    </div>
+  );
+}
+
+const SITES = { spin: SpinSite, task: TaskSite, autopay: AutopaySite, loan: LoanSite, coins: CoinsSite, giveaway: GiveawaySite };
+const APP_STEPS = new Set(["pin", "payJoin", "payVip", "mandate", "sms", "payDelivery", "payCustoms"]);
 
 // The fake site, then the reveal. Closing it at any point ends the scam where it stands.
 export function ScamSite({ adId, onClose }) {
@@ -483,7 +702,7 @@ export function ScamSite({ adId, onClose }) {
   return createPortal(
     <div className="scam-overlay" role="dialog" aria-modal="true" aria-label={ad.brand}>
       {!done ? (
-        <Phone url={ad.domain} app={APP_STEPS.has(step) ? t("arcade.ads.upi.app") : null} onClose={finish}>
+        <Phone url={ad.domain} app={step === "perms" ? ad.brand : APP_STEPS.has(step) ? t("arcade.ads.upi.app") : null} onClose={finish}>
           <Site ad={ad} step={step} go={go} />
         </Phone>
       ) : (

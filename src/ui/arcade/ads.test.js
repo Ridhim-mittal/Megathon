@@ -40,4 +40,10 @@ test("walking away before paying costs nothing; each paid step adds up", () => {
   assert.equal(lostIn("task", ["join", "vip"]), 1098);
   assert.equal(lostIn("autopay", []), 0);
   assert.equal(lostIn("autopay", ["mandate"]), 1 + 999 * 3);
+  assert.equal(lostIn("loan", ["perms"]), 0, "giving permissions costs no money yet");
+  assert.equal(lostIn("loan", ["perms", "fee"]), 1499);
+  assert.equal(lostIn("coins", ["login"]), 0);
+  assert.equal(lostIn("coins", ["login", "otp"]), 18500);
+  assert.equal(lostIn("giveaway", ["delivery"]), 299);
+  assert.equal(lostIn("giveaway", ["delivery", "customs"]), 2298);
 });

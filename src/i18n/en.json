@@ -1048,9 +1048,9 @@
         "delete": "Delete"
       },
       "spin": {
-        "headline": "🎉 Spin & win up to ₹10,000!",
-        "sub": "Today's lucky player gets a free spin",
-        "cta": "SPIN NOW",
+        "headline": "Jatara Lucky Wheel 🎡 Win up to ₹10,000!",
+        "sub": "One free spin for every Lakshyam player today",
+        "cta": "SPIN",
         "landTitle": "Congratulations! You are today's lucky player!",
         "landText": "You have 1 free spin. Prizes go straight to your bank by UPI.",
         "spin": "SPIN THE WHEEL",
@@ -1071,8 +1071,8 @@
         "help": "If it happens for real: call 1930 at once and ask your bank to block the payment."
       },
       "task": {
-        "headline": "Earn ₹3,000/day playing games 🎮",
-        "sub": "Just rate apps from home. Instant payout!",
+        "headline": "Get paid to play Jar Dash! ₹3,000 a day",
+        "sub": "Rate our games, earn real money. Instant payout",
         "cta": "JOIN",
         "landTitle": "Earn ₹3,000 a day from your phone!",
         "landText": "Play and rate new games. Get paid per task, withdraw any time.",
@@ -1101,10 +1101,10 @@
         "help": "If it happens for real: stop paying, call 1930 and report the UPI ID."
       },
       "autopay": {
-        "headline": "No ads + all games: just ₹1! 🔥",
-        "sub": "ArcadePro Pass · limited offer",
+        "headline": "Lakshyam PRO: no ads, double coins",
+        "sub": "Unlock every mini-game for just ₹1",
         "cta": "UNLOCK",
-        "landTitle": "ArcadePro Pass",
+        "landTitle": "Lakshyam PRO",
         "perk1": "No ads, ever",
         "perk2": "All games unlocked",
         "perk3": "Double coins",
@@ -1115,16 +1115,105 @@
         "approve": "APPROVE & PAY ₹1",
         "pinHeading": "Pay and set up AutoPay",
         "pinNote": "This also approves a monthly AutoPay",
-        "sms1": "₹1 debited. AutoPay set up for ArcadePro Pass.",
-        "sms2": "AutoPay: {amount} debited for ArcadePro Pass.",
+        "sms1": "₹1 debited. AutoPay set up for Lakshyam PRO.",
+        "sms2": "AutoPay: {amount} debited for Lakshyam PRO.",
         "month": "Month {n}",
         "what": "The ₹1 was bait. The tiny AutoPay line, already ticked, let them take ₹999 every month.",
         "flags": [
-          "₹499 for ₹1 is too good to be true.",
+          "The game never sells a PRO pass: the ad only borrowed its name.",
           "The real cost was hidden in tiny grey text.",
           "The AutoPay box was already ticked for you."
         ],
         "help": "For real: open your UPI app → AutoPay (mandates) → cancel any you don't know. Then call 1930."
+      },
+      "loan": {
+        "headline": "Short of coins? Sahukar Now 💸",
+        "sub": "₹50,000 in 5 minutes. No papers, no questions",
+        "cta": "GET LOAN",
+        "landTitle": "Sahukar Now",
+        "landText": "Instant loans straight to your UPI. Approved in 5 minutes.",
+        "amount": "Loan amount",
+        "perk1": "No CIBIL check",
+        "perk2": "No documents",
+        "perk3": "Money in 5 minutes",
+        "get": "GET ₹50,000 NOW",
+        "rating": "★★★★★ 4.9 · 10 lakh+ downloads",
+        "permsTitle": "Allow {app} to access:",
+        "perm": {
+          "contacts": "Your contacts",
+          "photos": "Photos and files",
+          "sms": "SMS messages",
+          "location": "Your location"
+        },
+        "allow": "ALLOW ALL",
+        "approvedTitle": "Loan approved!",
+        "approvedText": "₹50,000 is ready. Pay a one-time processing fee of {fee} to release it.",
+        "payFee": "PAY {fee} & GET LOAN",
+        "feeHeading": "Processing fee",
+        "feeNote": "Paying Sahukar Now",
+        "day": "Day {n}",
+        "sms1": "Sahukar Now: ₹32,000 credited (after charges). Repay ₹62,000 in 7 days.",
+        "sms2": "Sahukar Now: Repay NOW or your photos go to all 248 of your contacts.",
+        "sms3": "Your Amma got a message from Sahukar Now about \"your unpaid loan\".",
+        "what": "You paid a fee for a loan that came smaller and far dearer, and the app now holds your contacts and photos to shame you into paying.",
+        "flags": [
+          "A real lender never takes a fee before giving the loan.",
+          "A loan app has no reason to read your contacts and photos.",
+          "₹50,000 in 5 minutes with no checks is bait."
+        ],
+        "help": "For real: don't give in to threats. Call 1930, report the app on the RBI Sachet portal, and tell your family first."
+      },
+      "coins": {
+        "headline": "FREE 5,000 gold coins 🪙",
+        "sub": "A gift for Jar Dash and Snowball players",
+        "cta": "CLAIM",
+        "landTitle": "5,000 free gold coins!",
+        "landText": "A thank-you for loyal Lakshyam players. Verify your bank account to claim.",
+        "claim": "VERIFY & CLAIM",
+        "loginNote": "Log in to verify your account",
+        "customerId": "Customer ID",
+        "password": "Password",
+        "login": "LOG IN",
+        "otpSms": "OTP 482913 to TRANSFER {amount} to RAJU K. Do not share it with anyone.",
+        "otpLabel": "Enter the OTP sent to your phone",
+        "verify": "VERIFY",
+        "what": "That was not your bank. The page copied your login, and the OTP you typed approved a transfer of your money.",
+        "flags": [
+          "A game never needs your bank login to give coins.",
+          "The address was not your bank's: grambank-secure-login.verify-acc.xyz.",
+          "The OTP message itself said TRANSFER, and \"do not share\"."
+        ],
+        "help": "For real: call your bank and 1930 at once, and change your password."
+      },
+      "giveaway": {
+        "headline": "Scam Smash champions win a phone! 📱",
+        "sub": "You're in this week's top 100",
+        "cta": "CLAIM",
+        "landTitle": "Congratulations, champion!",
+        "rank": "You are #{n} in Scam Smash this week",
+        "landText": "The top 100 players win a brand-new smartphone. Just pay delivery.",
+        "claim": "CLAIM MY PHONE",
+        "left": "Only {n} phones left",
+        "addressTitle": "Where should we send it?",
+        "name": "Name",
+        "village": "Village",
+        "deliveryFee": "Delivery fee: {fee}",
+        "pay": "PAY {fee}",
+        "deliveryHeading": "Delivery fee",
+        "payNote": "Paying Arcade Champions",
+        "customsTitle": "Parcel held at customs",
+        "customsText": "Your phone is stuck at customs. Pay {fee} duty within 2 hours or it goes back.",
+        "customsHeading": "Customs duty",
+        "goneTitle": "Tracking not found",
+        "goneText": "The tracking number doesn't exist, and the site stops loading.",
+        "track": "TRACK MY PARCEL",
+        "what": "There was no phone. A real prize never makes you pay first, and each payment only unlocked the next fee.",
+        "flags": [
+          "Real prizes don't ask you to pay for delivery.",
+          "\"Only 3 left\" and a timer were there to rush you.",
+          "Customs never asks for duty by UPI to a random ID."
+        ],
+        "help": "For real: stop paying, call 1930 and report the UPI ID."
       }
     }
   }
