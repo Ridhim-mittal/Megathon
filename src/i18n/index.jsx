@@ -36,6 +36,11 @@ export function signedMoney(n) {
 
 const TOKEN = /\{player\}|\{cast:([^}]+)\}|\[\[([^\]]+)\]\]/g;
 
+// Ammamma's pet name for the player ("kanna", in every language). Once the player has a name,
+// she uses that instead.
+export const PET_NAME = /\b[Kk]anna\b|कन्ना|కన్నా/g;
+export const withName = (text, name) => (name && typeof text === "string" ? text.replace(PET_NAME, name) : text);
+
 export function useT() {
   const ctx = useContext(I18nContext);
   return useMemo(() => {
@@ -43,11 +48,12 @@ export function useT() {
     const cast = ctx?.cast ?? {};
     const glossary = ctx?.glossary ?? {};
     const playerName = ctx?.playerName || "Kanna";
+    const named = (text) => withName(text, ctx?.playerName);
 
     const t = (key, vars) => {
       const value = lookup(DICTS[lang], key) ?? lookup(en, key);
       if (value == null) return key;
-      if (typeof value === "string") return fill(value, vars);
+      if (typeof value === "string") return named(fill(value, vars));
       return value;
     };
 
@@ -55,15 +61,15 @@ export function useT() {
     const langOf = (obj) => (obj && typeof obj === "object" && typeof obj[lang] === "string" ? lang : "en");
     const pick = (obj) => {
       if (obj == null) return "";
-      if (typeof obj === "string") return obj;
-      return obj[lang] ?? obj.en ?? "";
+      if (typeof obj === "string") return named(obj);
+      return named(obj[lang] ?? obj.en ?? "");
     };
     const castName = (id) => pick(cast[id]?.name) || id;
     const termName = (id) => pick(glossary[id]?.name) || id;
 
     // Plain text with tokens resolved (for labels and aria).
     const plain = (obj, vars) =>
-      fill(pick(obj), vars).replace(TOKEN, (all, castId, term) =>
+      named(fill(pick(obj), vars)).replace(TOKEN, (all, castId, term) =>
         all === "{player}" ? playerName : castId ? castName(castId) : termName(term),
       );
 
@@ -87,9 +93,9 @@ export function useT() {
     // phrases: [{ phrase: {en,…}, truth, revealed, free }]
     function rich(obj, { phrases = [], vars } = {}) {
       const useLang = langOf(obj);
-      const text = fill(typeof obj === "string" ? obj : obj?.[useLang] ?? "", vars);
+      const text = named(fill(typeof obj === "string" ? obj : obj?.[useLang] ?? "", vars));
       const marks = phrases
-        .map((p, idx) => ({ ...p, idx, text: p.phrase?.[useLang] }))
+        .map((p, idx) => ({ ...p, idx, text: named(p.phrase?.[useLang]) }))
         .filter((p) => p.text && text.includes(p.text));
       if (!marks.length) return tokens(text, "t");
       const out = [];

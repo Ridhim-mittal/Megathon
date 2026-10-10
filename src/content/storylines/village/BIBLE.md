@@ -24,20 +24,20 @@ fault. The story is about learning to see clearly.
 
 ## The wound
 
-The family story: "We lost Thatha's land the year the rains failed." Everyone repeats it. Nanna
+The family story: "We lost Nana's land the year the rains failed." Everyone repeats it. Nanna
 won't talk about it. Ammamma goes quiet when the sahukar walks past.
 
 ## The twist (revealed at 32–34, by the tin box)
 
 It wasn't the rains. Twenty years ago Ammamma fell ill. There was no insurance and no emergency
-money. Thatha borrowed ₹15,000 from a town lender at "only ₹3 per ₹100 a month" and put his
+money. Nana borrowed ₹15,000 from a town lender at "only ₹3 per ₹100 a month" and put his
 thumbprint on papers no one in the house could read. The interest was compound (chakravaddi). In
 four years ₹15,000 became over ₹60,000, and the papers turned out to be a sale deed, not a loan
 paper. The land went. Ammamma has always believed it was her fault.
 
 She learnt to read so she would never sign blind again. Her glasses were the first thing she bought.
 In the tin box she kept the old papers. When the player shops for the dream at 33, the plot on offer
-is **Survey No. 212 — Thatha's land**, and Lucky Prakash is the broker. Reading the documents with the
+is **Survey No. 212 — Nana's land**, and Lucky Prakash is the broker. Reading the documents with the
 glasses now protects the family from the same trap, a generation later.
 
 ## Arc by stage

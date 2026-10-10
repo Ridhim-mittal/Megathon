@@ -1,0 +1,628 @@
+/* Story mini-games (src/ui/games/): Salary Split, Basket Juggle, Spot the Fake on MiniShell, and Rat Guard.
+   The frame (ir-card, intro steps, result) comes from games.css. */
+
+.mg-art {
+  display: grid;
+  place-items: center;
+  color: var(--px-wood, #6b4423);
+}
+.choice-game {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 3px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #6b3bd0;
+}
+.mg-play {
+  display: grid;
+  gap: 12px;
+  animation: fade-in 0.3s ease both;
+}
+.mg-play kbd {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* ---------- Salary Split ---------- */
+.ss-top,
+.bj-top,
+.sf-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+.ss-left {
+  font-size: 20px;
+}
+.ss-dots {
+  display: flex;
+  gap: 3px;
+  margin-left: auto;
+}
+.ss-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd84a;
+  border: 1.5px solid #8a5a00;
+}
+.ss-dots i.used {
+  background: transparent;
+  border-color: #c9b07a;
+}
+.ss-chute,
+.bj-chute {
+  position: relative;
+  height: 92px;
+  border-radius: 10px;
+  background: linear-gradient(#fff8e0, #f4e6c0);
+  border: 2px dashed #d9c08a;
+  overflow: hidden;
+}
+.ss-coin {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #ffd84a;
+  border: 2px solid #8a5a00;
+  font-weight: 800;
+  color: #5a3a00;
+  transform: translateX(-50%);
+  animation-name: coin-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.ss-jars,
+.bj-baskets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.ss-jar,
+.bj-basket {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 12px 8px 10px;
+  border-radius: 12px;
+  border: 3px solid var(--px-wood, #6b4423);
+  background: #fffaf0;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.ss-jar:hover,
+.bj-basket:hover {
+  transform: translateY(-3px);
+}
+.ss-jar.bump {
+  animation: jar-bump 0.3s ease;
+}
+.jar-save {
+  background: #eaf6e2;
+}
+.jar-needs {
+  background: #e6f0fb;
+}
+.jar-wants {
+  background: #fdebf1;
+}
+.ss-jar.ok {
+  box-shadow: 0 0 0 3px #57b85a;
+}
+.ss-fill {
+  position: relative;
+  width: 46px;
+  height: 52px;
+  border: 2px solid #8a7a5a;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.6);
+}
+.ss-fill i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffd84a;
+  transition: height 0.3s;
+}
+.ss-jar small,
+.bj-basket small {
+  font-size: 12px;
+  font-weight: 700;
+}
+.ss-plus {
+  position: absolute;
+  top: -6px;
+  font-weight: 900;
+  color: #2f7a3a;
+  animation: fx-rise 0.7s ease-out forwards;
+}
+.ss-plus.auto {
+  color: #c0392b;
+}
+
+/* ---------- Basket Juggle ---------- */
+.bj-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+}
+.bj-storms {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: auto;
+  color: #4a5068;
+}
+.bj-storms .past {
+  color: #c9c3b8;
+}
+.bj-left {
+  min-width: 28px;
+  text-align: right;
+  color: #8a7a5a;
+}
+.bj-egg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  color: #b88a4a;
+  fill: #fff6e6;
+  transform: translateX(-50%);
+  animation-name: coin-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.bj-egg svg {
+  fill: #fff6e6;
+}
+.bj-storm-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 100%;
+  margin: 0;
+  font-weight: 800;
+  color: #fff;
+  background: #3a3f58;
+  animation: fade-in 0.2s ease both;
+}
+.bj-basket.heavy {
+  border-color: #d0602a;
+}
+.bj-basket.hit {
+  animation: shake 0.5s ease;
+  background: #e9e3f5;
+}
+.bj-bolt {
+  position: absolute;
+  top: -30px;
+  color: #ffd84a;
+  fill: #ffd84a;
+  animation: fade-in 0.15s ease both;
+}
+.bj-eggs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  min-height: 28px;
+  max-width: 120px;
+}
+.bj-eggs i {
+  width: 10px;
+  height: 13px;
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  background: #fff6e6;
+  border: 1.5px solid #b88a4a;
+}
+.bj-warn {
+  color: #d0602a;
+}
+.bj-cracked {
+  margin: 0;
+  font-size: 12.5px;
+  color: #8a7a5a;
+  text-align: center;
+}
+
+/* ---------- Spot the Fake ---------- */
+.sf-found {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 17px;
+}
+.sf-clock {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 18px;
+}
+.sf-clock.hurry {
+  color: #c0392b;
+}
+.sf-certs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sf-cert {
+  position: relative;
+  padding: 12px 12px 10px;
+  border-radius: 8px;
+  border: 3px double #b89a5a;
+  background: #fffdf4;
+  font-size: 13px;
+}
+.sf-cert.fake {
+  background: #fff8f0;
+  border-color: #c98a5a;
+}
+.sf-seal {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #2f7a3a;
+}
+.sf-cert.fake .sf-seal {
+  color: #c98a5a;
+}
+.sf-head {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+  padding-right: 26px;
+}
+.sf-cert ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.sf-cert.real li {
+  padding: 5px 8px;
+  border-radius: 5px;
+  background: #f2efe2;
+}
+.sf-cert.fake button {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1.5px dashed #d9c08a;
+  background: #fff;
+  cursor: pointer;
+}
+.sf-cert.fake button:hover {
+  border-color: #6b3bd0;
+}
+.sf-cert.fake button.found {
+  border: 2px solid #c0392b;
+  background: #fde4df;
+  color: #8e1c12;
+  font-weight: 700;
+  animation: jar-bump 0.3s ease;
+}
+.sf-cert.fake button.wrong {
+  animation: shake 0.4s ease;
+  background: #eee;
+}
+
+@keyframes coin-fall {
+  from {
+    top: -10px;
+  }
+  to {
+    top: 60px;
+  }
+}
+@keyframes jar-bump {
+  50% {
+    transform: scale(1.06);
+  }
+}
+@keyframes fx-rise {
+  to {
+    transform: translateY(-22px);
+    opacity: 0;
+  }
+}
+@keyframes shake {
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+@media (max-width: 640px) {
+  .sf-certs {
+    grid-template-columns: 1fr;
+  }
+  .sf-cert.real {
+    display: none;
+  }
+}
+
+/* ---------- Rat Guard (the prologue's first scene) ---------- */
+.rg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: rgba(18, 12, 8, 0.72);
+  backdrop-filter: blur(3px);
+  animation: fade-in 0.25s ease both;
+}
+.rg-cabinet {
+  width: min(960px, 100%, calc((100dvh - 120px) * 16 / 9));
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 14px;
+  background: #2b1d12;
+  border: 4px solid #1a110a;
+  box-shadow: 0 0 0 3px #8a5a2b, 0 18px 40px rgba(0, 0, 0, 0.5);
+  font-family: var(--px-font, monospace);
+  color: #fff6e0;
+}
+.rg-cabinet.swarming {
+  animation: rg-alarm 0.6s steps(2) infinite;
+}
+.rg-hud {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.rg-chip {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #1a110a;
+  border: 2px solid #8a5a2b;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.swarming .rg-chip:nth-child(2) {
+  color: #ff6a5a;
+  border-color: #ff6a5a;
+}
+.rg-danger {
+  position: relative;
+  flex: 1;
+  min-width: 120px;
+  height: 18px;
+  border-radius: 6px;
+  background: #1a110a;
+  border: 2px solid #8a5a2b;
+  overflow: hidden;
+}
+.rg-danger i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, #f2c94c, #ff6a5a 70%, #d0302a);
+  transition: width 0.3s linear;
+}
+.rg-danger small {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 0 #000;
+}
+.rg-stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #6b4527;
+}
+.rg-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  cursor: crosshair;
+  touch-action: none;
+}
+.rg-pick {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: rgba(20, 12, 6, 0.55);
+  animation: fade-in 0.3s ease both;
+}
+.rg-ammamma {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 560px;
+  padding: 8px 14px 8px 8px;
+  border-radius: 12px;
+  background: #fff6e0;
+  color: #3b2716;
+  border: 3px solid #8a5a2b;
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+}
+.rg-ammamma p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 15px;
+}
+.rg-ammamma .pixel-portrait {
+  flex: none;
+}
+.rg-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  gap: 14px;
+}
+.rg-option {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 14px 10px 12px;
+  border-radius: 12px;
+  border: 3px solid #1a110a;
+  background: #fff6e0;
+  color: #3b2716;
+  font: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #1a110a;
+  transition: transform 0.12s;
+}
+.rg-option b {
+  font-size: 17px;
+}
+.rg-option small {
+  font-size: 12px;
+  opacity: 0.8;
+}
+.rg-option:not(:disabled):hover {
+  transform: translateY(-3px);
+}
+.rg-option.tin svg {
+  color: #6c7a8a;
+}
+.rg-option.bank svg {
+  color: #2f7a3a;
+}
+.rg-option.locked {
+  cursor: not-allowed;
+  background: #8a8278;
+  color: #3a342e;
+  filter: grayscale(1);
+  opacity: 0.75;
+  box-shadow: 0 4px 0 #3a342e;
+}
+.rg-option.locked svg {
+  color: #3a342e;
+}
+.rg-option.fresh {
+  background: #e6f6dc;
+  animation: rg-glow 1.2s ease-in-out infinite;
+}
+.rg-new {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #ffd84a;
+  border: 2px solid #1a110a;
+  font-size: 11px;
+  font-weight: 800;
+  transform: rotate(8deg);
+}
+.rg-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(20, 12, 6, 0.85);
+  border: 2px solid #ff6a5a;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  animation: fade-in 0.4s 0.6s ease both;
+}
+.rg-lesson {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  max-width: 560px;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #2f7a3a;
+  color: #fff;
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.rg-lesson svg {
+  flex: none;
+  margin-top: 2px;
+  color: #ffd84a;
+}
+.rg-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 26px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+.rg-skip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff6e0;
+}
+@keyframes rg-glow {
+  50% {
+    box-shadow: 0 4px 0 #1a110a, 0 0 0 5px rgba(255, 216, 74, 0.7);
+  }
+}
+@keyframes rg-alarm {
+  50% {
+    box-shadow: 0 0 0 3px #ff6a5a, 0 18px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+@media (max-width: 640px) {
+  .rg-options {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .rg-option {
+    padding: 8px 6px;
+  }
+  .rg-ammamma p {
+    font-size: 13px;
+  }
+  .rg-caption {
+    white-space: normal;
+    width: 90%;
+    text-align: center;
+  }
+}

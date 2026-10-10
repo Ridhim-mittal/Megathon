@@ -126,7 +126,7 @@
     "speaker": "mentor",
     "title": { "en": "The tin box", "hi": "टिन का डिब्बा", "te": "డబ్బా" },
     "text": {
-      "en": "Ammamma gives you an old tin box. Inside: Thatha's papers, and a thumbprint on a sale deed. \"It wasn't the rains, kanna. It was me.\"",
+      "en": "Ammamma gives you an old tin box. Inside: Nana's papers, and a thumbprint on a sale deed. \"It wasn't the rains, kanna. It was me.\"",
       "hi": "अम्मम्मा आपको एक पुराना टिन का डिब्बा देती हैं। अंदर: नाना के कागज़, और एक बैनामे पर अँगूठे का निशान। \"बारिश नहीं थी, कन्ना। मैं थी।\"",
       "te": "అమ్మమ్మ మీకు ఒక పాత డబ్బా ఇస్తుంది. లోపల: తాతయ్య కాగితాలు, ఒక సేల్ డీడ్ మీద వేలిముద్ర. \"వానలు కావు కన్నా. నేనే.\""
     },
@@ -138,7 +138,7 @@
         "default": true,
         "effects": { "flags": { "add": ["knows_wound"] }, "meters": { "family": 10 }, "glasses": 1 },
         "outcome": {
-          "en": "She fell ill. Thatha borrowed ₹15,000 at ₹3 per ₹100 a month. In four years it was over ₹60,000.",
+          "en": "She fell ill. Nana borrowed ₹15,000 at ₹3 per ₹100 a month. In four years it was over ₹60,000.",
           "hi": "वे बीमार पड़ गई थीं। नाना ने ₹3 सैकड़ा महीने पर ₹15,000 उधार लिए। चार साल में यह ₹60,000 से ज़्यादा हो गया।",
           "te": "ఆమెకు జబ్బు చేసింది. తాతయ్య నెలకు నూటికి ₹3 వడ్డీకి ₹15,000 అప్పు తీసుకున్నాడు. నాలుగేళ్లలో అది ₹60,000 దాటింది."
         },
@@ -158,7 +158,7 @@
         "quality": "good",
         "effects": { "flags": { "add": ["knows_wound"] }, "meters": { "family": 6 }, "gyaan": 4, "glasses": 2 },
         "outcome": {
-          "en": "Two evenings with the [[pahani]] and the [[sale_deed]]. Survey No. 212. Thatha's land. Remember that number.",
+          "en": "Two evenings with the [[pahani]] and the [[sale_deed]]. Survey No. 212. Nana's land. Remember that number.",
           "hi": "[[pahani]] और [[sale_deed]] के साथ दो शामें। सर्वे नं. 212। नाना की ज़मीन। यह नंबर याद रखें।",
           "te": "[[pahani]], [[sale_deed]]తో రెండు సాయంత్రాలు. సర్వే నం. 212. తాతయ్య భూమి. ఆ నంబర్ గుర్తుంచుకోండి."
         },
@@ -263,7 +263,7 @@
         "echo": {
           "level": 3,
           "hint": {
-            "en": "Thatha signed fast too.",
+            "en": "Nana signed fast too.",
             "hi": "नाना ने भी जल्दी साइन किया था।",
             "te": "తాతయ్య కూడా త్వరగా సంతకం చేశాడు."
           }
@@ -282,7 +282,7 @@
       {
         "id": "buy_back",
         "label": {
-          "en": "Buy Thatha's land back, but only through the registration office, with verified papers",
+          "en": "Buy Nana's land back, but only through the registration office, with verified papers",
           "hi": "नाना की ज़मीन वापस खरीदें, पर सिर्फ़ रजिस्ट्री दफ़्तर से, जाँचे कागज़ों के साथ",
           "te": "తాతయ్య భూమిని తిరిగి కొనండి, కానీ రిజిస్ట్రేషన్ ఆఫీసు ద్వారానే, తనిఖీ చేసిన కాగితాలతో"
         },
