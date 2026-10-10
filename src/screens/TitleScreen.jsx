@@ -1,10 +1,10 @@
 import React from "react";
-import { Building2, Calculator, Play, Snowflake, Sparkles, Sprout, Sun } from "lucide-react";
+import { Building2, Calculator, Gamepad2, Play, Snowflake, Sparkles, Sprout, Sun } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 import { HeroPicker } from "../ui/HeroPicker.jsx";
 import { InterestRace } from "../ui/games/InterestRace.jsx";
-import { ArcadeGame } from "../ui/arcade/Arcade.jsx";
+import { ArcadeGame, ArcadeMenu } from "../ui/arcade/Arcade.jsx";
 import { PixelPortrait } from "../ui/PixelPortrait.jsx";
 
 // Continue and Start a new life sit side by side, the same size. A new life asks for your look and
@@ -12,6 +12,7 @@ import { PixelPortrait } from "../ui/PixelPortrait.jsx";
 export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settings, picking, onPicking, hero }) {
   const { t } = useT();
   const [playing, setPlaying] = React.useState(false);
+  const [arcade, setArcade] = React.useState(null); // null | "menu" | a game id
   const [snow, setSnow] = React.useState(false);
   return (
     <div className="title-screen">
@@ -61,6 +62,9 @@ export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settin
           <button className="title-game" onClick={() => setPlaying(true)}>
             <Calculator size={16} aria-hidden="true" /> {t("interest.menu")}
           </button>
+          <button className="title-game" onClick={() => setArcade("menu")}>
+            <Gamepad2 size={16} aria-hidden="true" /> {t("arcade.title")}
+          </button>
           <button className="title-game snow" onClick={() => setSnow(true)}>
             <Snowflake size={16} aria-hidden="true" /> {t("arcade.snowMenu")}
           </button>
@@ -76,6 +80,17 @@ export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settin
         <Sun size={14} /> {t("app.made")}
       </span>
       <span className="title-version">{t("app.chapter")}</span>
+      {arcade && (
+        <div className="dialog-layer title-arcade">
+          <section className="game-window window-arcade">
+            {arcade === "menu" ? (
+              <ArcadeMenu onPick={setArcade} onClose={() => setArcade(null)} />
+            ) : (
+              <ArcadeGame key={arcade} gameId={arcade} onBack={() => setArcade("menu")} onClose={() => setArcade(null)} />
+            )}
+          </section>
+        </div>
+      )}
       {snow && (
         <div className="ir-layer" role="dialog" aria-modal="true" aria-label={t("arcade.snowMenu")}>
           <section className="game-window window-arcade title-arcade">
