@@ -107,7 +107,7 @@ export function useT() {
         }
         if (first.at > 0) out.push(...tokens(rest.slice(0, first.at), `r${n}`));
         out.push(
-          <ClarityPhrase key={`c${n}`} revealed={first.revealed} free={first.free} truth={first.truth ? pick(first.truth) : null}>
+          <ClarityPhrase key={`c${n}`} revealed={first.revealed} free={first.free} truth={first.truth ? plain(first.truth) : null}>
             {tokens(first.text, `p${n}`)}
           </ClarityPhrase>,
         );
