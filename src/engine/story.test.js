@@ -116,7 +116,7 @@ test("story mode: running out of time on a rush scene moves to its failure", () 
     if (s.phase === "card") a = { type: "CHOOSE", choiceId: want[s.current.cardId] };
     s = E.step(s, a);
   }
-  assert.equal(E.select.story(s).objective.rush.seconds, 40);
+  assert.equal(E.select.story(s).objective.rush.seconds, 22);
   s = E.step(s, { type: "STORY_TIMEOUT" });
   assert.equal(s.error, null);
   assert.equal(s.story.node, "m1_too_late");

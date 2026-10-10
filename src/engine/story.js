@@ -144,7 +144,7 @@ export function flowchartOf(story, s, missionId, discovered = null) {
   const maxScene = Math.max(0, ...m.nodes.filter((n) => n.type !== "outcome" && depth[n.id] != null).map((n) => depth[n.id]));
   const path = (s?.story?.path ?? []).filter((p) => p.mission === missionId);
   const visited = new Set(s?.story?.visited ?? []);
-  const known = (id) => visited.has(id) || Boolean(discovered?.has?.(id));
+  const known = (id) => visited.has(id) || s?.story?.node === id || Boolean(discovered?.has?.(id));
   const taken = new Set(path.map((p) => `${p.node}:${p.choice}`));
   const outcome = s?.story?.outcomes?.[missionId] ?? null;
   const nodes = m.nodes.map((n) => ({
