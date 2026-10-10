@@ -1,0 +1,6 @@
+# Normalize line endings so Windows/Mac/Linux teammates don't create whole-file diffs
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jpg binary
+*.ipynb -diff
