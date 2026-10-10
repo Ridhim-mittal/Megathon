@@ -3,7 +3,7 @@ import { FileText, Glasses, Waves } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { select } from "../../ui/gameAdapter.js";
 import { DocumentViewer } from "../../ui/DocumentViewer.jsx";
-import { Portrait } from "../../ui/Portrait.jsx";
+import { PixelPortrait as Portrait } from "../../ui/PixelPortrait.jsx";
 import { sounds } from "../../ui/sound.js";
 
 export function CardView({ life, dispatch }) {

@@ -4,7 +4,7 @@ import { useT } from "../../i18n/index.jsx";
 import { select } from "../../ui/gameAdapter.js";
 import { describeMovements } from "../../ui/movements.js";
 
-export function OutcomeView({ life, dispatch }) {
+export function OutcomeView({ life, dispatch, onLearn }) {
   const { t, pick, rich, plain, money, signed } = useT();
   const out = select.lastOutcome(life);
   const card = select.currentCard(life);
@@ -76,7 +76,13 @@ export function OutcomeView({ life, dispatch }) {
           </p>
         )}
         <div className="action-row">
-          <span />
+          {onLearn && card?.lesson ? (
+            <button className="secondary-button" onClick={() => onLearn(card.lesson)}>
+              {t("gyaan.learnMore")}
+            </button>
+          ) : (
+            <span />
+          )}
           <button ref={next} className="primary-button big" onClick={() => dispatch({ type: "ADVANCE" })}>
             {t("outcome.next")} <ArrowRight size={18} />
           </button>

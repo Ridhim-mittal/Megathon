@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Send, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { askMentor, suggestedQuestions } from "./gameAdapter.js";
-import { Portrait } from "./Portrait.jsx";
+import { PixelPortrait as Portrait } from "./PixelPortrait.jsx";
 
 // A side panel: ask a question, get Ammamma's answer (AI if /api/ask works, otherwise the
 // closest answer from her offline notebook).

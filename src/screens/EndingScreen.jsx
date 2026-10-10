@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ArrowRight, Eye, Route, ShieldAlert } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { goals, select, storyline } from "../ui/gameAdapter.js";
-import { Portrait } from "../ui/Portrait.jsx";
+import { PixelPortrait as Portrait } from "../ui/PixelPortrait.jsx";
 import { Sheet, ScreenBar } from "../ui/Sheet.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 import { GOAL_ICONS } from "./DreamScreen.jsx";

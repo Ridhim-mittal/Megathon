@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { I18nProvider } from "../i18n/index.jsx";
-import { World } from "../World.jsx";
+import { MapCanvas } from "../ui/map/MapCanvas.jsx";
 import { createLife, glossary, select, step, storyline } from "../ui/gameAdapter.js";
 import { loadEndings, loadLife, loadSettings, recordEnding, saveLife, saveSettings } from "../ui/persist.js";
 import { setSoundEnabled, sounds } from "../ui/sound.js";
@@ -10,7 +10,7 @@ import { LanguageScreen } from "./LanguageScreen.jsx";
 import { StorylineScreen } from "./StorylineScreen.jsx";
 import { IntroScreen } from "./IntroScreen.jsx";
 import { DreamScreen } from "./DreamScreen.jsx";
-import { LifeScreen } from "./LifeScreen.jsx";
+import { MapScreen } from "./MapScreen.jsx";
 import { EndingScreen } from "./EndingScreen.jsx";
 import { ReportScreen } from "./ReportScreen.jsx";
 import { ParallelScreen } from "./ParallelScreen.jsx";
@@ -24,6 +24,8 @@ const urlSeed = () => {
     return null;
   }
 };
+
+const BACKDROP_SPAWN = { x: 15, y: 14, dir: "down" };
 
 export function App() {
   const [settings, setSettings] = useState(loadSettings);
@@ -83,9 +85,9 @@ export function App() {
     }
   }, [life, route]);
 
-  function startLife({ goalId, playerName }) {
+  function startLife({ goalId, playerName, avatar }) {
     const seed = urlSeed() ?? `${Date.now()}`;
-    let s = createLife({ storylineId: setup.storylineId, goalId, seed, playerName: playerName || "" });
+    let s = createLife({ storylineId: setup.storylineId, goalId, seed, playerName: playerName || "", mode: "chapters", avatar: avatar ?? "boy" });
     s = step(s, { type: "ADVANCE" });
     setSetup((x) => ({ ...x, goalId, playerName }));
     setLife(s);
@@ -135,12 +137,11 @@ export function App() {
   return (
     <I18nProvider value={i18n}>
       <div className={`game-shell route-${route} lang-${settings.lang}`}>
-        <World
-          mode={worldMode}
-          dream={life && (route === "life" || route === "ending") ? { goalId: life.goalId, pct: hud.dream.pct } : null}
-          playerAge={life?.age ?? 11}
-          onGranny={() => window.dispatchEvent(new CustomEvent("lakshyam:ask"))}
-        />
+        {route !== "life" && (
+          <div className={`backdrop backdrop-${worldMode}`} aria-hidden="true">
+            <MapCanvas active={false} avatar={life?.avatar ?? "boy"} stage={life?.stage ?? "child"} spawn={BACKDROP_SPAWN} labels={{}} markers={{}} />
+          </div>
+        )}
         {route === "title" && (
           <TitleScreen
             canContinue={Boolean(saved || life)}
@@ -156,7 +157,7 @@ export function App() {
         )}
         {route === "intro" && <IntroScreen {...common} storylineId={setup.storylineId} onDone={() => go("dream")} />}
         {route === "dream" && <DreamScreen {...common} initialName={setup.playerName} onBack={() => go("intro")} onStart={startLife} />}
-        {route === "life" && life && <LifeScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
+        {route === "life" && life && <MapScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
         {route === "ending" && life && <EndingScreen {...common} life={life} onNext={() => go("report")} />}
         {route === "report" && life && <ReportScreen {...common} life={life} onNext={() => go("parallel")} />}
         {route === "parallel" && life && (

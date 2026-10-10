@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ArrowRight, FastForward } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { storyline } from "../ui/gameAdapter.js";
-import { Portrait } from "../ui/Portrait.jsx";
+import { PixelPortrait as Portrait } from "../ui/PixelPortrait.jsx";
 import { ScreenBar } from "../ui/Sheet.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 
