@@ -377,7 +377,10 @@ export function previewOption(s, opt, card = {}) {
   const debtDown = (opt.ops || [])
     .filter((o) => o.startsWith("reduceLoan:"))
     .reduce((a, o) => a + Number(o.split(":")[2]), 0);
-  return { fx, loan, covered, hidden: Boolean(opt.hidden || opt.seed), debtDown, ops: opt.ops || [] };
+  // Cost beyond everything saved would be borrowed from the moneylender: say so up front.
+  const liquid = CASCADE.reduce((a, k) => a + Math.max(0, s[k]), 0) - (card.base?.money ? -card.base.money : 0);
+  const shortfall = fx.money < 0 ? Math.max(0, -fx.money - Math.max(0, liquid)) : 0;
+  return { fx, loan, covered, shortfall, hidden: Boolean(opt.hidden || opt.seed), debtDown, ops: opt.ops || [] };
 }
 
 function applyOption(s, opt, card, origin) {
