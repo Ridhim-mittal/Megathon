@@ -952,7 +952,15 @@
     "collect": "Collect my scholarship",
     "otherWay": "Choose another way",
     "again": "Try again",
-    "done": "Back"
+    "done": "Back",
+    "lead": "Three money offers. Find the one that earns the most interest!",
+    "step1": "Three offers appear",
+    "step2": "Work out P × R × T ÷ 100 for each",
+    "step3": "Tap the biggest within {s} seconds",
+    "exampleTag": "EXAMPLE",
+    "exampleNote": "This offer earns {amount} interest.",
+    "winStory": "Get {need} of {rounds} right to win the scholarship!",
+    "winPractice": "Get {need} of {rounds} right to win!"
   },
   "arcade": {
     "title": "Arcade",

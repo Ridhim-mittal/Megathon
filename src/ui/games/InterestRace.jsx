@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, Check, Clock, GraduationCap, Landmark, PiggyBank, RotateCcw, Sparkles, Store, X } from "lucide-react";
+import { ArrowRight, Check, Clock, GraduationCap, Landmark, MousePointerClick, PiggyBank, RotateCcw, Sparkles, Store, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { PixelPortrait } from "../PixelPortrait.jsx";
 import { sounds } from "../sound.js";
@@ -39,6 +39,49 @@ function Confetti() {
         <i key={i} style={{ left: `${(i * 37) % 100}%`, animationDelay: `${(i % 7) * 0.05}s`, background: ["#ffd84a", "#ff6f91", "#57b85a", "#4f8fe0", "#ff9a3c"][i % 5] }} />
       ))}
     </span>
+  );
+}
+
+// A worked example that writes itself out, line by line, again and again.
+const EXAMPLE = { p: 1000, r: 5, t: 2 };
+function Example() {
+  const { t, money } = useT();
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setN((k) => (k + 1) % 7), 900);
+    return () => clearInterval(id);
+  }, []);
+  const step = Math.min(n, 4);
+  const lines = [
+    { key: "p", text: EXAMPLE.p.toLocaleString("en-IN"), cls: "v-p" },
+    { key: "r", text: `× ${EXAMPLE.r} = ${(EXAMPLE.p * EXAMPLE.r).toLocaleString("en-IN")}`, cls: "v-r" },
+    { key: "t", text: `× ${EXAMPLE.t} = ${(EXAMPLE.p * EXAMPLE.r * EXAMPLE.t).toLocaleString("en-IN")}`, cls: "v-t" },
+    { key: "d", text: `÷ 100 = ${money(simpleInterest(EXAMPLE))}`, cls: "v-d" },
+  ];
+  return (
+    <div className="ir-example-box">
+      <span className="ir-example-tag">{t("interest.exampleTag")}</span>
+      <div className="ir-mini-offer">
+        <span className={`ir-row ${step === 0 ? "lit" : ""}`}>
+          <i className="v-p">P</i> <b>{money(EXAMPLE.p)}</b>
+        </span>
+        <span className={`ir-row ${step === 1 ? "lit" : ""}`}>
+          <i className="v-r">R</i> <b>{t("interest.rate", { r: EXAMPLE.r })}</b>
+        </span>
+        <span className={`ir-row ${step === 2 ? "lit" : ""}`}>
+          <i className="v-t">T</i> <b>{t("interest.years", { n: EXAMPLE.t })}</b>
+        </span>
+      </div>
+      <ArrowRight className="ir-example-arrow" size={22} aria-hidden="true" />
+      <div className="ir-chalk" aria-label={t("interest.example")}>
+        {lines.map((l, i) => (
+          <span key={l.key} className={`ir-chalk-line ${l.cls} ${i <= step ? "shown" : ""} ${i === 3 && step >= 3 ? "answer" : ""}`}>
+            {l.text}
+          </span>
+        ))}
+        <span className={`ir-chalk-note ${step >= 4 ? "shown" : ""}`}>{t("interest.exampleNote", { amount: money(simpleInterest(EXAMPLE)) })}</span>
+      </div>
+    </div>
   );
 }
 
@@ -138,24 +181,58 @@ export function InterestRace({ mode = "practice", avatar = "boy", onWin, onClose
 
         {stage === "intro" && (
           <div className="ir-intro">
-            <div className="ir-teacher">
-              <PixelPortrait role="teacher" />
-            </div>
-            <div className="ir-intro-text">
-              <h2 id="ir-title">{t("interest.title")}</h2>
-              <p>{t(mode === "story" ? "interest.introStory" : "interest.introPractice", { need: NEED, rounds: ROUNDS })}</p>
-              <div className="ir-board">
-                <b>{t("interest.formulaName")}</b>
-                <span className="ir-formula">
-                  <i className="v-p">P</i> × <i className="v-r">R</i> × <i className="v-t">T</i> ÷ 100
-                </span>
-                <small>{t("interest.legend")}</small>
-                <small className="ir-example">{t("interest.example")}</small>
+            <div className="ir-intro-head">
+              <div className="ir-teacher">
+                <PixelPortrait role="teacher" />
               </div>
-              <button ref={startBtn} className="primary-button big ir-go" onClick={() => setStage("play")}>
-                {t("interest.start")} <ArrowRight size={18} />
-              </button>
+              <div>
+                <h2 id="ir-title">{t("interest.title")}</h2>
+                <p className="ir-lead">{t("interest.lead")}</p>
+              </div>
             </div>
+
+            <ol className="ir-steps">
+              <li style={{ animationDelay: "0.1s" }}>
+                <span className="ir-step-art three-cards" aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <b>1</b>
+                <span>{t("interest.step1")}</span>
+              </li>
+              <li style={{ animationDelay: "0.2s" }}>
+                <span className="ir-step-art formula" aria-hidden="true">
+                  <i className="v-p">P</i>×<i className="v-r">R</i>×<i className="v-t">T</i>
+                  <small>÷100</small>
+                </span>
+                <b>2</b>
+                <span>{t("interest.step2")}</span>
+              </li>
+              <li style={{ animationDelay: "0.3s" }}>
+                <span className="ir-step-art tap" aria-hidden="true">
+                  <Clock size={20} />
+                  <MousePointerClick size={22} className="ir-tap-hand" />
+                </span>
+                <b>3</b>
+                <span>{t("interest.step3", { s: SECONDS })}</span>
+              </li>
+            </ol>
+
+            <Example />
+
+            <div className="ir-win-rule">
+              <span className="ir-mini-coins" aria-hidden="true">
+                {Array.from({ length: ROUNDS }, (_, i) => (
+                  <i key={i} className={i < NEED ? "on" : ""} style={{ animationDelay: `${0.5 + i * 0.12}s` }} />
+                ))}
+              </span>
+              <span>{t(mode === "story" ? "interest.winStory" : "interest.winPractice", { need: NEED, rounds: ROUNDS })}</span>
+            </div>
+
+            <button ref={startBtn} className="primary-button big ir-go" onClick={() => setStage("play")}>
+              {t("interest.start")} <ArrowRight size={18} />
+            </button>
           </div>
         )}
 
