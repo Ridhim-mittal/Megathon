@@ -1,0 +1,269 @@
+[
+  {
+    "id": "doc.plot_sale",
+    "type": "sale_deed",
+    "title": { "en": "Sale deed — Plot in Survey No. 212, Mallepalli" },
+    "verify": { "cost": 2000, "label": { "en": "Pay the village lawyer to check the land records and get the EC" } },
+    "variants": [
+      {
+        "id": "clean",
+        "weight": 5,
+        "lines": [
+          { "id": "l1", "text": { "en": "Seller: B. Mallesh, son of B. Pentaiah" } },
+          { "id": "l2", "text": { "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed" } },
+          { "id": "l3", "text": { "en": "Price: ₹3,50,000, paid by bank transfer, receipt attached" } },
+          { "id": "l4", "text": { "en": "Encumbrance certificate for 30 years attached: no loans, no other sales" } },
+          { "id": "l5", "text": { "en": "Pahani: owner B. Mallesh, matches the seller" } },
+          { "id": "l6", "text": { "en": "To be registered at the Sub-Registrar office, with two witnesses" } }
+        ]
+      },
+      {
+        "id": "double_sold",
+        "weight": 3,
+        "lines": [
+          { "id": "l1", "text": { "en": "Seller: B. Mallesh, son of B. Pentaiah" } },
+          { "id": "l2", "text": { "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed" } },
+          {
+            "id": "l3", "text": { "en": "Price: ₹3,50,000, cash only, receipt to follow" }, "redFlag": "cash_only",
+            "explain": { "en": "Cash with no receipt leaves no proof you paid. Always pay land money by bank transfer." }
+          },
+          {
+            "id": "l4", "text": { "en": "Encumbrance: see attached" }, "redFlag": "no_ec",
+            "explain": { "en": "No encumbrance certificate is attached. The plot may already be sold or mortgaged." }
+          },
+          { "id": "l5", "text": { "en": "Pahani: owner B. Mallesh, matches the seller" } }
+        ],
+        "consequence": { "inYears": 1, "card": "village.settle.plot_dispute.a" }
+      },
+      {
+        "id": "forged_gpa",
+        "weight": 2,
+        "lines": [
+          {
+            "id": "l1", "text": { "en": "Seller: K. Ravi, as power-of-attorney holder for B. Mallesh" }, "redFlag": "gpa_seller",
+            "explain": { "en": "The seller isn't the owner. A power of attorney must be checked with the owner and the registration office." }
+          },
+          { "id": "l2", "text": { "en": "Property: Survey No. 212, Mallepalli, 0.25 acres, with boundaries listed" } },
+          { "id": "l3", "text": { "en": "Price: ₹3,50,000, paid by bank transfer to K. Ravi" } },
+          { "id": "l4", "text": { "en": "Encumbrance certificate for 30 years attached: no loans, no other sales" } },
+          {
+            "id": "l5", "text": { "en": "Pahani: owner B. Mallesh, address in Mumbai" }, "redFlag": "owner_absent",
+            "explain": { "en": "The owner lives far away and the money goes to someone else. Call the owner yourself before paying." }
+          }
+        ],
+        "consequence": { "inYears": 1, "card": "village.settle.fake_seller.a" }
+      }
+    ]
+  },
+  {
+    "id": "doc.loan_agreement",
+    "type": "loan_agreement",
+    "title": { "en": "Loan agreement and Key Fact Statement" },
+    "verify": { "cost": 500, "label": { "en": "Ask Kavitha akka to read the loan papers with you" } },
+    "variants": [
+      {
+        "id": "clean",
+        "weight": 6,
+        "lines": [
+          { "id": "l1", "text": { "en": "Lender: a bank registered with the national banking regulator" } },
+          { "id": "l2", "text": { "en": "Key Fact Statement: yearly interest rate, all fees and total amount payable shown on one page" } },
+          { "id": "l3", "text": { "en": "Processing fee: 1% of the loan, shown upfront" } },
+          { "id": "l4", "text": { "en": "Late payment fee: ₹500 per missed EMI" } },
+          { "id": "l5", "text": { "en": "Prepayment: no charge for paying early" } },
+          { "id": "l6", "text": { "en": "Complaints: grievance officer's phone number and the regulator's complaint process" } }
+        ]
+      },
+      {
+        "id": "hidden_fees",
+        "weight": 3,
+        "lines": [
+          { "id": "l1", "text": { "en": "Lender: a bank registered with the national banking regulator" } },
+          { "id": "l2", "text": { "en": "Key Fact Statement: yearly interest rate and EMI shown on page 1" } },
+          {
+            "id": "l3", "text": { "en": "Loan protection insurance: ₹3,500, added to the loan amount" }, "redFlag": "bundled_insurance",
+            "explain": { "en": "Insurance added without asking. You pay interest on it too. You can refuse it." }
+          },
+          {
+            "id": "l4", "text": { "en": "Clause 7: 4% charge on the balance if you repay early" }, "redFlag": "prepay_penalty",
+            "explain": { "en": "A penalty for paying early traps you in the loan. Ask for it to be removed." }
+          },
+          { "id": "l5", "text": { "en": "Late payment fee: ₹500 per missed EMI" } }
+        ],
+        "consequence": { "inYears": 1, "card": "village.adult.loan_hidden_fees.a" }
+      },
+      {
+        "id": "harsh_recovery",
+        "weight": 2,
+        "lines": [
+          { "id": "l1", "text": { "en": "Lender: Quick Cash Finance (app-based)" } },
+          { "id": "l2", "text": { "en": "Interest: 2.5% per month" } },
+          {
+            "id": "l3", "text": { "en": "Borrower allows the lender to contact all phone contacts and the employer" }, "redFlag": "contacts_access",
+            "explain": { "en": "This lets agents shame you to everyone you know. Honest lenders never need it." }
+          },
+          {
+            "id": "l4", "text": { "en": "Borrower gives three signed blank cheques as security" }, "redFlag": "blank_cheques",
+            "explain": { "en": "Blank cheques can be filled with any amount. Never sign one for a lender." }
+          }
+        ],
+        "consequence": { "inYears": 1, "card": "village.adult.loan_recovery_agents.a" }
+      }
+    ]
+  },
+  {
+    "id": "doc.insurance_policy",
+    "type": "insurance_policy",
+    "title": { "en": "Insurance policy document" },
+    "verify": { "cost": 300, "label": { "en": "Ask an independent adviser at the bank to explain the policy" } },
+    "variants": [
+      {
+        "id": "clean",
+        "weight": 5,
+        "lines": [
+          { "id": "l1", "text": { "en": "Plan type: term life insurance. No money back at the end." } },
+          { "id": "l2", "text": { "en": "Sum assured: ₹50,00,000" } },
+          { "id": "l3", "text": { "en": "Premium: ₹8,000 a year for 25 years" } },
+          { "id": "l4", "text": { "en": "Nominee: Amma" } },
+          { "id": "l5", "text": { "en": "Free-look period: cancel within 30 days for a full refund" } }
+        ]
+      },
+      {
+        "id": "mixed_lockin",
+        "weight": 3,
+        "lines": [
+          { "id": "l1", "text": { "en": "Plan type: insurance-cum-investment plan" } },
+          {
+            "id": "l2", "text": { "en": "Sum assured: ₹3,00,000" }, "redFlag": "low_cover",
+            "explain": { "en": "₹3 lakh is about one year of family income. Real protection needs 10 times your yearly income." }
+          },
+          { "id": "l3", "text": { "en": "Premium: ₹30,000 a year for 15 years" } },
+          {
+            "id": "l4", "text": { "en": "Surrender in the first 5 years: you get back 30% of premiums paid" }, "redFlag": "surrender_charge",
+            "explain": { "en": "Quit early and you lose most of what you paid. Check this before signing." }
+          }
+        ],
+        "consequence": { "inYears": 2, "card": "village.adult.surrender_value.a" }
+      },
+      {
+        "id": "exclusions",
+        "weight": 2,
+        "lines": [
+          { "id": "l1", "text": { "en": "Plan type: family health insurance, ₹3,00,000 cover" } },
+          { "id": "l2", "text": { "en": "Premium: ₹9,500 a year" } },
+          {
+            "id": "l3", "text": { "en": "Page 11: existing illnesses covered only after 4 years" }, "redFlag": "waiting_period",
+            "explain": { "en": "Amma's knee problem and Nanna's BP won't be covered for 4 years." }
+          },
+          {
+            "id": "l4", "text": { "en": "Room rent limit: 1% of cover per day" }, "redFlag": "room_cap",
+            "explain": { "en": "A bigger room means the whole bill is cut in proportion. Check room limits." }
+          }
+        ],
+        "consequence": { "inYears": 2, "card": "village.adult.claim_rejected.a" }
+      }
+    ]
+  },
+  {
+    "id": "doc.chit_agreement",
+    "type": "chit_agreement",
+    "title": { "en": "Chit agreement — ₹1,00,000 chit, 20 members" },
+    "verify": { "cost": 200, "label": { "en": "Check the registration at the Registrar of Chits office" } },
+    "variants": [
+      {
+        "id": "clean",
+        "weight": 5,
+        "lines": [
+          { "id": "l1", "text": { "en": "Registered under the Chit Funds Act, registration no. RC/NLG/2041" } },
+          { "id": "l2", "text": { "en": "Chit value ₹1,00,000: 20 members pay ₹5,000 a month for 20 months" } },
+          { "id": "l3", "text": { "en": "Organiser's commission: 5% of chit value" } },
+          { "id": "l4", "text": { "en": "Security deposit lodged with the Registrar: yes" } },
+          { "id": "l5", "text": { "en": "Monthly auction minutes signed by members, receipts for every payment" } }
+        ]
+      },
+      {
+        "id": "unregistered",
+        "weight": 5,
+        "lines": [
+          {
+            "id": "l1", "text": { "en": "Registration: not needed, this is a friends' chit" }, "redFlag": "unregistered",
+            "explain": { "en": "Running an unregistered chit is illegal. If the organiser vanishes, nobody holds a security deposit." }
+          },
+          { "id": "l2", "text": { "en": "Chit value ₹1,00,000: 20 members pay ₹5,000 a month for 20 months" } },
+          {
+            "id": "l3", "text": { "en": "Organiser's commission: as decided by the organiser" }, "redFlag": "open_commission",
+            "explain": { "en": "The law caps the commission. \"As decided\" means it can be anything." }
+          },
+          { "id": "l4", "text": { "en": "Receipts: written in the organiser's notebook" } }
+        ],
+        "consequence": { "inYears": 1, "card": "village.adult.chit_vanished.a" }
+      }
+    ]
+  },
+  {
+    "id": "doc.phone_emi",
+    "type": "loan_agreement",
+    "title": { "en": "Phone EMI form — 12 months" },
+    "verify": { "cost": 0, "label": { "en": "Ask the shop to write the full cost on one line" } },
+    "variants": [
+      {
+        "id": "clean",
+        "weight": 4,
+        "lines": [
+          { "id": "l1", "text": { "en": "Phone price: ₹7,500" } },
+          { "id": "l2", "text": { "en": "EMI: ₹699 × 12 months = ₹8,388" } },
+          { "id": "l3", "text": { "en": "Processing fee: ₹1,200, added to the first bill" } },
+          { "id": "l4", "text": { "en": "Late fee: ₹500 per missed EMI" } }
+        ]
+      },
+      {
+        "id": "addons",
+        "weight": 6,
+        "lines": [
+          { "id": "l1", "text": { "en": "Phone price: ₹7,500" } },
+          { "id": "l2", "text": { "en": "EMI: ₹699 × 12 months = ₹8,388" } },
+          { "id": "l3", "text": { "en": "Processing fee: ₹1,200, added to the first bill" } },
+          {
+            "id": "l4", "text": { "en": "Device protection plan: ₹99 a month, included by default" }, "redFlag": "auto_addon",
+            "explain": { "en": "An add-on you didn't choose: ₹1,188 more a year. Untick it before signing." }
+          }
+        ],
+        "consequence": { "inYears": 1, "card": "village.teen.emi_extra_charges.a" }
+      }
+    ]
+  },
+  {
+    "id": "doc.gold_purchase",
+    "type": "gold_bill",
+    "title": { "en": "Jewellery bill — gold chain" },
+    "verify": { "cost": 100, "label": { "en": "Test the purity at the bank's gold-loan counter" } },
+    "variants": [
+      {
+        "id": "clean",
+        "weight": 6,
+        "lines": [
+          { "id": "l1", "text": { "en": "Hallmark: BIS mark with a 6-digit HUID number" } },
+          { "id": "l2", "text": { "en": "Purity: 22 carat (916)" } },
+          { "id": "l3", "text": { "en": "Weight: 1 gram" } },
+          { "id": "l4", "text": { "en": "Making charges: 8%, shown separately" } }
+        ]
+      },
+      {
+        "id": "not_hallmarked",
+        "weight": 4,
+        "lines": [
+          {
+            "id": "l1", "text": { "en": "Hallmark: not available on this piece" }, "redFlag": "no_hallmark",
+            "explain": { "en": "Without a hallmark, purity is only the shop's word. Buy hallmarked gold only." }
+          },
+          { "id": "l2", "text": { "en": "Purity: 22 carat, as per shop" } },
+          { "id": "l3", "text": { "en": "Weight: 1 gram" } },
+          {
+            "id": "l4", "text": { "en": "Making charges: included in price" }, "redFlag": "hidden_making",
+            "explain": { "en": "Hidden making charges make it hard to compare prices or resell fairly." }
+          }
+        ],
+        "consequence": { "inYears": 1, "card": "village.young.gold_impure.a" }
+      }
+    ]
+  }
+]
