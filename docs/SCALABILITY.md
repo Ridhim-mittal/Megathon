@@ -16,14 +16,14 @@ to add a language, and what comes next. Numbers were measured on the production 
 | **Content** | More stories, lessons and personas get inconsistent | Content is data (JSON) checked against the spec by `npm run validate:content` on every pull request. |
 | **Devices** | Cheap Android phones, old lab PCs | Pixel art drawn in code (no heavy images); budgets on every download (`npm run size`). |
 | **Privacy** | Student data on servers | Nothing leaves the device: no accounts, no tracking, progress stays in the browser. Nothing to leak, no consent forms to collect. |
-| **Team and quality** | Four people editing at once, regressions | Area ownership (CLAUDE.md), 125 unit tests, content validator, 14 browser tests, all run by GitHub Actions on every pull request. |
+| **Team and quality** | Four people editing at once, regressions | Area ownership (CLAUDE.md), 120+ unit tests, content validator, 14 browser tests, all run by GitHub Actions on every pull request. |
 | **Rollout and updates** | Fixes must reach every school | Each deploy is atomic; the offline worker always checks for a new page, so a fix reaches students on their next visit. Rolling back is redeploying the previous build. |
 
 ## 2. Capacity for the 1,500-student pilot
 
 | | English player | Hindi / Telugu player |
 |---|---|---|
-| Game (JS, gzipped) | 370 KB | 370 KB + 116 KB pack |
+| Game (JS, gzipped) | 370 KB | 370 KB + ≈ 118 KB pack |
 | Styles | 71 KB | 71 KB |
 | Fonts (only the glyphs shown) | ≈ 335 KB | ≈ 335 KB |
 | **First visit** | **≈ 0.8 MB** | **≈ 0.9 MB** |
@@ -60,8 +60,7 @@ A language can go live **half translated**: anything missing shows in English, a
 export lists only what is still missing. Fonts: browsers already have fonts for most Indian
 scripts; to make one look the same on every device, add its Noto font package in `src/main.jsx`.
 
-Today: `npm run lang:status` shows Hindi and Telugu at 97%. The 111 missing screen lines are all
-in the Swipe Bazaar mini-game (`arcade.swipe.*`), which shows in English for now.
+Today: `npm run lang:status` shows Hindi and Telugu at 100% (about 4,570 lines each).
 
 **Known gap:** Urdu is written right to left. The registry and packs support it, but the screens
 need a right-to-left layout pass (`dir="rtl"`) before Urdu ships.
