@@ -6,7 +6,7 @@ import { Money } from "../../ui/Money.jsx";
 import { LessonBadge } from "../../ui/LessonBadge.jsx";
 
 // The top bar over the map: chapter and age, money, dream, the current lesson, pause, phone and controls.
-export function MapHud({ hud, chapter, goalTitle, settings, phone, lessonId, onPhone, onPause, onAsk, onHelp }) {
+export function MapHud({ hud, chapter, goalTitle, settings, phone, lessonId, onPhone, onPause, onAsk }) {
   const { t, money } = useT();
   return (
     <header className="map-hud">
@@ -64,7 +64,8 @@ export function MapHud({ hud, chapter, goalTitle, settings, phone, lessonId, onP
           <Smartphone size={19} />
           {phone.notifications.length > 0 && <b className="badge">{phone.notifications.length}</b>}
         </button>
-        <TopControls settings={settings} onAsk={onAsk} onHelp={onHelp} />
+        {/* Sound and How to play live in the pause menu. */}
+        <TopControls settings={settings} onAsk={onAsk} sound={false} />
       </div>
     </header>
   );
