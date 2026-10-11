@@ -190,7 +190,7 @@ function Sms({ items, onDone }) {
   const done = useRef(onDone);
   done.current = onDone;
   useEffect(() => {
-    sounds.thud?.();
+    sounds.buzz?.();
     if (shown < items.length) {
       const id = setTimeout(() => setShown(shown + 1), 900);
       return () => clearTimeout(id);
@@ -678,7 +678,9 @@ export function ScamSite({ adId, onClose }) {
   const lost = lostIn(adId, paid);
   const finish = () => {
     setDone(true);
-    bumpAdStat(lostIn(adId, paid) > 0 ? "scammed" : "escaped");
+    const scammed = lostIn(adId, paid) > 0;
+    (scammed ? sounds.gotcha : sounds.chime)?.();
+    bumpAdStat(scammed ? "scammed" : "escaped");
   };
   const go = (next, paidStep) => {
     if (paidStep) setPaid((p) => (p.includes(paidStep) ? p : [...p, paidStep]));

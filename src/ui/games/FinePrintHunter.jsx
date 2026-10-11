@@ -60,7 +60,7 @@ function Play({ onFinish }) {
       const next = [...foundRef.current, c.key];
       foundRef.current = next;
       setFound(next);
-      sounds.coin?.();
+      sounds.marker?.();
       if (next.length === TRAPS) setTimeout(() => setPhase("total"), 700);
     } else {
       setWrong(c.key);
@@ -122,7 +122,15 @@ function Play({ onFinish }) {
           {guess == null ? (
             <div className="fp-options">
               {options.map((o) => (
-                <button key={o.id} className="fp-option" onClick={() => setGuess(o.id)}>
+                <button
+                  key={o.id}
+                  className="fp-option"
+                  onClick={() => {
+                    setGuess(o.id);
+                    (o.id === "right" ? sounds.right : sounds.wrong)?.();
+                    for (let i = 0; i < 6; i++) setTimeout(() => sounds.printer?.(), 350 + i * 90);
+                  }}
+                >
                   {rs(o.value)}
                 </button>
               ))}

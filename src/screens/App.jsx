@@ -76,8 +76,8 @@ export function App() {
       if (out?.money.movements.some((m) => m.type === "shock")) sounds.thud();
       else if (out?.money.netWorthChange > 0) sounds.coin();
       else if (out?.money.netWorthChange < 0) sounds.spend();
-      if (out?.lesson?.to === "applied" && out.lesson.from !== "applied") setTimeout(sounds.chime, 250);
-    } else if (action.type === "BUY_WANT") sounds.coin();
+      if (out?.lesson?.to === "applied" && out.lesson.from !== "applied") setTimeout(sounds.levelUp, 300);
+    } else if (action.type === "BUY_WANT") sounds.spend();
     else sounds.tap();
     lifeRef.current = next;
     setLife(next);

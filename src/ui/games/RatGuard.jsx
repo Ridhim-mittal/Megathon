@@ -652,7 +652,7 @@ function RatGuardRun({ mode = "story", onDone, onClose, onAgain }) {
     found.alive = false;
     s.score += 10;
     s.poofs.push({ x: found.x, y: found.y, at: performance.now(), spin: Math.random() * 6, label: t("ratguard.poof") });
-    sounds.coin?.();
+    sounds.poof?.();
   }
 
   // Keyboard: Space swats the rat nearest the box.
