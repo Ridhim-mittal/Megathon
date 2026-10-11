@@ -1660,39 +1660,6 @@
     "wonText": "Spread out, no single storm could break you. That's diversification.",
     "lostText": "Too many eggs in one basket, or too many dropped. Spread them out."
   },
-  "fake": {
-    "ribbon": "The Telegram guru",
-    "title": "Spot the Fake",
-    "lead": "Is Lucky Prakash a real SEBI adviser? Compare his certificate with a real one.",
-    "step1": "Left: a real certificate",
-    "step2": "Tap the lines on his that are wrong",
-    "step3": "Wrong taps cost 3 seconds",
-    "rule": "Win: find {need} red flags.",
-    "found": "{n}/{total} found",
-    "score": "{n} of {total} red flags found",
-    "real": {
-      "head": "SEBI · Registered Investment Adviser",
-      "gov": "Government of India",
-      "name": "Adviser: R. Sharma",
-      "reg": "Reg. no. INA000012345",
-      "promise": "Investments carry market risk",
-      "address": "Office: Mumbai, India",
-      "fees": "Fees to the firm's bank account",
-      "valid": "Valid till 2031"
-    },
-    "fake": {
-      "head": "SEBI · Registred Investment Adviser",
-      "gov": "Goverment of India",
-      "name": "Adviser: Prakash K.",
-      "reg": "Reg. no. LUCKY-777-VIP",
-      "promise": "30% a month GUARANTEED",
-      "address": "Office: Dubai Marina",
-      "fees": "Fees to UPI luckyprakash@okbank",
-      "valid": "Valid till 2031"
-    },
-    "wonText": "Spelling mistakes, a fake number, guaranteed returns, a far-away office and a personal UPI: you caught him.",
-    "lostText": "Look for promises of guaranteed returns, odd registration numbers and personal UPI IDs."
-  },
   "ratguard": {
     "title": "Rat Guard",
     "bonk": "BONK!",
@@ -1874,5 +1841,57 @@
       "title": "Reach your big dream",
       "text": "Live from age 11 to 36. Play the mini-games in the Arcade any time."
     }
+  },
+  "fineprint": {
+    "ribbon": "Read before you sign",
+    "title": "Fine Print Hunter",
+    "lead": "QuickCash says \"only 1.5% a month\". The bank says 13% a year. Which is really cheaper?",
+    "step1": "Tap the hidden charges in the agreement",
+    "step2": "Work out what you really pay back",
+    "step3": "Pick the cheaper loan",
+    "rule": "Find {need} of {total} hidden charges and pick the cheaper loan.",
+    "wonText": "You read the fine print and chose the cheaper loan. Always ask: how much in hand, how much back?",
+    "lostText": "The ad looked cheap, but the fine print wasn't. Try again!",
+    "ad": "₹20,000 loan at ONLY 1.5% a month! No hidden charges!",
+    "phase": {
+      "find": "🔍 Find the hidden charges",
+      "total": "🧮 What do you really pay back?",
+      "compare": "⚖️ Which loan is cheaper?"
+    },
+    "clause": {
+      "amount": "Loan amount: ₹20,000.",
+      "fee": "Processing fee: 5% of the loan, taken before you get it.",
+      "rate": "Interest: 1.5% a month, on the full ₹20,000 every month.",
+      "tenure": "Repay in 12 monthly instalments.",
+      "insurance": "Loan insurance of ₹1,200 is added to your loan.",
+      "due": "Instalment due on the 5th of every month.",
+      "late": "Late payment: ₹100 for every day late.",
+      "prepay": "Closing the loan early: 4% charge.",
+      "care": "Customer care: 1800-000-000."
+    },
+    "totalQ": "In 12 months, how much will you pay QuickCash back?",
+    "right": "✅ Right! Every charge counts.",
+    "mistake": {
+      "ad": "❌ That's \"1.5%\" once. It's 1.5% every month for 12 months.",
+      "interestOnly": "❌ Close! You forgot the ₹1,200 insurance they added."
+    },
+    "r": {
+      "loan": "Loan",
+      "fee": "Fee taken first",
+      "interest": "1.5% × 12 months",
+      "insurance": "Insurance added"
+    },
+    "inHand": "In your hand",
+    "payBack": "You pay back",
+    "per100": "For every ₹100 you get, you pay back ₹{n}",
+    "next": "Compare with the bank",
+    "compareQ": "Pick the cheaper loan",
+    "quickTag": "1.5% a month, fees and insurance",
+    "bankName": "GramBank",
+    "bankTag": "{rate}% a year on what you still owe, {fee} fee",
+    "saved": "🎉 Right! The bank saves you {amount}.",
+    "pickedQuick": "❌ \"1.5%\" sounds small, but you pay back much more. Look at ₹ for every ₹100.",
+    "finish": "See result",
+    "score": "Charges found {n}/{total} · Bank saves {saved}"
   }
 }
