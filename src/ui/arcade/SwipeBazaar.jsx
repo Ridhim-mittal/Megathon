@@ -534,10 +534,22 @@ export function SwipeBazaar({ running, onEnd }) {
 
     // ---------- loop ----------
     const ctx = canvas.getContext("2d");
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    canvas.width = FW * dpr;
-    canvas.height = FH * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // Draw at the size the canvas is shown, so a bigger window stays sharp. Game logic always
+    // works in the 640 × 360 field; only the pixel scale changes.
+    const fit = () => {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const w = Math.max(FW, Math.round(canvas.clientWidth * dpr));
+      const h = Math.round((w * FH) / FW);
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w;
+        canvas.height = h;
+      }
+      ctx.setTransform(w / FW, 0, 0, h / FH, 0, 0);
+      g.scale = w / FW;
+    };
+    fit();
+    const resizer = typeof ResizeObserver !== "undefined" ? new ResizeObserver(fit) : null;
+    resizer?.observe(canvas);
 
     startMonth();
     let raf;
@@ -671,6 +683,7 @@ export function SwipeBazaar({ running, onEnd }) {
       canvas.removeEventListener("pointerdown", onDown);
       canvas.removeEventListener("pointermove", onMove);
       canvas.removeEventListener("pointercancel", onUp);
+      resizer?.disconnect();
     };
   }, []);
 
@@ -850,14 +863,15 @@ function pill(ctx, x, y, w, h, r) {
   else ctx.rect(x, y, w, h);
 }
 
-// The bazaar backdrop is drawn once into its own canvas.
+// The bazaar backdrop is drawn once (per pixel scale) into its own canvas.
 let BG = null;
-function background() {
-  if (BG) return BG;
+function background(scale = 1) {
+  if (BG && BG.scale === scale) return BG;
   const c = document.createElement("canvas");
-  c.width = FW;
-  c.height = FH;
+  c.width = Math.round(FW * scale);
+  c.height = Math.round(FH * scale);
   const ctx = c.getContext("2d");
+  ctx.scale(scale, scale);
   const sky = ctx.createLinearGradient(0, 0, 0, FH);
   sky.addColorStop(0, "#fff4dc");
   sky.addColorStop(0.65, "#fde3b3");
@@ -911,6 +925,7 @@ function background() {
   v.addColorStop(1, "rgba(80,40,0,0.12)");
   ctx.fillStyle = v;
   ctx.fillRect(0, 0, FW, FH);
+  c.scale = scale;
   BG = c;
   return c;
 }
@@ -1001,7 +1016,7 @@ function draw(ctx, g, now, t) {
   const thinking = g.thinkT > 0;
   ctx.save();
   if (g.shake > 0) ctx.translate((Math.random() - 0.5) * 14 * g.shake, (Math.random() - 0.5) * 14 * g.shake);
-  ctx.drawImage(background(), 0, 0, FW, FH);
+  ctx.drawImage(background(g.scale ?? 1), 0, 0, FW, FH);
   drawBunting(ctx, now);
 
   // Ground shadows first, so every item sits above the bazaar floor.

@@ -1797,3 +1797,13 @@
 @media (prefers-reduced-motion: reduce) {
   .swipe-wallet.bump, .swipe-savings.bump, .swipe-chains, .swipe-summary { animation: none; }
 }
+
+/* Swipe Bazaar gets a bigger window; the 16:9 field still fits the screen's height. */
+.game-window.window-arcade:has(.game-swipeBazaar) {
+  width: min(1120px, 96vw);
+}
+.arcade-field canvas.swipe-canvas {
+  width: min(100%, calc((100vh - 230px) * 16 / 9));
+  margin: 0 auto;
+}
+.swipe-field .swipe-hud { width: min(100%, max(640px, calc((100vh - 230px) * 16 / 9))); justify-self: center; }
