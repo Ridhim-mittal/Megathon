@@ -12,6 +12,7 @@ import { StockExchange } from "../ui/exchange/StockExchange.jsx";
 import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
 import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
+import { PhoneTour } from "../ui/PhoneTour.jsx";
 import { sounds } from "../ui/sound.js";
 import { CHOICE_GAMES, GAME_COMPONENTS, SCENE_GAMES } from "../ui/games/choiceGames.js";
 import { RatGuard } from "../ui/games/RatGuard.jsx";
@@ -68,7 +69,12 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
 
   const showIntro = phase === "budget" && story && introDone !== story.mission.id;
   const engineDialog = ["budget", "card", "outcome", "minigame", "chapterEnd"].includes(phase);
-  const busy = Boolean(engineDialog || overlay || showIntro || warning);
+  const [phoneTour, setPhoneTour] = useState(false);
+  const busy = Boolean(engineDialog || overlay || showIntro || warning || phoneTour);
+  // The first time the phone is in hand on the map, show what it can do (once per life).
+  useEffect(() => {
+    if (phone.unlocked && phase === "map" && !busy && seenOnce(`phoneTour:${life.seed}`)) setPhoneTour(true);
+  }, [phone.unlocked, phase, busy, life.seed]);
   const markers = useMemo(() => (phase === "map" && objective && objective.location !== "phone" ? { [objective.location]: objective.rush ? "special" : "required" } : {}), [phase, objective]);
 
   // ---------- the race against time (rush scenes) ----------
@@ -399,6 +405,15 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })}
           onExchange={() => setOverlay({ type: "exchange" })}
           onArcade={() => setOverlay({ type: "arcade", fromPhone: true })}
+        />
+      )}
+      {phoneTour && (
+        <PhoneTour
+          onClose={() => setPhoneTour(false)}
+          onOpen={() => {
+            setPhoneTour(false);
+            setOverlay({ type: "phone" });
+          }}
         />
       )}
       {overlay?.type === "gyaan" && <GyaanLite life={life} lessonId={overlay.lesson} onClose={() => setOverlay(null)} />}
