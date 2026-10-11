@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Calculator, CarFront, Flower2, Gamepad2, Lightbulb, Rat, RotateCcw, FileSearch, ShoppingBag, Snowflake, Star, Weight, Wind, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calculator, CarFront, Flower2, Gamepad2, Lightbulb, Rat, RotateCcw, FileSearch, ShoppingBag, Snowflake, Star, Waves, Weight, Wind, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -15,6 +15,7 @@ import { RatGuard } from "../games/RatGuard.jsx";
 import { InterestRace } from "../games/InterestRace.jsx";
 import { FinePrintHunter } from "../games/FinePrintHunter.jsx";
 import { SipGarden } from "../games/SipGarden.jsx";
+import { FloodRescue } from "../games/FloodRescue.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
 export const GAME_ICON = { snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind, priceSnake: Weight, swipeBazaar: ShoppingBag };
@@ -27,6 +28,7 @@ const STORY_GAMES = [
   { id: "interest", title: "interest.title", icon: Calculator, Game: InterestRace },
   { id: "fineprint", title: "fineprint.title", icon: FileSearch, Game: FinePrintHunter },
   { id: "garden", title: "garden.title", icon: Flower2, Game: SipGarden },
+  { id: "flood", title: "flood.title", icon: Waves, Game: FloodRescue },
 ];
 
 // Every mini-game in one place (the title's Arcade and the phone's Arcade app): the quick arcade

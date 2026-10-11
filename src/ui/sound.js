@@ -96,3 +96,37 @@ export const sounds = {
   page: () => tone(300, { dur: 0.08, type: "triangle", gain: 0.03, slide: 1.6 }),
   ripple: () => tone(392, { dur: 0.5, gain: 0.025, slide: 1.02 }),
 };
+
+// A soft, low rush of water that keeps going until stop(). set(0..1) makes it a little louder and
+// brighter as the water rises.
+export function waterLoop() {
+  if (!enabled || !ctx) return { set() {}, stop() {} };
+  const len = ctx.sampleRate * 2;
+  const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+  const d = buf.getChannelData(0);
+  let last = 0;
+  for (let i = 0; i < len; i++) d[i] = last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02;
+  const drift = d[len - 1] - d[0]; // so the loop has no click where it wraps
+  for (let i = 0; i < len; i++) d[i] = (d[i] - (drift * i) / len) * 3.5;
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  src.loop = true;
+  const lp = ctx.createBiquadFilter();
+  lp.type = "lowpass";
+  lp.frequency.value = 200;
+  const g = ctx.createGain();
+  g.gain.value = 0.0001;
+  src.connect(lp).connect(g).connect(ctx.destination);
+  src.start();
+  g.gain.setTargetAtTime(0.05, ctx.currentTime, 0.5);
+  return {
+    set(level) {
+      lp.frequency.setTargetAtTime(200 + 250 * level, ctx.currentTime, 0.3);
+      g.gain.setTargetAtTime(0.05 + 0.07 * level, ctx.currentTime, 0.3);
+    },
+    stop() {
+      g.gain.setTargetAtTime(0.0001, ctx.currentTime, 0.25);
+      src.stop(ctx.currentTime + 1.5);
+    },
+  };
+}

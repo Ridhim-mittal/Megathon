@@ -414,4 +414,4 @@ export function puff(ctx, x, y, k, color = "#f2f2f2") {
   ctx.globalAlpha = 1;
 }
 
-export { DEF_X };
+export { DEF_X, sprite as pixelSprite };

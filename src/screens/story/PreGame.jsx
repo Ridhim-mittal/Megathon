@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { Calculator, CarFront, FileSearch, Flower2, Gamepad2, Play, ShoppingBag, Snowflake, Weight, Wind } from "lucide-react";
+import { Calculator, CarFront, FileSearch, Flower2, Gamepad2, Play, ShoppingBag, Snowflake, Waves, Weight, Wind } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { GAME_NAME } from "../../ui/games/choiceGames.js";
 
-const ICON = { snake: Weight, snowball: Snowflake, swipe: ShoppingBag, patang: Wind, rush: CarFront, interest: Calculator, fineprint: FileSearch, garden: Flower2 };
+const ICON = { snake: Weight, snowball: Snowflake, swipe: ShoppingBag, patang: Wind, rush: CarFront, interest: Calculator, fineprint: FileSearch, garden: Flower2, flood: Waves };
 
 // Before the question: "Play X to understand Y". The choices come after the game.
 export function PreGameCard({ kind, lessonId, sceneTitle, onStart, onSkip }) {
