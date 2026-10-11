@@ -79,6 +79,11 @@ section 4. React 19 + Vite, plain JavaScript.
 - `api/ask.js`: optional AI mentor endpoint; the game works fully offline without it.
 
 Checks: `npm test` (engine and rules), `npm run validate:content` (content against the spec, once it
-exists), `npm run build`, and `npm run test:e2e` (Playwright; install Chromium first).
+exists), `npm run build`, `npm run size` (download budget, after a build), and `npm run test:e2e`
+(Playwright; install Chromium first). GitHub Actions runs them on every pull request.
+
+Languages: listed once in `src/languages.js`. Text stays as `{ "en", "hi", "te" }` in content and
+`src/i18n/<code>.json` for screens; the build makes one pack per language (`scripts/lang-packs.js`).
+Translators use `npm run lang:export` / `lang:import` (a CSV). See `docs/SCALABILITY.md`.
 Never put API keys in client code. Real values go in `.env` (git-ignored). See README.md for running
 the game.

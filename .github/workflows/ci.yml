@@ -1,0 +1,27 @@
+# Every pull request and every merge to main: the same checks a contributor runs locally
+# (CLAUDE.md "Before you push"), plus the download budget.
+name: checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run validate:content
+      - run: npm run build
+      - run: npm run size
+      - run: npm run lang:status
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+        env:
+          CI: "true"

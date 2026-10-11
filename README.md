@@ -17,10 +17,14 @@ Vite prints the development address. From another device on the same network, us
 npm test                  # Engine and rules tests (every src/**/*.test.js)
 npm run validate:content  # Check src/content against docs/GAME_SPEC.md
 npm run build    # Production bundle in dist/
+npm run size     # After a build: each download against its budget (gzipped)
 npm run preview  # Serve the production bundle for local verification
+npm run lang:status                 # How much of each language is translated
+npm run lang:export -- ta           # translations/ta.csv: lines still missing in a language
+npm run lang:import -- ta file.csv  # Put a translated sheet into the game
 ```
 
-Deploy as a static Vite site: build command `npm run build`, output directory `dist`. Fonts, illustrations, and icons are bundled; gameplay makes no external requests.
+Deploy as a static Vite site: build command `npm run build`, output directory `dist` (`vercel.json` and `public/_headers` set the cache rules). Fonts, illustrations, and icons are bundled; gameplay makes no external requests. Each player downloads only their language, and after the first visit the game works offline. Languages are listed once, in `src/languages.js`. **[docs/SCALABILITY.md](docs/SCALABILITY.md)** covers adding a language and taking the game from 1,500 students to many more.
 
 ## How to play
 
