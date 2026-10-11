@@ -1,0 +1,7 @@
+# Netlify: build the game and publish dist/. Cache rules are in public/_headers.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

@@ -24,7 +24,7 @@ npm run preview    # serve dist/ locally
 npm run size       # after a build: each download against its budget (gzipped)
 ```
 
-Deploy `dist/` to any static host (`vercel.json` and `public/_headers` set the cache rules). Each player downloads only their language, and after the first visit the game works offline.
+Deploy `dist/` to any static host: import the repo on Vercel (`vercel.json`) or Netlify (`netlify.toml`), or drag the built `dist/` folder onto Netlify Drop. `public/_headers` and `vercel.json` set the cache rules. Each player downloads only their language, and after the first visit the game works offline.
 
 Optional URL parameters: `?seed=demo` gives a fixed, reproducible life; `?speed=4` speeds up the SIP Garden mini-game.
 
