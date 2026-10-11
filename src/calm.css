@@ -2003,3 +2003,11 @@
 .mission-intro .gloss-chip {
   border-bottom-color: rgba(255, 209, 102, 0.6);
 }
+
+/* ---------- Story window: a soft cream pixel-brick wall behind the text (same colours, very faint) ---------- */
+.game-window {
+  background-color: var(--px-paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='48' height='16' fill='%23fff4d6'/%3E%3Crect x='0' y='6' width='48' height='1' fill='%23f9eac8'/%3E%3Crect x='0' y='14' width='48' height='1' fill='%23f9eac8'/%3E%3Crect x='0' y='7' width='48' height='1' fill='%23f2e0b6'/%3E%3Crect x='0' y='15' width='48' height='1' fill='%23f2e0b6'/%3E%3Crect x='23' y='0' width='1' height='7' fill='%23f2e0b6'/%3E%3Crect x='47' y='0' width='1' height='7' fill='%23f2e0b6'/%3E%3Crect x='11' y='8' width='1' height='7' fill='%23f2e0b6'/%3E%3Crect x='35' y='8' width='1' height='7' fill='%23f2e0b6'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23fffbee'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%23fffbee'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%23fffbee'/%3E%3Crect x='25' y='1' width='1' height='1' fill='%23fffbee'/%3E%3Crect x='26' y='1' width='1' height='1' fill='%23fffbee'/%3E%3Crect x='13' y='9' width='1' height='1' fill='%23fffbee'/%3E%3Crect x='14' y='9' width='1' height='1' fill='%23fffbee'/%3E%3Crect x='13' y='10' width='1' height='1' fill='%23fffbee'/%3E%3Crect x='37' y='9' width='1' height='1' fill='%23fffbee'/%3E%3C/svg%3E");
+  background-size: 144px 48px;
+  image-rendering: pixelated;
+}
