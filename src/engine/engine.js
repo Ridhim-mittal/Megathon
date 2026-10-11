@@ -21,6 +21,7 @@ import { buildQueue, crisisCandidates, groupOf, indexContent, planLife, resolveS
 import { addMeter, applyEffects, roundToStep } from "./effects.js";
 import {
   addEvent,
+  applyShock,
   closePenaltyRate,
   depositInto,
   flow,
@@ -738,7 +739,26 @@ export function createEngine(content, { assumptions = ASSUMPTIONS } = {}) {
     recordYear(s);
     beginYear(s, false);
     commitBudget(s, s.budget);
+    if (s.mode === "story") yearSurprise(s);
     s.phase = "map";
+  }
+
+  // Story mode: most years life throws one small surprise (a fever, a broken phone, school fees,
+  // a family function). It is paid from the just-in-case jar first; if that runs out, it is
+  // borrowed. Seeded by the age, so a replay meets the same surprises.
+  function yearSurprise(s) {
+    const S = A.surprise;
+    // Not in the last chapter: the dream is being bought there, and the ending reads the debt.
+    if (s.story?.mission >= story.missions.length - 1) return;
+    const r = makeRandom({ rng: hashSeed(s.seed, "surprise", s.age) });
+    if (r() > S.chance) return;
+    const [lo, hi] = S.cost[s.stage];
+    const step = A.budget.step[s.stage];
+    const cost = Math.round(r.range(lo, hi) * s.priceIndex / step) * step;
+    const out = [];
+    applyShock(A, s, { cost, kind: r.pick(S.kinds) }, out);
+    const o = out[0];
+    (s.surprises ??= []).push({ age: s.age, kind: o.kind, cost: o.cost, insurance: o.insurance, paidFrom: o.paidFrom, borrowed: o.borrowed });
   }
 
   function advanceClock(s) {

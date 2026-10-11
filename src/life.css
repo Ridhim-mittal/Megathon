@@ -1214,20 +1214,16 @@
   position: relative;
   display: inline;
 }
+/* Revealed phrases are simply bold: no colour band, so the text stays easy to read. */
 .clarity-phrase {
   display: inline;
   font: inherit;
+  font-weight: 750;
   color: inherit;
   border: 0;
-  padding: 0 3px;
-  border-radius: 5px;
-  background: linear-gradient(transparent 55%, #f4d77c 55%);
-  box-shadow: 0 0 0 0 #f4d77c;
-  animation: glow 2.4s ease-in-out infinite;
+  padding: 0;
+  background: none;
   cursor: pointer;
-}
-.clarity.free .clarity-phrase {
-  background: linear-gradient(transparent 55%, #cfe2b3 55%);
 }
 .clarity-truth {
   background: #fff6d7;

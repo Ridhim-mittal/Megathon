@@ -152,3 +152,34 @@ test("the flowchart lays out every node of a mission and marks the path taken", 
     assert.ok(f.completion > 0 && f.completion <= 100);
   }
 });
+
+test("story mode: most years bring a surprise, paid from the just-in-case jar first, else borrowed", () => {
+  const careful = playStory(950, { lateChance: 0 });
+  const surprises = careful.surprises ?? [];
+  assert.ok(surprises.length >= 5, `only ${surprises.length} surprises`);
+  for (const x of surprises) {
+    assert.ok(x.cost > 0 && ["health", "repair", "school", "family"].includes(x.kind));
+    const paid = x.paidFrom.reduce((a, p) => a + p.amount, 0) + x.insurance + (x.borrowed?.amount ?? 0);
+    assert.equal(paid, x.cost);
+    if (x.paidFrom.length && x.paidFrom[0].from !== "emergency") assert.ok(!x.paidFrom.some((p) => p.from === "emergency"));
+  }
+  // Same seed, same surprises.
+  assert.deepEqual(
+    playStory(950, { lateChance: 0 }).surprises.map((x) => [x.age, x.kind, x.cost]),
+    surprises.map((x) => [x.age, x.kind, x.cost]),
+  );
+  // An empty jar means borrowing.
+  let s = E.createLife({ storylineId: "village", goalId: "house", seed: "broke", mode: "story" });
+  s = E.step(s, { type: "ADVANCE" });
+  const rules = E.select.budgetRules(s);
+  s = E.step(s, { type: "SET_BUDGET", jars: { needs: rules.monthlyIncome, wants: 0, emergency: 0, goal: 0 } });
+  for (let n = 0; n < 400 && !(s.surprises ?? []).some((x) => x.borrowed); n++) {
+    let a = { type: "ADVANCE" };
+    if (s.phase === "map") a = { type: "VISIT", location: E.select.story(s).objective.location };
+    if (s.phase === "card") a = { type: "CHOOSE", choiceId: E.select.currentCard(s).choices.find((c) => !c.locked).id, ignoredWarning: true };
+    if (s.phase === "budget") a = { type: "SET_BUDGET", jars: { ...E.select.budgetRules(s).suggested, wants: 0, emergency: 0, goal: 0, needs: E.select.budgetRules(s).monthlyIncome } };
+    if (s.phase === "ending") break;
+    s = E.step(s, a);
+  }
+  assert.ok((s.surprises ?? []).some((x) => x.borrowed?.amount > 0), "no emergency money: a surprise was borrowed");
+});
