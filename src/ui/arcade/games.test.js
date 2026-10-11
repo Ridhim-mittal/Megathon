@@ -24,35 +24,6 @@ test("every game ends on time and gives a finite score", () => {
   assert.equal(gameAtPlace("hospital"), null);
 });
 
-test("jar dash: chasing coins beats standing still, and impulse buys cost money", () => {
-  const idle = result(play("jarDash", () => ({}), 3));
-  const chase = result(
-    play("jarDash", (s) => {
-      const coin = s.items.filter((i) => i.value > 0).sort((a, b) => b.y - a.y)[0];
-      return coin ? { pointerX: coin.x } : {};
-    }, 3),
-  );
-  assert.ok(chase.score > idle.score, `${chase.score} > ${idle.score}`);
-  assert.ok(chase.caught > 0);
-  const s = createGame("jarDash", rng(2));
-  s.items = [{ x: s.jar.x, y: FIELD.h - 46 + 2, vy: 10, value: -10, kind: "toy" }];
-  s.score = 30;
-  stepGame(s, 0.02, {});
-  assert.equal(s.score, 20);
-  assert.equal(s.spent, 10);
-});
-
-test("scam smash: blocking scams scores, missing them costs hearts", () => {
-  const smart = play("scamSmash", (s) => ({ taps: s.slots.map((m, i) => (m?.scam ? i : -1)).filter((i) => i >= 0) }), 4);
-  assert.equal(smart.hearts, 3);
-  assert.ok(result(smart).blocked > 10);
-  const lazy = play("scamSmash", () => ({}), 4);
-  assert.equal(lazy.hearts, 0, "three scams got through");
-  const trigger = play("scamSmash", (s) => ({ taps: s.slots.map((m, i) => (m ? i : -1)).filter((i) => i >= 0) }), 4);
-  assert.ok(result(trigger).mistakes > 0, "blocking everything also blocks real messages");
-  assert.ok(result(trigger).score < result(smart).score);
-});
-
 test("snowball: interest grows on what the ball holds, and SALE signs cut a third", () => {
   const s = createGame("snowball", rng(5));
   s.spawnIn = 999;

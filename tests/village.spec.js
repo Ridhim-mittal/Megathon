@@ -25,7 +25,9 @@ async function start(page, { lang = "English" } = {}) {
 async function openFromArcade(page, tile) {
   await page.getByRole("button", { name: "Arcade" }).click();
   await page.getByRole("button", { name: tile }).click();
-  await page.getByRole("button", { name: /^Skip ad/ }).click({ timeout: 10000 });
+  // An ad shows only now and then (never on the first game of a visit); skip it if it's there.
+  const skip = page.getByRole("button", { name: /^Skip ad/ });
+  if (await skip.isVisible().catch(() => false)) await skip.click({ timeout: 10000 });
 }
 
 async function toPrologue(page) {
