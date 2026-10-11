@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, Rat, TriangleAlert, X } from "lucide-react";
+import { ArrowRight, TriangleAlert, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { content, goals, select } from "../ui/gameAdapter.js";
 import { AskAmmamma } from "../ui/AskAmmamma.jsx";
@@ -8,8 +8,7 @@ import { MapCanvas } from "../ui/map/MapCanvas.jsx";
 import { mapForMission } from "../ui/map/maps.js";
 import { PhoneLite as Phone } from "../ui/PhoneLite.jsx";
 import { StockExchange } from "../ui/exchange/StockExchange.jsx";
-import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
-import { gameAtPlace } from "../ui/arcade/games.js";
+import { ArcadeGame, ArcadeMenu } from "../ui/arcade/Arcade.jsx";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { PhoneTour } from "../ui/PhoneTour.jsx";
 import { BreakingNews } from "./story/BreakingNews.jsx";
@@ -21,7 +20,6 @@ import { PauseCard } from "../ui/PauseCard.jsx";
 import { sounds } from "../ui/sound.js";
 import { GAME_COMPONENTS, PRE_GAMES, SCENE_GAMES } from "../ui/games/choiceGames.js";
 import { PreGameCard } from "./story/PreGame.jsx";
-import { RatGuard } from "../ui/games/RatGuard.jsx";
 import { useDevFlag } from "../ui/dev/devFlags.js";
 import { SaveFirst } from "./life/SaveFirst.jsx";
 import { JarDock, SurprisePop } from "../ui/MoneyMoments.jsx";
@@ -71,12 +69,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   }, [toast, onToast]);
 
   const placeName = useCallback((id) => (story?.mission.placeNames?.[id] ? pick(story.mission.placeNames[id]) : t(`places.${id}`)), [story, pick, t]);
-  // In the prologue, home is where Rat Guard can be played again.
-  const ratsAtHome = story?.mission.id === "prologue";
-  const labels = useMemo(
-    () => Object.fromEntries(Object.keys(map.placeById).map((id) => [id, gameAtPlace(id) || (ratsAtHome && id === "home") ? `${placeName(id)} 🎮` : placeName(id)])),
-    [placeName, map, ratsAtHome],
-  );
+  const labels = useMemo(() => Object.fromEntries(Object.keys(map.placeById).map((id) => [id, placeName(id)])), [placeName, map]);
 
   const showIntro = phase === "budget" && story && introDone !== story.mission.id;
   const engineDialog = ["budget", "card", "outcome", "minigame", "chapterEnd"].includes(phase);
@@ -295,22 +288,6 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         <span className="eyebrow">{placeName(overlay.place)}</span>
         <h2>{placeName(overlay.place)}</h2>
         <p>{t(`placeInfo.${overlay.place}`)}</p>
-        {gameAtPlace(overlay.place) && <GameInvite gameId={gameAtPlace(overlay.place).id} onPlay={(game) => setOverlay({ type: "arcade", game })} />}
-        {ratsAtHome && overlay.place === "home" && (
-          <button className="game-invite game-ratGuard" onClick={() => setOverlay({ type: "ratguard" })}>
-            <span className="arcade-icon" aria-hidden="true">
-              <Rat size={30} />
-            </span>
-            <span>
-              <small>{t("arcade.invite")}</small>
-              <b>{t("ratguard.title")}</b>
-              <em>{t("ratguard.tag")}</em>
-            </span>
-            <strong>
-              {t("arcade.here")} <ArrowRight size={16} />
-            </strong>
-          </button>
-        )}
         {objective && <p className="quiet">{t("story.notHere", { place: placeName(objective.location) })}</p>}
         <div className="action-row">
           <button className="text-button" onClick={() => setOverlay(null)}>
@@ -419,7 +396,6 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
             if (!dispatch({ type: "CHOOSE", choiceId })) dispatch({ type: "ADVANCE" });
           },
         })}
-      {overlay?.type === "ratguard" && <RatGuard mode="practice" onClose={() => setOverlay(null)} />}
       {game && GAME_COMPONENTS[game.kind] &&
         React.createElement(GAME_COMPONENTS[game.kind], {
           // Played before the question, win or lose: every ending leads on to the choices.
@@ -478,26 +454,5 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         </p>
       )}
     </div>
-  );
-}
-
-// A place's mini-game, offered when you walk in.
-function GameInvite({ gameId, onPlay }) {
-  const { t } = useT();
-  const Icon = GAME_ICON[gameId];
-  return (
-    <button className={`game-invite game-${gameId}`} onClick={() => onPlay(gameId)}>
-      <span className="arcade-icon" aria-hidden="true">
-        <Icon size={30} />
-      </span>
-      <span>
-        <small>{t("arcade.invite")}</small>
-        <b>{t(`arcade.games.${gameId}.name`)}</b>
-        <em>{t(`arcade.games.${gameId}.tag`)}</em>
-      </span>
-      <strong>
-        {t("arcade.here")} <ArrowRight size={16} />
-      </strong>
-    </button>
   );
 }
