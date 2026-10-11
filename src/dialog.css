@@ -602,3 +602,86 @@
     transition: none !important;
   }
 }
+
+/* The answer, shown straight away under an outcome: why it worked, or the smarter move. */
+.vn-answer {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 2px solid #b8dca0;
+  background: linear-gradient(180deg, #f4fbec, #eaf6de);
+  box-shadow: 0 3px 0 #b8dca0;
+  animation: answer-in 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) 0.35s both;
+}
+.vn-answer.is-better {
+  border-color: #f0cf7a;
+  background: linear-gradient(180deg, #fffaea, #fff2cc);
+  box-shadow: 0 3px 0 #e8c25e;
+}
+.vn-answer-face {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid currentColor;
+  color: #9fcf84;
+}
+.vn-answer.is-better .vn-answer-face {
+  color: #e8c25e;
+}
+.vn-answer-face canvas {
+  width: 30px;
+  height: 45px;
+  margin-top: 8px;
+}
+.vn-answer-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #3f7a2c;
+}
+.vn-answer.is-better .vn-answer-head {
+  color: #9a6b10;
+}
+.vn-answer-pick {
+  margin: 6px 0 0;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #fff;
+  border: 2px dashed #e8c25e;
+  font-weight: 800;
+  color: #4a3a1a;
+}
+.vn-answer-why {
+  margin: 6px 0 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #3e3424;
+}
+.vn .learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+@keyframes answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vn-answer {
+    animation: none;
+  }
+}

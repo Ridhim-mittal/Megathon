@@ -43,7 +43,19 @@
     "title": "Choose your life",
     "subtitle": "Every life teaches the same 24 money lessons. The world around you changes.",
     "play": "Live this life",
-    "comingSoon": "Coming soon"
+    "comingSoon": "Coming soon",
+    "chips": {
+      "village": [
+        "🌾 Cotton village",
+        "👵 Ammamma's love",
+        "₹0 in the bank"
+      ],
+      "city": [
+        "🛺 Hyderabad basti",
+        "📱 A phone early",
+        "⚠️ Scams find you"
+      ]
+    }
   },
   "intro": {
     "eyebrow": "MEET YOUR FAMILY",
@@ -277,14 +289,19 @@
       "clean": "The papers were clean."
     },
     "react": {
-      "good": "Smart move!",
-      "risky": "Hmm, risky…",
-      "bad": "Ouch!",
+      "good": "Shabash! Smart move",
+      "ok": "Not bad, could be smarter",
+      "risky": "Hmm, a little risky…",
+      "bad": "Ouch, that stung!",
       "neutral": "Fair enough"
     },
     "delayed": {
       "title": "Done! It seems to have worked.",
       "note": "Nothing has changed… for now. Keep an eye on your phone's messages."
+    },
+    "answer": {
+      "right": "Why this works",
+      "better": "The smarter move"
     }
   },
   "shock": {
@@ -400,7 +417,11 @@
     "reveal": "Reveal",
     "stats": "Dream {pct}% · Net worth {netWorth} · Debt {debt}",
     "next": "See my Gyaan report",
-    "rival": "Meanwhile, {name}'s life"
+    "rival": "Meanwhile, {name}'s life",
+    "statNet": "Net worth",
+    "statDebt": "Debt",
+    "journey": "Your journey",
+    "ammamma": "Ammamma says:"
   },
   "report": {
     "eyebrow": "YOUR GYAAN REPORT",
@@ -418,7 +439,9 @@
       "missed": "Missed",
       "unseen": "Not yet"
     },
-    "next": "Try a parallel life"
+    "next": "Try a parallel life",
+    "ring": "{n} of {total} lessons applied",
+    "ringText": "You used {n} money lessons in real choices. Every card you missed can still be learned in Gyaan."
   },
   "parallel": {
     "eyebrow": "PARALLEL LIFE",
@@ -635,6 +658,7 @@
     "tinBox": "Tin box",
     "withInterest": "With interest",
     "amount": "Money today",
+    "inflationRate": "Prices rise each year",
     "inflation": {
       "result": "{amount} kept at home for {n} years buys only what {worth} buys today."
     },
@@ -879,7 +903,48 @@
       }
     },
     "allDone": "You know how an exchange works: bids, asks, the spread, market and limit orders, the queue, slippage and news. Real investing is owning good businesses for years, not quick trades.",
-    "practice": "Practice money only: nothing here touches your real savings. Real exchanges work the same way, with millions of orders a second."
+    "practice": "Practice money only: nothing here touches your real savings. Real exchanges work the same way, with millions of orders a second.",
+    "guide": {
+      "priceNow": "Price now",
+      "progress": "Step {n} of {total}",
+      "sellers": "People selling",
+      "buyers": "People buying",
+      "lastDeal": "Last deal",
+      "gotIt": "Got it",
+      "buyN": "Buy {n} now",
+      "sellN": "Sell {n} now",
+      "waitAt": "Wait at {price}",
+      "moveCloser": "Too slow? Move closer by ₹1",
+      "next": "Next",
+      "openFull": "Open the full market",
+      "skip": "Skip to the full market",
+      "watching": "Watching the news…",
+      "fee": "Fee {fee}",
+      "inLine": "You're in line at {price}",
+      "ahead": "{n} shares before you",
+      "say": {
+        "meet": "👀 This is a market. Red: people selling. Green: people buying.",
+        "buy": "🛒 Want shares now? Buy from the cheapest seller.",
+        "wait": "⏳ Want it cheaper? Pick a price and wait in line.",
+        "big": "📦 Now buy a lot at once. Watch the price.",
+        "sell": "💰 Sell when the price is higher than you paid.",
+        "news": "📰 News changes prices. Let's watch!",
+        "done": "🏆 Well done! You know how a market works."
+      },
+      "after": {
+        "buy": "✅ Done! You paid the lowest seller's price.",
+        "queued": "🧍 You're in line. A seller will come to you.",
+        "filled": "🎉 A seller came to your price!",
+        "big": "📈 Big order, higher price. The cheap shares ran out.",
+        "sold": "💰 Sold! Higher than you paid = profit.",
+        "news": "📰 See? News made people buy or sell.",
+        "soldLoss": "📉 Sold lower than you paid = loss. Next time, wait for a higher price."
+      },
+      "recap1": "🛒 Buy now = cheapest seller's price",
+      "recap2": "⏳ Pick your price = wait in line",
+      "recap3": "📦 Buying a lot pushes the price up",
+      "recap4": "📰 News moves prices, so stay calm"
+    }
   },
   "story": {
     "walkTo": "Go to {place}",
@@ -930,7 +995,8 @@
       "debt_trap": "DANGER: your costly debts are bigger than 3 months' income. Stop borrowing and pay the costliest first.",
       "emi_heavy": "Warning: EMIs eat over half your income. Don't take any new loan.",
       "costly_debt": "You have costly debt. Paying it off is the best 'investment' you can make."
-    }
+    },
+    "warnChip": "🛑 {heeded} stopped · {ignored} went ahead"
   },
   "hero": {
     "ribbon": "A NEW LIFE",
@@ -1005,7 +1071,11 @@
       "claims": "🛡️ Insurance paid for {n} crashes",
       "renewals": "🪙 Renewed {n}×",
       "invested": "🪙 Invested ₹{n}",
-      "coins": "🎯 Coins caught: {n}"
+      "coins": "🎯 Coins caught: {n}",
+      "saved": "🐷 Saved ₹{n}",
+      "extraPaid": "💸 ₹{n} extra in interest and fees",
+      "needsMissed": "⚠️ {n} needs missed",
+      "emisLeft": "⛓️ {n} EMIs still running"
     },
     "games": {
       "jarDash": {
@@ -1049,6 +1119,13 @@
         "goal": "Mehngai the price snake eats years. Each +1 year makes a bag of groceries cost more. How many years can you last?",
         "how": "Steer with the arrow keys or WASD (or the buttons). Eat the +1 year calendars. Don't hit the walls or yourself.",
         "lesson": "Prices grow a little every year, and it adds up: at 6% a year they double in about 12 years. Money kept in a tin box can buy less and less, so your savings need to grow too."
+      },
+      "swipeBazaar": {
+        "name": "Swipe Bazaar",
+        "tag": "Swipe to buy. Let it fall to say no.",
+        "goal": "Six months, ₹3,000 a month. Swipe to buy, let things fall to say no. Pay your needs, save, and don't get chained by EMIs.",
+        "how": "Swipe with your finger or mouse to buy. Let things fall to say no. Press T or Space to think first.",
+        "lesson": "Friends' approval fades fast. EMIs and loan-app debts don't. Pause and check the full price before you say yes."
       }
     },
     "msg": {
@@ -1407,6 +1484,142 @@
       "salary": "Split your salary",
       "baskets": "Spread your eggs",
       "garden": "Defend 4 investment lanes from thieves: spread your money"
+    },
+    "swipe": {
+      "intro": {
+        "lead": "Things fly up from the bazaar. Swipe one to BUY it. Let it fall to say NO. You get {income} every month for {months} months.",
+        "need": {
+          "name": "Needs",
+          "what": "Swipe to pay. If you miss one, you pay a fine."
+        },
+        "want": {
+          "name": "Wants",
+          "what": "Cost money now. Friends like it, for a while."
+        },
+        "emi": {
+          "name": "Pay later (EMI)",
+          "what": "₹0 now, then an EMI every month after. It chains your wallet."
+        },
+        "loan": {
+          "name": "Loan apps",
+          "what": "Instant cash, hidden fees, big repayments, angry messages."
+        },
+        "coin": {
+          "name": "Savings coins",
+          "what": "Swipe to save ₹200. Save in a row for a combo bonus."
+        },
+        "think": "Think first ({n} uses): slows time and shows the true total cost of everything.",
+        "controls": "Swipe with your finger or mouse. Press T or Space to think first.",
+        "start": "Start month 1"
+      },
+      "items": {
+        "food": "Food",
+        "fees": "School fees",
+        "bus": "Bus pass",
+        "recharge": "Phone recharge",
+        "sneakers": "Sneakers",
+        "outing": "Outing with friends",
+        "earphones": "Earphones",
+        "movie": "Movie night",
+        "phone": "New phone",
+        "bike": "Bike",
+        "clothes": "Branded clothes",
+        "loan": "Loan app"
+      },
+      "friends": [
+        "Everyone has this!",
+        "Don't be stingy!",
+        "Just take it on EMI",
+        "You only live once!",
+        "Come on, treat yourself",
+        "Only ₹0 today, yaar!"
+      ],
+      "threats": [
+        "Pay ₹1,900 today or we call your contacts!",
+        "Final warning: your family will know.",
+        "Late fee added. Pay NOW.",
+        "We know where you study."
+      ],
+      "threatFrom": "LOAN APP · new message",
+      "thinking": "Thinking… true costs shown",
+      "hud": {
+        "month": "Month {n}/{total}",
+        "wallet": "Cash in your wallet",
+        "emis": "EMIs {amount}/month",
+        "savings": "Savings",
+        "status": "Status",
+        "statusHint": "What friends think of you. It fades on its own.",
+        "think": "Think first ({n})"
+      },
+      "note": {
+        "fine": "Fines for unpaid needs: −{amount}",
+        "late": "{item} EMI not paid in full: late fee {fee}"
+      },
+      "float": {
+        "paid": "Paid {amount} ✓",
+        "cantAfford": "Not enough money!",
+        "emi": "EMI {amount}/month ⛓️",
+        "loan": "+{got} (fee {fee} taken)",
+        "saved": "+{amount} saved",
+        "combo": "Combo ×{n}! +{bonus}",
+        "noCash": "No cash to save",
+        "needMissed": "{item} missed!",
+        "saidNo": "Said no ✓"
+      },
+      "label": {
+        "emi": "₹0 now!",
+        "loan": "Instant {amount}! No documents!",
+        "coin": "Save {amount}"
+      },
+      "think": {
+        "emi": "{price} → {total} after {months} EMIs",
+        "loan": "Get {got}, repay {total}",
+        "coin": "+{amount} saved",
+        "need": "Need: {price}",
+        "want": "Want: {price}, gone after"
+      },
+      "sum": {
+        "title": "Month {n} done",
+        "bought": "You bought",
+        "emiLine": "{emi}/month × {months}",
+        "nothing": "Nothing. Nice restraint!",
+        "saidNo": "You said no {n} times.",
+        "paid": "Paid this month",
+        "emiPaid": "EMIs paid",
+        "extra": "Extra you signed up for (interest and fees)",
+        "needs": "Needs",
+        "needsVal": "{paid} paid, {missed} missed",
+        "saved": "Savings",
+        "status": "Status",
+        "next": "Next month: {income} income − {emis} EMIs − {fines} fines = {left} left. Needs cost {needs}.",
+        "squeeze": "You won't be able to pay all your needs!",
+        "continue": "Start month {n}"
+      },
+      "final": {
+        "title": "Six months later",
+        "saved": "Savings",
+        "cash": "Cash left",
+        "owed": "EMIs still to pay",
+        "extra": "Extra over the sticker price",
+        "fees": "Late fees and fines",
+        "needs": "Needs",
+        "status": "Status with friends now",
+        "score": "See my score"
+      },
+      "take": {
+        "emi": "You paid {extra} extra for a {item} your friends stopped talking about by week 2.",
+        "loan": "The 'instant' loan gave you {got} and took back {total}. Loan apps are traps.",
+        "needs": "You missed {n} needs. Pay needs first, then think about wants.",
+        "saver": "You said no {no} times and saved {amount}. That's real freedom.",
+        "default": "Every swipe is a choice. Pausing before you buy is a superpower."
+      },
+      "banner": {
+        "month": "Month {n} of {total}",
+        "pay": "+{amount} pay day",
+        "emi": "−{amount} {item} EMI",
+        "more": "…and {n} more payments"
+      },
+      "streak": "Saver streak ×{n}!"
     }
   },
   "salary": {

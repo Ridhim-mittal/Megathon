@@ -75,7 +75,7 @@ function Inflation() {
     <>
       <Slider label={t("widget.amount")} value={amount} min={100} max={10000} step={100} onChange={setAmount} show={money} />
       <Slider label={t("widget.years")} value={years} min={1} max={25} onChange={setYears} />
-      <Slider label={t("widget.inflation")} value={rate} min={2} max={10} step={0.5} onChange={setRate} show={(v) => `${v}%`} />
+      <Slider label={t("widget.inflationRate")} value={rate} min={2} max={10} step={0.5} onChange={setRate} show={(v) => `${v}%`} />
       <Bars
         money={money}
         rows={[

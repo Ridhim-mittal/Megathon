@@ -195,9 +195,9 @@ export function App() {
         )}
         {route === "language" && <LanguageScreen {...common} onPick={(lang) => (i18n.setLang(lang), go("storyline"))} />}
         {route === "storyline" && (
-          <StorylineScreen {...common} onBack={() => go("language")} onPick={(id) => (setSetup((x) => ({ ...x, storylineId: id })), go("intro"))} />
+          <StorylineScreen {...common} avatar={setup.avatar} onBack={() => go("language")} onPick={(id) => (setSetup((x) => ({ ...x, storylineId: id })), go("intro"))} />
         )}
-        {route === "intro" && <IntroScreen {...common} storylineId={setup.storylineId} onDone={() => go("dream")} />}
+        {route === "intro" && <IntroScreen {...common} storylineId={setup.storylineId} avatar={setup.avatar} onDone={() => go("dream")} />}
         {route === "dream" && <DreamScreen {...common} avatar={setup.avatar} playerName={setup.playerName} onBack={() => go("intro")} onStart={startLife} />}
         {route === "life" && life && life.mode === "story" && <StoryScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
         {route === "life" && life && life.mode !== "story" && <MapScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
