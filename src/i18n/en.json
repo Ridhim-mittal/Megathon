@@ -1733,12 +1733,12 @@
   "garden": {
     "title": "SIP Garden",
     "ribbon": "Defend your portfolio",
-    "lead": "Thieves are coming down every investment lane for your savings. Keep money in all four lanes so every defender can fight back, and protect your vault for 5 years.",
+    "lead": "Three mutual funds and an FD lead to your vault. Your money buys units of a fund at today's NAV (its price per unit); the more a lane is worth, the harder its defender fights. Keep thieves out for 3 years.",
     "def": {
-      "equity": "Grows fastest, fires rockets. Wilts for a moment in a crash.",
-      "debt": "Steady shield cannon. Thieves steal half as fast here.",
-      "gold": "Gold cannon: hits inflation twice as hard.",
-      "fd": "Safe brick vault: pays a little interest, but inflation eats it."
+      "equity": "Equity fund: NAV climbs fastest but swings. Fires rockets; wilts in a crash.",
+      "debt": "Debt fund: steady NAV. Shield cannon; thieves steal half as fast.",
+      "gold": "Gold fund: NAV in between. Hits inflation twice as hard.",
+      "fd": "Fixed deposit: value never moves, pays interest coins. Inflation eats it."
     },
     "meet": "Meet the thieves",
     "thief": {
@@ -1759,20 +1759,20 @@
         "tip": "Shots pass through. Tap it to report it, or it grabs 20% of a lane."
       }
     },
-    "step1": "Tap the coins and notes that fall ({n} each).",
-    "step2": "Tap a lane button (or its defender, or press 1–4) to invest {n}: the defender levels up.",
-    "step3": "Thieves come down every lane, so spread your money. Auto-SIP splits it equally every month.",
+    "step1": "Tap falling coins and notes ({n} each): your salary.",
+    "step2": "Tap a lane (or press 1–4) to invest {n}: you get units at today's NAV, and the defender levels up.",
+    "step3": "Turn on Auto-SIP: it buys ₹50 of every lane each month, more units when the NAV is low. Thieves hit every lane, so spread out.",
     "lane": {
-      "equity": "Equity",
-      "debt": "Debt",
-      "gold": "Gold",
-      "fd": "Cash/FD"
+      "equity": "Equity fund",
+      "debt": "Debt fund",
+      "gold": "Gold fund",
+      "fd": "Fixed deposit"
     },
     "short": {
       "equity": "EQUITY",
       "debt": "DEBT",
       "gold": "GOLD",
-      "fd": "CASH/FD"
+      "fd": "FD"
     },
     "investIn": "Invest {n} in {lane}",
     "worthLabel": "PORTFOLIO WORTH:",
@@ -1822,14 +1822,35 @@
     "statStolen": "Stolen",
     "statSpread": "Spread",
     "youPut": "What you put in each lane",
-    "wonLesson": "Every lane had money, so every defender fought back. That's diversification: when one investment has a bad year, the others keep working, and what stays invested grows on itself.",
-    "lostLesson": "They got through the {lane} lane, where you had put only {n}. Thieves (and bad years) hit every kind of investment: spread your money.",
-    "sipNote": "Auto-SIP months: {n}. It invested for you without you lifting a finger.",
+    "wonLesson": "Every lane had money, so every defender fought back. That's diversification across funds, and a SIP keeps adding to all of them, buying more units when prices are low.",
+    "lostLesson": "They got through the {lane} lane, where you had put only {n}. Thieves (and bad years) hit every kind of investment: spread your money across funds.",
+    "sipNote": "Auto-SIP invested for you {n} months in a row.",
     "continue": "Continue",
     "tryAgain": "Try again",
     "other": "Choose something else",
     "again": "Play again",
-    "how": "Tap coins · tap a lane or press 1–4 to invest ₹100 · S: Auto-SIP · P: pause"
+    "how": "Tap coins · tap a lane or press 1–4 to buy units · S: Auto-SIP · P: pause",
+    "nav": "NAV ₹{n}",
+    "fdRate": "Interest {p}%",
+    "units": "{n} units",
+    "unitsHeld": "{n} units",
+    "sipStamp": "SIP",
+    "navYear": "NAV {p}",
+    "crashAskTitle": "Market drop! Equity NAV −25%",
+    "crashAskOn": "Your SIP keeps buying every month, and now each ₹50 gets 25% more units. Keep it going?",
+    "crashAskOff": "Units are 25% cheaper now. Start a SIP?",
+    "crashKeep": "Keep my SIP going",
+    "crashStop": "Stop my SIP",
+    "crashStart": "Start SIP now",
+    "crashSkip": "Not now",
+    "crash_kept": "You kept your SIP going in the crash, so it bought equity units cheap. That's rupee-cost averaging.",
+    "crash_stopped": "You stopped your SIP in the crash, just when units were cheapest. Staying invested usually pays.",
+    "crash_started": "You started a SIP when prices fell: it bought units cheap.",
+    "crash_skipped": "In the crash, units were 25% cheaper. A SIP would have bought more of them.",
+    "sipBox": "What your funds hold",
+    "sipAvg": "SIP paid avg {n}",
+    "noSip": "no SIP",
+    "navNow": "NAV now {n}"
   },
   "tour": {
     "eyebrow": "How to play · {n} of {total}",
