@@ -20,10 +20,31 @@ export function surpriseCost(stage, priceIndex = 1) {
 
 const toStep = (x, step) => Math.max(0, Math.round(x / step) * step);
 
-export function planFor(rules, share, { emergency = 0, stage = "child", priceIndex = 1 } = {}) {
+// What each level saves a month: its share of the income in budget steps, and always at least one
+// step more than the level below (while there is room), so small pocket money still gives three
+// different choices instead of rounding two of them to the same amount.
+export function levelSaves(rules) {
+  const { monthlyIncome: income, step, minNeeds } = rules;
+  const room = Math.max(0, income - minNeeds);
+  const out = [];
+  for (const l of SAVE_LEVELS) {
+    const floor = out.length ? out[out.length - 1] + step : step;
+    out.push(Math.min(room, Math.max(toStep(income * l.share, step), floor)));
+  }
+  return out;
+}
+
+// The jar split for a level ("little" | "some" | "lots").
+export function planForLevel(rules, levelId, ctx) {
+  const i = SAVE_LEVELS.findIndex((l) => l.id === levelId);
+  return planFor(rules, SAVE_LEVELS[i].share, { ...ctx, save: levelSaves(rules)[i] });
+}
+
+// `save` (optional) is the monthly amount to save; otherwise it is `share` of the income.
+export function planFor(rules, share, { emergency = 0, stage = "child", priceIndex = 1, save: amount } = {}) {
   const { monthlyIncome: income, step, minNeeds, jarsUnlocked } = rules;
   const room = Math.max(0, income - minNeeds);
-  const save = Math.min(room, toStep(income * share, step));
+  const save = Math.min(room, amount ?? toStep(income * share, step));
   const investOpen = jarsUnlocked.includes("invest");
   // Safety first: what the jar still needs this year to cover a few surprises.
   const gap = Math.max(0, SAFE_SURPRISES * surpriseCost(stage, priceIndex) - emergency);
@@ -66,6 +87,6 @@ export function forecast(jars, { age, dream, emergency = 0, stage = "child", pri
 export function levelOf(rules, jars) {
   if (!jars) return "some";
   const saved = (jars.emergency ?? 0) + (jars.goal ?? 0) + (jars.invest ?? 0);
-  const share = saved / Math.max(1, rules.monthlyIncome);
-  return SAVE_LEVELS.reduce((best, l) => (Math.abs(l.share - share) < Math.abs(best.share - share) ? l : best)).id;
+  const saves = levelSaves(rules);
+  return SAVE_LEVELS.reduce((best, l, i) => (Math.abs(saves[i] - saved) < Math.abs(saves[SAVE_LEVELS.indexOf(best)] - saved) ? l : best)).id;
 }

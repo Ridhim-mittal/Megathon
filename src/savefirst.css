@@ -546,6 +546,26 @@
   }
 }
 @media (max-width: 640px) {
+  /* Narrow cards: no coin stack over the words (the jar already shows how much), and
+     "/month" on its own line so the amount never breaks mid-word. */
+  .sv-levels {
+    gap: 8px;
+  }
+  .sv-level {
+    padding: 10px 4px 10px;
+    border-radius: 18px;
+  }
+  .sv-level .sv-stack {
+    display: none;
+  }
+  .sv-level b {
+    font-size: 16px;
+  }
+  .sv-level em {
+    display: grid;
+    justify-items: center;
+    white-space: nowrap;
+  }
   .sv-forecast {
     grid-template-columns: 1fr 1fr;
   }

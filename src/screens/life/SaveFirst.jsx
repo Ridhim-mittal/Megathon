@@ -5,7 +5,7 @@ import { select } from "../../ui/gameAdapter.js";
 import { PixelPortrait } from "../../ui/PixelPortrait.jsx";
 import { sounds } from "../../ui/sound.js";
 import { PixelIcon } from "../../ui/PixelIcon.jsx";
-import { SAVE_LEVELS, forecast, levelOf, planFor } from "../../ui/savePlan.js";
+import { SAVE_LEVELS, forecast, levelOf, planForLevel } from "../../ui/savePlan.js";
 
 // The story's budget as one choice: how much do you save first? Needs are fixed, the rest is fun
 // money. The forecast shows what the choice means: when the dream comes, how many surprises the
@@ -35,7 +35,7 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
   const hud = select.hud(life);
   const ctx = { emergency: hud.jars.emergency ?? 0, stage: hud.stage ?? life.stage, priceIndex: hud.priceIndex };
   const [level, setLevel] = useState(() => levelOf(rules, rules.suggested));
-  const plans = useMemo(() => Object.fromEntries(SAVE_LEVELS.map((l) => [l.id, planFor(rules, l.share, ctx)])), [rules.monthlyIncome, rules.minNeeds, ctx.emergency]); // eslint-disable-line react-hooks/exhaustive-deps
+  const plans = useMemo(() => Object.fromEntries(SAVE_LEVELS.map((l) => [l.id, planForLevel(rules, l.id, ctx)])), [rules.monthlyIncome, rules.minNeeds, ctx.emergency]); // eslint-disable-line react-hooks/exhaustive-deps
   const jars = plans[level];
   const share = SAVE_LEVELS.find((l) => l.id === level).share;
   const fc = forecast(jars, { age: life.age, dream: hud.dream, ...ctx, income: rules.monthlyIncome, share, storylineId: life.storylineId });
