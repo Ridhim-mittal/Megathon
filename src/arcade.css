@@ -2506,3 +2506,12 @@
   font-size: 12px;
   text-align: center;
 }
+
+/* The arcade menu's one-line intro under the title. */
+.arcade-sub {
+  margin: 2px 0 10px 30px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #8a7350;
+  animation: fade-in 0.4s ease both;
+}

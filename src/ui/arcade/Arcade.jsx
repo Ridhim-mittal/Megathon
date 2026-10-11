@@ -48,6 +48,7 @@ export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
           <X size={17} />
         </button>
       </header>
+      <p className="arcade-sub">{t("arcade.subtitle")}</p>
       <div className="arcade-tiles all-games">
         {GAMES.map((g) => {
           const Icon = GAME_ICON[g.id];
