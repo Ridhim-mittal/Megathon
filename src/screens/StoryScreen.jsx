@@ -14,6 +14,7 @@ import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { PhoneTour } from "../ui/PhoneTour.jsx";
 import { LessonBadge } from "../ui/LessonBadge.jsx";
+import { PauseCard } from "../ui/PauseCard.jsx";
 import { sounds } from "../ui/sound.js";
 import { GAME_COMPONENTS, SCENE_GAMES, gameFor } from "../ui/games/choiceGames.js";
 import { RatGuard } from "../ui/games/RatGuard.jsx";
@@ -71,7 +72,9 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   const showIntro = phase === "budget" && story && introDone !== story.mission.id;
   const engineDialog = ["budget", "card", "outcome", "minigame", "chapterEnd"].includes(phase);
   const [phoneTour, setPhoneTour] = useState(false);
-  const busy = Boolean(engineDialog || overlay || showIntro || warning || phoneTour);
+  // T (or the pause button) freezes the map, the rush clock and any scene countdown.
+  const [paused, setPaused] = useState(false);
+  const busy = Boolean(engineDialog || overlay || showIntro || warning || phoneTour || paused);
   // The first time the phone is in hand on the map, show what it can do (once per life).
   useEffect(() => {
     if (phone.unlocked && phase === "map" && !busy && seenOnce(`phoneTour:${life.seed}`)) setPhoneTour(true);
@@ -89,7 +92,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     }
     if (rushRef.current.key !== rushKey) rushRef.current = { key: rushKey, left: objective.rush.seconds };
     setRushLeft(rushRef.current.left);
-    if (overlay) return undefined;
+    if (overlay || paused) return undefined;
     let last = performance.now();
     const id = setInterval(() => {
       const now = performance.now();
@@ -103,7 +106,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       }
     }, 200);
     return () => clearInterval(id);
-  }, [rushKey, overlay, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [rushKey, overlay, paused, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Once per browser: point out the mini-games.
   useEffect(() => {
@@ -171,6 +174,17 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     else setGoTo({ place: objective.location, key: Date.now() });
   }
 
+  // T pauses and resumes; Esc also resumes.
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.target.closest?.("input,textarea,select")) return;
+      if (e.key === "t" || e.key === "T") setPaused((p) => !p);
+      else if (e.key === "Escape" && paused) setPaused(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [paused]);
+
   // P opens the phone.
   useEffect(() => {
     const onKey = (e) => {
@@ -204,7 +218,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           <TimerBar
             key={`timer-${card.id}`}
             seconds={card.timer.seconds}
-            paused={Boolean(warning || game)}
+            paused={Boolean(warning || game || paused)}
             label={t("story.decideFast")}
             onTimeout={() => {
               setWarning(null);
@@ -334,7 +348,9 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         onAsk={() => setOverlay({ type: "ask" })}
         onHelp={onHelp}
         onMenu={onMenu}
+        onPause={() => setPaused(true)}
       />
+      {paused && <PauseCard onResume={() => setPaused(false)} onMenu={onMenu} />}
       {phase === "map" && !overlay && story && (
         <ObjectiveTracker
           story={story}

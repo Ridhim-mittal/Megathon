@@ -1900,5 +1900,13 @@
   "lessonBadge": {
     "label": "Lesson",
     "short": "Lesson"
+  },
+  "pause": {
+    "pause": "Pause",
+    "title": "Paused",
+    "text": "Take a breath. Time has stopped in the village, and every countdown waits for you.",
+    "resume": "Resume",
+    "menu": "Main menu",
+    "key": "pauses and resumes"
   }
 }
