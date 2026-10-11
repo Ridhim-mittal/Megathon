@@ -6,7 +6,7 @@ let enabled = false;
 // "Sunlight on the Well" loops quietly for the whole game. Browsers only allow audio after the
 // player's first tap or key press, so the music starts then (and pauses while the tab is hidden).
 const MUSIC_URL = `${import.meta.env.BASE_URL}audio/sunlight-on-the-well.mp3`;
-const MUSIC_VOLUME = 0.32;
+const MUSIC_VOLUME = 0.12; // kept low so the sound effects stay easy to hear
 let music = null;
 let fade = null;
 
@@ -64,7 +64,7 @@ if (typeof window !== "undefined") {
 // ---------- effects: all synthesized, all quiet ----------
 // Every effect goes through one quiet master gain and a limiter, so nothing can come out loud.
 // Each named effect has a minimum gap (ms) so repeated triggers (hover, steps, coins) never pile up.
-const SFX_VOLUME = 1.75; // calibrated: big moments ~7 dB, small sounds ~18 dB under the music
+const SFX_VOLUME = 1.75; // calibrated: big moments ~1.5 dB over the music, small sounds ~10 dB under it
 let master = null;
 let noiseBuf = null;
 
