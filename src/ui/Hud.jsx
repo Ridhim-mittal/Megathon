@@ -35,20 +35,22 @@ export function LangSelect({ lang, onChange }) {
   );
 }
 
-export function TopControls({ settings, onAsk, onHelp, onMenu }) {
+export function TopControls({ settings, onAsk, onHelp, onMenu, sound = true }) {
   const { t } = useT();
   return (
     <div className="hud-controls">
       <LangSelect lang={settings.lang} onChange={settings.setLang} />
-      <button
-        className="hud-button"
-        aria-pressed={settings.sound}
-        aria-label={settings.sound ? t("hud.soundOn") : t("hud.soundOff")}
-        title={settings.sound ? t("hud.soundOn") : t("hud.soundOff")}
-        onClick={() => settings.setSound(!settings.sound)}
-      >
-        {settings.sound ? <Volume2 size={19} /> : <VolumeX size={19} />}
-      </button>
+      {sound && (
+        <button
+          className="hud-button"
+          aria-pressed={settings.sound}
+          aria-label={settings.sound ? t("hud.soundOn") : t("hud.soundOff")}
+          title={settings.sound ? t("hud.soundOn") : t("hud.soundOff")}
+          onClick={() => settings.setSound(!settings.sound)}
+        >
+          {settings.sound ? <Volume2 size={19} /> : <VolumeX size={19} />}
+        </button>
+      )}
       {onAsk && (
         <button className="hud-button ask-button" aria-label={t("hud.ask")} title={t("hud.ask")} onClick={onAsk}>
           <MessageCircle size={19} />
