@@ -8,7 +8,7 @@
 
 export const FIELD = { w: 960, h: 540 };
 export const FLOOD = {
-  seconds: 25,
+  seconds: 35,
   bag: 4,
   crop: 120000, // the crop's worth, and the sum insured
   premium: 2400, // crop insurance for the season (2% under PMFBY)
@@ -17,7 +17,7 @@ export const FLOOD = {
   floor: 470, // the house floor (y)
   top: 150, // the water stops here
   grabRadius: 36,
-  drift: [55, 95], // how fast floating things are carried off (px/s)
+  drift: [35, 60], // how fast floating things are carried off (px/s)
 };
 export const ESSENTIAL = ["policy", "aadhaar", "passbook", "land", "cash"];
 export const DECOYS = ["tv", "saree", "sweets", "radio"];
