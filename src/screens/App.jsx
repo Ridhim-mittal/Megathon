@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { I18nProvider } from "../i18n/index.jsx";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
-import { createLife, glossary, select, step, storyline } from "../ui/gameAdapter.js";
+import { createLife, glossary, goals, select, step, storyline } from "../ui/gameAdapter.js";
 import { loadEndings, loadLife, loadSettings, recordEnding, saveLife, saveSettings } from "../ui/persist.js";
 import { setSoundEnabled, sounds } from "../ui/sound.js";
 import { HelpDialog } from "./HelpDialog.jsx";
@@ -16,6 +16,7 @@ import { EndingScreen } from "./EndingScreen.jsx";
 import { ReportScreen } from "./ReportScreen.jsx";
 import { ParallelScreen } from "./ParallelScreen.jsx";
 import { GalleryScreen } from "./GalleryScreen.jsx";
+import { DevMenu } from "../ui/dev/DevMenu.jsx";
 
 // ?seed=demo gives a fixed, rehearsed life (spec section 9).
 const urlSeed = () => {
@@ -27,6 +28,7 @@ const urlSeed = () => {
 };
 
 const BACKDROP_SPAWN = { x: 15, y: 14, dir: "down" };
+const ROUTES = ["title", "language", "storyline", "intro", "dream", "life", "ending", "report", "parallel", "gallery"];
 
 export function App() {
   const [settings, setSettings] = useState(loadSettings);
@@ -40,6 +42,7 @@ export function App() {
   const [endings, setEndings] = useState(loadEndings);
   const [help, setHelp] = useState(false);
   const [toast, setToast] = useState(null);
+  const [devKey, setDevKey] = useState(0); // the dev menu swapped the life: start the screen fresh
 
   useEffect(() => {
     saveSettings(settings);
@@ -162,6 +165,36 @@ export function App() {
     setSound: (sound) => setSettings((s) => ({ ...s, sound })),
   };
 
+  // The dev menu (src/ui/dev): jumps hand over a whole new life; cheats edit the current one.
+  const devApi = {
+    life,
+    route,
+    routes: ROUTES,
+    go,
+    setLang: i18n.setLang,
+    setLife: (next, show = false) => {
+      lifeRef.current = next;
+      setVisit(false);
+      setLife(next);
+      if (!show) return;
+      setParallel(null);
+      setDevKey((k) => k + 1);
+      setRoute("life");
+    },
+    makeLife: () => {
+      const hero = life ?? saved?.life;
+      const s = createLife({
+        storylineId: hero?.storylineId ?? "village",
+        goalId: hero?.goalId ?? setup.goalId ?? goals()[0]?.id ?? "house",
+        seed: urlSeed() ?? `${Date.now()}`,
+        playerName: hero?.playerName || setup.playerName || "",
+        mode: "story",
+        avatar: hero?.avatar ?? setup.avatar ?? "boy",
+      });
+      return step(s, { type: "ADVANCE" });
+    },
+  };
+
   const hud = life ? select.hud(life) : null;
   const worldMode = route === "title" ? "title" : route === "life" ? "life" : "scene";
   const common = { settings: settingsApi, onHelp: () => setHelp(true), onMenu: () => go("title") };
@@ -199,8 +232,8 @@ export function App() {
         )}
         {route === "intro" && <IntroScreen {...common} storylineId={setup.storylineId} avatar={setup.avatar} onDone={() => go("dream")} />}
         {route === "dream" && <DreamScreen {...common} avatar={setup.avatar} playerName={setup.playerName} onBack={() => go("intro")} onStart={startLife} />}
-        {route === "life" && life && life.mode === "story" && <StoryScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
-        {route === "life" && life && life.mode !== "story" && <MapScreen {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
+        {route === "life" && life && life.mode === "story" && <StoryScreen key={devKey} {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
+        {route === "life" && life && life.mode !== "story" && <MapScreen key={devKey} {...common} life={life} dispatch={dispatch} toast={toast} onToast={setToast} />}
         {route === "ending" && life && <EndingScreen {...common} life={life} onNext={() => go("report")} />}
         {route === "report" && life && <ReportScreen {...common} life={life} onNext={() => go("parallel")} />}
         {route === "parallel" && life && (
@@ -208,6 +241,7 @@ export function App() {
         )}
         {route === "gallery" && <GalleryScreen {...common} endings={endings} onPlayAgain={() => (setPicking(true), go("title"))} />}
         {help && <HelpDialog onClose={() => setHelp(false)} />}
+        <DevMenu api={devApi} />
       </div>
     </I18nProvider>
   );
