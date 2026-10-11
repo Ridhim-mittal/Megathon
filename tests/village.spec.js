@@ -301,11 +301,12 @@ test("SIP Garden opens from the arcade: invest in every lane, Auto-SIP, pause, a
   await expect(game.getByRole("heading", { name: "SIP Garden" })).toBeVisible();
   await expect(game.locator(".sg-cast.thieves li")).toHaveCount(4);
   await game.getByRole("button", { name: "Start" }).click();
-  await expect(game.locator(".sg-cash")).toContainText("₹300");
-  await game.getByRole("button", { name: "Invest ₹100 in Equity" }).click();
-  await game.getByRole("button", { name: "Invest ₹100 in Debt" }).click();
+  await expect(game.locator(".sg-cash")).toContainText("₹400");
+  await expect(game.locator(".sg-lane").first()).toContainText("NAV ₹");
+  await game.getByRole("button", { name: "Invest ₹100 in Equity fund" }).click();
+  await game.getByRole("button", { name: "Invest ₹100 in Debt fund" }).click();
   await page.keyboard.press("3");
-  await expect(game.locator(".sg-lane").first()).toContainText("₹200");
+  await expect(game.locator(".sg-cash")).not.toContainText("₹400");
   await game.getByRole("button", { name: /Auto-SIP: OFF/i }).click();
   await expect(game.getByRole("button", { name: /Auto-SIP: ON/i })).toBeVisible();
   await game.getByRole("button", { name: "Pause" }).click();
@@ -315,6 +316,7 @@ test("SIP Garden opens from the arcade: invest in every lane, Auto-SIP, pause, a
   await expect(game.locator(".sg-end")).toBeVisible({ timeout: 120000 });
   await expect(game.locator(".sg-bars li")).toHaveCount(4);
   await expect(game.locator(".sg-stats")).toContainText("Portfolio worth");
+  await expect(game.locator(".sg-sipbox li")).toHaveCount(3);
   await game.getByRole("button", { name: "Play again" }).click();
   await expect(game.getByRole("button", { name: "Start" })).toBeVisible();
   await game.locator(".sg-card").getByRole("button", { name: "Close" }).click();
