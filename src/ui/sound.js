@@ -25,8 +25,10 @@ function fadeTo(target, ms, then) {
   }, 50);
 }
 
+let ducked = false; // a scene with its own sound (the flood) has the music off
+
 function playMusic() {
-  if (!enabled || typeof window === "undefined" || document.hidden) return;
+  if (!enabled || ducked || typeof window === "undefined" || document.hidden) return;
   if (!music) {
     music = new Audio(MUSIC_URL);
     music.loop = true;
@@ -51,10 +53,22 @@ function pauseMusic() {
 }
 
 if (typeof window !== "undefined") {
-  const kick = () => enabled && playMusic();
+  // Browsers start audio suspended until the first tap or key press, so wake it then.
+  const kick = () => {
+    if (!enabled) return;
+    if (ctx?.state === "suspended") ctx.resume();
+    playMusic();
+  };
   window.addEventListener("pointerdown", kick);
   window.addEventListener("keydown", kick);
   document.addEventListener("visibilitychange", () => (document.hidden ? pauseMusic() : kick()));
+}
+
+// Fades the music out (and back in) while a scene plays its own sound.
+export function duckMusic(on) {
+  ducked = Boolean(on);
+  if (ducked) pauseMusic();
+  else playMusic();
 }
 
 export function setSoundEnabled(on) {
@@ -97,36 +111,90 @@ export const sounds = {
   ripple: () => tone(392, { dur: 0.5, gain: 0.025, slide: 1.02 }),
 };
 
-// A soft, low rush of water that keeps going until stop(). set(0..1) makes it a little louder and
-// brighter as the water rises.
+let noise = null;
+function noiseBuffer() {
+  if (noise) return noise;
+  const len = ctx.sampleRate * 2;
+  noise = ctx.createBuffer(1, len, ctx.sampleRate);
+  const d = noise.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  return noise;
+}
+
+// A splash: a short burst of filtered noise.
+export function splash({ gain = 0.12, freq = 1200 } = {}) {
+  if (!enabled || !ctx) return;
+  const t = ctx.currentTime;
+  const src = ctx.createBufferSource();
+  src.buffer = noiseBuffer();
+  const bp = ctx.createBiquadFilter();
+  bp.type = "bandpass";
+  bp.frequency.setValueAtTime(freq, t);
+  bp.frequency.exponentialRampToValueAtTime(freq * 0.4, t + 0.35);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(gain, t + 0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.4);
+  src.connect(bp).connect(g).connect(ctx.destination);
+  src.start(t, Math.random());
+  src.stop(t + 0.45);
+}
+
+// Flowing water until stop(): a low rumble plus a softer rush that surges like waves, with the odd
+// gurgle. set(0..1) makes it louder and brighter as the water rises.
 export function waterLoop() {
   if (!enabled || !ctx) return { set() {}, stop() {} };
-  const len = ctx.sampleRate * 2;
-  const buf = ctx.createBuffer(1, len, ctx.sampleRate);
-  const d = buf.getChannelData(0);
-  let last = 0;
-  for (let i = 0; i < len; i++) d[i] = last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02;
-  const drift = d[len - 1] - d[0]; // so the loop has no click where it wraps
-  for (let i = 0; i < len; i++) d[i] = (d[i] - (drift * i) / len) * 3.5;
+  if (ctx.state === "suspended") ctx.resume();
+  const t = ctx.currentTime;
   const src = ctx.createBufferSource();
-  src.buffer = buf;
+  src.buffer = noiseBuffer();
   src.loop = true;
-  const lp = ctx.createBiquadFilter();
-  lp.type = "lowpass";
-  lp.frequency.value = 200;
-  const g = ctx.createGain();
-  g.gain.value = 0.0001;
-  src.connect(lp).connect(g).connect(ctx.destination);
-  src.start();
-  g.gain.setTargetAtTime(0.05, ctx.currentTime, 0.5);
+  const low = ctx.createBiquadFilter();
+  low.type = "lowpass";
+  low.frequency.value = 420;
+  const lowG = ctx.createGain();
+  const rush = ctx.createBiquadFilter();
+  rush.type = "bandpass";
+  rush.frequency.value = 900;
+  rush.Q.value = 0.8;
+  const rushG = ctx.createGain();
+  // A slow wobble on the rush, so it surges instead of hissing.
+  const lfo = ctx.createOscillator();
+  lfo.frequency.value = 0.35;
+  const lfoG = ctx.createGain();
+  lfoG.gain.value = 0.1;
+  lfo.connect(lfoG).connect(rushG.gain);
+  const out = ctx.createGain();
+  out.gain.setValueAtTime(0.0001, t);
+  out.gain.setTargetAtTime(1, t, 0.4);
+  lowG.gain.value = 0.35;
+  rushG.gain.value = 0.2;
+  src.connect(low).connect(lowG).connect(out);
+  src.connect(rush).connect(rushG).connect(out);
+  out.connect(ctx.destination);
+  src.start(t);
+  lfo.start(t);
+  let level = 0;
+  const gurgle = setInterval(() => {
+    if (Math.random() < 0.5) return;
+    const f = 180 + Math.random() * 120;
+    tone(f, { dur: 0.12, gain: 0.04 + 0.03 * level, slide: 2.4 });
+    tone(f * 1.3, { at: 0.09, dur: 0.1, gain: 0.02 + 0.02 * level, slide: 2.2 });
+  }, 900);
   return {
-    set(level) {
-      lp.frequency.setTargetAtTime(200 + 250 * level, ctx.currentTime, 0.3);
-      g.gain.setTargetAtTime(0.05 + 0.07 * level, ctx.currentTime, 0.3);
+    set(l) {
+      level = l;
+      const now = ctx.currentTime;
+      low.frequency.setTargetAtTime(420 + 380 * l, now, 0.3);
+      lowG.gain.setTargetAtTime(0.35 + 0.15 * l, now, 0.3);
+      rushG.gain.setTargetAtTime(0.2 + 0.15 * l, now, 0.3);
     },
     stop() {
-      g.gain.setTargetAtTime(0.0001, ctx.currentTime, 0.25);
-      src.stop(ctx.currentTime + 1.5);
+      clearInterval(gurgle);
+      const now = ctx.currentTime;
+      out.gain.setTargetAtTime(0.0001, now, 0.3);
+      src.stop(now + 1.6);
+      lfo.stop(now + 1.6);
     },
   };
 }

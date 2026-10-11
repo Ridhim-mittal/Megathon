@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowRight, RotateCcw, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
-import { sounds, waterLoop } from "../sound.js";
+import { duckMusic, sounds, splash, waterLoop } from "../sound.js";
 import { DECOYS, ESSENTIAL, FIELD, FLOOD, createFlood, floodResult, stepFlood } from "./floodRescue.js";
 import { DOOR_X, ITEM_PX, PX, buffalo, haystack, itemSprite, paintHouse, plantSprite } from "./floodArt.js";
 
@@ -76,10 +76,12 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
   // The low rush of the water, for as long as the flood lasts.
   useEffect(() => {
     if (screen !== "flood") return;
+    duckMusic(true);
     water.current = waterLoop();
     return () => {
       water.current.stop();
       water.current = null;
+      duckMusic(false);
     };
   }, [screen]);
 
@@ -107,7 +109,10 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
             fx.current.push({ ...e, at: now, life: 550 });
             setBag([...s.bag]);
             sounds.coin?.();
-          } else if (e.kind === "float") fx.current.push({ ...e, at: now, life: 500 });
+          } else if (e.kind === "float") {
+            fx.current.push({ ...e, at: now, life: 500 });
+            splash();
+          }
           else if (e.kind === "lost") sounds.thud?.();
         }
         s.fx.length = 0;
