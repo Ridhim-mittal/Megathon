@@ -152,8 +152,13 @@
   color: #9a8250;
 }
 .hud-cash .money-value {
-  font-family: var(--px-font);
-  font-size: 15px;
+  /* The pixel font makes 2 look like 8; money uses the clear body font. */
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: #3a2a18;
 }
 .hud-cash .chip.debt {
   background: #fde6dc;
