@@ -7,13 +7,12 @@ import { GyaanLite } from "../ui/GyaanLite.jsx";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
 import { mapForMission } from "../ui/map/maps.js";
 import { PhoneLite as Phone } from "../ui/PhoneLite.jsx";
-import { NotificationTray } from "../ui/Notifications.jsx";
 import { StockExchange } from "../ui/exchange/StockExchange.jsx";
 import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
 import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { PhoneTour } from "../ui/PhoneTour.jsx";
-import { LessonBadge } from "../ui/LessonBadge.jsx";
+import { BreakingNews } from "./story/BreakingNews.jsx";
 import { PauseCard } from "../ui/PauseCard.jsx";
 import { sounds } from "../ui/sound.js";
 import { GAME_COMPONENTS, PRE_GAMES, SCENE_GAMES } from "../ui/games/choiceGames.js";
@@ -110,10 +109,11 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     return () => clearInterval(id);
   }, [rushKey, overlay, paused, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Once per browser: point out the mini-games.
+  // The one pop-up the story keeps: Black Monday's breaking news (once per life).
+  const [news, setNews] = useState(false);
   useEffect(() => {
-    if (phase === "map" && !overlay && seenOnce("arcadeHint")) onToast(t("arcade.hint"));
-  }, [phase, overlay]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (phase === "map" && objective?.node === "m2_crash" && !busy && seenOnce(`crashNews:${life.seed}`)) setNews(true);
+  }, [phase, objective?.node, busy, life.seed]);
 
   // After a timeout, say what being late cost.
   const lastLate = story?.lastLate;
@@ -331,15 +331,14 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   }
 
   return (
-    <div className={`mapgame storygame phase-${phase} ${busy ? "is-busy" : ""} ${objective?.rush && phase === "map" ? "rushing" : ""} ${lessonId && !showIntro ? "has-lesson" : ""}`}>
-      {!showIntro && <LessonBadge lessonId={lessonId} />}
+    <div className={`mapgame storygame phase-${phase} ${busy ? "is-busy" : ""} ${objective?.rush && phase === "map" ? "rushing" : ""}`}>
       <MapCanvas
         map={map}
         avatar={avatar}
         stage={hud.stage}
         markers={markers}
         labels={labels}
-        active={!busy}
+        active={!busy && !news}
         spawn={spawn}
         goTo={goTo}
         guide={phase === "map" && objective && objective.location !== "phone" ? { place: objective.location, urgent: Boolean(objective.rush) } : null}
@@ -358,6 +357,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         onHelp={onHelp}
         onMenu={onMenu}
         onPause={() => setPaused(true)}
+        lessonId={showIntro ? null : lessonId}
       />
       {paused && <PauseCard onResume={() => setPaused(false)} onMenu={onMenu} />}
       {phase === "map" && !overlay && story && (
@@ -373,18 +373,17 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           <TriangleAlert size={16} aria-hidden="true" /> {t(`story.danger.${story.danger}`)}
         </p>
       )}
-      {phase === "map" && !overlay && <p className="map-controls">{t("map.controls")}</p>}
+      {news && (
+        <BreakingNews
+          onClose={() => setNews(false)}
+          onOpen={() => {
+            setNews(false);
+            setOverlay({ type: "phone", app: "messages" });
+          }}
+        />
+      )}
       {phase === "map" && !overlay && !showIntro && <JarDock hud={hud} />}
       <SurprisePop surprises={hud.surprises ?? []} active={phase === "map" && !overlay && !showIntro} />
-      <NotificationTray
-        messages={phone.messages}
-        phoneEvents={phone.unlocked ? phone.notifications : []}
-        canFinish={false}
-        active={phase === "map" && !overlay && !showIntro}
-        onOpenPhoneEvent={() => dispatch({ type: "VISIT", location: "phone" })}
-        onGoHome={() => {}}
-        onLearn={(lesson) => setOverlay({ type: "gyaan", lesson })}
-      />
       {showIntro && <MissionIntro story={story} avatar={avatar} stage={hud.stage} previous={previous} onBegin={() => setIntroDone(story.mission.id)} />}
       {dialog && (
         <div className="dialog-layer">

@@ -3,12 +3,13 @@ import { BookOpen, ChevronLeft, ChevronRight, List, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { content, select } from "./gameAdapter.js";
 import { GyaanWidget } from "./GyaanWidgets.jsx";
+import { PILLAR_PIXEL, PixelIcon } from "./PixelIcon.jsx";
 
 // The Gyaan reader: each lesson as a few picture slides instead of a page of text: the big idea,
 // the key points, a worked example revealed step by step, a myth card to flip, a "try it"
 // calculator and a one-question quiz. Market topics (shares, funds, fees…) are in the list too.
-const PILLAR_ICON = { PLAN: "🗺️", SAVE: "🏺", SAFE: "🛡️", INVEST: "🌱" };
-const SLIDE_ICON = { idea: "💡", points: "🔑", example: "🧮", myth: "🃏", try: "🎛️", quiz: "❓", summary: "📘" };
+const SLIDE_PIXEL = { idea: "bulb", points: "key", example: "calc", myth: "card", try: "sliders", quiz: "question", summary: "book" };
+const SLIDE_ICON = Object.fromEntries(Object.entries(SLIDE_PIXEL).map(([k, v]) => [k, <PixelIcon key={k} name={v} size={18} />]));
 
 export function GyaanLite({ life, lessonId, onClose }) {
   const { t, pick } = useT();
@@ -48,13 +49,16 @@ export function GyaanLite({ life, lessonId, onClose }) {
             <nav className="gyaan-index">
               {report.lessons.map((l) => (
                 <button key={l.id} className={`status-${l.status} ${l.id === id ? "on" : ""}`} disabled={l.status === "unseen"} onClick={() => pickLesson(l.id)}>
-                  <span>{PILLAR_ICON[l.pillar] ?? l.id}</span> {pick(l.title)}
+                  <span>{PILLAR_PIXEL[l.pillar] ? <PixelIcon name={PILLAR_PIXEL[l.pillar]} size={15} /> : l.id}</span> {pick(l.title)}
                 </button>
               ))}
               {topics.length > 0 && <h3 className="gyaan-index-title">{t("gyaan.topics")}</h3>}
               {topics.map(([tid, tp]) => (
                 <button key={tid} className={`topic ${id === `topic:${tid}` ? "on" : ""}`} onClick={() => pickLesson(`topic:${tid}`)}>
-                  <span>📈</span> {pick(tp.title)}
+                  <span>
+                    <PixelIcon name="chart" size={15} />
+                  </span>{" "}
+                  {pick(tp.title)}
                 </button>
               ))}
             </nav>
@@ -90,7 +94,7 @@ function Slides({ id, lesson, page }) {
   if (!slides.length) return <article className="gyaan-page"><p className="quiet">{t("report.status.unseen")}</p></article>;
   const kind = slides[at];
   const title = pick(page?.title ?? lesson?.title);
-  const icon = lesson ? PILLAR_ICON[lesson.pillar] : "📈";
+  const icon = <PixelIcon name={lesson ? PILLAR_PIXEL[lesson.pillar] ?? "book" : "chart"} size={24} />;
   return (
     <article className="gyaan-page gyaan-slides">
       <div className="slide-top">
@@ -148,7 +152,9 @@ function Slides({ id, lesson, page }) {
                 {t("gyaan.nextStep")} ▸
               </button>
             ) : (
-              <p className="slide-result">✅ {rich(page.example.result)}</p>
+              <p className="slide-result">
+                <PixelIcon name="tick" size={14} /> {rich(page.example.result)}
+              </p>
             )}
           </div>
         )}
@@ -156,12 +162,16 @@ function Slides({ id, lesson, page }) {
           <button className={`flip-card ${flipped ? "flipped" : ""}`} onClick={() => setFlipped(!flipped)} aria-pressed={flipped}>
             <span className="flip-inner">
               <span className="flip-face front">
-                <b>❌ {t("gyaan.myth")}</b>
+                <b>
+                  <PixelIcon name="cross" size={14} /> {t("gyaan.myth")}
+                </b>
                 <span>{rich(page.myth.myth)}</span>
                 <small>{t("gyaan.tapToFlip")}</small>
               </span>
               <span className="flip-face back">
-                <b>✅ {t("gyaan.truth")}</b>
+                <b>
+                  <PixelIcon name="tick" size={14} /> {t("gyaan.truth")}
+                </b>
                 <span>{rich(page.myth.truth)}</span>
               </span>
             </span>
@@ -185,7 +195,9 @@ function Slides({ id, lesson, page }) {
             </div>
             {answer != null && (
               <p className={`quiz-result ${answer === page.quiz.answer ? "up" : "down"}`}>
-                <span aria-hidden="true">{answer === page.quiz.answer ? "🎉" : "🤔"}</span>
+                <span aria-hidden="true">
+                  <PixelIcon name={answer === page.quiz.answer ? "star" : "faceGrimace"} size={28} />
+                </span>
                 <span>
                   <b>{answer === page.quiz.answer ? t("gyaan.right") : t("gyaan.wrong")}</b> {rich(page.quiz.explain)}
                 </span>

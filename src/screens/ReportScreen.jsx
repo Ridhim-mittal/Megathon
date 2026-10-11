@@ -4,12 +4,12 @@ import { useT } from "../i18n/index.jsx";
 import { select } from "../ui/gameAdapter.js";
 import { Sheet, ScreenBar } from "../ui/Sheet.jsx";
 import { TopControls } from "../ui/Hud.jsx";
+import { PILLAR_PIXEL, PixelIcon } from "../ui/PixelIcon.jsx";
 
 // The Gyaan report as a card collection: a ring with how many lessons you used, then each pillar
 // as a little shelf of lesson cards, coloured by what happened.
 const PILLARS = ["PLAN", "SAVE", "INVEST", "SAFE"];
-const PILLAR_ICON = { PLAN: "🗺️", SAVE: "🏺", INVEST: "🌱", SAFE: "🛡️" };
-const STATUS_ICON = { applied: "★", seen: "👀", missed: "↺", unseen: "🔒" };
+const STATUS_ICON = { applied: "star", seen: "eye", missed: "redo", unseen: "lock" };
 
 export function ReportScreen({ life, settings, onNext, onMenu }) {
   const { t, pick } = useT();
@@ -33,7 +33,7 @@ export function ReportScreen({ life, settings, onNext, onMenu }) {
             <div className="report-totals">
               {["applied", "seen", "missed"].map((s) => (
                 <span key={s} className={`status-pill status-${s}`}>
-                  {STATUS_ICON[s]} {t(`report.status.${s}`)} <b>{report.totals[s]}</b>
+                  <PixelIcon name={STATUS_ICON[s]} size={14} /> {t(`report.status.${s}`)} <b>{report.totals[s]}</b>
                 </span>
               ))}
             </div>
@@ -43,14 +43,16 @@ export function ReportScreen({ life, settings, onNext, onMenu }) {
           {PILLARS.map((p, pi) => (
             <section key={p} className={`shelf pillar-${p}`} style={{ animationDelay: `${0.1 + pi * 0.1}s` }}>
               <h2>
-                <span aria-hidden="true">{PILLAR_ICON[p]}</span> {t(`report.pillar.${p}`)}
+                <PixelIcon name={PILLAR_PIXEL[p]} size={20} /> {t(`report.pillar.${p}`)}
               </h2>
               <ul>
                 {report.lessons
                   .filter((l) => l.pillar === p)
                   .map((l) => (
                     <li key={l.id} className={`lesson-card status-${l.status}`} title={t(`report.status.${l.status}`)}>
-                      <i aria-hidden="true">{STATUS_ICON[l.status]}</i>
+                      <i aria-hidden="true">
+                        <PixelIcon name={STATUS_ICON[l.status]} size={13} />
+                      </i>
                       <span>{pick(l.title)}</span>
                     </li>
                   ))}
