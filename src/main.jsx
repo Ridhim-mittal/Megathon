@@ -20,6 +20,7 @@ import "./story.css";
 import "./arcade.css";
 import "./calm.css";
 import "./minigames.css";
+import "./dev.css";
 import { App } from "./screens/App.jsx";
 
 createRoot(document.getElementById("root")).render(

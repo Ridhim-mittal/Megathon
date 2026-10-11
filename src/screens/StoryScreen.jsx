@@ -16,6 +16,7 @@ import { PhoneTour } from "../ui/PhoneTour.jsx";
 import { sounds } from "../ui/sound.js";
 import { CHOICE_GAMES, GAME_COMPONENTS, SCENE_GAMES } from "../ui/games/choiceGames.js";
 import { RatGuard } from "../ui/games/RatGuard.jsx";
+import { devFlag, useDevFlag } from "../ui/dev/devFlags.js";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
 import { CardView } from "./life/CardView.jsx";
@@ -37,6 +38,8 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   const avatar = life.avatar ?? "boy";
   const phase = life.phase;
   const objective = story?.objective ?? null;
+  const frozen = useDevFlag("freezeTimers"); // dev menu switches
+  const readScenes = useDevFlag("skipSceneGames");
 
   const [overlay, setOverlay] = useState(null); // { type: info|shop|phone|gyaan|ask|flow|evidence, ... }
   const [introDone, setIntroDone] = useState(null);
@@ -88,7 +91,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     }
     if (rushRef.current.key !== rushKey) rushRef.current = { key: rushKey, left: objective.rush.seconds };
     setRushLeft(rushRef.current.left);
-    if (overlay) return undefined;
+    if (overlay || frozen) return undefined;
     let last = performance.now();
     const id = setInterval(() => {
       const now = performance.now();
@@ -102,7 +105,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       }
     }, 200);
     return () => clearInterval(id);
-  }, [rushKey, overlay, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [rushKey, overlay, frozen, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Once per browser: point out the mini-games.
   useEffect(() => {
@@ -117,6 +120,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
 
   // ---------- choices: locks and STOP warnings ----------
   const card = select.currentCard(life);
+  const sceneGame = readScenes ? null : SCENE_GAMES[card?.id];
   const [game, setGame] = useState(null); // a choice that needs a mini-game won first
   const gameOpen = useRef(false);
   gameOpen.current = Boolean(game);
@@ -126,7 +130,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       if (action.type === "CHOOSE" && gameOpen.current && !action.wonGame) return null;
       if (action.type === "CHOOSE" && !action.ignoredWarning) {
         const c = select.currentCard(life)?.choices.find((x) => x.id === action.choiceId);
-        if (c && !c.locked && CHOICE_GAMES[c.id] && !action.wonGame) {
+        if (c && !c.locked && CHOICE_GAMES[c.id] && !action.wonGame && !devFlag("autoWin")) {
           setGame({ choiceId: c.id, kind: CHOICE_GAMES[c.id] });
           return null;
         }
@@ -186,7 +190,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         <p className="quiet chapter-split">{t("chapter.split")}</p>
       </>
     );
-  } else if (phase === "card" && SCENE_GAMES[card?.id]) {
+  } else if (phase === "card" && sceneGame) {
     // This scene is played, not read: the game brings its own full-screen layer (below).
   } else if (phase === "card") {
     dialog = (
@@ -195,7 +199,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           <TimerBar
             key={`timer-${card.id}`}
             seconds={card.timer.seconds}
-            paused={Boolean(warning || game)}
+            paused={Boolean(warning || game || frozen)}
             label={t("story.decideFast")}
             onTimeout={() => {
               setWarning(null);
@@ -356,8 +360,8 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           </section>
         </div>
       )}
-      {phase === "card" && !showIntro && SCENE_GAMES[card?.id] &&
-        React.createElement(SCENE_GAMES[card.id], {
+      {phase === "card" && !showIntro && sceneGame &&
+        React.createElement(sceneGame, {
           key: card.id,
           avatar: life.avatar ?? "boy",
           onDone: (choiceId) => {
