@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { ArrowRight, Coins, Heart, Landmark, Pause, Play, RotateCcw, Shield, ShieldCheck, Sprout, TrendingUp, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { sounds } from "../sound.js";
-import { DEFENDER, DEF_X, FIELD, LANES, RULES, WAVES, createGarden, gardenResult, laneY, level, needsMore, stepGarden, worth } from "./sipGarden.js";
+import { DEFENDER, DEF_X, FIELD, FUNDS, LANES, RULES, WAVES, createGarden, gardenResult, laneY, level, needsMore, stepGarden, worth } from "./sipGarden.js";
 import { LANE_COLOR, PX, coinSprite, defenderSprite, feetY, noteSprite, paintYard, piggy, puff, put, shotSprite, thiefSprite } from "./gardenArt.js";
 
 // SIP Garden: defend your portfolio vault by keeping money in every investment lane. The rules
@@ -71,7 +71,8 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
   if (!game.current) game.current = createGarden();
   // In development the live state is on window, for debugging.
   if (import.meta.env?.DEV) window.__sipGarden = game.current;
-  const input = useRef({ taps: [], invest: [], toggleSip: false });
+  const input = useRef({ taps: [], invest: [], toggleSip: false, crashChoice: null });
+  const navHistory = useRef(LANES.map(() => []));
   const fx = useRef([]);
   const [screen, setScreen] = useState("intro"); // intro | play | end
   const [paused, setPaused] = useState(false);
@@ -98,6 +99,9 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
     broke: t("garden.broke"),
     warn: t("garden.needMore"),
     interest: t("garden.interest"),
+    units: (n) => t("garden.units", { n }),
+    sip: t("garden.sipStamp"),
+    nav: (p) => t("garden.navYear", { p }),
     money,
   };
 
@@ -115,9 +119,16 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
         if (ready.current > 0) ready.current = Math.max(0, ready.current - dt);
         else {
           let over = stepGarden(s, dt, input.current);
-          input.current = { taps: [], invest: [], toggleSip: false };
+          input.current = { taps: [], invest: [], toggleSip: false, crashChoice: null };
           for (let n = 1; n < SPEED && !over; n++) over = stepGarden(s, dt, input.current);
           for (const e of s.fx) react(e, now);
+          if (s.phase === "play" && (navHistory.current[0].at ?? 0) + 250 < now) {
+            navHistory.current.forEach((h, i) => {
+              h.push(s.lanes[i].nav);
+              if (h.length > 120) h.shift();
+            });
+            navHistory.current[0].at = now;
+          }
           s.fx.length = 0;
           if (over) {
             setResult(gardenResult(s));
@@ -150,7 +161,8 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
       add({ type: "puff", x: e.x, y: feetY(LANES.findIndex((_, i) => laneY(i) === e.y)) - 30, life: 450 });
       sounds.tap?.();
     } else if (e.kind === "feed") {
-      add({ type: "text", x: DEF_X + 6, y: defY(e.lane), text: `+${w.money(e.amount)}`, color: "#b9f6a0", life: 900, big: true });
+      if (e.sip) add({ type: "text", x: DEF_X + 64, y: defY(e.lane) + 26, text: `${w.sip} +${LANES[e.lane] === "fd" ? w.money(e.amount) : w.units(e.units.toFixed(1))}`, color: "#9fd0ff", life: 1000 });
+      else add({ type: "text", x: DEF_X + 6, y: defY(e.lane), text: LANES[e.lane] === "fd" ? `+${w.money(e.amount)}` : `+${w.money(e.amount)} → ${w.units(e.units.toFixed(1))}`, color: "#b9f6a0", life: 1100, big: true });
       if (e.levelUp) add({ type: "text", x: DEF_X + 6, y: defY(e.lane) - 22, text: w.levelUp, color: "#ffd23f", life: 1200 });
       add({ type: "sparkle", x: DEF_X, y: feetY(e.lane) - 30, life: 600 });
       sounds.tap?.();
@@ -173,11 +185,16 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
     } else if (e.kind === "payday") {
       add({ type: "text", x: W / 2, y: 130, text: w.payday(e.amount), color: "#ffe066", life: 1800, big: true });
       sounds.coin?.();
-    } else if (e.kind === "sip") sounds.ripple?.();
+    } else if (e.kind === "sip") {
+      add({ type: "text", x: 135, y: 452, text: `${w.sip} ✓`, color: "#9fd0ff", life: 900, big: true });
+      sounds.ripple?.();
+    }
     else if (e.kind === "sipShort") add({ type: "text", x: 160, y: 455, text: w.sipShort, color: "#ffcc80", life: 1500 });
     else if (e.kind === "growth") {
-      e.gains.forEach((g, i) => {
-        if (g > 0) add({ type: "text", x: 560, y: laneY(i) - 6, text: `+${Math.round(DEFENDER[LANES[i]].rate * 100)}%  +${w.money(g)}`, color: "#b9f6a0", life: 2200, big: true });
+      e.change.forEach((c, i) => {
+        if (LANES[i] === "fd") return;
+        const p = `${c >= 0 ? "+" : "−"}${Math.abs(Math.round(c * 100))}%`;
+        add({ type: "text", x: 600, y: laneY(i) - 6, text: w.nav(p), color: c >= 0 ? "#b9f6a0" : "#ff8a80", life: 2000, big: true });
       });
       sounds.chime?.();
     } else if (e.kind === "vault") {
@@ -209,6 +226,25 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
       ctx.fillStyle = `rgba(230,40,30,${a})`;
       ctx.fillRect(330, laneY(i) - 33, W - 330, 66);
       text(ctx, `⚠ ${w.warn} ⚠`, 660, laneY(i) - 2, 17, "#ffd9d4", "#5a0f0a");
+    });
+
+    // Each fund's NAV, drawn faintly along its lane.
+    LANES.forEach((kind, i) => {
+      const h = navHistory.current[i];
+      if (kind === "fd" || h.length < 2) return;
+      const lo = Math.min(...h);
+      const hi = Math.max(...h);
+      const span = Math.max(hi - lo, hi * 0.04);
+      ctx.strokeStyle = "rgba(255,255,255,0.45)";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      h.forEach((v, k) => {
+        const x = 440 + (k / 119) * 500;
+        const y = laneY(i) + 22 - ((v - lo) / span) * 44;
+        if (k) ctx.lineTo(x, y);
+        else ctx.moveTo(x, y);
+      });
+      ctx.stroke();
     });
 
     // FD interest coins and salary coins/notes.
@@ -370,7 +406,11 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
   });
 
   const years = WAVES.length;
-  const stability = hud.hearts >= 4 ? "high" : hud.hearts >= 2 ? "medium" : "low";
+  const stability = hud.hearts >= 3 ? "high" : hud.hearts >= 2 ? "medium" : "low";
+  const answerCrash = (keep) => {
+    input.current.crashChoice = keep ? "keep" : "stop";
+    sounds.tap?.();
+  };
   const weakest = result ? result.invested.indexOf(Math.min(...result.invested)) : 0;
   const playing = screen === "play";
   return createPortal(
@@ -408,7 +448,7 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
               <button
                 key={kind}
                 className={`sg-lane lane-${kind} ${hud.need[i] ? "need" : ""}`}
-                style={{ top: pct(laneY(i) - 25, H) }}
+                style={{ top: pct(laneY(i) - 31, H) }}
                 disabled={!playing || hud.wallet < RULES.feed}
                 onClick={() => investIn(i)}
                 aria-label={t("garden.investIn", { lane: t(`garden.lane.${kind}`), n: money(RULES.feed) })}
@@ -417,6 +457,13 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
                   {t(`garden.short.${kind}`)} <Icon aria-hidden="true" />
                 </b>
                 <small>{money(hud.lanes[i])}</small>
+                {kind === "fd" ? (
+                  <em className="sg-nav">{t("garden.fdRate", { p: Math.round(RULES.interestRate * 100) })}</em>
+                ) : (
+                  <em className={`sg-nav ${hud.navUp[i] ? "up" : "down"}`}>
+                    {t("garden.nav", { n: hud.navs[i].toFixed(2) })} {hud.navUp[i] ? "▲" : "▼"}
+                  </em>
+                )}
                 <kbd>{i + 1}</kbd>
               </button>
             );
@@ -439,6 +486,21 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
               </button>
             )}
           </div>
+
+          {hud.asking && playing && (
+            <div className="sg-ask" role="alert">
+              <b>{t("garden.crashAskTitle")}</b>
+              <p>{hud.sip ? t("garden.crashAskOn") : t("garden.crashAskOff")}</p>
+              <div>
+                <button className="sg-btn" onClick={() => answerCrash(true)}>
+                  {hud.sip ? t("garden.crashKeep") : t("garden.crashStart")}
+                </button>
+                <button className="sg-btn ghost" onClick={() => answerCrash(false)}>
+                  {hud.sip ? t("garden.crashStop") : t("garden.crashSkip")}
+                </button>
+              </div>
+            </div>
+          )}
 
           {paused && playing && (
             <div className="sg-over sg-paused">
@@ -539,7 +601,21 @@ function GardenRun({ mode = "practice", onWin, onClose, onGiveUp, onAgain }) {
                   ))}
                 </ul>
                 <p className="sg-lesson">{result.won ? t("garden.wonLesson") : t("garden.lostLesson", { lane: t(`garden.lane.${LANES[weakest]}`), n: money(result.invested[weakest]) })}</p>
-                {result.sips > 0 && <p className="sg-sipnote">{t("garden.sipNote", { n: result.sips })}</p>}
+                <div className="sg-sipbox">
+                  <b>{t("garden.sipBox")}</b>
+                  <ul>
+                    {result.funds.map((f) => (
+                      <li key={f.kind}>
+                        <span>{t(`garden.lane.${f.kind}`)}</span>
+                        <span>{t("garden.unitsHeld", { n: f.units.toFixed(1) })}</span>
+                        <span>{f.sipUnits ? t("garden.sipAvg", { n: `₹${f.sipAvg.toFixed(2)}` }) : t("garden.noSip")}</span>
+                        <span className={f.nav >= (f.sipAvg || f.startNav) ? "up" : "down"}>{t("garden.navNow", { n: `₹${f.nav.toFixed(2)}` })}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {result.crashChoice && <p>{t(`garden.crash_${result.crashChoice}`)}</p>}
+                  {result.sips > 0 && <p className="sg-sipnote">{t("garden.sipNote", { n: result.sips })}</p>}
+                </div>
                 <div className="sg-actions">
                   {story && result.won && (
                     <button className="sg-btn" autoFocus onClick={onWin}>
@@ -589,6 +665,9 @@ function snapshot(s) {
     worth: worth(s),
     lanes: s.lanes.map((L) => Math.round(L.money)),
     need: LANES.map((_, i) => needsMore(s, i)),
+    navs: s.lanes.map((L) => L.nav),
+    navUp: s.lanes.map((L) => L.nav >= L.navStart),
+    asking: Boolean(s.asking),
   };
 }
 
