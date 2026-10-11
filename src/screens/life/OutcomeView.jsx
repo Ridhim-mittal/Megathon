@@ -4,10 +4,11 @@ import { useT } from "../../i18n/index.jsx";
 import { content, select } from "../../ui/gameAdapter.js";
 import { PixelPortrait as Portrait } from "../../ui/PixelPortrait.jsx";
 import { Actor } from "./CardView.jsx";
+import { PixelIcon } from "../../ui/PixelIcon.jsx";
 
 // The speaker reacts to the choice: a big reaction, one line of story and the money as coins.
 // Then the answer, straight away: why a good choice works, or the smarter move and why.
-const REACTION = { good: "🎉", ok: "👍", risky: "😬", bad: "😟", neutral: "🙂" };
+const REACTION = { good: "star", ok: "thumbsUp", risky: "faceGrimace", bad: "faceSad", neutral: "faceSmile" };
 const RANK = { good: 4, ok: 3, neutral: 2, risky: 1, bad: 0 };
 // Story choices carry a quality in the content; the card the player sees never does.
 const storyChoices = (cardId) => {
@@ -84,7 +85,7 @@ export function OutcomeView({ life, dispatch, onLearn }) {
             <span className="eyebrow vn-kind">{t("outcome.eyebrow")}</span>
             <span className={`vn-stamp q-${quality}`}>
               <i className="vn-react" aria-hidden="true">
-                {REACTION[quality] ?? REACTION.neutral}
+                <PixelIcon name={REACTION[quality] ?? REACTION.neutral} size={24} />
               </i>
               {t(`outcome.react.${quality}`)}
             </span>

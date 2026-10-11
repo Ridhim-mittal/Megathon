@@ -147,7 +147,6 @@ export function MapScreen({ life, dispatch, settings, onHelp, onMenu, toast, onT
         onMenu={onMenu}
       />
       {phase === "map" && !overlay && <QuestLog chapter={chapter} onGo={go} onFinish={() => go("home", { finish: true })} />}
-      {phase === "map" && !overlay && <p className="map-controls">{t("map.controls")}</p>}
       <NotificationTray
         messages={phone.messages}
         phoneEvents={phone.unlocked ? phone.notifications : []}

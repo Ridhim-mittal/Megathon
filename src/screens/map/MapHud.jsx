@@ -1,13 +1,12 @@
 import React from "react";
-import { Brain, Heart, Home, Landmark, Smartphone, Smile, TrendingDown, Users, Wallet } from "lucide-react";
+import { Home, Landmark, Pause, Smartphone, TrendingDown, Wallet } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { TopControls } from "../../ui/Hud.jsx";
-import { Meter, Money } from "../../ui/Money.jsx";
+import { Money } from "../../ui/Money.jsx";
+import { LessonBadge } from "../../ui/LessonBadge.jsx";
 
-const METER_ICONS = { joy: Smile, health: Heart, family: Users, gyaan: Brain };
-
-// The top bar over the map: chapter and age, money, meters, dream, phone and controls.
-export function MapHud({ hud, chapter, goalTitle, settings, phone, onPhone, onAsk, onHelp, onMenu }) {
+// The top bar over the map: chapter and age, money, dream, the current lesson, pause, phone and controls.
+export function MapHud({ hud, chapter, goalTitle, settings, phone, lessonId, onPhone, onPause, onAsk, onHelp }) {
   const { t, money } = useT();
   return (
     <header className="map-hud">
@@ -37,11 +36,6 @@ export function MapHud({ hud, chapter, goalTitle, settings, phone, onPhone, onAs
           <Money value={hud.debt} />
         </span>
       </div>
-      <div className="hud-panel hud-meters" aria-label={t("hud.meters")}>
-        {["joy", "health", "family", "gyaan"].map((m) => (
-          <Meter key={m} id={m} label={t(`meter.${m}`)} value={hud.meters[m]} icon={METER_ICONS[m]} />
-        ))}
-      </div>
       <div className="hud-panel hud-dream" title={`${money(hud.dream.saved)} / ${money(hud.dream.target)}`}>
         <Home size={15} aria-hidden="true" />
         <div>
@@ -54,6 +48,12 @@ export function MapHud({ hud, chapter, goalTitle, settings, phone, onPhone, onAs
         <b>{hud.dream.reached ? "✓" : `${hud.dream.pct}%`}</b>
       </div>
       <div className="hud-right">
+        <LessonBadge lessonId={lessonId} />
+        {onPause && (
+          <button className="hud-button pause-button" onClick={onPause} aria-label={`${t("pause.pause")} (T)`} title={`${t("pause.pause")} (T)`}>
+            <Pause size={19} />
+          </button>
+        )}
         <button
           className={`hud-button phone-button ${phone.unlocked ? "" : "locked"}`}
           onClick={onPhone}
@@ -64,7 +64,7 @@ export function MapHud({ hud, chapter, goalTitle, settings, phone, onPhone, onAs
           <Smartphone size={19} />
           {phone.notifications.length > 0 && <b className="badge">{phone.notifications.length}</b>}
         </button>
-        <TopControls settings={settings} onAsk={onAsk} onHelp={onHelp} onMenu={onMenu} />
+        <TopControls settings={settings} onAsk={onAsk} onHelp={onHelp} />
       </div>
     </header>
   );

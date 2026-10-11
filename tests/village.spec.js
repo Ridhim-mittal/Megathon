@@ -44,12 +44,28 @@ async function toPrologue(page) {
   await startButton.click();
   await expect(page.getByRole("heading", { name: "The Tin Box" })).toBeVisible();
   await page.getByRole("button", { name: "Begin" }).click();
-  await expect(page.getByRole("heading", { name: "Give every rupee a home" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Save first?" })).toBeVisible();
+  await expect(page.getByRole("radio", { name: /Some/ })).toHaveAttribute("aria-checked", "true");
+}
+
+// A year can bring a surprise (fever, school fees…): tap OK on each one.
+async function dismissSurprises(page) {
+  await page.waitForTimeout(300);
+  for (let i = 0; i < 6; i++) {
+    const ok = page.locator(".sp-card").getByRole("button", { name: "OK" });
+    if (!(await ok.isVisible().catch(() => false))) return;
+    await ok.click();
+    await page.waitForTimeout(200);
+  }
 }
 
 // Follow the objective: walk there, and pick the choice whose label matches (or the first open one).
 async function playScene(page, label) {
+  await dismissSurprises(page);
   await page.locator(".objective-go").click();
+  // Some scenes start with their mini-game ("Play X to understand Y"); these tests skip it.
+  await expect(page.locator(".card-view, .pregame").first()).toBeVisible({ timeout: 20000 });
+  if (await page.locator(".pregame").isVisible()) await page.getByRole("button", { name: "Skip the game" }).click();
   await expect(page.locator(".card-view")).toBeVisible({ timeout: 20000 });
   const choice = label ? page.locator(".choice:not(.locked)", { hasText: label }) : page.locator(".choice:not(.locked)").first();
   await choice.first().click();
@@ -57,6 +73,7 @@ async function playScene(page, label) {
 
 // The first scene is Rat Guard: round 1 only offers the tin box (and is lost), then either.
 async function playRatGuard(page, second) {
+  await dismissSurprises(page);
   await page.locator(".objective-go").click();
   const game = page.getByRole("dialog", { name: "Rat Guard" });
   await expect(game).toBeVisible({ timeout: 20000 });
@@ -86,17 +103,19 @@ test("prologue: follow the objective, live three scenes, reach an outcome and it
   await expect(page.locator(".hud-chapter")).toContainText("Childhood");
   await page.getByRole("button", { name: "Live this year" }).click();
 
-  // The objective says where to go; a trail on the map leads there.
+  // The objective says where to go; a trail on the map leads there. The badge names the lesson.
   const objective = page.locator(".objective");
+  await expect(objective).toContainText("jatara");
+  await expect(page.locator(".lesson-badge")).toContainText("Needs before wants");
+  await playScene(page, "notebook first");
+  await continueOutcome(page);
+
   await expect(objective).toContainText("Walk home. Ammamma is calling you.");
   await expect(objective.getByRole("button", { name: "Go to Home" })).toBeVisible();
-
   await playRatGuard(page, "bank");
   await expect(objective).toContainText("Kavitha akka");
+  await expect(page.locator(".lesson-badge")).toContainText("Bank beats the tin box");
   await playScene(page, "one for me");
-  await continueOutcome(page);
-  await expect(objective).toContainText("jatara");
-  await playScene(page, "notebook first");
   await continueOutcome(page);
 
   // The chapter's outcome, and the flowchart of what else could have happened.
@@ -116,18 +135,23 @@ test("a very bad choice flashes STOP; thinking again keeps the scene open", asyn
   await start(page);
   await toPrologue(page);
   await page.getByRole("button", { name: "Live this year" }).click();
+  await playScene(page, "notebook first");
+  await continueOutcome(page);
   await playRatGuard(page, "tin");
   await playScene(page, "Buy the steel box");
-  await continueOutcome(page);
-  await playScene(page, "notebook first");
   await continueOutcome(page);
   await page.getByRole("button", { name: "Next chapter" }).click();
   await page.getByRole("button", { name: "Begin" }).click();
   await page.getByRole("button", { name: "Live this year" }).click();
   await playScene(page, "Hide it at home");
   await continueOutcome(page);
+  await playScene(page, "Walk away");
+  await continueOutcome(page);
+  await playScene(page, "Lend him");
+  await continueOutcome(page);
 
   // The OTP call: a countdown, and a STOP before reading the OTP aloud.
+  await dismissSurprises(page);
   await page.locator(".objective-go").click();
   await expect(page.locator(".timer-bar")).toBeVisible({ timeout: 20000 });
   await page.locator(".choice", { hasText: "Read the OTP aloud" }).click();
@@ -167,15 +191,15 @@ test("the language can be switched at any time and Hindi/Telugu fit the layout",
   await page.getByRole("button", { name: "11 साल की उम्र से शुरू करें" }).click();
   await expect(page.getByRole("heading", { name: "टिन का डिब्बा" })).toBeVisible();
   await page.getByRole("button", { name: "शुरू करें" }).click();
-  await expect(page.getByRole("heading", { name: "हर रुपये को घर दें" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "पहले बचत?" })).toBeVisible();
   for (const selector of [".map-hud", ".game-window"]) {
     const overflow = await page.locator(selector).evaluate((el) => el.scrollWidth - el.clientWidth);
     expect(overflow, selector).toBeLessThanOrEqual(1);
   }
   await page.getByRole("combobox", { name: "भाषा" }).selectOption("te");
-  await expect(page.getByRole("heading", { name: "ప్రతి రూపాయికి ఒక ఇల్లు ఇవ్వండి" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "ముందు పొదుపా?" })).toBeVisible();
   await page.locator(".window-budget .primary-button").click();
-  await expect(page.locator(".objective")).toContainText("అమ్మమ్మ");
+  await expect(page.locator(".objective")).toContainText("జాతర");
 });
 
 test("progress is saved: the title offers Continue after a reload", async ({ page }) => {
@@ -188,7 +212,7 @@ test("progress is saved: the title offers Continue after a reload", async ({ pag
   await expect(page.getByRole("button", { name: "Start a new life" })).toBeVisible();
   await page.getByRole("button", { name: "Continue my life" }).click();
   await expect(page.locator(".hud-chapter")).toContainText("Age 11");
-  await expect(page.locator(".objective")).toContainText("Ammamma");
+  await expect(page.locator(".objective")).toContainText("jatara");
 });
 
 test("Ask Ammamma answers offline", async ({ page }) => {

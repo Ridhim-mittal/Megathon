@@ -1180,13 +1180,13 @@
 .gloss-chip {
   display: inline;
   font: inherit;
-  font-weight: 650;
-  color: #6c5a8e;
-  background: #efe9f7;
+  font-weight: 800;
+  color: inherit;
+  background: none;
   border: 0;
-  border-bottom: 2px dotted #a596c4;
-  border-radius: 5px 5px 2px 2px;
-  padding: 0 4px;
+  border-bottom: 2px dotted #b9a98c; /* still tappable: the dotted line hints at a definition */
+  border-radius: 0;
+  padding: 0;
   cursor: help;
 }
 .gloss-pop,
@@ -1214,20 +1214,16 @@
   position: relative;
   display: inline;
 }
+/* Revealed phrases are simply bold: no colour band, so the text stays easy to read. */
 .clarity-phrase {
   display: inline;
   font: inherit;
+  font-weight: 750;
   color: inherit;
   border: 0;
-  padding: 0 3px;
-  border-radius: 5px;
-  background: linear-gradient(transparent 55%, #f4d77c 55%);
-  box-shadow: 0 0 0 0 #f4d77c;
-  animation: glow 2.4s ease-in-out infinite;
+  padding: 0;
+  background: none;
   cursor: pointer;
-}
-.clarity.free .clarity-phrase {
-  background: linear-gradient(transparent 55%, #cfe2b3 55%);
 }
 .clarity-truth {
   background: #fff6d7;

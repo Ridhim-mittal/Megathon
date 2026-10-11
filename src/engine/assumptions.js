@@ -33,6 +33,14 @@ export const ASSUMPTIONS = deepFreeze({
   // Yearly raise on any income (stage or job): roughly keeps pace with inflation.
   wageRaise: 0.05,
 
+  // Story mode: the yearly surprise inside a chapter (see yearSurprise in engine.js). Costs are
+  // in today's rupees, per stage; inflation scales them.
+  surprise: {
+    chance: 0.75,
+    cost: { child: [150, 350], teen: [400, 900], young: [2000, 5000], adult: [5000, 12000], settle: [6000, 15000] },
+    kinds: ["health", "repair", "school", "family"],
+  },
+
   budget: {
     // ₹ granularity of the budget sliders, per stage.
     step: { child: 10, teen: 50, young: 100, adult: 100, settle: 100 },

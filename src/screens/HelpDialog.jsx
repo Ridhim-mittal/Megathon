@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Gamepad2, Home, MapPin, OctagonAlert, Star, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { PixelPortrait } from "../ui/PixelPortrait.jsx";
+import { PixelIcon } from "../ui/PixelIcon.jsx";
 
 // "How to play": five little animated pictures, one line each. Arrow keys or the buttons move
 // between them; the last one starts the game.
@@ -61,7 +62,9 @@ function Art({ kind }) {
         <span className="tour-granny">
           <PixelPortrait role="mentor" />
         </span>
-        <span className="tour-bubble">💡</span>
+        <span className="tour-bubble">
+          <PixelIcon name="bulb" size={34} />
+        </span>
       </div>
     );
   return (

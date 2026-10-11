@@ -46,14 +46,14 @@
     "comingSoon": "Coming soon",
     "chips": {
       "village": [
-        "🌾 Cotton village",
-        "👵 Ammamma's love",
+        "Cotton village",
+        "Ammamma's love",
         "₹0 in the bank"
       ],
       "city": [
-        "🛺 Hyderabad basti",
-        "📱 A phone early",
-        "⚠️ Scams find you"
+        "Hyderabad basti",
+        "A phone early",
+        "Scams find you"
       ]
     }
   },
@@ -315,7 +315,9 @@
     "repair": "repair",
     "theft": "theft",
     "fire": "fire",
-    "other": "surprise"
+    "other": "surprise",
+    "school": "school",
+    "family": "family function"
   },
   "yearEnd": {
     "eyebrow": "AGE {age} · THE YEAR'S END",
@@ -373,7 +375,12 @@
       "fake": "Play to choose: Spot the fake",
       "salary": "Play to choose: Salary split",
       "baskets": "Play to choose: Basket juggle",
-      "garden": "Play to choose: SIP Garden"
+      "garden": "Play to choose: SIP Garden",
+      "snake": "Play to choose: Price Snake",
+      "snowball": "Play to choose: Savings Snowball",
+      "swipe": "Play to choose: Swipe Bazaar",
+      "patang": "Play to choose: Patang Market",
+      "rush": "Play to choose: Insurance Rush"
     }
   },
   "document": {
@@ -996,7 +1003,7 @@
       "emi_heavy": "Warning: EMIs eat over half your income. Don't take any new loan.",
       "costly_debt": "You have costly debt. Paying it off is the best 'investment' you can make."
     },
-    "warnChip": "🛑 {heeded} stopped · {ignored} went ahead"
+    "warnChip": "{heeded} stopped · {ignored} went ahead"
   },
   "hero": {
     "ribbon": "A NEW LIFE",
@@ -1104,7 +1111,7 @@
       "swipeBazaar": {
         "name": "Swipe Bazaar",
         "tag": "Swipe to buy. Let it fall to say no.",
-        "goal": "Six months, ₹3,000 a month. Swipe to buy, let things fall to say no. Pay your needs, save, and don't get chained by EMIs.",
+        "goal": "Three months, ₹3,000 a month. Swipe to buy, let things fall to say no. Pay your needs, save, and don't get chained by EMIs.",
         "how": "Swipe with your finger or mouse to buy. Let things fall to say no. Press T or Space to think first.",
         "lesson": "Friends' approval fades fast. EMIs and loan-app debts don't. Pause and check the full price before you say yes."
       }
@@ -1545,30 +1552,34 @@
       "sum": {
         "title": "Month {n} done",
         "bought": "You bought",
-        "emiLine": "{emi}/month × {months}",
         "nothing": "Nothing. Nice restraint!",
-        "saidNo": "You said no {n} times.",
-        "paid": "Paid this month",
-        "emiPaid": "EMIs paid",
-        "extra": "Extra you signed up for (interest and fees)",
         "needs": "Needs",
-        "needsVal": "{paid} paid, {missed} missed",
         "saved": "Savings",
         "status": "Status",
-        "next": "Next month: {income} income − {emis} EMIs − {fines} fines = {left} left. Needs cost {needs}.",
         "squeeze": "You won't be able to pay all your needs!",
-        "continue": "Start month {n}"
+        "continue": "Start month {n}",
+        "month": "Month {n} of {total}",
+        "headGood": "You saved {saved} and said no {no} times.",
+        "headEmi": "EMIs will take {amount} of next month's money.",
+        "headMissed": "You missed {n} needs. Fines come next month.",
+        "headSqueeze": "Next month you can't pay for all your needs.",
+        "spent": "Spent",
+        "emiMonth": "EMIs a month",
+        "emiChip": "{emi}/mo",
+        "nextTitle": "Next month's {income}",
+        "nextLine": "EMIs {emis} · fines {fines} · {left} left. Needs cost {needs}."
       },
       "final": {
-        "title": "Six months later",
+        "title": "After {n} months",
         "saved": "Savings",
         "cash": "Cash left",
         "owed": "EMIs still to pay",
         "extra": "Extra over the sticker price",
-        "fees": "Late fees and fines",
-        "needs": "Needs",
-        "status": "Status with friends now",
-        "score": "See my score"
+        "score": "See my score",
+        "bought": "What you bought",
+        "needsLine": "Needs paid {paid}/{total}",
+        "feesLine": "Late fees and fines {amount}",
+        "statusLine": "Status with friends {n}/100"
       },
       "take": {
         "emi": "You paid {extra} extra for a {item} your friends stopped talking about by week 2.",
@@ -1584,6 +1595,18 @@
         "more": "…and {n} more payments"
       },
       "streak": "Saver streak ×{n}!"
+    },
+    "story": {
+      "wonTitle": "You did it!",
+      "won": "Your choice is unlocked.",
+      "lostTitle": "So close!",
+      "lost": "Get at least one star to unlock this choice.",
+      "go": "Continue the story",
+      "other": "Pick another choice",
+      "freeWonTitle": "Great play!",
+      "freeLostTitle": "Nice try!",
+      "freeText": "Now let's see what you choose.",
+      "continue": "Continue to the story"
     }
   },
   "ratguard": {
@@ -1856,6 +1879,107 @@
     "keyHint": "opens it from anywhere on the map",
     "skip": "Skip",
     "show": "Show me",
+    "open": "Open my phone"
+  },
+  "lessonTag": {
+    "L01": "Needs before wants",
+    "L02": "Saving is a habit",
+    "L03": "Why prices keep rising",
+    "L04": "Bank beats the tin box",
+    "L05": "Money that grows itself",
+    "L06": "Never share your OTP",
+    "L07": "Friends, pressure and EMIs",
+    "L08": "Every choice has a cost",
+    "L09": "Pay safely with UPI",
+    "L10": "Study, work or both?",
+    "L11": "Easy money is a trap",
+    "L12": "Plan your first salary",
+    "L13": "Keep an emergency fund",
+    "L14": "Compare before you borrow",
+    "L15": "Never rent your account",
+    "L16": "Insurance that truly protects",
+    "L17": "Start investing early",
+    "L18": "Don't let spending balloon",
+    "L19": "Spread it, stay calm",
+    "L20": "Be ready for bad days",
+    "L21": "Watch fees and mis-selling",
+    "L22": "Too good to be true",
+    "L23": "Check papers before buying",
+    "L24": "Plan for old age"
+  },
+  "lessonBadge": {
+    "label": "Lesson",
+    "short": "Lesson"
+  },
+  "pause": {
+    "pause": "Pause",
+    "title": "Paused",
+    "text": "Take a breath. Time has stopped in the village, and every countdown waits for you.",
+    "resume": "Resume",
+    "menu": "Main menu",
+    "key": "pauses and resumes",
+    "soundOn": "Sound: on",
+    "soundOff": "Sound: off",
+    "help": "How to play"
+  },
+  "save": {
+    "title": "Save first?",
+    "perMonth": "/month",
+    "income": "{n} a month",
+    "summary": "Saving {saved} a month, {fun} for fun.",
+    "part": {
+      "needs": "Needs",
+      "wants": "Fun",
+      "emergency": "Safety",
+      "goal": "Dream",
+      "invest": "Grow"
+    },
+    "level": {
+      "little": "Little",
+      "some": "Some",
+      "lots": "Lots"
+    },
+    "dream": "Dream",
+    "safety": "Safety",
+    "fun": "Fun",
+    "debt": "Loan",
+    "dock": "Your jars",
+    "atAge": "Age {n}",
+    "never": "Never 😢",
+    "tight": "Tight year",
+    "tip": "safety first, then dream",
+    "kind": {
+      "health": "Fever!",
+      "repair": "Phone broke!",
+      "school": "School fees!",
+      "family": "Family wedding!"
+    },
+    "ageTag": "Age {n}",
+    "loan": "Borrowed {n} · {p}%/yr",
+    "verdict": {
+      "safe": "Safety jar saved you!",
+      "pocket": "Paid from pocket money",
+      "dream": "Dream money gone!",
+      "borrowed": "No safety money → loan"
+    },
+    "ok": "OK",
+    "howTitle": "How this works",
+    "how1": "Pick how much to save",
+    "how2": "Safety jar fills first, then your dream",
+    "how3": "The rest is fun money"
+  },
+  "pregame": {
+    "eyebrow": "Before you choose",
+    "play": "Play {game}",
+    "understand": "to understand:",
+    "then": "Then: {scene}",
+    "start": "Start the game",
+    "skip": "Skip the game"
+  },
+  "news": {
+    "tag": "Breaking news",
+    "title": "Black Monday!",
+    "text": "Markets just fell 22% in a month. Your phone is buzzing with panic messages.",
     "open": "Open my phone"
   }
 }

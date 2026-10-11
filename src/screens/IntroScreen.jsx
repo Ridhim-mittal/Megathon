@@ -5,6 +5,7 @@ import { storyline } from "../ui/gameAdapter.js";
 import { PixelPortrait as Portrait } from "../ui/PixelPortrait.jsx";
 import { ScreenBar } from "../ui/Sheet.jsx";
 import { TopControls } from "../ui/Hud.jsx";
+import { PixelIcon } from "../ui/PixelIcon.jsx";
 
 // Each intro panel names a scene (content: intro[].scene). A scene sets the sky, the props and any
 // extra people; the people named in the text ({cast:…}) and the speaker always step in too.
@@ -79,7 +80,9 @@ function Scene({ scene, people, speaker, castName, youLabel, avatar }) {
         ))}
         {scene.you && (
           <figure className="scene-person is-you" style={{ animationDelay: `${0.15 + people.length * 0.14}s` }}>
-            <span className="you-mark" aria-hidden="true">★</span>
+            <span className="you-mark" aria-hidden="true">
+              <PixelIcon name="star" size={18} />
+            </span>
             <Portrait role="player" avatar={avatar} stage="child" />
             <figcaption>{youLabel}</figcaption>
           </figure>

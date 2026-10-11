@@ -8,7 +8,7 @@ const KEY = "lakshyam.dev";
 
 export const DEV_FLAGS = {
   freezeTimers: "Freeze timers (rush + decide-fast)",
-  autoWin: "Auto-win story mini-games",
+  skipPreGames: "Skip the play-first mini-games",
   skipSceneGames: "Read played scenes (no Rat Guard)",
   noAds: "No arcade ads",
   noHints: "No one-time tips",

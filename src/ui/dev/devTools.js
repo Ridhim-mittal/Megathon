@@ -29,12 +29,6 @@ export function storyMap() {
   }));
 }
 
-// The scene that offers a choice (choice ids are unique across the story), or null.
-export function sceneOfChoice(choiceId) {
-  for (const m of missions()) for (const n of m.nodes ?? []) if ((n.choices ?? []).some((c) => c.id === choiceId)) return n.id;
-  return null;
-}
-
 function findNode(nodeId) {
   for (const [index, m] of missions().entries()) {
     const n = (m.nodes ?? []).find((x) => x.id === nodeId);

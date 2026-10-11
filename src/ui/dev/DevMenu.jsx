@@ -8,9 +8,9 @@ import { ChevronDown, ChevronRight, Minus, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { ArcadeGame, ArcadeMenu } from "../arcade/Arcade.jsx";
 import { GAMES } from "../arcade/games.js";
-import { CHOICE_GAMES, GAME_COMPONENTS, SCENE_GAMES } from "../games/choiceGames.js";
+import { GAME_COMPONENTS, GAME_NAME, PRE_GAMES, SCENE_GAMES } from "../games/choiceGames.js";
 import { DEV_FLAGS, devState, setDev, setDevFlag, useDevState } from "./devFlags.js";
-import { cheats, finishMission, jumpToMission, jumpToNode, playOne, playToEnding, sceneOfChoice, storyMap, whereAmI } from "./devTools.js";
+import { cheats, finishMission, jumpToMission, jumpToNode, playOne, playToEnding, storyMap, whereAmI } from "./devTools.js";
 
 const TABS = ["story", "games", "cheats", "tools"];
 
@@ -175,15 +175,16 @@ const nameOf = (C, fallback) => C?.displayName || C?.name || fallback;
 function GamesTab({ api, report, onGame }) {
   const { t } = useT();
   const life = api.life?.mode === "story" ? api.life : null;
-  // Story games: those that gate a choice, then those played as a whole scene.
+  // Story games: those a scene plays first (PRE_GAMES), then those played as a whole scene.
   const story = useMemo(() => {
     const list = Object.entries(GAME_COMPONENTS).map(([kind, Game]) => {
-      const choice = Object.keys(CHOICE_GAMES).find((c) => CHOICE_GAMES[c] === kind);
-      return { key: kind, Game, label: nameOf(Game, kind), gate: choice ? `choice “${choice}”` : "not in the story", scene: choice ? sceneOfChoice(choice) : null };
+      const scene = Object.keys(PRE_GAMES).find((node) => PRE_GAMES[node] === kind) ?? null;
+      const name = GAME_NAME[kind] ? t(GAME_NAME[kind]) : null;
+      return { key: kind, Game, label: name && name !== GAME_NAME[kind] ? name : nameOf(Game, kind), gate: scene ? "plays first" : "not in the story", scene };
     });
     for (const [node, Game] of Object.entries(SCENE_GAMES)) list.push({ key: `scene-${node}`, Game, label: nameOf(Game, node), gate: "played scene", scene: node });
     return list;
-  }, []);
+  }, [t]);
   const label = (id) => {
     const name = t(`arcade.games.${id}.name`);
     return name.startsWith("arcade.") ? id : name;
