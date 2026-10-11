@@ -33,7 +33,7 @@ import { Flowchart } from "./story/Flowchart.jsx";
 import { MissionEnd } from "./story/MissionEnd.jsx";
 import { EvidenceFile, MissionIntro, ObjectiveTracker, TimerBar, WarningFlash } from "./story/StoryParts.jsx";
 
-// Story mode: one mission per chapter. The objective says where to go and a trail leads there;
+// Story mode: one mission per chapter. The objective says where to go and an arrow points there;
 // each place plays the next scene; some scenes race the clock; very bad choices flash a STOP.
 export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, onToast }) {
   const { t, pick } = useT();

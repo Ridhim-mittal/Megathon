@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Calculator, CarFront, Flower2, Gamepad2, Lightbulb, Rat, RotateCcw, FileSearch, ShoppingBag, Snowflake, Star, Waves, Weight, Wind, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calculator, CarFront, Flower2, Gamepad2, Lightbulb, Rat, RotateCcw, FileSearch, ShoppingBag, Snowflake, Waves, Weight, Wind, X } from "lucide-react";
+import { PixelIcon } from "../PixelIcon.jsx";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -19,6 +20,7 @@ import { FloodRescue } from "../games/FloodRescue.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
 export const GAME_ICON = { snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind, priceSnake: Weight, swipeBazaar: ShoppingBag };
+// The score that counts as a win (story choices unlock at the first one); no stars are shown.
 const STARS = { snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], patangMarket: [8000, 18000, 25000], priceSnake: [5, 12, 20], swipeBazaar: SWIPE_CONFIG.stars };
 export const starsFor = (id, score) => STARS[id].filter((x) => score >= x).length;
 
@@ -48,7 +50,11 @@ export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
           <X size={17} />
         </button>
       </header>
-      <p className="arcade-sub">{t("arcade.subtitle")}</p>
+      <p className="arcade-sub">
+        <PixelIcon name="gamepad" size={26} />
+        <span>{t("arcade.subtitle")}</span>
+        <PixelIcon name="star" size={22} />
+      </p>
       <div className="arcade-tiles all-games">
         {GAMES.map((g) => {
           const Icon = GAME_ICON[g.id];
@@ -59,7 +65,6 @@ export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
               </span>
               <b>{t(`arcade.games.${g.id}.name`)}</b>
               <small>{t(`arcade.games.${g.id}.tag`)}</small>
-              <Stars n={starsFor(g.id, best[g.id] ?? 0)} />
             </button>
           );
         })}
@@ -85,16 +90,6 @@ export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
       )}
       {playing && <playing.Game mode="practice" avatar={avatar} onClose={() => setStory(null)} onGiveUp={() => setStory(null)} />}
     </div>
-  );
-}
-
-function Stars({ n, big = false }) {
-  return (
-    <span className={`arcade-stars ${big ? "big" : ""}`} aria-label={`${n}/3`}>
-      {[0, 1, 2].map((i) => (
-        <Star key={i} size={big ? 30 : 14} className={i < n ? "on" : ""} style={big ? { animationDelay: `${0.25 + i * 0.25}s` } : undefined} />
-      ))}
-    </span>
   );
 }
 
@@ -198,7 +193,7 @@ export function ArcadeGame({ gameId, onClose, onBack, story = null }) {
           <HowTo gameId={gameId} />
           {best > 0 && (
             <p className="quiet">
-              {t("arcade.best", { score: best })} <Stars n={starsFor(gameId, best)} />
+              {t("arcade.best", { score: best })}
             </p>
           )}
           <button ref={start} className="primary-button big" onClick={begin}>
@@ -230,7 +225,6 @@ export function ArcadeGame({ gameId, onClose, onBack, story = null }) {
 
       {stage === "done" && final && (
         <div className="arcade-done">
-          <Stars n={starsFor(gameId, final.score)} big />
           {gameId === "priceSnake" && <SnakeResult final={final} />}
           {gameId !== "priceSnake" && (
             <>
@@ -418,10 +412,7 @@ function SnowballIntro({ best, startRef, onStart }) {
           </div>
         </section>
       </div>
-      <p className="snow-stars">
-        <Stars n={3} /> {t("arcade.snow.stars", { a: "₹400", b: "₹650", c: "₹850" })}
-        {best > 0 && <em> · {t("arcade.best", { score: `₹${best.toLocaleString("en-IN")}` })}</em>}
-      </p>
+      {best > 0 && <p className="snow-stars">{t("arcade.best", { score: `₹${best.toLocaleString("en-IN")}` })}</p>}
       <button ref={startRef} className="primary-button big snow-go" onClick={onStart}>
         {t("arcade.play", { s: gameById.snowball.seconds })} <ArrowRight size={18} />
       </button>
