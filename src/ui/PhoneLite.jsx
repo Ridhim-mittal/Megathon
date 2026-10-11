@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BookOpen, CandlestickChart, Gamepad2, Landmark, MessageSquare, Plus, TrendingUp, Undo2 } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { select } from "./gameAdapter.js";
+import { sounds } from "./sound.js";
 
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -11,6 +12,13 @@ export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, on
   const { t, plain } = useT();
   const [app, setApp] = useState(initialApp);
   const [sel, setSel] = useState(0);
+  useEffect(() => {
+    sounds.whooshUp();
+    return () => sounds.whooshDown();
+  }, []);
+  useEffect(() => {
+    sounds.menu();
+  }, [sel]);
   const [now, setNow] = useState(() => new Date());
   const phone = select.phone(life);
   const market = select.market(life);

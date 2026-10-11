@@ -2293,6 +2293,45 @@
   font-size: 12px;
   color: var(--muted);
 }
+.turning-points {
+  max-height: none;
+  gap: 8px;
+}
+.turning-points .t-age {
+  grid-row: span 3;
+}
+.turning-points .t-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+.tp-tag {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 1px 8px;
+  border-radius: 999px;
+}
+.tp-tag.better {
+  background: #fdecc8;
+  color: #8a5a00;
+}
+.tp-tag.worse {
+  background: #dff1e4;
+  color: #23784a;
+}
+.t-effect {
+  grid-column: 2;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.t-effect.better {
+  color: #8a5a00;
+}
+.t-effect.worse {
+  color: #23784a;
+}
 .timeline-alts {
   display: flex;
   flex-wrap: wrap;

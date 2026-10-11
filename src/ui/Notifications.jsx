@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, Bell, BookOpen, CalendarCheck, ChevronDown, ChevronUp, Home, Landmark, MessageSquare, Smartphone, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { headlineText } from "./movements.js";
+import { sounds } from "./sound.js";
 
 // Phone notifications over the map, so updates and SMSes show without opening the phone.
 // New messages pop up for a few seconds (a scam reveal stays until dismissed); the bell opens
@@ -27,6 +28,7 @@ export function NotificationTray({ messages, phoneEvents, canFinish, active, onO
       const next = { ...prev };
       let changed = false;
       for (const m of unseen) if (!next[m.id]) (next[m.id] = now), (changed = true);
+      if (changed) sounds.ping();
       return changed ? next : prev;
     });
   }, [active, unseen.map((m) => m.id).join()]); // eslint-disable-line react-hooks/exhaustive-deps
