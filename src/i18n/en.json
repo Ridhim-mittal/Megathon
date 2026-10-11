@@ -373,7 +373,12 @@
       "fake": "Play to choose: Spot the fake",
       "salary": "Play to choose: Salary split",
       "baskets": "Play to choose: Basket juggle",
-      "garden": "Play to choose: SIP Garden"
+      "garden": "Play to choose: SIP Garden",
+      "snake": "Play to choose: Price Snake",
+      "snowball": "Play to choose: Savings Snowball",
+      "swipe": "Play to choose: Swipe Bazaar",
+      "patang": "Play to choose: Patang Market",
+      "rush": "Play to choose: Insurance Rush"
     }
   },
   "document": {
@@ -1584,6 +1589,14 @@
         "more": "…and {n} more payments"
       },
       "streak": "Saver streak ×{n}!"
+    },
+    "story": {
+      "wonTitle": "You did it!",
+      "won": "Your choice is unlocked.",
+      "lostTitle": "So close!",
+      "lost": "Get at least one star to unlock this choice.",
+      "go": "Continue the story",
+      "other": "Pick another choice"
     }
   },
   "ratguard": {
@@ -1857,5 +1870,35 @@
     "skip": "Skip",
     "show": "Show me",
     "open": "Open my phone"
+  },
+  "lessonTag": {
+    "L01": "Needs before wants",
+    "L02": "Saving is a habit",
+    "L03": "Why prices keep rising",
+    "L04": "Bank beats the tin box",
+    "L05": "Money that grows itself",
+    "L06": "Never share your OTP",
+    "L07": "Friends, pressure and EMIs",
+    "L08": "Every choice has a cost",
+    "L09": "Pay safely with UPI",
+    "L10": "Study, work or both?",
+    "L11": "Easy money is a trap",
+    "L12": "Plan your first salary",
+    "L13": "Keep an emergency fund",
+    "L14": "Compare before you borrow",
+    "L15": "Never rent your account",
+    "L16": "Insurance that truly protects",
+    "L17": "Start investing early",
+    "L18": "Don't let spending balloon",
+    "L19": "Spread it, stay calm",
+    "L20": "Be ready for bad days",
+    "L21": "Watch fees and mis-selling",
+    "L22": "Too good to be true",
+    "L23": "Check papers before buying",
+    "L24": "Plan for old age"
+  },
+  "lessonBadge": {
+    "label": "Lesson",
+    "short": "Lesson"
   }
 }

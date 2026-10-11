@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, Rat, TriangleAlert, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
-import { goals, select } from "../ui/gameAdapter.js";
+import { content, goals, select } from "../ui/gameAdapter.js";
 import { AskAmmamma } from "../ui/AskAmmamma.jsx";
 import { GyaanLite } from "../ui/GyaanLite.jsx";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
@@ -13,8 +13,9 @@ import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
 import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { PhoneTour } from "../ui/PhoneTour.jsx";
+import { LessonBadge } from "../ui/LessonBadge.jsx";
 import { sounds } from "../ui/sound.js";
-import { CHOICE_GAMES, GAME_COMPONENTS, SCENE_GAMES } from "../ui/games/choiceGames.js";
+import { GAME_COMPONENTS, SCENE_GAMES, gameFor } from "../ui/games/choiceGames.js";
 import { RatGuard } from "../ui/games/RatGuard.jsx";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
@@ -117,6 +118,13 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
 
   // ---------- choices: locks and STOP warnings ----------
   const card = select.currentCard(life);
+  // The lesson of the scene being played, or of the scene the objective leads to.
+  const lessonId =
+    phase === "card" || phase === "outcome"
+      ? card?.lesson ?? null
+      : phase === "map" && objective?.node
+        ? (content.story?.missions ?? []).flatMap((m) => m.nodes ?? []).find((n) => n.id === objective.node)?.lesson ?? null
+        : null;
   const [game, setGame] = useState(null); // a choice that needs a mini-game won first
   const gameOpen = useRef(false);
   gameOpen.current = Boolean(game);
@@ -125,9 +133,10 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       // While a mini-game is open its own keys (1–3) must not pick a card choice.
       if (action.type === "CHOOSE" && gameOpen.current && !action.wonGame) return null;
       if (action.type === "CHOOSE" && !action.ignoredWarning) {
-        const c = select.currentCard(life)?.choices.find((x) => x.id === action.choiceId);
-        if (c && !c.locked && CHOICE_GAMES[c.id] && !action.wonGame) {
-          setGame({ choiceId: c.id, kind: CHOICE_GAMES[c.id] });
+        const here = select.currentCard(life);
+        const c = here?.choices.find((x) => x.id === action.choiceId);
+        if (c && !c.locked && gameFor(here.id, c.id) && !action.wonGame) {
+          setGame({ choiceId: c.id, kind: gameFor(here.id, c.id) });
           return null;
         }
         if (c?.locked) {
@@ -299,7 +308,8 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   }
 
   return (
-    <div className={`mapgame storygame phase-${phase} ${busy ? "is-busy" : ""} ${objective?.rush && phase === "map" ? "rushing" : ""}`}>
+    <div className={`mapgame storygame phase-${phase} ${busy ? "is-busy" : ""} ${objective?.rush && phase === "map" ? "rushing" : ""} ${lessonId && !showIntro ? "has-lesson" : ""}`}>
+      {!showIntro && <LessonBadge lessonId={lessonId} />}
       <MapCanvas
         map={map}
         avatar={avatar}

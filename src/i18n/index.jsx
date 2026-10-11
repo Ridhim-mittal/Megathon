@@ -35,6 +35,25 @@ export function signedMoney(n) {
 }
 
 const TOKEN = /\{player\}|\{cast:([^}]+)\}|\[\[([^\]]+)\]\]/g;
+// Words to skim: **marked** text, rupee amounts (₹12,000, ₹4 lakh) and percentages (36%).
+const STRONG = /\*\*([^*]+)\*\*|₹\s?\d(?:[\d,]*\d)?(?:\.\d+)?(?:\s?(?:lakh|crore|लाख|करोड़|లక్షలు|లక్ష|కోట్లు|కోటి))?|\d+(?:\.\d+)?\s?%/g;
+function strong(text, prefix) {
+  const out = [];
+  let last = 0;
+  let i = 0;
+  for (const m of text.matchAll(STRONG)) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    out.push(
+      <strong key={`${prefix}-s${i++}`} className="rt-key">
+        {m[1] ?? m[0]}
+      </strong>,
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+const unmark = (text) => (typeof text === "string" ? text.replace(/\*\*([^*]+)\*\*/g, "$1") : text);
 
 // Ammamma's pet name for the player ("kanna", in every language). Once the player has a name,
 // she uses that instead.
@@ -70,7 +89,7 @@ export function useT() {
 
     // Plain text with tokens resolved (for labels and aria).
     const plain = (obj, vars) =>
-      named(fill(pick(obj), vars)).replace(TOKEN, (all, castId, term) =>
+      unmark(named(fill(pick(obj), vars))).replace(TOKEN, (all, castId, term) =>
         all === "{player}" ? playerName : castId ? castName(castId) : termName(term),
       );
 
@@ -79,14 +98,14 @@ export function useT() {
       let last = 0;
       let i = 0;
       for (const m of text.matchAll(TOKEN)) {
-        if (m.index > last) out.push(text.slice(last, m.index));
+        if (m.index > last) out.push(...strong(text.slice(last, m.index), `${prefix}-${i}`));
         const key = `${prefix}-${i++}`;
         if (m[0] === "{player}") out.push(<b key={key} className="rt-player">{playerName}</b>);
         else if (m[1]) out.push(<b key={key} className="rt-cast">{castName(m[1])}</b>);
         else out.push(<GlossaryChip key={key} term={m[2]} name={termName(m[2])} short={pick(glossary[m[2]]?.short)} onOpen={ctx?.onGlossary} />);
         last = m.index + m[0].length;
       }
-      if (last < text.length) out.push(text.slice(last));
+      if (last < text.length) out.push(...strong(text.slice(last), `${prefix}-e`));
       return out;
     }
 
