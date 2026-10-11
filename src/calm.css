@@ -1574,3 +1574,314 @@
     animation: none !important;
   }
 }
+
+/* ---------- Skim words: bold keywords and money in story text ---------- */
+.rt-key {
+  font-weight: 800;
+  color: #2f2416;
+  background: linear-gradient(transparent 60%, rgba(255, 210, 90, 0.55) 60%);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* ---------- Lesson badge at the top: number + a few words ---------- */
+.lesson-badge {
+  --pc: #e0a33c;
+  position: absolute;
+  top: 66px;
+  left: 50%;
+  z-index: 26;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 14px 4px 4px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--pc) 45%, white);
+  background: #fffdf6;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--pc) 55%, white), 0 6px 16px rgba(60, 40, 10, 0.16);
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: badge-drop 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+.lesson-badge.pillar-SAVE { --pc: #5aa843; }
+.lesson-badge.pillar-INVEST { --pc: #3b82b8; }
+.lesson-badge.pillar-SAFE { --pc: #d9573f; }
+.lesson-badge-num {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-width: 46px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--pc);
+  font-family: var(--px-font);
+  font-size: 17px;
+  line-height: 0.9;
+}
+.lesson-badge-num small {
+  font-family: "Manrope Variable", sans-serif;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.lesson-badge-text {
+  font-size: 14px;
+  font-weight: 800;
+  color: #3a2a18;
+}
+.lesson-badge-icon {
+  font-size: 15px;
+}
+.storygame.has-lesson .objective {
+  top: 114px;
+}
+@keyframes badge-drop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -14px) scale(0.9);
+  }
+}
+
+/* ---------- Arcade game inside the story: did it unlock the choice? ---------- */
+.story-verdict {
+  display: grid;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 2px solid #b8dca0;
+  background: linear-gradient(180deg, #f4fbec, #e8f5da);
+  animation: answer-in 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+.story-verdict.lost {
+  border-color: #f0cf7a;
+  background: linear-gradient(180deg, #fffaea, #fff2cc);
+}
+.story-verdict p {
+  margin: 0;
+  font-size: 15px;
+  color: #3e3424;
+}
+.story-verdict b {
+  font-size: 17px;
+}
+
+/* ---------- Word popups: float above everything, open on hover ---------- */
+.float-pop {
+  position: fixed;
+  z-index: 1000;
+  display: block;
+  width: max-content;
+  max-width: min(300px, 80vw);
+  padding: 10px 13px;
+  border-radius: 14px;
+  background: #3a4a36;
+  color: #fbf6e2;
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+  box-shadow: 0 10px 26px rgba(20, 30, 20, 0.35);
+  animation: pop-float 0.18s ease-out both;
+}
+.float-pop b {
+  display: block;
+  margin-bottom: 2px;
+  color: #ffd98a;
+  font-size: 14px;
+}
+.float-pop.clarity-float {
+  background: #fff6d7;
+  color: #5b4a24;
+  border: 2px solid #e6cf8b;
+}
+.float-pop::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+.float-pop.above::after {
+  bottom: -5px;
+}
+.float-pop.below::after {
+  top: -5px;
+}
+.gloss-chip {
+  cursor: help;
+}
+@keyframes pop-float {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+/* ---------- Choices never fade from invisible: they slide in, always visible ---------- */
+.storygame .card-view .choice {
+  animation: choice-slide 0.35s cubic-bezier(0.2, 1.2, 0.4, 1) both;
+}
+.storygame .card-view .choice:nth-child(n) {
+  animation-delay: 0s;
+}
+.storygame .card-view .choice:nth-child(3) {
+  animation-delay: 0.06s;
+}
+.storygame .card-view .choice:nth-child(4) {
+  animation-delay: 0.12s;
+}
+.storygame .card-view .choice:nth-child(5) {
+  animation-delay: 0.18s;
+}
+@keyframes choice-slide {
+  from {
+    transform: translateY(10px);
+  }
+}
+
+/* ---------- Pause ---------- */
+.pause-button {
+  color: #6b4a14;
+}
+.pause-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(28, 38, 20, 0.5);
+  backdrop-filter: blur(4px);
+  animation: fade-in 0.2s ease both;
+}
+.pause-card {
+  width: min(360px, 100%);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 26px 24px 18px;
+  text-align: center;
+  border-radius: 24px;
+  border: 3px solid #e7d6ac;
+  background: #fffdf6;
+  box-shadow: 0 6px 0 #e0c992, 0 20px 50px rgba(37, 49, 34, 0.3);
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  animation: page-in 0.4s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+}
+.pause-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #fff;
+  background: #e0a33c;
+  box-shadow: 0 4px 0 #b9821f;
+  animation: pin-bob 2s ease-in-out infinite;
+}
+.pause-card h2 {
+  margin: 4px 0 0;
+  font-family: var(--px-font);
+  font-size: 26px;
+  color: #3a2a18;
+}
+.pause-card p {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #5a4a30;
+}
+.pause-card .primary-button {
+  justify-content: center;
+  min-width: 200px;
+}
+.pause-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #8a7a5a;
+}
+.pause-key kbd {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid #3a2a18;
+  background: #fff;
+  font-weight: 800;
+  box-shadow: 0 2px 0 #3a2a18;
+}
+
+/* ---------- Before the question: "Play X to understand Y" ---------- */
+.pregame {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 10px 8px 4px;
+  text-align: center;
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+}
+.pregame-eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a08a5a;
+}
+.pregame-icon {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  margin: 4px 0;
+  border-radius: 28px;
+  color: #fff;
+  background: linear-gradient(160deg, #7a4fb8, #5b3a96);
+  border: 3px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 0 #45297a, 0 12px 26px rgba(70, 40, 120, 0.25);
+  animation: arcade-bob 2.2s ease-in-out infinite;
+}
+.pregame h2 {
+  margin: 4px 0 0;
+  font-family: var(--px-font);
+  font-size: 28px;
+  color: #3a2a18;
+}
+.pregame-why {
+  margin: 0;
+  font-size: 16px;
+  color: #5a4a30;
+}
+.pregame-why b {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: #fff3c4;
+  border: 2px solid #f0d488;
+  color: #6b4a14;
+}
+.pregame-scene {
+  margin: 2px 0 6px;
+  font-size: 13px;
+  color: #8a7a5a;
+}
+.pregame .pregame-go {
+  min-width: 240px;
+  justify-content: center;
+}
+.pregame-skip {
+  font-size: 12.5px;
+  opacity: 0.75;
+}

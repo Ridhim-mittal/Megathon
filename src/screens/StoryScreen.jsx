@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, Rat, TriangleAlert, X } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
-import { goals, select } from "../ui/gameAdapter.js";
+import { content, goals, select } from "../ui/gameAdapter.js";
 import { AskAmmamma } from "../ui/AskAmmamma.jsx";
 import { GyaanLite } from "../ui/GyaanLite.jsx";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
@@ -13,8 +13,11 @@ import { ArcadeGame, ArcadeMenu, GAME_ICON } from "../ui/arcade/Arcade.jsx";
 import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { PhoneTour } from "../ui/PhoneTour.jsx";
+import { LessonBadge } from "../ui/LessonBadge.jsx";
+import { PauseCard } from "../ui/PauseCard.jsx";
 import { sounds } from "../ui/sound.js";
-import { CHOICE_GAMES, GAME_COMPONENTS, SCENE_GAMES } from "../ui/games/choiceGames.js";
+import { GAME_COMPONENTS, PRE_GAMES, SCENE_GAMES } from "../ui/games/choiceGames.js";
+import { PreGameCard } from "./story/PreGame.jsx";
 import { RatGuard } from "../ui/games/RatGuard.jsx";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
@@ -70,7 +73,9 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   const showIntro = phase === "budget" && story && introDone !== story.mission.id;
   const engineDialog = ["budget", "card", "outcome", "minigame", "chapterEnd"].includes(phase);
   const [phoneTour, setPhoneTour] = useState(false);
-  const busy = Boolean(engineDialog || overlay || showIntro || warning || phoneTour);
+  // T (or the pause button) freezes the map, the rush clock and any scene countdown.
+  const [paused, setPaused] = useState(false);
+  const busy = Boolean(engineDialog || overlay || showIntro || warning || phoneTour || paused);
   // The first time the phone is in hand on the map, show what it can do (once per life).
   useEffect(() => {
     if (phone.unlocked && phase === "map" && !busy && seenOnce(`phoneTour:${life.seed}`)) setPhoneTour(true);
@@ -88,7 +93,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     }
     if (rushRef.current.key !== rushKey) rushRef.current = { key: rushKey, left: objective.rush.seconds };
     setRushLeft(rushRef.current.left);
-    if (overlay) return undefined;
+    if (overlay || paused) return undefined;
     let last = performance.now();
     const id = setInterval(() => {
       const now = performance.now();
@@ -102,7 +107,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       }
     }, 200);
     return () => clearInterval(id);
-  }, [rushKey, overlay, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [rushKey, overlay, paused, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Once per browser: point out the mini-games.
   useEffect(() => {
@@ -117,7 +122,19 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
 
   // ---------- choices: locks and STOP warnings ----------
   const card = select.currentCard(life);
-  const [game, setGame] = useState(null); // a choice that needs a mini-game won first
+  // The lesson of the scene being played, or of the scene the objective leads to.
+  const lessonId =
+    phase === "card" || phase === "outcome"
+      ? card?.lesson ?? null
+      : phase === "map" && objective?.node
+        ? (content.story?.missions ?? []).flatMap((m) => m.nodes ?? []).find((n) => n.id === objective.node)?.lesson ?? null
+        : null;
+  const [game, setGame] = useState(null); // the scene's mini-game, while it is being played
+  const [played, setPlayed] = useState(() => new Set()); // scenes whose mini-game is done
+  const markPlayed = (cardId) => {
+    setGame(null);
+    setPlayed((s) => new Set(s).add(cardId));
+  };
   const gameOpen = useRef(false);
   gameOpen.current = Boolean(game);
   const storyDispatch = useCallback(
@@ -126,10 +143,6 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       if (action.type === "CHOOSE" && gameOpen.current && !action.wonGame) return null;
       if (action.type === "CHOOSE" && !action.ignoredWarning) {
         const c = select.currentCard(life)?.choices.find((x) => x.id === action.choiceId);
-        if (c && !c.locked && CHOICE_GAMES[c.id] && !action.wonGame) {
-          setGame({ choiceId: c.id, kind: CHOICE_GAMES[c.id] });
-          return null;
-        }
         if (c?.locked) {
           onToast(c.lockedHint ? pick(c.lockedHint) : t("story.locked"));
           return null;
@@ -162,6 +175,17 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     else setGoTo({ place: objective.location, key: Date.now() });
   }
 
+  // T pauses and resumes; Esc also resumes.
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.target.closest?.("input,textarea,select")) return;
+      if (e.key === "t" || e.key === "T") setPaused((p) => !p);
+      else if (e.key === "Escape" && paused) setPaused(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [paused]);
+
   // P opens the phone.
   useEffect(() => {
     const onKey = (e) => {
@@ -186,6 +210,18 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         <p className="quiet chapter-split">{t("chapter.split")}</p>
       </>
     );
+  } else if (phase === "card" && PRE_GAMES[card?.id] && !played.has(card.id)) {
+    // This scene starts with its mini-game; the question and choices come after it.
+    windowType = "pregame";
+    dialog = (
+      <PreGameCard
+        kind={PRE_GAMES[card.id]}
+        lessonId={card.lesson}
+        sceneTitle={card.title ? pick(card.title) : null}
+        onStart={() => setGame({ kind: PRE_GAMES[card.id], cardId: card.id })}
+        onSkip={() => markPlayed(card.id)}
+      />
+    );
   } else if (phase === "card" && SCENE_GAMES[card?.id]) {
     // This scene is played, not read: the game brings its own full-screen layer (below).
   } else if (phase === "card") {
@@ -195,7 +231,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           <TimerBar
             key={`timer-${card.id}`}
             seconds={card.timer.seconds}
-            paused={Boolean(warning || game)}
+            paused={Boolean(warning || game || paused)}
             label={t("story.decideFast")}
             onTimeout={() => {
               setWarning(null);
@@ -299,7 +335,8 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   }
 
   return (
-    <div className={`mapgame storygame phase-${phase} ${busy ? "is-busy" : ""} ${objective?.rush && phase === "map" ? "rushing" : ""}`}>
+    <div className={`mapgame storygame phase-${phase} ${busy ? "is-busy" : ""} ${objective?.rush && phase === "map" ? "rushing" : ""} ${lessonId && !showIntro ? "has-lesson" : ""}`}>
+      {!showIntro && <LessonBadge lessonId={lessonId} />}
       <MapCanvas
         map={map}
         avatar={avatar}
@@ -324,7 +361,9 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         onAsk={() => setOverlay({ type: "ask" })}
         onHelp={onHelp}
         onMenu={onMenu}
+        onPause={() => setPaused(true)}
       />
+      {paused && <PauseCard onResume={() => setPaused(false)} onMenu={onMenu} />}
       {phase === "map" && !overlay && story && (
         <ObjectiveTracker
           story={story}
@@ -367,15 +406,12 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       {overlay?.type === "ratguard" && <RatGuard mode="practice" onClose={() => setOverlay(null)} />}
       {game && GAME_COMPONENTS[game.kind] &&
         React.createElement(GAME_COMPONENTS[game.kind], {
-          mode: "story",
+          // Played before the question, win or lose: every ending leads on to the choices.
+          mode: "practice",
           avatar: life.avatar ?? "boy",
-          onClose: () => setGame(null),
-          onGiveUp: () => setGame(null),
-          onWin: () => {
-            const choiceId = game.choiceId;
-            setGame(null);
-            storyDispatch({ type: "CHOOSE", choiceId, wonGame: true });
-          },
+          onClose: () => markPlayed(game.cardId),
+          onGiveUp: () => markPlayed(game.cardId),
+          onWin: () => markPlayed(game.cardId),
         })}
       {warning && (
         <WarningFlash
