@@ -46,14 +46,14 @@
     "comingSoon": "Coming soon",
     "chips": {
       "village": [
-        "🌾 Cotton village",
-        "👵 Ammamma's love",
+        "Cotton village",
+        "Ammamma's love",
         "₹0 in the bank"
       ],
       "city": [
-        "🛺 Hyderabad basti",
-        "📱 A phone early",
-        "⚠️ Scams find you"
+        "Hyderabad basti",
+        "A phone early",
+        "Scams find you"
       ]
     }
   },
@@ -1001,7 +1001,7 @@
       "emi_heavy": "Warning: EMIs eat over half your income. Don't take any new loan.",
       "costly_debt": "You have costly debt. Paying it off is the best 'investment' you can make."
     },
-    "warnChip": "🛑 {heeded} stopped · {ignored} went ahead"
+    "warnChip": "{heeded} stopped · {ignored} went ahead"
   },
   "hero": {
     "ribbon": "A NEW LIFE",
@@ -1920,5 +1920,11 @@
     "then": "Then: {scene}",
     "start": "Start the game",
     "skip": "Skip the game"
+  },
+  "news": {
+    "tag": "Breaking news",
+    "title": "Black Monday!",
+    "text": "Markets just fell 22% in a month. Your phone is buzzing with panic messages.",
+    "open": "Open my phone"
   }
 }
