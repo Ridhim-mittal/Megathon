@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { SAVE_LEVELS, forecast, levelOf, planFor, surpriseCost } from "./savePlan.js";
+import { SAVE_LEVELS, forecast, levelOf, levelSaves, planFor, planForLevel, surpriseCost } from "./savePlan.js";
 
 const child = { monthlyIncome: 200, step: 10, minNeeds: 40, jarsUnlocked: ["needs", "wants", "emergency", "goal"] };
 const adult = { monthlyIncome: 30000, step: 100, minNeeds: 15000, jarsUnlocked: ["needs", "wants", "emergency", "goal", "invest"] };
@@ -38,4 +38,18 @@ test("the safety jar fills first, then savings go to the dream", () => {
   assert.equal(full.emergency, 0);
   assert.ok(full.goal > empty.goal);
   assert.equal(levelOf(child, empty), "some");
+});
+
+test("small pocket money still gives three different amounts", () => {
+  // ₹250 a month in ₹50 steps: 10% and 25% would both round to ₹50.
+  const pocket = { monthlyIncome: 250, step: 50, minNeeds: 50, jarsUnlocked: ["needs", "wants", "emergency", "goal"] };
+  const saves = levelSaves(pocket);
+  assert.deepEqual(saves, [50, 100, 150]);
+  for (const l of SAVE_LEVELS) {
+    const j = planForLevel(pocket, l.id, { stage: "child" });
+    assert.equal(sum(j), pocket.monthlyIncome);
+    assert.equal(levelOf(pocket, j), l.id);
+  }
+  // Never more than the room left after needs.
+  assert.ok(levelSaves({ ...pocket, minNeeds: 150 }).every((x) => x <= 100));
 });

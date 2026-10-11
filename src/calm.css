@@ -1629,6 +1629,35 @@
 .hud-right .lesson-badge {
   pointer-events: none;
 }
+/* Narrow screens: the top bar takes two rows, so the buttons wrap instead of running off the
+   right edge, the lesson badge shows just its number, and dialogs start below the bar. */
+@media (max-width: 900px) {
+  .storygame .map-hud .hud-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 100%;
+  }
+  .storygame .dialog-layer {
+    padding-top: 112px;
+  }
+  .storygame .game-window {
+    max-height: calc(100dvh - 126px);
+  }
+}
+@media (max-width: 640px) {
+  .storygame .hud-right .lesson-badge-text {
+    display: none;
+  }
+}
+/* The smallest phones fit the top bar in three rows. */
+@media (max-width: 420px) {
+  .storygame .dialog-layer {
+    padding-top: 156px;
+  }
+  .storygame .game-window {
+    max-height: calc(100dvh - 170px);
+  }
+}
 @keyframes badge-drop {
   from {
     opacity: 0;
