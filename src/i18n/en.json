@@ -1056,13 +1056,8 @@
     "hearts": "{n} hearts left",
     "here": "Play here",
     "invite": "Mini-game here!",
-    "hint": "New: mini-games! Look for 🎮 at the post office, the village square and the bank.",
+    "hint": "New: mini-games! Look for 🎮 at the bank, or open the Arcade on your phone.",
     "stat": {
-      "caught": "🪙 Caught ₹{n}",
-      "spent": "🍬 Lost ₹{n} to impulse buys",
-      "blocked": "🛡️ {n} scams blocked",
-      "passed": "💸 {n} got through",
-      "mistakes": "🙈 {n} real messages blocked",
       "added": "🪙 Coins ₹{n}",
       "interest": "📈 Growth ₹{n}",
       "lost": "🛍️ Traps took ₹{n}",
@@ -1078,20 +1073,6 @@
       "emisLeft": "⛓️ {n} EMIs still running"
     },
     "games": {
-      "jarDash": {
-        "name": "Jar Dash",
-        "tag": "Catch coins, dodge spends",
-        "goal": "Fill your jar with coins. Dodge the sweets, toys and game top-ups!",
-        "how": "Move the jar with the arrow keys or the mouse.",
-        "lesson": "Small spends add up. Every impulse buy you dodge stays in your jar."
-      },
-      "scamSmash": {
-        "name": "Scam Smash",
-        "tag": "Block the scams",
-        "goal": "Messages pop up on six phones. Block the scams, let real messages through.",
-        "how": "Tap a phone or press its number to block it.",
-        "lesson": "A prize, a panic, an OTP or \"pay first\"? It's a scam. Block it."
-      },
       "snowball": {
         "name": "Savings Snowball",
         "tag": "Roll it bigger",
@@ -1127,21 +1108,6 @@
         "how": "Swipe with your finger or mouse to buy. Let things fall to say no. Press T or Space to think first.",
         "lesson": "Friends' approval fades fast. EMIs and loan-app debts don't. Pause and check the full price before you say yes."
       }
-    },
-    "msg": {
-      "prize": "🎁 You won ₹25 lakh!",
-      "otp": "🔑 Send me your OTP",
-      "kyc": "⚠️ KYC ends today! Click",
-      "tips": "📈 300% profit, join VIP",
-      "jobFee": "💼 Job! Pay ₹500 first",
-      "loanApp": "💸 Instant loan, no papers",
-      "refund": "↩️ Refund: enter UPI PIN",
-      "amma": "🍛 Amma: dinner at 8",
-      "salary": "🏦 Salary credited",
-      "exam": "📚 Exam moved to Monday",
-      "match": "🏏 Cricket at 5?",
-      "busTime": "🚌 Bus leaves at 7:30",
-      "bankReal": "🏦 Branch shut on Sunday"
     },
     "snow": {
       "lead": "Roll your savings snowball down the hill. Grab coins to make it bigger, and dodge the money traps!",
@@ -1481,8 +1447,6 @@
       "ratGuard": "Guard the savings",
       "interest": "Find the best interest",
       "fake": "Catch the fake adviser",
-      "salary": "Split your salary",
-      "baskets": "Spread your eggs",
       "garden": "Defend 4 investment lanes from thieves: spread your money"
     },
     "swipe": {
@@ -1621,44 +1585,6 @@
       },
       "streak": "Saver streak ×{n}!"
     }
-  },
-  "salary": {
-    "ribbon": "First payday",
-    "title": "Salary Split",
-    "lead": "₹15,000 just arrived. Give every rupee a job before it slips away.",
-    "step1": "Coins fall one by one",
-    "step2": "Tap a jar (1, 2, 3) to drop each coin",
-    "step3": "Coins you miss land in Wants",
-    "rule": "Win: Save ₹3,000 and Needs ₹9,000 before the coins run out.",
-    "jar": {
-      "save": "Save",
-      "needs": "Needs",
-      "wants": "Wants"
-    },
-    "wonText": "Saved first, bills covered, and still some fun money. That's paying yourself first.",
-    "lostText": "Money without a job drifts into wants. Save first, then cover needs."
-  },
-  "baskets": {
-    "ribbon": "Family money plan",
-    "title": "Basket Juggle",
-    "lead": "Your savings are eggs. Storms are coming. Where will you put them?",
-    "step1": "Tap a basket (1, 2, 3) for each egg",
-    "step2": "Storms hit a random basket and break eggs",
-    "step3": "A basket with over half your eggs loses them all",
-    "rule": "Win: keep {need} of {total} eggs.",
-    "basket": {
-      "index": "Index fund",
-      "debt": "Debt fund",
-      "rd": "RD"
-    },
-    "storm": "Storm! {n} eggs broke.",
-    "stormAll": "Storm! The overloaded basket lost all {n} eggs.",
-    "heavy": "Too heavy!",
-    "storms": "Storms",
-    "cracked": "{n} eggs dropped",
-    "kept": "{n} of {total} eggs kept",
-    "wonText": "Spread out, no single storm could break you. That's diversification.",
-    "lostText": "Too many eggs in one basket, or too many dropped. Spread them out."
   },
   "ratguard": {
     "title": "Rat Guard",
