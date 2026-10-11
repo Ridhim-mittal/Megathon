@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRight, GitBranch, LayoutGrid, RotateCcw } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
-import { replay, select } from "../ui/gameAdapter.js";
+import { select } from "../ui/gameAdapter.js";
+import { turningPointSearch } from "../ui/turningPoints.js";
 import { Sheet, ScreenBar } from "../ui/Sheet.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 
@@ -48,24 +49,36 @@ function LifeColumn({ title, life, summary, className }) {
   );
 }
 
+// Only the turning points: the decisions where another choice would have changed the life a lot
+// (see turningPoints.js). Finding them lives every other option once, a few at a time.
 export function ParallelScreen({ life, parallel, onParallel, settings, onGallery, onMenu }) {
-  const { t, pick, plain } = useT();
-  const timeline = select.timeline(life).filter((d) => d.alternatives.length > 0);
+  const { t, pick, plain, signed } = useT();
+  const [points, setPoints] = useState(null);
+  const [progress, setProgress] = useState(0);
   const [picked, setPicked] = useState(null);
-  const [busy, setBusy] = useState(false);
   const cmp = parallel ? select.compare(life, parallel) : null;
 
-  function run(decisionIndex, choiceId) {
-    setBusy(true);
-    // Let the "living the other life" message paint before the replay runs.
-    setTimeout(() => {
-      try {
-        onParallel(replay(life, { decisionIndex, choiceId }));
-      } finally {
-        setBusy(false);
-      }
-    }, 30);
-  }
+  useEffect(() => {
+    const search = turningPointSearch(life);
+    let timer;
+    const tick = () => {
+      const finished = search.step(3);
+      setProgress(search.total ? Math.round((search.done / search.total) * 100) : 100);
+      if (finished) setPoints(search.result());
+      else timer = setTimeout(tick, 0);
+    };
+    timer = setTimeout(tick, 30);
+    return () => clearTimeout(timer);
+  }, [life]);
+
+  // "Your dream came true, on time · +₹8,20,000"; the story's ending when only that changes; else
+  // the money and the dream.
+  const effect = (o) =>
+    o.endingChanged && o.ending
+      ? `${t(`ending.title.${o.ending}`)} · ${signed(o.nw)}`
+      : o.storyChanged && o.storyTitle
+        ? `${pick(o.storyTitle)}${Math.abs(o.nw) >= 1000 ? ` · ${signed(o.nw)}` : ""}`
+        : `${signed(o.nw)} · ${t("parallel.dreamDelta", { n: `${o.dream > 0 ? "+" : ""}${o.dream}%` })}`;
 
   return (
     <>
@@ -73,23 +86,35 @@ export function ParallelScreen({ life, parallel, onParallel, settings, onGallery
         <TopControls settings={settings} onMenu={onMenu} />
       </ScreenBar>
       <Sheet eyebrow={t("parallel.eyebrow")} title={t("parallel.title")} subtitle={t("parallel.subtitle")} wide>
-        {!cmp && (
-          <ol className="timeline">
-            {timeline.map((d) => (
+        {!cmp && !points && (
+          <p className="quiet" role="status">
+            {t("parallel.searching", { n: progress })}
+          </p>
+        )}
+        {!cmp && points?.length === 0 && <p className="quiet">{t("parallel.none")}</p>}
+        {!cmp && points?.length > 0 && (
+          <ol className="timeline turning-points">
+            {points.map((d) => (
               <li key={d.index} className={picked === d.index ? "open" : ""}>
                 <button className="timeline-item" aria-expanded={picked === d.index} onClick={() => setPicked(picked === d.index ? null : d.index)}>
                   <span className="t-age">{t("common.age", { age: d.age })}</span>
-                  <span className="t-title">{plain(d.title)}</span>
+                  <span className="t-title">
+                    {plain(d.title)}
+                    <em className={`tp-tag ${d.top.nw >= 0 ? "better" : "worse"}`}>{t(d.top.nw >= 0 ? "parallel.better" : "parallel.worse")}</em>
+                  </span>
                   <span className="t-chosen">
                     {t("parallel.you")}: <b>{plain(d.chosen.label)}</b>
+                  </span>
+                  <span className={`t-effect ${d.top.nw >= 0 ? "better" : "worse"}`}>
+                    {t("parallel.otherChoice")} {effect(d.top)}
                   </span>
                 </button>
                 {picked === d.index && (
                   <div className="timeline-alts">
                     <span>{t("parallel.instead")}</span>
-                    {d.alternatives.map((a) => (
-                      <button key={a.id} className="secondary-button" disabled={busy} onClick={() => run(d.index, a.id)}>
-                        <GitBranch size={15} /> {plain(a.label)}
+                    {d.options.map((o) => (
+                      <button key={o.id} className="secondary-button" onClick={() => onParallel(o.parallel)}>
+                        <GitBranch size={15} /> {plain(o.label)}
                       </button>
                     ))}
                   </div>
@@ -97,11 +122,6 @@ export function ParallelScreen({ life, parallel, onParallel, settings, onGallery
               </li>
             ))}
           </ol>
-        )}
-        {busy && (
-          <p className="quiet" role="status">
-            {t("parallel.running")}
-          </p>
         )}
         {cmp && (
           <>
