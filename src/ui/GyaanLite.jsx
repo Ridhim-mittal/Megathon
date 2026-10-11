@@ -4,6 +4,7 @@ import { useT } from "../i18n/index.jsx";
 import { content, select } from "./gameAdapter.js";
 import { GyaanWidget } from "./GyaanWidgets.jsx";
 import { PILLAR_PIXEL, PixelIcon } from "./PixelIcon.jsx";
+import { sounds } from "./sound.js";
 
 // The Gyaan reader: each lesson as a few picture slides instead of a page of text: the big idea,
 // the key points, a worked example revealed step by step, a myth card to flip, a "try it"
@@ -81,7 +82,11 @@ function Slides({ id, lesson, page }) {
     : lesson
       ? ["summary"]
       : [];
-  const go = (n) => setAt(Math.max(0, Math.min(slides.length - 1, n)));
+  const go = (n) => {
+    const to = Math.max(0, Math.min(slides.length - 1, n));
+    if (to !== at) sounds.page();
+    setAt(to);
+  };
   useEffect(() => {
     const onKey = (e) => {
       if (e.target.closest?.("input,select,textarea")) return;
@@ -159,7 +164,10 @@ function Slides({ id, lesson, page }) {
           </div>
         )}
         {kind === "myth" && (
-          <button className={`flip-card ${flipped ? "flipped" : ""}`} onClick={() => setFlipped(!flipped)} aria-pressed={flipped}>
+          <button className={`flip-card ${flipped ? "flipped" : ""}`} onClick={() => {
+              sounds.flip();
+              setFlipped(!flipped);
+            }} aria-pressed={flipped}>
             <span className="flip-inner">
               <span className="flip-face front">
                 <b>
@@ -187,7 +195,10 @@ function Slides({ id, lesson, page }) {
                   key={i}
                   className={`quiz-option ${answer != null && i === page.quiz.answer ? "right" : ""} ${answer === i && i !== page.quiz.answer ? "wrong" : ""}`}
                   disabled={answer != null}
-                  onClick={() => setAnswer(i)}
+                  onClick={() => {
+                    (i === page.quiz.answer ? sounds.right : sounds.wrong)();
+                    setAnswer(i);
+                  }}
                 >
                   {pick(o)}
                 </button>

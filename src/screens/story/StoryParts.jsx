@@ -11,7 +11,7 @@ export function WarningFlash({ choice, onHeed, onIgnore }) {
   const [ready, setReady] = useState(false);
   const back = useRef(null);
   useEffect(() => {
-    sounds.thud();
+    sounds.alarm();
     back.current?.focus();
     const id = setTimeout(() => setReady(true), 2200);
     const onKey = (e) => e.key === "Escape" && onHeed();
@@ -67,6 +67,11 @@ export function TimerBar({ seconds, paused, onTimeout, label }) {
       onTimeout();
     }
   }, [left, onTimeout]);
+  // A quiet tick each second, a little sharper in the last five.
+  const whole = Math.ceil(left / 1000);
+  useEffect(() => {
+    if (!paused && whole > 0) sounds.tick(whole <= 5);
+  }, [whole]); // eslint-disable-line react-hooks/exhaustive-deps
   const pct = (left / (seconds * 1000)) * 100;
   return (
     <div className={`timer-bar ${pct < 35 ? "low" : ""}`} role="timer" aria-live="off">
@@ -84,7 +89,7 @@ export function MissionIntro({ story, avatar, stage, previous, onBegin }) {
   const btn = useRef(null);
   const m = story.mission;
   useEffect(() => {
-    sounds.page();
+    sounds.fanfare();
     btn.current?.focus();
   }, []);
   return (

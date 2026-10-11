@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Heart } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { PATANG, candleX, createPatang, stepPatang, yearOf } from "./patang.js";
+import { sounds } from "../sound.js";
 
 // Patang Market: fly a Sankranti kite through ten years of a stock chart (see patang.js).
 // Arcade contract (like InsuranceRush): <PatangMarket running onEnd />. `running` is false during
@@ -38,10 +39,22 @@ export function PatangMarket({ running, onEnd }) {
       last = now;
       const s = game.current;
       if (running && !ended.current) {
+        if (flap.current) sounds.flap();
         const done = stepPatang(s, dt, { flap: flap.current });
         flap.current = false;
+        for (const p of s.pops) {
+          if (p.heard) continue;
+          p.heard = true;
+          if (p.kind === "rocket") sounds.whooshUp();
+          else if (p.kind === "shield") sounds.chime();
+          else sounds.coin();
+        }
         if (done) {
           ended.current = true;
+          const how = s.exit?.reason;
+          if (how === "panic") sounds.alarm();
+          else if (how === "crashed") sounds.crash();
+          else sounds.stingGood();
           setTimeout(() => onEnd(s), 900);
         }
       } else flap.current = false;

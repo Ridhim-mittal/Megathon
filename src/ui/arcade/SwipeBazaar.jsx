@@ -407,6 +407,7 @@ export function SwipeBazaar({ running, onEnd }) {
       }
       // A bright streak along the cut, a little splash, and things flying to the HUD.
       const reach = it.r + 26;
+      sounds.slice?.();
       g.slashes.push({ x1: it.x - Math.cos(angle) * reach, y1: it.y - Math.sin(angle) * reach, x2: it.x + Math.cos(angle) * reach, y2: it.y + Math.sin(angle) * reach, t: 0 });
       const juice = KIND_STYLE[it.kind].ring;
       for (let i = 0; i < 6; i++) {
@@ -537,6 +538,8 @@ export function SwipeBazaar({ running, onEnd }) {
       if (!down) return;
       const p = toField(e);
       if (last && Math.hypot(p.x - last.x, p.y - last.y) > 2) {
+        const fast = Math.hypot(p.x - last.x, p.y - last.y);
+        if (fast > 14 && g.phase === "play") sounds.slash?.(fast / 40);
         cut(last, p);
         g.trail.push({ ...p, t: 0 });
         if (g.trail.length > 14) g.trail.shift();

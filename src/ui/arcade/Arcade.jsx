@@ -107,10 +107,11 @@ export function ArcadeGame({ gameId, onClose, onBack, story = null }) {
   useEffect(() => {
     if (stage !== "count") return undefined;
     if (count === 0) {
+      sounds.go?.();
       setStage("play");
       return undefined;
     }
-    sounds.tap?.();
+    sounds.beep?.();
     const id = setTimeout(() => setCount(count - 1), 600);
     return () => clearTimeout(id);
   }, [stage, count]);
@@ -139,7 +140,10 @@ export function ArcadeGame({ gameId, onClose, onBack, story = null }) {
       setBest(r.score);
     }
     setStage("done");
-    if (starsFor(gameId, r.score) >= 2) sounds.chime?.();
+    // One ding per star as they pop in (0.25 s apart), then a little jingle for a new best.
+    const n = starsFor(gameId, r.score);
+    for (let i = 0; i < n; i++) setTimeout(() => sounds.star?.(i), 300 + i * 250);
+    if (r.isNew) setTimeout(() => sounds.newBest?.(), 400 + n * 250);
   }
 
   return (
@@ -514,7 +518,16 @@ function CanvasGame({ gameId, running, onEnd }) {
   const [hud, setHud] = useState({ left: gameById[gameId].seconds, score: 0 });
   useLoop(running, (dt, now) => {
     const s = game.current;
-    if (dt > 0 && !ended.current && stepGame(s, dt, input.current)) {
+    const stepped = dt > 0 && !ended.current && stepGame(s, dt, input.current);
+    // Snowball: a coin for coins, a shatter for traps, a chime for the umbrella.
+    for (const p of s.pops ?? []) {
+      if (p.heard) continue;
+      p.heard = true;
+      if (p.kind === "coin" || p.kind === "gold") sounds.coin?.();
+      else if (p.kind === "shield" || p.kind === "saved") sounds.chime?.();
+      else if (p.kind !== "interest") sounds.shatter?.();
+    }
+    if (stepped) {
       ended.current = true;
       setTimeout(() => onEnd(s), 350);
     }

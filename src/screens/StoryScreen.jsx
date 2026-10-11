@@ -29,7 +29,7 @@ import { Flowchart } from "./story/Flowchart.jsx";
 import { MissionEnd } from "./story/MissionEnd.jsx";
 import { EvidenceFile, MissionIntro, ObjectiveTracker, TimerBar, WarningFlash } from "./story/StoryParts.jsx";
 
-// Story mode: one mission per chapter. The objective says where to go and a trail leads there;
+// Story mode: one mission per chapter. The objective says where to go and an arrow points there;
 // each place plays the next scene; some scenes race the clock; very bad choices flash a STOP.
 export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, onToast }) {
   const { t, pick } = useT();
@@ -106,7 +106,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       setRushLeft(rushRef.current.left);
       if (rushRef.current.left <= 0) {
         clearInterval(id);
-        sounds.thud();
+        sounds.wrong();
         dispatch({ type: "STORY_TIMEOUT" });
       }
     }, 200);
@@ -118,6 +118,12 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   useEffect(() => {
     if (phase === "map" && objective?.node === "m2_crash" && !busy && seenOnce(`crashNews:${life.seed}`)) setNews(true);
   }, [phase, objective?.node, busy, life.seed]);
+
+  // The rush clock ticks each second (sharper in the last five).
+  const rushWhole = rushLeft == null ? null : Math.ceil(rushLeft);
+  useEffect(() => {
+    if (rushWhole && !overlay) sounds.tick(rushWhole <= 5);
+  }, [rushWhole]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // After a timeout, say what being late cost.
   const lastLate = story?.lastLate;
@@ -235,7 +241,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
             label={t("story.decideFast")}
             onTimeout={() => {
               setWarning(null);
-              sounds.thud();
+              sounds.wrong();
               dispatch({ type: "CHOOSE", choiceId: card.timer.choice });
             }}
           />
