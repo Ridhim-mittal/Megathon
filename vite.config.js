@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
+import { langPacks } from "./scripts/lang-packs.js";
 
 const root = dirname(fileURLToPath(import.meta.url));
 const contentIndex = resolve(root, "src/content/index.js");
@@ -27,5 +28,6 @@ function contentFallback() {
 }
 
 export default defineConfig({
-  plugins: [contentFallback()],
+  // langPacks: each language is its own download (scripts/lang-packs.js).
+  plugins: [contentFallback(), langPacks(root)],
 });

@@ -36,7 +36,8 @@
 }
 /* Letter-spacing breaks Indic conjuncts in Chromium: keep it at 0 in Hindi and Telugu. */
 .lang-hi *,
-.lang-te * {
+.lang-te *,
+.script-complex * {
   letter-spacing: 0 !important;
 }
 
@@ -45,11 +46,13 @@
   overflow-wrap: anywhere;
 }
 .lang-hi,
-.lang-te {
+.lang-te,
+.script-complex {
   --script-lh: 1.55;
 }
 .lang-hi :is(p, li, button, span),
-.lang-te :is(p, li, button, span) {
+.lang-te :is(p, li, button, span),
+.script-complex :is(p, li, button, span) {
   line-height: var(--script-lh);
 }
 

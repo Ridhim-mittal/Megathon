@@ -5,7 +5,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { ChevronDown, ChevronRight, Minus, X } from "lucide-react";
-import { useT } from "../../i18n/index.jsx";
+import { LANGS, useT } from "../../i18n/index.jsx";
 import { ArcadeGame, ArcadeMenu } from "../arcade/Arcade.jsx";
 import { GAMES } from "../arcade/games.js";
 import { GAME_COMPONENTS, GAME_NAME, PRE_GAMES, SCENE_GAMES } from "../games/choiceGames.js";
@@ -382,7 +382,7 @@ function ToolsTab({ api, setMsg }) {
       </div>
       <h4>Language</h4>
       <div className="dev-grid">
-        {["en", "hi", "te"].map((l) => (
+        {LANGS.map((l) => (
           <button key={l} onClick={() => api.setLang(l)}>
             {l}
           </button>

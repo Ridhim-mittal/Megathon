@@ -69,7 +69,8 @@ export const EXPLAINED_KINDS = ["lesson", "crossroads", "teachback"];
 export const QUALITIES = ["good", "neutral", "risky", "bad"];
 export const LESSON_STATUSES = ["unseen", "seen", "applied", "missed"];
 export const METERS = ["joy", "health", "family", "gyaan"];
-export const LANGS = ["en", "hi", "te"];
+// The languages are listed once, in src/languages.js.
+export { LANG_CODES as LANGS } from "../languages.js";
 
 export const JARS = ["needs", "wants", "emergency", "goal", "invest"];
 export const SAVING_JARS = ["emergency", "goal"];

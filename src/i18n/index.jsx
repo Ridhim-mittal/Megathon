@@ -1,11 +1,15 @@
 import React, { createContext, useContext, useMemo } from "react";
 import en from "./en.json";
-import hi from "./hi.json";
-import te from "./te.json";
+import { LANGUAGES, LANG_CODES, languageOf } from "../languages.js";
+import { translationOf, uiStrings } from "./packs.js";
 import { ClarityPhrase, GlossaryChip } from "../ui/RichText.jsx";
 
-export const LANGS = ["en", "hi", "te"];
-const DICTS = { en, hi, te };
+// The languages come from src/languages.js; each one's strings arrive as a pack (./packs.js).
+export const LANGS = LANG_CODES;
+const dictOf = (lang) => (lang === "en" ? en : uiStrings(lang));
+// A content string in one language: from the object, or (for copied text) from the pack.
+const textIn = (obj, lang) => (obj && typeof obj === "object" ? (typeof obj[lang] === "string" ? obj[lang] : translationOf(obj, lang)) : undefined);
+const escape = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const I18nContext = createContext(null);
 
@@ -23,6 +27,12 @@ function fill(text, vars) {
   return text.replace(/\{(\w+)\}/g, (all, name) => (vars[name] == null ? all : String(vars[name])));
 }
 
+// A language's name: from the UI strings, else as the language calls itself (src/languages.js).
+export function langName(t, code) {
+  const name = t(`lang.${code}`);
+  return name === `lang.${code}` ? languageOf(code).name : name;
+}
+
 export function formatMoney(n) {
   const value = Math.round(Number(n) || 0);
   const sign = value < 0 ? "−" : "";
@@ -36,7 +46,8 @@ export function signedMoney(n) {
 
 const TOKEN = /\{player\}|\{cast:([^}]+)\}|\[\[([^\]]+)\]\]/g;
 // Words to skim: **marked** text, rupee amounts (₹12,000, ₹4 lakh) and percentages (36%).
-const STRONG = /\*\*([^*]+)\*\*|₹\s?\d(?:[\d,]*\d)?(?:\.\d+)?(?:\s?(?:lakh|crore|लाख|करोड़|లక్షలు|లక్ష|కోట్లు|కోటి))?|\d+(?:\.\d+)?\s?%/g;
+const BIG = LANGUAGES.flatMap((l) => l.bigNumbers ?? []).map(escape).join("|");
+const STRONG = new RegExp(`\\*\\*([^*]+)\\*\\*|₹\\s?\\d(?:[\\d,]*\\d)?(?:\\.\\d+)?(?:\\s?(?:${BIG}))?|\\d+(?:\\.\\d+)?\\s?%`, "g");
 function strong(text, prefix) {
   const out = [];
   let last = 0;
@@ -57,7 +68,10 @@ const unmark = (text) => (typeof text === "string" ? text.replace(/\*\*([^*]+)\*
 
 // Ammamma's pet name for the player ("kanna", in every language). Once the player has a name,
 // she uses that instead.
-export const PET_NAME = /\b[Kk]anna\b|कन्ना|కన్నా/g;
+export const PET_NAME = new RegExp(
+  LANGUAGES.map(({ petName: p }) => (/^[a-z]/i.test(p) ? `\\b[${p[0].toUpperCase()}${p[0].toLowerCase()}]${escape(p.slice(1))}\\b` : escape(p))).join("|"),
+  "g",
+);
 export const withName = (text, name) => (name && typeof text === "string" ? text.replace(PET_NAME, name) : text);
 
 export function useT() {
@@ -70,7 +84,7 @@ export function useT() {
     const named = (text) => withName(text, ctx?.playerName);
 
     const t = (key, vars) => {
-      const value = lookup(DICTS[lang], key) ?? lookup(en, key);
+      const value = lookup(dictOf(lang), key) ?? lookup(en, key);
       if (value == null) return key;
       if (typeof value === "string") return named(fill(value, vars));
       // Lists (chips, steps) come back as they are; a group of keys is never text.
@@ -78,11 +92,11 @@ export function useT() {
     };
 
     // A content string { en, hi, te } in the current language, falling back to English.
-    const langOf = (obj) => (obj && typeof obj === "object" && typeof obj[lang] === "string" ? lang : "en");
+    const langOf = (obj) => (typeof textIn(obj, lang) === "string" ? lang : "en");
     const pick = (obj) => {
       if (obj == null) return "";
       if (typeof obj === "string") return named(obj);
-      return named(obj[lang] ?? obj.en ?? "");
+      return named(textIn(obj, lang) ?? obj.en ?? "");
     };
     const castName = (id) => pick(cast[id]?.name) || id;
     const termName = (id) => pick(glossary[id]?.name) || id;
@@ -113,9 +127,9 @@ export function useT() {
     // phrases: [{ phrase: {en,…}, truth, revealed, free }]
     function rich(obj, { phrases = [], vars } = {}) {
       const useLang = langOf(obj);
-      const text = named(fill(typeof obj === "string" ? obj : obj?.[useLang] ?? "", vars));
+      const text = named(fill(typeof obj === "string" ? obj : textIn(obj, useLang) ?? "", vars));
       const marks = phrases
-        .map((p, idx) => ({ ...p, idx, text: named(p.phrase?.[useLang]) }))
+        .map((p, idx) => ({ ...p, idx, text: named(textIn(p.phrase, useLang)) }))
         .filter((p) => p.text && text.includes(p.text));
       if (!marks.length) return tokens(text, "t");
       const out = [];

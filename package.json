@@ -9,7 +9,11 @@
     "preview": "vite preview --host 0.0.0.0",
     "test": "node --test \"src/**/*.test.js\"",
     "validate:content": "node scripts/validate-content.js",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "lang:status": "node scripts/lang.js status",
+    "lang:export": "node scripts/lang.js export",
+    "lang:import": "node scripts/lang.js import",
+    "size": "node scripts/check-size.js"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.3.0",

@@ -21,7 +21,10 @@ Production build (fully offline static site):
 ```bash
 npm run build      # output in dist/
 npm run preview    # serve dist/ locally
+npm run size       # after a build: each download against its budget (gzipped)
 ```
+
+Deploy `dist/` to any static host (`vercel.json` and `public/_headers` set the cache rules). Each player downloads only their language, and after the first visit the game works offline.
 
 Optional URL parameters: `?seed=demo` gives a fixed, reproducible life; `?speed=4` speeds up the SIP Garden mini-game.
 
@@ -35,6 +38,18 @@ npm run test:e2e            # browser tests (Playwright)
 ```
 
 To use an existing Chromium, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to its executable.
+
+## Languages and scaling
+
+Languages are listed once, in `src/languages.js`. Translators work in a spreadsheet:
+
+```bash
+npm run lang:status                 # how much of each language is translated
+npm run lang:export -- ta           # translations/ta.csv: lines still missing in a language
+npm run lang:import -- ta file.csv  # put a translated sheet into the game
+```
+
+[docs/SCALABILITY.md](docs/SCALABILITY.md) covers adding a language and taking the game from 1,500 students to many more.
 
 ## Third-party credits
 

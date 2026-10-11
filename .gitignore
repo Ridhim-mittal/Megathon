@@ -50,3 +50,6 @@ coverage/
 # Browser test output
 /test-results/
 /playwright-report/
+
+# Translation sheets (npm run lang:export); the translations themselves live in src/
+/translations/

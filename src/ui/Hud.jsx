@@ -16,7 +16,7 @@ import {
   Wallet,
   TrendingDown,
 } from "lucide-react";
-import { LANGS, useT } from "../i18n/index.jsx";
+import { LANGS, langName, useT } from "../i18n/index.jsx";
 import { Meter, Money } from "./Money.jsx";
 
 export function LangSelect({ lang, onChange }) {
@@ -27,7 +27,7 @@ export function LangSelect({ lang, onChange }) {
       <select value={lang} onChange={(e) => onChange(e.target.value)} aria-label={t("lang.label")}>
         {LANGS.map((l) => (
           <option key={l} value={l}>
-            {t(`lang.${l}`)}
+            {langName(t, l)}
           </option>
         ))}
       </select>
