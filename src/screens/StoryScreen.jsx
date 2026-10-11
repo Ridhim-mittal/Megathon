@@ -13,6 +13,10 @@ import { gameAtPlace } from "../ui/arcade/games.js";
 import { loadDiscovered, recordDiscovered, seenOnce } from "../ui/persist.js";
 import { PhoneTour } from "../ui/PhoneTour.jsx";
 import { BreakingNews } from "./story/BreakingNews.jsx";
+import { PensionCutscene } from "./story/PensionCutscene.jsx";
+
+// Short cutscenes played once before a scene's card (keys are card ids).
+const CUTSCENES = { m5_future: PensionCutscene };
 import { PauseCard } from "../ui/PauseCard.jsx";
 import { sounds } from "../ui/sound.js";
 import { GAME_COMPONENTS, PRE_GAMES, SCENE_GAMES } from "../ui/games/choiceGames.js";
@@ -217,6 +221,11 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     // MissionIntro brings its own full-screen layer.
   } else if (phase === "budget") {
     dialog = <SaveFirst key={`budget-${life.age}`} life={life} dispatch={dispatch} avatar={avatar} />;
+  } else if (phase === "card" && CUTSCENES[card?.id] && !played.has(card.id)) {
+    // A short cutscene first; the scene's question and choices come after it.
+    const Cutscene = CUTSCENES[card.id];
+    windowType = "cutscene";
+    dialog = <Cutscene avatar={avatar} onDone={() => markPlayed(card.id)} />;
   } else if (phase === "card" && PRE_GAMES[card?.id] && !played.has(card.id) && !skipPreGames) {
     // This scene starts with its mini-game; the question and choices come after it.
     windowType = "pregame";

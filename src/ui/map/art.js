@@ -997,8 +997,9 @@ const GIRL = {
 };
 
 export const LOOKS = {
-  boy: (stage) => ({ skin: SKIN.warm, hair: "#241c18", curly: true, smile: true, size: sizeOf(stage), ...(BOY[stage] ?? BOY.child) }),
-  girl: (stage) => ({ skin: SKIN.warm, hair: "#241c18", smile: true, size: sizeOf(stage), ...(GIRL[stage] ?? GIRL.child) }),
+  // stage "old": the grown-up look with grey hair (the pension cutscene's old age).
+  boy: (stage) => ({ skin: SKIN.warm, hair: stage === "old" ? "#c9c9c9" : "#241c18", curly: true, smile: true, size: sizeOf(stage), ...(BOY[stage] ?? (stage === "old" ? BOY.settle : BOY.child)) }),
+  girl: (stage) => ({ skin: SKIN.warm, hair: stage === "old" ? "#c9c9c9" : "#241c18", smile: true, size: sizeOf(stage), ...(GIRL[stage] ?? (stage === "old" ? GIRL.settle : GIRL.child)) }),
   granny: () => ({ skin: SKIN.light, hair: "#e8e8e8", bun: true, glasses: "#c0609a", top: "#f07ab4", bottom: "#6b84d8", border: "#f2d14a", saree: true, shoes: "#b8453a", size: "adult" }),
   banker: () => ({ skin: SKIN.warm, hair: "#2b2420", bun: true, top: "#3d9a4a", bottom: "#2f7a3a", saree: true, shoes: "#4a3020", size: "adult" }),
   teacher: () => ({ skin: SKIN.light, hair: "#2b2420", bun: true, glasses: "#5e3c1e", top: "#f2d14a", bottom: "#d35400", saree: true, shoes: "#4a3020", size: "adult" }),

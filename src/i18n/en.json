@@ -2025,5 +2025,36 @@
     "lesson_noCover": "{premium} of crop insurance would have brought back {crop}.",
     "continue": "Continue",
     "again": "Play again"
+  },
+  "pension": {
+    "cut": {
+      "title": "Two old ages",
+      "skip": "Skip",
+      "next": "Next",
+      "toAmmamma": "Back to Ammamma",
+      "age": "Age {age}",
+      "with": "With a pension",
+      "without": "Without a pension",
+      "stop": "At 60, work stops. Your pay stops. Your bills don't.",
+      "sixty": {
+        "without": "Only a small jar of savings.",
+        "with": "The pension pays {monthly} every month."
+      },
+      "medicine": {
+        "without": "A medicine bill empties the jar.",
+        "with": "The monthly money pays the bill."
+      },
+      "help": {
+        "without": "Children are busy. You borrow from the sahukar.",
+        "with": "Tea with the grandchildren. You even give them gifts."
+      },
+      "from": "From age {age}",
+      "aMonth": "a month",
+      "at": "At {age}",
+      "pot": "saved up",
+      "after": "Then",
+      "everyMonth": "every month, for life",
+      "lesson": "Start early: small drops every month fill a big pot. Old you will thank you."
+    }
   }
 }
