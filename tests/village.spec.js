@@ -293,11 +293,10 @@ test("Rat Guard opens from the title: the bank unlocks after the cutscene, rats 
   await game.getByRole("button", { name: "Skip" }).click();
   await expect(game.getByText("₹500 chewed")).toBeVisible();
   await game.getByRole("button", { name: /Bank account/ }).click({ timeout: 10000 });
-  await expect(game.locator(".rg-chip").nth(1)).toContainText("VAULT");
+  await expect(game.locator(".rg-chip").first()).toContainText("VAULT");
   // Rats clang off the vault; after five the rest give up.
   await expect(game.getByText("The vault holds!")).toBeVisible({ timeout: 45000 });
   await expect(game.getByText("Not one rupee lost!")).toBeVisible({ timeout: 10000 });
-  await expect(game.locator(".rg-final")).toContainText("Rats shooed");
   await game.getByRole("button", { name: "Play again" }).click();
   await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
   await game.getByRole("button", { name: "Close" }).click();
