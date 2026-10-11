@@ -1819,5 +1819,43 @@
     "pickedQuick": "❌ \"1.5%\" sounds small, but you pay back much more. Look at ₹ for every ₹100.",
     "finish": "See result",
     "score": "Charges found {n}/{total} · Bank saves {saved}"
+  },
+  "phoneTour": {
+    "hello": {
+      "title": "You got your own phone!",
+      "text": "A phone of your very own! It can make money smarter, or lose it faster. Let's see what's inside."
+    },
+    "messages": {
+      "title": "Messages",
+      "text": "Texts from family, friends and the bank. Scammers text too: never share an OTP or PIN."
+    },
+    "bank": {
+      "title": "Your bank",
+      "text": "See your savings, put money in or take it out, and watch interest add up."
+    },
+    "invest": {
+      "title": "Grow your money",
+      "text": "Start an RD, FD or SIP. Small amounts every month grow big over time."
+    },
+    "exchange": {
+      "title": "Practice share market",
+      "text": "Buy and sell shares at pretend prices. Learn the ups and downs before risking real money."
+    },
+    "arcade": {
+      "title": "Arcade",
+      "text": "All the mini-games in one place. Play any time you need a break."
+    },
+    "gyaan": {
+      "title": "Gyaan",
+      "text": "Every lesson you've unlocked, as quick picture cards with a quiz."
+    },
+    "ready": {
+      "title": "All set!",
+      "text": "Your phone is in the top bar. Open it whenever you like."
+    },
+    "keyHint": "opens it from anywhere on the map",
+    "skip": "Skip",
+    "show": "Show me",
+    "open": "Open my phone"
   }
 }
