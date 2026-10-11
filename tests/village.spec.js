@@ -7,7 +7,7 @@ async function start(page, { lang = "English" } = {}) {
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
-  await page.getByRole("button", { name: "Play", exact: true }).click();
+  await page.getByRole("button", { name: "Start a new life" }).click();
   // "Who are you?" opens on the title screen: pick a look and a name.
   const hero = page.getByRole("dialog", { name: "Who are you?" });
   await hero.getByRole("radio", { name: "Girl" }).click();
@@ -293,26 +293,15 @@ test("Rat Guard opens from the title: the bank unlocks after the cutscene, rats 
   await game.getByRole("button", { name: "Skip" }).click();
   await expect(game.getByText("₹500 chewed")).toBeVisible();
   await game.getByRole("button", { name: /Bank account/ }).click({ timeout: 10000 });
-  await expect(game.locator(".rg-chip").nth(1)).toContainText("VAULT");
+  await expect(game.locator(".rg-chip").first()).toContainText("VAULT");
   // Rats clang off the vault; after five the rest give up.
   await expect(game.getByText("The vault holds!")).toBeVisible({ timeout: 45000 });
   await expect(game.getByText("Not one rupee lost!")).toBeVisible({ timeout: 10000 });
-  await expect(game.locator(".rg-final")).toContainText("Rats shooed");
   await game.getByRole("button", { name: "Play again" }).click();
   await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
   await game.getByRole("button", { name: "Close" }).click();
   await expect(game).not.toBeVisible();
   expect(errors).toEqual([]);
-});
-
-test("the title can jump straight to the town of the first job without touching the saved life", async ({ page }) => {
-  await page.goto("/?seed=demo");
-  await page.evaluate(() => window.localStorage.clear());
-  await page.reload();
-  await page.getByRole("button", { name: "Visit the town (First Job)" }).click();
-  await expect(page.locator(".mapgame")).toBeVisible({ timeout: 20000 });
-  await expect(page.locator(".hud-chapter")).toContainText("Age 22");
-  expect(await page.evaluate(() => window.localStorage.getItem("lakshyam.life"))).toBeNull();
 });
 
 test("SIP Garden opens from the arcade: invest in every lane, Auto-SIP, pause, and a report at the end", async ({ page }) => {

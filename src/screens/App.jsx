@@ -76,8 +76,8 @@ export function App() {
       if (out?.money.movements.some((m) => m.type === "shock")) sounds.thud();
       else if (out?.money.netWorthChange > 0) sounds.coin();
       else if (out?.money.netWorthChange < 0) sounds.spend();
-      if (out?.lesson?.to === "applied" && out.lesson.from !== "applied") setTimeout(sounds.chime, 250);
-    } else if (action.type === "BUY_WANT") sounds.coin();
+      if (out?.lesson?.to === "applied" && out.lesson.from !== "applied") setTimeout(sounds.levelUp, 300);
+    } else if (action.type === "BUY_WANT") sounds.spend();
     else sounds.tap();
     lifeRef.current = next;
     setLife(next);
@@ -97,28 +97,6 @@ export function App() {
     s = step(s, { type: "ADVANCE" });
     setVisit(false);
     setSetup((x) => ({ ...x, goalId, playerName }));
-    setLife(s);
-    setParallel(null);
-    go("life");
-  }
-
-  // From the title: jump straight to the First Job chapter in the town (a visit; your saved life stays).
-  function visitTown() {
-    const hero = life ?? saved?.life;
-    let s = createLife({ storylineId: "village", goalId: hero?.goalId ?? "house", seed: urlSeed() ?? `${Date.now()}`, playerName: hero?.playerName || setup.playerName || "", mode: "story", avatar: hero?.avatar ?? setup.avatar ?? "boy" });
-    for (let n = 0; n < 3000 && !(s.phase === "budget" && select.story(s)?.mission.id === "job"); n++) {
-      let a = { type: "ADVANCE" };
-      if (s.phase === "map") a = { type: "VISIT", location: select.story(s).objective.location };
-      else if (s.phase === "card") {
-        const open = select.currentCard(s).choices.filter((c) => !c.locked);
-        const c = open.find((x) => x.default) ?? open[0];
-        a = { type: "CHOOSE", choiceId: c.id, ignoredWarning: true };
-      }
-      const next = step(s, a);
-      if (next.error) break;
-      s = next;
-    }
-    setVisit(true);
     setLife(s);
     setParallel(null);
     go("life");
@@ -212,7 +190,6 @@ export function App() {
             canContinue={Boolean(saved || life)}
             onPlay={() => (saved || life ? (life && !visit ? go("life") : continueLife()) : go("language"))}
             onNew={newLife}
-            onTown={visitTown}
             onHelp={() => setHelp(true)}
             settings={settingsApi}
             picking={picking}

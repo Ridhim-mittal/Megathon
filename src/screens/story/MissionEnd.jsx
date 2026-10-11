@@ -3,6 +3,7 @@ import { ArrowRight, BadgeCheck, Check, GitBranch, Newspaper, Skull, Sparkles, T
 import { useT } from "../../i18n/index.jsx";
 import { headlineText } from "../../ui/movements.js";
 import { Flowchart } from "./Flowchart.jsx";
+import { sounds } from "../../ui/sound.js";
 
 export const TONE_ICON = { good: Trophy, mixed: Check, bad: TriangleAlert, tragic: Skull };
 
@@ -13,6 +14,10 @@ export function MissionEnd({ summary, chart, placeName, last, onNext }) {
   const [tab, setTab] = useState("flow");
   const heading = useRef(null);
   useEffect(() => heading.current?.focus(), []);
+  useEffect(() => {
+    const tone = summary?.story?.tone;
+    if (tone) (tone === "good" || tone === "mixed" ? sounds.stingGood : sounds.stingBad)();
+  }, [summary?.story?.tone]);
   if (!summary?.story) return null;
   const o = summary.story;
   const Icon = TONE_ICON[o.tone] ?? Check;

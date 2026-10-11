@@ -3,6 +3,7 @@ import { ArrowRight, Minus, Plus, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { PixelPortrait } from "../PixelPortrait.jsx";
 import { account, cancel, levels, queueAhead, submit, tick } from "./orderbook.js";
+import { sounds } from "../sound.js";
 
 // The Exchange, one small step at a time: each step shows only what it needs, one short line from
 // Ammamma and one big button. Results are shown as little sums, not paragraphs. At the end (or on
@@ -30,9 +31,13 @@ export function GuidedExchange({ book, onFinish, onClose }) {
       if (waiting && r.passive.some((p) => p.id === waiting.id)) {
         const filled = r.passive.filter((p) => p.id === waiting.id).reduce((a, p) => a + p.qty, 0);
         setResult({ kind: "filled", qty: filled, price: waiting.price });
+        sounds.cash();
         if (!book.bids.some((o) => o.id === waiting.id)) setWaiting(null);
       }
-      if (kind === "news" && r.news) setResult({ kind: "news", news: r.news, from: newsFrom, to: book.ltp });
+      if (kind === "news" && r.news) {
+        sounds.ping();
+        setResult({ kind: "news", news: r.news, from: newsFrom, to: book.ltp });
+      }
       redraw();
     }, fast ? 2000 : 5000); // every 5 s; 2 s while you wait for a price or the news
     return () => clearInterval(id);
@@ -62,6 +67,7 @@ export function GuidedExchange({ book, onFinish, onClose }) {
     const got = r.fills.reduce((a, f) => a + f.qty, 0);
     const prices = [...new Set(r.fills.map((f) => f.price))];
     setResult({ kind: qty > 10 ? "big" : "buy", qty: got, best, prices, total: r.fills.reduce((a, f) => a + f.qty * f.price, 0) });
+    sounds.cash();
     redraw();
   }
   function wait() {
@@ -80,6 +86,7 @@ export function GuidedExchange({ book, onFinish, onClose }) {
     const got = r.fills.reduce((a, f) => a + f.qty, 0);
     const avgSell = got ? r.fills.reduce((a, f) => a + f.qty * f.price, 0) / got : 0;
     setResult({ kind: "sold", qty: got, paid: before.avg, price: avgSell, gain: (avgSell - before.avg) * got - book.fee });
+    sounds.cash();
     redraw();
   }
 

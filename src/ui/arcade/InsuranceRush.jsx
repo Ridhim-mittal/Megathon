@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useT, formatMoney } from "../../i18n/index.jsx";
+import { setEngine, sounds, startEngine, stopEngine } from "../sound.js";
 
 // Insurance Rush (L16 Insurance basics): an endless top-down drive in a pixel-art road scene.
 // A policy lasts 12 seconds; while it's active every crash is a claim that repairs the car and
@@ -312,6 +313,7 @@ export function InsuranceRush({ running, onEnd }) {
     const crash = (ob) => {
       g.shake = 0.35;
       g.vx = 0;
+      sounds.crash();
       for (let i = 0; i < 22; i++)
         g.particles.push({ x: g.x, y: CAR_Y + 30, vx: (Math.random() - 0.5) * 280, vy: -Math.random() * 280, t: 0, c: ["#3a3a40", "#f4a261", "#ffd23f", "#77777f"][i % 4] });
       if (g.policy > 0) {
@@ -344,6 +346,8 @@ export function InsuranceRush({ running, onEnd }) {
         g.vx += dir * STEER_ACCEL * boost * dt;
         g.vx *= Math.exp(-STEER_DAMP * dt * (dir ? 0.35 : 1));
         g.vx = Math.max(-STEER_MAX * boost, Math.min(STEER_MAX * boost, g.vx));
+        // Hard steering at full sideways speed: the tyres screech (a drift).
+        if (dir && Math.abs(g.vx) > STEER_MAX * boost * 0.9) sounds.screech();
         g.x += g.vx * dt;
         if (g.x < minX || g.x > maxX) {
           g.x = Math.max(minX, Math.min(maxX, g.x));
@@ -368,6 +372,12 @@ export function InsuranceRush({ running, onEnd }) {
       }
       g.shake = Math.max(0, g.shake - dt);
 
+      // The engine hums with the speed while driving; traffic honks now and then.
+      if (moving) {
+        startEngine();
+        setEngine(progress(g.score));
+        if (Math.random() < dt * 0.06) sounds.horn();
+      } else stopEngine();
       if (moving) {
         g.roadY = (g.roadY + speed * dt) % 120;
         for (const sc of g.scenery) sc.y += speed * dt;
@@ -380,11 +390,16 @@ export function InsuranceRush({ running, onEnd }) {
       for (const o of g.objects) {
         if (moving) o.y += speed * (o.kind === "car" || o.kind === "hazard" ? HAZARD_SPEED : 1) * dt;
         if (o.done || !moving) continue;
+        if (o.kind === "car" && !o.passed && o.y > CAR_Y + S.player.height) {
+          o.passed = true;
+          sounds.pass();
+        }
         const hit = o.x - o.w / 2 + 3 < car.r && o.x + o.w / 2 - 3 > car.l && o.y + 4 < car.b && o.y + o.h - 4 > car.t;
         if (!hit) continue;
         if (o.kind === "coin") {
           o.done = true;
           g.coins += 1;
+          sounds.coin();
         } else if (o.kind === "insurance") {
           if (g.policy > POLICY_SECONDS - 1) {
             if (!o.told) popup(tr("full"), "#0a8fa3");
@@ -397,6 +412,7 @@ export function InsuranceRush({ running, onEnd }) {
             g.renewals += 1;
             g.policy = POLICY_SECONDS;
             g.coins -= PREMIUM;
+            sounds.chime();
             popup(tr("renewed", { s: POLICY_SECONDS, n: PREMIUM }), "#0a8fa3");
           }
         } else if (g.invuln <= 0) {
@@ -547,6 +563,7 @@ export function InsuranceRush({ running, onEnd }) {
     window.addEventListener("blur", clear);
     return () => {
       cancelAnimationFrame(raf);
+      stopEngine();
       window.removeEventListener("keydown", onDown);
       window.removeEventListener("keyup", onUp);
       window.removeEventListener("blur", clear);

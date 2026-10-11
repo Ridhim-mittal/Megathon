@@ -4,6 +4,7 @@ import { useT } from "../../i18n/index.jsx";
 import { ASSUMPTIONS } from "../gameAdapter.js";
 import { account, available, cancel, checkOrder, createBook, levels, priceBand, queueAhead, submit, tick } from "./orderbook.js";
 import { GuidedExchange } from "./GuidedExchange.jsx";
+import { sounds } from "../sound.js";
 
 // The phone's practice exchange: a live order book with other traders, where the player places
 // market and limit orders with practice money and learns how prices are really made.
@@ -47,7 +48,11 @@ export function StockExchange({ onClose, onLearn }) {
     if (!running || guided) return undefined;
     const id = setInterval(() => {
       const r = tick(book);
-      if (r.news) complete("news");
+      if (r.news) {
+        complete("news");
+        sounds.ping();
+      }
+      if (r.passive.length) sounds.cash();
       for (const p of r.passive) {
         complete("limitFill");
         let text = t(p.side === "buy" ? "exchange.explain.passiveBuy" : "exchange.explain.passiveSell", { name: p.name, qty: p.qty, price: rs(p.price) });
@@ -80,6 +85,7 @@ export function StockExchange({ onClose, onLearn }) {
     setError(null);
     const before = account(book);
     const r = submit(book, { ...order, owner: "me", name: t("exchange.you") });
+    if (r.fills.length) sounds.cash();
     const filled = r.fills.reduce((a, f) => a + f.qty, 0);
     const prices = [...new Set(r.fills.map((f) => f.price))];
     const avg = filled ? r.fills.reduce((a, f) => a + f.price * f.qty, 0) / filled : 0;
