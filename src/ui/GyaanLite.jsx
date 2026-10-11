@@ -98,8 +98,18 @@ function Slides({ id, lesson, page }) {
           {icon}
         </span>
         <h3>{title}</h3>
+        {slides.length > 1 && (
+          <span className="slide-count">
+            {at + 1}/{slides.length}
+          </span>
+        )}
       </div>
-      <section className={`slide slide-${kind}`} key={kind} aria-live="polite">
+      {slides.length > 1 && (
+        <span className="slide-progress" aria-hidden="true">
+          <i style={{ width: `${((at + 1) / slides.length) * 100}%` }} />
+        </span>
+      )}
+      <section className={`slide slide-${kind} tone-${kind}`} key={kind} aria-live="polite">
         <span className="slide-icon" aria-hidden="true">
           {SLIDE_ICON[kind]}
         </span>
@@ -197,7 +207,7 @@ function Slides({ id, lesson, page }) {
             ))}
           </span>
           <button className="slide-arrow next" onClick={() => go(at + 1)} disabled={at === slides.length - 1} aria-label={t("gyaan.next")}>
-            <ChevronRight size={20} />
+            <span>{t("gyaan.next")}</span> <ChevronRight size={20} />
           </button>
         </nav>
       )}

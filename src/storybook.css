@@ -284,14 +284,14 @@
   animation: prop-bob 2.4s ease-in-out infinite;
 }
 .is-you .pixel-portrait {
-  filter: brightness(0) opacity(0.45);
+  filter: drop-shadow(0 0 6px rgba(255, 216, 74, 0.7));
 }
 .you-mark {
   position: absolute;
   z-index: 1;
-  top: 22px;
+  top: -8px;
   font-family: var(--px-font);
-  font-size: 30px;
+  font-size: 22px;
   color: #ffd84a;
   text-shadow: 0 2px 0 var(--px-wood), 0 0 12px rgba(255, 216, 74, 0.8);
   animation: prop-bob 1.6s ease-in-out infinite;

@@ -1,19 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, BadgeCheck, Check, FileWarning, Lightbulb, Sparkles, Waves } from "lucide-react";
+import React, { useEffect, useRef } from "react";
+import { ArrowRight, BookOpen, Check, FileWarning, Lightbulb, Sparkles, Waves } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
-import { select } from "../../ui/gameAdapter.js";
-import { describeMovements } from "../../ui/movements.js";
+import { content, select } from "../../ui/gameAdapter.js";
 import { PixelPortrait as Portrait } from "../../ui/PixelPortrait.jsx";
 import { Actor } from "./CardView.jsx";
 
 // The speaker reacts to the choice: a big reaction, one line of story and the money as coins.
-// The details (every money move, the reason) wait behind "Why?".
-const REACTION = { good: "🎉", risky: "😬", bad: "😟", neutral: "🙂" };
+// Then the answer, straight away: why a good choice works, or the smarter move and why.
+const REACTION = { good: "🎉", ok: "👍", risky: "😬", bad: "😟", neutral: "🙂" };
+const RANK = { good: 4, ok: 3, neutral: 2, risky: 1, bad: 0 };
+// Story choices carry a quality in the content; the card the player sees never does.
+const storyChoices = (cardId) => {
+  for (const m of content.story?.missions ?? []) {
+    const node = m.nodes?.find((n) => n.id === cardId);
+    if (node) return node.choices ?? [];
+  }
+  return [];
+};
 export function OutcomeView({ life, dispatch, onLearn }) {
-  const { t, pick, rich, plain, money, signed } = useT();
+  const { t, pick, rich, plain, signed } = useT();
   const out = select.lastOutcome(life);
   const card = select.currentCard(life);
-  const [why, setWhy] = useState(false);
   const heading = useRef(null);
   const next = useRef(null);
   useEffect(() => heading.current?.focus(), []);
@@ -22,13 +29,16 @@ export function OutcomeView({ life, dispatch, onLearn }) {
   const moves = out.money.movements ?? [];
   // Money put away (jars, savings products) shows as coins; the rest is listed below them.
   const saved = moves.filter((m) => (m.type === "jar" && m.amount > 0) || (m.type === "open" && m.paid > 0 && !m.shortfall));
-  const lines = describeMovements(
-    moves.filter((m) => !saved.includes(m)),
-    { t, money },
-  );
   const { netWorthChange: nw, debtChange: debt } = out.money;
-  const lesson = out.lesson && out.lesson.from !== out.lesson.to ? out.lesson : null;
   const quality = out.quality ?? "neutral";
+  const right = quality === "good";
+  // The best choice on the card, when the player picked something worse.
+  const best = !right
+    ? storyChoices(card?.id)
+        .filter((c) => c.quality && !c.hidden && c.id !== out.choiceId)
+        .sort((a, b) => (RANK[b.quality] ?? 0) - (RANK[a.quality] ?? 0))[0]
+    : null;
+  const better = best && (RANK[best.quality] ?? 0) > (RANK[quality] ?? 0) ? best : null;
   const coins = [
     ...saved.map((m, i) => ({
       key: `s${i}`,
@@ -106,28 +116,26 @@ export function OutcomeView({ life, dispatch, onLearn }) {
                 ))}
               </div>
             ) : null}
-            {why && lines.length > 0 && (
-              <ul className="vn-moves">
-                {lines.map((l, i) => (
-                  <li key={i} className={`move ${l.tone}`} style={{ animationDelay: `${0.3 + 0.08 * i}s` }}>
-                    {l.text}
-                  </li>
-                ))}
-              </ul>
-            )}
           </section>
 
-          {(lesson || out.document?.wentAhead || out.echo) && (
+          {(out.why || better) && (
+            <div className={`vn-answer ${right ? "is-right" : "is-better"}`}>
+              <span className="vn-answer-face" aria-hidden="true">
+                <Portrait role="mentor" />
+              </span>
+              <div>
+                <b className="vn-answer-head">
+                  {right ? <Sparkles size={15} aria-hidden="true" /> : <Lightbulb size={15} aria-hidden="true" />}
+                  {right ? t("outcome.answer.right") : t("outcome.answer.better")}
+                </b>
+                {better && <p className="vn-answer-pick">{plain(better.label)}</p>}
+                {out.why && <p className="vn-answer-why">{rich(out.why)}</p>}
+              </div>
+            </div>
+          )}
+
+          {(out.document?.wentAhead || out.echo) && (
             <div className="vn-rewards">
-              {lesson && (
-                <p className={`gyaan-card vn-gyaan status-${lesson.to}`}>
-                  <span className="vn-gyaan-icon">{lesson.to === "applied" ? <BadgeCheck size={20} /> : <Sparkles size={20} />}</span>
-                  <span>
-                    <b>{t(`outcome.lesson.${lesson.to}`)}</b>
-                    {card?.lessonTitle && <small>{pick(card.lessonTitle)}</small>}
-                  </span>
-                </p>
-              )}
               {out.document && out.document.wentAhead && (
                 <p className={`doc-result ${out.document.problem ? (out.document.caught ? "caught" : "missed") : "clean"}`}>
                   <FileWarning size={16} aria-hidden="true" />
@@ -143,27 +151,11 @@ export function OutcomeView({ life, dispatch, onLearn }) {
             </div>
           )}
 
-          {out.why && why && (
-            <div className="why vn-why open">
-              <div className="vn-why-note">
-                <Portrait role="mentor" className="whisper-face" />
-                <p id="why-text" className="why-text">
-                  {rich(out.why)}
-                </p>
-              </div>
-            </div>
-          )}
-
           <div className="action-row">
             <span className="vn-tools">
-              {(out.why || lines.length > 0) && (
-                <button className="why-button" aria-expanded={why} aria-controls="why-text" onClick={() => setWhy(!why)}>
-                  <Lightbulb size={17} /> {why ? t("outcome.hideWhy") : t("outcome.why")}
-                </button>
-              )}
               {onLearn && card?.lesson && (
-                <button className="secondary-button" onClick={() => onLearn(card.lesson)}>
-                  {t("gyaan.learnMore")}
+                <button className="secondary-button learn-more" onClick={() => onLearn(card.lesson)}>
+                  <BookOpen size={16} aria-hidden="true" /> {t("gyaan.learnMore")}
                 </button>
               )}
             </span>

@@ -20,6 +20,8 @@ export const GAMES = [
   { id: "patangMarket", place: null, seconds: 54 },
   // Endless too: the classic snake, logic in priceSnake.js.
   { id: "priceSnake", place: null, seconds: null },
+  // Six "months" with summaries in between. Its logic lives in SwipeBazaar.jsx.
+  { id: "swipeBazaar", place: null, seconds: null },
 ];
 export const gameById = Object.fromEntries(GAMES.map((g) => [g.id, g]));
 export const gameAtPlace = (place) => GAMES.find((g) => g.place === place) ?? null;
@@ -286,5 +288,6 @@ export function result(s) {
   if (s.id === "scamSmash") return { score: s.score, blocked: s.blocked, passed: s.passed, mistakes: s.mistakes };
   if (s.id === "priceSnake") return { score: s.score, years: s.years, price: s.price, history: s.history, reason: s.reason };
   if (s.id === "insuranceRush") return { score: s.score, distance: s.distance, claims: s.claims, renewals: s.renewals };
+  if (s.id === "swipeBazaar") return { score: s.score, saved: s.saved, extraPaid: s.extraPaid, needsMissed: s.needsMissed, emisLeft: s.emisLeft };
   return { score: s.value, added: s.added, interest: s.interest, lost: s.lost, shielded: s.shielded };
 }

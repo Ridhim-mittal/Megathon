@@ -54,7 +54,8 @@ export function useT() {
       const value = lookup(DICTS[lang], key) ?? lookup(en, key);
       if (value == null) return key;
       if (typeof value === "string") return named(fill(value, vars));
-      return value;
+      // Lists (chips, steps) come back as they are; a group of keys is never text.
+      return Array.isArray(value) ? value : key;
     };
 
     // A content string { en, hi, te } in the current language, falling back to English.
