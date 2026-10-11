@@ -11,7 +11,10 @@
     "made": "Made of little moments & big dreams",
     "chapter": "AGES 11 TO 36",
     "illustrative": "All numbers are illustrative teaching assumptions, not advice or promises.",
-    "town": "Visit the town (First Job)"
+    "arcadeHint": "Every mini-game from the story",
+    "howTo": "How to play",
+    "howToHint": "Learn the game in a minute",
+    "menu": "Main menu"
   },
   "common": {
     "next": "Next",
@@ -1053,6 +1056,7 @@
   },
   "arcade": {
     "title": "Arcade",
+    "subtitle": "Play the various games encountered during the story",
     "back": "All games",
     "play": "Play ({s} s)",
     "go": "Go!",
@@ -1454,6 +1458,7 @@
       "ratGuard": "Guard the savings",
       "interest": "Find the best interest",
       "fake": "Catch the fake adviser",
+      "fineprint": "Spot the hidden catch",
       "garden": "Defend 4 investment lanes from thieves: spread your money",
       "flood": "Grab the papers before the flood"
     },

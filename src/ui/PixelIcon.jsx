@@ -42,6 +42,8 @@ const ICONS = {
   magnifier: ["..KKKK...", ".KCCCCK..", "KCWCCCCK.", "KCCCCCCK.", "KCCCCCCK.", ".KCCCCK..", "..KKKKLK.", "......KLK", ".......KK"],
   wave: ["....KKKK..", "..KKBBBBK.", ".KBBWWKBBK", "KBBWK..KK.", "KBBBKK....", "KBBBBBKKKK", "KBBBBBBBBK", "KKKKKKKKKK"],
   car: ["..KKKKKK...", ".KCCKCCCK..", "KKKKKKKKKKK", "KRRRRRRRRRK", "KRRRRRRRRYK", "KKKKKKKKKKK", ".KAK...KAK.", "..K.....K.."],
+  gamepad: [".KKKKKKKKK.", "KAAAAAAAAAK", "KAAKAAAARAK", "KAKKKAABAYK", "KAAKAAAAYAK", "KAAAKKKAAAK", ".KAAK.KAAK.", "..KK...KK.."],
+  resume: ["KK....", "KYK...", "KYYK..", "KYYYK.", "KYYK..", "KYK...", "KK...."],
   speaker: ["...K....", "..KK....", "KKKA.K..", "KAAA..K.", "KAAA..K.", "KKKA.K..", "..KK....", "...K...."],
   mute: ["...K....", "..KK....", "KKKA.R.R", "KAAA..R.", "KAAA.R.R", "KKKA....", "..KK....", "...K...."],
   play: ["KK....", "KWK...", "KWWK..", "KWWWK.", "KWWK..", "KWK...", "KK...."],

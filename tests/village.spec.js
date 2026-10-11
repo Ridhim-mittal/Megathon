@@ -7,7 +7,7 @@ async function start(page, { lang = "English" } = {}) {
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
-  await page.getByRole("button", { name: "Play", exact: true }).click();
+  await page.getByRole("button", { name: "Start a new life" }).click();
   // "Who are you?" opens on the title screen: pick a look and a name.
   const hero = page.getByRole("dialog", { name: "Who are you?" });
   await hero.getByRole("radio", { name: "Girl" }).click();
@@ -302,16 +302,6 @@ test("Rat Guard opens from the title: the bank unlocks after the cutscene, rats 
   await game.getByRole("button", { name: "Close" }).click();
   await expect(game).not.toBeVisible();
   expect(errors).toEqual([]);
-});
-
-test("the title can jump straight to the town of the first job without touching the saved life", async ({ page }) => {
-  await page.goto("/?seed=demo");
-  await page.evaluate(() => window.localStorage.clear());
-  await page.reload();
-  await page.getByRole("button", { name: "Visit the town (First Job)" }).click();
-  await expect(page.locator(".mapgame")).toBeVisible({ timeout: 20000 });
-  await expect(page.locator(".hud-chapter")).toContainText("Age 22");
-  expect(await page.evaluate(() => window.localStorage.getItem("lakshyam.life"))).toBeNull();
 });
 
 test("SIP Garden opens from the arcade: invest in every lane, Auto-SIP, pause, and a report at the end", async ({ page }) => {
