@@ -10,46 +10,34 @@ import { TONE_ICON } from "./MissionEnd.jsx";
 // Story mode at 36: the ending this life's choices led to, each chapter's outcome, and the
 // flowcharts of every chapter.
 export function StoryEnding({ life }) {
-  const { t, pick, rich } = useT();
+  const { t, pick } = useT();
   const [open, setOpen] = useState(false);
   const story = select.story(life);
   const end = life.ending?.story;
   if (!story || !end) return null;
-  const Icon = TONE_ICON[end.tone] ?? Check;
   return (
-    <section className={`story-ending tone-${end.tone}`}>
-      <div className="story-ending-hero">
-        <span className="result-icon" aria-hidden="true">
-          <Icon size={30} />
-        </span>
-        <div>
-          <span className="eyebrow">{t("story.yourEnding")}</span>
-          <h2>{pick(end.title)}</h2>
-          <p>{rich(end.text)}</p>
-        </div>
-      </div>
-      <ol className="story-path">
-        {story.missions.map((m) => {
+    <section className="story-journey">
+      <h2 className="end-h">{t("ending.journey")}</h2>
+      <ol className="journey">
+        {story.missions.map((m, i) => {
           const MIcon = TONE_ICON[m.outcome?.tone] ?? Check;
           return (
-            <li key={m.id} className={`tone-${m.outcome?.tone ?? "none"}`}>
-              <small>{pick(m.part)}</small>
+            <li key={m.id} className={`tone-${m.outcome?.tone ?? "none"}`} style={{ animationDelay: `${0.15 + i * 0.1}s` }} title={m.outcome ? pick(m.outcome.title) : ""}>
+              <span className="journey-stamp" aria-hidden="true">
+                <MIcon size={20} />
+              </span>
               <b>{pick(m.title)}</b>
-              {m.outcome && (
-                <span>
-                  <MIcon size={12} /> {pick(m.outcome.title)}
-                </span>
-              )}
+              {m.outcome && <small>{pick(m.outcome.title)}</small>}
             </li>
           );
         })}
       </ol>
-      <p className="quiet">
-        {t("story.warningsSummary", { ignored: story.warnings.ignored, heeded: story.warnings.heeded })}
-      </p>
-      <button className="secondary-button" onClick={() => setOpen(true)}>
-        <GitBranch size={16} /> {t("story.lifeFlowchart")}
-      </button>
+      <div className="journey-chips">
+        <span className="journey-chip">{t("story.warnChip", { ignored: story.warnings.ignored, heeded: story.warnings.heeded })}</span>
+        <button className="secondary-button" onClick={() => setOpen(true)}>
+          <GitBranch size={16} /> {t("story.lifeFlowchart")}
+        </button>
+      </div>
       {/* A portal: the ending sheet would otherwise clip the full-screen chart. */}
       {open && createPortal(<LifeFlowchart life={life} onClose={() => setOpen(false)} />, document.querySelector(".game-shell") ?? document.body)}
     </section>

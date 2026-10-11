@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, Clock, FolderSearch, GitBranch, MapPin, OctagonAlert, Siren, Smartphone } from "lucide-react";
+import { ArrowRight, Clock, FolderSearch, MapPin, OctagonAlert, Siren, Smartphone } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { PixelPortrait } from "../../ui/PixelPortrait.jsx";
 import { sounds } from "../../ui/sound.js";
@@ -113,7 +113,7 @@ export function MissionIntro({ story, avatar, stage, previous, onBegin }) {
 }
 
 // Top-centre: what to do next, where, and how much time is left.
-export function ObjectiveTracker({ story, placeName, rushLeft, onGo, onFlowchart, onEvidence }) {
+export function ObjectiveTracker({ story, placeName, rushLeft, onGo }) {
   const { t, pick, rich } = useT();
   const o = story.objective;
   const m = story.mission;
@@ -126,13 +126,13 @@ export function ObjectiveTracker({ story, placeName, rushLeft, onGo, onFlowchart
       </div>
       <div className="objective-main">
         <span className="objective-diamond" aria-hidden="true">
-          {o.rush ? <Siren size={14} /> : "◆"}
+          {o.rush ? <Siren size={18} /> : <MapPin size={18} />}
         </span>
         <p>{rich(o.text)}</p>
       </div>
       <div className="objective-row">
         <button className="objective-go" onClick={onGo}>
-          {isPhone ? <Smartphone size={14} /> : <MapPin size={14} />}
+          {isPhone ? <Smartphone size={15} /> : <ArrowRight size={15} />}
           {isPhone ? t("story.openPhone") : t("story.walkTo", { place: placeName(o.location) })}
         </button>
         {o.rush && rushLeft != null && (
@@ -140,14 +140,6 @@ export function ObjectiveTracker({ story, placeName, rushLeft, onGo, onFlowchart
             <Clock size={14} /> {Math.ceil(rushLeft)}s
           </span>
         )}
-        <span className="objective-tools">
-          <button onClick={onEvidence} title={t("story.evidenceTitle")} aria-label={t("story.evidenceTitle")}>
-            <FolderSearch size={15} /> {story.evidence.length}
-          </button>
-          <button onClick={onFlowchart} title={t("story.flowchart")} aria-label={t("story.flowchart")}>
-            <GitBranch size={15} />
-          </button>
-        </span>
       </div>
     </section>
   );

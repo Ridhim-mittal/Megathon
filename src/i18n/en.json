@@ -43,7 +43,19 @@
     "title": "Choose your life",
     "subtitle": "Every life teaches the same 24 money lessons. The world around you changes.",
     "play": "Live this life",
-    "comingSoon": "Coming soon"
+    "comingSoon": "Coming soon",
+    "chips": {
+      "village": [
+        "🌾 Cotton village",
+        "👵 Ammamma's love",
+        "₹0 in the bank"
+      ],
+      "city": [
+        "🛺 Hyderabad basti",
+        "📱 A phone early",
+        "⚠️ Scams find you"
+      ]
+    }
   },
   "intro": {
     "eyebrow": "MEET YOUR FAMILY",
@@ -277,14 +289,19 @@
       "clean": "The papers were clean."
     },
     "react": {
-      "good": "Smart move!",
-      "risky": "Hmm, risky…",
-      "bad": "Ouch!",
+      "good": "Shabash! Smart move",
+      "ok": "Not bad, could be smarter",
+      "risky": "Hmm, a little risky…",
+      "bad": "Ouch, that stung!",
       "neutral": "Fair enough"
     },
     "delayed": {
       "title": "Done! It seems to have worked.",
       "note": "Nothing has changed… for now. Keep an eye on your phone's messages."
+    },
+    "answer": {
+      "right": "Why this works",
+      "better": "The smarter move"
     }
   },
   "shock": {
@@ -399,7 +416,11 @@
     "reveal": "Reveal",
     "stats": "Dream {pct}% · Net worth {netWorth} · Debt {debt}",
     "next": "See my Gyaan report",
-    "rival": "Meanwhile, {name}'s life"
+    "rival": "Meanwhile, {name}'s life",
+    "statNet": "Net worth",
+    "statDebt": "Debt",
+    "journey": "Your journey",
+    "ammamma": "Ammamma says:"
   },
   "report": {
     "eyebrow": "YOUR GYAAN REPORT",
@@ -417,7 +438,9 @@
       "missed": "Missed",
       "unseen": "Not yet"
     },
-    "next": "Try a parallel life"
+    "next": "Try a parallel life",
+    "ring": "{n} of {total} lessons applied",
+    "ringText": "You used {n} money lessons in real choices. Every card you missed can still be learned in Gyaan."
   },
   "parallel": {
     "eyebrow": "PARALLEL LIFE",
@@ -632,6 +655,7 @@
     "tinBox": "Tin box",
     "withInterest": "With interest",
     "amount": "Money today",
+    "inflationRate": "Prices rise each year",
     "inflation": {
       "result": "{amount} kept at home for {n} years buys only what {worth} buys today."
     },
@@ -927,7 +951,8 @@
       "debt_trap": "DANGER: your costly debts are bigger than 3 months' income. Stop borrowing and pay the costliest first.",
       "emi_heavy": "Warning: EMIs eat over half your income. Don't take any new loan.",
       "costly_debt": "You have costly debt. Paying it off is the best 'investment' you can make."
-    }
+    },
+    "warnChip": "🛑 {heeded} stopped · {ignored} went ahead"
   },
   "hero": {
     "ribbon": "A NEW LIFE",

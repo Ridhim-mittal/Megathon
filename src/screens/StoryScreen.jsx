@@ -325,8 +325,6 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           placeName={placeName}
           rushLeft={rushLeft}
           onGo={goObjective}
-          onFlowchart={() => setOverlay({ type: "flow" })}
-          onEvidence={() => setOverlay({ type: "evidence" })}
         />
       )}
       {phase === "map" && !overlay && story?.danger && (

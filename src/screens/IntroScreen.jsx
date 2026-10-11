@@ -30,7 +30,7 @@ const SCENES = {
 
 const castIn = (text) => [...(text ?? "").matchAll(/\{cast:([^}]+)\}/g)].map((m) => m[1]);
 
-function Scene({ scene, people, speaker, castName, youLabel }) {
+function Scene({ scene, people, speaker, castName, youLabel, avatar }) {
   return (
     <div className={`story-scene sky-${scene.sky}`} aria-hidden="true">
       <span className="scene-sun" />
@@ -79,8 +79,8 @@ function Scene({ scene, people, speaker, castName, youLabel }) {
         ))}
         {scene.you && (
           <figure className="scene-person is-you" style={{ animationDelay: `${0.15 + people.length * 0.14}s` }}>
-            <span className="you-mark">?</span>
-            <Portrait role="player" avatar="girl" />
+            <span className="you-mark" aria-hidden="true">★</span>
+            <Portrait role="player" avatar={avatar} stage="child" />
             <figcaption>{youLabel}</figcaption>
           </figure>
         )}
@@ -98,8 +98,8 @@ function Scene({ scene, people, speaker, castName, youLabel }) {
 }
 
 // A storybook: one illustrated scene and a few lines per page.
-export function IntroScreen({ settings, storylineId, onDone, onMenu }) {
-  const { t, rich, castName, pick } = useT();
+export function IntroScreen({ settings, storylineId, avatar = "boy", onDone, onMenu }) {
+  const { t, rich, castName, pick, playerName } = useT();
   const sl = storyline(storylineId);
   const panels = sl?.intro ?? [];
   const [i, setI] = useState(0);
@@ -139,7 +139,7 @@ export function IntroScreen({ settings, storylineId, onDone, onMenu }) {
         <article className="story-page" key={i} aria-live="polite">
           <span className="eyebrow story-ribbon">{t("intro.eyebrow")}</span>
           <div className="story-stage" onClick={next}>
-            <Scene scene={scene} people={people} speaker={speaker} castName={castName} youLabel={t("intro.you")} />
+            <Scene scene={scene} people={people} speaker={speaker} castName={castName} youLabel={playerName && playerName !== "Kanna" ? playerName : t("intro.you")} avatar={avatar} />
           </div>
           <div className="story-words">
             <span className={`story-speaker ${speaker === "narrator" ? "is-narrator" : ""}`}>
