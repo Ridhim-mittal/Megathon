@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Home, Landmark, Pause, Smartphone, TrendingDown, Wallet } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { TopControls } from "../../ui/Hud.jsx";
 import { Money } from "../../ui/Money.jsx";
 import { LessonBadge } from "../../ui/LessonBadge.jsx";
+import { sounds } from "../../ui/sound.js";
 
 // The top bar over the map: chapter and age, money, dream, the current lesson, pause, phone and controls.
 export function MapHud({ hud, chapter, goalTitle, settings, phone, lessonId, onPhone, onPause, onAsk }) {
   const { t, money } = useT();
+  const dream = useRef(hud.dream.pct);
+  useEffect(() => {
+    if (hud.dream.pct > dream.current) sounds.rise();
+    dream.current = hud.dream.pct;
+  }, [hud.dream.pct]);
   return (
     <header className="map-hud">
       <div className="hud-panel hud-chapter">

@@ -4,6 +4,7 @@ import { drawGuide } from "./guide.js";
 import { TILE } from "./mapkit.js";
 import { VILLAGE } from "./village.js";
 import "./maps.js";
+import { sounds } from "../sound.js";
 
 const DIRS = {
   ArrowUp: "up",
@@ -56,7 +57,7 @@ export function MapCanvas({ map = VILLAGE, avatar = "boy", stage = "child", mark
     const from = m.moving ? m.moving.to : { x: m.x, y: m.y };
     if (!m.moving && from.x === place.entrance.x && from.y === place.entrance.y) {
       m.dir = "up";
-      props.current.onEnter?.(place.id);
+      (sounds.door(), props.current.onEnter?.(place.id));
       return;
     }
     const path = mapRef.current.findPath(from, place.entrance);
@@ -106,7 +107,7 @@ export function MapCanvas({ map = VILLAGE, avatar = "boy", stage = "child", mark
         const place = mapRef.current.placeByEntrance(m.x, m.y);
         if (place && !m.moving) {
           e.preventDefault();
-          props.current.onEnter?.(place.id);
+          (sounds.door(), props.current.onEnter?.(place.id));
         }
       }
     };
@@ -153,7 +154,7 @@ export function MapCanvas({ map = VILLAGE, avatar = "boy", stage = "child", mark
     if (dir !== "up") return false;
     const place = mapRef.current.placeByEntrance(m.x, m.y);
     if (!place) return false;
-    props.current.onEnter?.(place.id);
+    (sounds.door(), props.current.onEnter?.(place.id));
     return true;
   }
 
@@ -175,7 +176,7 @@ export function MapCanvas({ map = VILLAGE, avatar = "boy", stage = "child", mark
           m.enterOnArrive = null;
           if (place) {
             m.dir = "up";
-            p.onEnter?.(place.id);
+            (sounds.door(), p.onEnter?.(place.id));
           }
         }
       }
@@ -192,7 +193,10 @@ export function MapCanvas({ map = VILLAGE, avatar = "boy", stage = "child", mark
       }
       if (dir) {
         m.dir = dir;
-        if (mapRef.current.walkable(next.x, next.y)) m.moving = { from: { x: m.x, y: m.y }, to: next, t: 0 };
+        if (mapRef.current.walkable(next.x, next.y)) {
+          m.moving = { from: { x: m.x, y: m.y }, to: next, t: 0 };
+          sounds.step();
+        }
         else if (m.held.length && tryEnterAhead(m, dir)) m.held = [];
       }
     }
@@ -289,7 +293,7 @@ export function MapCanvas({ map = VILLAGE, avatar = "boy", stage = "child", mark
     const target = place ? place.entrance : { x: tx, y: ty };
     if (place && from.x === target.x && from.y === target.y && !m.moving) {
       m.dir = "up";
-      props.current.onEnter?.(place.id);
+      (sounds.door(), props.current.onEnter?.(place.id));
       return;
     }
     const path = M.findPath(from, target);
