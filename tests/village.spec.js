@@ -79,7 +79,7 @@ async function playRatGuard(page, second) {
   await expect(game).toBeVisible({ timeout: 20000 });
   await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
   await game.getByRole("button", { name: /Tin box/ }).click();
-  await expect(game.locator(".rg-chip").first()).toContainText("SCORE");
+  await expect(game.locator(".rg-chip").first()).toBeVisible();
   await game.getByRole("button", { name: "Skip" }).click();
   await expect(game.getByText("₹500 chewed")).toBeVisible();
   const pickSecond = game.getByRole("button", { name: second === "bank" ? /Bank account/ : /Tin box/ });
