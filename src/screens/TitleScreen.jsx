@@ -1,5 +1,5 @@
 import React from "react";
-import { Building2, Gamepad2, Play, Sparkles, Sprout, Sun } from "lucide-react";
+import { BookOpen, Building2, Gamepad2, Play, Sparkles, Sprout } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 import { HeroPicker } from "../ui/HeroPicker.jsx";
@@ -18,18 +18,13 @@ export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settin
         <TopControls settings={settings} />
       </div>
       <div className="title-content">
-        <div className="title-kicker">
-          <span /> {t("app.kicker")} <span />
-        </div>
         <div className="title-sprout">
-          <Sprout size={43} />
+          <Sprout size={64} strokeWidth={2.2} />
         </div>
         <h1>
           lakshyam<span>.</span>
         </h1>
         <p className="title-tagline">{t("app.tagline")}</p>
-        <div className="title-rule">✦</div>
-        <p className="title-description">{t("app.description")}</p>
         <div className={`title-actions ${canContinue ? "two" : "one"}`}>
           {canContinue && (
             <button className="title-choice continue" onClick={onPlay} aria-label={t("app.continue")}>
@@ -63,14 +58,13 @@ export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settin
             <Building2 size={16} aria-hidden="true" /> {t("app.town")}
           </button>
         </div>
-        <button className="title-help" onClick={onHelp}>
+        <button className="title-help title-howto" onClick={onHelp}>
+          <span className="title-howto-icon" aria-hidden="true">
+            <BookOpen size={18} />
+          </span>
           {t("app.howToPlay")}
         </button>
       </div>
-      <span className="title-bottom">
-        <Sun size={14} /> {t("app.made")}
-      </span>
-      <span className="title-version">{t("app.chapter")}</span>
       {arcade && (
         <div className="dialog-layer title-arcade">
           <section className="game-window window-arcade">

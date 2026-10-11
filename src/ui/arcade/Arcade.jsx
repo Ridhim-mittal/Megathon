@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, BookOpen, Calculator, CarFront, Egg, Flower2, Gamepad2, Heart, Lightbulb, PiggyBank, Rat, RotateCcw, ScanSearch, ShieldBan, ShoppingBag, Snowflake, Star, Wallet, Weight, Wind, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calculator, CarFront, Egg, Flower2, Gamepad2, Heart, Lightbulb, PiggyBank, Rat, RotateCcw, ScanSearch, ShieldBan, ShoppingBag, Snowflake, Star, Wallet, Weight, Wind, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -50,8 +50,7 @@ export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
           <X size={17} />
         </button>
       </header>
-      <h3 className="arcade-section">{t("arcade.sections.quick")}</h3>
-      <div className="arcade-tiles">
+      <div className="arcade-tiles all-games">
         {GAMES.map((g) => {
           const Icon = GAME_ICON[g.id];
           return (
@@ -65,15 +64,10 @@ export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
             </button>
           );
         })}
-      </div>
-      <h3 className="arcade-section story">
-        <BookOpen size={16} aria-hidden="true" /> {t("arcade.sections.story")}
-      </h3>
-      <div className="arcade-tiles story">
         {STORY_GAMES.map((g) => (
-          <button key={g.id} className={`arcade-tile story-tile story-${g.id}`} onClick={() => setStory({ id: g.id, ad: nextAd() })}>
+          <button key={g.id} className={`arcade-tile story-${g.id}`} onClick={() => setStory({ id: g.id, ad: nextAd() })}>
             <span className="arcade-icon" aria-hidden="true">
-              <g.icon size={30} />
+              <g.icon size={34} />
             </span>
             <b>{t(g.title)}</b>
             <small>{t(`arcade.storyTags.${g.id}`)}</small>
