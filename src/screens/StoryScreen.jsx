@@ -16,7 +16,8 @@ import { PhoneTour } from "../ui/PhoneTour.jsx";
 import { LessonBadge } from "../ui/LessonBadge.jsx";
 import { PauseCard } from "../ui/PauseCard.jsx";
 import { sounds } from "../ui/sound.js";
-import { GAME_COMPONENTS, SCENE_GAMES, gameFor } from "../ui/games/choiceGames.js";
+import { GAME_COMPONENTS, PRE_GAMES, SCENE_GAMES } from "../ui/games/choiceGames.js";
+import { PreGameCard } from "./story/PreGame.jsx";
 import { RatGuard } from "../ui/games/RatGuard.jsx";
 import { BudgetView } from "./life/BudgetView.jsx";
 import { ShopView } from "./life/ShopView.jsx";
@@ -128,7 +129,12 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       : phase === "map" && objective?.node
         ? (content.story?.missions ?? []).flatMap((m) => m.nodes ?? []).find((n) => n.id === objective.node)?.lesson ?? null
         : null;
-  const [game, setGame] = useState(null); // a choice that needs a mini-game won first
+  const [game, setGame] = useState(null); // the scene's mini-game, while it is being played
+  const [played, setPlayed] = useState(() => new Set()); // scenes whose mini-game is done
+  const markPlayed = (cardId) => {
+    setGame(null);
+    setPlayed((s) => new Set(s).add(cardId));
+  };
   const gameOpen = useRef(false);
   gameOpen.current = Boolean(game);
   const storyDispatch = useCallback(
@@ -136,12 +142,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       // While a mini-game is open its own keys (1–3) must not pick a card choice.
       if (action.type === "CHOOSE" && gameOpen.current && !action.wonGame) return null;
       if (action.type === "CHOOSE" && !action.ignoredWarning) {
-        const here = select.currentCard(life);
-        const c = here?.choices.find((x) => x.id === action.choiceId);
-        if (c && !c.locked && gameFor(here.id, c.id) && !action.wonGame) {
-          setGame({ choiceId: c.id, kind: gameFor(here.id, c.id) });
-          return null;
-        }
+        const c = select.currentCard(life)?.choices.find((x) => x.id === action.choiceId);
         if (c?.locked) {
           onToast(c.lockedHint ? pick(c.lockedHint) : t("story.locked"));
           return null;
@@ -208,6 +209,18 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         <BudgetView key={`budget-${life.age}`} life={life} dispatch={dispatch} />
         <p className="quiet chapter-split">{t("chapter.split")}</p>
       </>
+    );
+  } else if (phase === "card" && PRE_GAMES[card?.id] && !played.has(card.id)) {
+    // This scene starts with its mini-game; the question and choices come after it.
+    windowType = "pregame";
+    dialog = (
+      <PreGameCard
+        kind={PRE_GAMES[card.id]}
+        lessonId={card.lesson}
+        sceneTitle={card.title ? pick(card.title) : null}
+        onStart={() => setGame({ kind: PRE_GAMES[card.id], cardId: card.id })}
+        onSkip={() => markPlayed(card.id)}
+      />
     );
   } else if (phase === "card" && SCENE_GAMES[card?.id]) {
     // This scene is played, not read: the game brings its own full-screen layer (below).
@@ -393,15 +406,12 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       {overlay?.type === "ratguard" && <RatGuard mode="practice" onClose={() => setOverlay(null)} />}
       {game && GAME_COMPONENTS[game.kind] &&
         React.createElement(GAME_COMPONENTS[game.kind], {
-          mode: "story",
+          // Played before the question, win or lose: every ending leads on to the choices.
+          mode: "practice",
           avatar: life.avatar ?? "boy",
-          onClose: () => setGame(null),
-          onGiveUp: () => setGame(null),
-          onWin: () => {
-            const choiceId = game.choiceId;
-            setGame(null);
-            storyDispatch({ type: "CHOOSE", choiceId, wonGame: true });
-          },
+          onClose: () => markPlayed(game.cardId),
+          onGiveUp: () => markPlayed(game.cardId),
+          onWin: () => markPlayed(game.cardId),
         })}
       {warning && (
         <WarningFlash
