@@ -453,11 +453,10 @@
   "parallel": {
     "eyebrow": "PARALLEL LIFE",
     "title": "What if you had chosen differently?",
-    "subtitle": "Pick one decision. Everything before it stays the same; the luck stays the same.",
+    "subtitle": "The moments where one different choice would have changed your life the most. Everything before stays the same; so does the luck.",
     "you": "You chose",
     "instead": "Instead, choose",
     "run": "Live it again",
-    "running": "Living the other life…",
     "original": "Your life",
     "parallel": "Parallel life",
     "lessons": "Lessons that turned out differently",
@@ -467,7 +466,13 @@
     "dream": "Dream",
     "ending": "Ending",
     "another": "Try another decision",
-    "gallery": "Ending gallery"
+    "gallery": "Ending gallery",
+    "searching": "Finding your turning points… {n}%",
+    "none": "No single choice would have changed your life much. Your path was steady.",
+    "better": "Missed chance",
+    "worse": "Good call",
+    "otherChoice": "Another choice:",
+    "dreamDelta": "dream {n}"
   },
   "gallery": {
     "eyebrow": "ENDING GALLERY",
