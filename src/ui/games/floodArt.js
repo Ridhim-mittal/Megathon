@@ -77,48 +77,70 @@ function circle(g, x, y, r, col) {
 // ---------- the things to grab ----------
 export function itemSprite(kind) {
   const P = {
-    policy: [11, 13, ({ rect, px }) => {
-      rect(0, 0, 11, 13, "#f5f2e8");
-      rect(0, 0, 11, 3, "#3f9b3a");
-      rect(3, 5, 5, 4, "#2a7fd0");
-      rect(4, 9, 3, 1, "#2a7fd0");
-      px(5, 10, "#2a7fd0");
-      px(4, 7, "#ffffff");
-      px(5, 8, "#ffffff");
-      px(6, 6, "#ffffff");
-      rect(2, 11, 7, 1, "#b8b2a6");
-      px(10, 0, "#d8d2c6");
+    // Crop insurance policy: a paper with a big umbrella over a crop sprout, and a red seal.
+    policy: [15, 18, ({ rect, px, ell }) => {
+      rect(0, 0, 15, 18, "#fbf8ef");
+      rect(0, 0, 15, 3, "#3f9b3a");
+      rect(2, 1, 6, 1, "#ffffff");
+      ell(7.5, 7.5, 5.5, 3.6, "#2a7fd0");
+      rect(2, 7, 11, 1, "#2a7fd0");
+      for (const x of [3, 6, 9, 12]) px(x, 8, "#1d5fa0");
+      rect(7, 5, 1, 1, "#9fd0ff");
+      rect(4, 6, 1, 1, "#9fd0ff");
+      rect(7, 8, 1, 5, "#6b4423");
+      px(6, 12, "#6b4423");
+      rect(9, 11, 1, 2, "#4caa3c");
+      px(10, 10, "#5cbf45");
+      px(8, 10, "#5cbf45");
+      rect(2, 14, 7, 1, "#b8b2a6");
+      rect(2, 16, 5, 1, "#b8b2a6");
+      ell(12, 15, 2.2, 2.2, "#d32f2f");
+      px(12, 15, "#ff8a80");
     }],
-    aadhaar: [13, 9, ({ rect }) => {
-      rect(0, 0, 13, 9, "#ffffff");
-      rect(0, 0, 13, 2, "#ff9933");
-      rect(0, 7, 13, 2, "#138808");
-      rect(1, 3, 3, 3, "#c9a27e");
-      rect(5, 3, 6, 1, "#9a9a9a");
-      rect(5, 5, 4, 1, "#9a9a9a");
+    // Aadhaar: white card, saffron and green bands, a photo and the emblem.
+    aadhaar: [15, 10, ({ rect, px }) => {
+      rect(0, 0, 15, 10, "#ffffff");
+      rect(0, 0, 15, 2, "#ff9933");
+      rect(0, 8, 15, 2, "#138808");
+      rect(1, 3, 4, 4, "#c9a27e");
+      rect(2, 3, 2, 2, "#8a5a3a");
+      rect(6, 3, 7, 1, "#5a5a66");
+      rect(6, 5, 5, 1, "#9a9a9a");
+      px(13, 5, "#2a5aa8");
+      px(13, 6, "#2a5aa8");
+      rect(6, 6, 4, 1, "#9a9a9a");
     }],
-    passbook: [10, 13, ({ rect, px }) => {
-      rect(0, 0, 10, 13, "#1f3a7a");
-      rect(0, 0, 2, 13, "#162a58");
-      rect(4, 4, 4, 1, "#ffd23f");
-      rect(4, 6, 4, 1, "#ffd23f");
-      rect(5, 4, 1, 6, "#ffd23f");
-      px(6, 8, "#ffd23f");
-      px(7, 9, "#ffd23f");
+    // Bank passbook: navy cover with a gold bank building.
+    passbook: [12, 15, ({ rect, px }) => {
+      rect(0, 0, 12, 15, "#1f3a7a");
+      rect(0, 0, 2, 15, "#162a58");
+      px(7, 3, "#ffd23f");
+      rect(6, 4, 3, 1, "#ffd23f");
+      rect(4, 5, 7, 1, "#ffd23f");
+      for (const x of [4, 6, 8, 10]) rect(x, 6, 1, 4, "#ffd23f");
+      rect(4, 10, 7, 1, "#ffd23f");
+      rect(4, 12, 7, 1, "#6a86c8");
     }],
-    land: [13, 10, ({ rect }) => {
-      rect(0, 2, 13, 8, "#e6cf9c");
-      rect(1, 0, 11, 3, "#fff8e0");
-      rect(0, 5, 13, 1, "#c62828");
-      rect(6, 2, 1, 8, "#c62828");
-      rect(2, 7, 3, 1, "#b8a070");
+    // Land papers: a rolled scroll tied with a ribbon and a wax seal.
+    land: [15, 11, ({ rect, ell }) => {
+      rect(1, 2, 13, 7, "#efdcae");
+      ell(1.5, 5.5, 1.5, 3.5, "#d9c08a");
+      ell(13.5, 5.5, 1.5, 3.5, "#d9c08a");
+      rect(3, 4, 8, 1, "#b8a070");
+      rect(3, 6, 6, 1, "#b8a070");
+      rect(7, 2, 1, 7, "#c62828");
+      ell(7.5, 8.5, 2, 2, "#a8261a");
     }],
-    cash: [13, 10, ({ rect }) => {
-      rect(0, 2, 13, 8, "#b9c3cf");
-      rect(0, 2, 13, 2, "#dfe6ee");
-      rect(2, 0, 9, 3, "#8ccf7e");
-      rect(0, 8, 13, 2, "#8b96a3");
-      rect(5, 5, 3, 2, "#5a6474");
+    // The emergency cash tin: notes and coins spilling out of the top.
+    cash: [15, 12, ({ rect, ell }) => {
+      rect(3, 0, 9, 4, "#8ccf7e");
+      rect(4, 1, 3, 2, "#5aa055");
+      ell(12, 2.5, 2, 2, "#ffc928");
+      rect(0, 3, 15, 9, "#b9c3cf");
+      rect(0, 3, 15, 2, "#dfe6ee");
+      rect(0, 10, 15, 2, "#8b96a3");
+      rect(5, 6, 5, 3, "#ffd23f");
+      rect(7, 6, 1, 3, "#8a5a00");
     }],
     tv: [14, 12, ({ rect, px }) => {
       px(4, 0, "#3a3a44");

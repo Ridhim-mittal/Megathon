@@ -66,6 +66,8 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
   const [bag, setBag] = useState([]);
   const [hud, setHud] = useState({ left: FLOOD.seconds, water: 0 });
   const [result, setResult] = useState(null);
+  const names = useRef({});
+  names.current = Object.fromEntries([...ESSENTIAL, ...DECOYS].map((k) => [k, t(`flood.item.${k}`)]));
   const screenRef = useRef(screen);
   screenRef.current = screen;
   if (import.meta.env?.DEV) window.__flood = game;
@@ -139,7 +141,7 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
     // The things in the house.
     if (s)
       for (const it of s.items) {
-        if (it.taken || it.lost) continue;
+        if (it.taken || it.lost || it.floating) continue;
         drawItem(ctx, it.kind, it.x, it.y + (it.floating ? Math.sin(now / 200 + it.bob) * 3 : 0), it.floating ? Math.sin(now / 300 + it.bob) * 0.25 : 0);
       }
     else {
@@ -151,6 +153,8 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
     if (s) {
       drawWater(ctx, 0, DOOR_X, level, now, "rgba(70,110,150,0.82)");
       drawWater(ctx, DOOR_X, W, outside, now, "rgba(90,105,110,0.85)");
+      // Things the water has picked up bob on top, carried off towards the back door.
+      for (const it of s.items) if (it.floating && !it.taken && !it.lost) drawItem(ctx, it.kind, it.x, it.y + Math.sin(now / 200 + it.bob) * 3, Math.sin(now / 300 + it.bob) * 0.25);
       // The rush through the doorway.
       if (outside < level) {
         ctx.fillStyle = "rgba(200,225,240,0.75)";
@@ -182,7 +186,7 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
     for (const p of fx.current) {
       const k = (now - p.at) / p.life;
       if (p.kind === "grab") {
-        drawItem(ctx, p.item, p.x + (W - 120 - p.x) * k * k, p.y + (30 - p.y) * k * k - Math.sin(k * Math.PI) * 60, k * 2);
+        drawItem(ctx, p.item, p.x + (W - 120 - p.x) * k * k, p.y + (30 - p.y) * k * k - Math.sin(k * Math.PI) * 60, k * 2, false);
       } else if (p.kind === "float") {
         ctx.fillStyle = `rgba(230,244,255,${1 - k})`;
         for (let i = 0; i < 6; i++) {
@@ -193,13 +197,25 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
     }
   }
 
-  function drawItem(ctx, kind, x, y, rot) {
+  function drawItem(ctx, kind, x, y, rot, label = true) {
     const spr = itemSprite(kind);
     ctx.save();
     ctx.translate(Math.round(x), Math.round(y));
     if (rot) ctx.rotate(rot);
     ctx.drawImage(spr, Math.round((-spr.width * ITEM_PX) / 2), Math.round((-spr.height * ITEM_PX) / 2), spr.width * ITEM_PX, spr.height * ITEM_PX);
     ctx.restore();
+    if (!label) return;
+    // A small name tag under every item (all of them, so it isn't a hint).
+    const name = names.current[kind];
+    ctx.font = '700 12px "Pixelify Sans", system-ui, sans-serif';
+    const w = ctx.measureText(name).width + 10;
+    const ty = Math.round(y + (spr.height * ITEM_PX) / 2 + 4);
+    ctx.fillStyle = "rgba(20,14,30,0.78)";
+    ctx.fillRect(Math.round(x - w / 2), ty, Math.round(w), 16);
+    ctx.fillStyle = "#fff6e0";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(name, Math.round(x), ty + 8.5);
   }
 
   function drawWater(ctx, x0, x1, level, now, color) {
@@ -305,7 +321,7 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
           {screen === "done" && r && (
             <div className="sg-over sg-end">
               <div className="sg-card fr-card">
-                <span className={`sg-ribbon ${verdict === "covered" ? "" : "lost"}`}>{"⭐".repeat(r.stars) || "—"}</span>
+                <span className={`sg-ribbon ${verdict === "covered" ? "" : "lost"}`}>{"⭐".repeat(r.stars) + "☆".repeat(3 - r.stars)}</span>
                 <h2>{t(`flood.title_${verdict}`)}</h2>
                 <ul className="fr-lines">
                   <li>
