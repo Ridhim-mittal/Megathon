@@ -19,7 +19,8 @@ import { sounds } from "../ui/sound.js";
 import { GAME_COMPONENTS, PRE_GAMES, SCENE_GAMES } from "../ui/games/choiceGames.js";
 import { PreGameCard } from "./story/PreGame.jsx";
 import { RatGuard } from "../ui/games/RatGuard.jsx";
-import { BudgetView } from "./life/BudgetView.jsx";
+import { SaveFirst } from "./life/SaveFirst.jsx";
+import { JarDock, SurprisePop } from "../ui/MoneyMoments.jsx";
 import { ShopView } from "./life/ShopView.jsx";
 import { CardView } from "./life/CardView.jsx";
 import { OutcomeView } from "./life/OutcomeView.jsx";
@@ -204,12 +205,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   if (showIntro) {
     // MissionIntro brings its own full-screen layer.
   } else if (phase === "budget") {
-    dialog = (
-      <>
-        <BudgetView key={`budget-${life.age}`} life={life} dispatch={dispatch} />
-        <p className="quiet chapter-split">{t("chapter.split")}</p>
-      </>
-    );
+    dialog = <SaveFirst key={`budget-${life.age}`} life={life} dispatch={dispatch} avatar={avatar} />;
   } else if (phase === "card" && PRE_GAMES[card?.id] && !played.has(card.id)) {
     // This scene starts with its mini-game; the question and choices come after it.
     windowType = "pregame";
@@ -378,6 +374,8 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         </p>
       )}
       {phase === "map" && !overlay && <p className="map-controls">{t("map.controls")}</p>}
+      {phase === "map" && !overlay && !showIntro && <JarDock hud={hud} />}
+      <SurprisePop surprises={hud.surprises ?? []} active={phase === "map" && !overlay && !showIntro} />
       <NotificationTray
         messages={phone.messages}
         phoneEvents={phone.unlocked ? phone.notifications : []}

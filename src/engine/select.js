@@ -29,6 +29,8 @@ export function makeSelectors({ A, idx, content, computeDream, checkBudget, stor
       netWorth: netWorth(s),
       meters: { ...s.meters },
       dream: computeDream(s),
+      // Story mode's yearly surprises so far (see yearSurprise in engine.js).
+      surprises: (s.surprises ?? []).map((x) => ({ ...x })),
       glasses: s.glasses.charges,
       income: { ...s.income },
       mode: s.mode,

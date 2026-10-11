@@ -315,7 +315,9 @@
     "repair": "repair",
     "theft": "theft",
     "fire": "fire",
-    "other": "surprise"
+    "other": "surprise",
+    "school": "school",
+    "family": "family function"
   },
   "yearEnd": {
     "eyebrow": "AGE {age} · THE YEAR'S END",
@@ -1916,6 +1918,48 @@
     "resume": "Resume",
     "menu": "Main menu",
     "key": "pauses and resumes"
+  },
+  "save": {
+    "title": "Save first?",
+    "perMonth": "/month",
+    "income": "{n} a month",
+    "summary": "Saving {saved} a month, {fun} for fun.",
+    "part": {
+      "needs": "Needs",
+      "wants": "Fun",
+      "emergency": "Safety",
+      "goal": "Dream",
+      "invest": "Grow"
+    },
+    "level": {
+      "little": "Little",
+      "some": "Some",
+      "lots": "Lots"
+    },
+    "dream": "Dream",
+    "safety": "Safety",
+    "fun": "Fun",
+    "debt": "Loan",
+    "dock": "Your jars",
+    "atAge": "Age {n}",
+    "never": "Never 😢",
+    "tight": "Tight year",
+    "tip": "safety first, then dream",
+    "kind": {
+      "health": "Fever!",
+      "repair": "Phone broke!",
+      "school": "School fees!",
+      "family": "Family wedding!"
+    },
+    "ageTag": "Age {n}",
+    "loan": "Borrowed {n} · {p}%/yr",
+    "verdict": {
+      "safe": "Safety jar saved you!",
+      "pocket": "Paid from pocket money",
+      "dream": "Dream money gone!",
+      "borrowed": "No safety money → loan"
+    },
+    "ok": "OK"
   },
   "pregame": {
     "eyebrow": "Before you choose",
