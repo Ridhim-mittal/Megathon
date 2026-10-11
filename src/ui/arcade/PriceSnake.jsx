@@ -405,10 +405,7 @@ export function SnakeIntro({ best, startRef, onStart }) {
       <p className="snake-fact">
         <ShoppingBasket size={18} aria-hidden="true" /> {t("arcade.snake.fact")}
       </p>
-      <p className="snake-stars-line">
-        {t("arcade.snake.stars")}
-        {best > 0 && <em> · {t("arcade.snake.best", { n: best })}</em>}
-      </p>
+      {best > 0 && <p className="snake-stars-line">{t("arcade.snake.best", { n: best })}</p>}
       <button ref={startRef} className="primary-button big snake-go" onClick={onStart}>
         {t("arcade.playEndless")} <ArrowRight size={18} />
       </button>

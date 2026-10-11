@@ -334,7 +334,6 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
           {screen === "done" && r && (
             <div className="sg-over sg-end">
               <div className="sg-card fr-card">
-                <span className={`sg-ribbon ${verdict === "covered" ? "" : "lost"}`}>{"⭐".repeat(r.stars) + "☆".repeat(3 - r.stars)}</span>
                 <h2>{t(`flood.title_${verdict}`)}</h2>
                 <ul className="fr-lines">
                   <li>
