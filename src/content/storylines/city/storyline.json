@@ -1,7 +1,15 @@
 {
   "id": "city",
   "playable": false,
-  "title": { "en": "The City" },
-  "tagline": { "en": "Some money. Some knowledge. A phone full of shortcuts." },
-  "persona": { "en": "A daily-wage family in a Hyderabad basti. Dad drives an auto, Mum does gig work. You get a phone early, and the scams find you first." }
+  "title": { "en": "The City", "hi": "शहर", "te": "పట్నం" },
+  "tagline": {
+    "en": "Some money. Some knowledge. A phone full of shortcuts.",
+    "hi": "थोड़ा पैसा। थोड़ी जानकारी। शॉर्टकट से भरा एक फ़ोन।",
+    "te": "కొంచెం డబ్బు. కొంచెం తెలివి. షార్ట్‌కట్‌లతో నిండిన ఫోన్."
+  },
+  "persona": {
+    "en": "A daily-wage family in a Hyderabad basti. Dad drives an auto, Mum does gig work. You get a phone early, and the scams find you first.",
+    "hi": "हैदराबाद की एक बस्ती में दिहाड़ी मज़दूर परिवार। पापा ऑटो चलाते हैं, माँ गिग का काम करती हैं। आपको फ़ोन जल्दी मिलता है, और ठग भी सबसे पहले आपको ढूँढते हैं।",
+    "te": "హైదరాబాద్ బస్తీలో రోజు కూలీ కుటుంబం. నాన్న ఆటో నడుపుతాడు, అమ్మ గిగ్ పని చేస్తుంది. మీకు ఫోన్ త్వరగా వస్తుంది, మోసగాళ్లు కూడా ముందు మిమ్మల్నే వెతుకుతారు."
+  }
 }

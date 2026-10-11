@@ -1,0 +1,810 @@
+{
+  "id": "dream",
+  "stage": "settle",
+  "from": 31,
+  "to": 36,
+  "part": {
+    "en": "Chapter 5 · The dream",
+    "hi": "अध्याय 5 · सपना",
+    "te": "అధ్యాయం 5 · కల"
+  },
+  "title": {
+    "en": "Golden Harvest",
+    "hi": "गोल्डन हार्वेस्ट",
+    "te": "గోల్డెన్ హార్వెస్ట్"
+  },
+  "intro": {
+    "en": "Age 31. Golden Harvest has 3,000 investors in twelve villages. Your dream is finally within reach. Then, one Monday morning, the payments stop.",
+    "hi": "उम्र 31। गोल्डन हार्वेस्ट के बारह गाँवों में 3,000 निवेशक हैं। आपका सपना आख़िरकार पहुँच में है। फिर, एक सोमवार की सुबह, पैसे आने बंद हो जाते हैं।",
+    "te": "వయసు 31. పన్నెండు ఊళ్లలో గోల్డెన్ హార్వెస్ట్‌కు 3,000 మంది పెట్టుబడిదారులు ఉన్నారు. మీ కల ఇక చేతికి అందే దూరంలో ఉంది. అప్పుడే, ఒక సోమవారం పొద్దున్నే, డబ్బులు రావడం ఆగిపోతుంది."
+  },
+  "start": "m5_collapse",
+  "nodes": [
+    {
+      "id": "m5_collapse",
+      "age": 31,
+      "location": "square",
+      "speaker": "friend",
+      "lesson": "L22",
+      "objective": {
+        "en": "Shouting at the village square. Something has happened to Golden Harvest.",
+        "hi": "गाँव के चौक पर शोर मचा है। गोल्डन हार्वेस्ट के साथ कुछ हुआ है।",
+        "te": "ఊరి కూడలిలో అరుపులు. గోల్డెన్ హార్వెస్ట్‌కు ఏదో అయింది."
+      },
+      "title": {
+        "en": "The payments stop",
+        "hi": "पैसे आने बंद",
+        "te": "డబ్బులు ఆగిపోయాయి"
+      },
+      "text": {
+        "en": "Monday morning. Golden Harvest's office is **locked**. {cast:tempter}'s phone is **off**. **3,000 people** have lost ₹14 crore. Chintu hides in Anjamma aunty's storeroom, shaking. The crowd wants **someone to blame**.",
+        "hi": "सोमवार की सुबह। गोल्डन हार्वेस्ट के दफ़्तर पर **ताला** है। {cast:tempter} का फ़ोन **बंद** है। **3,000 लोगों** के ₹14 करोड़ डूब गए। चिंटू अंजम्मा आंटी के गोदाम में छिपा काँप रहा है। भीड़ को **किसी पर तो इल्ज़ाम** डालना है।",
+        "te": "సోమవారం ఉదయం. గోల్డెన్ హార్వెస్ట్ ఆఫీసుకు **తాళం**. {cast:tempter} ఫోన్ **స్విచ్ ఆఫ్**. **3,000 మంది** ₹14 కోట్లు పోగొట్టుకున్నారు. చింటూ అంజమ్మ ఆంటీ స్టోర్‌రూమ్‌లో దాక్కుని వణికిపోతున్నాడు. జనం **ఎవరో ఒకరి మీద నింద** వేయాలని చూస్తున్నారు."
+      },
+      "choices": [
+        {
+          "id": "protect",
+          "label": {
+            "en": "Hide Chintu, then walk him to the police to tell the truth",
+            "hi": "चिंटू को छिपाएँ, फिर सच बताने के लिए उसे पुलिस के पास ले जाएँ",
+            "te": "చింటూని దాచండి, తర్వాత నిజం చెప్పించడానికి పోలీసుల దగ్గరికి తీసుకెళ్లండి"
+          },
+          "quality": "good",
+          "effects": {
+            "meters": {
+              "family": 2
+            },
+            "flags": {
+              "add": [
+                "chintu_witness"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Chintu holds your arm all the way to the panchayat office. \"He used me too, re. I'll tell them everything.\"",
+            "hi": "पंचायत दफ़्तर तक चिंटू आपका हाथ पकड़े रहता है। \"उसने मुझे भी इस्तेमाल किया, रे। मैं उन्हें सब कुछ बता दूँगा।\"",
+            "te": "పంచాయతీ ఆఫీసు దాకా చింటూ మీ చెయ్యి వదలడు. \"అరే, వాడు నన్ను కూడా వాడుకున్నాడు. అంతా చెప్పేస్తా.\""
+          },
+          "why": {
+            "en": "Small agents are often victims too. Witnesses who come forward can help recover money for everyone.",
+            "hi": "छोटे एजेंट भी अक्सर शिकार होते हैं। जो गवाह आगे आते हैं, वे सबका पैसा वापस दिलाने में मदद कर सकते हैं।",
+            "te": "చిన్న ఏజెంట్లు కూడా చాలాసార్లు బాధితులే. ముందుకొచ్చి సాక్ష్యం చెప్పేవాళ్ల వల్ల అందరి డబ్బు తిరిగి రావచ్చు."
+          },
+          "next": "m5_panchayat"
+        },
+        {
+          "id": "mob",
+          "label": {
+            "en": "Join the crowd hunting for Chintu",
+            "hi": "चिंटू को ढूँढ रही भीड़ में शामिल हों",
+            "te": "చింటూ కోసం వెతుకుతున్న గుంపులో చేరండి"
+          },
+          "quality": "bad",
+          "effects": {
+            "meters": {
+              "family": -6,
+              "joy": -4
+            },
+            "flags": {
+              "add": [
+                "mob"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The crowd breaks the storeroom door. Chintu is gone, out the back. Anjamma aunty's shop is wrecked.",
+            "hi": "भीड़ गोदाम का दरवाज़ा तोड़ देती है। चिंटू पीछे के रास्ते से भाग चुका है। अंजम्मा आंटी की दुकान तहस-नहस हो जाती है।",
+            "te": "గుంపు స్టోర్‌రూమ్ తలుపు బద్దలు కొడుతుంది. చింటూ లేడు, వెనక దారి నుంచి పారిపోయాడు. అంజమ్మ ఆంటీ కొట్టు నాశనమైంది."
+          },
+          "why": {
+            "en": "Anger at the wrong person helps the real scammer escape. The money trail matters more than revenge.",
+            "hi": "गलत आदमी पर गुस्सा असली ठग को भागने में मदद करता है। बदले से ज़्यादा ज़रूरी है पैसे का सुराग।",
+            "te": "తప్పు మనిషి మీద కోపం చూపిస్తే అసలు మోసగాడు తప్పించుకుంటాడు. పగ కంటే డబ్బు ఎటు పోయిందో తెలుసుకోవడం ముఖ్యం."
+          },
+          "next": "m5_panchayat"
+        },
+        {
+          "id": "home",
+          "label": {
+            "en": "Stay out of it. Go home",
+            "hi": "इससे दूर रहें। घर चले जाएँ",
+            "te": "మనకెందుకు. ఇంటికి వెళ్లండి"
+          },
+          "quality": "ok",
+          "outcome": {
+            "en": "You lock the door. Through the window you hear the crowd move from house to house.",
+            "hi": "आप दरवाज़ा बंद कर लेते हैं। खिड़की से सुनाई देता है कि भीड़ एक घर से दूसरे घर जा रही है।",
+            "te": "మీరు తలుపుకు గడియ పెడతారు. జనం ఇంటింటికీ తిరుగుతున్న చప్పుడు కిటికీ లోంచి వినిపిస్తుంది."
+          },
+          "why": {
+            "en": "Staying safe is fine. But what you know may help others.",
+            "hi": "सुरक्षित रहना ठीक है। पर आप जो जानते हैं, उससे दूसरों की मदद हो सकती है।",
+            "te": "మీరు సురక్షితంగా ఉండటం తప్పు కాదు. కానీ మీకు తెలిసింది ఇతరులకు సాయం కావచ్చు."
+          },
+          "next": "m5_panchayat"
+        }
+      ]
+    },
+    {
+      "id": "m5_panchayat",
+      "age": 32,
+      "location": "panchayat",
+      "speaker": "narrator",
+      "objective": {
+        "en": "The police inspector has set up a desk at the panchayat office. Go there.",
+        "hi": "पुलिस इंस्पेक्टर ने पंचायत दफ़्तर में अपनी मेज़ लगाई है। वहाँ जाएँ।",
+        "te": "పోలీస్ ఇన్‌స్పెక్టర్ పంచాయతీ ఆఫీసులో టేబుల్ వేసుకుని కూర్చున్నాడు. అక్కడికి వెళ్లండి."
+      },
+      "title": {
+        "en": "Who has proof?",
+        "hi": "सबूत किसके पास है?",
+        "te": "రుజువు ఎవరి దగ్గర ఉంది?"
+      },
+      "text": {
+        "en": "The inspector sighs: \"Prakash is in **Dubai**. Without **proof** linking him to the money, I can't touch his property here.\" The village stares at the floor. Then, slowly, at you.",
+        "hi": "इंस्पेक्टर आह भरता है: \"प्रकाश **दुबई** में है। पैसे से उसका रिश्ता जोड़ने वाले **सबूत** के बिना मैं यहाँ उसकी जायदाद छू नहीं सकता।\" पूरा गाँव ज़मीन देखता है। फिर, धीरे से, आपको।",
+        "te": "ఇన్‌స్పెక్టర్ నిట్టూరుస్తాడు: \"ప్రకాష్ **దుబాయ్**‌లో ఉన్నాడు. డబ్బుకూ అతనికీ లింక్ ఉన్న **రుజువు** లేకుండా ఇక్కడ అతని ఆస్తి ముట్టుకోలేను.\" ఊరంతా నేల వైపు చూస్తుంది. తర్వాత, మెల్లగా, మీ వైపు."
+      },
+      "choices": [
+        {
+          "id": "evidence",
+          "label": {
+            "en": "Open your evidence file: everything you've saved over the years",
+            "hi": "अपनी सबूतों की फ़ाइल खोलें: सालों से जो कुछ सँभालकर रखा है",
+            "te": "మీ సాక్ష్యాల ఫైల్ తెరవండి: ఇన్నేళ్లుగా మీరు దాచినవన్నీ"
+          },
+          "quality": "good",
+          "requires": {
+            "minCount": {
+              "flags": [
+                "evidence_call",
+                "evidence_prakash",
+                "evidence_telegram",
+                "evidence_mule",
+                "evidence_loanapp",
+                "evidence_goldharvest"
+              ],
+              "n": 2
+            }
+          },
+          "lockedHint": {
+            "en": "You need at least two pieces of evidence from your past: recordings, screenshots, documents. You don't have enough.",
+            "hi": "आपको अपने पुराने दिनों के कम से कम दो सबूत चाहिए: रिकॉर्डिंग, स्क्रीनशॉट, कागज़ात। आपके पास इतने नहीं हैं।",
+            "te": "మీ గతం నుంచి కనీసం రెండు సాక్ష్యాలు కావాలి: రికార్డింగ్‌లు, స్క్రీన్‌షాట్‌లు, పత్రాలు. మీ దగ్గర సరిపడా లేవు."
+          },
+          "effects": {
+            "flags": {
+              "add": [
+                "exposed_prakash"
+              ]
+            },
+            "meters": {
+              "family": 6,
+              "joy": 6
+            },
+            "gyaan": 4
+          },
+          "outcome": {
+            "en": "The call recording from when you were 15. The Telegram screenshots. The fake certificate. The inspector stops sighing. \"This... this is a case.\"",
+            "hi": "15 साल की उम्र वाली कॉल रिकॉर्डिंग। Telegram के स्क्रीनशॉट। नकली सर्टिफ़िकेट। इंस्पेक्टर का आह भरना बंद हो जाता है। \"यह... यह तो केस बनता है।\"",
+            "te": "మీకు 15 ఏళ్లప్పటి కాల్ రికార్డింగ్. టెలిగ్రామ్ స్క్రీన్‌షాట్‌లు. నకిలీ సర్టిఫికెట్. ఇన్‌స్పెక్టర్ నిట్టూర్పులు ఆగిపోతాయి. \"ఇది... ఇది కేసు అవుతుంది.\""
+          },
+          "why": {
+            "en": "Saving evidence of every scam you meet (numbers, chats, receipts) is how gangs are finally caught.",
+            "hi": "हर ठगी के सबूत सँभालकर रखना (नंबर, चैट, रसीदें), इसी से गिरोह आख़िरकार पकड़े जाते हैं।",
+            "te": "మీకు ఎదురైన ప్రతి మోసానికి సాక్ష్యం (నంబర్లు, చాట్‌లు, రసీదులు) దాచిపెడితేనే ముఠాలు చివరికి పట్టుబడతాయి."
+          },
+          "next": "m5_dream"
+        },
+        {
+          "id": "witness",
+          "label": {
+            "en": "Bring Chintu to give his statement",
+            "hi": "बयान देने के लिए चिंटू को लाएँ",
+            "te": "వాంగ్మూలం ఇవ్వడానికి చింటూని తీసుకురండి"
+          },
+          "quality": "good",
+          "requires": {
+            "flags": [
+              "chintu_witness"
+            ]
+          },
+          "lockedHint": {
+            "en": "Chintu ran away. Nobody can find him.",
+            "hi": "चिंटू भाग गया। कोई उसे ढूँढ नहीं पा रहा।",
+            "te": "చింటూ పారిపోయాడు. ఎవరికీ దొరకడం లేదు."
+          },
+          "effects": {
+            "flags": {
+              "add": [
+                "witness_given"
+              ]
+            },
+            "meters": {
+              "family": 3
+            }
+          },
+          "outcome": {
+            "en": "Chintu names every agent and every bank account. It's a start, but the inspector says he needs more than one witness.",
+            "hi": "चिंटू हर एजेंट और हर बैंक खाते का नाम बताता है। शुरुआत तो है, पर इंस्पेक्टर कहता है कि उसे एक से ज़्यादा गवाह चाहिए।",
+            "te": "చింటూ ప్రతి ఏజెంట్ పేరు, ప్రతి బ్యాంక్ ఖాతా చెప్పేస్తాడు. ఇది ఒక మొదలు, కానీ ఒక్క సాక్షి సరిపోడని ఇన్‌స్పెక్టర్ అంటాడు."
+          },
+          "why": {
+            "en": "Witness statements help, but documents and digital records are stronger evidence.",
+            "hi": "गवाहों के बयान काम आते हैं, पर कागज़ात और डिजिटल रिकॉर्ड ज़्यादा मज़बूत सबूत हैं।",
+            "te": "సాక్షుల వాంగ్మూలాలు ఉపయోగపడతాయి, కానీ పత్రాలు, డిజిటల్ రికార్డులు ఇంకా బలమైన సాక్ష్యాలు."
+          },
+          "next": "m5_dream"
+        },
+        {
+          "id": "nothing",
+          "label": {
+            "en": "You have nothing to give",
+            "hi": "आपके पास देने को कुछ नहीं है",
+            "te": "ఇవ్వడానికి మీ దగ్గర ఏమీ లేదు"
+          },
+          "quality": "ok",
+          "outcome": {
+            "en": "The inspector closes his notebook. \"Then we wait.\" Everyone knows what that means.",
+            "hi": "इंस्पेक्टर अपनी नोटबुक बंद कर देता है। \"तो फिर इंतज़ार करते हैं।\" सब जानते हैं इसका क्या मतलब है।",
+            "te": "ఇన్‌స్పెక్టర్ తన నోట్‌బుక్ మూసేస్తాడు. \"అయితే ఎదురుచూద్దాం.\" దాని అర్థం ఏంటో అందరికీ తెలుసు."
+          },
+          "why": {
+            "en": "Without evidence, scams are very hard to prosecute. Next time, save the proof.",
+            "hi": "सबूत के बिना ठगों पर मुकदमा चलाना बहुत मुश्किल है। अगली बार सबूत सँभालकर रखें।",
+            "te": "సాక్ష్యం లేకపోతే మోసగాళ్లకు శిక్ష పడేలా చేయడం చాలా కష్టం. ఈసారి రుజువు దాచిపెట్టండి."
+          },
+          "next": "m5_dream"
+        }
+      ]
+    },
+    {
+      "id": "m5_dream",
+      "age": 33,
+      "location": "panchayat",
+      "speaker": "lender",
+      "lesson": "L23",
+      "document": "doc.plot_sale",
+      "objective": {
+        "en": "A plot near the highway is for sale, cheap. The seller is waiting at the panchayat office.",
+        "hi": "हाईवे के पास एक प्लॉट सस्ते में बिक रहा है। बेचने वाला पंचायत दफ़्तर में इंतज़ार कर रहा है।",
+        "te": "హైవే దగ్గర ఒక ప్లాట్ తక్కువ ధరకు అమ్మకానికి ఉంది. అమ్మేవాడు పంచాయతీ ఆఫీసు దగ్గర ఎదురుచూస్తున్నాడు."
+      },
+      "title": {
+        "en": "The deal of your life",
+        "hi": "ज़िंदगी का सौदा",
+        "te": "జీవితంలో ఒక్కసారి వచ్చే డీల్"
+      },
+      "text": {
+        "en": "A highway plot, **₹3 lakh below market**: perfect for your dream. The seller, a friend of {cast:lender}, is sweating: \"**Sign today**, or another buyer takes it.\" Read the **sale deed** first.",
+        "hi": "हाईवे पर एक प्लॉट, **बाज़ार भाव से ₹3 लाख कम**: आपके सपने के लिए एकदम सही। बेचने वाला, {cast:lender} का दोस्त, पसीने में है: \"**आज ही साइन करो**, वरना दूसरा खरीदार ले जाएगा।\" पहले **सेल डीड** पढ़ें।",
+        "te": "హైవే పక్కన ప్లాట్, **మార్కెట్ ధర కంటే ₹3 లక్షలు తక్కువ**: మీ కలకు సరిగ్గా సరిపోతుంది. అమ్మేవాడు {cast:lender} స్నేహితుడు, చెమటలు కక్కుతున్నాడు: \"**ఇవాళే సంతకం పెట్టు**, లేకపోతే ఇంకొకరు కొనేస్తారు.\" ముందు **సేల్ డీడ్** చదవండి."
+      },
+      "choices": [
+        {
+          "id": "buy",
+          "label": {
+            "en": "Buy it: ₹1 lakh down, ₹2 lakh home loan",
+            "hi": "खरीद लें: ₹1 लाख डाउन पेमेंट, ₹2 लाख होम लोन",
+            "te": "కొనండి: ₹1 లక్ష డౌన్ పేమెంట్, ₹2 లక్షల హోమ్ లోన్"
+          },
+          "quality": "ok",
+          "effects": {
+            "loan": {
+              "source": "home",
+              "principal": 200000,
+              "months": 120
+            },
+            "open": {
+              "product": "land",
+              "amount": 300000
+            },
+            "flags": {
+              "add": [
+                "bought_plot"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "You sign. The seller counts the money very fast and leaves even faster.",
+            "hi": "आप साइन कर देते हैं। बेचने वाला पैसे बहुत तेज़ी से गिनता है और उससे भी तेज़ी से निकल जाता है।",
+            "te": "మీరు సంతకం పెడతారు. అమ్మేవాడు డబ్బు చాలా వేగంగా లెక్కపెట్టి, ఇంకా వేగంగా వెళ్లిపోతాడు."
+          },
+          "why": {
+            "en": "A big purchase needs a clean title. Check the [[encumbrance]] certificate and records before any money moves.",
+            "hi": "बड़ी खरीद के लिए साफ़ मालिकाना हक ज़रूरी है। पैसा देने से पहले [[encumbrance]] सर्टिफ़िकेट और रिकॉर्ड जाँचें।",
+            "te": "పెద్ద కొనుగోలుకు క్లియర్ టైటిల్ ఉండాలి. ఒక్క రూపాయి ఇచ్చే ముందు [[encumbrance]] సర్టిఫికెట్, రికార్డులు చెక్ చేయండి."
+          },
+          "next": [
+            {
+              "if": {
+                "lastDoc": {
+                  "problem": true,
+                  "caught": false
+                }
+              },
+              "to": "m5_fraud"
+            },
+            {
+              "to": "m5_future"
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "label": {
+            "en": "Walk away. 'Sign today' is a red flag",
+            "hi": "छोड़ दें। 'आज ही साइन करो' खतरे की घंटी है",
+            "te": "వదిలేయండి. 'ఇవాళే సంతకం' అనడం ప్రమాద సంకేతం"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "walked_away"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "The seller shouts that you'll regret it. Two months later, you see the same plot advertised by three different people.",
+            "hi": "बेचने वाला चिल्लाता है कि आप पछताएँगे। दो महीने बाद आप वही प्लॉट तीन अलग-अलग लोगों के विज्ञापनों में देखते हैं।",
+            "te": "మీరు బాధపడతారని అమ్మేవాడు అరుస్తాడు. రెండు నెలల తర్వాత, అదే ప్లాట్‌ను ముగ్గురు వేర్వేరు మనుషులు అమ్మకానికి పెట్టిన ప్రకటనలు మీకు కనిపిస్తాయి."
+          },
+          "why": {
+            "en": "Pressure to decide today is a classic warning sign. A real deal survives a week of checking.",
+            "hi": "'आज ही फ़ैसला करो' का दबाव ठगी की पुरानी निशानी है। सच्चा सौदा एक हफ़्ते की जाँच झेल लेता है।",
+            "te": "ఇవాళే నిర్ణయించమని ఒత్తిడి పెట్టడం పాత హెచ్చరిక గుర్తు. నిజమైన డీల్ ఒక వారం చెక్ చేసినా పోదు."
+          },
+          "next": "m5_future"
+        }
+      ]
+    },
+    {
+      "id": "m5_fraud",
+      "age": 34,
+      "location": "panchayat",
+      "speaker": "narrator",
+      "objective": {
+        "en": "A stranger is building a wall on 'your' plot. Go to the panchayat office!",
+        "hi": "एक अजनबी 'आपके' प्लॉट पर दीवार बना रहा है। पंचायत दफ़्तर जाएँ!",
+        "te": "'మీ' ప్లాట్‌లో ఎవరో తెలియని మనిషి గోడ కడుతున్నాడు. పంచాయతీ ఆఫీసుకు వెళ్లండి!"
+      },
+      "title": {
+        "en": "Sold three times",
+        "hi": "तीन बार बिका प्लॉट",
+        "te": "మూడుసార్లు అమ్మేశారు"
+      },
+      "text": {
+        "en": "A stranger is building a wall on 'your' plot. The same land was sold to **three families**. The real owner has **older papers**. The seller has vanished, with your ₹3 lakh.",
+        "hi": "एक अजनबी 'आपके' प्लॉट पर दीवार बना रहा है। वही ज़मीन **तीन परिवारों** को बेची गई थी। असली मालिक के पास **पुराने कागज़** हैं। बेचने वाला गायब है, आपके ₹3 लाख के साथ।",
+        "te": "ఒక అపరిచితుడు 'మీ' ప్లాట్‌పై గోడ కడుతున్నాడు. అదే భూమిని **మూడు కుటుంబాలకు** అమ్మారు. అసలు యజమాని దగ్గర **పాత కాగితాలు** ఉన్నాయి. అమ్మేవాడు మాయమయ్యాడు, మీ ₹3 లక్షలతో సహా."
+      },
+      "choices": [
+        {
+          "id": "court",
+          "label": {
+            "en": "File a police case and fight it in court",
+            "hi": "पुलिस में केस दर्ज करें और कोर्ट में लड़ें",
+            "te": "పోలీస్ కేసు పెట్టి కోర్టులో పోరాడండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "cash": -20000,
+            "meters": {
+              "joy": -6
+            },
+            "flags": {
+              "add": [
+                "land_fraud"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The lawyer says it could take eight years. You still pay the home loan EMI on land you don't own.",
+            "hi": "वकील का कहना है कि इसमें आठ साल लग सकते हैं। आप अब भी उस ज़मीन की होम लोन EMI भर रहे हैं जो आपकी है ही नहीं।",
+            "te": "ఎనిమిదేళ్లు పట్టొచ్చని లాయర్ అంటాడు. మీది కాని భూమికి మీరు ఇంకా హోమ్ లోన్ EMI కడుతూనే ఉన్నారు."
+          },
+          "why": {
+            "en": "Land fraud is expensive to undo. A ₹2,000 records check before buying would have caught it.",
+            "hi": "ज़मीन की धोखाधड़ी को सुलझाना बहुत महँगा पड़ता है। खरीदने से पहले ₹2,000 की रिकॉर्ड जाँच इसे पकड़ लेती।",
+            "te": "భూమి మోసాన్ని సరిచేయడం చాలా ఖరీదు. కొనే ముందు ₹2,000 పెట్టి రికార్డులు చెక్ చేసి ఉంటే ఇది బయటపడేది."
+          },
+          "next": "m5_future"
+        }
+      ]
+    },
+    {
+      "id": "m5_future",
+      "age": 35,
+      "location": "post",
+      "speaker": "mentor",
+      "lesson": "L24",
+      "objective": {
+        "en": "Ammamma wants you to take her to the post office. She says it's important.",
+        "hi": "अम्मम्मा चाहती हैं कि आप उन्हें डाकघर ले जाएँ। कहती हैं, ज़रूरी काम है।",
+        "te": "అమ్మమ్మ తనను పోస్టాఫీసుకు తీసుకెళ్లమంటోంది. ముఖ్యమైన పని అంటోంది."
+      },
+      "title": {
+        "en": "Ammamma's last lesson",
+        "hi": "अम्मम्मा का आख़िरी सबक",
+        "te": "అమ్మమ్మ చివరి పాఠం"
+      },
+      "text": {
+        "en": "Ammamma is 87. At the post office she pats her old passbook. \"Kanna, **you'll be old one day too**. Who will pay you then?\" The clerk explains [[ppf]], [[nps]] and [[apy]].",
+        "hi": "अम्मम्मा 87 साल की हैं। डाकघर में वे अपनी पुरानी पासबुक थपथपाती हैं। \"कन्ना, **एक दिन तुम्हारा भी बुढ़ापा आएगा**। तब तुम्हें पैसे कौन देगा?\" क्लर्क [[ppf]], [[nps]] और [[apy]] समझाते हैं।",
+        "te": "అమ్మమ్మకు 87 ఏళ్లు. పోస్టాఫీసులో తన పాత పాస్‌బుక్‌ను ప్రేమగా తడుతుంది. \"కన్నా, **ఒకరోజు నీకూ వయసైపోతుంది**. అప్పుడు నీకు ఎవరు డబ్బులిస్తారు?\" క్లర్క్ [[ppf]], [[nps]], [[apy]] గురించి వివరిస్తాడు."
+      },
+      "choices": [
+        {
+          "id": "pension",
+          "label": {
+            "en": "Start a pension plan with ₹3,000 a month, starting now",
+            "hi": "अभी से ₹3,000 महीने की पेंशन योजना शुरू करें",
+            "te": "ఇప్పుడే నెలకు ₹3,000తో పెన్షన్ ప్లాన్ మొదలుపెట్టండి"
+          },
+          "quality": "good",
+          "effects": {
+            "open": {
+              "product": "pension",
+              "amount": 3000
+            },
+            "flags": {
+              "add": [
+                "retirement"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "Ammamma makes you show her the receipt twice. Then she buys you both a cup of tea, for once.",
+            "hi": "अम्मम्मा दो बार रसीद दिखवाती हैं। फिर, कमाल की बात, वे ख़ुद दोनों के लिए चाय मँगवाती हैं।",
+            "te": "అమ్మమ్మ రసీదును రెండుసార్లు చూపించమంటుంది. తర్వాత, ఈ ఒక్కసారి మాత్రం, తనే ఇద్దరికీ టీ కొనిపెడుతుంది."
+          },
+          "why": {
+            "en": "Money for old age needs the longest time to grow. Every year you wait makes it more expensive.",
+            "hi": "बुढ़ापे के पैसे को बढ़ने के लिए सबसे लंबा समय चाहिए। जितने साल रुकेंगे, यह उतना महँगा होता जाएगा।",
+            "te": "ముసలితనం కోసం దాచే డబ్బు పెరగడానికి అన్నిటికంటే ఎక్కువ సమయం కావాలి. మీరు ఆలస్యం చేసే ప్రతి ఏడాదీ దాన్ని ఇంకా ఖరీదు చేస్తుంది."
+          },
+          "next": "m5_final"
+        },
+        {
+          "id": "later",
+          "label": {
+            "en": "Later. I'm only 35",
+            "hi": "बाद में। अभी तो उम्र सिर्फ़ 35 है",
+            "te": "తర్వాత చూద్దాం. నాకు ఇంకా 35 ఏళ్లే"
+          },
+          "quality": "bad",
+          "effects": {
+            "meters": {
+              "family": -2
+            }
+          },
+          "outcome": {
+            "en": "Ammamma says nothing. She just holds your hand a little tighter on the walk home.",
+            "hi": "अम्मम्मा कुछ नहीं कहतीं। घर लौटते हुए बस आपका हाथ थोड़ा और कसकर पकड़ लेती हैं।",
+            "te": "అమ్మమ్మ ఏమీ అనదు. ఇంటికి నడిచి వెళ్లేటప్పుడు మీ చెయ్యిని ఇంకొంచెం గట్టిగా పట్టుకుంటుంది, అంతే."
+          },
+          "why": {
+            "en": "Starting at 45 instead of 35 can halve what you have at 60. 'Later' is the most expensive word in money.",
+            "hi": "35 की जगह 45 में शुरू करने से 60 की उम्र पर आपका पैसा आधा रह सकता है। पैसों के मामले में 'बाद में' सबसे महँगा शब्द है।",
+            "te": "35కి బదులు 45లో మొదలుపెడితే, 60 ఏళ్లకు మీ దగ్గర ఉండేది సగం అయిపోవచ్చు. డబ్బు విషయంలో 'తర్వాత' అనేదే అన్నిటికంటే ఖరీదైన మాట."
+          },
+          "next": "m5_final"
+        },
+        {
+          "id": "children",
+          "label": {
+            "en": "My children will look after me",
+            "hi": "मेरे बच्चे मेरा ख्याल रखेंगे",
+            "te": "నా పిల్లలు నన్ను చూసుకుంటారు"
+          },
+          "quality": "bad",
+          "outcome": {
+            "en": "\"That's what I thought too,\" says Ammamma, \"and look who's looking after whom.\"",
+            "hi": "\"मैंने भी यही सोचा था,\" अम्मम्मा कहती हैं, \"और देखो, अब कौन किसका ख्याल रख रहा है।\"",
+            "te": "\"నేనూ అలాగే అనుకున్నా,\" అంటుంది అమ్మమ్మ, \"ఇప్పుడు ఎవరు ఎవర్ని చూసుకుంటున్నారో చూడు.\""
+          },
+          "why": {
+            "en": "Planning for your own old age is a gift to your children, not a lack of trust in them.",
+            "hi": "अपने बुढ़ापे की योजना बनाना बच्चों के लिए एक तोहफ़ा है, उन पर भरोसे की कमी नहीं।",
+            "te": "మీ ముసలితనానికి మీరే ప్లాన్ చేసుకోవడం మీ పిల్లలకు ఇచ్చే బహుమతి. అది వాళ్ల మీద నమ్మకం లేకపోవడం కాదు."
+          },
+          "next": "m5_final"
+        }
+      ]
+    },
+    {
+      "id": "m5_final",
+      "age": 36,
+      "location": "home",
+      "speaker": "mentor",
+      "objective": {
+        "en": "It's Ammamma's birthday. Everyone is coming home.",
+        "hi": "आज अम्मम्मा का जन्मदिन है। सब घर आ रहे हैं।",
+        "te": "ఇవాళ అమ్మమ్మ పుట్టినరోజు. అందరూ ఇంటికి వస్తున్నారు."
+      },
+      "title": {
+        "en": "Ammamma's birthday",
+        "hi": "अम्मम्मा का जन्मदिन",
+        "te": "అమ్మమ్మ పుట్టినరోజు"
+      },
+      "text": {
+        "en": "The whole family is home, Bujji included. Lamps flicker. Ammamma looks at you over her thick glasses: \"So, kanna. After all these years, **what did money teach you?**\"",
+        "hi": "पूरा परिवार घर पर है, बुज्जी भी। दीये टिमटिमा रहे हैं। अम्मम्मा अपने मोटे चश्मे के ऊपर से आपको देखती हैं: \"तो, कन्ना। इतने सालों बाद, **पैसे ने तुम्हें क्या सिखाया?**\"",
+        "te": "కుటుంబమంతా ఇంట్లో ఉంది, బుజ్జితో సహా. దీపాలు మిణుకుమిణుకుమంటున్నాయి. అమ్మమ్మ తన మందపాటి కళ్లద్దాల పై నుంచి మీ వైపు చూస్తుంది: \"చెప్పు కన్నా. ఇన్నేళ్ల తర్వాత, **డబ్బు నీకు ఏం నేర్పింది?**\""
+      },
+      "choices": [
+        {
+          "id": "slow",
+          "label": {
+            "en": "\"Slow money is safe money. Fast money is someone else's plan.\"",
+            "hi": "\"धीमा पैसा सुरक्षित पैसा है। तेज़ पैसा किसी और की चाल है।\"",
+            "te": "\"నెమ్మదిగా వచ్చే డబ్బే భద్రమైన డబ్బు. తొందరగా వచ్చే డబ్బు ఇంకెవరిదో ప్లాన్.\""
+          },
+          "quality": "ok",
+          "outcome": {
+            "en": "Ammamma laughs until her glasses fall off.",
+            "hi": "अम्मम्मा इतना हँसती हैं कि उनका चश्मा गिर जाता है।",
+            "te": "కళ్లద్దాలు జారిపడేంతగా అమ్మమ్మ పగలబడి నవ్వుతుంది."
+          },
+          "next": [
+            {
+              "if": {
+                "anyFlags": [
+                  "legal_trouble"
+                ]
+              },
+              "to": "end_jail"
+            },
+            {
+              "if": {
+                "anyFlags": [
+                  "bankrupt"
+                ]
+              },
+              "to": "end_bankrupt"
+            },
+            {
+              "if": {
+                "ending": [
+                  "debt_trap"
+                ]
+              },
+              "to": "end_debt"
+            },
+            {
+              "if": {
+                "flags": [
+                  "exposed_prakash"
+                ]
+              },
+              "to": "end_buster"
+            },
+            {
+              "if": {
+                "anyFlags": [
+                  "gh_big",
+                  "land_fraud"
+                ]
+              },
+              "to": "end_lost"
+            },
+            {
+              "if": {
+                "flags": [
+                  "nanna_gh"
+                ]
+              },
+              "to": "end_nanna"
+            },
+            {
+              "if": {
+                "dreamReached": true
+              },
+              "to": "end_dream"
+            },
+            {
+              "to": "end_quiet"
+            }
+          ]
+        },
+        {
+          "id": "people",
+          "label": {
+            "en": "\"Money is for people. And people are not for money.\"",
+            "hi": "\"पैसा लोगों के लिए है। लोग पैसे के लिए नहीं।\"",
+            "te": "\"డబ్బు మనుషుల కోసం. మనుషులు డబ్బు కోసం కాదు.\""
+          },
+          "quality": "ok",
+          "outcome": {
+            "en": "Ammamma nods slowly, and gives you the first piece of payasam.",
+            "hi": "अम्मम्मा धीरे से सिर हिलाती हैं, और पायसम का पहला हिस्सा आपको देती हैं।",
+            "te": "అమ్మమ్మ నెమ్మదిగా తల ఊపి, పాయసంలో మొదటి గిన్నె మీకే ఇస్తుంది."
+          },
+          "next": [
+            {
+              "if": {
+                "anyFlags": [
+                  "legal_trouble"
+                ]
+              },
+              "to": "end_jail"
+            },
+            {
+              "if": {
+                "anyFlags": [
+                  "bankrupt"
+                ]
+              },
+              "to": "end_bankrupt"
+            },
+            {
+              "if": {
+                "ending": [
+                  "debt_trap"
+                ]
+              },
+              "to": "end_debt"
+            },
+            {
+              "if": {
+                "flags": [
+                  "exposed_prakash"
+                ]
+              },
+              "to": "end_buster"
+            },
+            {
+              "if": {
+                "anyFlags": [
+                  "gh_big",
+                  "land_fraud"
+                ]
+              },
+              "to": "end_lost"
+            },
+            {
+              "if": {
+                "flags": [
+                  "nanna_gh"
+                ]
+              },
+              "to": "end_nanna"
+            },
+            {
+              "if": {
+                "dreamReached": true
+              },
+              "to": "end_dream"
+            },
+            {
+              "to": "end_quiet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "end_buster",
+      "type": "outcome",
+      "tone": "good",
+      "title": {
+        "en": "The Scam Buster",
+        "hi": "स्कैम बस्टर",
+        "te": "స్కామ్ బస్టర్"
+      },
+      "text": {
+        "en": "Your evidence file puts Lucky Prakash on an Interpol notice. His village property is seized and ₹6 crore is returned to 3,000 families. The newspaper calls you 'the OTP kid who grew up'.",
+        "hi": "आपकी सबूतों की फ़ाइल से लकी प्रकाश के नाम इंटरपोल नोटिस निकलता है। गाँव में उसकी जायदाद ज़ब्त होती है और 3,000 परिवारों को ₹6 करोड़ वापस मिलते हैं। अख़बार आपको कहता है 'OTP वाला बच्चा, जो बड़ा हो गया'।",
+        "te": "మీ సాక్ష్యాల ఫైల్ వల్ల లక్కీ ప్రకాష్ మీద ఇంటర్‌పోల్ నోటీసు వస్తుంది. ఊరిలో అతని ఆస్తి జప్తు అవుతుంది, ₹6 కోట్లు 3,000 కుటుంబాలకు తిరిగి వస్తాయి. పేపర్ మిమ్మల్ని 'పెద్దయిన OTP కిడ్' అని రాస్తుంది."
+      }
+    },
+    {
+      "id": "end_dream",
+      "type": "outcome",
+      "tone": "good",
+      "title": {
+        "en": "The dream, paid for",
+        "hi": "सपना, अपनी कमाई से",
+        "te": "కల నిజమైంది, పైసా బాకీ లేకుండా"
+      },
+      "text": {
+        "en": "Your dream is real, and nobody's ledger has your name in it. Prakash got away, but not with your money. Ammamma sleeps well these days.",
+        "hi": "आपका सपना सच हो गया, और किसी की बही में आपका नाम नहीं है। प्रकाश बच निकला, पर आपका पैसा लेकर नहीं। अम्मम्मा आजकल चैन की नींद सोती हैं।",
+        "te": "మీ కల నిజమైంది, ఎవరి లెక్కల పుస్తకంలోనూ మీ పేరు లేదు. ప్రకాష్ తప్పించుకున్నాడు, కానీ మీ డబ్బుతో కాదు. ఈ రోజుల్లో అమ్మమ్మ హాయిగా నిద్రపోతుంది."
+      }
+    },
+    {
+      "id": "end_quiet",
+      "type": "outcome",
+      "tone": "mixed",
+      "title": {
+        "en": "A quiet, careful life",
+        "hi": "एक शांत, सोची-समझी ज़िंदगी",
+        "te": "ప్రశాంతమైన, జాగ్రత్త జీవితం"
+      },
+      "text": {
+        "en": "No villain caught, no fortune made, no disaster either. The dream is still a few years away, but you're walking toward it on solid ground.",
+        "hi": "न कोई खलनायक पकड़ा गया, न कोई ख़ज़ाना हाथ लगा, न कोई बर्बादी हुई। सपना अभी कुछ साल दूर है, पर आप पक्की ज़मीन पर उसकी ओर बढ़ रहे हैं।",
+        "te": "విలన్ పట్టుబడలేదు, సంపద రాలేదు, కానీ విపత్తు కూడా లేదు. కల ఇంకా కొన్నేళ్ల దూరంలో ఉంది, కానీ మీరు గట్టి నేల మీద దాని వైపు నడుస్తున్నారు."
+      }
+    },
+    {
+      "id": "end_nanna",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "The lost harvest",
+        "hi": "खोई हुई फ़सल",
+        "te": "చేజారిన పంట"
+      },
+      "text": {
+        "en": "Nanna's ₹4 lakh vanished with Golden Harvest. He still goes to the square every Monday, in case the office opens. You quietly pay for his medicines.",
+        "hi": "नान्ना के ₹4 लाख गोल्डन हार्वेस्ट के साथ गायब हो गए। वे आज भी हर सोमवार चौक पर जाते हैं, कि शायद दफ़्तर खुल जाए। आप चुपचाप उनकी दवाइयों का खर्च उठाते हैं।",
+        "te": "నాన్న దాచిన ₹4 లక్షలు గోల్డెన్ హార్వెస్ట్‌తో పాటే మాయమయ్యాయి. ఆఫీసు తెరుస్తారేమోనని ఇప్పటికీ ప్రతి సోమవారం కూడలికి వెళ్తాడు. మీరు చప్పుడు చేయకుండా నాన్న మందుల ఖర్చు కడతారు."
+      }
+    },
+    {
+      "id": "end_lost",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "Fooled by the big promise",
+        "hi": "बड़े वादे का धोखा",
+        "te": "పెద్ద హామీకి మోసపోయారు"
+      },
+      "text": {
+        "en": "A 'sure' deal took the biggest money you ever had. You rebuild, slowly. The lesson cost more than any school fee.",
+        "hi": "एक 'पक्के' सौदे ने आपकी ज़िंदगी की सबसे बड़ी रकम ले ली। आप धीरे-धीरे फिर से खड़े होते हैं। यह सबक किसी भी स्कूल फ़ीस से महँगा पड़ा।",
+        "te": "ఒక 'ష్యూర్' డీల్ మీ జీవితంలో అతిపెద్ద మొత్తాన్ని మింగేసింది. మీరు మళ్లీ నెమ్మదిగా నిలబడతారు. ఈ పాఠం ఏ స్కూల్ ఫీజు కంటే ఎక్కువ ఖరీదైంది."
+      }
+    },
+    {
+      "id": "end_debt",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": {
+        "en": "The debt trap",
+        "hi": "कर्ज़ का जाल",
+        "te": "అప్పుల ఉచ్చు"
+      },
+      "text": {
+        "en": "At 36, your EMIs eat most of your salary and the sahukar knows your name. There is a way out: list every loan, close the costliest first, and talk to the bank tomorrow.",
+        "hi": "36 की उम्र में EMI आपकी ज़्यादातर तनख्वाह खा जाती हैं और साहूकार आपको नाम से जानता है। निकलने का रास्ता है: हर लोन की सूची बनाएँ, सबसे महँगा पहले चुकाएँ, और कल ही बैंक से बात करें।",
+        "te": "36 ఏళ్లకు, మీ జీతంలో ఎక్కువ భాగం EMIలే తినేస్తున్నాయి, షావుకారుకు మీ పేరు బాగా తెలుసు. బయటపడే దారి ఉంది: ప్రతి అప్పు రాయండి, అన్నిటికంటే ఖరీదైనది ముందు తీర్చండి, రేపే బ్యాంక్‌తో మాట్లాడండి."
+      }
+    },
+    {
+      "id": "end_bankrupt",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": {
+        "en": "Bankrupt",
+        "hi": "दिवालिया",
+        "te": "దివాలా"
+      },
+      "text": {
+        "en": "The loan apps took everything, including your family's trust. You're rebuilding from zero at 36, with a credit record that won't let any bank help.",
+        "hi": "लोन ऐप सब कुछ ले गए, परिवार का भरोसा भी। 36 की उम्र में आप ज़ीरो से शुरुआत कर रहे हैं, ऐसे क्रेडिट रिकॉर्ड के साथ जिसे देखकर कोई बैंक मदद नहीं करेगा।",
+        "te": "లోన్ యాప్‌లు అన్నీ లాగేసుకున్నాయి, మీ కుటుంబం నమ్మకంతో సహా. 36 ఏళ్లకు సున్నా నుంచి మళ్లీ మొదలుపెడుతున్నారు, ఏ బ్యాంకూ సాయం చేయలేని క్రెడిట్ రికార్డుతో."
+      }
+    },
+    {
+      "id": "end_jail",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": {
+        "en": "On the wrong side of the case",
+        "hi": "केस के गलत पाले में",
+        "te": "కేసులో తప్పు వైపు"
+      },
+      "text": {
+        "en": "The money-mule case finally reaches court. You're not the criminal who planned it, but your account moved the money. Lucky Prakash is still in Dubai.",
+        "hi": "मनी-म्यूल वाला केस आख़िरकार कोर्ट पहुँचता है। साज़िश आपने नहीं रची थी, पर पैसा आपके खाते से होकर गया। लकी प्रकाश अब भी दुबई में है।",
+        "te": "మనీ-మ్యూల్ కేసు చివరికి కోర్టుకు వస్తుంది. పథకం వేసిన నేరస్థులు మీరు కాదు, కానీ డబ్బు మీ ఖాతా ద్వారానే వెళ్లింది. లక్కీ ప్రకాష్ ఇంకా దుబాయ్‌లోనే ఉన్నాడు."
+      }
+    }
+  ]
+}

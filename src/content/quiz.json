@@ -3,84 +3,226 @@
     {
       "id": "pre1",
       "lesson": "L03",
-      "q": { "en": "A chocolate costs ₹10 today. Prices rise 6% a year. In 10 years it will cost about…" },
-      "options": [{ "en": "₹10" }, { "en": "₹12" }, { "en": "₹18" }, { "en": "₹60" }],
+      "q": {
+        "en": "A chocolate costs ₹10 today. Prices rise 6% a year. In 10 years it will cost about…",
+        "hi": "आज एक चॉकलेट ₹10 की है। कीमतें हर साल 6% बढ़ती हैं। 10 साल में यह लगभग कितने की होगी…",
+        "te": "ఈ రోజు చాక్లెట్ ₹10. ధరలు ఏడాదికి 6% పెరుగుతాయి. 10 ఏళ్లలో దాని ధర సుమారు…"
+      },
+      "options": [
+        { "en": "₹10", "hi": "₹10", "te": "₹10" },
+        { "en": "₹12", "hi": "₹12", "te": "₹12" },
+        { "en": "₹18", "hi": "₹18", "te": "₹18" },
+        { "en": "₹60", "hi": "₹60", "te": "₹60" }
+      ],
       "answer": 2,
-      "explain": { "en": "6% a year, compounded for 10 years, makes ₹10 into about ₹18." }
+      "explain": {
+        "en": "6% a year, compounded for 10 years, makes ₹10 into about ₹18.",
+        "hi": "10 साल तक 6% सालाना चक्रवृद्धि से ₹10 लगभग ₹18 बन जाते हैं।",
+        "te": "10 ఏళ్లు ఏడాదికి 6% చక్రవడ్డీతో ₹10 సుమారు ₹18 అవుతుంది."
+      }
     },
     {
       "id": "pre2",
       "lesson": "L07",
-      "q": { "en": "A ₹7,500 phone is \"only ₹699 a month for 12 months\" plus a ₹1,200 fee. What do you pay in total?" },
-      "options": [{ "en": "₹7,500" }, { "en": "₹8,388" }, { "en": "₹9,588" }, { "en": "₹699" }],
+      "q": {
+        "en": "A ₹7,500 phone is \"only ₹699 a month for 12 months\" plus a ₹1,200 fee. What do you pay in total?",
+        "hi": "₹7,500 का फ़ोन \"12 महीने सिर्फ़ ₹699 महीना\" और ₹1,200 फ़ीस। कुल कितना देंगे?",
+        "te": "₹7,500 ఫోన్ \"12 నెలలు నెలకు ₹699 మాత్రమే\", దానికి ₹1,200 ఫీజు. మొత్తం ఎంత కడతారు?"
+      },
+      "options": [
+        { "en": "₹7,500", "hi": "₹7,500", "te": "₹7,500" },
+        { "en": "₹8,388", "hi": "₹8,388", "te": "₹8,388" },
+        { "en": "₹9,588", "hi": "₹9,588", "te": "₹9,588" },
+        { "en": "₹699", "hi": "₹699", "te": "₹699" }
+      ],
       "answer": 2,
-      "explain": { "en": "₹699 × 12 = ₹8,388, plus the ₹1,200 fee = ₹9,588." }
+      "explain": {
+        "en": "₹699 × 12 = ₹8,388, plus the ₹1,200 fee = ₹9,588.",
+        "hi": "₹699 × 12 = ₹8,388, और ₹1,200 फ़ीस = ₹9,588।",
+        "te": "₹699 × 12 = ₹8,388, ₹1,200 ఫీజుతో = ₹9,588."
+      }
     },
     {
       "id": "pre3",
       "lesson": "L09",
-      "q": { "en": "Someone wants to pay you ₹1,500 on UPI. What do you need to enter?" },
-      "options": [{ "en": "Your UPI PIN" }, { "en": "The OTP you receive" }, { "en": "Nothing. Just share your UPI ID" }, { "en": "Your ATM PIN" }],
+      "q": {
+        "en": "Someone wants to pay you ₹1,500 on UPI. What do you need to enter?",
+        "hi": "कोई आपको UPI पर ₹1,500 भेजना चाहता है। आपको क्या डालना होगा?",
+        "te": "ఎవరో మీకు UPIలో ₹1,500 పంపాలనుకుంటున్నారు. మీరు ఏం వేయాలి?"
+      },
+      "options": [
+        { "en": "Your UPI PIN", "hi": "आपका UPI PIN", "te": "మీ UPI PIN" },
+        { "en": "The OTP you receive", "hi": "आपको आया OTP", "te": "మీకు వచ్చిన OTP" },
+        {
+          "en": "Nothing. Just share your UPI ID",
+          "hi": "कुछ नहीं। बस अपनी UPI ID दें",
+          "te": "ఏమీ అక్కర్లేదు. మీ UPI ID ఇవ్వండి చాలు"
+        },
+        { "en": "Your ATM PIN", "hi": "आपका ATM PIN", "te": "మీ ATM PIN" }
+      ],
       "answer": 2,
-      "explain": { "en": "You never enter a PIN to receive money. A PIN only sends money out." }
+      "explain": {
+        "en": "You never enter a PIN to receive money. A PIN only sends money out.",
+        "hi": "पैसे लेने के लिए कभी PIN नहीं डालते। PIN से सिर्फ़ पैसा जाता है।",
+        "te": "డబ్బు తీసుకోవడానికి ఎప్పుడూ PIN వేయరు. PINతో డబ్బు బయటికే వెళ్తుంది."
+      }
     },
     {
       "id": "pre4",
       "lesson": "L14",
-      "q": { "en": "A lender charges \"₹2 per ₹100 per month\". What is that per year?" },
-      "options": [{ "en": "2%" }, { "en": "12%" }, { "en": "24%" }, { "en": "200%" }],
+      "q": {
+        "en": "A lender charges \"₹2 per ₹100 per month\". What is that per year?",
+        "hi": "एक कर्ज़दाता \"₹2 सैकड़ा महीना\" लेता है। यह सालाना कितना है?",
+        "te": "ఒకరు \"నెలకు నూటికి ₹2\" వడ్డీ తీసుకుంటారు. ఏడాదికి ఎంత?"
+      },
+      "options": [
+        { "en": "2%", "hi": "2%", "te": "2%" },
+        { "en": "12%", "hi": "12%", "te": "12%" },
+        { "en": "24%", "hi": "24%", "te": "24%" },
+        { "en": "200%", "hi": "200%", "te": "200%" }
+      ],
       "answer": 2,
-      "explain": { "en": "₹2 every month for 12 months is ₹24 per ₹100: 24% a year." }
+      "explain": {
+        "en": "₹2 every month for 12 months is ₹24 per ₹100: 24% a year.",
+        "hi": "12 महीने हर महीने ₹2 = ₹24 सैकड़ा: 24% सालाना।",
+        "te": "12 నెలలు నెలకు ₹2 = నూటికి ₹24: ఏడాదికి 24%."
+      }
     },
     {
       "id": "pre5",
       "lesson": "L22",
-      "q": { "en": "A scheme promises to double your money in one year, guaranteed. It is most likely…" },
-      "options": [{ "en": "A great investment" }, { "en": "A scam" }, { "en": "A bank FD" }, { "en": "A government scheme" }],
+      "q": {
+        "en": "A scheme promises to double your money in one year, guaranteed. It is most likely…",
+        "hi": "एक योजना एक साल में पैसा दोगुना करने की गारंटी देती है। यह शायद…",
+        "te": "ఒక పథకం ఏడాదిలో డబ్బు రెట్టింపు చేస్తానని హామీ ఇస్తుంది. ఇది బహుశా…"
+      },
+      "options": [
+        { "en": "A great investment", "hi": "बढ़िया निवेश", "te": "గొప్ప పెట్టుబడి" },
+        { "en": "A scam", "hi": "ठगी", "te": "మోసం" },
+        { "en": "A bank FD", "hi": "बैंक FD", "te": "బ్యాంక్ FD" },
+        { "en": "A government scheme", "hi": "सरकारी योजना", "te": "ప్రభుత్వ పథకం" }
+      ],
       "answer": 1,
-      "explain": { "en": "Doubling in a year is 100% returns. Nobody honest can guarantee that." }
+      "explain": {
+        "en": "Doubling in a year is 100% returns. Nobody honest can guarantee that.",
+        "hi": "एक साल में दोगुना मतलब 100% रिटर्न। ईमानदारी से कोई इसकी गारंटी नहीं दे सकता।",
+        "te": "ఏడాదిలో రెట్టింపు అంటే 100% రాబడి. నిజాయితీగా ఎవరూ దానికి హామీ ఇవ్వలేరు."
+      }
     }
   ],
   "post": [
     {
       "id": "post1",
       "lesson": "L03",
-      "q": { "en": "You keep ₹1,000 in a tin box for 5 years while prices rise 6% a year. What happens?" },
-      "options": [{ "en": "It buys more" }, { "en": "It buys the same" }, { "en": "It buys less" }, { "en": "It doubles" }],
+      "q": {
+        "en": "You keep ₹1,000 in a tin box for 5 years while prices rise 6% a year. What happens?",
+        "hi": "कीमतें 6% सालाना बढ़ रही हैं और आप ₹1,000 डिब्बे में 5 साल रखते हैं। क्या होगा?",
+        "te": "ధరలు ఏడాదికి 6% పెరుగుతుంటే మీరు ₹1,000 డబ్బాలో 5 ఏళ్లు ఉంచారు. ఏమవుతుంది?"
+      },
+      "options": [
+        { "en": "It buys more", "hi": "ज़्यादा खरीदेगा", "te": "ఎక్కువ కొనగలదు" },
+        { "en": "It buys the same", "hi": "उतना ही खरीदेगा", "te": "అంతే కొనగలదు" },
+        { "en": "It buys less", "hi": "कम खरीदेगा", "te": "తక్కువ కొనగలదు" },
+        { "en": "It doubles", "hi": "दोगुना हो जाएगा", "te": "రెట్టింపు అవుతుంది" }
+      ],
       "answer": 2,
-      "explain": { "en": "The notes stay ₹1,000, but prices rise about 34% in 5 years. It buys less." }
+      "explain": {
+        "en": "The notes stay ₹1,000, but prices rise about 34% in 5 years. It buys less.",
+        "hi": "नोट ₹1,000 ही रहते हैं, पर 5 साल में कीमतें लगभग 34% बढ़ जाती हैं। कम आता है।",
+        "te": "నోట్లు ₹1,000 గానే ఉంటాయి, కానీ 5 ఏళ్లలో ధరలు సుమారు 34% పెరుగుతాయి. తక్కువ వస్తుంది."
+      }
     },
     {
       "id": "post2",
       "lesson": "L07",
-      "q": { "en": "\"Only ₹999 a month for 15 months\" for a ₹12,000 phone. How much extra do you pay?" },
-      "options": [{ "en": "₹0" }, { "en": "₹999" }, { "en": "₹2,985" }, { "en": "₹14,985" }],
+      "q": {
+        "en": "\"Only ₹999 a month for 15 months\" for a ₹12,000 phone. How much extra do you pay?",
+        "hi": "₹12,000 के फ़ोन के लिए \"15 महीने सिर्फ़ ₹999 महीना\"। कितना ज़्यादा देंगे?",
+        "te": "₹12,000 ఫోన్‌కు \"15 నెలలు నెలకు ₹999 మాత్రమే\". ఎంత ఎక్కువ కడతారు?"
+      },
+      "options": [
+        { "en": "₹0", "hi": "₹0", "te": "₹0" },
+        { "en": "₹999", "hi": "₹999", "te": "₹999" },
+        { "en": "₹2,985", "hi": "₹2,985", "te": "₹2,985" },
+        { "en": "₹14,985", "hi": "₹14,985", "te": "₹14,985" }
+      ],
       "answer": 2,
-      "explain": { "en": "₹999 × 15 = ₹14,985. That's ₹2,985 more than the phone's price." }
+      "explain": {
+        "en": "₹999 × 15 = ₹14,985. That's ₹2,985 more than the phone's price.",
+        "hi": "₹999 × 15 = ₹14,985। यह फ़ोन की कीमत से ₹2,985 ज़्यादा है।",
+        "te": "₹999 × 15 = ₹14,985. ఇది ఫోన్ ధర కంటే ₹2,985 ఎక్కువ."
+      }
     },
     {
       "id": "post3",
       "lesson": "L09",
-      "q": { "en": "A \"buyer\" sends a QR code and says, \"Scan and enter PIN to receive your money.\" What happens if you do?" },
-      "options": [{ "en": "You receive the money" }, { "en": "Money leaves your account" }, { "en": "Nothing" }, { "en": "Your account is verified" }],
+      "q": {
+        "en": "A \"buyer\" sends a QR code and says, \"Scan and enter PIN to receive your money.\" What happens if you do?",
+        "hi": "एक \"खरीदार\" QR कोड भेजकर कहता है, \"स्कैन करो और पैसे पाने के लिए PIN डालो।\" ऐसा करने पर क्या होगा?",
+        "te": "ఒక \"కొనేవాడు\" QR కోడ్ పంపి \"స్కాన్ చేసి, డబ్బు రావాలంటే PIN వేయి\" అంటాడు. అలా చేస్తే ఏమవుతుంది?"
+      },
+      "options": [
+        { "en": "You receive the money", "hi": "आपको पैसा मिलेगा", "te": "మీకు డబ్బు వస్తుంది" },
+        { "en": "Money leaves your account", "hi": "आपके खाते से पैसा जाएगा", "te": "మీ ఖాతా నుంచి డబ్బు వెళ్తుంది" },
+        { "en": "Nothing", "hi": "कुछ नहीं", "te": "ఏమీ కాదు" },
+        { "en": "Your account is verified", "hi": "आपका खाता वेरिफ़ाई होगा", "te": "మీ ఖాతా వెరిఫై అవుతుంది" }
+      ],
       "answer": 1,
-      "explain": { "en": "Scanning a QR and entering a PIN always pays out. It's a scam." }
+      "explain": {
+        "en": "Scanning a QR and entering a PIN always pays out. It's a scam.",
+        "hi": "QR स्कैन करके PIN डालने से हमेशा पैसा जाता है। यह ठगी है।",
+        "te": "QR స్కాన్ చేసి PIN వేస్తే ఎప్పుడూ డబ్బు వెళ్తుంది. ఇది మోసం."
+      }
     },
     {
       "id": "post4",
       "lesson": "L14",
-      "q": { "en": "You need ₹20,000. Which is usually the cheapest?" },
-      "options": [{ "en": "Moneylender at ₹2 per ₹100 a month" }, { "en": "Instant loan app" }, { "en": "Savings-group (SHG) loan at 12% a year" }, { "en": "Credit card minimum due" }],
+      "q": {
+        "en": "You need ₹20,000. Which is usually the cheapest?",
+        "hi": "आपको ₹20,000 चाहिए। आमतौर पर सबसे सस्ता क्या है?",
+        "te": "మీకు ₹20,000 కావాలి. సాధారణంగా ఏది చౌక?"
+      },
+      "options": [
+        {
+          "en": "Moneylender at ₹2 per ₹100 a month",
+          "hi": "₹2 सैकड़ा महीने वाला साहूकार",
+          "te": "నెలకు నూటికి ₹2 షావుకారు"
+        },
+        { "en": "Instant loan app", "hi": "इंस्टेंट लोन ऐप", "te": "ఇన్‌స్టంట్ లోన్ యాప్" },
+        {
+          "en": "Savings-group (SHG) loan at 12% a year",
+          "hi": "12% सालाना वाला बचत समूह (SHG) कर्ज़",
+          "te": "ఏడాదికి 12% పొదుపు సంఘం (SHG) రుణం"
+        },
+        { "en": "Credit card minimum due", "hi": "क्रेडिट कार्ड का मिनिमम ड्यू", "te": "క్రెడిట్ కార్డు కనీస బాకీ" }
+      ],
       "answer": 2,
-      "explain": { "en": "The moneylender is 24% a year on the full amount; apps and cards cost even more. The SHG is 12%." }
+      "explain": {
+        "en": "The moneylender is 24% a year on the full amount; apps and cards cost even more. The SHG is 12%.",
+        "hi": "साहूकार पूरी रकम पर 24% सालाना है; ऐप और कार्ड उससे भी महँगे। SHG 12% है।",
+        "te": "షావుకారు మొత్తం అప్పుపై ఏడాదికి 24%; యాప్‌లు, కార్డులు ఇంకా ఖరీదు. పొదుపు సంఘం 12%."
+      }
     },
     {
       "id": "post5",
       "lesson": "L17",
-      "q": { "en": "Which matters most for long-term savings growth?" },
-      "options": [{ "en": "Starting early" }, { "en": "A lucky tip" }, { "en": "Buying one hot share" }, { "en": "Waiting until you earn more" }],
+      "q": {
+        "en": "Which matters most for long-term savings growth?",
+        "hi": "लंबे समय की बचत बढ़ाने में सबसे ज़रूरी क्या है?",
+        "te": "దీర్ఘకాల పొదుపు పెరగడానికి ఏది ముఖ్యం?"
+      },
+      "options": [
+        { "en": "Starting early", "hi": "जल्दी शुरू करना", "te": "త్వరగా మొదలుపెట్టడం" },
+        { "en": "A lucky tip", "hi": "किस्मत वाली टिप", "te": "అదృష్ట టిప్" },
+        { "en": "Buying one hot share", "hi": "एक गरम शेयर खरीदना", "te": "ఒక హాట్ షేర్ కొనడం" },
+        { "en": "Waiting until you earn more", "hi": "ज़्यादा कमाने तक रुकना", "te": "ఎక్కువ సంపాదించే వరకు ఆగడం" }
+      ],
       "answer": 0,
-      "explain": { "en": "Time lets compounding work. Starting small and early beats starting big and late." }
+      "explain": {
+        "en": "Time lets compounding work. Starting small and early beats starting big and late.",
+        "hi": "समय से चक्रवृद्धि काम करती है। छोटा और जल्दी, बड़ा और देर से बेहतर।",
+        "te": "సమయంతో చక్రవడ్డీ పని చేస్తుంది. చిన్నగా త్వరగా, పెద్దగా ఆలస్యంగా కంటే మేలు."
+      }
     }
   ]
 }

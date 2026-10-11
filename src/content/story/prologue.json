@@ -1,0 +1,395 @@
+{
+  "id": "prologue",
+  "stage": "child",
+  "from": 11,
+  "to": 14,
+  "part": {
+    "en": "Prologue · Childhood",
+    "hi": "शुरुआत · बचपन",
+    "te": "ముందుమాట · బాల్యం"
+  },
+  "title": {
+    "en": "The Tin Box",
+    "hi": "टिन का डिब्बा",
+    "te": "రేకు డబ్బా"
+  },
+  "intro": {
+    "en": "Age 11. It's **jatara** day in Mallepalli! Drums, jalebi, a giant wheel, and ₹100 of pocket money in your fist. At home, every rupee the family saves sleeps in Ammamma's old **tin box**.",
+    "hi": "उम्र 11। मल्लेपल्ली में आज **जातरा** है! ढोल, जलेबी, बड़ा झूला, और मुट्ठी में ₹100 जेब खर्च। घर पर परिवार की हर बचत अम्मम्मा के पुराने **टिन के डिब्बे** में सोती है।",
+    "te": "వయసు 11. మల్లెపల్లిలో ఈరోజు **జాతర**! డప్పులు, జిలేబీ, జెయింట్ వీల్, పిడికిట్లో ₹100 పాకెట్ మనీ. ఇంట్లో, కుటుంబం దాచే ప్రతి రూపాయి అమ్మమ్మ పాత **రేకు డబ్బా**లో నిద్రపోతుంది."
+  },
+  "start": "p_jatara",
+  "nodes": [
+    {
+      "id": "p_jatara",
+      "age": 11,
+      "location": "square",
+      "speaker": "tempter",
+      "lesson": "L01",
+      "objective": {
+        "en": "The jatara fair has started at the village square. Go!",
+        "hi": "गाँव के चौक पर जातरा मेला शुरू हो गया है। चलो!",
+        "te": "ఊరి కూడలిలో జాతర మొదలైంది. పదండి!"
+      },
+      "title": {
+        "en": "₹100 and a rigged game",
+        "hi": "₹100 और धोखे वाला खेल",
+        "te": "₹100, ఒక మోసపు ఆట"
+      },
+      "text": {
+        "en": "The fair smells of hot jalebi. Your school **notebook** is finished: that's a **need**, ₹40. The giant wheel and sweets are **wants**. Then a skinny teen in tiny sunglasses yells: \"Ring the bottle, win a **PHONE**! Only ₹20!\" It's {cast:tempter}.",
+        "hi": "मेले में गरम जलेबी की खुशबू है। आपकी स्कूल की **कॉपी** खत्म हो गई है: यह **ज़रूरत** है, ₹40। बड़ा झूला और मिठाई **शौक** हैं। तभी छोटे चश्मे वाला एक दुबला लड़का चिल्लाता है: \"रिंग डालो, **फ़ोन** जीतो! सिर्फ़ ₹20!\" यह {cast:tempter} है।",
+        "te": "జాతరలో వేడి జిలేబీ వాసన. మీ స్కూల్ **నోట్‌బుక్** అయిపోయింది: అది **అవసరం**, ₹40. జెయింట్ వీల్, మిఠాయిలు **కోరికలు**. అప్పుడే చిన్న కళ్లద్దాల సన్నని కుర్రాడు అరుస్తాడు: \"రింగ్ వేయి, **ఫోన్** గెలుచుకో! ₹20 మాత్రమే!\" వాడే {cast:tempter}."
+      },
+      "choices": [
+        {
+          "id": "notebook_first",
+          "label": {
+            "en": "Buy the notebook first, then enjoy ₹60 of fair",
+            "hi": "पहले कॉपी खरीदें, फिर ₹60 में मेले का मज़ा",
+            "te": "ముందు నోట్‌బుక్ కొనండి, తర్వాత ₹60తో జాతర ఎంజాయ్ చేయండి"
+          },
+          "quality": "good",
+          "effects": {
+            "meters": {
+              "joy": 4
+            }
+          },
+          "outcome": {
+            "en": "Notebook ₹40. Giant wheel ₹30. Hot jalebi ₹20. ₹10 left, and zero guilt.",
+            "hi": "कॉपी ₹40। बड़ा झूला ₹30। गरम जलेबी ₹20। ₹10 बचे, और कोई पछतावा नहीं।",
+            "te": "నోట్‌బుక్ ₹40. జెయింట్ వీల్ ₹30. వేడి వేడి జిలేబీ ₹20. ₹10 మిగిలింది, మనసులో ఏ బాధా లేదు."
+          },
+          "why": {
+            "en": "A need can't wait; a want can. Cover the need first and the want becomes guilt-free.",
+            "hi": "ज़रूरत इंतज़ार नहीं कर सकती; चाहत कर सकती है। पहले ज़रूरत पूरी करें, फिर चाहत बिना पछतावे के पूरी होती है।",
+            "te": "అవసరం ఆగదు; కోరిక ఆగగలదు. ముందు అవసరం తీర్చుకుంటే, కోరికను బాధ లేకుండా ఎంజాయ్ చేయొచ్చు."
+          },
+          "next": "p_tin"
+        },
+        {
+          "id": "ring_game",
+          "label": {
+            "en": "Try the ring game. A phone for ₹20!",
+            "hi": "रिंग वाला खेल खेलें। ₹20 में फ़ोन!",
+            "te": "రింగ్ ఆట ఆడండి. ₹20కి ఫోన్!"
+          },
+          "quality": "bad",
+          "effects": {
+            "meters": {
+              "joy": -3
+            },
+            "flags": {
+              "add": [
+                "lost_to_prakash"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Four tries. Every ring bounces off: the bottles are a little too wide. ₹80 gone, no notebook. Prakash grins: \"Better luck next time, chhotu!\"",
+            "hi": "चार बार कोशिश। हर रिंग उछलकर गिर जाती है: बोतलें थोड़ी ज़्यादा चौड़ी हैं। ₹80 गए, कॉपी भी नहीं आई। प्रकाश मुस्कुराता है: \"अगली बार किस्मत आज़माना, छोटू!\"",
+            "te": "నాలుగు ప్రయత్నాలు. ప్రతి రింగ్ తగిలి ఎగిరిపడుతుంది: సీసాలు కొంచెం లావుగా ఉన్నాయి. ₹80 పోయింది, నోట్‌బుక్ లేదు. ప్రకాష్ ఇకిలిస్తాడు: \"బెటర్ లక్ నెక్స్ట్ టైమ్, చిన్నా!\""
+          },
+          "why": {
+            "en": "Fair games that look easy are built so the stall wins. Easy money is usually someone else's plan.",
+            "hi": "मेले के जो खेल आसान दिखते हैं, वे ऐसे बने होते हैं कि स्टॉल वाला ही जीते। आसान पैसा अक्सर किसी और की चाल होता है।",
+            "te": "సులువుగా కనిపించే జాతర ఆటలను స్టాల్ వాడే గెలిచేలా తయారు చేస్తారు. ఈజీ మనీ అంటే సాధారణంగా వేరే ఎవరిదో ప్లాన్."
+          },
+          "next": "p_tin"
+        },
+        {
+          "id": "save_all",
+          "label": {
+            "en": "Save all ₹100 for later",
+            "hi": "पूरे ₹100 बाद के लिए बचाएँ",
+            "te": "₹100 మొత్తం తర్వాతకు దాచండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "meters": {
+              "joy": -2
+            },
+            "jar": {
+              "goal": 100
+            }
+          },
+          "outcome": {
+            "en": "You watch your friends on the giant wheel. Your ₹100 is safe. Your notebook is still finished.",
+            "hi": "आप दोस्तों को बड़े झूले पर देखते रहते हैं। आपके ₹100 सुरक्षित हैं। आपकी कॉपी अब भी खत्म है।",
+            "te": "స్నేహితులు జెయింట్ వీల్ ఎక్కుతుంటే మీరు చూస్తూ ఉంటారు. మీ ₹100 సేఫ్. కానీ నోట్‌బుక్ ఇంకా అయిపోయే ఉంది."
+          },
+          "why": {
+            "en": "Saving is good, but a plan with zero joy, and a missing notebook, is hard to keep.",
+            "hi": "बचत अच्छी है, पर जिस प्लान में ज़रा भी खुशी न हो, और कॉपी भी न हो, उसे निभाना मुश्किल है।",
+            "te": "పొదుపు మంచిదే, కానీ కొంచెం కూడా సంతోషం లేని ప్లాన్, అదీ నోట్‌బుక్ లేకుండా, ఎక్కువ రోజులు నిలవదు."
+          },
+          "next": "p_tin"
+        }
+      ]
+    },
+    {
+      "id": "p_tin",
+      "age": 12,
+      "location": "home",
+      "speaker": "mentor",
+      "lesson": "L02",
+      "objective": {
+        "en": "Walk home. Ammamma is calling you.",
+        "hi": "घर चलें। अम्मम्मा आपको बुला रही हैं।",
+        "te": "ఇంటికి నడవండి. అమ్మమ్మ పిలుస్తోంది."
+      },
+      "title": {
+        "en": "The rat and the tin box",
+        "hi": "चूहा और टिन का डिब्बा",
+        "te": "ఎలుక, రేకు డబ్బా"
+      },
+      "text": {
+        "en": "{cast:mentor} opens her tin box: **₹12,000** for Chinni's future, and one **chewed ₹500 note**. \"A rat ate my savings, kanna!\"",
+        "hi": "{cast:mentor} अपना टिन का डिब्बा खोलती हैं: चिन्नी के भविष्य के लिए **₹12,000**, और एक **कुतरा हुआ ₹500 का नोट**। \"चूहा मेरी बचत खा गया, कन्ना!\"",
+        "te": "{cast:mentor} తన రేకు డబ్బా తెరుస్తుంది: చిన్ని భవిష్యత్తు కోసం **₹12,000**, ఇంకా **కొరికేసిన ₹500 నోటు**. \"నా పైసలు ఎలుక తినేసింది కన్నా!\""
+      },
+      "choices": [
+        {
+          "id": "bank",
+          "label": {
+            "en": "\"Put it in a bank, Ammamma. Rats can't open banks.\"",
+            "hi": "\"इसे बैंक में रखो, अम्मम्मा। चूहे बैंक नहीं खोल सकते।\"",
+            "te": "\"బ్యాంకులో వేద్దాం అమ్మమ్మా. ఎలుకలు బ్యాంకును తెరవలేవు.\""
+          },
+          "quality": "good",
+          "effects": {
+            "meters": {
+              "family": 3
+            }
+          },
+          "outcome": {
+            "en": "Ammamma frowns. \"Banks are for rich people.\" But she ties the notes in a cloth and takes your hand.",
+            "hi": "अम्मम्मा माथा सिकोड़ती हैं। \"बैंक तो अमीरों के लिए होते हैं।\" पर वे नोटों को कपड़े में बाँधती हैं और आपका हाथ पकड़ लेती हैं।",
+            "te": "అమ్మమ్మ ముఖం చిట్లిస్తుంది. \"బ్యాంకులు ఉన్నోళ్లకే.\" అయినా నోట్లను ఒక గుడ్డలో కట్టి, మీ చెయ్యి పట్టుకుంటుంది."
+          },
+          "why": {
+            "en": "A goal needs a safe home. A bank keeps money safe from rats, fire and thieves, and pays [[interest]].",
+            "hi": "हर लक्ष्य को एक सुरक्षित घर चाहिए। बैंक पैसे को चूहों, आग और चोरों से बचाता है, और [[interest]] भी देता है।",
+            "te": "లక్ష్యానికి ఒక భద్రమైన ఇల్లు కావాలి. బ్యాంకు డబ్బును ఎలుకలు, నిప్పు, దొంగల నుంచి కాపాడుతుంది, పైగా [[interest]] కూడా ఇస్తుంది."
+          },
+          "next": "p_bank"
+        },
+        {
+          "id": "steel_box",
+          "label": {
+            "en": "\"Buy a steel box with a lock.\"",
+            "hi": "\"ताले वाला स्टील का डिब्बा ले लो।\"",
+            "te": "\"తాళం ఉన్న స్టీల్ డబ్బా కొందాం.\""
+          },
+          "quality": "ok",
+          "outcome": {
+            "en": "\"Clever!\" Ammamma counts out ₹150 for a steel box from Anjamma aunty's shop.",
+            "hi": "\"वाह, होशियार!\" अम्मम्मा अंजम्मा आंटी की दुकान से स्टील का डिब्बा लाने के लिए ₹150 गिनकर देती हैं।",
+            "te": "\"భలే తెలివి!\" అంజమ్మ ఆంటీ కొట్టులో స్టీల్ డబ్బా కోసం అమ్మమ్మ ₹150 లెక్కపెట్టి ఇస్తుంది."
+          },
+          "why": {
+            "en": "A lock stops rats. It does not stop thieves, fire, or prices that climb every year.",
+            "hi": "ताला चूहों को रोकता है। पर चोरों, आग, या हर साल चढ़ते दामों को नहीं रोकता।",
+            "te": "తాళం ఎలుకలను ఆపుతుంది. దొంగలను, నిప్పును, ఏటా పెరిగే ధరలను మాత్రం ఆపదు."
+          },
+          "next": "p_shop"
+        }
+      ]
+    },
+    {
+      "id": "p_shop",
+      "age": 13,
+      "location": "shop",
+      "speaker": "shopkeeper",
+      "lesson": "L03",
+      "objective": {
+        "en": "Go to Anjamma aunty's kirana shop to buy the steel box.",
+        "hi": "स्टील का डिब्बा खरीदने अंजम्मा आंटी की किराना दुकान जाएँ।",
+        "te": "స్టీల్ డబ్బా కొనడానికి అంజమ్మ ఆంటీ కిరాణా కొట్టుకు వెళ్లండి."
+      },
+      "title": {
+        "en": "Why is everything costlier?",
+        "hi": "सब कुछ महँगा क्यों हो रहा है?",
+        "te": "అన్నీ ఎందుకు ఇంత ప్రియం?"
+      },
+      "text": {
+        "en": "The steel box costs ₹150. \"Last year it was ₹120,\" sighs {cast:shopkeeper}. \"Jalebi was ₹10, now ₹12. **Prices climb every year.**\"",
+        "hi": "स्टील का डिब्बा ₹150 का है। \"पिछले साल ₹120 का था,\" {cast:shopkeeper} आह भरती हैं। \"जलेबी ₹10 की थी, अब ₹12 की। **दाम हर साल चढ़ते हैं।**\"",
+        "te": "స్టీల్ డబ్బా ₹150. \"పోయిన ఏడాది ₹120,\" అని {cast:shopkeeper} నిట్టూరుస్తుంది. \"జిలేబీ ₹10, ఇప్పుడు ₹12. **ధరలు ప్రతి ఏడాది ఎక్కుతాయి.**\""
+      },
+      "choices": [
+        {
+          "id": "to_bank",
+          "label": {
+            "en": "\"Then money sleeping in a box gets weaker. Let's try the bank.\"",
+            "hi": "\"तो डिब्बे में सोता पैसा कमज़ोर होता जाता है। चलो, बैंक में आज़माते हैं।\"",
+            "te": "\"అయితే డబ్బాలో పడుకున్న డబ్బు బలహీనం అవుతుంది. బ్యాంకుకు పోదాం.\""
+          },
+          "quality": "good",
+          "outcome": {
+            "en": "Anjamma aunty laughs. \"Smart child! Kavitha akka's bank is right there, behind the tailoring machine.\"",
+            "hi": "अंजम्मा आंटी हँसती हैं। \"होशियार बच्चा! कविता अक्का का बैंक वहीं है, सिलाई मशीन के पीछे।\"",
+            "te": "అంజమ్మ ఆంటీ నవ్వుతుంది. \"భలే తెలివి నీది! కవిత అక్క బ్యాంకు అదిగో, ఆ కుట్టు మిషన్ వెనకాలే.\""
+          },
+          "why": {
+            "en": "[[inflation]] makes the same ₹100 buy less every year. Money that earns nothing quietly loses value.",
+            "hi": "[[inflation]] की वजह से वही ₹100 हर साल कम सामान खरीदते हैं। जो पैसा कुछ नहीं कमाता, उसकी कीमत चुपचाप घटती जाती है।",
+            "te": "[[inflation]] వల్ల అదే ₹100తో ఏటా తక్కువ వస్తువులు వస్తాయి. ఏమీ సంపాదించని డబ్బు నిశ్శబ్దంగా విలువ కోల్పోతుంది."
+          },
+          "next": "p_bank"
+        },
+        {
+          "id": "buy_box",
+          "label": {
+            "en": "Buy the steel box",
+            "hi": "स्टील का डिब्बा खरीदें",
+            "te": "స్టీల్ డబ్బా కొనండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "flags": {
+              "add": [
+                "tin_box"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The box is shiny and heavy. Ammamma hides the key in her blouse. The rats are defeated, for now.",
+            "hi": "डिब्बा चमकीला और भारी है। अम्मम्मा चाबी अपने ब्लाउज़ में छिपा लेती हैं। चूहे हार गए, फ़िलहाल।",
+            "te": "డబ్బా మెరుస్తోంది, బరువుగా ఉంది. అమ్మమ్మ తాళంచెవిని తన రవికలో దాచుకుంటుంది. ప్రస్తుతానికి ఎలుకలు ఓడిపోయాయి."
+          },
+          "why": {
+            "en": "Safe from rats is not safe from rising prices. ₹12,000 in a box buys less every single year.",
+            "hi": "चूहों से सुरक्षित होने का मतलब बढ़ते दामों से सुरक्षित होना नहीं है। डिब्बे में रखे ₹12,000 से हर साल कम सामान आता है।",
+            "te": "ఎలుకల నుంచి సేఫ్ అంటే పెరిగే ధరల నుంచి సేఫ్ కాదు. డబ్బాలోని ₹12,000తో ప్రతి ఏడాదీ తక్కువే కొనగలం."
+          },
+          "next": "p_end_box"
+        }
+      ]
+    },
+    {
+      "id": "p_bank",
+      "age": 13,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L04",
+      "objective": {
+        "en": "Take Ammamma to the bank. Kavitha akka is waiting.",
+        "hi": "अम्मम्मा को बैंक ले जाएँ। कविता अक्का इंतज़ार कर रही हैं।",
+        "te": "అమ్మమ్మను బ్యాంకుకు తీసుకెళ్లండి. కవిత అక్క ఎదురుచూస్తోంది."
+      },
+      "title": {
+        "en": "Ammamma's first passbook",
+        "hi": "अम्मम्मा की पहली पासबुक",
+        "te": "అమ్మమ్మ మొదటి పాస్‌బుక్"
+      },
+      "text": {
+        "en": "The bank smells of new paper and ink. {cast:banker} counts ₹11,500 twice. \"In a **savings account** it earns [[interest]] every year, and **no rat, thief or fire** can touch it.\" She winks at you. \"And you? A [[minor_account]]?\"",
+        "hi": "बैंक में नए कागज़ और स्याही की खुशबू है। {cast:banker} ₹11,500 दो बार गिनती हैं। \"**बचत खाते** में यह हर साल [[interest]] कमाता है, और **चूहा, चोर या आग** इसे छू नहीं सकते।\" फिर आपको आँख मारती हैं। \"और तुम? एक [[minor_account]]?\"",
+        "te": "బ్యాంకులో కొత్త కాగితం, సిరా వాసన. {cast:banker} ₹11,500 రెండుసార్లు లెక్కపెడుతుంది. \"**సేవింగ్స్ ఖాతా**లో ఇది ప్రతి ఏడాది [[interest]] సంపాదిస్తుంది, **ఎలుక, దొంగ, నిప్పు** ఏదీ దీన్ని ముట్టుకోలేవు.\" మీ వైపు కన్ను కొడుతుంది. \"మరి నువ్వు? ఒక [[minor_account]]?\""
+      },
+      "choices": [
+        {
+          "id": "both",
+          "label": {
+            "en": "Open Ammamma's account, and one for me with my ₹200",
+            "hi": "अम्मम्मा का खाता खोलें, और मेरे ₹200 से मेरा भी एक",
+            "te": "అమ్మమ్మ ఖాతా తెరవండి, నా ₹200తో నాకూ ఒకటి"
+          },
+          "quality": "good",
+          "effects": {
+            "open": {
+              "product": "bank",
+              "amount": 200
+            },
+            "flags": {
+              "add": [
+                "ammamma_bank",
+                "has_bank"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "Ammamma signs with her thumb. You sign your name, slowly. Two passbooks! The tin box now holds only paper.",
+            "hi": "अम्मम्मा अँगूठा लगाती हैं। आप धीरे-धीरे अपना नाम लिखते हैं। दो पासबुक! अब टिन के डिब्बे में बस कागज़ रहते हैं।",
+            "te": "అమ్మమ్మ వేలిముద్ర వేస్తుంది. మీరు నెమ్మదిగా మీ పేరు సంతకం చేస్తారు. రెండు పాస్‌బుక్‌లు! ఇప్పుడు రేకు డబ్బాలో కాగితాలు మాత్రమే."
+          },
+          "why": {
+            "en": "A bank pays [[interest]] and keeps a record of every rupee. Starting young builds the habit.",
+            "hi": "बैंक [[interest]] देता है और हर रुपये का हिसाब रखता है। छोटी उम्र में शुरू करने से आदत बनती है।",
+            "te": "బ్యాంకు [[interest]] ఇస్తుంది, ప్రతి రూపాయికి లెక్క రాసి ఉంచుతుంది. చిన్నప్పుడే మొదలుపెడితే అలవాటు అవుతుంది."
+          },
+          "next": "p_end_bank"
+        },
+        {
+          "id": "only_her",
+          "label": {
+            "en": "Open only Ammamma's account",
+            "hi": "सिर्फ़ अम्मम्मा का खाता खोलें",
+            "te": "అమ్మమ్మ ఖాతా మాత్రమే తెరవండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "flags": {
+              "add": [
+                "ammamma_bank"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Ammamma holds her passbook like a temple prasadam. \"My name, printed!\"",
+            "hi": "अम्मम्मा अपनी पासबुक ऐसे थामती हैं जैसे मंदिर का प्रसाद। \"मेरा नाम, छपा हुआ!\"",
+            "te": "అమ్మమ్మ తన పాస్‌బుక్‌ను గుడి ప్రసాదంలా పట్టుకుంటుంది. \"నా పేరు, అచ్చులో!\""
+          },
+          "why": {
+            "en": "Ammamma's money is safe now. Your own savings still sleep in your pocket.",
+            "hi": "अम्मम्मा का पैसा अब सुरक्षित है। आपकी अपनी बचत अब भी आपकी जेब में सो रही है।",
+            "te": "అమ్మమ్మ డబ్బు ఇప్పుడు సేఫ్. మీ సొంత పొదుపు మాత్రం ఇంకా మీ జేబులోనే నిద్రపోతోంది."
+          },
+          "next": "p_end_bank"
+        }
+      ]
+    },
+    {
+      "id": "p_end_bank",
+      "type": "outcome",
+      "tone": "good",
+      "title": {
+        "en": "The tin box retired",
+        "hi": "टिन का डिब्बा रिटायर हुआ",
+        "te": "రేకు డబ్బాకు రిటైర్‌మెంట్"
+      },
+      "text": {
+        "en": "Ammamma's savings live in a bank now, earning a little every year. Rats, thieves and fire can't touch them. Four years pass, and you remember one rule: needs, then joy, then savings.",
+        "hi": "अम्मम्मा की बचत अब बैंक में है, और हर साल थोड़ा कमाती है। चूहे, चोर और आग उसे छू नहीं सकते। चार साल बीतते हैं, और आपको एक नियम याद रहता है: पहले ज़रूरतें, फिर खुशी, फिर बचत।",
+        "te": "అమ్మమ్మ పొదుపు ఇప్పుడు బ్యాంకులో ఉంది, ఏటా కొంచెం సంపాదిస్తోంది. ఎలుకలు, దొంగలు, నిప్పు దాన్ని ముట్టుకోలేవు. నాలుగేళ్లు గడుస్తాయి, మీకు ఒక్క రూల్ గుర్తుంటుంది: ముందు అవసరాలు, తర్వాత సంతోషం, తర్వాత పొదుపు."
+      }
+    },
+    {
+      "id": "p_end_box",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "The rat's second dinner",
+        "hi": "चूहे की दूसरी दावत",
+        "te": "ఎలుకకు రెండో విందు"
+      },
+      "text": {
+        "en": "Two years later the rats are back, and this time someone breaks the lock too. Ammamma loses ₹3,000. \"Next time, I'll listen to you, kanna,\" she says.",
+        "hi": "दो साल बाद चूहे लौट आते हैं, और इस बार कोई ताला भी तोड़ देता है। अम्मम्मा के ₹3,000 चले जाते हैं। \"अगली बार तेरी बात सुनूँगी, कन्ना,\" वे कहती हैं।",
+        "te": "రెండేళ్ల తర్వాత ఎలుకలు మళ్లీ వస్తాయి, ఈసారి ఎవరో తాళం కూడా పగలగొడతారు. అమ్మమ్మ ₹3,000 పోగొట్టుకుంటుంది. \"ఇంకోసారి నీ మాట వింటా కన్నా,\" అంటుంది."
+      },
+      "effects": {
+        "meters": {
+          "family": -4
+        },
+        "flags": {
+          "add": [
+            "ammamma_bank"
+          ]
+        }
+      }
+    }
+  ]
+}

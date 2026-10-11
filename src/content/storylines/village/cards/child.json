@@ -6,41 +6,79 @@
     "lesson": "L01",
     "ages": [11, 12],
     "weight": 1,
+    "location": "square",
     "speaker": "mentor",
-    "title": { "en": "₹100 and a jatara" },
+    "title": { "en": "₹100 and a jatara", "hi": "₹100 और एक जात्रा", "te": "₹100, ఒక జాతర" },
     "text": {
-      "en": "The village jatara is tonight. {cast:mentor} presses ₹100 into your hand. Your school notebook is also finished. A new one costs ₹40."
+      "en": "The village jatara is tonight. {cast:mentor} presses ₹100 into your hand. Your school notebook is also finished. A new one costs ₹40.",
+      "hi": "आज रात गाँव में जात्रा है। {cast:mentor} आपके हाथ में ₹100 रखती हैं। आपकी स्कूल की कॉपी भी खत्म हो गई है। नई ₹40 की है।",
+      "te": "ఈ రాత్రి ఊళ్లో జాతర. {cast:mentor} మీ చేతిలో ₹100 పెడుతుంది. మీ స్కూల్ నోట్‌బుక్ కూడా అయిపోయింది. కొత్తది ₹40."
     },
     "choices": [
       {
         "id": "notebook_first",
-        "label": { "en": "Buy the notebook first, then enjoy ₹60 of jatara" },
+        "label": {
+          "en": "Buy the notebook first, then enjoy ₹60 of jatara",
+          "hi": "पहले कॉपी खरीदें, फिर ₹60 की जात्रा का मज़ा",
+          "te": "ముందు నోట్‌బుక్ కొని, తర్వాత ₹60తో జాతర సరదా"
+        },
         "quality": "good",
         "default": true,
         "effects": { "meters": { "joy": 4, "family": 2 } },
-        "outcome": { "en": "Notebook: ₹40. Giant wheel: ₹30. Hot jalebi: ₹20. You still have ₹10 and zero guilt." },
-        "why": { "en": "A need can't wait; a want can. Cover needs first, and the wants become guilt-free." }
+        "outcome": {
+          "en": "Notebook: ₹40. Giant wheel: ₹30. Hot jalebi: ₹20. You still have ₹10 and zero guilt.",
+          "hi": "कॉपी: ₹40। झूला: ₹30। गरम जलेबी: ₹20। ₹10 अब भी बचे, और कोई पछतावा नहीं।",
+          "te": "నోట్‌బుక్: ₹40. జెయింట్ వీల్: ₹30. వేడి జిలేబీ: ₹20. ఇంకా ₹10 మిగిలాయి, బాధ అసలు లేదు."
+        },
+        "why": {
+          "en": "A need can't wait; a want can. Cover needs first, and the wants become guilt-free.",
+          "hi": "ज़रूरत रुक नहीं सकती; चाहत रुक सकती है। पहले ज़रूरत पूरी करें, फिर चाहतों में कोई पछतावा नहीं।",
+          "te": "అవసరం ఆగదు; కోరిక ఆగుతుంది. ముందు అవసరం తీర్చండి, తర్వాత కోరికలపై బాధ ఉండదు."
+        }
       },
       {
         "id": "all_jatara",
-        "label": { "en": "Spend all ₹100 at the jatara" },
+        "label": { "en": "Spend all ₹100 at the jatara", "hi": "पूरे ₹100 जात्रा में खर्च करें", "te": "₹100 అంతా జాతరలో ఖర్చు" },
         "quality": "risky",
         "effects": {
           "meters": { "joy": 7, "family": -2 },
           "flags": { "add": ["owes_kirana"] },
           "schedule": [{ "inYears": 1, "card": "village.child.khata_remembers.a" }]
         },
-        "echo": { "level": 1, "hint": { "en": "Wants first, needs on credit. Small now." } },
-        "outcome": { "en": "Best night ever. On Monday you have no notebook, so {cast:shopkeeper} writes ₹40 in her [[khata]]." },
-        "why": { "en": "Spending the need money on wants doesn't remove the need. It just turns it into a debt." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "Wants first, needs on credit. Small now.",
+            "hi": "पहले चाहत, ज़रूरत उधार पर। अभी छोटा है।",
+            "te": "ముందు కోరిక, అవసరం అప్పుపై. ఇప్పుడు చిన్నదే."
+          }
+        },
+        "outcome": {
+          "en": "Best night ever. On Monday you have no notebook, so {cast:shopkeeper} writes ₹40 in her [[khata]].",
+          "hi": "सबसे शानदार रात। सोमवार को कॉपी नहीं, तो {cast:shopkeeper} अपने [[khata]] में ₹40 लिख देती हैं।",
+          "te": "అద్భుతమైన రాత్రి. సోమవారం నోట్‌బుక్ లేదు, అందుకే {cast:shopkeeper} తన [[khata]]లో ₹40 రాస్తుంది."
+        },
+        "why": {
+          "en": "Spending the need money on wants doesn't remove the need. It just turns it into a debt.",
+          "hi": "ज़रूरत का पैसा चाहत पर खर्च करने से ज़रूरत खत्म नहीं होती। वह बस कर्ज़ बन जाती है।",
+          "te": "అవసరానికి డబ్బు కోరికపై ఖర్చు చేస్తే అవసరం పోదు. అది అప్పుగా మారుతుంది అంతే."
+        }
       },
       {
         "id": "save_all",
-        "label": { "en": "Save all ₹100 in the tin box" },
+        "label": { "en": "Save all ₹100 in the tin box", "hi": "पूरे ₹100 डिब्बे में बचाएँ", "te": "₹100 అంతా డబ్బాలో దాచండి" },
         "quality": "neutral",
         "effects": { "jar": { "goal": 100 }, "meters": { "joy": -3 }, "cash": 100 },
-        "outcome": { "en": "₹100 saved. But still no notebook, and no jatara. {cast:sibling} brings you half her jalebi." },
-        "why": { "en": "Saving everything isn't a plan either. Needs come first, and a small want is allowed." }
+        "outcome": {
+          "en": "₹100 saved. But still no notebook, and no jatara. {cast:sibling} brings you half her jalebi.",
+          "hi": "₹100 बच गए। पर न कॉपी, न जात्रा। {cast:sibling} आपके लिए आधी जलेबी लाती है।",
+          "te": "₹100 మిగిలాయి. కానీ నోట్‌బుక్ లేదు, జాతరా లేదు. {cast:sibling} తన జిలేబీలో సగం మీకు తెస్తుంది."
+        },
+        "why": {
+          "en": "Saving everything isn't a plan either. Needs come first, and a small want is allowed.",
+          "hi": "सब कुछ बचा लेना भी प्लान नहीं है। पहले ज़रूरतें, और छोटी चाहत की इजाज़त है।",
+          "te": "అంతా దాచేయడం కూడా ప్లాన్ కాదు. ముందు అవసరాలు, చిన్న కోరికకు అనుమతి ఉంది."
+        }
       }
     ]
   },
@@ -51,37 +89,83 @@
     "lesson": "L02",
     "ages": [11, 13],
     "weight": 1,
+    "location": "home",
     "speaker": "mother",
-    "title": { "en": "Amma's savings-group rule" },
+    "title": { "en": "Amma's savings-group rule", "hi": "अम्मा के बचत समूह का नियम", "te": "అమ్మ పొదుపు సంఘం నియమం" },
     "text": {
-      "en": "{cast:mother} comes back from her [[shg]] meeting. \"Our rule: first the savings, then the shopping.\" Your ₹200 pocket money for the month is in your hand."
+      "en": "{cast:mother} comes back from her [[shg]] meeting. \"Our rule: first the savings, then the shopping.\" Your ₹200 pocket money for the month is in your hand.",
+      "hi": "{cast:mother} अपनी [[shg]] बैठक से लौटती हैं। \"हमारा नियम: पहले बचत, फिर खरीदारी।\" महीने का ₹200 जेब खर्च आपके हाथ में है।",
+      "te": "{cast:mother} తన [[shg]] సమావేశం నుంచి వస్తుంది. \"మా నియమం: ముందు పొదుపు, తర్వాత కొనుగోలు.\" నెల పాకెట్ మనీ ₹200 మీ చేతిలో ఉంది."
     },
     "choices": [
       {
         "id": "save_first",
-        "label": { "en": "Put ₹40 in the dream jar today, before anything else" },
+        "label": {
+          "en": "Put ₹40 in the dream jar today, before anything else",
+          "hi": "आज ही, सबसे पहले, ₹40 सपने के डिब्बे में डालें",
+          "te": "ఈ రోజే, అన్నిటికంటే ముందు, ₹40 కల డబ్బాలో వేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "jar": { "goal": 40 }, "flags": { "add": ["pays_self_first"] }, "gyaan": 1 },
-        "outcome": { "en": "₹40 a month for a year is ₹480. That's a proper cricket bat, with ₹80 left over." },
-        "why": { "en": "Save the day money arrives, not at month-end. What you never see, you never spend." }
+        "outcome": {
+          "en": "₹40 a month for a year is ₹480. That's a proper cricket bat, with ₹80 left over.",
+          "hi": "एक साल तक ₹40 महीना = ₹480। यानी असली क्रिकेट बैट, और ₹80 ऊपर से बचे।",
+          "te": "ఏడాది పాటు నెలకు ₹40 = ₹480. అంటే అసలైన క్రికెట్ బ్యాట్, ఇంకా ₹80 మిగులు."
+        },
+        "why": {
+          "en": "Save the day money arrives, not at month-end. What you never see, you never spend.",
+          "hi": "पैसा आते ही बचाएँ, महीने के आखिर में नहीं। जो दिखता नहीं, वह खर्च भी नहीं होता।",
+          "te": "డబ్బు వచ్చిన రోజే పొదుపు, నెల చివర కాదు. కనిపించనిది ఖర్చు కాదు."
+        }
       },
       {
         "id": "save_leftover",
-        "label": { "en": "Spend first, save whatever is left at month-end" },
+        "label": {
+          "en": "Spend first, save whatever is left at month-end",
+          "hi": "पहले खर्च करें, महीने के आखिर में जो बचे वह बचाएँ",
+          "te": "ముందు ఖర్చు, నెల చివర మిగిలినది పొదుపు"
+        },
         "quality": "risky",
         "effects": { "jar": { "goal": 6 }, "meters": { "joy": 3 } },
-        "echo": { "level": 1, "hint": { "en": "There is never anything left at month-end." } },
-        "outcome": { "en": "At month-end, ₹6 is left. At that speed, the ₹400 bat takes over five years." },
-        "why": { "en": "Leftovers are tiny because spending fills all the space. Saving first protects your goal." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "There is never anything left at month-end.",
+            "hi": "महीने के आखिर में कभी कुछ नहीं बचता।",
+            "te": "నెల చివర ఎప్పుడూ ఏమీ మిగలదు."
+          }
+        },
+        "outcome": {
+          "en": "At month-end, ₹6 is left. At that speed, the ₹400 bat takes over five years.",
+          "hi": "महीने के आखिर में ₹6 बचे। इस रफ़्तार से ₹400 के बैट में पाँच साल से ज़्यादा लगेंगे।",
+          "te": "నెల చివర ₹6 మిగిలాయి. ఈ వేగంతో ₹400 బ్యాట్‌కు ఐదేళ్లకు పైగా పడుతుంది."
+        },
+        "why": {
+          "en": "Leftovers are tiny because spending fills all the space. Saving first protects your goal.",
+          "hi": "बचत इतनी छोटी इसलिए है क्योंकि खर्च सारी जगह भर लेता है। पहले बचत लक्ष्य को बचाती है।",
+          "te": "ఖర్చు చోటంతా నింపేస్తుంది కాబట్టి మిగులు చిన్నది. ముందు పొదుపు లక్ష్యాన్ని కాపాడుతుంది."
+        }
       },
       {
         "id": "amma_saves",
-        "label": { "en": "Ask Amma to keep ₹20 a month for you" },
+        "label": {
+          "en": "Ask Amma to keep ₹20 a month for you",
+          "hi": "अम्मा से कहें कि हर महीने आपके लिए ₹20 रखें",
+          "te": "నెలకు ₹20 మీ కోసం దాచమని అమ్మను అడగండి"
+        },
         "quality": "neutral",
         "effects": { "jar": { "goal": 20 }, "meters": { "family": 3 } },
-        "outcome": { "en": "Amma saves ₹20 a month for you: ₹240 by next Sankranti. Her habit, not yours yet." },
-        "why": { "en": "Help is good. But saving is a muscle. It grows only when you use it yourself." }
+        "outcome": {
+          "en": "Amma saves ₹20 a month for you: ₹240 by next Sankranti. Her habit, not yours yet.",
+          "hi": "अम्मा हर महीने आपके लिए ₹20 बचाती हैं: अगली संक्रांति तक ₹240। आदत उनकी है, अभी आपकी नहीं।",
+          "te": "అమ్మ నెలకు ₹20 మీ కోసం దాస్తుంది: వచ్చే సంక్రాంతికి ₹240. అలవాటు ఆమెది, ఇంకా మీది కాదు."
+        },
+        "why": {
+          "en": "Help is good. But saving is a muscle. It grows only when you use it yourself.",
+          "hi": "मदद अच्छी है। पर बचत एक मांसपेशी है। वह तभी बढ़ती है जब आप खुद इस्तेमाल करें।",
+          "te": "సహాయం మంచిదే. కానీ పొదుపు ఒక కండరం లాంటిది. మీరే వాడితేనే పెరుగుతుంది."
+        }
       }
     ]
   },
@@ -92,39 +176,83 @@
     "lesson": "L03",
     "ages": [12, 14],
     "weight": 1,
+    "location": "shop",
     "speaker": "shopkeeper",
-    "title": { "en": "The chocolate got expensive" },
+    "title": { "en": "The chocolate got expensive", "hi": "चॉकलेट महँगी हो गई", "te": "చాక్లెట్ ఖరీదైపోయింది" },
     "text": {
-      "en": "\"₹12, kanna,\" says {cast:shopkeeper}. \"It was ₹10 last year.\" You have ₹300 saved in a tin for a bat that costs ₹300 today."
+      "en": "\"₹12, kanna,\" says {cast:shopkeeper}. \"It was ₹10 last year.\" You have ₹300 saved in a tin for a bat that costs ₹300 today.",
+      "hi": "\"₹12, कन्ना,\" {cast:shopkeeper} कहती हैं। \"पिछले साल ₹10 थी।\" आपके डिब्बे में ₹300 बचे हैं, उस बैट के लिए जो आज ₹300 का है।",
+      "te": "\"₹12, కన్నా,\" అంటుంది {cast:shopkeeper}. \"పోయిన ఏడాది ₹10.\" మీ డబ్బాలో ₹300 ఉన్నాయి, ఈ రోజు ₹300 ఉన్న బ్యాట్ కోసం."
     },
     "choices": [
       {
         "id": "ask_why",
-        "label": { "en": "Ask Ammamma why prices keep rising" },
+        "label": {
+          "en": "Ask Ammamma why prices keep rising",
+          "hi": "अम्मम्मा से पूछें कि कीमतें क्यों बढ़ती रहती हैं",
+          "te": "ధరలు ఎందుకు పెరుగుతున్నాయో అమ్మమ్మను అడగండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 2, "flags": { "add": ["wants_bank"] } },
         "outcome": {
-          "en": "Rice was ₹2 a kilo when Ammamma married. Now it's ₹40. You decide your ₹300 needs a home where it grows."
+          "en": "Rice was ₹2 a kilo when Ammamma married. Now it's ₹40. You decide your ₹300 needs a home where it grows.",
+          "hi": "अम्मम्मा की शादी के वक्त चावल ₹2 किलो था। अब ₹40 है। आप तय करते हैं कि आपके ₹300 को बढ़ने वाली जगह चाहिए।",
+          "te": "అమ్మమ్మ పెళ్లి నాటికి బియ్యం కిలో ₹2. ఇప్పుడు ₹40. మీ ₹300 పెరిగే చోట ఉండాలని మీరు నిర్ణయించుకుంటారు."
         },
-        "why": { "en": "[[inflation]] makes prices rise each year. Idle cash buys less and less." }
+        "why": {
+          "en": "[[inflation]] makes prices rise each year. Idle cash buys less and less.",
+          "hi": "[[inflation]] से हर साल कीमतें बढ़ती हैं। पड़ा पैसा कम-कम खरीदता है।",
+          "te": "[[inflation]] వల్ల ప్రతి ఏడాది ధరలు పెరుగుతాయి. ఊరికే ఉన్న డబ్బుతో తక్కువ తక్కువ కొంటాం."
+        }
       },
       {
         "id": "buy_now",
-        "label": { "en": "Buy the bat today, before it costs more" },
+        "label": {
+          "en": "Buy the bat today, before it costs more",
+          "hi": "कीमत बढ़ने से पहले आज ही बैट खरीदें",
+          "te": "ధర పెరగకముందే ఈ రోజే బ్యాట్ కొనండి"
+        },
         "quality": "neutral",
         "effects": { "meters": { "joy": 7 }, "cash": -300 },
-        "outcome": { "en": "You beat inflation by buying today. Next year the same bat costs ₹318." },
-        "why": { "en": "Buying something you really want before prices rise is fine. Just know you're spending, not saving." }
+        "outcome": {
+          "en": "You beat inflation by buying today. Next year the same bat costs ₹318.",
+          "hi": "आज खरीदकर आपने महंगाई को हरा दिया। अगले साल वही बैट ₹318 का होगा।",
+          "te": "ఈ రోజే కొని ధరల పెరుగుదలను దాటేశారు. వచ్చే ఏడాది అదే బ్యాట్ ₹318."
+        },
+        "why": {
+          "en": "Buying something you really want before prices rise is fine. Just know you're spending, not saving.",
+          "hi": "जो चीज़ सच में चाहिए, कीमत बढ़ने से पहले खरीदना ठीक है। बस यह जानें कि यह खर्च है, बचत नहीं।",
+          "te": "నిజంగా కావాల్సింది ధర పెరగకముందే కొనడం సరే. అది ఖర్చు, పొదుపు కాదని తెలుసుకోండి."
+        }
       },
       {
         "id": "keep_tin",
-        "label": { "en": "Keep the ₹300 in the tin for three more years" },
+        "label": {
+          "en": "Keep the ₹300 in the tin for three more years",
+          "hi": "₹300 और तीन साल डिब्बे में रखें",
+          "te": "₹300 ఇంకో మూడేళ్లు డబ్బాలోనే"
+        },
         "quality": "risky",
         "effects": { "meters": { "joy": -1 } },
-        "echo": { "level": 1, "hint": { "en": "The tin box keeps the notes. It doesn't keep their value." } },
-        "outcome": { "en": "In three years the bat costs ₹357. Your ₹300 is still exactly ₹300." },
-        "why": { "en": "At 6% a year, prices go up about a fifth in three years. Cash that doesn't grow falls behind." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "The tin box keeps the notes. It doesn't keep their value.",
+            "hi": "डिब्बा नोट तो रखता है, उनकी कीमत नहीं।",
+            "te": "డబ్బా నోట్లను దాస్తుంది. వాటి విలువను కాదు."
+          }
+        },
+        "outcome": {
+          "en": "In three years the bat costs ₹357. Your ₹300 is still exactly ₹300.",
+          "hi": "तीन साल में बैट ₹357 का हो जाता है। आपके ₹300 अब भी ठीक ₹300 हैं।",
+          "te": "మూడేళ్లలో బ్యాట్ ₹357. మీ ₹300 ఇంకా సరిగ్గా ₹300."
+        },
+        "why": {
+          "en": "At 6% a year, prices go up about a fifth in three years. Cash that doesn't grow falls behind.",
+          "hi": "6% सालाना पर तीन साल में कीमतें लगभग पाँचवाँ हिस्सा बढ़ जाती हैं। जो पैसा नहीं बढ़ता, वह पीछे रह जाता है।",
+          "te": "ఏడాదికి 6% చొప్పున మూడేళ్లలో ధరలు సుమారు ఐదో వంతు పెరుగుతాయి. పెరగని డబ్బు వెనకబడుతుంది."
+        }
       }
     ]
   },
@@ -135,44 +263,94 @@
     "lesson": "L04",
     "ages": [12, 14],
     "weight": 1,
+    "location": "school",
     "speaker": "banker",
-    "title": { "en": "The rat ate ₹50" },
+    "title": { "en": "The rat ate ₹50", "hi": "चूहा ₹50 खा गया", "te": "ఎలుక ₹50 తినేసింది" },
     "text": {
-      "en": "A rat chewed a ₹50 note in your tin box. Next day, {cast:banker} visits school. \"Open a [[minor_account]] with a parent. It is zero balance.\""
+      "en": "A rat chewed a ₹50 note in your tin box. Next day, {cast:banker} visits school. \"Open a [[minor_account]] with a parent. It is zero balance.\"",
+      "hi": "आपके डिब्बे में चूहे ने ₹50 का नोट कुतर दिया। अगले दिन {cast:banker} स्कूल आती हैं। \"माता-पिता के साथ [[minor_account]] खोलो। ज़ीरो बैलेंस वाला है।\"",
+      "te": "మీ డబ్బాలో ఎలుక ₹50 నోటు కొరికేసింది. మర్నాడు {cast:banker} స్కూల్‌కు వస్తుంది. \"తల్లిదండ్రులతో [[minor_account]] తెరవండి. జీరో బ్యాలెన్స్ ఖాతా.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "It is zero balance." },
-        "truth": { "en": "No minimum amount needed. The account stays open even with ₹0 in it." },
+        "phrase": { "en": "It is zero balance.", "hi": "ज़ीरो बैलेंस वाला है।", "te": "జీరో బ్యాలెన్స్ ఖాతా." },
+        "truth": {
+          "en": "No minimum amount needed. The account stays open even with ₹0 in it.",
+          "hi": "कोई न्यूनतम रकम नहीं चाहिए। खाते में ₹0 हो तब भी खाता खुला रहता है।",
+          "te": "కనీస మొత్తం అక్కర్లేదు. ఖాతాలో ₹0 ఉన్నా ఖాతా తెరిచే ఉంటుంది."
+        },
         "lesson": "L04"
       }
     ],
     "choices": [
       {
         "id": "open_account",
-        "label": { "en": "Open the account with Amma and deposit your savings" },
+        "label": {
+          "en": "Open the account with Amma and deposit your savings",
+          "hi": "अम्मा के साथ खाता खोलें और बचत जमा करें",
+          "te": "అమ్మతో ఖాతా తెరిచి పొదుపు జమ చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "open": { "product": "bank", "amount": 250 }, "flags": { "add": ["has_bank_account"] }, "gyaan": 2 },
-        "outcome": { "en": "₹250 deposited. At 3%, it earns about ₹7 a year. More importantly: no rat can eat it." },
-        "why": { "en": "A bank keeps money safe from rats, thieves and impulse buys. And it pays you a little interest." }
+        "outcome": {
+          "en": "₹250 deposited. At 3%, it earns about ₹7 a year. More importantly: no rat can eat it.",
+          "hi": "₹250 जमा हुए। 3% पर साल में लगभग ₹7 कमाएँगे। सबसे ज़रूरी: कोई चूहा इन्हें नहीं खा सकता।",
+          "te": "₹250 జమ. 3% వద్ద ఏడాదికి సుమారు ₹7 వస్తుంది. ముఖ్యంగా: ఏ ఎలుకా తినలేదు."
+        },
+        "why": {
+          "en": "A bank keeps money safe from rats, thieves and impulse buys. And it pays you a little interest.",
+          "hi": "बैंक पैसे को चूहों, चोरों और जल्दबाज़ी की खरीद से बचाता है। और थोड़ा ब्याज भी देता है।",
+          "te": "బ్యాంక్ డబ్బును ఎలుకలు, దొంగలు, తొందర కొనుగోళ్ల నుంచి కాపాడుతుంది. కొంచెం వడ్డీ కూడా ఇస్తుంది."
+        }
       },
       {
         "id": "stronger_box",
-        "label": { "en": "Buy a stronger steel box instead" },
+        "label": {
+          "en": "Buy a stronger steel box instead",
+          "hi": "इसके बजाय मज़बूत स्टील का डिब्बा खरीदें",
+          "te": "బదులుగా గట్టి స్టీల్ డబ్బా కొనండి"
+        },
         "quality": "risky",
         "effects": { "cash": -40 },
-        "echo": { "level": 1, "hint": { "en": "{cast:friend} saw where you hid the new box." } },
-        "outcome": { "en": "The box cost ₹40. It earns ₹0 interest, and everyone at home knows where it is." },
-        "why": { "en": "A box at home can't grow money and is easy to raid. A bank is both safe and paid." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "{cast:friend} saw where you hid the new box.",
+            "hi": "{cast:friend} ने देख लिया कि आपने नया डिब्बा कहाँ छुपाया।",
+            "te": "కొత్త డబ్బా ఎక్కడ దాచారో {cast:friend} చూసేశాడు."
+          }
+        },
+        "outcome": {
+          "en": "The box cost ₹40. It earns ₹0 interest, and everyone at home knows where it is.",
+          "hi": "डिब्बा ₹40 का था। उस पर ₹0 ब्याज, और घर में सबको पता है कि वह कहाँ है।",
+          "te": "డబ్బా ₹40. దానికి వడ్డీ ₹0, అది ఎక్కడుందో ఇంట్లో అందరికీ తెలుసు."
+        },
+        "why": {
+          "en": "A box at home can't grow money and is easy to raid. A bank is both safe and paid.",
+          "hi": "घर का डिब्बा पैसा नहीं बढ़ाता और आसानी से खाली हो जाता है। बैंक सुरक्षित भी है और ब्याज भी देता है।",
+          "te": "ఇంటి డబ్బా డబ్బును పెంచదు, సులువుగా ఖాళీ అవుతుంది. బ్యాంక్ భద్రమూ, వడ్డీ ఇస్తుంది కూడా."
+        }
       },
       {
         "id": "nanna_keeps",
-        "label": { "en": "Give the money to Nanna to keep" },
+        "label": {
+          "en": "Give the money to Nanna to keep",
+          "hi": "पैसा नान्ना को रखने के लिए दें",
+          "te": "డబ్బు నాన్న దగ్గర దాచమని ఇవ్వండి"
+        },
         "quality": "neutral",
         "effects": { "meters": { "family": 2 } },
-        "outcome": { "en": "Nanna keeps it safe for two months. Then the cotton seeds need ₹250, and your savings become seeds." },
-        "why": { "en": "Family money gets used for family needs. A separate account keeps your goal yours." }
+        "outcome": {
+          "en": "Nanna keeps it safe for two months. Then the cotton seeds need ₹250, and your savings become seeds.",
+          "hi": "नान्ना दो महीने तक सँभालते हैं। फिर कपास के बीज के लिए ₹250 चाहिए, और आपकी बचत बीज बन जाती है।",
+          "te": "నాన్న రెండు నెలలు భద్రంగా ఉంచుతాడు. తర్వాత పత్తి విత్తనాలకు ₹250 కావాలి, మీ పొదుపు విత్తనాలవుతుంది."
+        },
+        "why": {
+          "en": "Family money gets used for family needs. A separate account keeps your goal yours.",
+          "hi": "परिवार का पैसा परिवार की ज़रूरतों में लगता है। अलग खाता आपके लक्ष्य को आपका रखता है।",
+          "te": "కుటుంబ డబ్బు కుటుంబ అవసరాలకే పోతుంది. వేరే ఖాతా మీ లక్ష్యాన్ని మీదిగా ఉంచుతుంది."
+        }
       }
     ]
   },
@@ -183,50 +361,90 @@
     "lesson": "L05",
     "ages": [13, 14],
     "weight": 1,
+    "location": "sahukar",
     "speaker": "lender",
-    "title": { "en": "Only ₹2 per ₹100" },
+    "title": { "en": "Only ₹2 per ₹100", "hi": "सिर्फ़ ₹2 सैकड़ा", "te": "నూటికి ₹2 మాత్రమే" },
     "text": {
-      "en": "Nanna needs ₹2,000 for cotton seeds. {cast:lender} smiles: \"Only ₹2 per ₹100 a month. Unpaid interest just joins the loan.\" Nanna looks at you, the maths topper."
+      "en": "Nanna needs ₹2,000 for cotton seeds. {cast:lender} smiles: \"Only ₹2 per ₹100 a month. Unpaid interest just joins the loan.\" Nanna looks at you, the maths topper.",
+      "hi": "नान्ना को कपास के बीज के लिए ₹2,000 चाहिए। {cast:lender} मुस्कुराते हैं: \"सिर्फ़ ₹2 सैकड़ा महीना। न दिया ब्याज बस कर्ज़ में जुड़ जाता है।\" नान्ना आपकी ओर देखते हैं, गणित के टॉपर की ओर।",
+      "te": "నాన్నకు పత్తి విత్తనాలకు ₹2,000 కావాలి. {cast:lender} నవ్వుతూ: \"నెలకు నూటికి ₹2 మాత్రమే. కట్టని వడ్డీ అప్పులో కలిసిపోతుంది అంతే.\" నాన్న మీ వైపు చూస్తాడు, లెక్కల్లో టాపర్ వైపు."
     },
     "clarity": [
       {
-        "phrase": { "en": "Only ₹2 per ₹100 a month." },
-        "truth": { "en": "That is 24% a year. With interest on interest, it is nearly 27%." },
+        "phrase": { "en": "Only ₹2 per ₹100 a month.", "hi": "सिर्फ़ ₹2 सैकड़ा महीना।", "te": "నెలకు నూటికి ₹2 మాత్రమే." },
+        "truth": {
+          "en": "That is 24% a year. With interest on interest, it is nearly 27%.",
+          "hi": "यानी 24% सालाना। ब्याज पर ब्याज के साथ लगभग 27%।",
+          "te": "అంటే ఏడాదికి 24%. వడ్డీ మీద వడ్డీతో దాదాపు 27%."
+        },
         "lesson": "L05"
       },
       {
-        "phrase": { "en": "Unpaid interest just joins the loan." },
-        "truth": { "en": "This is [[chakravaddi]]: next month, you pay interest on the interest too." },
+        "phrase": {
+          "en": "Unpaid interest just joins the loan.",
+          "hi": "न दिया ब्याज बस कर्ज़ में जुड़ जाता है।",
+          "te": "కట్టని వడ్డీ అప్పులో కలిసిపోతుంది అంతే."
+        },
+        "truth": {
+          "en": "This is [[chakravaddi]]: next month, you pay interest on the interest too.",
+          "hi": "यही [[chakravaddi]] है: अगले महीने आप ब्याज पर भी ब्याज देंगे।",
+          "te": "ఇదే [[chakravaddi]]: వచ్చే నెల వడ్డీ మీద కూడా వడ్డీ కడతారు."
+        },
         "lesson": "L05"
       }
     ],
     "choices": [
       {
         "id": "do_the_sum",
-        "label": { "en": "Work out the true cost before Nanna agrees" },
+        "label": {
+          "en": "Work out the true cost before Nanna agrees",
+          "hi": "नान्ना के हाँ कहने से पहले असली कीमत निकालें",
+          "te": "నాన్న ఒప్పుకునే ముందు అసలు ఖర్చు లెక్కించండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 3, "meters": { "family": 4 } },
         "outcome": {
-          "en": "With [[chakravaddi]], ₹2,000 becomes ₹2,536 in a year. Amma's [[shg]] charges simple 1%: ₹2,240. Nanna borrows from the SHG."
+          "en": "With [[chakravaddi]], ₹2,000 becomes ₹2,536 in a year. Amma's [[shg]] charges simple 1%: ₹2,240. Nanna borrows from the SHG.",
+          "hi": "[[chakravaddi]] से ₹2,000 साल में ₹2,536 बन जाते हैं। अम्मा का [[shg]] साधारण 1% लेता है: ₹2,240। नान्ना SHG से उधार लेते हैं।",
+          "te": "[[chakravaddi]]తో ₹2,000 ఏడాదిలో ₹2,536 అవుతుంది. అమ్మ [[shg]] సాధారణ 1% తీసుకుంటుంది: ₹2,240. నాన్న పొదుపు సంఘం నుంచి అప్పు తీసుకుంటాడు."
         },
         "why": {
-          "en": "Compound interest is interest on interest. On debts it grows fast, so always compare the yearly cost."
+          "en": "Compound interest is interest on interest. On debts it grows fast, so always compare the yearly cost.",
+          "hi": "चक्रवृद्धि ब्याज यानी ब्याज पर ब्याज। कर्ज़ में यह तेज़ बढ़ता है, इसलिए हमेशा सालाना कीमत की तुलना करें।",
+          "te": "చక్రవడ్డీ అంటే వడ్డీ మీద వడ్డీ. అప్పులో ఇది వేగంగా పెరుగుతుంది, కాబట్టి ఎప్పుడూ ఏడాది ఖర్చు పోల్చండి."
         }
       },
       {
         "id": "its_fine",
-        "label": { "en": "Tell Nanna it's only ₹40 a month, that's fine" },
+        "label": {
+          "en": "Tell Nanna it's only ₹40 a month, that's fine",
+          "hi": "नान्ना से कहें, बस ₹40 महीना है, ठीक है",
+          "te": "నాన్నకు చెప్పండి, నెలకు ₹40 మాత్రమే, పర్లేదు"
+        },
         "quality": "risky",
         "effects": {
           "meters": { "family": -2 },
           "flags": { "add": ["family_owes_sahukar"] },
           "schedule": [{ "inYears": 1, "card": "village.child.sahukar_visit.a" }]
         },
-        "echo": { "level": 2, "hint": { "en": "Nanna smiles. Ammamma doesn't." } },
-        "outcome": { "en": "₹40 is only the first month. A year later, if unpaid, {cast:lender} wants ₹2,536." },
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Nanna smiles. Ammamma doesn't.",
+            "hi": "नान्ना मुस्कुराते हैं। अम्मम्मा नहीं।",
+            "te": "నాన్న నవ్వుతాడు. అమ్మమ్మ నవ్వదు."
+          }
+        },
+        "outcome": {
+          "en": "₹40 is only the first month. A year later, if unpaid, {cast:lender} wants ₹2,536.",
+          "hi": "₹40 तो सिर्फ़ पहला महीना है। न चुकाया तो साल भर बाद {cast:lender} ₹2,536 माँगते हैं।",
+          "te": "₹40 మొదటి నెలకే. కట్టకపోతే ఏడాది తర్వాత {cast:lender} ₹2,536 అడుగుతాడు."
+        },
         "why": {
-          "en": "When interest is added to the loan, the loan grows itself. Small monthly numbers hide big yearly ones."
+          "en": "When interest is added to the loan, the loan grows itself. Small monthly numbers hide big yearly ones.",
+          "hi": "जब ब्याज कर्ज़ में जुड़ता है, कर्ज़ खुद बढ़ता है। छोटी मासिक रकम बड़ी सालाना रकम छुपाती है।",
+          "te": "వడ్డీ అప్పులో కలిస్తే అప్పు తనంతట తానే పెరుగుతుంది. చిన్న నెల మొత్తాలు పెద్ద ఏడాది మొత్తాలను దాచేస్తాయి."
         }
       }
     ]
@@ -238,51 +456,106 @@
     "lesson": "L06",
     "ages": [11, 14],
     "weight": 1,
+    "location": "square",
     "speaker": "tempter",
-    "title": { "en": "5,000 free gems!" },
+    "title": { "en": "5,000 free gems!", "hi": "5,000 मुफ़्त जेम्स!", "te": "5,000 ఉచిత జెమ్స్!" },
     "text": {
-      "en": "A man in small sunglasses shows you a link. \"100% free gems! Just tell me the OTP on your Amma's phone.\" It's {cast:tempter}."
+      "en": "A man in small sunglasses shows you a link. \"100% free gems! Just tell me the OTP on your Amma's phone.\" It's {cast:tempter}.",
+      "hi": "छोटे काले चश्मे वाला एक आदमी आपको लिंक दिखाता है। \"100% मुफ़्त जेम्स! बस अपनी अम्मा के फ़ोन का OTP बता दो।\" यह {cast:tempter} है।",
+      "te": "చిన్న నల్ల కళ్లద్దాల మనిషి మీకు ఒక లింక్ చూపిస్తాడు. \"100% ఉచిత జెమ్స్! మీ అమ్మ ఫోన్‌కు వచ్చిన OTP చెప్పు చాలు.\" అతనే {cast:tempter}."
     },
     "clarity": [
       {
-        "phrase": { "en": "100% free gems!" },
-        "truth": { "en": "Nothing free needs an [[otp]]. The OTP opens Amma's bank account, not a game." },
+        "phrase": { "en": "100% free gems!", "hi": "100% मुफ़्त जेम्स!", "te": "100% ఉచిత జెమ్స్!" },
+        "truth": {
+          "en": "Nothing free needs an [[otp]]. The OTP opens Amma's bank account, not a game.",
+          "hi": "कोई मुफ़्त चीज़ [[otp]] नहीं माँगती। OTP अम्मा का बैंक खाता खोलता है, गेम नहीं।",
+          "te": "ఉచితమైనది ఏదీ [[otp]] అడగదు. OTP అమ్మ బ్యాంక్ ఖాతాను తెరుస్తుంది, గేమ్‌ను కాదు."
+        },
         "lesson": "L06"
       }
     ],
     "choices": [
       {
         "id": "share_otp",
-        "label": { "en": "Read out the OTP from Amma's phone" },
+        "label": {
+          "en": "Read out the OTP from Amma's phone",
+          "hi": "अम्मा के फ़ोन से OTP पढ़कर बताएँ",
+          "te": "అమ్మ ఫోన్ నుంచి OTP చదివి చెప్పండి"
+        },
         "quality": "bad",
         "effects": {
           "meters": { "family": -8, "joy": -3 },
           "flags": { "add": ["otp_scammed_child"] },
           "schedule": [{ "inYears": 1, "card": "village.child.chinni_link.a" }]
         },
-        "echo": { "level": 2, "hint": { "en": "Amma checks her phone twice now, every night." } },
-        "outcome": { "en": "In one minute, ₹1,800 leaves Amma's account. It was her savings-group instalment. No gems arrive." },
-        "why": { "en": "An [[otp]] is a key to your money. Anyone who has it can open the account." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "Amma checks her phone twice now, every night.",
+            "hi": "अम्मा अब हर रात दो बार अपना फ़ोन देखती हैं।",
+            "te": "అమ్మ ఇప్పుడు ప్రతి రాత్రి రెండుసార్లు ఫోన్ చూసుకుంటుంది."
+          }
+        },
+        "outcome": {
+          "en": "In one minute, ₹1,800 leaves Amma's account. It was her savings-group instalment. No gems arrive.",
+          "hi": "एक मिनट में अम्मा के खाते से ₹1,800 चले जाते हैं। वह बचत समूह की किस्त थी। कोई जेम्स नहीं आते।",
+          "te": "ఒక్క నిమిషంలో అమ్మ ఖాతా నుంచి ₹1,800 పోతాయి. అది పొదుపు సంఘం వాయిదా. జెమ్స్ ఏమీ రావు."
+        },
+        "why": {
+          "en": "An [[otp]] is a key to your money. Anyone who has it can open the account.",
+          "hi": "[[otp]] आपके पैसे की चाबी है। जिसके पास है, वह खाता खोल सकता है।",
+          "te": "[[otp]] మీ డబ్బుకు తాళం. అది ఎవరి దగ్గర ఉంటే వాళ్లు ఖాతా తెరవగలరు."
+        }
       },
       {
         "id": "tell_ammamma",
-        "label": { "en": "Close the link and tell Ammamma" },
+        "label": {
+          "en": "Close the link and tell Ammamma",
+          "hi": "लिंक बंद करें और अम्मम्मा को बताएँ",
+          "te": "లింక్ మూసేసి అమ్మమ్మకు చెప్పండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 2, "meters": { "family": 3 } },
         "outcome": {
-          "en": "Ammamma peers at the link. Fake. You just saved Amma's ₹1,800. \"Big glasses, small truth,\" she says."
+          "en": "Ammamma peers at the link. Fake. You just saved Amma's ₹1,800. \"Big glasses, small truth,\" she says.",
+          "hi": "अम्मम्मा लिंक को गौर से देखती हैं। नकली। आपने अम्मा के ₹1,800 बचा लिए। \"बड़ा चश्मा, छोटा सच,\" वे कहती हैं।",
+          "te": "అమ్మమ్మ లింక్‌ను జాగ్రత్తగా చూస్తుంది. నకిలీ. మీరు అమ్మ ₹1,800 కాపాడారు. \"పెద్ద కళ్లద్దాలు, చిన్న నిజం,\" అంటుంది."
         },
-        "why": { "en": "Real banks and games never ask for an OTP. \"Free\" plus \"OTP\" always means a trap." }
+        "why": {
+          "en": "Real banks and games never ask for an OTP. \"Free\" plus \"OTP\" always means a trap.",
+          "hi": "असली बैंक और गेम कभी OTP नहीं माँगते। \"मुफ़्त\" और \"OTP\" साथ हों, तो जाल ही है।",
+          "te": "నిజమైన బ్యాంకులు, గేమ్స్ ఎప్పుడూ OTP అడగవు. \"ఉచితం\" తో \"OTP\" కలిస్తే అది ఉచ్చే."
+        }
       },
       {
         "id": "forward_chintu",
-        "label": { "en": "Forward it to Chintu first" },
+        "label": {
+          "en": "Forward it to Chintu first",
+          "hi": "पहले चिंटू को फ़ॉरवर्ड करें",
+          "te": "ముందు చింటూకు ఫార్వర్డ్ చేయండి"
+        },
         "quality": "risky",
         "effects": { "meters": { "joy": -4 }, "flags": { "add": ["chintu_scammed"] } },
-        "echo": { "level": 1, "hint": { "en": "Forwarding a trap still sets a trap." } },
-        "outcome": { "en": "Chintu tries it on his father's phone. ₹2,500 vanishes. He doesn't speak to you for a week." },
-        "why": { "en": "Sharing a scam link spreads the harm. Delete it, and warn friends instead." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "Forwarding a trap still sets a trap.",
+            "hi": "जाल आगे भेजना भी जाल बिछाना है।",
+            "te": "ఉచ్చును ఫార్వర్డ్ చేయడం కూడా ఉచ్చు వేయడమే."
+          }
+        },
+        "outcome": {
+          "en": "Chintu tries it on his father's phone. ₹2,500 vanishes. He doesn't speak to you for a week.",
+          "hi": "चिंटू अपने पापा के फ़ोन पर आज़माता है। ₹2,500 गायब। वह एक हफ़्ते तक आपसे बात नहीं करता।",
+          "te": "చింటూ వాళ్ల నాన్న ఫోన్‌లో ప్రయత్నిస్తాడు. ₹2,500 మాయం. వారం పాటు మీతో మాట్లాడడు."
+        },
+        "why": {
+          "en": "Sharing a scam link spreads the harm. Delete it, and warn friends instead.",
+          "hi": "ठगी का लिंक बाँटना नुकसान फैलाता है। उसे डिलीट करें, और दोस्तों को सावधान करें।",
+          "te": "మోసం లింక్ పంచితే నష్టం పెరుగుతుంది. డిలీట్ చేసి, స్నేహితులను హెచ్చరించండి."
+        }
       }
     ]
   },
@@ -293,28 +566,51 @@
     "lesson": "L01",
     "ages": [12, 14],
     "weight": 1,
+    "location": "shop",
     "speaker": "shopkeeper",
-    "title": { "en": "The notebook remembers everything" },
+    "title": {
+      "en": "The notebook remembers everything",
+      "hi": "बही सब कुछ याद रखती है",
+      "te": "పుస్తకం అన్నీ గుర్తుపెట్టుకుంటుంది"
+    },
     "text": {
-      "en": "{cast:shopkeeper} opens her [[khata]]. \"₹40 notebook, plus two biscuit packets, plus one pencil. ₹65, kanna.\" A year of small credit adds up."
+      "en": "{cast:shopkeeper} opens her [[khata]]. \"₹40 notebook, plus two biscuit packets, plus one pencil. ₹65, kanna.\" A year of small credit adds up.",
+      "hi": "{cast:shopkeeper} अपना [[khata]] खोलती हैं। \"₹40 कॉपी, ऊपर से दो बिस्किट पैकेट, और एक पेंसिल। ₹65, कन्ना।\" साल भर का छोटा उधार जुड़ जाता है।",
+      "te": "{cast:shopkeeper} తన [[khata]] తెరుస్తుంది. \"₹40 నోట్‌బుక్, రెండు బిస్కెట్ ప్యాకెట్లు, ఒక పెన్సిల్. ₹65, కన్నా.\" ఏడాది చిన్న అప్పులు కలిసి పెరుగుతాయి."
     },
     "choices": [
       {
         "id": "pay_myself",
-        "label": { "en": "Pay it from your savings" },
+        "label": { "en": "Pay it from your savings", "hi": "अपनी बचत से चुकाएँ", "te": "మీ పొదుపు నుంచి కట్టండి" },
         "quality": "good",
         "default": true,
         "effects": { "flags": { "remove": ["owes_kirana"] }, "meters": { "family": 2 }, "cash": -65 },
-        "outcome": { "en": "You pay ₹65. The page is crossed out. It feels better than the jalebi did." },
-        "why": { "en": "Credit for small wants grows quietly. Clearing it early keeps it small." }
+        "outcome": {
+          "en": "You pay ₹65. The page is crossed out. It feels better than the jalebi did.",
+          "hi": "आप ₹65 चुकाते हैं। पन्ना काट दिया जाता है। जलेबी से भी अच्छा लगता है।",
+          "te": "మీరు ₹65 కడతారు. పేజీ కొట్టేస్తారు. జిలేబీ కంటే బాగుంది."
+        },
+        "why": {
+          "en": "Credit for small wants grows quietly. Clearing it early keeps it small.",
+          "hi": "छोटी चाहतों का उधार चुपचाप बढ़ता है। जल्दी चुकाने से छोटा रहता है।",
+          "te": "చిన్న కోరికల అప్పు నిశ్శబ్దంగా పెరుగుతుంది. త్వరగా తీర్చితే చిన్నగానే ఉంటుంది."
+        }
       },
       {
         "id": "ask_amma",
-        "label": { "en": "Ask Amma to pay it" },
+        "label": { "en": "Ask Amma to pay it", "hi": "अम्मा से चुकाने को कहें", "te": "కట్టమని అమ్మను అడగండి" },
         "quality": "risky",
         "effects": { "meters": { "family": -4 }, "flags": { "remove": ["owes_kirana"] } },
-        "outcome": { "en": "Amma pays ₹65 from the vegetable money. Dinner is a little smaller this week." },
-        "why": { "en": "Your debt doesn't disappear when someone else pays. It moves to them." }
+        "outcome": {
+          "en": "Amma pays ₹65 from the vegetable money. Dinner is a little smaller this week.",
+          "hi": "अम्मा सब्ज़ी के पैसों से ₹65 चुकाती हैं। इस हफ़्ते खाना थोड़ा कम है।",
+          "te": "అమ్మ కూరగాయల డబ్బు నుంచి ₹65 కడుతుంది. ఈ వారం భోజనం కొంచెం తగ్గింది."
+        },
+        "why": {
+          "en": "Your debt doesn't disappear when someone else pays. It moves to them.",
+          "hi": "कोई और चुका दे तो आपका कर्ज़ गायब नहीं होता। वह उसके पास चला जाता है।",
+          "te": "వేరొకరు కడితే మీ అప్పు మాయం కాదు. అది వాళ్లకు మారుతుంది."
+        }
       }
     ]
   },
@@ -325,29 +621,63 @@
     "lesson": "L05",
     "ages": [13, 16],
     "weight": 1,
+    "location": "home",
     "speaker": "lender",
-    "title": { "en": "A polite visit" },
+    "title": { "en": "A polite visit", "hi": "एक विनम्र मुलाकात", "te": "మర్యాదగా ఒక సందర్శన" },
     "text": {
-      "en": "{cast:lender} sits on your verandah, very politely. \"₹2,000 is now ₹2,536. Bujji is a fine buffalo, Yadagiri.\" Ammamma's hands are shaking."
+      "en": "{cast:lender} sits on your verandah, very politely. \"₹2,000 is now ₹2,536. Bujji is a fine buffalo, Yadagiri.\" Ammamma's hands are shaking.",
+      "hi": "{cast:lender} बड़े विनम्र होकर आपके बरामदे में बैठते हैं। \"₹2,000 अब ₹2,536 हो गए। बुज्जी अच्छी भैंस है, यादगिरी।\" अम्मम्मा के हाथ काँप रहे हैं।",
+      "te": "{cast:lender} చాలా మర్యాదగా మీ వరండాలో కూర్చుంటాడు. \"₹2,000 ఇప్పుడు ₹2,536. బుజ్జి మంచి గేదె, యాదగిరి.\" అమ్మమ్మ చేతులు వణుకుతున్నాయి."
     },
     "choices": [
       {
         "id": "shg_refinance",
-        "label": { "en": "Help Amma take a cheaper SHG loan to pay him off" },
+        "label": {
+          "en": "Help Amma take a cheaper SHG loan to pay him off",
+          "hi": "अम्मा को उसे चुकाने के लिए सस्ता SHG कर्ज़ लेने में मदद करें",
+          "te": "అతనికి కట్టడానికి చౌక పొదుపు సంఘం అప్పు తీసుకోవడంలో అమ్మకు సాయం చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "flags": { "remove": ["family_owes_sahukar"] }, "meters": { "family": 5 }, "gyaan": 2 },
-        "outcome": { "en": "The SHG lends ₹2,536 at 12% a year. Bujji stays. The costly debt is now a cheap one." },
-        "why": { "en": "Swapping a costly loan for a cheaper one stops the [[chakravaddi]] snowball." }
+        "outcome": {
+          "en": "The SHG lends ₹2,536 at 12% a year. Bujji stays. The costly debt is now a cheap one.",
+          "hi": "SHG 12% सालाना पर ₹2,536 देता है। बुज्जी बच जाती है। महँगा कर्ज़ अब सस्ता हो गया।",
+          "te": "పొదుపు సంఘం ఏడాదికి 12%కు ₹2,536 ఇస్తుంది. బుజ్జి ఉంటుంది. ఖరీదైన అప్పు ఇప్పుడు చౌకైనది."
+        },
+        "why": {
+          "en": "Swapping a costly loan for a cheaper one stops the [[chakravaddi]] snowball.",
+          "hi": "महँगे कर्ज़ को सस्ते से बदलने से [[chakravaddi]] का गोला बढ़ना रुकता है।",
+          "te": "ఖరీదైన అప్పును చౌకదానితో మార్చితే [[chakravaddi]] బంతి పెరగడం ఆగుతుంది."
+        }
       },
       {
         "id": "wait",
-        "label": { "en": "Ask him to wait one more season" },
+        "label": {
+          "en": "Ask him to wait one more season",
+          "hi": "उनसे एक और मौसम रुकने को कहें",
+          "te": "ఇంకొక్క సీజన్ ఆగమని అడగండి"
+        },
         "quality": "risky",
         "effects": { "meters": { "family": -6, "health": -3 } },
-        "echo": { "level": 2, "hint": { "en": "One more season means one more season of interest." } },
-        "outcome": { "en": "He agrees. Next season the ₹2,536 is ₹3,217. Bujji is sold in the end." },
-        "why": { "en": "Waiting on compound debt makes it grow faster each month. Act early." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "One more season means one more season of interest.",
+            "hi": "एक और मौसम मतलब एक और मौसम का ब्याज।",
+            "te": "ఇంకొక్క సీజన్ అంటే ఇంకొక్క సీజన్ వడ్డీ."
+          }
+        },
+        "outcome": {
+          "en": "He agrees. Next season the ₹2,536 is ₹3,217. Bujji is sold in the end.",
+          "hi": "वे मान जाते हैं। अगले मौसम ₹2,536 बन जाते हैं ₹3,217। आखिर में बुज्जी बिक जाती है।",
+          "te": "ఒప్పుకుంటాడు. వచ్చే సీజన్‌కు ₹2,536 అవుతుంది ₹3,217. చివరికి బుజ్జిని అమ్మేస్తారు."
+        },
+        "why": {
+          "en": "Waiting on compound debt makes it grow faster each month. Act early.",
+          "hi": "चक्रवृद्धि कर्ज़ पर रुकने से वह हर महीने और तेज़ बढ़ता है। जल्दी कदम उठाएँ।",
+          "te": "చక్రవడ్డీ అప్పుపై ఆగితే అది ప్రతి నెలా ఇంకా వేగంగా పెరుగుతుంది. త్వరగా స్పందించండి."
+        }
       }
     ]
   },
@@ -358,28 +688,51 @@
     "lesson": "L06",
     "ages": [12, 15],
     "weight": 1,
+    "location": "home",
     "speaker": "sibling",
-    "title": { "en": "Chinni found a link" },
+    "title": { "en": "Chinni found a link", "hi": "चिन्नी को एक लिंक मिला", "te": "చిన్నికి ఒక లింక్ దొరికింది" },
     "text": {
-      "en": "{cast:sibling} runs in with Amma's phone. \"Free recharge for kids! It wants the OTP.\" You remember last year."
+      "en": "{cast:sibling} runs in with Amma's phone. \"Free recharge for kids! It wants the OTP.\" You remember last year.",
+      "hi": "{cast:sibling} अम्मा का फ़ोन लेकर दौड़ती आती है। \"बच्चों के लिए मुफ़्त रिचार्ज! OTP माँग रहा है।\" आपको पिछला साल याद आता है।",
+      "te": "{cast:sibling} అమ్మ ఫోన్ పట్టుకుని పరిగెత్తుకు వస్తుంది. \"పిల్లలకు ఉచిత రీఛార్జ్! OTP అడుగుతోంది.\" మీకు పోయిన ఏడాది గుర్తొస్తుంది."
     },
     "choices": [
       {
         "id": "stop_her",
-        "label": { "en": "Stop her and explain why" },
+        "label": { "en": "Stop her and explain why", "hi": "उसे रोकें और वजह समझाएँ", "te": "ఆమెను ఆపి కారణం చెప్పండి" },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 3, "meters": { "family": 5 }, "lesson": "applied" },
-        "outcome": { "en": "Chinni writes it in her notebook: \"OTP = key. Never give. 1930 if stolen.\" ₹0 lost this time." },
-        "why": { "en": "Your mistake became her lesson. That's how families get smarter." }
+        "outcome": {
+          "en": "Chinni writes it in her notebook: \"OTP = key. Never give. 1930 if stolen.\" ₹0 lost this time.",
+          "hi": "चिन्नी अपनी कॉपी में लिखती है: \"OTP = चाबी। कभी मत देना। चोरी हो तो 1930।\" इस बार ₹0 का नुकसान।",
+          "te": "చిన్ని తన పుస్తకంలో రాసుకుంటుంది: \"OTP = తాళం. ఎప్పుడూ ఇవ్వొద్దు. దొంగిలిస్తే 1930.\" ఈసారి ₹0 నష్టం."
+        },
+        "why": {
+          "en": "Your mistake became her lesson. That's how families get smarter.",
+          "hi": "आपकी गलती उसका सबक बन गई। परिवार ऐसे ही समझदार बनते हैं।",
+          "te": "మీ తప్పు ఆమె పాఠం అయింది. కుటుంబాలు ఇలాగే తెలివిగా మారతాయి."
+        }
       },
       {
         "id": "let_her",
-        "label": { "en": "Let her try, maybe this one is real" },
+        "label": {
+          "en": "Let her try, maybe this one is real",
+          "hi": "उसे आज़माने दें, शायद यह असली हो",
+          "te": "ప్రయత్నించనివ్వండి, ఇది నిజమేమో"
+        },
         "quality": "bad",
         "effects": { "meters": { "family": -6 } },
-        "outcome": { "en": "₹600 vanishes. Amma calls 1930 within the hour, and ₹400 is frozen and returned weeks later." },
-        "why": { "en": "If cheated online, call 1930 fast. Quick reports often save part of the money." }
+        "outcome": {
+          "en": "₹600 vanishes. Amma calls 1930 within the hour, and ₹400 is frozen and returned weeks later.",
+          "hi": "₹600 गायब। अम्मा एक घंटे के अंदर 1930 पर फ़ोन करती हैं, और ₹400 फ़्रीज़ होकर हफ़्तों बाद लौटते हैं।",
+          "te": "₹600 మాయం. అమ్మ గంటలోపు 1930కి ఫోన్ చేస్తుంది, ₹400 ఫ్రీజ్ అయి వారాల తర్వాత వెనక్కి వస్తాయి."
+        },
+        "why": {
+          "en": "If cheated online, call 1930 fast. Quick reports often save part of the money.",
+          "hi": "ऑनलाइन ठगी हो तो तुरंत 1930 पर फ़ोन करें। जल्दी रिपोर्ट से अक्सर कुछ पैसा बच जाता है।",
+          "te": "ఆన్‌లైన్‌లో మోసపోతే వెంటనే 1930కి ఫోన్ చేయండి. త్వరగా చెబితే చాలాసార్లు కొంత డబ్బు దక్కుతుంది."
+        }
       }
     ]
   },
@@ -390,25 +743,53 @@
     "lesson": "L02",
     "ages": [12, 14],
     "weight": 1,
+    "location": "school",
     "speaker": "teacher",
-    "title": { "en": "First in maths!" },
-    "text": { "en": "{cast:teacher} announces it in assembly: you topped the district maths test. A ₹1,000 merit scholarship!" },
+    "title": { "en": "First in maths!", "hi": "गणित में पहला!", "te": "లెక్కల్లో ఫస్ట్!" },
+    "text": {
+      "en": "{cast:teacher} announces it in assembly: you topped the district maths test. A ₹1,000 merit scholarship!",
+      "hi": "{cast:teacher} प्रार्थना सभा में घोषणा करती हैं: आप ज़िले की गणित परीक्षा में टॉप आए। ₹1,000 की मेरिट स्कॉलरशिप!",
+      "te": "{cast:teacher} ప్రార్థనలో ప్రకటిస్తుంది: జిల్లా లెక్కల పరీక్షలో మీరు టాప్. ₹1,000 మెరిట్ స్కాలర్‌షిప్!"
+    },
     "choices": [
       {
         "id": "save_most",
-        "label": { "en": "Save ₹800, spend ₹200 on a celebration" },
+        "label": {
+          "en": "Save ₹800, spend ₹200 on a celebration",
+          "hi": "₹800 बचाएँ, ₹200 जश्न पर",
+          "te": "₹800 పొదుపు, ₹200 వేడుకకు"
+        },
         "quality": "good",
         "default": true,
         "effects": { "jar": { "goal": 800 }, "meters": { "joy": 4 }, "cash": 800 },
-        "outcome": { "en": "₹800 saved, and sweets for the whole class with ₹200." }
+        "outcome": {
+          "en": "₹800 saved, and sweets for the whole class with ₹200.",
+          "hi": "₹800 बचे, और ₹200 में पूरी क्लास के लिए मिठाई।",
+          "te": "₹800 మిగిలాయి, ₹200తో క్లాస్ అంతటికీ స్వీట్లు."
+        }
       },
       {
         "id": "treat_all",
-        "label": { "en": "Treat everyone to a film in town" },
+        "label": {
+          "en": "Treat everyone to a film in town",
+          "hi": "सबको शहर में फ़िल्म दिखाएँ",
+          "te": "అందరినీ పట్నంలో సినిమాకు తీసుకెళ్లండి"
+        },
         "quality": "risky",
         "effects": { "meters": { "joy": 9 } },
-        "echo": { "level": 1, "hint": { "en": "Windfalls feel like free money. They're still money." } },
-        "outcome": { "en": "₹1,000 gone in one glorious afternoon. Chintu still talks about it." }
+        "echo": {
+          "level": 1,
+          "hint": {
+            "en": "Windfalls feel like free money. They're still money.",
+            "hi": "अचानक मिला पैसा मुफ़्त जैसा लगता है। फिर भी पैसा है।",
+            "te": "అనుకోకుండా వచ్చిన డబ్బు ఉచితంగా అనిపిస్తుంది. అయినా అది డబ్బే."
+          }
+        },
+        "outcome": {
+          "en": "₹1,000 gone in one glorious afternoon. Chintu still talks about it.",
+          "hi": "एक शानदार दोपहर में ₹1,000 खत्म। चिंटू अब भी उसकी बात करता है।",
+          "te": "ఒక్క అద్భుత మధ్యాహ్నంలో ₹1,000 ఖర్చు. చింటూ ఇప్పటికీ దాని గురించి మాట్లాడతాడు."
+        }
       }
     ]
   },
@@ -419,25 +800,46 @@
     "lesson": "L13",
     "ages": [11, 14],
     "weight": 1,
+    "location": "home",
     "speaker": "father",
-    "title": { "en": "Bujji won't eat" },
-    "text": { "en": "Bujji the buffalo lies down and won't eat. The vet's medicine costs ₹1,500. Nanna has ₹1,100." },
+    "title": { "en": "Bujji won't eat", "hi": "बुज्जी खाना नहीं खा रही", "te": "బుజ్జి మేత తినడం లేదు" },
+    "text": {
+      "en": "Bujji the buffalo lies down and won't eat. The vet's medicine costs ₹1,500. Nanna has ₹1,100.",
+      "hi": "बुज्जी भैंस लेट गई है और खा नहीं रही। डॉक्टर की दवा ₹1,500 की है। नान्ना के पास ₹1,100 हैं।",
+      "te": "బుజ్జి గేదె పడుకుంది, మేత తినడం లేదు. డాక్టర్ మందు ₹1,500. నాన్న దగ్గర ₹1,100 ఉన్నాయి."
+    },
     "choices": [
       {
         "id": "give_savings",
-        "label": { "en": "Give Nanna ₹400 from your savings" },
+        "label": {
+          "en": "Give Nanna ₹400 from your savings",
+          "hi": "अपनी बचत से नान्ना को ₹400 दें",
+          "te": "మీ పొదుపు నుంచి నాన్నకు ₹400 ఇవ్వండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "meters": { "family": 7 }, "cash": -400 },
-        "outcome": { "en": "Bujji recovers in a week and gives milk again: ₹60 a day for the family." },
-        "why": { "en": "Savings are for exactly this. A small cushion stopped a big loss." }
+        "outcome": {
+          "en": "Bujji recovers in a week and gives milk again: ₹60 a day for the family.",
+          "hi": "बुज्जी एक हफ़्ते में ठीक होकर फिर दूध देती है: परिवार के लिए ₹60 रोज़।",
+          "te": "బుజ్జి వారంలో కోలుకుని మళ్లీ పాలిస్తుంది: కుటుంబానికి రోజుకు ₹60."
+        },
+        "why": {
+          "en": "Savings are for exactly this. A small cushion stopped a big loss.",
+          "hi": "बचत इसी के लिए है। छोटी गद्दी ने बड़ा नुकसान रोक दिया।",
+          "te": "పొదుపు సరిగ్గా దీనికోసమే. చిన్న నిధి పెద్ద నష్టాన్ని ఆపింది."
+        }
       },
       {
         "id": "keep_savings",
-        "label": { "en": "Keep your savings for the dream" },
+        "label": { "en": "Keep your savings for the dream", "hi": "बचत सपने के लिए रखें", "te": "పొదుపు కల కోసమే ఉంచండి" },
         "quality": "neutral",
         "effects": { "meters": { "family": -4 } },
-        "outcome": { "en": "Nanna borrows ₹400 from the kirana khata. Bujji recovers. The khata grows." }
+        "outcome": {
+          "en": "Nanna borrows ₹400 from the kirana khata. Bujji recovers. The khata grows.",
+          "hi": "नान्ना किराने के खाते से ₹400 उधार लेते हैं। बुज्जी ठीक हो जाती है। खाता बढ़ता है।",
+          "te": "నాన్న కిరాణా ఖాతాలో ₹400 అప్పు తీసుకుంటాడు. బుజ్జి కోలుకుంటుంది. ఖాతా పెరుగుతుంది."
+        }
       }
     ]
   },
@@ -448,38 +850,73 @@
     "lesson": "L06",
     "ages": [11, 14],
     "weight": 1,
+    "location": "home",
     "speaker": "headline",
-    "title": { "en": "You won ₹25 lakh!" },
+    "title": { "en": "You won ₹25 lakh!", "hi": "आपने ₹25 लाख जीते!", "te": "మీరు ₹25 లక్షలు గెలిచారు!" },
     "text": {
-      "en": "An SMS on Nanna's phone: \"Congratulations! You won ₹25 lakh in the lucky draw. Pay a ₹999 processing fee to claim.\""
+      "en": "An SMS on Nanna's phone: \"Congratulations! You won ₹25 lakh in the lucky draw. Pay a ₹999 processing fee to claim.\"",
+      "hi": "नान्ना के फ़ोन पर SMS: \"बधाई! आपने लकी ड्रॉ में ₹25 लाख जीते हैं। इनाम पाने के लिए ₹999 प्रोसेसिंग फ़ीस दें।\"",
+      "te": "నాన్న ఫోన్‌కు SMS: \"అభినందనలు! మీరు లక్కీ డ్రాలో ₹25 లక్షలు గెలిచారు. బహుమతి కోసం ₹999 ప్రాసెసింగ్ ఫీజు కట్టండి.\""
     },
     "clarity": [
       {
-        "phrase": { "en": "You won ₹25 lakh in the lucky draw." },
-        "truth": { "en": "You never entered any draw. You can't win a lottery you didn't join." },
+        "phrase": {
+          "en": "You won ₹25 lakh in the lucky draw.",
+          "hi": "आपने लकी ड्रॉ में ₹25 लाख जीते हैं।",
+          "te": "మీరు లక్కీ డ్రాలో ₹25 లక్షలు గెలిచారు."
+        },
+        "truth": {
+          "en": "You never entered any draw. You can't win a lottery you didn't join.",
+          "hi": "आपने कोई ड्रॉ में हिस्सा ही नहीं लिया। जिस लॉटरी में शामिल नहीं हुए, वह जीत नहीं सकते।",
+          "te": "మీరు ఏ డ్రాలోనూ పాల్గొనలేదు. చేరని లాటరీ గెలవలేరు."
+        },
         "lesson": "L06"
       },
       {
-        "phrase": { "en": "Pay a ₹999 processing fee to claim." },
-        "truth": { "en": "Real prizes never ask you to pay first. The fee is the scam." },
+        "phrase": {
+          "en": "Pay a ₹999 processing fee to claim.",
+          "hi": "इनाम पाने के लिए ₹999 प्रोसेसिंग फ़ीस दें।",
+          "te": "బహుమతి కోసం ₹999 ప్రాసెసింగ్ ఫీజు కట్టండి."
+        },
+        "truth": {
+          "en": "Real prizes never ask you to pay first. The fee is the scam.",
+          "hi": "असली इनाम कभी पहले पैसा नहीं माँगते। फ़ीस ही ठगी है।",
+          "te": "నిజమైన బహుమతులు ఎప్పుడూ ముందు డబ్బు అడగవు. ఫీజే మోసం."
+        },
         "lesson": "L06"
       }
     ],
     "choices": [
       {
         "id": "delete",
-        "label": { "en": "Tell Nanna it's fake and delete it" },
+        "label": {
+          "en": "Tell Nanna it's fake and delete it",
+          "hi": "नान्ना को बताएँ कि यह नकली है और डिलीट करें",
+          "te": "ఇది నకిలీ అని నాన్నకు చెప్పి డిలీట్ చేయండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 2, "meters": { "family": 2 } },
-        "outcome": { "en": "Nanna laughs for the first time this week. \"₹25 lakh? We can't even win at carrom.\"" }
+        "outcome": {
+          "en": "Nanna laughs for the first time this week. \"₹25 lakh? We can't even win at carrom.\"",
+          "hi": "नान्ना इस हफ़्ते पहली बार हँसते हैं। \"₹25 लाख? हम तो कैरम में भी नहीं जीतते।\"",
+          "te": "నాన్న ఈ వారంలో మొదటిసారి నవ్వుతాడు. \"₹25 లక్షలా? మనం క్యారమ్‌లో కూడా గెలవం.\""
+        }
       },
       {
         "id": "pay_fee",
-        "label": { "en": "Pay the ₹999, just in case it's real" },
+        "label": {
+          "en": "Pay the ₹999, just in case it's real",
+          "hi": "₹999 दे दें, शायद सच हो",
+          "te": "₹999 కట్టేయండి, నిజమేమో"
+        },
         "quality": "bad",
         "effects": { "meters": { "family": -5 } },
-        "outcome": { "en": "₹999 gone. Then they ask for ₹4,999 \"tax\". There is no prize." }
+        "outcome": {
+          "en": "₹999 gone. Then they ask for ₹4,999 \"tax\". There is no prize.",
+          "hi": "₹999 गए। फिर वे ₹4,999 \"टैक्स\" माँगते हैं। कोई इनाम नहीं है।",
+          "te": "₹999 పోయాయి. తర్వాత ₹4,999 \"ట్యాక్స్\" అడుగుతారు. బహుమతి లేదు."
+        }
       }
     ]
   },
@@ -490,28 +927,41 @@
     "lesson": "L01",
     "ages": [11, 14],
     "weight": 1,
+    "location": "shop",
     "speaker": "sibling",
-    "title": { "en": "Chinni's torn uniform" },
+    "title": { "en": "Chinni's torn uniform", "hi": "चिन्नी की फटी यूनिफ़ॉर्म", "te": "చిన్ని చిరిగిన యూనిఫాం" },
     "text": {
-      "en": "{cast:sibling}'s school uniform tore on the bus. A new one costs ₹350. The same week, the toy car you wanted is on sale for ₹200."
+      "en": "{cast:sibling}'s school uniform tore on the bus. A new one costs ₹350. The same week, the toy car you wanted is on sale for ₹200.",
+      "hi": "बस में {cast:sibling} की स्कूल यूनिफ़ॉर्म फट गई। नई ₹350 की है। उसी हफ़्ते, आपकी पसंद की खिलौना कार ₹200 में सेल पर है।",
+      "te": "బస్సులో {cast:sibling} స్కూల్ యూనిఫాం చిరిగిపోయింది. కొత్తది ₹350. అదే వారం మీకు నచ్చిన బొమ్మ కారు ₹200కి సేల్‌లో ఉంది."
     },
     "choices": [
       {
         "id": "uniform",
-        "label": { "en": "Put ₹150 towards Chinni's uniform" },
+        "label": {
+          "en": "Put ₹150 towards Chinni's uniform",
+          "hi": "चिन्नी की यूनिफ़ॉर्म में ₹150 दें",
+          "te": "చిన్ని యూనిఫాంకు ₹150 ఇవ్వండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "meters": { "family": 6, "joy": 1 }, "cash": -150 },
         "outcome": {
-          "en": "Chinni wears the new uniform for a full week without sitting down. She writes \"best big one\" in her notebook."
+          "en": "Chinni wears the new uniform for a full week without sitting down. She writes \"best big one\" in her notebook.",
+          "hi": "चिन्नी पूरे हफ़्ते नई यूनिफ़ॉर्म पहनती है, बिना बैठे। वह अपनी कॉपी में लिखती है \"सबसे अच्छा बड़ा।\"",
+          "te": "చిన్ని వారమంతా కొత్త యూనిఫాం వేసుకుంటుంది, కూర్చోకుండా. తన పుస్తకంలో \"బెస్ట్ పెద్దవాళ్లు\" అని రాసుకుంటుంది."
         }
       },
       {
         "id": "toy_car",
-        "label": { "en": "Buy the toy car" },
+        "label": { "en": "Buy the toy car", "hi": "खिलौना कार खरीदें", "te": "బొమ్మ కారు కొనండి" },
         "quality": "neutral",
         "effects": { "meters": { "joy": 5, "family": -3 }, "cash": -200 },
-        "outcome": { "en": "The car is fast. Chinni's uniform has a safety pin for two months." }
+        "outcome": {
+          "en": "The car is fast. Chinni's uniform has a safety pin for two months.",
+          "hi": "कार तेज़ है। चिन्नी की यूनिफ़ॉर्म में दो महीने तक सेफ़्टी पिन लगी रहती है।",
+          "te": "కారు వేగంగా వెళ్తుంది. చిన్ని యూనిఫాంకు రెండు నెలలు సేఫ్టీ పిన్."
+        }
       }
     ]
   },
@@ -522,36 +972,78 @@
     "lesson": "L06",
     "ages": [11, 14],
     "weight": 1,
+    "location": "square",
     "speaker": "friend",
-    "title": { "en": "Chintu's level-up offer" },
+    "title": { "en": "Chintu's level-up offer", "hi": "चिंटू का लेवल-अप ऑफ़र", "te": "చింటూ లెవెల్-అప్ ఆఫర్" },
     "text": {
-      "en": "{cast:friend}'s cousin has a deal. \"Give me your game password. I'll level you up for free, mama.\" Amma's card is saved in that game."
+      "en": "{cast:friend}'s cousin has a deal. \"Give me your game password. I'll level you up for free, mama.\" Amma's card is saved in that game.",
+      "hi": "{cast:friend} के चचेरे भाई के पास एक सौदा है। \"अपना गेम पासवर्ड दो। मैं तुम्हें मुफ़्त में लेवल-अप कर दूँगा, मामा।\" अम्मा का कार्ड उस गेम में सेव है।",
+      "te": "{cast:friend} కజిన్ దగ్గర ఒక డీల్ ఉంది. \"నీ గేమ్ పాస్‌వర్డ్ ఇవ్వు. నిన్ను ఉచితంగా లెవెల్-అప్ చేస్తా, మామా.\" అమ్మ కార్డు ఆ గేమ్‌లో సేవ్ అయి ఉంది."
     },
     "clarity": [
       {
-        "phrase": { "en": "I'll level you up for free" },
-        "truth": { "en": "With your password, anyone can buy things on the saved card. Nobody levels you up for free." },
+        "phrase": {
+          "en": "I'll level you up for free",
+          "hi": "मैं तुम्हें मुफ़्त में लेवल-अप कर दूँगा",
+          "te": "నిన్ను ఉచితంగా లెవెల్-అప్ చేస్తా"
+        },
+        "truth": {
+          "en": "With your password, anyone can buy things on the saved card. Nobody levels you up for free.",
+          "hi": "आपके पासवर्ड से कोई भी सेव किए कार्ड से खरीदारी कर सकता है। कोई मुफ़्त में लेवल-अप नहीं करता।",
+          "te": "మీ పాస్‌వర్డ్‌తో ఎవరైనా సేవ్ చేసిన కార్డుతో కొనొచ్చు. ఎవరూ ఉచితంగా లెవెల్-అప్ చేయరు."
+        },
         "lesson": "L06"
       }
     ],
     "choices": [
       {
         "id": "share",
-        "label": { "en": "Share the password, just this once" },
+        "label": {
+          "en": "Share the password, just this once",
+          "hi": "पासवर्ड दे दें, बस इस बार",
+          "te": "పాస్‌వర్డ్ ఇచ్చేయండి, ఈ ఒక్కసారికే"
+        },
         "quality": "bad",
         "effects": { "meters": { "family": -7, "joy": -3 } },
-        "echo": { "level": 2, "hint": { "en": "A password shared once is shared forever." } },
-        "outcome": { "en": "By night, ₹1,200 of top-ups are charged to Amma's card. Your account is gone too." },
-        "why": { "en": "A password is a key, like an OTP. Never share it, even with friends." }
+        "echo": {
+          "level": 2,
+          "hint": {
+            "en": "A password shared once is shared forever.",
+            "hi": "एक बार दिया पासवर्ड हमेशा के लिए दिया होता है।",
+            "te": "ఒక్కసారి చెప్పిన పాస్‌వర్డ్ ఎప్పటికీ చెప్పినట్టే."
+          }
+        },
+        "outcome": {
+          "en": "By night, ₹1,200 of top-ups are charged to Amma's card. Your account is gone too.",
+          "hi": "रात तक अम्मा के कार्ड पर ₹1,200 के टॉप-अप लग जाते हैं। आपका अकाउंट भी चला गया।",
+          "te": "రాత్రికల్లా అమ్మ కార్డుపై ₹1,200 టాప్-అప్‌లు. మీ అకౌంట్ కూడా పోయింది."
+        },
+        "why": {
+          "en": "A password is a key, like an OTP. Never share it, even with friends.",
+          "hi": "पासवर्ड चाबी है, OTP जैसा। कभी किसी को न दें, दोस्तों को भी नहीं।",
+          "te": "పాస్‌వర్డ్ ఒక తాళం, OTP లాగే. ఎవరికీ ఇవ్వకండి, స్నేహితులకు కూడా."
+        }
       },
       {
         "id": "refuse",
-        "label": { "en": "Say no, and ask Amma to remove her saved card" },
+        "label": {
+          "en": "Say no, and ask Amma to remove her saved card",
+          "hi": "मना करें, और अम्मा से सेव कार्ड हटाने को कहें",
+          "te": "వద్దని చెప్పి, సేవ్ చేసిన కార్డు తీసేయమని అమ్మను అడగండి"
+        },
         "quality": "good",
         "default": true,
         "effects": { "gyaan": 2, "meters": { "family": 2 } },
-        "outcome": { "en": "Amma removes the card. Next week the cousin's own account is hacked. You lost ₹0." },
-        "why": { "en": "Keep passwords secret and don't leave cards saved in games." }
+        "outcome": {
+          "en": "Amma removes the card. Next week the cousin's own account is hacked. You lost ₹0.",
+          "hi": "अम्मा कार्ड हटा देती हैं। अगले हफ़्ते चचेरे भाई का अपना अकाउंट हैक हो जाता है। आपका ₹0 गया।",
+          "te": "అమ్మ కార్డు తీసేస్తుంది. వచ్చే వారం కజిన్ సొంత అకౌంటే హ్యాక్ అవుతుంది. మీకు ₹0 నష్టం."
+        },
+        "why": {
+          "en": "Keep passwords secret and don't leave cards saved in games.",
+          "hi": "पासवर्ड गुप्त रखें और गेम में कार्ड सेव न छोड़ें।",
+          "te": "పాస్‌వర్డ్‌లు రహస్యంగా ఉంచండి, గేమ్‌లలో కార్డులు సేవ్ చేయకండి."
+        }
       }
     ]
   }

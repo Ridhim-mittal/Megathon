@@ -73,6 +73,8 @@ section 4. React 19 + Vite, plain JavaScript.
 - `src/engine/`: pure, seeded game engine (no React); `src/engine/README.md` lists its API.
 - `src/content/`: storylines, cards, lessons, glossary, documents, endings, in English, Hindi and Telugu.
 - `src/screens/`, `src/ui/`, `src/i18n/`: React screens, components and UI strings.
+- `src/ui/dev/`: the dev menu (` toggles it in `npm run dev`; `?dev=1` in a build): jump to any chapter or
+  scene, open any mini-game, cheats. It reads missions and game registries, so new ones show up by themselves.
 - `src/World.jsx`: the illustrated village scene. Its cozy style is the game's visual identity.
 - `api/ask.js`: optional AI mentor endpoint; the game works fully offline without it.
 

@@ -1,0 +1,293 @@
+/* The dream screen: you, dreaming, beside five dream tiles. Loaded after title.css. */
+
+.sheet.dream-fun {
+  width: min(900px, calc(100vw - 48px));
+  padding: 18px 24px 18px;
+  background: var(--px-paper);
+  color: var(--px-ink);
+  border: 3px solid var(--px-wood);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 0 2px var(--px-paper-edge),
+    0 6px 0 rgba(40, 25, 10, 0.4);
+}
+.dream-ribbon {
+  display: inline-block;
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  font-weight: 800;
+  font-size: 11.5px;
+  letter-spacing: 1px;
+  color: #fff6dc;
+  background: var(--px-green);
+  border: 2px solid var(--px-green-dark);
+  border-radius: 5px;
+  box-shadow: 0 3px 0 var(--px-green-dark);
+  padding: 2px 12px 1px;
+}
+
+/* --- you, dreaming --- */
+.dream-top {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  margin-top: 6px;
+}
+.dream-hero {
+  position: relative;
+  height: 150px;
+  display: grid;
+  justify-items: center;
+  align-content: end;
+}
+.dream-hero-glow {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  width: 92px;
+  height: 92px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #f4e6bf;
+}
+.dream-hero .pixel-portrait {
+  position: relative;
+  z-index: 1;
+  animation: actor-idle 1.6s steps(2, jump-none) infinite;
+}
+.dream-hero .pixel-portrait canvas {
+  width: 56px;
+  height: 84px;
+}
+.dream-you {
+  position: relative;
+  z-index: 1;
+  margin-top: 2px;
+  font-family: var(--px-font);
+  font-size: 13px;
+  color: #fff6dc;
+  background: var(--px-wood-light);
+  border: 2px solid var(--px-wood);
+  border-radius: 4px;
+  padding: 1px 8px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dream-thought {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 4px;
+  width: 54px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--px-wood);
+  color: var(--goal, #8a6f45);
+  animation: thought-pop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both, prop-bob 2.6s ease-in-out 0.5s infinite;
+}
+.dream-thought b {
+  font-family: var(--px-font);
+  font-size: 24px;
+  font-weight: 500;
+  color: #c9b07a;
+  animation: twinkle-q 1.6s ease-in-out infinite;
+}
+.dream-thought-dot {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--px-wood);
+}
+.dream-thought-dot.d1 {
+  top: 50px;
+  right: 40px;
+  width: 11px;
+  height: 11px;
+}
+.dream-thought-dot.d2 {
+  top: 64px;
+  right: 54px;
+  width: 7px;
+  height: 7px;
+}
+.dream-heading h1 {
+  font-family: var(--px-font);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--px-ink);
+  outline: none;
+}
+.dream-heading p {
+  margin-top: 6px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #6f5f48;
+}
+
+/* --- the dream tiles --- */
+.goal-house { --goal: #d9772e; --goal-soft: #fde9d6; }
+.goal-business { --goal: #c98a14; --goal-soft: #fdf0cf; }
+.goal-education { --goal: #3f6fb5; --goal-soft: #e2ecfa; }
+.goal-vehicle { --goal: #2f8a86; --goal-soft: #dcf1ef; }
+.goal-parents { --goal: #c0567e; --goal-soft: #fbe3ec; }
+.dream-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.dream-tile {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  padding: 14px 10px 12px;
+  text-align: center;
+  border-radius: 12px;
+  border: 3px solid #e3d3a8;
+  background: #fffaf0;
+  box-shadow: 0 4px 0 #d9c391;
+  color: var(--px-ink);
+  transition: transform 0.18s, border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  animation: tile-in 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+.dream-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--goal);
+}
+.dream-tile:hover .dream-tile-icon {
+  animation: actor-hop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.dream-tile.selected {
+  transform: translateY(-5px);
+  border-color: var(--goal);
+  background: var(--goal-soft);
+  box-shadow: 0 5px 0 var(--goal);
+}
+.dream-tile-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--goal);
+  background: var(--goal-soft);
+  border: 3px solid var(--goal);
+}
+.dream-tile.selected .dream-tile-icon {
+  color: #fffdf3;
+  background: var(--goal);
+  animation: badge-spin 0.6s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.dream-tile strong {
+  font-size: 14.5px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.dream-cost {
+  margin-top: auto;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--goal);
+  background: #fffdf3;
+  border: 2px solid var(--goal-soft);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+.dream-check {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fffdf3;
+  background: var(--px-green);
+  border: 2px solid var(--px-green-dark);
+  animation: stamp 0.4s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+
+/* --- what the chosen dream means --- */
+.dream-detail {
+  min-height: 70px;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 2px dashed #e2cd9c;
+  background: #fffdf6;
+  display: grid;
+  align-items: center;
+}
+.dream-detail.on {
+  border-style: solid;
+}
+.dream-detail-in {
+  animation: words-in 0.35s ease both;
+}
+.dream-detail p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #4a3b2e;
+}
+.dream-detail .dream-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: #8a6f45;
+}
+.dream-hint {
+  text-align: center;
+  font-weight: 700;
+  color: #b09a6a !important;
+}
+.dream-fun .dream-start {
+  margin-top: 14px;
+  align-items: center;
+}
+.dream-fun .dream-start .text-button {
+  margin-left: auto;
+}
+.dream-fun .primary-button.ready {
+  animation: ready-pulse 1.8s ease-in-out infinite;
+}
+
+@media (max-width: 760px) {
+  .dream-top {
+    grid-template-columns: 110px minmax(0, 1fr);
+  }
+  .dream-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .dream-heading h1 {
+    font-size: 24px;
+  }
+}
+
+@keyframes thought-pop {
+  from { opacity: 0; transform: scale(0.3); }
+}
+@keyframes twinkle-q {
+  50% { opacity: 0.4; }
+}
+@keyframes tile-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dream-fun *,
+  .dream-fun *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,631 @@
+/* "Save first?" (the story's budget), the jar dock on the map and the surprise pop-up. */
+
+/* ---------- Save first ---------- */
+.sv-view {
+  display: grid;
+  gap: 14px;
+}
+.sv-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sv-granny {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fff6d6, #ffd9a8);
+  border: 3px solid #f2b25c;
+  box-shadow: 0 4px 0 #d98f3a;
+}
+.sv-bubble {
+  position: relative;
+  flex: 1;
+  padding: 10px 18px;
+  border-radius: 18px;
+  background: #fff;
+  border: 3px solid #f2d6a2;
+  box-shadow: 0 4px 0 #ecd2a0;
+}
+.sv-bubble::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  border: 8px solid transparent;
+  border-right-color: #f2d6a2;
+  transform: translateY(-50%);
+}
+.sv-bubble h2 {
+  margin: 0;
+  font-variant-ligatures: none;
+  font-size: clamp(22px, 3vw, 30px);
+  color: #4a2c12;
+}
+.sv-income {
+  display: grid;
+  justify-items: center;
+  padding: 8px 14px;
+  border-radius: 16px;
+  background: linear-gradient(#fff3c4, #ffe08a);
+  border: 3px solid #e8b830;
+  box-shadow: 0 4px 0 #c99a1c;
+  color: #6b4a00;
+  line-height: 1.1;
+}
+.sv-income i {
+  font-style: normal;
+  font-size: 22px;
+}
+.sv-income b {
+  font-size: 20px;
+}
+.sv-income small,
+.sv-level em small {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+/* Where the money goes, as one candy bar. */
+.sv-bar {
+  display: flex;
+  height: 38px;
+  border-radius: 19px;
+  overflow: hidden;
+  border: 3px solid #4a2c12;
+  box-shadow: 0 4px 0 rgba(74, 44, 18, 0.25);
+}
+.sv-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+  color: #2a1a0a;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: flex-grow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background-image: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.22) 0 8px, transparent 8px 16px);
+}
+.sv-seg + .sv-seg {
+  border-left: 2px solid rgba(74, 44, 18, 0.35);
+}
+.sv-seg i {
+  display: grid;
+  font-style: normal;
+}
+.seg-needs {
+  background-color: #d8d2c6;
+}
+.seg-wants {
+  background-color: #ffb3d1;
+}
+.seg-emergency {
+  background-color: #9fe0c4;
+}
+.seg-goal {
+  background-color: #b9a8ff;
+}
+.seg-invest {
+  background-color: #a8e06c;
+}
+
+/* Little / Some / Lots */
+.sv-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.sv-level {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 14px 8px 12px;
+  border-radius: 22px;
+  border: 3px solid #e8d8b8;
+  background: #fffaf0;
+  box-shadow: 0 5px 0 #e2cfa6;
+  font: inherit;
+  color: #4a2c12;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+}
+.sv-level:hover {
+  transform: translateY(-3px);
+}
+.sv-level.on {
+  border-color: #8a5cf6;
+  background: linear-gradient(#f6f0ff, #ece2ff);
+  box-shadow: 0 5px 0 #6a3fd6, 0 0 0 5px rgba(138, 92, 246, 0.25);
+  transform: translateY(-4px) scale(1.03);
+}
+.sv-level b {
+  font-size: 18px;
+}
+.sv-level em {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  color: #6a3fd6;
+}
+.sv-face {
+  font-size: 30px;
+  line-height: 1;
+}
+.sv-level.on .sv-face {
+  animation: sv-hop 0.6s ease;
+}
+.sv-stack {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 22px;
+  height: 64px;
+}
+.sv-stack i {
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(#ffe066, #e8a800);
+  border: 2px solid #9a6b00;
+  animation: sv-drop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.sv-level:not(.on) .sv-stack {
+  opacity: 0.45;
+}
+
+/* The forecast: dream timeline, safety shields, fun candies. */
+.sv-forecast {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 12px;
+}
+.sv-fc {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 4px;
+  padding: 12px 10px;
+  border-radius: 20px;
+  border: 3px solid var(--c);
+  background: var(--bg);
+  box-shadow: 0 4px 0 var(--c);
+  color: #3a2410;
+}
+.fc-dream {
+  --c: #b9a8ff;
+  --bg: #f4f0ff;
+}
+.fc-safety {
+  --c: #7fd3ad;
+  --bg: #eefbf4;
+}
+.fc-fun {
+  --c: #ff9ec5;
+  --bg: #fff0f6;
+}
+.sv-fc-icon {
+  position: absolute;
+  top: -14px;
+  left: 12px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--c);
+  font-size: 16px;
+}
+.sv-fc small {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+.sv-big {
+  font-size: 24px;
+  font-weight: 900;
+  animation: sv-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.sv-track {
+  position: relative;
+  width: 100%;
+  height: 42px;
+}
+.sv-line {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 28px;
+  height: 6px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(90deg, #b9a8ff 0 8px, #ddd2ff 8px 14px);
+}
+.sv-age {
+  position: absolute;
+  top: 34px;
+  font-size: 10px;
+  font-weight: 800;
+  opacity: 0.6;
+}
+.sv-age.now {
+  left: 0;
+}
+.sv-age.end {
+  right: 0;
+}
+.sv-runner {
+  position: absolute;
+  left: 4px;
+  top: -2px;
+  transform: scale(0.75);
+  transform-origin: bottom left;
+}
+.sv-runner .pixel-portrait {
+  width: 28px;
+  height: 40px;
+}
+.sv-flag {
+  position: absolute;
+  top: 2px;
+  font-size: 22px;
+  transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.sv-flag.never {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+.sv-icons {
+  display: flex;
+  gap: 2px;
+  font-size: 18px;
+}
+.sv-icons i {
+  font-style: normal;
+  filter: grayscale(1);
+  opacity: 0.25;
+  transition: opacity 0.2s, filter 0.2s, transform 0.25s;
+}
+.sv-icons i.on {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.1);
+}
+.sv-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sv-tip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: auto;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: #fff;
+  border: 2px dashed #d9c08a;
+  font-size: 15px;
+}
+.sv-tip small {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b4423;
+}
+.sv-tight {
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: #ffe1dc;
+  color: #a8261a;
+  font-weight: 800;
+  font-size: 13px;
+}
+.sv-go {
+  animation: sv-glow 1.6s ease-in-out infinite;
+}
+
+/* ---------- The jar dock on the map ---------- */
+.jar-dock {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+  pointer-events: none;
+}
+.jd-chip {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  column-gap: 6px;
+  align-items: center;
+  padding: 6px 12px 6px 8px;
+  border-radius: 16px;
+  background: #fffaf0;
+  border: 3px solid var(--c);
+  box-shadow: 0 4px 0 var(--c);
+  color: #3a2410;
+  animation: jd-bump 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.jd-chip i {
+  grid-row: span 2;
+  font-style: normal;
+  font-size: 22px;
+}
+.jd-chip b {
+  font-size: 15px;
+  line-height: 1;
+}
+.jd-chip small {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.65;
+}
+.jd-safety {
+  --c: #7fd3ad;
+}
+.jd-safety.empty {
+  --c: #ff8a7a;
+  animation: jd-bump 0.45s ease, jd-shake 0.5s 0.5s ease 2;
+}
+.jd-fun {
+  --c: #ff9ec5;
+}
+.jd-debt {
+  --c: #ff6b5e;
+  background: #fff0ee;
+}
+
+/* ---------- The surprise pop-up ---------- */
+.sp-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(30, 20, 40, 0.45);
+  animation: fade-in 0.2s ease both;
+}
+.sp-card {
+  position: relative;
+  width: min(360px, 100%);
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 26px 20px 18px;
+  border-radius: 28px;
+  background: #fffaf0;
+  border: 4px solid var(--c);
+  box-shadow: 0 8px 0 var(--c), 0 20px 40px rgba(0, 0, 0, 0.35);
+  color: #3a2410;
+  text-align: center;
+  animation: sp-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.verdict-safe {
+  --c: #7fd3ad;
+}
+.verdict-pocket {
+  --c: #ffcf5a;
+}
+.verdict-dream {
+  --c: #b9a8ff;
+}
+.verdict-borrowed {
+  --c: #ff6b5e;
+}
+.sp-age {
+  position: absolute;
+  top: -14px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  background: var(--c);
+  color: #2a1a0a;
+  font-size: 12px;
+  font-weight: 900;
+}
+.sp-emoji {
+  font-size: 64px;
+  line-height: 1;
+  animation: sp-wobble 0.8s ease 0.2s;
+}
+.sp-title {
+  font-size: 24px;
+}
+.sp-cost {
+  font-size: 30px;
+  font-weight: 900;
+  color: #c62828;
+}
+.sp-paid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sp-paid li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 14px;
+  background: #fff;
+  border: 2px solid #e8d8b8;
+  font-weight: 800;
+  animation: sp-chip 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.sp-paid li i {
+  font-style: normal;
+  font-size: 18px;
+}
+.sp-paid li.loan {
+  background: #fff0ee;
+  border-color: #ff6b5e;
+  color: #a8261a;
+}
+.sp-verdict {
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 14px;
+  background: var(--c);
+  font-weight: 900;
+  font-size: 15px;
+  animation: sp-chip 0.35s 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes sv-hop {
+  40% {
+    transform: translateY(-10px) rotate(-8deg);
+  }
+}
+@keyframes sv-drop {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+@keyframes sv-pop {
+  from {
+    transform: scale(0.6);
+  }
+}
+@keyframes sv-glow {
+  50% {
+    box-shadow: 0 0 0 6px rgba(125, 220, 60, 0.35);
+  }
+}
+@keyframes jd-bump {
+  40% {
+    transform: translateY(-6px) scale(1.08);
+  }
+}
+@keyframes jd-shake {
+  25%,
+  75% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+@keyframes sp-in {
+  from {
+    transform: scale(0.6) translateY(30px);
+    opacity: 0;
+  }
+}
+@keyframes sp-wobble {
+  25% {
+    transform: rotate(-12deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+@keyframes sp-chip {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+@media (max-width: 640px) {
+  /* Narrow cards: no coin stack over the words (the jar already shows how much), and
+     "/month" on its own line so the amount never breaks mid-word. */
+  .sv-levels {
+    gap: 8px;
+  }
+  .sv-level {
+    padding: 10px 4px 10px;
+    border-radius: 18px;
+  }
+  .sv-level .sv-stack {
+    display: none;
+  }
+  .sv-level b {
+    font-size: 16px;
+  }
+  .sv-level em {
+    display: grid;
+    justify-items: center;
+    white-space: nowrap;
+  }
+  .sv-forecast {
+    grid-template-columns: 1fr 1fr;
+  }
+  .fc-dream {
+    grid-column: 1 / -1;
+  }
+  .sv-tip {
+    display: none;
+  }
+}
+
+/* How this screen works: three numbered steps along the bottom. */
+.sv-steps {
+  list-style: none;
+  margin: 0 auto 0 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.sv-steps li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px 6px 6px;
+  border-radius: 8px;
+  border: 2px solid #d9c08a;
+  background: #fffaf0;
+  box-shadow: 0 2px 0 #d9c08a;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #5a3f22;
+  animation: tile-in 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+.sv-steps li:nth-child(2) { animation-delay: 0.12s; }
+.sv-steps li:nth-child(3) { animation-delay: 0.24s; }
+.sv-steps li + li::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  width: 6px;
+  height: 2px;
+  background: #c9a86a;
+}
+.sv-steps b {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  font-family: var(--px-font);
+  font-size: 12px;
+  color: #fff8de;
+  background: var(--px-green, #5aa843);
+  border: 2px solid var(--px-green-dark, #3f7f2e);
+}
+.sv-face .pixel-icon,
+.sp-emoji .pixel-icon {
+  display: block;
+}

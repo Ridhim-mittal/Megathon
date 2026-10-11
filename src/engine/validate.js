@@ -23,6 +23,7 @@ import {
   lessonById,
 } from "./curriculum.js";
 import { groupOf } from "./deck.js";
+import { validateStory } from "./story.js";
 
 const isObj = (x) => x && typeof x === "object" && !Array.isArray(x);
 const list = (x) => (x == null ? [] : Array.isArray(x) ? x : [x]);
@@ -385,6 +386,13 @@ export function validateContent(content, { assumptions = ASSUMPTIONS } = {}) {
     if (f.lesson && !lessonById[f.lesson]) err(`faq.json:${f.id}`, `Unknown lesson "${f.lesson}".`);
   }
   if (!content.minigames?.sahukar) warn("minigames/sahukar.json", "Missing: Sahukar's chair will be skipped.");
+
+  // ---------- story mode ----------
+  if (content.story) {
+    const r = validateStory(content.story, { assumptions, documents: Object.fromEntries(documents.map((d) => [d.id, d])) });
+    for (const e of r.errors) errors.push({ where: `story:${e.where}`, message: e.msg });
+    for (const w of r.warnings) warnings.push({ where: `story:${w.where}`, message: w.msg });
+  }
 
   return { errors, warnings };
 }

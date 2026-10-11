@@ -1,104 +1,242 @@
 {
   "id": "sahukar",
   "lesson": "L14",
-  "title": { "en": "A day in the sahukar's chair" },
+  "title": { "en": "A day in the sahukar's chair", "hi": "साहूकार की कुर्सी पर एक दिन", "te": "షావుకారు కుర్చీలో ఒక రోజు" },
   "intro": [
-    { "speaker": "lender", "text": { "en": "Three borrowers are coming today. Each one gets three offers. You pick one offer for each." } },
-    { "speaker": "lender", "text": { "en": "Your score is my profit. Don't tell them the yearly rate. Nobody asks." } }
+    {
+      "speaker": "lender",
+      "text": {
+        "en": "Three borrowers are coming today. Each one gets three offers. You pick one offer for each.",
+        "hi": "आज तीन कर्ज़दार आ रहे हैं। हर एक को तीन ऑफ़र मिलेंगे। आप हर एक के लिए एक ऑफ़र चुनें।",
+        "te": "ఈ రోజు ముగ్గురు అప్పు కోసం వస్తున్నారు. ఒక్కొక్కరికి మూడు ఆఫర్లు. ఒక్కొక్కరికి ఒక ఆఫర్ మీరు ఎంచుకోండి."
+      }
+    },
+    {
+      "speaker": "lender",
+      "text": {
+        "en": "Your score is my profit. Don't tell them the yearly rate. Nobody asks.",
+        "hi": "आपका स्कोर मेरा मुनाफ़ा है। उन्हें सालाना दर मत बताना। कोई पूछता भी नहीं।",
+        "te": "మీ స్కోర్ నా లాభం. వాళ్లకు ఏడాది వడ్డీ రేటు చెప్పకు. ఎవరూ అడగరు కూడా."
+      }
+    }
   ],
-  "scoring": { "en": "Score = total profit from the three loans you choose. The highest possible is ₹18,300." },
+  "scoring": {
+    "en": "Score = total profit from the three loans you choose. The highest possible is ₹18,300.",
+    "hi": "स्कोर = चुने गए तीन कर्ज़ों का कुल मुनाफ़ा। सबसे ज़्यादा ₹18,300 हो सकता है।",
+    "te": "స్కోర్ = మీరు ఎంచుకున్న మూడు అప్పుల మొత్తం లాభం. గరిష్టం ₹18,300."
+  },
   "borrowers": [
     {
       "id": "lakshmi",
-      "name": { "en": "Lakshmi" },
-      "story": { "en": "Sells vegetables from a basket. Needs ₹10,000 for a pushcart so she can sell twice as much." },
+      "name": { "en": "Lakshmi", "hi": "लक्ष्मी", "te": "లక్ష్మి" },
+      "story": {
+        "en": "Sells vegetables from a basket. Needs ₹10,000 for a pushcart so she can sell twice as much.",
+        "hi": "टोकरी में सब्ज़ी बेचती है। ठेले के लिए ₹10,000 चाहिए ताकि दोगुना बेच सके।",
+        "te": "బుట్టలో కూరగాయలు అమ్ముతుంది. రెట్టింపు అమ్మడానికి తోపుడు బండి కోసం ₹10,000 కావాలి."
+      },
       "amount": 10000,
       "offers": [
         {
           "id": "small_emi",
-          "label": { "en": "Only ₹550 a month!" },
-          "payment": 550, "period": "month", "count": 30, "fee": 0,
-          "totalPaid": 16500, "profit": 6500, "rateYearly": 53,
-          "reveal": { "en": "She chose the smallest payment, thinking it was kind. She paid ₹16,500 for ₹10,000: about 53% a year." }
+          "label": { "en": "Only ₹550 a month!", "hi": "सिर्फ़ ₹550 महीना!", "te": "నెలకు ₹550 మాత్రమే!" },
+          "payment": 550,
+          "period": "month",
+          "count": 30,
+          "fee": 0,
+          "totalPaid": 16500,
+          "profit": 6500,
+          "rateYearly": 53,
+          "reveal": {
+            "en": "She chose the smallest payment, thinking it was kind. She paid ₹16,500 for ₹10,000: about 53% a year.",
+            "hi": "उसने सबसे छोटी किस्त चुनी, सोचा यह मेहरबानी है। ₹10,000 के ₹16,500 दिए: लगभग 53% सालाना।",
+            "te": "అతి చిన్న వాయిదా దయ అనుకుని ఎంచుకుంది. ₹10,000కి ₹16,500 కట్టింది: ఏడాదికి సుమారు 53%."
+          }
         },
         {
           "id": "fee_emi",
-          "label": { "en": "₹950 a month for 12 months, small ₹500 fee" },
-          "payment": 950, "period": "month", "count": 12, "fee": 500,
-          "totalPaid": 11400, "profit": 1900, "rateYearly": 41,
-          "reveal": { "en": "The ₹500 fee was cut first, so she got only ₹9,500. Real cost: about 41% a year." }
+          "label": {
+            "en": "₹950 a month for 12 months, small ₹500 fee",
+            "hi": "12 महीने ₹950 महीना, छोटी सी ₹500 फ़ीस",
+            "te": "12 నెలలు నెలకు ₹950, చిన్న ₹500 ఫీజు"
+          },
+          "payment": 950,
+          "period": "month",
+          "count": 12,
+          "fee": 500,
+          "totalPaid": 11400,
+          "profit": 1900,
+          "rateYearly": 41,
+          "reveal": {
+            "en": "The ₹500 fee was cut first, so she got only ₹9,500. Real cost: about 41% a year.",
+            "hi": "₹500 फ़ीस पहले ही कट गई, उसे सिर्फ़ ₹9,500 मिले। असली कीमत: लगभग 41% सालाना।",
+            "te": "₹500 ఫీజు ముందే కోశారు, ఆమెకు ₹9,500 మాత్రమే వచ్చాయి. అసలు ఖర్చు: ఏడాదికి సుమారు 41%."
+          }
         },
         {
           "id": "short_emi",
-          "label": { "en": "₹1,800 a month for 6 months" },
-          "payment": 1800, "period": "month", "count": 6, "fee": 0,
-          "totalPaid": 10800, "profit": 800, "rateYearly": 31,
-          "reveal": { "en": "The biggest EMI was the cheapest loan: ₹800 in interest. Her cart paid for itself in four months." }
+          "label": { "en": "₹1,800 a month for 6 months", "hi": "6 महीने ₹1,800 महीना", "te": "6 నెలలు నెలకు ₹1,800" },
+          "payment": 1800,
+          "period": "month",
+          "count": 6,
+          "fee": 0,
+          "totalPaid": 10800,
+          "profit": 800,
+          "rateYearly": 31,
+          "reveal": {
+            "en": "The biggest EMI was the cheapest loan: ₹800 in interest. Her cart paid for itself in four months.",
+            "hi": "सबसे बड़ी EMI सबसे सस्ता कर्ज़ निकली: ₹800 ब्याज। ठेले ने चार महीने में अपनी कीमत वसूल ली।",
+            "te": "అతి పెద్ద EMI అతి చౌక అప్పు: ₹800 వడ్డీ. బండి నాలుగు నెలల్లో తన ఖర్చు తానే తీర్చుకుంది."
+          }
         }
       ]
     },
     {
       "id": "raju",
-      "name": { "en": "Raju" },
-      "story": { "en": "A small farmer. Needs ₹30,000 for seeds and fertiliser. Harvest is six months away, if the rain comes." },
+      "name": { "en": "Raju", "hi": "राजू", "te": "రాజు" },
+      "story": {
+        "en": "A small farmer. Needs ₹30,000 for seeds and fertiliser. Harvest is six months away, if the rain comes.",
+        "hi": "छोटा किसान। बीज और खाद के लिए ₹30,000 चाहिए। फ़सल छह महीने दूर है, अगर बारिश हुई।",
+        "te": "చిన్న రైతు. విత్తనాలు, ఎరువులకు ₹30,000 కావాలి. పంట ఆరు నెలల దూరం, వానలు పడితే."
+      },
       "amount": 30000,
       "offers": [
         {
           "id": "interest_only",
-          "label": { "en": "Just ₹900 a month interest, return the ₹30,000 whenever" },
-          "payment": 900, "period": "month", "count": 12, "fee": 0, "balloon": 30000,
-          "totalPaid": 40800, "profit": 10800, "rateYearly": 43,
-          "reveal": { "en": "The rain failed. He paid ₹900 every month for three years, ₹32,400, and still owed all ₹30,000." }
+          "label": {
+            "en": "Just ₹900 a month interest, return the ₹30,000 whenever",
+            "hi": "बस ₹900 महीना ब्याज, ₹30,000 जब चाहे लौटा देना",
+            "te": "నెలకు ₹900 వడ్డీ చాలు, ₹30,000 ఎప్పుడైనా తిరిగివ్వు"
+          },
+          "payment": 900,
+          "period": "month",
+          "count": 12,
+          "fee": 0,
+          "balloon": 30000,
+          "totalPaid": 40800,
+          "profit": 10800,
+          "rateYearly": 43,
+          "reveal": {
+            "en": "The rain failed. He paid ₹900 every month for three years, ₹32,400, and still owed all ₹30,000.",
+            "hi": "बारिश नहीं हुई। उसने तीन साल हर महीने ₹900 दिए, कुल ₹32,400, और ₹30,000 फिर भी बाकी।",
+            "te": "వానలు పడలేదు. మూడేళ్లు నెలకు ₹900 కట్టాడు, మొత్తం ₹32,400, అయినా ₹30,000 బాకీ అలాగే."
+          }
         },
         {
           "id": "monthly_emi",
-          "label": { "en": "₹2,900 a month for 12 months" },
-          "payment": 2900, "period": "month", "count": 12, "fee": 0,
-          "totalPaid": 34800, "profit": 4800, "rateYearly": 32,
-          "reveal": { "en": "Hard months before the harvest. He sold two goats to keep paying. ₹4,800 in interest." }
+          "label": { "en": "₹2,900 a month for 12 months", "hi": "12 महीने ₹2,900 महीना", "te": "12 నెలలు నెలకు ₹2,900" },
+          "payment": 2900,
+          "period": "month",
+          "count": 12,
+          "fee": 0,
+          "totalPaid": 34800,
+          "profit": 4800,
+          "rateYearly": 32,
+          "reveal": {
+            "en": "Hard months before the harvest. He sold two goats to keep paying. ₹4,800 in interest.",
+            "hi": "फ़सल से पहले के महीने मुश्किल थे। चुकाते रहने के लिए दो बकरियाँ बेचीं। ₹4,800 ब्याज।",
+            "te": "పంటకు ముందు నెలలు కష్టం. కట్టడానికి రెండు మేకలు అమ్మాడు. ₹4,800 వడ్డీ."
+          }
         },
         {
           "id": "harvest_loan",
-          "label": { "en": "Pay ₹33,000 once, after the harvest" },
-          "payment": 33000, "period": "once", "count": 1, "fee": 0,
-          "totalPaid": 33000, "profit": 3000, "rateYearly": 21,
-          "reveal": { "en": "Matched to his harvest, like a bank's Kisan Credit Card. About 21% a year, still three times the KCC rate." }
+          "label": {
+            "en": "Pay ₹33,000 once, after the harvest",
+            "hi": "फ़सल के बाद एक बार में ₹33,000",
+            "te": "పంట తర్వాత ఒకేసారి ₹33,000"
+          },
+          "payment": 33000,
+          "period": "once",
+          "count": 1,
+          "fee": 0,
+          "totalPaid": 33000,
+          "profit": 3000,
+          "rateYearly": 21,
+          "reveal": {
+            "en": "Matched to his harvest, like a bank's Kisan Credit Card. About 21% a year, still three times the KCC rate.",
+            "hi": "उसकी फ़सल के हिसाब से, बैंक के किसान क्रेडिट कार्ड जैसा। लगभग 21% सालाना, फिर भी KCC दर का तीन गुना।",
+            "te": "అతని పంటకు తగ్గట్టు, బ్యాంక్ కిసాన్ క్రెడిట్ కార్డు లాగా. ఏడాదికి సుమారు 21%, అయినా KCC రేటుకు మూడు రెట్లు."
+          }
         }
       ]
     },
     {
       "id": "renuka",
-      "name": { "en": "Renuka" },
-      "story": { "en": "Her son's exam fee is due on Friday. She needs ₹5,000 this week, urgently." },
+      "name": { "en": "Renuka", "hi": "रेणुका", "te": "రేణుక" },
+      "story": {
+        "en": "Her son's exam fee is due on Friday. She needs ₹5,000 this week, urgently.",
+        "hi": "बेटे की परीक्षा फ़ीस शुक्रवार तक भरनी है। इसी हफ़्ते ₹5,000 चाहिए, तुरंत।",
+        "te": "కొడుకు పరీక్ష ఫీజు శుక్రవారం కట్టాలి. ఈ వారమే ₹5,000 కావాలి, అత్యవసరంగా."
+      },
       "amount": 5000,
       "offers": [
         {
           "id": "weekly",
-          "label": { "en": "₹500 a week for 12 weeks" },
-          "payment": 500, "period": "week", "count": 12, "fee": 0,
-          "totalPaid": 6000, "profit": 1000, "rateYearly": 347,
-          "reveal": { "en": "₹1,000 profit in under three months. Turned into a yearly rate, that's over 300%." }
+          "label": { "en": "₹500 a week for 12 weeks", "hi": "12 हफ़्ते ₹500 हर हफ़्ते", "te": "12 వారాలు వారానికి ₹500" },
+          "payment": 500,
+          "period": "week",
+          "count": 12,
+          "fee": 0,
+          "totalPaid": 6000,
+          "profit": 1000,
+          "rateYearly": 347,
+          "reveal": {
+            "en": "₹1,000 profit in under three months. Turned into a yearly rate, that's over 300%.",
+            "hi": "तीन महीने से कम में ₹1,000 मुनाफ़ा। सालाना दर में बदलें तो 300% से ज़्यादा।",
+            "te": "మూడు నెలల్లోపే ₹1,000 లాభం. ఏడాది రేటుగా మారిస్తే 300% పైన."
+          }
         },
         {
           "id": "monthly",
-          "label": { "en": "₹1,000 a month for 6 months" },
-          "payment": 1000, "period": "month", "count": 6, "fee": 0,
-          "totalPaid": 6000, "profit": 1000, "rateYearly": 90,
-          "reveal": { "en": "The same ₹6,000 total as the weekly offer, but over six months. Time changes the rate: about 90% a year." }
+          "label": { "en": "₹1,000 a month for 6 months", "hi": "6 महीने ₹1,000 महीना", "te": "6 నెలలు నెలకు ₹1,000" },
+          "payment": 1000,
+          "period": "month",
+          "count": 6,
+          "fee": 0,
+          "totalPaid": 6000,
+          "profit": 1000,
+          "rateYearly": 90,
+          "reveal": {
+            "en": "The same ₹6,000 total as the weekly offer, but over six months. Time changes the rate: about 90% a year.",
+            "hi": "हफ़्ते वाले ऑफ़र जितने ही कुल ₹6,000, पर छह महीने में। समय दर बदल देता है: लगभग 90% सालाना।",
+            "te": "వారపు ఆఫర్ లాగే మొత్తం ₹6,000, కానీ ఆరు నెలల్లో. సమయం రేటును మారుస్తుంది: ఏడాదికి సుమారు 90%."
+          }
         },
         {
           "id": "one_month",
-          "label": { "en": "Pay back ₹5,250 next month" },
-          "payment": 5250, "period": "once", "count": 1, "fee": 0,
-          "totalPaid": 5250, "profit": 250, "rateYearly": 80,
-          "reveal": { "en": "Only ₹250 extra. But ₹5 per ₹100 for one month is still about 80% a year." }
+          "label": { "en": "Pay back ₹5,250 next month", "hi": "अगले महीने ₹5,250 लौटाओ", "te": "వచ్చే నెల ₹5,250 తిరిగివ్వు" },
+          "payment": 5250,
+          "period": "once",
+          "count": 1,
+          "fee": 0,
+          "totalPaid": 5250,
+          "profit": 250,
+          "rateYearly": 80,
+          "reveal": {
+            "en": "Only ₹250 extra. But ₹5 per ₹100 for one month is still about 80% a year.",
+            "hi": "सिर्फ़ ₹250 ज़्यादा। पर एक महीने के लिए ₹5 सैकड़ा फिर भी लगभग 80% सालाना है।",
+            "te": "₹250 మాత్రమే ఎక్కువ. కానీ ఒక నెలకు నూటికి ₹5 అయినా ఏడాదికి సుమారు 80%."
+          }
         }
       ]
     }
   ],
   "outro": [
-    { "speaker": "lender", "text": { "en": "Now you know my secret. People look at the monthly payment. I look at the total." } },
-    { "speaker": "mentor", "text": { "en": "Kanna, when you borrow, always ask three things: the total, the time, and the yearly rate." } }
+    {
+      "speaker": "lender",
+      "text": {
+        "en": "Now you know my secret. People look at the monthly payment. I look at the total.",
+        "hi": "अब तुम मेरा राज़ जानते हो। लोग महीने की किस्त देखते हैं। मैं कुल रकम देखता हूँ।",
+        "te": "ఇప్పుడు నా రహస్యం నీకు తెలుసు. జనం నెల వాయిదా చూస్తారు. నేను మొత్తం చూస్తాను."
+      }
+    },
+    {
+      "speaker": "mentor",
+      "text": {
+        "en": "Kanna, when you borrow, always ask three things: the total, the time, and the yearly rate.",
+        "hi": "कन्ना, जब भी उधार लो, तीन बातें पूछो: कुल रकम, समय, और सालाना दर।",
+        "te": "కన్నా, అప్పు తీసుకున్నప్పుడల్లా మూడు అడుగు: మొత్తం, సమయం, ఏడాది వడ్డీ రేటు."
+      }
+    }
   ],
   "rewards": { "gyaan": 4, "lesson": "applied" }
 }

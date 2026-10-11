@@ -2,6 +2,25 @@
 
 Add requests for other areas here (newest first). Each owner reads the requests addressed to them.
 
+## 2026-10-10 — Story mode
+
+`createLife({ mode: "story" })` plays `content.story.missions` (see `src/engine/README.md`, "Story
+mode"). New actions: `STORY_TIMEOUT`, `HEED_WARNING`; `CHOOSE` takes `ignoredWarning`. New
+selectors: `select.story`, `select.flowchart`, `select.storyMissions`.
+
+## 2026-10-10 — Chapter mode, map locations, mutual funds and shares
+
+`createLife({ mode: "chapters" })` plays five chapters on the village map (API in
+`src/engine/README.md`, "Chapter mode"; spec section 7).
+
+### For Content (Claude B)
+1. **Where a card happens** is derived (`src/engine/locations.js`): by lesson (`LESSON_LOCATION`),
+   or by kind (crisis/windfall → home, teach-back → school, scam → phone, calamity by shock kind).
+   An optional `"location": "<place>"` on a card overrides it.
+2. Fictional market names to use in text: Top-50 Index Fund (`sip_index`), Short-term Debt Fund
+   (`mf_debt`), Star Active Equity Fund (`mf_active`), Kisan Tractors, Chai Express, Spark Mobile,
+   Safe Power (`stock_*`).
+
 ## Engine v1 landed (`src/engine/`) — notes for Content and UI
 
 The engine is complete and tested against fixture content (`src/engine/__fixtures__/content.js`).

@@ -1,0 +1,767 @@
+{
+  "id": "family",
+  "stage": "adult",
+  "from": 26,
+  "to": 30,
+  "part": {
+    "en": "Chapter 4 · Marriage & family",
+    "hi": "अध्याय 4 · शादी और परिवार",
+    "te": "అధ్యాయం 4 · పెళ్లి, కుటుంబం"
+  },
+  "title": {
+    "en": "Wedding Season",
+    "hi": "शादियों का मौसम",
+    "te": "పెళ్లిళ్ల సీజన్"
+  },
+  "intro": {
+    "en": "Age 26. You're marrying Kiran, a nurse at the town hospital. Two families, one wedding, and 800 relatives who all expect biryani. Meanwhile, Golden Harvest's white SUVs are everywhere.",
+    "hi": "उम्र 26। आपकी शादी किरण से हो रही है, जो शहर के अस्पताल में नर्स है। दो परिवार, एक शादी, और 800 रिश्तेदार, जिन्हें बिरयानी चाहिए। इसी बीच, गोल्डन हार्वेस्ट की सफ़ेद SUV हर जगह घूम रही हैं।",
+    "te": "వయసు 26. టౌన్ హాస్పిటల్‌లో నర్సుగా పనిచేసే కిరణ్‌తో మీ పెళ్లి. రెండు కుటుంబాలు, ఒక పెళ్లి, బిర్యానీ కోసం ఎదురుచూసే 800 మంది బంధువులు. ఇంకోవైపు, గోల్డెన్ హార్వెస్ట్ తెల్ల SUVలు ఎక్కడ చూసినా కనిపిస్తున్నాయి."
+  },
+  "startEffects": {
+    "income": {
+      "monthly": 30000,
+      "source": "job"
+    }
+  },
+  "start": "m4_wedding",
+  "nodes": [
+    {
+      "id": "m4_wedding",
+      "age": 26,
+      "location": "home",
+      "speaker": "mother",
+      "lesson": "L18",
+      "objective": {
+        "en": "Both families are meeting at home to plan the wedding.",
+        "hi": "शादी की तैयारी के लिए दोनों परिवार घर पर मिल रहे हैं।",
+        "te": "పెళ్లి ప్లాన్ చేయడానికి రెండు కుటుంబాలు ఇంట్లో కలుస్తున్నాయి."
+      },
+      "title": {
+        "en": "800 guests and a horse",
+        "hi": "800 मेहमान और एक घोड़ा",
+        "te": "800 మంది అతిథులు, ఒక గుర్రం"
+      },
+      "text": {
+        "en": "Kiran's uncle wants **800 guests, a horse and a DJ**: ₹6 lakh. Your uncle says a small wedding will 'shame the family'. Kiran leans in and whispers: \"Forget them. What do **you** want?\"",
+        "hi": "किरण के चाचा को **800 मेहमान, एक घोड़ा और एक DJ** चाहिए: ₹6 लाख। आपके चाचा कहते हैं कि छोटी शादी से 'परिवार की नाक कट जाएगी'। किरण कान में फुसफुसाकर: \"सबकी छोड़ो, **तुम्हें** क्या चाहिए?\"",
+        "te": "కిరణ్ మామయ్యకు **800 మంది అతిథులు, ఒక గుర్రం, ఒక DJ** కావాలి: ₹6 లక్షలు. చిన్న పెళ్లి చేస్తే 'కుటుంబం పరువు పోతుంది' అని మీ మామయ్య అంటాడు. కిరణ్ మెల్లగా గుసగుస: \"అసలు **నీకు** ఏం కావాలి?\""
+      },
+      "choices": [
+        {
+          "id": "simple",
+          "label": {
+            "en": "A temple wedding, registered, and lunch for 150. The rest goes to our future",
+            "hi": "मंदिर में शादी, रजिस्ट्रेशन, और 150 लोगों का खाना। बाकी पैसा हमारे भविष्य के लिए",
+            "te": "గుడిలో పెళ్లి, రిజిస్ట్రేషన్, 150 మందికి భోజనం. మిగతాది మన భవిష్యత్తుకు"
+          },
+          "quality": "good",
+          "effects": {
+            "cash": -60000,
+            "meters": {
+              "joy": 6,
+              "family": -2
+            },
+            "flags": {
+              "add": [
+                "simple_wedding"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "The uncles grumble for a week. Kiran laughs the whole day. Your photos are lovely, and your bank balance survives.",
+            "hi": "चाचा लोग हफ़्ते भर बड़बड़ाते हैं। किरण की हँसी दिन भर नहीं रुकती। आपकी फ़ोटो बहुत प्यारी आती हैं, और बैंक बैलेंस भी बच जाता है।",
+            "te": "మామయ్యలు వారం రోజులు గొణుగుతారు. రోజంతా కిరణ్ ముఖంలో నవ్వు ఆగదు. మీ ఫోటోలు చాలా అందంగా వచ్చాయి, మీ బ్యాంక్ బ్యాలెన్స్ కూడా బతికింది."
+          },
+          "why": {
+            "en": "Social pressure to spend is real. The people judging you won't pay your EMIs.",
+            "hi": "खर्च करने का समाज का दबाव सच में होता है। पर जो लोग आपको परख रहे हैं, वे आपकी EMI नहीं भरेंगे।",
+            "te": "ఖర్చు పెట్టమనే సమాజ ఒత్తిడి నిజమే. మిమ్మల్ని జడ్జ్ చేసేవాళ్లు మీ EMIలు కట్టరు."
+          },
+          "next": "m4_joint"
+        },
+        {
+          "id": "grand_loan",
+          "label": {
+            "en": "The full ₹6 lakh wedding, with a ₹4 lakh personal loan",
+            "hi": "पूरी ₹6 लाख वाली शादी, ₹4 लाख के पर्सनल लोन से",
+            "te": "పూర్తి ₹6 లక్షల పెళ్లి, ₹4 లక్షల పర్సనల్ లోన్‌తో"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "A ₹4 lakh loan at 13% costs about ₹9,000 a month for five years. That's your future house, spent in one night.",
+            "hi": "13% पर ₹4 लाख का लोन यानी पाँच साल तक हर महीने लगभग ₹9,000। मतलब आपका भविष्य का घर, एक रात में उड़ गया।",
+            "te": "13% వడ్డీకి ₹4 లక్షల లోన్ అంటే ఐదేళ్ల పాటు నెలకు దాదాపు ₹9,000. అంటే మీ భవిష్యత్ ఇల్లు, ఒక్క రాత్రిలో ఖర్చు."
+          },
+          "effects": {
+            "loan": {
+              "source": "bank_personal",
+              "principal": 400000,
+              "months": 60
+            },
+            "cash": -600000,
+            "meters": {
+              "family": 8,
+              "joy": 4
+            },
+            "flags": {
+              "add": [
+                "wedding_debt"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "The horse is magnificent. The DJ is loud. The EMI begins next month, and lasts until you're 31.",
+            "hi": "घोड़ा शानदार है। DJ बहुत ज़ोर से बजता है। EMI अगले महीने से शुरू होती है, और आपकी 31 की उम्र तक चलेगी।",
+            "te": "గుర్రం అదిరిపోయింది. DJ దద్దరిల్లింది. EMI వచ్చే నెల మొదలవుతుంది, మీకు 31 ఏళ్లు వచ్చే దాకా ఉంటుంది."
+          },
+          "why": {
+            "en": "Borrowing for one day of celebration means years of payments. 'Everyone does it' is how it spreads.",
+            "hi": "एक दिन के जश्न के लिए कर्ज़ का मतलब है सालों की किस्तें। 'सब यही करते हैं', ऐसे ही यह चलन फैलता है।",
+            "te": "ఒక్క రోజు సంబరానికి అప్పు చేస్తే ఏళ్ల తరబడి కట్టాలి. 'అందరూ చేస్తారు' అనే మాటతోనే ఇది అందరికీ పాకుతుంది."
+          },
+          "next": "m4_joint"
+        },
+        {
+          "id": "middle",
+          "label": {
+            "en": "A middle path: 300 guests, ₹2 lakh from savings",
+            "hi": "बीच का रास्ता: 300 मेहमान, बचत से ₹2 लाख",
+            "te": "మధ్యే మార్గం: 300 మంది అతిథులు, పొదుపు నుంచి ₹2 లక్షలు"
+          },
+          "quality": "ok",
+          "effects": {
+            "cash": -200000,
+            "meters": {
+              "family": 4,
+              "joy": 3
+            }
+          },
+          "outcome": {
+            "en": "Nobody is fully happy, so everybody is a little happy. Your savings take a big hit, but no loan.",
+            "hi": "कोई पूरा खुश नहीं, तो सब थोड़े-थोड़े खुश। आपकी बचत को बड़ा झटका लगता है, पर कोई लोन नहीं।",
+            "te": "ఎవరూ పూర్తిగా సంతోషంగా లేరు, అందుకే అందరూ కొంచెం సంతోషంగా ఉన్నారు. మీ పొదుపుకు పెద్ద దెబ్బ, కానీ అప్పు లేదు."
+          },
+          "why": {
+            "en": "Spending your own savings is better than borrowing. Spending less is better still.",
+            "hi": "उधार लेने से बेहतर है अपनी बचत खर्च करना। और कम खर्च करना उससे भी बेहतर।",
+            "te": "అప్పు చేయడం కంటే సొంత పొదుపు ఖర్చు పెట్టడం మేలు. తక్కువ ఖర్చు పెట్టడం ఇంకా మేలు."
+          },
+          "next": "m4_joint"
+        }
+      ]
+    },
+    {
+      "id": "m4_joint",
+      "age": 27,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L21",
+      "objective": {
+        "en": "Kiran wants to make a family money plan at the bank.",
+        "hi": "किरण का मन है कि बैंक जाकर परिवार के पैसों की योजना बनाई जाए।",
+        "te": "బ్యాంక్‌కు వెళ్లి కుటుంబ డబ్బు ప్లాన్ వేద్దామని కిరణ్ ఆలోచన."
+      },
+      "title": {
+        "en": "Two salaries, one plan",
+        "hi": "दो तनख्वाहें, एक योजना",
+        "te": "రెండు జీతాలు, ఒకే ప్లాన్"
+      },
+      "text": {
+        "en": "Together you earn ₹45,000 a month. {cast:banker} draws **three pots**: safe, growth, dream. Outside, {cast:agent} waves an '[[nfo]] at only ₹10 a unit!' brochure.",
+        "hi": "आप दोनों मिलकर महीने के लगभग ₹45,000 कमाते हैं। {cast:banker} **तीन डिब्बे** बनाती हैं: सुरक्षित, बढ़ने वाला, सपनों का। बाहर {cast:agent} '[[nfo]] सिर्फ़ ₹10 प्रति यूनिट!' वाला पर्चा लहरा रहा है।",
+        "te": "ఇద్దరూ కలిసి నెలకు దాదాపు ₹45,000 సంపాదిస్తారు. {cast:banker} **మూడు డబ్బాలు** గీస్తుంది: భద్రం, పెరుగుదల, కల. బయట, {cast:agent} '[[nfo]], యూనిట్ కేవలం ₹10!' బ్రోచర్ ఊపుతున్నాడు."
+      },
+      "choices": [
+        {
+          "id": "spread",
+          "label": {
+            "en": "Spread it: index fund SIP, a [[debt_fund]], and an RD for the dream",
+            "hi": "पैसा बाँटें: इंडेक्स फंड SIP, एक [[debt_fund]], और सपने के लिए एक RD",
+            "te": "విభజించండి: ఇండెక్స్ ఫండ్ SIP, ఒక [[debt_fund]], కల కోసం ఒక RD"
+          },
+          "quality": "good",
+          "effects": {
+            "open": [
+              {
+                "product": "sip_index",
+                "amount": 15000
+              },
+              {
+                "product": "mf_debt",
+                "amount": 10000
+              },
+              {
+                "product": "rd",
+                "amount": 10000
+              }
+            ],
+            "flags": {
+              "add": [
+                "diversified"
+              ]
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "Three pots, three jobs. When one has a bad year, the others hold the family steady.",
+            "hi": "तीन डिब्बे, तीन काम। जब एक का साल खराब जाता है, बाकी दो परिवार को सँभाले रखते हैं।",
+            "te": "మూడు డబ్బాలు, మూడు పనులు. ఒకదానికి చెడ్డ సంవత్సరం వచ్చినప్పుడు, మిగతావి కుటుంబాన్ని నిలబెడతాయి."
+          },
+          "why": {
+            "en": "[[diversification]]: different investments fall at different times. Low fees keep more of the growth for you.",
+            "hi": "[[diversification]]: अलग-अलग निवेश अलग-अलग समय पर गिरते हैं। कम फ़ीस से बढ़त का ज़्यादा हिस्सा आपके पास रहता है।",
+            "te": "[[diversification]]: వేర్వేరు పెట్టుబడులు వేర్వేరు సమయాల్లో పడిపోతాయి. ఫీజులు తక్కువ ఉంటే పెరిగిన దాంట్లో ఎక్కువ భాగం మీకే మిగులుతుంది."
+          },
+          "next": "m4_flood"
+        },
+        {
+          "id": "all_stock",
+          "label": {
+            "en": "Put ₹35,000 into Spark Mobile shares. They doubled last year",
+            "hi": "₹35,000 स्पार्क मोबाइल के शेयरों में डालें। पिछले साल ये दोगुने हुए",
+            "te": "₹35,000 స్పార్క్ మొబైల్ షేర్లలో పెట్టండి. పోయిన ఏడాది డబుల్ అయ్యాయి"
+          },
+          "quality": "bad",
+          "effects": {
+            "open": {
+              "product": "stock_spark",
+              "amount": 35000
+            },
+            "flags": {
+              "add": [
+                "one_basket"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "All eggs, one basket. The basket is very exciting.",
+            "hi": "सारे अंडे, एक ही टोकरी में। टोकरी बहुत रोमांचक है।",
+            "te": "గుడ్లన్నీ ఒకే బుట్టలో. ఆ బుట్ట మాత్రం భలే థ్రిల్లింగ్‌గా ఉంది."
+          },
+          "why": {
+            "en": "One company can fall 70% on one bad news day. Never put money you need into a single share.",
+            "hi": "एक बुरी खबर वाले दिन कोई कंपनी 70% गिर सकती है। जिस पैसे की ज़रूरत हो, उसे कभी एक ही शेयर में न डालें।",
+            "te": "ఒక్క చెడ్డ వార్తతో ఒక కంపెనీ షేరు ఒక్క రోజులో 70% పడిపోవచ్చు. మీకు అవసరమైన డబ్బును ఎప్పుడూ ఒక్క షేర్‌లో పెట్టకండి."
+          },
+          "next": "m4_flood"
+        },
+        {
+          "id": "nfo",
+          "label": {
+            "en": "Ramana's new fund: 'Only ₹10 a unit, so cheap!'",
+            "hi": "रमणा का नया फंड: 'सिर्फ़ ₹10 प्रति यूनिट, कितना सस्ता!'",
+            "te": "రమణ కొత్త ఫండ్: 'యూనిట్ కేవలం ₹10, చాలా చౌక!'"
+          },
+          "quality": "bad",
+          "effects": {
+            "open": {
+              "product": "mf_active",
+              "amount": 35000
+            },
+            "flags": {
+              "add": [
+                "nfo"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "A ₹10 unit is not 'cheaper' than a ₹300 unit: the price per unit means nothing. The 2.3% fee and Ramana's commission mean a lot.",
+            "hi": "₹10 की यूनिट ₹300 की यूनिट से 'सस्ती' नहीं है: प्रति यूनिट कीमत का कोई मतलब नहीं। 2.3% फ़ीस और रमणा के कमीशन का बहुत मतलब है।",
+            "te": "₹10 యూనిట్ ₹300 యూనిట్ కంటే 'చౌక' కాదు: యూనిట్ ధరకు ఏ అర్థమూ లేదు. 2.3% ఫీజుకు, రమణ కమిషన్‌కు మాత్రం చాలా అర్థం ఉంది."
+          },
+          "why": {
+            "en": "Judge funds by fees ([[expense_ratio]]) and long-term record, never by the unit price or the agent's smile.",
+            "hi": "फंड को उसकी फ़ीस ([[expense_ratio]]) और लंबे समय के रिकॉर्ड से परखें, यूनिट की कीमत या एजेंट की मुस्कान से कभी नहीं।",
+            "te": "ఫండ్‌ను ఫీజు ([[expense_ratio]]), దీర్ఘకాల రికార్డు చూసి అంచనా వేయండి. యూనిట్ ధర చూసో, ఏజెంట్ నవ్వు చూసో ఎప్పుడూ కాదు."
+          },
+          "next": "m4_flood"
+        }
+      ]
+    },
+    {
+      "id": "m4_flood",
+      "age": 28,
+      "location": "field",
+      "speaker": "father",
+      "lesson": "L20",
+      "objective": {
+        "en": "Flood warning! The canal is overflowing. Run to Nanna's cotton field!",
+        "hi": "बाढ़ की चेतावनी! नहर उफ़न रही है। नान्ना के कपास के खेत की ओर दौड़ें!",
+        "te": "వరద హెచ్చరిక! కాలువ పొంగుతోంది. నాన్న పత్తి చేనుకు పరుగెత్తండి!"
+      },
+      "rush": {
+        "seconds": 25,
+        "effects": {
+          "shock": {
+            "kind": "other",
+            "cost": 15000
+          }
+        },
+        "note": {
+          "en": "You arrived late. The water took the cotton bales stored by the gate: ₹15,000.",
+          "hi": "आप देर से पहुँचे। गेट के पास रखी कपास की गाँठें पानी बहा ले गया: ₹15,000।",
+          "te": "మీరు ఆలస్యంగా వచ్చారు. గేటు దగ్గర పెట్టిన పత్తి బేళ్లను నీళ్లు ఎత్తుకుపోయాయి: ₹15,000."
+        }
+      },
+      "title": {
+        "en": "The water rises",
+        "hi": "पानी चढ़ रहा है",
+        "te": "నీళ్లు పెరుగుతున్నాయి"
+      },
+      "text": {
+        "en": "Midnight. The canal **bursts**. Nanna's whole crop is **under water** and the house walls are **cracking**. Damage: ₹1,50,000. Bujji stands on the haystack, unimpressed.",
+        "hi": "आधी रात को नहर **टूट** जाती है। नान्ना की पूरी फ़सल **पानी में डूबी** है और घर की दीवारों में **दरारें** पड़ रही हैं। नुकसान: ₹1,50,000। बुज्जी भूसे के ढेर पर खड़ी है, जैसे कुछ हुआ ही न हो।",
+        "te": "అర్ధరాత్రి కాలువ **తెగుతుంది**. నాన్న పంట మొత్తం **నీళ్లలో మునిగింది**, ఇంటి గోడలు **బీటలు** వారుతున్నాయి. నష్టం: ₹1,50,000. బుజ్జి గడ్డివాము మీద నిలబడి, ఏమీ పట్టనట్టు చూస్తోంది."
+      },
+      "choices": [
+        {
+          "id": "crop_claim",
+          "label": {
+            "en": "Claim the [[pmfby]] crop insurance, then use savings for the walls",
+            "hi": "[[pmfby]] फ़सल बीमा का क्लेम करें, फिर दीवारों के लिए बचत लगाएँ",
+            "te": "[[pmfby]] పంట బీమా క్లెయిమ్ చేయండి, గోడలకు పొదుపు వాడండి"
+          },
+          "quality": "good",
+          "requires": {
+            "owns": [
+              "insurance_crop"
+            ]
+          },
+          "lockedHint": {
+            "en": "Nobody enrolled Nanna's crop for insurance.",
+            "hi": "किसी ने नान्ना की फ़सल का बीमा नहीं करवाया था।",
+            "te": "నాన్న పంటకు ఎవరూ బీమా చేయించలేదు."
+          },
+          "effects": {
+            "shock": {
+              "kind": "flood",
+              "cost": 150000
+            }
+          },
+          "outcome": {
+            "en": "The crop claim pays ₹50,000 in six weeks. Your savings cover the walls. Nanna can't stop talking about 'that cheap insurance'.",
+            "hi": "फ़सल का क्लेम छह हफ़्ते में ₹50,000 देता है। दीवारों का खर्च आपकी बचत से निकल जाता है। नान्ना 'उस सस्ते बीमे' की तारीफ़ करते नहीं थकते।",
+            "te": "ఆరు వారాల్లో పంట క్లెయిమ్ ₹50,000 ఇస్తుంది. గోడలకు మీ పొదుపు సరిపోతుంది. 'ఆ చౌక బీమా' గురించి నాన్న మాట్లాడటం ఆపడు."
+          },
+          "why": {
+            "en": "Crop insurance costs farmers very little, because the government pays most of the premium.",
+            "hi": "फ़सल बीमा किसानों को बहुत सस्ता पड़ता है, क्योंकि प्रीमियम का ज़्यादातर हिस्सा सरकार भरती है।",
+            "te": "పంట బీమాకు రైతుల ఖర్చు చాలా తక్కువ, ఎందుకంటే ప్రీమియంలో ఎక్కువ భాగం ప్రభుత్వమే కడుతుంది."
+          },
+          "next": "m4_harvest"
+        },
+        {
+          "id": "savings",
+          "label": {
+            "en": "Pay from your emergency fund and savings",
+            "hi": "आपात फंड और बचत से खर्च उठाएँ",
+            "te": "మీ అత్యవసర నిధి, పొదుపు నుంచి కట్టండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "shock": {
+              "kind": "flood",
+              "cost": 150000
+            }
+          },
+          "outcome": {
+            "en": "Your savings take the hit. The walls are rebuilt before the next rain. No loan.",
+            "hi": "झटका आपकी बचत झेल लेती है। अगली बारिश से पहले दीवारें फिर से खड़ी हो जाती हैं। कोई लोन नहीं।",
+            "te": "దెబ్బ మీ పొదుపు మీద పడుతుంది. తర్వాతి వానకు ముందే గోడలు మళ్లీ లేస్తాయి. అప్పు లేదు."
+          },
+          "why": {
+            "en": "This is why an emergency fund matters: disasters don't wait until you're ready.",
+            "hi": "इसीलिए आपात फंड ज़रूरी है: मुसीबत आपके तैयार होने का इंतज़ार नहीं करती।",
+            "te": "అత్యవసర నిధి ఎందుకు ముఖ్యమో ఇదే: మీరు సిద్ధమయ్యే దాకా విపత్తులు ఆగవు."
+          },
+          "next": "m4_harvest"
+        },
+        {
+          "id": "sahukar",
+          "label": {
+            "en": "Narsaiah sahukar is already at the gate with cash",
+            "hi": "नरसैया साहूकार नकद लेकर पहले ही गेट पर खड़ा है",
+            "te": "నర్సయ్య షావుకారు డబ్బుతో ఇప్పటికే గేటు దగ్గర ఉన్నాడు"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "After a disaster, the [[sahukar]] arrives first, because desperate families sign anything. 24% a year on ₹1.5 lakh is ₹36,000 a year in interest alone.",
+            "hi": "आफ़त के बाद [[sahukar]] सबसे पहले पहुँचता है, क्योंकि मजबूर परिवार कुछ भी साइन कर देते हैं। ₹1.5 लाख पर 24% सालाना यानी सिर्फ़ ब्याज ही हर साल ₹36,000।",
+            "te": "విపత్తు తర్వాత [[sahukar]] అందరికంటే ముందు వస్తాడు, ఎందుకంటే కష్టంలో ఉన్న కుటుంబాలు దేనికైనా సంతకం పెడతాయి. ₹1.5 లక్షల మీద ఏడాదికి 24% అంటే, ఒక్క వడ్డీకే ఏడాదికి ₹36,000."
+          },
+          "effects": {
+            "loan": {
+              "source": "moneylender",
+              "principal": 150000
+            },
+            "shock": {
+              "kind": "flood",
+              "cost": 150000
+            },
+            "flags": {
+              "add": [
+                "flood_sahukar"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Narsaiah is very kind tonight. His ledger is very patient. It will be there for years.",
+            "hi": "नरसैया आज रात बहुत दयालु है। उसकी बही बहुत सब्र वाली है। वह सालों तक वहीं रहेगी।",
+            "te": "ఈ రాత్రి నర్సయ్య చాలా దయగా ఉన్నాడు. అతని లెక్కల పుస్తకం చాలా ఓపిక గలది. ఏళ్ల తరబడి అక్కడే ఉంటుంది."
+          },
+          "why": {
+            "en": "Expensive debt after a calamity is how one bad year becomes ten bad years.",
+            "hi": "आफ़त के बाद महँगा कर्ज़, यही वह रास्ता है जिससे एक बुरा साल दस बुरे साल बन जाता है।",
+            "te": "విపత్తు తర్వాత ఖరీదైన అప్పు చేస్తే, ఒక్క చెడ్డ ఏడాది పది చెడ్డ ఏళ్లు అవుతుంది."
+          },
+          "next": "m4_harvest"
+        }
+      ]
+    },
+    {
+      "id": "m4_harvest",
+      "age": 30,
+      "location": "square",
+      "speaker": "tempter",
+      "lesson": "L22",
+      "objective": {
+        "en": "Drums at the village square! Lucky Prakash has arrived in a white SUV.",
+        "hi": "गाँव के चौक पर ढोल बज रहे हैं! लकी प्रकाश सफ़ेद SUV में आया है।",
+        "te": "ఊరి కూడలిలో డప్పులు! లక్కీ ప్రకాష్ తెల్ల SUVలో వచ్చాడు."
+      },
+      "title": {
+        "en": "The Golden Harvest festival",
+        "hi": "गोल्डन हार्वेस्ट उत्सव",
+        "te": "గోల్డెన్ హార్వెస్ట్ పండుగ"
+      },
+      "text": {
+        "en": "Drums at the square! {cast:tempter}, in gold sunglasses the size of plates, hands out sweets. Golden Harvest pays '**5% a month, every time**'. Nanna just sold half his land for ₹4 lakh. \"Should I put it in, {player}?\"",
+        "hi": "चौक पर ढोल! थाली जितना बड़ा सुनहरा चश्मा पहने {cast:tempter} मिठाई बाँट रहा है। गोल्डन हार्वेस्ट देता है '**हर महीने 5%, हर बार**'। नान्ना ने अभी आधी ज़मीन बेचकर ₹4 लाख पाए हैं। \"क्या इसमें लगा दूँ, {player}?\"",
+        "te": "చౌరస్తాలో డప్పులు! పళ్లేలంత పెద్ద బంగారు కళ్లద్దాలు పెట్టుకుని {cast:tempter} స్వీట్లు పంచుతున్నాడు. గోల్డెన్ హార్వెస్ట్ '**నెలకు 5%, ప్రతిసారీ**' ఇస్తుందట. సగం భూమి అమ్మితే నాన్నకు ₹4 లక్షలు వచ్చాయి. \"అందులో పెట్టనా, {player}?\""
+      },
+      "choices": [
+        {
+          "id": "stop_nanna",
+          "label": {
+            "en": "Stop Nanna. Show him the maths: 60% a year is impossible",
+            "hi": "नान्ना को रोकें। उन्हें हिसाब दिखाएँ: साल का 60% नामुमकिन है",
+            "te": "నాన్నను ఆపండి. లెక్క చూపించండి: ఏడాదికి 60% అసాధ్యం"
+          },
+          "quality": "good",
+          "effects": {
+            "meters": {
+              "family": 4
+            },
+            "flags": {
+              "add": [
+                "saved_nanna"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "You write it out: ₹4 lakh at 60% a year would be ₹27 lakh in four years. Nanna goes quiet. \"Then where does the money come from?\"",
+            "hi": "आप लिखकर दिखाते हैं: ₹4 लाख पर साल का 60% हो, तो चार साल में ₹27 लाख। नान्ना चुप हो जाते हैं। \"तो फिर यह पैसा आता कहाँ से है?\"",
+            "te": "మీరు రాసి చూపిస్తారు: ఏడాదికి 60%తో ₹4 లక్షలు నాలుగేళ్లలో ₹27 లక్షలు అవుతాయి. నాన్న మౌనంగా అయిపోతాడు. \"మరి ఆ డబ్బు ఎక్కడి నుంచి వస్తుంది?\""
+          },
+          "why": {
+            "en": "If returns are far above what banks and markets pay, the money is coming from new investors. That's a [[ponzi]].",
+            "hi": "अगर मुनाफ़ा बैंक और बाज़ार से कहीं ज़्यादा है, तो पैसा नए निवेशकों से आ रहा है। यही [[ponzi]] है।",
+            "te": "బ్యాంకులు, మార్కెట్లు ఇచ్చే దానికంటే రాబడి చాలా ఎక్కువ ఉంటే, ఆ డబ్బు కొత్త పెట్టుబడిదారుల నుంచే వస్తోంది. అదే [[ponzi]]."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "flood_sahukar",
+                  "wedding_debt"
+                ]
+              },
+              "to": "m4_end_wiped"
+            },
+            {
+              "if": {
+                "flags": [
+                  "wedding_debt"
+                ]
+              },
+              "to": "m4_end_emi"
+            },
+            {
+              "if": {
+                "flags": [
+                  "diversified"
+                ],
+                "notFlags": [
+                  "flood_sahukar"
+                ]
+              },
+              "to": "m4_end_fortress"
+            },
+            {
+              "to": "m4_end_ok"
+            }
+          ]
+        },
+        {
+          "id": "nanna_invests",
+          "label": {
+            "en": "Let him invest. Everyone else did",
+            "hi": "उन्हें लगाने दें। बाकी सबने भी तो लगाया",
+            "te": "పెట్టనివ్వండి. అందరూ పెట్టారు"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "Nanna's land money is the family's safety net. A scheme paying 60% a year can only pay old investors with new investors' money, until it can't.",
+            "hi": "नान्ना की ज़मीन का पैसा परिवार का सहारा है। साल का 60% देने वाली स्कीम पुराने निवेशकों को सिर्फ़ नए निवेशकों के पैसे से ही दे सकती है, तब तक, जब तक दे पाए।",
+            "te": "నాన్న భూమి డబ్బే కుటుంబానికి రక్షణ. ఏడాదికి 60% ఇచ్చే పథకం పాత పెట్టుబడిదారులకు కొత్తవాళ్ల డబ్బుతోనే ఇవ్వగలదు, ఇవ్వలేని రోజు వచ్చే దాకా."
+          },
+          "effects": {
+            "flags": {
+              "add": [
+                "nanna_gh"
+              ]
+            },
+            "meters": {
+              "family": 2
+            }
+          },
+          "outcome": {
+            "en": "Nanna signs with a gold pen. Prakash hugs him for the camera. The first ₹20,000 arrives next month.",
+            "hi": "नान्ना सोने के पेन से साइन करते हैं। प्रकाश कैमरे के सामने उन्हें गले लगाता है। पहले ₹20,000 अगले महीने आ जाते हैं।",
+            "te": "నాన్న బంగారు పెన్నుతో సంతకం పెడతాడు. కెమెరా కోసం ప్రకాష్ ఆయనను హత్తుకుంటాడు. మొదటి ₹20,000 వచ్చే నెల వస్తాయి."
+          },
+          "why": {
+            "en": "Early payouts are bait. Ponzi schemes pay the first investors so they recruit others.",
+            "hi": "शुरुआती पैसे चारा हैं। पोंज़ी स्कीम पहले निवेशकों को पैसे देती हैं, ताकि वे दूसरों को जोड़ें।",
+            "te": "మొదట్లో వచ్చే డబ్బు ఎర మాత్రమే. వాళ్లు ఇంకొందరిని చేర్పిస్తారని, పోంజీ పథకాలు మొదటి పెట్టుబడిదారులకు డబ్బు ఇస్తాయి."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "flood_sahukar",
+                  "wedding_debt"
+                ]
+              },
+              "to": "m4_end_wiped"
+            },
+            {
+              "to": "m4_end_nanna"
+            }
+          ]
+        },
+        {
+          "id": "invest_too",
+          "label": {
+            "en": "Invest ₹1 lakh of your own too. The payouts are real!",
+            "hi": "अपने ₹1 लाख भी लगा दें। पैसे सच में आ रहे हैं!",
+            "te": "మీ సొంత ₹1 లక్ష కూడా పెట్టండి. డబ్బులు నిజంగానే వస్తున్నాయి!"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "Payouts being 'real' proves nothing: they're paid from newer investors' money. When recruitment slows, everyone loses together.",
+            "hi": "पैसे 'सच में' आने से कुछ साबित नहीं होता: वे नए निवेशकों के पैसे से दिए जाते हैं। जब नए लोग जुड़ना कम होंगे, सब एक साथ डूबेंगे।",
+            "te": "డబ్బులు 'నిజంగా' రావడం ఏమీ రుజువు చేయదు: అవి కొత్త పెట్టుబడిదారుల డబ్బుతోనే ఇస్తున్నారు. కొత్తవాళ్లు చేరడం తగ్గగానే, అందరూ కలిసి మునుగుతారు."
+          },
+          "effects": {
+            "cash": -100000,
+            "flags": {
+              "add": [
+                "gh_investor",
+                "gh_big"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "Your Golden Harvest card is gold-coloured. Prakash calls you 'partner'. You feel important.",
+            "hi": "आपका गोल्डन हार्वेस्ट कार्ड सुनहरे रंग का है। प्रकाश आपको 'पार्टनर' बुलाता है। आपको लगता है कि आप कोई ख़ास हैं।",
+            "te": "మీ గోల్డెన్ హార్వెస్ట్ కార్డు బంగారు రంగులో ఉంది. ప్రకాష్ మిమ్మల్ని 'పార్ట్‌నర్' అని పిలుస్తాడు. మీకు చాలా గొప్పగా అనిపిస్తుంది."
+          },
+          "why": {
+            "en": "Feeling like an insider is part of the trap. Real investments don't need you to recruit anyone.",
+            "hi": "'अंदर के ख़ास आदमी' होने का एहसास भी जाल का हिस्सा है। असली निवेश में किसी को जोड़ने की ज़रूरत नहीं होती।",
+            "te": "లోపలి మనిషిలా అనిపించడం కూడా ఉచ్చులో భాగమే. నిజమైన పెట్టుబడుల్లో మీరు ఎవరినీ చేర్పించాల్సిన అవసరం లేదు."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "flood_sahukar",
+                  "wedding_debt"
+                ]
+              },
+              "to": "m4_end_wiped"
+            },
+            {
+              "to": "m4_end_partner"
+            }
+          ]
+        },
+        {
+          "id": "collect",
+          "label": {
+            "en": "Smile, take a brochure, and quietly collect evidence",
+            "hi": "मुस्कुराएँ, एक पर्चा लें, और चुपचाप सबूत जमा करें",
+            "te": "నవ్వండి, బ్రోచర్ తీసుకోండి, చప్పుడు లేకుండా సాక్ష్యాలు సేకరించండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "evidence_goldharvest",
+                "saved_nanna"
+              ]
+            },
+            "gyaan": 3
+          },
+          "outcome": {
+            "en": "Brochures, receipts, the agents' list, a video of Prakash promising '5% guaranteed'. You hide the file at Kavitha akka's bank.",
+            "hi": "पर्चे, रसीदें, एजेंटों की सूची, '5% गारंटी' का वादा करते प्रकाश का वीडियो। आप यह फ़ाइल कविता अक्का के बैंक में छिपा देते हैं।",
+            "te": "బ్రోచర్లు, రసీదులు, ఏజెంట్ల జాబితా, '5% గ్యారంటీ' అని ప్రకాష్ హామీ ఇస్తున్న వీడియో. ఆ ఫైల్‌ను కవిత అక్క బ్యాంకులో దాచిపెడతారు."
+          },
+          "why": {
+            "en": "Written promises of guaranteed returns are evidence. Regulators and police need proof to act.",
+            "hi": "पक्के मुनाफ़े के लिखित वादे सबूत होते हैं। रेगुलेटर और पुलिस को कार्रवाई के लिए सबूत चाहिए।",
+            "te": "గ్యారంటీ రాబడి అని రాసి ఇచ్చిన హామీలే సాక్ష్యాలు. రెగ్యులేటర్లు, పోలీసులు చర్య తీసుకోవాలంటే రుజువు కావాలి."
+          },
+          "next": [
+            {
+              "if": {
+                "flags": [
+                  "flood_sahukar",
+                  "wedding_debt"
+                ]
+              },
+              "to": "m4_end_wiped"
+            },
+            {
+              "if": {
+                "flags": [
+                  "wedding_debt"
+                ]
+              },
+              "to": "m4_end_emi"
+            },
+            {
+              "if": {
+                "flags": [
+                  "diversified"
+                ],
+                "notFlags": [
+                  "flood_sahukar"
+                ]
+              },
+              "to": "m4_end_fortress"
+            },
+            {
+              "to": "m4_end_ok"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m4_end_fortress",
+      "type": "outcome",
+      "tone": "good",
+      "title": {
+        "en": "The family fortress",
+        "hi": "परिवार का किला",
+        "te": "కుటుంబ కోట"
+      },
+      "text": {
+        "en": "A wedding without debt, money in three pots, a flood survived, and Nanna's land money safe. The village starts asking you for advice.",
+        "hi": "बिना कर्ज़ की शादी, तीन डिब्बों में पैसा, बाढ़ से बच निकले, और नान्ना की ज़मीन का पैसा सुरक्षित। गाँव वाले आपसे सलाह माँगने लगे हैं।",
+        "te": "అప్పు లేని పెళ్లి, మూడు డబ్బాల్లో డబ్బు, వరదను తట్టుకున్నారు, నాన్న భూమి డబ్బు భద్రం. ఊరి వాళ్లు మీ సలహా అడగడం మొదలుపెడతారు."
+      },
+      "effects": {
+        "meters": {
+          "joy": 4,
+          "family": 4
+        }
+      }
+    },
+    {
+      "id": "m4_end_ok",
+      "type": "outcome",
+      "tone": "mixed",
+      "title": {
+        "en": "Holding on",
+        "hi": "डटे हुए",
+        "te": "నిలదొక్కుకుంటూ"
+      },
+      "text": {
+        "en": "Some good calls, some costly ones. The family is together, the walls are standing, and Nanna's money is safe. For now.",
+        "hi": "कुछ सही फ़ैसले, कुछ महँगे। परिवार साथ है, दीवारें खड़ी हैं, और नान्ना का पैसा सुरक्षित है। फ़िलहाल।",
+        "te": "కొన్ని మంచి నిర్ణయాలు, కొన్ని ఖరీదైనవి. కుటుంబం కలిసే ఉంది, గోడలు నిలబడ్డాయి, నాన్న డబ్బు భద్రంగా ఉంది. ప్రస్తుతానికి."
+      }
+    },
+    {
+      "id": "m4_end_emi",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "The wedding EMI",
+        "hi": "शादी की EMI",
+        "te": "పెళ్లి EMI"
+      },
+      "text": {
+        "en": "Every month, ₹9,000 leaves for a party nobody remembers. Kiran picks up night shifts. The dream jar stays almost empty.",
+        "hi": "हर महीने ₹9,000 उस पार्टी के लिए जाते हैं जो अब किसी को याद भी नहीं। किरण को अब नाइट शिफ़्ट भी करनी पड़ती है। सपनों की गुल्लक लगभग खाली रहती है।",
+        "te": "ప్రతి నెలా ₹9,000 ఎవరికీ గుర్తు లేని ఒక పార్టీ కోసం వెళ్లిపోతాయి. కిరణ్ నైట్ షిఫ్ట్‌లు కూడా చేయాల్సి వస్తోంది. కల డబ్బా దాదాపు ఖాళీగానే ఉంది."
+      }
+    },
+    {
+      "id": "m4_end_nanna",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "Nanna's land money",
+        "hi": "नान्ना की ज़मीन का पैसा",
+        "te": "నాన్న భూమి డబ్బు"
+      },
+      "text": {
+        "en": "Nanna's ₹4 lakh is in Golden Harvest. The payouts arrive on time, and he tells everyone at the tea stall. You lie awake at night, doing the maths.",
+        "hi": "नान्ना के ₹4 लाख गोल्डन हार्वेस्ट में हैं। पैसे समय पर आते हैं, और वे चाय की दुकान पर सबको बताते हैं। आप रात भर जागकर हिसाब लगाते रहते हैं।",
+        "te": "నాన్న ₹4 లక్షలు గోల్డెన్ హార్వెస్ట్‌లో ఉన్నాయి. డబ్బులు టైమ్‌కి వస్తున్నాయి, టీ కొట్టు దగ్గర అందరికీ గొప్పగా చెప్పుకుంటాడు. మీరు రాత్రిళ్లు నిద్ర పట్టక లెక్కలు వేస్తూ ఉంటారు."
+      }
+    },
+    {
+      "id": "m4_end_partner",
+      "type": "outcome",
+      "tone": "bad",
+      "title": {
+        "en": "Prakash's 'partner'",
+        "hi": "प्रकाश का 'पार्टनर'",
+        "te": "ప్రకాష్ 'పార్ట్‌నర్'"
+      },
+      "text": {
+        "en": "Your name is on Golden Harvest's 'top investors' board at the square. Three neighbours joined because they saw it.",
+        "hi": "चौक पर गोल्डन हार्वेस्ट के 'टॉप निवेशक' बोर्ड पर आपका नाम है। उसे देखकर तीन पड़ोसी भी जुड़ गए।",
+        "te": "కూడలిలో గోల్డెన్ హార్వెస్ట్ 'టాప్ ఇన్వెస్టర్ల' బోర్డు మీద మీ పేరు ఉంది. అది చూసే ముగ్గురు పొరుగువాళ్లు చేరారు."
+      }
+    },
+    {
+      "id": "m4_end_wiped",
+      "type": "outcome",
+      "tone": "tragic",
+      "title": {
+        "en": "Drowning in debt",
+        "hi": "कर्ज़ में डूबे",
+        "te": "అప్పుల్లో మునిగిపోయారు"
+      },
+      "text": {
+        "en": "A wedding loan, a sahukar's flood loan, and EMIs bigger than your salary. Kiran's salary goes to interest. The dream feels like a story about someone else.",
+        "hi": "शादी का लोन, बाढ़ में लिया साहूकार का लोन, और तनख्वाह से बड़ी EMI। किरण की तनख्वाह ब्याज में चली जाती है। सपना अब किसी और की कहानी जैसा लगता है।",
+        "te": "పెళ్లి లోన్, వరదప్పుడు షావుకారు అప్పు, మీ జీతం కంటే పెద్ద EMIలు. కిరణ్ జీతం వడ్డీకే పోతోంది. కల వేరే ఎవరిదో కథలా అనిపిస్తోంది."
+      },
+      "effects": {
+        "meters": {
+          "joy": -8
+        }
+      }
+    }
+  ]
+}

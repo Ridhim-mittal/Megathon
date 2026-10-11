@@ -1,52 +1,196 @@
 {
   "dream_on_time": {
-    "house": {"en": "A pucca house with a cement roof. The first monsoon comes, and nothing leaks. Ammamma has her own room, and the family photo has Bujji in it, uninvited."},
-    "business": {"en": "Your name is painted on the board above your shop. The first customer is Anjamma aunty. She pays in cash, and writes nothing in any notebook."},
-    "education": {"en": "Chinni walks across the stage in her nurse's white. Her degree is fully paid. No sahukar, no loan app, no one knocking."},
-    "vehicle": {"en": "Your goods auto rattles down the village road with a load of cotton. It earns every single day, and it's fully yours."},
-    "parents": {"en": "Amma and Nanna have a pension, a health card and savings in their own names. Nanna buys a newspaper every morning, just because he can."}
+    "house": {
+      "en": "A pakka house with a cement roof. The first monsoon comes, and nothing leaks. Ammamma has her own room, and the family photo has Bujji in it, uninvited.",
+      "hi": "सीमेंट की छत वाला पक्का घर। पहली बारिश आती है, और कुछ नहीं टपकता। अम्मम्मा का अपना कमरा है, और परिवार की फ़ोटो में बिना बुलाए बुज्जी भी है।",
+      "te": "సిమెంట్ పైకప్పున్న పక్కా ఇల్లు. మొదటి వాన వస్తుంది, ఏదీ కారదు. అమ్మమ్మకు సొంత గది, కుటుంబ ఫోటోలో పిలవకుండానే బుజ్జి కూడా."
+    },
+    "business": {
+      "en": "Your name is painted on the board above your shop. The first customer is Anjamma aunty. She pays in cash, and writes nothing in any notebook.",
+      "hi": "आपकी दुकान के बोर्ड पर आपका नाम लिखा है। पहली ग्राहक अंजम्मा आंटी हैं। वे नकद देती हैं, और किसी कॉपी में कुछ नहीं लिखतीं।",
+      "te": "మీ షాప్ బోర్డు మీద మీ పేరు రాసి ఉంది. మొదటి కస్టమర్ అంజమ్మ ఆంటీ. నగదు ఇస్తుంది, ఏ పుస్తకంలోనూ ఏమీ రాయదు."
+    },
+    "education": {
+      "en": "Chinni walks across the stage in her nurse's white. Her degree is fully paid. No sahukar, no loan app, no one knocking.",
+      "hi": "चिन्नी नर्स की सफ़ेद पोशाक में मंच पर चलती है। उसकी डिग्री पूरी चुकाई हुई है। न साहूकार, न लोन ऐप, न कोई दरवाज़ा खटखटाने वाला।",
+      "te": "చిన్ని నర్సు తెల్ల దుస్తుల్లో వేదిక మీద నడుస్తుంది. ఆమె డిగ్రీ పూర్తిగా కట్టేశారు. షావుకారు లేడు, లోన్ యాప్ లేదు, తలుపు తట్టేవాళ్లు లేరు."
+    },
+    "vehicle": {
+      "en": "Your goods auto rattles down the village road with a load of cotton. It earns every single day, and it's fully yours.",
+      "hi": "आपका माल ऑटो कपास लादे गाँव की सड़क पर खड़खड़ाता चलता है। यह हर दिन कमाता है, और पूरी तरह आपका है।",
+      "te": "మీ సరుకుల ఆటో పత్తి బరువుతో ఊరి రోడ్డు మీద గడగడలాడుతూ వెళ్తుంది. ప్రతి రోజూ సంపాదిస్తుంది, పూర్తిగా మీదే."
+    },
+    "parents": {
+      "en": "Amma and Nanna have a pension, a health card and savings in their own names. Nanna buys a newspaper every morning, just because he can.",
+      "hi": "अम्मा और नान्ना के नाम पर पेंशन, हेल्थ कार्ड और बचत है। नान्ना हर सुबह अख़बार खरीदते हैं, बस इसलिए कि खरीद सकते हैं।",
+      "te": "అమ్మానాన్నల పేరు మీద పెన్షన్, హెల్త్ కార్డు, పొదుపు ఉన్నాయి. నాన్న ప్రతి ఉదయం పేపర్ కొంటాడు, కొనగలడు కాబట్టి."
+    }
   },
   "dream_with_debt": {
-    "house": {"en": "The house is real. So are the EMIs on the wall calendar. Every month the roof holds, and every month the bank is paid."},
-    "business": {"en": "The shop is open, and busy. But half of each good month goes to the lender, and the bad months keep you awake."},
-    "education": {"en": "Chinni is a nurse. The loans that got her there will take years to clear. She sends you ₹2,000 a month to help."},
-    "vehicle": {"en": "The auto earns. The lender earns more. You drive twelve hours a day to stay ahead of the EMI."},
-    "parents": {"en": "Amma and Nanna are safe, but you borrowed to make it so. The debt is yours now, and it is heavy."}
+    "house": {
+      "en": "The house is real. So are the EMIs on the wall calendar. Every month the roof holds, and every month the bank is paid.",
+      "hi": "घर सच है। दीवार के कैलेंडर पर लिखी EMI भी सच है। हर महीने छत टिकती है, और हर महीने बैंक को पैसा जाता है।",
+      "te": "ఇల్లు నిజమే. గోడ క్యాలెండర్ మీద EMIలు కూడా నిజమే. ప్రతి నెలా పైకప్పు నిలుస్తుంది, ప్రతి నెలా బ్యాంక్‌కు కడతారు."
+    },
+    "business": {
+      "en": "The shop is open, and busy. But half of each good month goes to the lender, and the bad months keep you awake.",
+      "hi": "दुकान खुली है, और चलती भी है। पर हर अच्छे महीने का आधा कर्ज़दाता को जाता है, और बुरे महीने नींद उड़ा देते हैं।",
+      "te": "షాప్ తెరిచే ఉంది, బాగా నడుస్తోంది. కానీ ప్రతి మంచి నెలలో సగం అప్పు ఇచ్చినవాడికే, చెడ్డ నెలలు నిద్ర పోనివ్వవు."
+    },
+    "education": {
+      "en": "Chinni is a nurse. The loans that got her there will take years to clear. She sends you ₹2,000 a month to help.",
+      "hi": "चिन्नी नर्स है। जिन कर्ज़ों से वह वहाँ पहुँची, उन्हें चुकाने में सालों लगेंगे। वह मदद के लिए हर महीने आपको ₹2,000 भेजती है।",
+      "te": "చిన్ని నర్సు అయింది. అక్కడికి చేర్చిన అప్పులు తీరడానికి ఏళ్లు పడతాయి. సహాయంగా నెలకు ₹2,000 మీకు పంపుతుంది."
+    },
+    "vehicle": {
+      "en": "The auto earns. The lender earns more. You drive twelve hours a day to stay ahead of the EMI.",
+      "hi": "ऑटो कमाता है। कर्ज़दाता उससे ज़्यादा कमाता है। EMI से आगे रहने के लिए आप रोज़ बारह घंटे गाड़ी चलाते हैं।",
+      "te": "ఆటో సంపాదిస్తుంది. అప్పు ఇచ్చినవాడు ఇంకా ఎక్కువ సంపాదిస్తాడు. EMIని అందుకోవడానికి మీరు రోజుకు పన్నెండు గంటలు నడుపుతారు."
+    },
+    "parents": {
+      "en": "Amma and Nanna are safe, but you borrowed to make it so. The debt is yours now, and it is heavy.",
+      "hi": "अम्मा और नान्ना सुरक्षित हैं, पर इसके लिए आपने उधार लिया। अब कर्ज़ आपका है, और भारी है।",
+      "te": "అమ్మానాన్నలు భద్రంగా ఉన్నారు, కానీ దానికోసం మీరు అప్పు చేశారు. ఇప్పుడు అప్పు మీది, చాలా బరువైనది."
+    }
   },
   "dream_close": {
-    "house": {"en": "The foundation is laid and paid for. Walls next year. Ammamma: \"A tree doesn't fruit the year you plant it.\""},
-    "business": {"en": "The shop space is rented and the tools are bought. You need one more good year. You have savings and no costly debt to slow you."},
-    "education": {"en": "Three of Chinni's four years are paid. The last one is saved for, almost. Nobody in the family has borrowed from a sahukar."},
-    "vehicle": {"en": "The down payment is ready, and the bank has said yes to a fair loan. Next season, the auto."},
-    "parents": {"en": "Amma's pension has started; Nanna's comes next year. The savings are three-quarters there, and growing."}
+    "house": {
+      "en": "The foundation is laid and paid for. Walls next year. Ammamma: \"A tree doesn't fruit the year you plant it.\"",
+      "hi": "नींव पड़ गई और उसका पैसा चुक गया। दीवारें अगले साल। अम्मम्मा: \"पेड़ उसी साल फल नहीं देता जिस साल लगाया जाए।\"",
+      "te": "పునాది వేశారు, డబ్బు కూడా కట్టేశారు. గోడలు వచ్చే ఏడాది. అమ్మమ్మ: \"నాటిన ఏడాదే చెట్టు కాయదు.\""
+    },
+    "business": {
+      "en": "The shop space is rented and the tools are bought. You need one more good year. You have savings and no costly debt to slow you.",
+      "hi": "दुकान की जगह किराए पर है और औज़ार खरीद लिए हैं। बस एक और अच्छा साल चाहिए। बचत है, और कोई महँगा कर्ज़ रोकने वाला नहीं।",
+      "te": "షాప్ స్థలం అద్దెకు తీసుకున్నారు, పనిముట్లు కొన్నారు. ఇంకొక్క మంచి ఏడాది కావాలి. పొదుపు ఉంది, ఆపే ఖరీదైన అప్పు లేదు."
+    },
+    "education": {
+      "en": "Three of Chinni's four years are paid. The last one is saved for, almost. Nobody in the family has borrowed from a sahukar.",
+      "hi": "चिन्नी के चार में से तीन साल चुका दिए। आखिरी के लिए बचत लगभग हो गई। परिवार में किसी ने साहूकार से उधार नहीं लिया।",
+      "te": "చిన్ని నాలుగేళ్లలో మూడేళ్లు కట్టేశారు. చివరిదానికి పొదుపు దాదాపు అయిపోయింది. కుటుంబంలో ఎవరూ షావుకారు దగ్గర అప్పు చేయలేదు."
+    },
+    "vehicle": {
+      "en": "The down payment is ready, and the bank has said yes to a fair loan. Next season, the auto.",
+      "hi": "डाउन पेमेंट तैयार है, और बैंक ने सही कर्ज़ के लिए हाँ कह दी है। अगले मौसम में ऑटो।",
+      "te": "డౌన్ పేమెంట్ సిద్ధం, బ్యాంక్ సరైన రుణానికి ఒప్పుకుంది. వచ్చే సీజన్‌లో ఆటో."
+    },
+    "parents": {
+      "en": "Amma's pension has started; Nanna's comes next year. The savings are three-quarters there, and growing.",
+      "hi": "अम्मा की पेंशन शुरू हो गई; नान्ना की अगले साल। बचत तीन-चौथाई पहुँच गई है, और बढ़ रही है।",
+      "te": "అమ్మ పెన్షన్ మొదలైంది; నాన్నది వచ్చే ఏడాది. పొదుపు మూడొంతులు చేరింది, ఇంకా పెరుగుతోంది."
+    }
   },
   "secure_no_dream": {
-    "house": {"en": "No new house yet. But there's an emergency fund, health cover and no sahukar. When the roof leaks, you fix it without fear."},
-    "business": {"en": "No shop of your own yet. But you have savings, insurance and a clean credit score. When the chance comes, you'll be ready."},
-    "education": {"en": "Chinni's degree took a loan, but a fair one. Your family is insured, and the emergency jar is full. The dream changed shape, not direction."},
-    "vehicle": {"en": "No auto yet. But no debt, no fear and a full emergency jar. You still take the bus, and you sleep well."},
-    "parents": {"en": "The full plan isn't there yet. But Amma and Nanna are insured and nobody owes a sahukar. That alone is new in this family."}
+    "house": {
+      "en": "No new house yet. But there's an emergency fund, health cover and no sahukar. When the roof leaks, you fix it without fear.",
+      "hi": "अभी नया घर नहीं। पर आपात फंड है, स्वास्थ्य कवर है और कोई साहूकार नहीं। छत टपके तो बिना डर के ठीक कर लेते हैं।",
+      "te": "ఇంకా కొత్త ఇల్లు లేదు. కానీ అత్యవసర నిధి ఉంది, ఆరోగ్య బీమా ఉంది, షావుకారు లేడు. పైకప్పు కారితే భయం లేకుండా బాగు చేసుకుంటారు."
+    },
+    "business": {
+      "en": "No shop of your own yet. But you have savings, insurance and a clean credit score. When the chance comes, you'll be ready.",
+      "hi": "अभी अपनी दुकान नहीं। पर बचत है, बीमा है और साफ़ क्रेडिट स्कोर है। मौका आएगा तो आप तैयार होंगे।",
+      "te": "ఇంకా సొంత షాప్ లేదు. కానీ పొదుపు, బీమా, మంచి క్రెడిట్ స్కోర్ ఉన్నాయి. అవకాశం వస్తే మీరు సిద్ధం."
+    },
+    "education": {
+      "en": "Chinni's degree took a loan, but a fair one. Your family is insured, and the emergency jar is full. The dream changed shape, not direction.",
+      "hi": "चिन्नी की डिग्री में कर्ज़ लगा, पर सही कर्ज़। परिवार का बीमा है, और आपात डिब्बा भरा है। सपने का आकार बदला, दिशा नहीं।",
+      "te": "చిన్ని డిగ్రీకి అప్పు చేశారు, కానీ సరైన అప్పు. కుటుంబానికి బీమా ఉంది, అత్యవసర డబ్బా నిండుగా ఉంది. కల ఆకారం మారింది, దిశ కాదు."
+    },
+    "vehicle": {
+      "en": "No auto yet. But no debt, no fear and a full emergency jar. You still take the bus, and you sleep well.",
+      "hi": "अभी ऑटो नहीं। पर न कर्ज़, न डर, और आपात डिब्बा भरा। आप अब भी बस से जाते हैं, और चैन से सोते हैं।",
+      "te": "ఇంకా ఆటో లేదు. కానీ అప్పు లేదు, భయం లేదు, అత్యవసర డబ్బా నిండుగా. ఇంకా బస్సులోనే వెళ్తారు, ప్రశాంతంగా నిద్రపోతారు."
+    },
+    "parents": {
+      "en": "The full plan isn't there yet. But Amma and Nanna are insured and nobody owes a sahukar. That alone is new in this family.",
+      "hi": "पूरा प्लान अभी नहीं हुआ। पर अम्मा और नान्ना का बीमा है और किसी पर साहूकार का कर्ज़ नहीं। इस परिवार के लिए यही नई बात है।",
+      "te": "పూర్తి ప్లాన్ ఇంకా అవలేదు. కానీ అమ్మానాన్నలకు బీమా ఉంది, ఎవరూ షావుకారుకు బాకీ లేరు. ఈ కుటుంబంలో అదే కొత్త విషయం."
+    }
   },
   "debt_trap": {
-    "house": {"en": "The house plan is buried under loans. Anjamma aunty's khata is open again, and the EMIs take most of your pay. A way out exists: list every loan, start with the costliest, and talk to Kavitha akka tomorrow."},
-    "business": {"en": "The shop's earnings go to three lenders. Recovery calls come at dinner. A way out exists: stop new borrowing, swap costly loans for one bank loan, and ask for help."},
-    "education": {"en": "Chinni's fees went on sahukar and loan-app loans. Now the interest is bigger than the EMI. A way out exists: the bank's education loan can replace them. Go together."},
-    "vehicle": {"en": "The auto earns less than its loans cost. A way out exists: sell before the debt grows, clear the costliest loan, and start the cushion again."},
-    "parents": {"en": "You borrowed to look after Amma and Nanna, and now you all worry. A way out exists: one honest family meeting, one list of loans, one cheaper bank loan."}
+    "house": {
+      "en": "The house plan is buried under loans. Anjamma aunty's khata is open again, and the EMIs take most of your pay. A way out exists: list every loan, start with the costliest, and talk to Kavitha akka tomorrow.",
+      "hi": "घर का प्लान कर्ज़ों के नीचे दब गया। अंजम्मा आंटी का खाता फिर खुला है, और EMI ज़्यादातर तनख्वाह खा जाती हैं। रास्ता है: हर कर्ज़ लिखें, सबसे महँगे से शुरू करें, और कल कविता अक्का से बात करें।",
+      "te": "ఇంటి ప్లాన్ అప్పుల కింద కూరుకుపోయింది. అంజమ్మ ఆంటీ ఖాతా మళ్లీ తెరిచింది, EMIలు జీతంలో ఎక్కువ భాగం తింటున్నాయి. దారి ఉంది: ప్రతి అప్పు రాయండి, ఖరీదైనదానితో మొదలుపెట్టండి, రేపే కవిత అక్కతో మాట్లాడండి."
+    },
+    "business": {
+      "en": "The shop's earnings go to three lenders. Recovery calls come at dinner. A way out exists: stop new borrowing, swap costly loans for one bank loan, and ask for help.",
+      "hi": "दुकान की कमाई तीन कर्ज़दाताओं को जाती है। खाने के वक्त रिकवरी के फ़ोन आते हैं। रास्ता है: नया उधार बंद करें, महँगे कर्ज़ों को एक बैंक कर्ज़ में बदलें, और मदद माँगें।",
+      "te": "షాప్ సంపాదన ముగ్గురు అప్పుల వాళ్లకు వెళ్తోంది. భోజనం టైమ్‌లో రికవరీ కాల్స్. దారి ఉంది: కొత్త అప్పులు ఆపండి, ఖరీదైన అప్పులను ఒక బ్యాంక్ రుణంగా మార్చండి, సహాయం అడగండి."
+    },
+    "education": {
+      "en": "Chinni's fees went on sahukar and loan-app loans. Now the interest is bigger than the EMI. A way out exists: the bank's education loan can replace them. Go together.",
+      "hi": "चिन्नी की फ़ीस साहूकार और लोन ऐप के कर्ज़ से भरी गई। अब ब्याज EMI से भी बड़ा है। रास्ता है: बैंक का शिक्षा ऋण उनकी जगह ले सकता है। साथ में जाएँ।",
+      "te": "చిన్ని ఫీజులు షావుకారు, లోన్ యాప్ అప్పులతో కట్టారు. ఇప్పుడు వడ్డీ EMI కంటే పెద్దది. దారి ఉంది: బ్యాంక్ విద్యా రుణం వాటి స్థానంలోకి రావొచ్చు. కలిసి వెళ్లండి."
+    },
+    "vehicle": {
+      "en": "The auto earns less than its loans cost. A way out exists: sell before the debt grows, clear the costliest loan, and start the cushion again.",
+      "hi": "ऑटो अपने कर्ज़ों की कीमत से कम कमाता है। रास्ता है: कर्ज़ बढ़ने से पहले बेचें, सबसे महँगा कर्ज़ चुकाएँ, और फिर से गद्दी बनाना शुरू करें।",
+      "te": "ఆటో దాని అప్పుల ఖర్చు కంటే తక్కువ సంపాదిస్తోంది. దారి ఉంది: అప్పు పెరగకముందే అమ్మండి, ఖరీదైన అప్పు తీర్చండి, మళ్లీ భద్రతా నిధి మొదలుపెట్టండి."
+    },
+    "parents": {
+      "en": "You borrowed to look after Amma and Nanna, and now you all worry. A way out exists: one honest family meeting, one list of loans, one cheaper bank loan.",
+      "hi": "आपने अम्मा और नान्ना की देखभाल के लिए उधार लिया, और अब सब चिंता में हैं। रास्ता है: एक ईमानदार पारिवारिक बैठक, कर्ज़ों की एक सूची, एक सस्ता बैंक कर्ज़।",
+      "te": "అమ్మానాన్నల కోసం అప్పు చేశారు, ఇప్పుడు అందరూ ఆందోళనలో. దారి ఉంది: ఒక నిజాయితీ కుటుంబ సమావేశం, అప్పుల ఒక జాబితా, ఒక చౌక బ్యాంక్ రుణం."
+    }
   },
   "wrong_path": {
-    "house": {"en": "The shortcut cost more than any loan: a police case, a frozen account, and months of fear. You told the truth, and that was the turn. Today your bank account is clean, and the house is a plan again."},
-    "business": {"en": "For a while, your name was on the wrong kind of list. Coming clean, calling 1930 and returning the money brought it back. Now it's going on a shop board instead."},
-    "education": {"en": "Easy money nearly cost Chinni her big one. You came clean, paid back what you could and started again. She still says you're her hero, for the second half."},
-    "vehicle": {"en": "The shortcut ended at a police station. The way back started there too: the truth, a lawyer and honest work. The auto will come, more slowly, and fully yours."},
-    "parents": {"en": "Amma cried when the police came. She smiled when you told them everything. The way back is slower than the shortcut, but it goes somewhere."}
+    "house": {
+      "en": "The shortcut cost more than any loan: a police case, a frozen account, and months of fear. You told the truth, and that was the turn. Today your bank account is clean, and the house is a plan again.",
+      "hi": "शॉर्टकट किसी भी कर्ज़ से महँगा पड़ा: पुलिस केस, फ़्रीज़ खाता, और महीनों का डर। आपने सच बताया, और वहीं से मोड़ आया। आज आपका खाता साफ़ है, और घर फिर से एक प्लान है।",
+      "te": "షార్ట్‌కట్ ఏ అప్పు కంటే ఖరీదైంది: పోలీసు కేసు, ఫ్రీజ్ ఖాతా, నెలల భయం. మీరు నిజం చెప్పారు, అక్కడే మలుపు తిరిగింది. ఈ రోజు మీ ఖాతా శుభ్రం, ఇల్లు మళ్లీ ఒక ప్లాన్."
+    },
+    "business": {
+      "en": "For a while, your name was on the wrong kind of list. Coming clean, calling 1930 and returning the money brought it back. Now it's going on a shop board instead.",
+      "hi": "कुछ समय आपका नाम गलत किस्म की सूची में था। सच बोलना, 1930 पर फ़ोन करना और पैसा लौटाना उसे वापस लाया। अब वह नाम दुकान के बोर्ड पर जा रहा है।",
+      "te": "కొంత కాలం మీ పేరు తప్పుడు జాబితాలో ఉంది. నిజం చెప్పడం, 1930కి ఫోన్ చేయడం, డబ్బు తిరిగి ఇవ్వడం దాన్ని వెనక్కి తెచ్చాయి. ఇప్పుడు ఆ పేరు షాప్ బోర్డు మీదికి వెళ్తోంది."
+    },
+    "education": {
+      "en": "Easy money nearly cost Chinni her big one. You came clean, paid back what you could and started again. She still says you're her hero, for the second half.",
+      "hi": "आसान पैसे ने चिन्नी से उसका बड़ा सहारा लगभग छीन लिया। आपने सच बताया, जो हो सका लौटाया और फिर शुरू किया। वह अब भी कहती है कि आप उसके हीरो हैं, दूसरे हिस्से के लिए।",
+      "te": "సులువు డబ్బు చిన్నికి తన పెద్ద తోడును దాదాపు దూరం చేసింది. మీరు నిజం చెప్పారు, చేతనైనంత తిరిగి ఇచ్చారు, మళ్లీ మొదలుపెట్టారు. రెండో భాగానికి మీరే తన హీరో అని ఇప్పటికీ అంటుంది."
+    },
+    "vehicle": {
+      "en": "The shortcut ended at a police station. The way back started there too: the truth, a lawyer and honest work. The auto will come, more slowly, and fully yours.",
+      "hi": "शॉर्टकट पुलिस थाने पर खत्म हुआ। वापसी भी वहीं से शुरू हुई: सच, एक वकील और ईमानदार काम। ऑटो आएगा, धीरे, और पूरा आपका।",
+      "te": "షార్ట్‌కట్ పోలీస్ స్టేషన్‌లో ముగిసింది. తిరిగి రావడం కూడా అక్కడే మొదలైంది: నిజం, ఒక లాయర్, నిజాయితీ పని. ఆటో వస్తుంది, నెమ్మదిగా, పూర్తిగా మీదిగా."
+    },
+    "parents": {
+      "en": "Amma cried when the police came. She smiled when you told them everything. The way back is slower than the shortcut, but it goes somewhere.",
+      "hi": "पुलिस आई तो अम्मा रोईं। आपने सब सच बताया तो वे मुस्कुराईं। वापसी का रास्ता शॉर्टकट से धीमा है, पर कहीं पहुँचता है।",
+      "te": "పోలీసులు వచ్చినప్పుడు అమ్మ ఏడ్చింది. మీరు అంతా నిజం చెప్పినప్పుడు నవ్వింది. తిరిగి వచ్చే దారి షార్ట్‌కట్ కంటే నెమ్మది, కానీ ఎక్కడికో చేరుస్తుంది."
+    }
   },
   "no_safety_net": {
-    "house": {"en": "No new house, no big debt, but no cushion either. One bad monsoon could undo it all. Start small: one month of expenses in a separate account, and a ₹20 accident cover."},
-    "business": {"en": "No shop yet and no costly loans. But no savings or insurance stand between you and the next shock. The first step is a tiny emergency fund."},
-    "education": {"en": "Chinni's degree isn't paid yet. Nobody owes a sahukar, but nobody is protected either. A health card and one month of savings would change that."},
-    "vehicle": {"en": "No auto, no debt, no safety net. You got away without the sahukar, but luck isn't a plan. Start the cushion this month."},
-    "parents": {"en": "Amma and Nanna have no pension yet, and the family has no cushion. There is no costly debt, which is a start. Next: health cards and a small RD."}
+    "house": {
+      "en": "No new house, no big debt, but no cushion either. One bad monsoon could undo it all. Start small: one month of expenses in a separate account, and a ₹20 accident cover.",
+      "hi": "न नया घर, न बड़ा कर्ज़, पर कोई गद्दी भी नहीं। एक बुरी बारिश सब बिगाड़ सकती है। छोटे से शुरू करें: अलग खाते में एक महीने का खर्च, और ₹20 का दुर्घटना कवर।",
+      "te": "కొత్త ఇల్లు లేదు, పెద్ద అప్పు లేదు, కానీ భద్రతా నిధి కూడా లేదు. ఒక చెడ్డ వానాకాలం అంతా తలకిందులు చేయొచ్చు. చిన్నగా మొదలుపెట్టండి: వేరే ఖాతాలో ఒక నెల ఖర్చు, ₹20 ప్రమాద బీమా."
+    },
+    "business": {
+      "en": "No shop yet and no costly loans. But no savings or insurance stand between you and the next shock. The first step is a tiny emergency fund.",
+      "hi": "अभी दुकान नहीं और कोई महँगा कर्ज़ नहीं। पर आपके और अगली मुसीबत के बीच न बचत है, न बीमा। पहला कदम है एक छोटा आपात फंड।",
+      "te": "ఇంకా షాప్ లేదు, ఖరీదైన అప్పులు లేవు. కానీ మీకూ తర్వాతి కష్టానికీ మధ్య పొదుపు గానీ బీమా గానీ లేవు. మొదటి అడుగు ఒక చిన్న అత్యవసర నిధి."
+    },
+    "education": {
+      "en": "Chinni's degree isn't paid yet. Nobody owes a sahukar, but nobody is protected either. A health card and one month of savings would change that.",
+      "hi": "चिन्नी की डिग्री अभी चुकी नहीं। किसी पर साहूकार का कर्ज़ नहीं, पर कोई सुरक्षित भी नहीं। एक हेल्थ कार्ड और एक महीने की बचत यह बदल देगी।",
+      "te": "చిన్ని డిగ్రీ ఇంకా కట్టలేదు. ఎవరూ షావుకారుకు బాకీ లేరు, కానీ ఎవరికీ రక్షణ కూడా లేదు. ఒక హెల్త్ కార్డు, ఒక నెల పొదుపు అది మార్చేస్తాయి."
+    },
+    "vehicle": {
+      "en": "No auto, no debt, no safety net. You got away without the sahukar, but luck isn't a plan. Start the cushion this month.",
+      "hi": "न ऑटो, न कर्ज़, न कोई सहारा। साहूकार से बच गए, पर किस्मत कोई प्लान नहीं। इसी महीने गद्दी बनाना शुरू करें।",
+      "te": "ఆటో లేదు, అప్పు లేదు, రక్షణ లేదు. షావుకారు లేకుండా గట్టెక్కారు, కానీ అదృష్టం ప్లాన్ కాదు. ఈ నెలే భద్రతా నిధి మొదలుపెట్టండి."
+    },
+    "parents": {
+      "en": "Amma and Nanna have no pension yet, and the family has no cushion. There is no costly debt, which is a start. Next: health cards and a small RD.",
+      "hi": "अम्मा और नान्ना की अभी पेंशन नहीं, और परिवार के पास कोई गद्दी नहीं। कोई महँगा कर्ज़ नहीं, यह एक शुरुआत है। अगला कदम: हेल्थ कार्ड और एक छोटी RD।",
+      "te": "అమ్మానాన్నలకు ఇంకా పెన్షన్ లేదు, కుటుంబానికి భద్రతా నిధి లేదు. ఖరీదైన అప్పు లేదు, అది ఒక మొదలు. తర్వాత: హెల్త్ కార్డులు, ఒక చిన్న RD."
+    }
   },
-  "storyteller": {"en": "This story was told by Chinni, the little sister who copied everything you did. She's a nurse now. Every Saturday she runs a money club at Mallepalli school, wearing Ammamma's thick glasses. She always ends the same way: \"My big one never had money. They had questions. That was enough.\""}
+  "storyteller": {
+    "en": "This story was told by Chinni, the little sister who copied everything you did. She's a nurse now. Every Saturday she runs a money club at Mallepalli school, wearing Ammamma's thick glasses. She always ends the same way: \"My big one never had money. They had questions. That was enough.\"",
+    "hi": "यह कहानी चिन्नी ने सुनाई, वही छोटी बहन जो आपकी हर बात की नकल करती थी। अब वह नर्स है। हर शनिवार वह अम्मम्मा का मोटा चश्मा पहनकर मल्लेपल्ली स्कूल में मनी क्लब चलाती है। वह हमेशा ऐसे खत्म करती है: \"जिनकी मैं नकल करती थी, उनके पास कभी पैसा नहीं था। उनके पास सवाल थे। बस इतना काफ़ी था।\"",
+    "te": "ఈ కథ చెప్పింది చిన్ని, మీరు చేసే ప్రతిదీ అనుకరించిన చెల్లెలు. ఇప్పుడు ఆమె నర్సు. ప్రతి శనివారం అమ్మమ్మ మందపాటి కళ్లద్దాలు పెట్టుకుని మల్లేపల్లి స్కూల్‌లో మనీ క్లబ్ నడుపుతుంది. ఎప్పుడూ ఇలా ముగిస్తుంది: \"నేను అనుకరించిన ఆ మనిషి దగ్గర ఎప్పుడూ డబ్బు లేదు. ప్రశ్నలు ఉండేవి. అవి చాలు.\""
+  }
 }
