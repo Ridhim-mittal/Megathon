@@ -828,7 +828,7 @@
   position: absolute;
   left: 20.6%;
   width: 13.4%;
-  height: 9.3%;
+  height: 11.5%;
   display: grid;
   align-content: center;
   justify-items: center;
@@ -1216,6 +1216,78 @@
   .sg-stats {
     grid-template-columns: 1fr 1fr;
   }
+}
+.sg-nav {
+  font-style: normal;
+  font-size: 1.05cqw;
+  color: #fff;
+  opacity: 0.95;
+}
+.sg-nav.up {
+  color: #c8ffb0;
+}
+.sg-nav.down {
+  color: #ffd0cc;
+}
+.sg-ask {
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  width: 46%;
+  transform: translateX(-35%);
+  display: grid;
+  gap: 0.8cqw;
+  padding: 1.2cqw 1.6cqw;
+  border: 0.35cqw solid #0e0f1a;
+  border-radius: 0.8cqw;
+  background: #3a1620;
+  box-shadow: inset 0 0 0 0.3cqw #d84a3a, 0 0.8cqw 0 #0e0f1a;
+  animation: fade-in 0.2s ease both;
+}
+.sg-ask b {
+  font-size: 1.9cqw;
+  color: #ffd23f;
+}
+.sg-ask p {
+  margin: 0;
+  font: 600 1.35cqw "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+}
+.sg-ask div {
+  display: flex;
+  gap: 1cqw;
+}
+.sg-ask .sg-btn {
+  padding: 0.6cqw 1.2cqw;
+  font-size: 1.4cqw;
+}
+.sg-sipbox {
+  display: grid;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #22304f;
+  font-size: 13px;
+}
+.sg-sipbox ul {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sg-sipbox li {
+  display: grid;
+  grid-template-columns: 1.1fr 0.8fr 1.2fr 1fr;
+  gap: 6px;
+}
+.sg-sipbox .up {
+  color: #7ddc3c;
+}
+.sg-sipbox .down {
+  color: #ff6b5e;
+}
+.sg-sipbox p {
+  margin: 0;
 }
 
 /* ---------- Fine Print Hunter (src/ui/games/FinePrintHunter.jsx) ---------- */

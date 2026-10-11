@@ -2453,3 +2453,24 @@
   margin: 0 auto;
 }
 .swipe-field .swipe-hud { width: min(100%, max(640px, calc((100vh - 230px) * 16 / 9))); justify-self: center; }
+
+/* One shelf for every game: smaller tiles, four to a row on a laptop. */
+.arcade-tiles.all-games {
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 10px;
+}
+.arcade-tiles.all-games .arcade-tile {
+  padding: 12px 8px 10px;
+  gap: 4px;
+}
+.arcade-tiles.all-games .arcade-icon {
+  width: 52px;
+  height: 52px;
+}
+.arcade-tiles.all-games .arcade-tile b {
+  font-size: 15px;
+}
+.arcade-tiles.all-games .arcade-tile small {
+  font-size: 12px;
+  text-align: center;
+}

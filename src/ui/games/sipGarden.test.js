@@ -49,8 +49,9 @@ test("every lane starts with its defender in place", () => {
 test("money feeds a lane's defender and levels it up", () => {
   const s = createGarden(rng());
   assert.ok(invest(s, 2));
-  assert.equal(laneMoney(s, 2), 200);
+  assert.equal(Math.round(laneMoney(s, 2)), 200);
   assert.equal(level(laneMoney(s, 2)), 2);
+  assert.ok(Math.abs(s.lanes[2].units - 200 / DEFENDER.gold.nav) < 1e-9, "₹100 buys units at the NAV");
   assert.equal(s.wallet, RULES.start - RULES.feed);
   assert.deepEqual(level(0), 0);
   assert.equal(level(800), 4);
@@ -59,7 +60,7 @@ test("money feeds a lane's defender and levels it up", () => {
   // Tapping a defender feeds it too.
   s.wallet = 500;
   stepGarden(s, 1 / 30, { taps: [{ x: DEF_X, y: laneY(1) }] });
-  assert.equal(laneMoney(s, 1), 200);
+  assert.equal(Math.round(laneMoney(s, 1)), 200);
 });
 
 test("spreading money (by hand or with Auto-SIP) holds; fewer lanes or doing nothing loses", () => {
@@ -92,7 +93,11 @@ test("the crash year cuts equity and wilts it; the other lanes keep shooting", (
   s.waveTime = 5.9;
   stepGarden(s, 0.2, {});
   assert.ok(s.crash > 0);
-  assert.equal(Math.round(laneMoney(s, 0)), Math.round(RULES.seed * (1 - RULES.crashCut)));
+  assert.ok(Math.abs(laneMoney(s, 0) - RULES.seed * (1 - RULES.crashCut)) < 3);
+  assert.ok(s.asking, "the game asks about the SIP");
+  stepGarden(s, 1 / 30, { crashChoice: "keep" });
+  assert.equal(s.crashChoice, "started");
+  assert.equal(s.sip, true);
   for (let lane = 0; lane < 4; lane++) s.thieves.push(thief("inflation", lane, 800));
   const fired = new Set();
   for (let i = 0; i < 60; i++) {
@@ -108,10 +113,10 @@ test("thieves steal from a lane's money; debt's shield halves it; an empty lane 
   quiet(s);
   s.thieves.push(thief("inflation", 0, DEF_X + 20), thief("inflation", 1, DEF_X + 20));
   for (let i = 0; i < 10; i++) stepGarden(s, 0.1, {});
-  const tookEquity = RULES.seed - laneMoney(s, 0);
-  const tookDebt = RULES.seed - laneMoney(s, 1);
-  assert.ok(Math.abs(tookEquity - THIEF.inflation.steal) < 0.01);
-  assert.ok(Math.abs(tookDebt - THIEF.inflation.steal * DEFENDER.debt.guard) < 0.01);
+  const took = (i) => (RULES.seed / DEFENDER[LANES[i]].nav - s.lanes[i].units) * s.lanes[i].nav;
+  assert.ok(Math.abs(took(0) - THIEF.inflation.steal) < 0.5);
+  assert.ok(Math.abs(took(1) - THIEF.inflation.steal * DEFENDER.debt.guard) < 0.5);
+  s.lanes[2].units = 0;
   s.lanes[2].money = 0;
   s.thieves.push(thief("debt", 2, DEF_X + 10, { speed: 200 }));
   for (let i = 0; i < 60; i++) stepGarden(s, 1 / 30, {});
@@ -128,10 +133,11 @@ test("shots pass through scammers: a tap reports one, or it grabs a fifth of a l
   stepGarden(s, 1 / 30, { taps: [{ x: 600, y: laneY(1) - 30 }] });
   assert.equal(s.reported, 1);
   assert.equal(s.wallet, wallet + RULES.report);
+  s.lanes[2].units = 1000 / s.lanes[2].nav;
   s.lanes[2].money = 1000;
   s.thieves.push(thief("scam", 2, DEF_X + 20, { hp: 1, maxHp: 1 }));
   stepGarden(s, 1 / 30, {});
-  assert.equal(Math.round(laneMoney(s, 2)), 800);
+  assert.ok(Math.abs(laneMoney(s, 2) - 800) < 15);
   assert.equal(s.thieves.filter((t) => t.alive).length, 0);
 });
 
@@ -146,14 +152,35 @@ test("Auto-SIP puts the same amount in every lane each month", () => {
   assert.equal(spread(s), 1);
 });
 
-test("at the end of a year every lane grows by its own return; the FD safe pays interest coins", () => {
+test("over a year each fund's NAV rises by about its return; the FD pays interest coins instead", () => {
   const s = createGarden(rng(9));
   quiet(s);
   s.interestIn = 0.01;
-  s.waveTime = WAVES[0].seconds + 1;
-  stepGarden(s, 1 / 30, {});
+  const year = WAVES[0].seconds;
+  for (let i = 0; i < 30 * (year + 0.5); i++) stepGarden(s, 1 / 30, {});
   assert.equal(s.wave, 1);
-  LANES.forEach((kind, i) => assert.equal(Math.round(laneMoney(s, i)), Math.round(RULES.seed * (1 + DEFENDER[kind].rate))));
+  LANES.forEach((kind, i) => {
+    const grew = s.lanes[i].nav / DEFENDER[kind].nav - 1;
+    assert.ok(Math.abs(grew - DEFENDER[kind].rate) < 0.12, `${kind} grew ${grew}`);
+  });
+  assert.equal(s.lanes[3].nav, 1);
   assert.ok(s.growth > 0);
   assert.ok(s.coins.some((c) => c.interest && c.value >= 10));
+});
+
+test("Auto-SIP buys more units when the NAV is low", () => {
+  const s = createGarden(rng(10));
+  quiet(s);
+  s.wallet = 10000;
+  s.sip = true;
+  s.sipIn = 0;
+  stepGarden(s, 1 / 30, {});
+  const high = s.lanes[0].sipUnits;
+  s.lanes[0].nav *= 0.5;
+  s.sipIn = 0;
+  stepGarden(s, 1 / 30, {});
+  const low = s.lanes[0].sipUnits - high;
+  assert.ok(low > high * 1.9, `${low} vs ${high}`);
+  const r = gardenResult(s);
+  assert.ok(r.funds[0].sipAvg < DEFENDER.equity.nav, "the average price paid is below the starting NAV");
 });
