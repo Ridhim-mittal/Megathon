@@ -218,7 +218,6 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       <PreGameCard
         kind={PRE_GAMES[card.id]}
         lessonId={card.lesson}
-        sceneTitle={card.title ? pick(card.title) : null}
         onStart={() => setGame({ kind: PRE_GAMES[card.id], cardId: card.id })}
         onSkip={() => markPlayed(card.id)}
       />

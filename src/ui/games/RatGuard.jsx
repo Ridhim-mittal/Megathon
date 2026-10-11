@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, Landmark, Lock, Package, RotateCcw, SkipForward, Sparkles, Trophy, X } from "lucide-react";
+import { ArrowRight, Landmark, Lock, Package, RotateCcw, SkipForward, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { PixelPortrait } from "../PixelPortrait.jsx";
 import { sounds } from "../sound.js";
@@ -707,7 +707,6 @@ function RatGuardRun({ mode = "story", onDone, onClose, onAgain }) {
     <div className="rg-layer" role="dialog" aria-modal="true" aria-label={t("ratguard.title")}>
       <div className={`rg-cabinet phase-${phase} ${hud.stage === 4 && (phase === "play1" || phase === "cutscene") ? "swarming" : ""} ${bankRound ? "banking" : ""}`}>
         <div className="rg-hud">
-          <span className="rg-chip">{t("ratguard.score", { n: hud.score.toLocaleString("en-IN") })}</span>
           <span className="rg-chip">{stageText}</span>
           <span className="rg-danger" aria-hidden="true">
             <small>{bankRound ? t("ratguard.vault") : t("ratguard.frequency")}</small>
@@ -758,19 +757,14 @@ function RatGuardRun({ mode = "story", onDone, onClose, onAgain }) {
 
           {phase === "end" && (
             <div className="rg-pick rg-end">
-              <div className="rg-ammamma">
+              {/* Ammamma says it all: what happened, then the lesson, in one speech bubble. */}
+              <div className="rg-ammamma rg-say">
                 <PixelPortrait role="mentor" />
-                <p>{choice === "bank" ? t("ratguard.safe") : t("ratguard.lostAgain")}</p>
+                <div className="rg-say-text">
+                  <p>{choice === "bank" ? t("ratguard.safe") : t("ratguard.lostAgain")}</p>
+                  {choice === "bank" && <p className="rg-say-tip">{t("ratguard.lesson")}</p>}
+                </div>
               </div>
-              {choice === "bank" && (
-                <p className="rg-lesson">
-                  <Sparkles size={16} /> {t("ratguard.lesson")}
-                </p>
-              )}
-              <p className="rg-final">
-                <Trophy size={16} aria-hidden="true" /> {t("ratguard.final", { n: hud.score.toLocaleString("en-IN") })}
-                {practice && <span>{newBest ? t("ratguard.newBest") : t("ratguard.best", { n: best.toLocaleString("en-IN") })}</span>}
-              </p>
               {practice ? (
                 <div className="rg-end-actions">
                   <button className="text-button" onClick={onClose}>
