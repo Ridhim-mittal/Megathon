@@ -21,6 +21,13 @@ async function start(page, { lang = "English" } = {}) {
 }
 
 // Storyline → intro → dream → the prologue's title card → budget.
+// Every mini-game lives in the Arcade; each one shows a skippable ad as it starts.
+async function openFromArcade(page, tile) {
+  await page.getByRole("button", { name: "Arcade" }).click();
+  await page.getByRole("button", { name: tile }).click();
+  await page.getByRole("button", { name: /^Skip ad/ }).click({ timeout: 10000 });
+}
+
 async function toPrologue(page) {
   await expect(page.getByRole("heading", { name: "Choose your life" })).toBeVisible();
   await expect(page.getByText("Coming soon")).toBeVisible();
@@ -46,6 +53,24 @@ async function playScene(page, label) {
   await choice.first().click();
 }
 
+// The first scene is Rat Guard: round 1 only offers the tin box (and is lost), then either.
+async function playRatGuard(page, second) {
+  await page.locator(".objective-go").click();
+  const game = page.getByRole("dialog", { name: "Rat Guard" });
+  await expect(game).toBeVisible({ timeout: 20000 });
+  await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
+  await game.getByRole("button", { name: /Tin box/ }).click();
+  await expect(game.locator(".rg-chip").first()).toContainText("SCORE");
+  await game.getByRole("button", { name: "Skip" }).click();
+  await expect(game.getByText("₹500 chewed")).toBeVisible();
+  const pickSecond = game.getByRole("button", { name: second === "bank" ? /Bank account/ : /Tin box/ });
+  await expect(pickSecond).toBeEnabled({ timeout: 10000 });
+  await pickSecond.click();
+  await game.getByRole("button", { name: "Skip" }).click();
+  await game.getByRole("button", { name: "Continue" }).click({ timeout: 10000 });
+  await expect(game).not.toBeVisible();
+}
+
 async function continueOutcome(page) {
   await expect(page.locator(".outcome-view")).toBeVisible();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
@@ -64,9 +89,7 @@ test("prologue: follow the objective, live three scenes, reach an outcome and it
   await expect(objective).toContainText("Walk home. Ammamma is calling you.");
   await expect(objective.getByRole("button", { name: "Go to Home" })).toBeVisible();
 
-  await playScene(page, "Put it in a bank");
-  await expect(page.getByText("WHAT HAPPENED")).toBeVisible();
-  await continueOutcome(page);
+  await playRatGuard(page, "bank");
   await expect(objective).toContainText("Kavitha akka");
   await playScene(page, "one for me");
   await continueOutcome(page);
@@ -91,8 +114,7 @@ test("a very bad choice flashes STOP; thinking again keeps the scene open", asyn
   await start(page);
   await toPrologue(page);
   await page.getByRole("button", { name: "Live this year" }).click();
-  await playScene(page, "steel box");
-  await continueOutcome(page);
+  await playRatGuard(page, "tin");
   await playScene(page, "Buy the steel box");
   await continueOutcome(page);
   await playScene(page, "notebook first");
@@ -204,8 +226,8 @@ test("the interest race mini-game opens from the title: a wrong run offers Try a
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
-  await page.getByRole("button", { name: "Mini-game: Interest race" }).click();
-  const game = page.getByRole("dialog");
+  await openFromArcade(page, /Interest race/);
+  const game = page.locator(".ir-layer");
   await expect(game.getByRole("heading", { name: "Interest race" })).toBeVisible();
   await game.getByRole("button", { name: "Start the race" }).click();
   const interest = async () =>
@@ -225,6 +247,38 @@ test("the interest race mini-game opens from the title: a wrong run offers Try a
   await expect(game).toContainText("5 of 5 right");
 });
 
+test("Rat Guard opens from the title: the bank unlocks after the cutscene, rats bounce off the vault, play again", async ({ page }) => {
+  test.setTimeout(90000);
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("/?seed=demo");
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+  await openFromArcade(page, /Rat Guard/);
+  const game = page.getByRole("dialog", { name: "Rat Guard" });
+  await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
+  await game.getByRole("button", { name: /Tin box/ }).click();
+  // Swat a few with Space, then skip to the cutscene.
+  await page.waitForTimeout(2500);
+  for (let i = 0; i < 4; i++) {
+    await page.keyboard.press(" ");
+    await page.waitForTimeout(400);
+  }
+  await game.getByRole("button", { name: "Skip" }).click();
+  await expect(game.getByText("₹500 chewed")).toBeVisible();
+  await game.getByRole("button", { name: /Bank account/ }).click({ timeout: 10000 });
+  await expect(game.locator(".rg-chip").nth(1)).toContainText("VAULT");
+  // Rats clang off the vault; after five the rest give up.
+  await expect(game.getByText("The vault holds!")).toBeVisible({ timeout: 45000 });
+  await expect(game.getByText("Not one rupee lost!")).toBeVisible({ timeout: 10000 });
+  await expect(game.locator(".rg-final")).toContainText("Rats shooed");
+  await game.getByRole("button", { name: "Play again" }).click();
+  await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
+  await game.getByRole("button", { name: "Close" }).click();
+  await expect(game).not.toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test("the title can jump straight to the town of the first job without touching the saved life", async ({ page }) => {
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());
@@ -233,4 +287,17 @@ test("the title can jump straight to the town of the first job without touching 
   await expect(page.locator(".mapgame")).toBeVisible({ timeout: 20000 });
   await expect(page.locator(".hud-chapter")).toContainText("Age 22");
   expect(await page.evaluate(() => window.localStorage.getItem("lakshyam.life"))).toBeNull();
+});
+
+test("the price snake opens from the arcade, and a crash shows how prices grew", async ({ page }) => {
+  await page.goto("/?seed=demo");
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+  await openFromArcade(page, /Price Snake/);
+  await expect(page.getByText("Meet Mehngai, the price snake.")).toBeVisible();
+  await page.locator(".snake-go").click();
+  await expect(page.locator(".snake-weight")).toContainText("₹100");
+  // With no turns the snake runs into the wall.
+  await expect(page.locator(".snake-result")).toBeVisible({ timeout: 20000 });
+  await expect(page.locator(".snake-headline")).toBeVisible();
 });

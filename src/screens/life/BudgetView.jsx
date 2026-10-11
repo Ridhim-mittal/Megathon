@@ -103,7 +103,7 @@ export function BudgetView({ life, dispatch, repeats = false }) {
           </select>
         </label>
       )}
-      {firstTime && <p className="budget-tip">{t("budget.stepHelp", { amount: money(rules.step) })}</p>}
+      {firstTime && <StepTip text={t("budget.stepHelp", { amount: money(rules.step) })} />}
 
       <div className="action-row budget-actions">
         <p className="budget-repeat">
@@ -129,5 +129,28 @@ export function BudgetView({ life, dispatch, repeats = false }) {
         </div>
       </div>
     </div>
+  );
+}
+
+// The how-to line under the jars, with the − and + drawn as little jar buttons.
+function StepTip({ text }) {
+  const parts = text.split(/([−+])/);
+  return (
+    <p className="budget-tip">
+      <span className="budget-tip-coin" aria-hidden="true">
+        <Coins size={18} />
+      </span>
+      <span className="budget-tip-text">
+        {parts.map((part, i) =>
+          part === "−" || part === "+" ? (
+            <span key={i} className={`budget-tip-key ${part === "+" ? "plus" : "minus"}`}>
+              {part}
+            </span>
+          ) : (
+            part
+          ),
+        )}
+      </span>
+    </p>
   );
 }

@@ -344,7 +344,19 @@
     "reveal": "Now see what each loan did to them",
     "finish": "Leave the desk",
     "skip": "Skip the desk",
-    "rate": "≈ {pct}% a year"
+    "rate": "≈ {pct}% a year",
+    "start": "Let's play",
+    "won": "You did it!",
+    "lost": "Not this time",
+    "collect": "Make this choice",
+    "otherWay": "Choose something else",
+    "again": "Try again",
+    "tag": {
+      "interest": "Play to choose: Interest race",
+      "fake": "Play to choose: Spot the fake",
+      "salary": "Play to choose: Salary split",
+      "baskets": "Play to choose: Basket juggle"
+    }
   },
   "document": {
     "open": "Read the documents",
@@ -567,7 +579,9 @@
     "deposits": "Safe deposits",
     "cash": "Cash to invest: {amount}",
     "noTicker": "Prices move once a year. This is a long-term game, not a casino.",
-    "badNews": "Bad news at age {ages}"
+    "badNews": "Bad news at age {ages}",
+    "select": "Open",
+    "back": "Back"
   },
   "instruments": {
     "sip_index": "Top-50 Index Fund",
@@ -989,6 +1003,8 @@
       "distance": "🛣️ {n} m driven",
       "claims": "🛡️ Insurance paid for {n} crashes",
       "renewals": "🪙 Renewed {n}×",
+      "invested": "🪙 Invested ₹{n}",
+      "coins": "🎯 Coins caught: {n}",
       "saved": "🐷 Saved ₹{n}",
       "extraPaid": "💸 ₹{n} extra in interest and fees",
       "needsMissed": "⚠️ {n} needs missed",
@@ -1022,6 +1038,20 @@
         "goal": "Drive as far as you can. While your insurance is active, a crash is a claim: the car gets fixed and you keep going. Crash with an expired policy and it's over!",
         "how": "Hold the arrow keys (or the buttons) to steer. Grab 🛡️ to renew your policy: it costs 3 coins.",
         "lesson": "Insurance only helps if it's active when the accident happens. Keep money for the premium and renew on time."
+      },
+      "patangMarket": {
+        "name": "Patang Market",
+        "tag": "Fly through the ups and downs",
+        "goal": "It's Sankranti! Fly your kite through ten years of a share's price. Each ₹500 coin buys shares at that moment's price.",
+        "how": "Press Space or tap to lift the kite. Dodge the candles and the SELL NOW! panic.",
+        "lesson": "A dip is a sale: the same ₹500 buys more. Selling in panic turns a dip into a real loss."
+      },
+      "priceSnake": {
+        "name": "Price Snake",
+        "tag": "Eat the years, watch prices grow",
+        "goal": "Mehngai the price snake eats years. Each +1 year makes a bag of groceries cost more. How many years can you last?",
+        "how": "Steer with the arrow keys or WASD (or the buttons). Eat the +1 year calendars. Don't hit the walls or yourself.",
+        "lesson": "Prices grow a little every year, and it adds up: at 6% a year they double in about 12 years. Money kept in a tin box can buy less and less, so your savings need to grow too."
       },
       "swipeBazaar": {
         "name": "Swipe Bazaar",
@@ -1306,6 +1336,87 @@
       "steerLeft": "Steer left",
       "steerRight": "Steer right"
     },
+    "patang": {
+      "year": "Year {n} of {total}",
+      "units": "{n} units",
+      "unitsShort": "units",
+      "shield": "One \"breathe\" shield: forgives one bump",
+      "breathe": "breathe",
+      "crash": "CRASH",
+      "sellNow": "SELL NOW!",
+      "soldPanic": "You panicked and sold",
+      "soldCrash": "You crashed out and sold",
+      "stayedBanner": "You stayed invested!",
+      "chart": "Your ten years on the chart",
+      "youStayed": "You stayed for all ten years",
+      "youQuit": "You quit and sold",
+      "youPanicked": "You sold in a panic",
+      "ifBottom": "If you'd sold at the bottom of the crash",
+      "ifStayed": "If you'd stayed to the end",
+      "dip": "In the dip, ₹500 bought {cheap} units. Near the top, only {dear}.",
+      "rules": {
+        "lead": "🪁 Fly through 10 years of a share price. Stay in the air = stay invested.",
+        "kite": {
+          "name": "Space / tap",
+          "does": "lifts the kite"
+        },
+        "coin": {
+          "name": "₹500 coin",
+          "does": "buys shares, more in a dip"
+        },
+        "shield": {
+          "name": "Breathe",
+          "does": "one free bump"
+        },
+        "candle": {
+          "name": "Candles",
+          "does": "bump = you sold"
+        },
+        "panic": {
+          "name": "Panic news",
+          "does": "touch = you sell"
+        },
+        "rocket": {
+          "name": "10x tip",
+          "does": "flings you up"
+        }
+      }
+    },
+    "snake": {
+      "year": "Year {n}",
+      "age": "Age {n}",
+      "weight": "Grocery bag costs",
+      "weightHint": "The snake's weight: what a ₹100 bag of groceries costs now",
+      "win": "Age 36! 🎉",
+      "bonk": "Bonk! 💫",
+      "left": "Left",
+      "up": "Up",
+      "down": "Down",
+      "right": "Right",
+      "lead": "Meet Mehngai, the price snake. He is rising prices, and he only gets heavier with time.",
+      "step1": "Steer with the arrow keys or WASD.",
+      "step2": "Eat a +1 calendar: one year passes and the snake grows.",
+      "step3": "Each year, a ₹100 bag of groceries costs 6% more. Watch the snake's weight go up.",
+      "fact": "At 6% a year, prices double in about 12 years.",
+      "stars": "⭐ 5 years · ⭐⭐ 12 years · ⭐⭐⭐ 20 years",
+      "best": "Best: {n} years",
+      "headline": "{n} years later, the same bag of groceries costs {price}.",
+      "headlineZero": "Eat a +1 calendar to make a year pass!",
+      "tin": "₹100 in a tin box",
+      "chart": "Prices grew from {from} to {to} in {n} years",
+      "buys": "₹100 kept in a tin box now buys only {pct}% of that bag."
+    },
+    "sections": {
+      "quick": "Quick games",
+      "story": "Story mini-games"
+    },
+    "storyTags": {
+      "ratGuard": "Guard the savings",
+      "interest": "Find the best interest",
+      "fake": "Catch the fake adviser",
+      "salary": "Split your salary",
+      "baskets": "Spread your eggs"
+    },
     "swipe": {
       "intro": {
         "lead": "Things fly up from the bazaar. Swipe one to BUY it. Let it fall to say NO. You get {income} every month for {months} months.",
@@ -1442,5 +1553,113 @@
       },
       "streak": "Saver streak ×{n}!"
     }
+  },
+  "salary": {
+    "ribbon": "First payday",
+    "title": "Salary Split",
+    "lead": "₹15,000 just arrived. Give every rupee a job before it slips away.",
+    "step1": "Coins fall one by one",
+    "step2": "Tap a jar (1, 2, 3) to drop each coin",
+    "step3": "Coins you miss land in Wants",
+    "rule": "Win: Save ₹3,000 and Needs ₹9,000 before the coins run out.",
+    "jar": {
+      "save": "Save",
+      "needs": "Needs",
+      "wants": "Wants"
+    },
+    "wonText": "Saved first, bills covered, and still some fun money. That's paying yourself first.",
+    "lostText": "Money without a job drifts into wants. Save first, then cover needs."
+  },
+  "baskets": {
+    "ribbon": "Family money plan",
+    "title": "Basket Juggle",
+    "lead": "Your savings are eggs. Storms are coming. Where will you put them?",
+    "step1": "Tap a basket (1, 2, 3) for each egg",
+    "step2": "Storms hit a random basket and break eggs",
+    "step3": "A basket with over half your eggs loses them all",
+    "rule": "Win: keep {need} of {total} eggs.",
+    "basket": {
+      "index": "Index fund",
+      "debt": "Debt fund",
+      "rd": "RD"
+    },
+    "storm": "Storm! {n} eggs broke.",
+    "stormAll": "Storm! The overloaded basket lost all {n} eggs.",
+    "heavy": "Too heavy!",
+    "storms": "Storms",
+    "cracked": "{n} eggs dropped",
+    "kept": "{n} of {total} eggs kept",
+    "wonText": "Spread out, no single storm could break you. That's diversification.",
+    "lostText": "Too many eggs in one basket, or too many dropped. Spread them out."
+  },
+  "fake": {
+    "ribbon": "The Telegram guru",
+    "title": "Spot the Fake",
+    "lead": "Is Lucky Prakash a real SEBI adviser? Compare his certificate with a real one.",
+    "step1": "Left: a real certificate",
+    "step2": "Tap the lines on his that are wrong",
+    "step3": "Wrong taps cost 3 seconds",
+    "rule": "Win: find {need} red flags.",
+    "found": "{n}/{total} found",
+    "score": "{n} of {total} red flags found",
+    "real": {
+      "head": "SEBI · Registered Investment Adviser",
+      "gov": "Government of India",
+      "name": "Adviser: R. Sharma",
+      "reg": "Reg. no. INA000012345",
+      "promise": "Investments carry market risk",
+      "address": "Office: Mumbai, India",
+      "fees": "Fees to the firm's bank account",
+      "valid": "Valid till 2031"
+    },
+    "fake": {
+      "head": "SEBI · Registred Investment Adviser",
+      "gov": "Goverment of India",
+      "name": "Adviser: Prakash K.",
+      "reg": "Reg. no. LUCKY-777-VIP",
+      "promise": "30% a month GUARANTEED",
+      "address": "Office: Dubai Marina",
+      "fees": "Fees to UPI luckyprakash@okbank",
+      "valid": "Valid till 2031"
+    },
+    "wonText": "Spelling mistakes, a fake number, guaranteed returns, a far-away office and a personal UPI: you caught him.",
+    "lostText": "Look for promises of guaranteed returns, odd registration numbers and personal UPI IDs."
+  },
+  "ratguard": {
+    "title": "Rat Guard",
+    "bonk": "BONK!",
+    "poof": "POOF!",
+    "danger": "DANGER! HIGH FREQUENCY",
+    "stage": "STAGE {n}",
+    "score": "SCORE: {n}",
+    "frequency": "RATS",
+    "ask1": "Kanna, the rats are back tonight! Where do we keep our ₹12,000?",
+    "ask2": "They got in. Where do we keep the rest now?",
+    "tin": "Tin box",
+    "tinHint": "Under the bed, at home",
+    "bank": "Bank account",
+    "bankLocked": "Ammamma: “Banks are for rich people.”",
+    "bankHint": "Locked in a vault. Insured.",
+    "new": "NEW",
+    "ate": "One got in… ₹500 chewed to bits!",
+    "ateAgain": "They got in again. Another ₹500 gone.",
+    "safe": "Not one rupee lost! The rats can't get into a bank, kanna.",
+    "lostAgain": "A tin box can't keep rats out, kanna. Next time, let's try the bank.",
+    "lesson": "Cash at home can be eaten, stolen or burnt. A bank account keeps it safe, and your money is insured up to ₹5 lakh.",
+    "continue": "Continue",
+    "how": "Click a rat (or press Space) to shoo it away.",
+    "skip": "Skip",
+    "round2": "ROUND 2",
+    "menu": "Mini-game: Rat Guard",
+    "tag": "Guard Ammamma's savings from the rats. Play again any time this chapter.",
+    "clang": "CLANG!",
+    "bounced": "VAULT {n}/{total}",
+    "vault": "RATS BOUNCED",
+    "holds": "The vault holds! The rats give up and run.",
+    "howBank": "Swat them if you like: in the bank, rats just bounce off.",
+    "final": "Rats shooed: {n} points",
+    "best": "Best: {n}",
+    "newBest": "New best!",
+    "again": "Play again"
   }
 }

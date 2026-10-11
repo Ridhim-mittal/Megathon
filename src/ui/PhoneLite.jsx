@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { ArrowLeft, BookOpen, CandlestickChart, Gamepad2, Landmark, MessageSquare, TrendingUp, X } from "lucide-react";
+import { BookOpen, CandlestickChart, Gamepad2, Landmark, MessageSquare, Plus, TrendingUp, Undo2 } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { select } from "./gameAdapter.js";
 
-// A small in-game phone: messages, bank and invest apps. It is the stand-in until the full
-// phone (src/ui/phone/Phone.jsx) lands; both take the same props.
+const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+// The in-game phone, GTA-style: it slides up in the bottom-right corner over the map. A 3×2 grid
+// of glossy app icons; arrow keys move the highlight, Enter or + opens, Backspace/Esc or ↶ goes back.
 export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, onExchange, onArcade, initialApp = null }) {
-  const { t, plain, money } = useT();
+  const { t, plain } = useT();
   const [app, setApp] = useState(initialApp);
+  const [sel, setSel] = useState(0);
+  const [now, setNow] = useState(() => new Date());
   const phone = select.phone(life);
   const market = select.market(life);
   useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === "Escape") (app ? setApp(null) : onClose());
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [app, onClose]);
+    const id = setInterval(() => setNow(new Date()), 15000);
+    return () => clearInterval(id);
+  }, []);
 
   const APPS = [
     { id: "messages", icon: MessageSquare, badge: phone.notifications.length },
@@ -26,33 +27,69 @@ export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, on
     { id: "arcade", icon: Gamepad2 },
     { id: "gyaan", icon: BookOpen },
   ];
+  const open = (id) => (id === "gyaan" ? onLearn?.(null) : id === "exchange" ? onExchange?.() : id === "arcade" ? onArcade?.() : setApp(id));
+  const back = () => (app ? setApp(null) : onClose());
 
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.target.closest?.("input,select,textarea")) {
+        if (e.key === "Escape") back();
+        return;
+      }
+      if (e.key === "Escape" || e.key === "Backspace") {
+        e.preventDefault();
+        back();
+      } else if (!app) {
+        const move = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 3, ArrowUp: -3 }[e.key];
+        if (move) {
+          e.preventDefault();
+          setSel((x) => (x + move + APPS.length) % APPS.length);
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          open(APPS[sel].id);
+        }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
+
+  const title = app ? t(`phone.apps.${app}`) : t(`phone.apps.${APPS[sel].id}`);
   return (
-    <div className="phone-overlay" role="dialog" aria-modal="true" aria-label={t("phone.open")}>
+    <div className="phone-overlay gta" role="dialog" aria-label={t("phone.open")}>
       <div className="phone">
         <div className="phone-status">
-          <span>{t("common.age", { age: life.age })}</span>
-          <span>{money(life.money.cash)}</span>
-          <button className="phone-close" onClick={onClose} aria-label={t("phone.close")}>
-            <X size={16} />
-          </button>
+          <span className="phone-signal" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+          <span>{DAYS[now.getDay()]}</span>
+          <span className="phone-time">{now.toTimeString().slice(0, 5)}</span>
+          <span className="phone-battery" aria-hidden="true">
+            <i />
+          </span>
         </div>
-        <div className="phone-screen">
+        <div className={`phone-title app-${app ?? APPS[sel].id}`}>{title}</div>
+        <div className={`phone-screen ${app ? "in-app" : "home"}`}>
           {!app && (
             <div className="app-grid">
-              {APPS.map((a) => (
-                <button key={a.id} className={`app-icon app-${a.id}`} onClick={() => (a.id === "gyaan" ? onLearn?.(null) : a.id === "exchange" ? onExchange?.() : a.id === "arcade" ? onArcade?.() : setApp(a.id))}>
-                  <a.icon size={26} />
-                  <span>{t(`phone.apps.${a.id}`)}</span>
+              {APPS.map((a, i) => (
+                <button
+                  key={a.id}
+                  className={`app-icon app-${a.id} ${i === sel ? "selected" : ""}`}
+                  onMouseEnter={() => setSel(i)}
+                  onFocus={() => setSel(i)}
+                  onClick={() => open(a.id)}
+                  aria-label={t(`phone.apps.${a.id}`)}
+                  title={t(`phone.apps.${a.id}`)}
+                >
+                  <a.icon size={30} />
                   {a.badge > 0 && <b className="badge">{a.badge}</b>}
                 </button>
               ))}
             </div>
-          )}
-          {app && (
-            <button className="app-back" onClick={() => setApp(null)}>
-              <ArrowLeft size={15} /> {t(`phone.apps.${app}`)}
-            </button>
           )}
           {app === "messages" && (
             <ul className="msg-list">
@@ -68,6 +105,14 @@ export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, on
           )}
           {app === "bank" && <BankApp life={life} phone={phone} dispatch={dispatch} />}
           {app === "invest" && <InvestApp market={market} dispatch={dispatch} onLearn={onLearn} />}
+        </div>
+        <div className="phone-keys">
+          <button className="key-select" onClick={() => (app ? null : open(APPS[sel].id))} disabled={Boolean(app)} aria-label={t("phone.select")}>
+            <Plus size={22} strokeWidth={3} />
+          </button>
+          <button className="key-back" onClick={back} aria-label={app ? t("phone.back") : t("phone.close")}>
+            <Undo2 size={22} strokeWidth={3} />
+          </button>
         </div>
       </div>
     </div>

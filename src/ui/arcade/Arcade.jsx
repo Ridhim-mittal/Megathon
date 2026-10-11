@@ -1,26 +1,44 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, CarFront, Gamepad2, Heart, Lightbulb, PiggyBank, RotateCcw, ShieldBan, ShoppingBag, Snowflake, Star, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Calculator, CarFront, Egg, Gamepad2, Heart, Lightbulb, PiggyBank, Rat, RotateCcw, ScanSearch, ShieldBan, ShoppingBag, Snowflake, Star, Wallet, Weight, Wind, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
 import { FIELD, GAMES, ballRadius, createGame, gameById, laneY, result, stepGame } from "./games.js";
-import { nextAd, wantsInterstitial } from "./ads.js";
-import { AdBanner, AdInterstitial, ScamSite } from "./ScamAds.jsx";
+import { nextAd } from "./ads.js";
+import { AdInterstitial, ScamSite } from "./ScamAds.jsx";
 import { InsuranceRush } from "./InsuranceRush.jsx";
+import { PatangIntro, PatangMarket, PatangReport } from "./PatangMarket.jsx";
+import { PriceSnake, SnakeIntro, SnakeResult } from "./PriceSnake.jsx";
 import { SwipeBazaar, SwipeBazaarIntro } from "./SwipeBazaar.jsx";
 import { SWIPE_CONFIG } from "./swipeBazaarConfig.js";
+import { RatGuard } from "../games/RatGuard.jsx";
+import { InterestRace } from "../games/InterestRace.jsx";
+import { SpotTheFake } from "../games/SpotTheFake.jsx";
+import { SalarySplit } from "../games/SalarySplit.jsx";
+import { BasketJuggle } from "../games/BasketJuggle.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
-export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, swipeBazaar: ShoppingBag };
-const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], swipeBazaar: SWIPE_CONFIG.stars };
+export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind, priceSnake: Weight, swipeBazaar: ShoppingBag };
+const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], patangMarket: [8000, 18000, 25000], priceSnake: [5, 12, 20], swipeBazaar: SWIPE_CONFIG.stars };
 export const starsFor = (id, score) => STARS[id].filter((x) => score >= x).length;
 
-// A list of the three games (the phone's Arcade app).
-export function ArcadeMenu({ onPick, onClose }) {
+// The story's mini-games, playable here as practice (mode "practice": no money moves).
+const STORY_GAMES = [
+  { id: "ratGuard", title: "ratguard.title", icon: Rat, Game: RatGuard },
+  { id: "interest", title: "interest.title", icon: Calculator, Game: InterestRace },
+  { id: "fake", title: "fake.title", icon: ScanSearch, Game: SpotTheFake },
+  { id: "salary", title: "salary.title", icon: Wallet, Game: SalarySplit },
+  { id: "baskets", title: "baskets.title", icon: Egg, Game: BasketJuggle },
+];
+
+// Every mini-game in one place (the title's Arcade and the phone's Arcade app): the quick arcade
+// games, then the story's mini-games. A story game shows one ad as it starts, like the arcade games.
+export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
   const { t } = useT();
   const best = loadArcade();
-  const [ad, setAd] = useState(() => nextAd());
+  const [story, setStory] = useState(null); // { id, ad } while the ad shows, then { id }
   const [scam, setScam] = useState(null);
+  const playing = story && !story.ad ? STORY_GAMES.find((g) => g.id === story.id) : null;
   return (
     <div className="view arcade arcade-menu">
       <header className="arcade-head">
@@ -30,6 +48,7 @@ export function ArcadeMenu({ onPick, onClose }) {
           <X size={17} />
         </button>
       </header>
+      <h3 className="arcade-section">{t("arcade.sections.quick")}</h3>
       <div className="arcade-tiles">
         {GAMES.map((g) => {
           const Icon = GAME_ICON[g.id];
@@ -45,16 +64,31 @@ export function ArcadeMenu({ onPick, onClose }) {
           );
         })}
       </div>
-      <AdBanner key={ad.id} ad={ad} onOpen={(a) => setScam(a.id)} onReport={() => setAd(nextAd(ad.id))} />
+      <h3 className="arcade-section story">
+        <BookOpen size={16} aria-hidden="true" /> {t("arcade.sections.story")}
+      </h3>
+      <div className="arcade-tiles story">
+        {STORY_GAMES.map((g) => (
+          <button key={g.id} className={`arcade-tile story-tile story-${g.id}`} onClick={() => setStory({ id: g.id, ad: nextAd() })}>
+            <span className="arcade-icon" aria-hidden="true">
+              <g.icon size={30} />
+            </span>
+            <b>{t(g.title)}</b>
+            <small>{t(`arcade.storyTags.${g.id}`)}</small>
+          </button>
+        ))}
+      </div>
+      {story?.ad && <AdInterstitial ad={story.ad} onOpen={(a) => setScam(a.id)} onSkip={() => setStory({ id: story.id })} />}
       {scam && (
         <ScamSite
           adId={scam}
           onClose={() => {
             setScam(null);
-            setAd(nextAd(ad.id));
+            if (story?.ad) setStory({ id: story.id });
           }}
         />
       )}
+      {playing && <playing.Game mode="practice" avatar={avatar} onClose={() => setStory(null)} onGiveUp={() => setStory(null)} />}
     </div>
   );
 }
@@ -77,10 +111,9 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
   const [final, setFinal] = useState(null);
   const [best, setBest] = useState(() => loadArcade()[gameId] ?? 0);
   const [round, setRound] = useState(0);
-  const [ad, setAd] = useState(() => nextAd());
-  const [interstitial, setInterstitial] = useState(null);
+  // One ad as the game starts; none after it ends or on "play again".
+  const [interstitial, setInterstitial] = useState(() => nextAd());
   const [scam, setScam] = useState(null);
-  const lastHadAd = useRef(false);
   const Icon = GAME_ICON[gameId];
   const start = useRef(null);
   useEffect(() => start.current?.focus(), [stage]);
@@ -106,13 +139,6 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
     return () => window.removeEventListener("keydown", onKey);
   });
 
-  // "Play again" sometimes shows a full-screen ad first.
-  function again() {
-    const show = wantsInterstitial(round, lastHadAd.current);
-    lastHadAd.current = show;
-    if (show) setInterstitial(nextAd(ad.id));
-    else begin();
-  }
   function begin() {
     setInterstitial(null);
     setCount(3);
@@ -147,10 +173,23 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
       </header>
 
       {stage === "intro" && gameId === "snowball" && <SnowballIntro best={best} startRef={start} onStart={begin} />}
+      {stage === "intro" && gameId === "patangMarket" && (
+        <PatangIntro
+          startRef={start}
+          onStart={begin}
+          playLabel={
+            <>
+              {t("arcade.play", { s: gameById.patangMarket.seconds })} <ArrowRight size={18} />
+            </>
+          }
+        />
+      )}
+
+      {stage === "intro" && gameId === "priceSnake" && <SnakeIntro best={best} startRef={start} onStart={begin} />}
 
       {stage === "intro" && gameId === "swipeBazaar" && <SwipeBazaarIntro best={best} startRef={start} onStart={begin} />}
 
-      {stage === "intro" && gameId !== "snowball" && gameId !== "swipeBazaar" && (
+      {stage === "intro" && gameId !== "snowball" && gameId !== "patangMarket" && gameId !== "priceSnake" && gameId !== "swipeBazaar" && (
         <div className="arcade-intro">
           <span className="arcade-icon huge" aria-hidden="true">
             <Icon size={64} />
@@ -172,8 +211,12 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
         <div className="arcade-stage">
           {gameId === "scamSmash" ? (
             <ScamSmash key={round} running={stage === "play"} onEnd={finish} />
+          ) : gameId === "priceSnake" ? (
+            <PriceSnake key={round} running={stage === "play"} onEnd={finish} />
           ) : gameId === "insuranceRush" ? (
             <InsuranceRush key={round} running={stage === "play"} onEnd={finish} />
+          ) : gameId === "patangMarket" ? (
+            <PatangMarket key={round} running={stage === "play"} onEnd={finish} />
           ) : gameId === "swipeBazaar" ? (
             <SwipeBazaar key={round} running={stage === "play"} onEnd={finish} />
           ) : (
@@ -190,26 +233,31 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
       {stage === "done" && final && (
         <div className="arcade-done">
           <Stars n={starsFor(gameId, final.score)} big />
-          <p className="arcade-score">
-            <CountUp value={final.score} prefix={gameId === "scamSmash" || gameId === "insuranceRush" ? "" : "₹"} />
-            {final.isNew && <span className="arcade-new">{t("arcade.newBest")}</span>}
-          </p>
-          <ul className="arcade-chips">
-            {Object.entries(final)
-              .filter(([k, v]) => k !== "score" && k !== "isNew" && !(["shielded", "claims", "renewals", "emisLeft"].includes(k) && !v))
-              .map(([k, v]) => (
-                <li key={k} className={`chip-${k}`}>
-                  {t(`arcade.stat.${k}`, { n: typeof v === "number" ? v.toLocaleString("en-IN") : v })}
-                </li>
-              ))}
-          </ul>
+          {gameId === "priceSnake" && <SnakeResult final={final} />}
+          {gameId !== "priceSnake" && (
+            <>
+              <p className="arcade-score">
+                <CountUp value={final.score} prefix={gameId === "scamSmash" || gameId === "insuranceRush" ? "" : "₹"} />
+                {final.isNew && <span className="arcade-new">{t("arcade.newBest")}</span>}
+              </p>
+              <ul className="arcade-chips">
+                {Object.entries(final)
+                  .filter(([k, v]) => typeof v === "number" && k !== "score" && !(["shielded", "claims", "renewals", "emisLeft"].includes(k) && !v))
+                  .map(([k, v]) => (
+                    <li key={k} className={`chip-${k}`}>
+                      {t(`arcade.stat.${k}`, { n: v.toLocaleString("en-IN") })}
+                    </li>
+                  ))}
+              </ul>
+            </>
+          )}
+          {gameId === "patangMarket" && final.report && <PatangReport report={final.report} reason={final.reason} />}
           <p className="arcade-lesson">
             <Lightbulb size={20} aria-hidden="true" />
             <span>{t(`arcade.games.${gameId}.lesson`)}</span>
           </p>
-          <AdBanner key={ad.id} ad={ad} onOpen={(a) => setScam(a.id)} onReport={() => setAd(nextAd(ad.id))} />
           <div className="action-row">
-            <button className="secondary-button" onClick={again}>
+            <button className="secondary-button" onClick={begin}>
               <RotateCcw size={16} /> {t("arcade.again")}
             </button>
             <button ref={start} className="primary-button big" onClick={onBack ?? onClose}>
@@ -218,14 +266,13 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
           </div>
         </div>
       )}
-      {interstitial && <AdInterstitial ad={interstitial} onOpen={(a) => setScam(a.id)} onSkip={begin} />}
+      {interstitial && <AdInterstitial ad={interstitial} onOpen={(a) => setScam(a.id)} onSkip={() => setInterstitial(null)} />}
       {scam && (
         <ScamSite
           adId={scam}
           onClose={() => {
             setScam(null);
-            setAd(nextAd(ad.id));
-            if (interstitial) begin();
+            setInterstitial(null);
           }}
         />
       )}
@@ -329,7 +376,7 @@ function SnowballIntro({ best, startRef, onStart }) {
 
 function HowTo({ gameId }) {
   const { t } = useT();
-  const keys = { jarDash: ["←", "→"], scamSmash: ["1", "…", "6"], snowball: ["↑", "↓"], insuranceRush: ["←", "→"] }[gameId];
+  const keys = { jarDash: ["←", "→"], scamSmash: ["1", "…", "6"], snowball: ["↑", "↓"], insuranceRush: ["←", "→"], patangMarket: ["Space", "↑"] }[gameId];
   return (
     <p className="arcade-howto">
       <span className="keys" aria-hidden="true">
