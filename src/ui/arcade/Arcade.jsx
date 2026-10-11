@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, BookOpen, Calculator, CarFront, Egg, Flower2, Gamepad2, Heart, Lightbulb, PiggyBank, Rat, RotateCcw, ScanSearch, ShieldBan, ShoppingBag, Snowflake, Star, Wallet, Weight, Wind, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Calculator, CarFront, Egg, Flower2, Gamepad2, Heart, Lightbulb, PiggyBank, Rat, RotateCcw, FileSearch, ShieldBan, ShoppingBag, Snowflake, Star, Wallet, Weight, Wind, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -13,7 +13,7 @@ import { SwipeBazaar, SwipeBazaarIntro } from "./SwipeBazaar.jsx";
 import { SWIPE_CONFIG } from "./swipeBazaarConfig.js";
 import { RatGuard } from "../games/RatGuard.jsx";
 import { InterestRace } from "../games/InterestRace.jsx";
-import { SpotTheFake } from "../games/SpotTheFake.jsx";
+import { FinePrintHunter } from "../games/FinePrintHunter.jsx";
 import { SalarySplit } from "../games/SalarySplit.jsx";
 import { BasketJuggle } from "../games/BasketJuggle.jsx";
 import { SipGarden } from "../games/SipGarden.jsx";
@@ -27,7 +27,7 @@ export const starsFor = (id, score) => STARS[id].filter((x) => score >= x).lengt
 const STORY_GAMES = [
   { id: "ratGuard", title: "ratguard.title", icon: Rat, Game: RatGuard },
   { id: "interest", title: "interest.title", icon: Calculator, Game: InterestRace },
-  { id: "fake", title: "fake.title", icon: ScanSearch, Game: SpotTheFake },
+  { id: "fineprint", title: "fineprint.title", icon: FileSearch, Game: FinePrintHunter },
   { id: "salary", title: "salary.title", icon: Wallet, Game: SalarySplit },
   { id: "baskets", title: "baskets.title", icon: Egg, Game: BasketJuggle },
   { id: "garden", title: "garden.title", icon: Flower2, Game: SipGarden },
