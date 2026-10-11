@@ -1,31 +1,46 @@
 import React, { useEffect, useRef } from "react";
-import { Coffee, Home, Play } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
+import { PixelIcon } from "./PixelIcon.jsx";
 
-// The game is paused: everything behind is frozen until Resume (or T / Esc).
-export function PauseCard({ onResume, onMenu }) {
+// The game is paused: everything behind is frozen. A wooden pixel panel with four big rows:
+// resume, sound on/off, how to play, main menu.
+export function PauseCard({ onResume, onMenu, onHelp, settings }) {
   const { t } = useT();
   const resume = useRef(null);
   useEffect(() => resume.current?.focus(), []);
+  const sound = settings?.sound;
   return (
     <div className="pause-layer" role="dialog" aria-modal="true" aria-labelledby="pause-title">
       <div className="pause-card">
-        <span className="pause-icon" aria-hidden="true">
-          <Coffee size={34} />
-        </span>
-        <h2 id="pause-title">{t("pause.title")}</h2>
-        <p>{t("pause.text")}</p>
-        <button ref={resume} className="primary-button big" onClick={onResume}>
-          <Play size={18} fill="currentColor" /> {t("pause.resume")}
-        </button>
-        {onMenu && (
-          <button className="text-button" onClick={onMenu}>
-            <Home size={15} /> {t("pause.menu")}
+        <h2 id="pause-title" className="pause-ribbon">
+          {t("pause.title")}
+        </h2>
+        <div className="pause-list">
+          <button ref={resume} className="pause-row go" onClick={onResume}>
+            <PixelIcon name="play" size={18} />
+            <span>{t("pause.resume")}</span>
+            <kbd>T</kbd>
           </button>
-        )}
-        <small className="pause-key">
-          <kbd>T</kbd> {t("pause.key")}
-        </small>
+          {settings && (
+            <button className={`pause-row ${sound ? "" : "off"}`} aria-pressed={sound} onClick={() => settings.setSound(!sound)}>
+              <PixelIcon name={sound ? "speaker" : "mute"} size={18} />
+              <span>{sound ? t("pause.soundOn") : t("pause.soundOff")}</span>
+              <i className={`pause-switch ${sound ? "on" : ""}`} aria-hidden="true" />
+            </button>
+          )}
+          {onHelp && (
+            <button className="pause-row" onClick={onHelp}>
+              <PixelIcon name="book" size={16} />
+              <span>{t("pause.help")}</span>
+            </button>
+          )}
+          {onMenu && (
+            <button className="pause-row quiet" onClick={onMenu}>
+              <PixelIcon name="home" size={18} />
+              <span>{t("pause.menu")}</span>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

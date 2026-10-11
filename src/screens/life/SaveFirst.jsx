@@ -4,6 +4,7 @@ import { useT } from "../../i18n/index.jsx";
 import { select } from "../../ui/gameAdapter.js";
 import { PixelPortrait } from "../../ui/PixelPortrait.jsx";
 import { sounds } from "../../ui/sound.js";
+import { PixelIcon } from "../../ui/PixelIcon.jsx";
 import { SAVE_LEVELS, forecast, levelOf, planFor } from "../../ui/savePlan.js";
 
 // The story's budget as one choice: how much do you save first? Needs are fixed, the rest is fun
@@ -11,11 +12,11 @@ import { SAVE_LEVELS, forecast, levelOf, planFor } from "../../ui/savePlan.js";
 // safety jar covers, how much fun is left.
 const END_AGE = 36;
 const PARTS = [
-  { id: "needs", icon: "🏠" },
-  { id: "wants", icon: "🍬" },
-  { id: "emergency", icon: "🛟" },
-  { id: "goal", icon: "🎯" },
-  { id: "invest", icon: "🌱" },
+  { id: "needs", icon: "home" },
+  { id: "wants", icon: "candy" },
+  { id: "emergency", icon: "ring" },
+  { id: "goal", icon: "target" },
+  { id: "invest", icon: "sprout" },
 ];
 
 function CoinStack({ n }) {
@@ -56,7 +57,9 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
           <h2>{t("save.title")}</h2>
         </div>
         <span className="sv-income" aria-label={t("save.income", { n: money(rules.monthlyIncome) })}>
-          <i aria-hidden="true">💰</i>
+          <i aria-hidden="true">
+            <PixelIcon name="bag" size={24} />
+          </i>
           <b>{money(rules.monthlyIncome)}</b>
           <small>{t("save.perMonth")}</small>
         </span>
@@ -66,7 +69,7 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
       <div className="sv-bar" role="img" aria-label={PARTS.filter((p) => p.id in jars).map((p) => `${t(`save.part.${p.id}`)} ${money(jars[p.id])}`).join(", ")}>
         {PARTS.filter((p) => p.id in jars && jars[p.id] > 0).map((p) => (
           <span key={p.id} className={`sv-seg seg-${p.id}`} style={{ flexGrow: jars[p.id] }} title={`${t(`save.part.${p.id}`)} ${money(jars[p.id])}`}>
-            <i aria-hidden="true">{p.id === "needs" ? <Lock size={12} /> : p.icon}</i>
+            <i aria-hidden="true">{p.id === "needs" ? <Lock size={12} /> : <PixelIcon name={p.icon} size={13} />}</i>
             <b>{money(jars[p.id])}</b>
           </span>
         ))}
@@ -89,7 +92,7 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
             >
               <CoinStack n={2 + i * 2} />
               <span className="sv-face" aria-hidden="true">
-                {["🐣", "🐷", "🐳"][i]}
+                <PixelIcon name={["jarLow", "jarMid", "jarFull"][i]} size={34} />
               </span>
               <b>{t(`save.level.${l.id}`)}</b>
               <em>
@@ -104,7 +107,7 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
       <div className="sv-forecast">
         <div className="sv-fc fc-dream">
           <span className="sv-fc-icon" aria-hidden="true">
-            🎯
+            <PixelIcon name="target" size={18} />
           </span>
           <div className="sv-track" aria-hidden="true">
             <span className="sv-age now">{life.age}</span>
@@ -113,7 +116,7 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
               <PixelPortrait role="player" avatar={avatar} stage={hud.stage} />
             </span>
             <span className={`sv-flag ${fc.dreamAge == null ? "never" : ""}`} style={{ left: `calc(${dreamPos * 100}% - 12px)` }}>
-              🏁
+              <PixelIcon name="flag" size={22} />
             </span>
             <span className="sv-age end">{END_AGE}</span>
           </div>
@@ -124,12 +127,12 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
         </div>
         <div className="sv-fc fc-safety">
           <span className="sv-fc-icon" aria-hidden="true">
-            🛟
+            <PixelIcon name="ring" size={18} />
           </span>
           <span className="sv-icons" aria-hidden="true">
             {Array.from({ length: 5 }, (_, i) => (
               <i key={i} className={i < fc.shields ? "on" : ""}>
-                🛡️
+                <PixelIcon name="shield" size={20} />
               </i>
             ))}
           </span>
@@ -138,12 +141,12 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
         </div>
         <div className="sv-fc fc-fun">
           <span className="sv-fc-icon" aria-hidden="true">
-            🍬
+            <PixelIcon name="candy" size={12} />
           </span>
           <span className="sv-icons" aria-hidden="true">
             {Array.from({ length: 6 }, (_, i) => (
               <i key={i} className={i < Math.round((fc.fun * 6) / 10) ? "on" : ""}>
-                🍭
+                <PixelIcon name="lolly" size={22} />
               </i>
             ))}
           </span>
@@ -153,10 +156,28 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
       </div>
 
       <footer className="sv-foot">
-        {rules.squeezed && <span className="sv-tight">😣 {t("save.tight")}</span>}
-        <span className="sv-tip">
-          🛟 → 🎯 <small>{t("save.tip")}</small>
-        </span>
+        {rules.squeezed && (
+          <span className="sv-tight">
+            <PixelIcon name="faceSad" size={16} /> {t("save.tight")}
+          </span>
+        )}
+        <ol className="sv-steps" aria-label={t("save.howTitle")}>
+          <li>
+            <b>1</b>
+            <PixelIcon name="jarMid" size={18} />
+            <span>{t("save.how1")}</span>
+          </li>
+          <li>
+            <b>2</b>
+            <PixelIcon name="ring" size={16} />
+            <span>{t("save.how2")}</span>
+          </li>
+          <li>
+            <b>3</b>
+            <PixelIcon name="candy" size={10} />
+            <span>{t("save.how3")}</span>
+          </li>
+        </ol>
         <button className="primary-button big sv-go" onClick={go} autoFocus>
           {t("budget.confirm")} <ArrowRight size={18} />
         </button>
