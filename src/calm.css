@@ -1599,9 +1599,13 @@
   min-width: 30px;
   height: 30px;
   padding: 0 4px;
-  font-family: var(--px-font);
-  font-size: 18px;
-  color: #fff8de;
+  /* Pixel digits are hard to read (a "2" looks like a "Z"), so the number uses the body font. */
+  font-family: "Manrope Variable", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
   background: var(--pc);
   border: 2px solid var(--pcd);
   border-radius: 4px;
