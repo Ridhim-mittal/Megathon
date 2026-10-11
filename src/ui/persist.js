@@ -1,6 +1,8 @@
 // Progress lives in localStorage only (spec section 8). Every access is guarded: private windows
 // and blocked storage simply mean nothing is remembered.
 
+import { devFlag } from "./dev/devFlags.js";
+
 const KEYS = { settings: "lakshyam.settings", life: "lakshyam.life", endings: "lakshyam.endings", discovered: "lakshyam.discovered", arcade: "lakshyam.arcade" };
 
 function read(key, fallback) {
@@ -61,6 +63,7 @@ export function saveArcadeBest(id, score) {
 
 // True the first time it is asked for this key in this browser (one-time hints).
 export function seenOnce(key) {
+  if (devFlag("noHints")) return false;
   const seen = read("lakshyam.once", {});
   if (seen[key]) return false;
   write("lakshyam.once", { ...seen, [key]: true });

@@ -18,6 +18,7 @@ import { sounds } from "../ui/sound.js";
 import { GAME_COMPONENTS, PRE_GAMES, SCENE_GAMES } from "../ui/games/choiceGames.js";
 import { PreGameCard } from "./story/PreGame.jsx";
 import { RatGuard } from "../ui/games/RatGuard.jsx";
+import { useDevFlag } from "../ui/dev/devFlags.js";
 import { SaveFirst } from "./life/SaveFirst.jsx";
 import { JarDock, SurprisePop } from "../ui/MoneyMoments.jsx";
 import { ShopView } from "./life/ShopView.jsx";
@@ -40,6 +41,9 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   const avatar = life.avatar ?? "boy";
   const phase = life.phase;
   const objective = story?.objective ?? null;
+  const frozen = useDevFlag("freezeTimers"); // dev menu switches
+  const readScenes = useDevFlag("skipSceneGames");
+  const skipPreGames = useDevFlag("skipPreGames");
 
   const [overlay, setOverlay] = useState(null); // { type: info|shop|phone|gyaan|ask|flow|evidence, ... }
   const [introDone, setIntroDone] = useState(null);
@@ -93,7 +97,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     }
     if (rushRef.current.key !== rushKey) rushRef.current = { key: rushKey, left: objective.rush.seconds };
     setRushLeft(rushRef.current.left);
-    if (overlay || paused) return undefined;
+    if (overlay || paused || frozen) return undefined;
     let last = performance.now();
     const id = setInterval(() => {
       const now = performance.now();
@@ -107,7 +111,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
       }
     }, 200);
     return () => clearInterval(id);
-  }, [rushKey, overlay, paused, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [rushKey, overlay, paused, frozen, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // The one pop-up the story keeps: Black Monday's breaking news (once per life).
   const [news, setNews] = useState(false);
@@ -123,6 +127,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
 
   // ---------- choices: locks and STOP warnings ----------
   const card = select.currentCard(life);
+  const sceneGame = readScenes ? null : SCENE_GAMES[card?.id];
   // The lesson of the scene being played, or of the scene the objective leads to.
   const lessonId =
     phase === "card" || phase === "outcome"
@@ -206,7 +211,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
     // MissionIntro brings its own full-screen layer.
   } else if (phase === "budget") {
     dialog = <SaveFirst key={`budget-${life.age}`} life={life} dispatch={dispatch} avatar={avatar} />;
-  } else if (phase === "card" && PRE_GAMES[card?.id] && !played.has(card.id)) {
+  } else if (phase === "card" && PRE_GAMES[card?.id] && !played.has(card.id) && !skipPreGames) {
     // This scene starts with its mini-game; the question and choices come after it.
     windowType = "pregame";
     dialog = (
@@ -218,7 +223,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         onSkip={() => markPlayed(card.id)}
       />
     );
-  } else if (phase === "card" && SCENE_GAMES[card?.id]) {
+  } else if (phase === "card" && sceneGame) {
     // This scene is played, not read: the game brings its own full-screen layer (below).
   } else if (phase === "card") {
     dialog = (
@@ -227,7 +232,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           <TimerBar
             key={`timer-${card.id}`}
             seconds={card.timer.seconds}
-            paused={Boolean(warning || game || paused)}
+            paused={Boolean(warning || game || paused || frozen)}
             label={t("story.decideFast")}
             onTimeout={() => {
               setWarning(null);
@@ -392,8 +397,8 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
           </section>
         </div>
       )}
-      {phase === "card" && !showIntro && SCENE_GAMES[card?.id] &&
-        React.createElement(SCENE_GAMES[card.id], {
+      {phase === "card" && !showIntro && sceneGame &&
+        React.createElement(sceneGame, {
           key: card.id,
           avatar: life.avatar ?? "boy",
           onDone: (choiceId) => {

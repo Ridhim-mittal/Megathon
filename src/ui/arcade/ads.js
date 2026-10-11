@@ -9,6 +9,8 @@
 //   coins    "Free gold coins": a fake bank login, and an OTP that says "transfer"
 //   giveaway "Top players win a phone": pay for delivery, then "customs"
 
+import { devFlag } from "../dev/devFlags.js";
+
 export const ADS = [
   { id: "spin", brand: "LuckySpin Rewards", domain: "luckyspin-rewardz.xyz", payee: "luckyspin.claim@okpay" },
   { id: "task", brand: "GameKamao", domain: "gamekamao-earn.in.net", payee: "gamekamao.vip@ybl-pay" },
@@ -57,6 +59,7 @@ export function lostIn(adId, steps) {
 let opens = 0;
 let lastHadAd = false;
 export function maybeAd(rng = Math.random) {
+  if (devFlag("noAds")) return null;
   opens += 1;
   const show = opens > 1 && !lastHadAd && rng() < 0.33;
   lastHadAd = show;
