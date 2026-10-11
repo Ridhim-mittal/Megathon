@@ -34,3 +34,8 @@ const start = () =>
     </React.StrictMode>,
   );
 loadLanguage(loadSettings().lang).catch(() => {}).finally(start);
+
+// Offline after the first visit (public/sw.js). Production only, so development always runs fresh.
+if (import.meta.env.PROD && "serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => {}));
+}

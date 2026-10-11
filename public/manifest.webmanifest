@@ -1,0 +1,11 @@
+{
+  "name": "Lakshyam · A little life, a big dream",
+  "short_name": "Lakshyam",
+  "description": "Learn about money, one choice at a time.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f6ee",
+  "theme_color": "#f8f6ee",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
