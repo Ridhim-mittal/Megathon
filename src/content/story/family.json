@@ -169,9 +169,9 @@
         "te": "రెండు జీతాలు, ఒకే ప్లాన్"
       },
       "text": {
-        "en": "Together you earn about ₹45,000 a month. {cast:banker} draws three pots: safe money, growth money, dream money. Outside, {cast:agent} waves an 'NFO at only ₹10 a unit!' brochure.",
-        "hi": "आप दोनों मिलकर महीने के लगभग ₹45,000 कमाते हैं। {cast:banker} कागज़ पर तीन डिब्बे बनाती हैं: सुरक्षित पैसा, बढ़ने वाला पैसा, सपनों का पैसा। बाहर {cast:agent} 'NFO सिर्फ़ ₹10 प्रति यूनिट!' वाला पर्चा लहरा रहा है।",
-        "te": "ఇద్దరూ కలిసి నెలకు దాదాపు ₹45,000 సంపాదిస్తారు. {cast:banker} మూడు డబ్బాలు గీస్తుంది: భద్రమైన డబ్బు, పెరిగే డబ్బు, కల డబ్బు. బయట, {cast:agent} 'NFO, యూనిట్ కేవలం ₹10!' బ్రోచర్ ఊపుతున్నాడు."
+        "en": "Together you earn about ₹45,000 a month. {cast:banker} draws three pots: safe money, growth money, dream money. Outside, {cast:agent} waves an '[[nfo]] at only ₹10 a unit!' brochure.",
+        "hi": "आप दोनों मिलकर महीने के लगभग ₹45,000 कमाते हैं। {cast:banker} कागज़ पर तीन डिब्बे बनाती हैं: सुरक्षित पैसा, बढ़ने वाला पैसा, सपनों का पैसा। बाहर {cast:agent} '[[nfo]] सिर्फ़ ₹10 प्रति यूनिट!' वाला पर्चा लहरा रहा है।",
+        "te": "ఇద్దరూ కలిసి నెలకు దాదాపు ₹45,000 సంపాదిస్తారు. {cast:banker} మూడు డబ్బాలు గీస్తుంది: భద్రమైన డబ్బు, పెరిగే డబ్బు, కల డబ్బు. బయట, {cast:agent} '[[nfo]], యూనిట్ కేవలం ₹10!' బ్రోచర్ ఊపుతున్నాడు."
       },
       "choices": [
         {
