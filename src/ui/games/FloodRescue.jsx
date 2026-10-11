@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowRight, RotateCcw, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
-import { sounds } from "../sound.js";
+import { sounds, waterLoop } from "../sound.js";
 import { DECOYS, ESSENTIAL, FIELD, FLOOD, createFlood, floodResult, stepFlood } from "./floodRescue.js";
 import { DOOR_X, ITEM_PX, PX, buffalo, haystack, itemSprite, paintHouse, plantSprite } from "./floodArt.js";
 
@@ -71,6 +71,17 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
   const screenRef = useRef(screen);
   screenRef.current = screen;
   if (import.meta.env?.DEV) window.__flood = game;
+  const water = useRef(null);
+
+  // The low rush of the water, for as long as the flood lasts.
+  useEffect(() => {
+    if (screen !== "flood") return;
+    water.current = waterLoop();
+    return () => {
+      water.current.stop();
+      water.current = null;
+    };
+  }, [screen]);
 
   function choose(insured) {
     game.current = createFlood({ insured });
@@ -102,7 +113,9 @@ function FloodRun({ mode = "practice", onWin, onClose, onAgain }) {
         s.fx.length = 0;
         if (now - hudAt > 120) {
           hudAt = now;
-          setHud({ left: Math.max(0, Math.ceil(FLOOD.seconds - s.time)), water: (FIELD.h - s.level) / (FIELD.h - FLOOD.top) });
+          const risen = (FIELD.h - s.level) / (FIELD.h - FLOOD.top);
+          setHud({ left: Math.max(0, Math.ceil(FLOOD.seconds - s.time)), water: risen });
+          water.current?.set(risen);
         }
         if (over) {
           setResult(floodResult(s));
