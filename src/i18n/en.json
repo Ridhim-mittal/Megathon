@@ -1851,5 +1851,28 @@
     "sipAvg": "SIP paid avg {n}",
     "noSip": "no SIP",
     "navNow": "NAV now {n}"
+  },
+  "tour": {
+    "eyebrow": "How to play · {n} of {total}",
+    "walk": {
+      "title": "Walk the village",
+      "text": "Follow the pin to where your story happens. Use the arrow keys, or just click a place."
+    },
+    "jars": {
+      "title": "Give every rupee a home",
+      "text": "Each year, split your money into jars. Needs first, then joys, then your dream."
+    },
+    "choose": {
+      "title": "Choose wisely",
+      "text": "Every scene has a few choices. If a red STOP sign flashes, think again!"
+    },
+    "learn": {
+      "title": "Learn with Ammamma",
+      "text": "After each choice she shows you why. Tap Learn more for the full lesson."
+    },
+    "dream": {
+      "title": "Reach your big dream",
+      "text": "Live from age 11 to 36. Play the mini-games in the Arcade any time."
+    }
   }
 }

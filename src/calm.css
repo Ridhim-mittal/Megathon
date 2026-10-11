@@ -978,3 +978,386 @@
     text-align: center;
   }
 }
+
+/* ---------- Title: a bigger sprout and a proper "how to play" button ---------- */
+.title-content .title-sprout {
+  margin: 18px auto -14px;
+  color: #5a8a45;
+  filter: drop-shadow(0 3px 0 #fff8da);
+  animation: sprout-sway 3.2s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+@keyframes sprout-sway {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(4deg) scale(1.05); }
+}
+.title-content .title-howto {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px auto 0;
+  padding: 9px 20px 9px 10px;
+  border-radius: 999px;
+  border: 3px solid #c99a3a;
+  background: linear-gradient(180deg, #fffaf0, #fff0c8);
+  box-shadow: 0 4px 0 #c99a3a, 0 8px 18px rgba(80, 60, 20, 0.15);
+  color: #6b4a14;
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s;
+  animation: choice-pop 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) 0.4s both;
+}
+.title-content .title-howto:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.title-content .title-howto:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #c99a3a;
+}
+.title-howto-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #fff;
+  background: #e0a33c;
+  animation: howto-wiggle 2.6s ease-in-out infinite;
+}
+@keyframes howto-wiggle {
+  0%, 80%, 100% { transform: rotate(0); }
+  85% { transform: rotate(-12deg); }
+  90% { transform: rotate(12deg); }
+  95% { transform: rotate(-6deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .title-content .title-sprout,
+  .title-howto-icon {
+    animation: none;
+  }
+}
+
+/* ---------- How to play: five animated pictures ---------- */
+.guide-dialog.tour {
+  max-width: 520px;
+  padding: 22px 26px 20px;
+  text-align: center;
+  border: 3px solid #e7d6ac;
+  border-radius: 24px;
+  background: #fffdf6;
+  box-shadow: 0 6px 0 #e0c992, 0 24px 80px rgba(37, 49, 34, 0.3);
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+}
+.tour-eyebrow {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a08a5a;
+}
+.tour-slide {
+  animation: tour-in 0.4s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+}
+.tour-slide h2 {
+  margin: 14px 0 6px;
+  font-family: var(--px-font);
+  font-size: 24px;
+  color: #3a2a18;
+}
+.tour-slide p {
+  margin: 0 auto;
+  max-width: 26em;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: #5a4a30;
+}
+.tour-note {
+  display: block;
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: #a09070;
+}
+@keyframes tour-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+.tour-art {
+  position: relative;
+  height: 170px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(#cfeaf6, #eef8ef 60%, #a8d68a 61%, #8cc46c);
+}
+.tour-art canvas {
+  width: 44px;
+  height: 66px;
+}
+/* walk */
+.tour-path {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 30px;
+  border-top: 4px dashed #e9d39a;
+}
+.tour-walker {
+  position: absolute;
+  left: 16%;
+  bottom: 26px;
+  animation: tour-walk 3s ease-in-out infinite;
+}
+.tour-pin {
+  position: absolute;
+  right: 16%;
+  bottom: 40px;
+  color: #e0563f;
+  animation: pin-bob 1s ease-in-out infinite;
+}
+.tour-keys {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+}
+.tour-keys kbd {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  border: 2px solid #3a2a18;
+  background: #fff;
+  font-weight: 800;
+  box-shadow: 0 2px 0 #3a2a18;
+}
+.tour-keys kbd:last-child {
+  animation: key-press 1s ease-in-out infinite;
+}
+@keyframes tour-walk {
+  0%, 10% { transform: translateX(0); }
+  70%, 100% { transform: translateX(min(260px, 46vw)); }
+}
+/* jars */
+.art-jars {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 26px;
+  padding-bottom: 26px;
+  background: linear-gradient(#fff6dc, #fff0cc);
+}
+.tour-jar {
+  position: relative;
+  width: 58px;
+  height: 74px;
+  border-radius: 14px 14px 18px 18px;
+  border: 3px solid #c9a86a;
+  background: rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+}
+.tour-jar b {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 20%;
+  background: #f2c76a;
+  animation: jar-fill 3s ease-in-out infinite;
+  animation-delay: var(--d);
+}
+.jar-joys b { background: #f0a3a3; }
+.jar-dream b { background: #b9a6ea; }
+.tour-coin {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: -24px;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 800;
+  color: #8a5a10;
+  background: #ffd84a;
+  border: 2px solid #d9962a;
+  animation: coin-drop 3s ease-in infinite;
+  animation-delay: var(--d);
+}
+@keyframes coin-drop {
+  0% { transform: translateY(0); opacity: 1; }
+  40% { transform: translateY(70px); opacity: 1; }
+  45%, 100% { transform: translateY(70px); opacity: 0; }
+}
+@keyframes jar-fill {
+  0%, 40% { height: 20%; }
+  55%, 85% { height: 60%; }
+  100% { height: 20%; }
+}
+/* choose */
+.art-choose {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 12px;
+  background: linear-gradient(#fffaf0, #fbefd6);
+}
+.tour-card {
+  position: relative;
+  width: 240px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 2px solid #e3cf9c;
+  background: #fff;
+  box-shadow: 0 3px 0 #e3cf9c;
+}
+.tour-card b {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #ffe27a;
+  font-size: 13px;
+}
+.tour-card i {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: #e8dcc0;
+}
+.tour-card i.short {
+  flex: 0.5;
+}
+.tour-card.good {
+  animation: card-pick 3s ease-in-out infinite;
+}
+.tour-card.bad {
+  border-color: #f2b4a6;
+}
+.tour-stop {
+  position: absolute;
+  right: -18px;
+  top: -16px;
+  color: #fff;
+  background: #e0484f;
+  border-radius: 12px;
+  padding: 4px;
+  animation: stop-pulse 1.2s ease-in-out infinite;
+}
+@keyframes card-pick {
+  0%, 30% { transform: none; border-color: #e3cf9c; }
+  45%, 80% { transform: scale(1.05); border-color: #5aa843; box-shadow: 0 3px 0 #5aa843; }
+  100% { transform: none; }
+}
+@keyframes stop-pulse {
+  50% { transform: scale(1.15) rotate(-6deg); }
+}
+/* learn */
+.art-learn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  padding-bottom: 22px;
+}
+.tour-granny canvas {
+  width: 60px;
+  height: 90px;
+}
+.tour-bubble {
+  align-self: center;
+  margin-bottom: 40px;
+  padding: 10px 16px;
+  border-radius: 18px 18px 18px 4px;
+  background: #fff;
+  border: 2px solid #f0cf7a;
+  font-size: 30px;
+  animation: bubble-pop 2s ease-in-out infinite;
+}
+@keyframes bubble-pop {
+  0%, 100% { transform: scale(0.92); }
+  50% { transform: scale(1.08) translateY(-4px); }
+}
+/* dream */
+.art-dream {
+  background: linear-gradient(#ffe7b0, #fff6dc 60%, #a8d68a 61%, #8cc46c);
+}
+.tour-home {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  margin-left: -27px;
+  color: #c96a3a;
+}
+.tour-star {
+  position: absolute;
+  top: -14px;
+  right: -12px;
+  color: #ffc94a;
+  animation: sprout-sway 1.6s ease-in-out infinite;
+}
+.tour-hopper {
+  position: absolute;
+  left: 22%;
+  bottom: 24px;
+  animation: sl-hop 0.9s ease-in-out infinite;
+}
+.tour-pad {
+  position: absolute;
+  right: 20%;
+  bottom: 40px;
+  color: #7a3f6b;
+  animation: pin-bob 1.4s ease-in-out infinite;
+}
+.tour-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0 12px;
+}
+.tour-dots button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: #e6d8b4;
+  cursor: pointer;
+  transition: width 0.25s, background 0.25s;
+}
+.tour-dots button.seen {
+  background: #d9b86a;
+}
+.tour-dots button.on {
+  width: 28px;
+  background: #e0a33c;
+}
+.tour-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tour-actions .secondary-button:disabled {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-art *,
+  .tour-slide {
+    animation: none !important;
+  }
+}
