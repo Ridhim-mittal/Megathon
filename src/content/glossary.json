@@ -42,25 +42,25 @@
   "interest": {
     "name": { "en": "interest", "hi": "ब्याज", "te": "వడ్డీ" },
     "short": {
-      "en": "The price of money. You earn it when you save. You pay it when you borrow.",
-      "hi": "पैसे की कीमत। बचत पर मिलता है, उधार पर देना पड़ता है।",
-      "te": "డబ్బు ధర. పొదుపు చేస్తే వస్తుంది, అప్పు చేస్తే కట్టాలి."
+      "en": "Extra money paid for using money. Save ₹100 at 7% and the bank gives you ₹7 a year. Borrow, and you pay it.",
+      "hi": "पैसे के इस्तेमाल का अतिरिक्त पैसा। ₹100 को 7% पर बचाओ तो बैंक साल में ₹7 देता है। उधार लो तो तुम्हें देना पड़ता है।",
+      "te": "డబ్బు వాడుకున్నందుకు ఇచ్చే అదనపు డబ్బు. ₹100ని 7%కి దాచితే బ్యాంకు ఏడాదికి ₹7 ఇస్తుంది. అప్పు తీసుకుంటే నువ్వు కట్టాలి."
     }
   },
   "simple_interest": {
     "name": { "en": "simple interest", "hi": "साधारण ब्याज", "te": "సాధారణ వడ్డీ" },
     "short": {
-      "en": "Interest only on the amount you started with.",
-      "hi": "सिर्फ़ शुरुआती रकम पर ब्याज।",
-      "te": "మొదటి మొత్తంపై మాత్రమే వడ్డీ."
+      "en": "Interest only on the money you first put in. ₹1,000 at 10% earns ₹100 every year, the same each year.",
+      "hi": "सिर्फ़ शुरुआती रकम पर ब्याज। ₹1,000 पर 10% से हर साल ₹100 मिलते हैं, हर साल उतने ही।",
+      "te": "మొదట పెట్టిన డబ్బుపై మాత్రమే వడ్డీ. ₹1,000పై 10% అంటే ప్రతి ఏడాది ₹100, ప్రతి ఏడాదీ అంతే."
     }
   },
   "chakravaddi": {
     "name": { "en": "compound interest", "hi": "चक्रवृद्धि ब्याज", "te": "చక్రవడ్డీ" },
     "short": {
-      "en": "Interest on interest. Great for savings, dangerous for debts.",
-      "hi": "ब्याज पर ब्याज। बचत के लिए बढ़िया, कर्ज़ के लिए खतरनाक।",
-      "te": "వడ్డీ మీద వడ్డీ. పొదుపుకు మంచిది, అప్పుకు ప్రమాదం."
+      "en": "Interest that also earns interest, so money grows faster every year. Great for savings, scary for loans.",
+      "hi": "ब्याज पर भी ब्याज, इसलिए पैसा हर साल और तेज़ बढ़ता है। बचत के लिए बढ़िया, कर्ज़ के लिए डरावना।",
+      "te": "వడ్డీ మీద కూడా వడ్డీ, అందుకే డబ్బు ప్రతి ఏడాది ఇంకా వేగంగా పెరుగుతుంది. పొదుపుకు అద్భుతం, అప్పుకు భయంకరం."
     }
   },
   "minor_account": {
@@ -138,9 +138,9 @@
   "emi": {
     "name": { "en": "EMI", "hi": "किस्त (EMI)", "te": "వాయిదా (EMI)" },
     "short": {
-      "en": "Equated monthly instalment: the same payment every month until a loan is paid off.",
-      "hi": "समान मासिक किस्त: कर्ज़ खत्म होने तक हर महीने एक जैसी रकम।",
-      "te": "సమాన నెలవారీ వాయిదా: అప్పు తీరే వరకు ప్రతి నెలా ఒకే మొత్తం."
+      "en": "A fixed amount you pay every month until a loan is fully paid back.",
+      "hi": "हर महीने भरी जाने वाली तय रकम, जब तक कर्ज़ पूरा न चुक जाए।",
+      "te": "అప్పు పూర్తిగా తీరే వరకు ప్రతి నెలా కట్టే స్థిర మొత్తం."
     }
   },
   "bnpl": {
@@ -162,9 +162,9 @@
   "opportunity_cost": {
     "name": { "en": "opportunity cost", "hi": "अवसर लागत", "te": "అవకాశ వ్యయం" },
     "short": {
-      "en": "The best thing you give up when you choose something else.",
-      "hi": "कुछ और चुनने पर छोड़ी गई सबसे अच्छी चीज़।",
-      "te": "వేరొకటి ఎంచుకున్నప్పుడు వదులుకున్న మంచి అవకాశం."
+      "en": "What you give up when you choose something. Party tonight means no new books this month.",
+      "hi": "कुछ चुनने पर जो छोड़ना पड़ता है। आज रात पार्टी का मतलब, इस महीने नई किताबें नहीं।",
+      "te": "ఏదైనా ఎంచుకుంటే వదులుకునేది. ఈ రాత్రి పార్టీ అంటే, ఈ నెల కొత్త పుస్తకాలు లేవు."
     }
   },
   "betting_app": {
@@ -210,9 +210,9 @@
   "pf": {
     "name": { "en": "provident fund (PF)", "hi": "भविष्य निधि (PF)", "te": "భవిష్య నిధి (PF)" },
     "short": {
-      "en": "Retirement savings: 12% of your basic pay, matched by your employer.",
-      "hi": "रिटायरमेंट की बचत: बेसिक का 12%, और उतना ही कंपनी से।",
-      "te": "రిటైర్మెంట్ పొదుపు: బేసిక్ జీతంలో 12%, అంతే కంపెనీ నుంచి."
+      "en": "Savings for old age: 12% of your pay is saved every month, and your company adds the same amount.",
+      "hi": "बुढ़ापे की बचत: हर महीने तुम्हारी तनख्वाह का 12% बचता है, और कंपनी भी उतना ही जोड़ती है।",
+      "te": "వృద్ధాప్యం కోసం పొదుపు: ప్రతి నెలా నీ జీతంలో 12% దాచబడుతుంది, కంపెనీ కూడా అంతే కలుపుతుంది."
     }
   },
   "pan": {
@@ -258,9 +258,9 @@
   "credit_card": {
     "name": { "en": "credit card", "hi": "क्रेडिट कार्ड", "te": "క్రెడిట్ కార్డు" },
     "short": {
-      "en": "Borrowing for a month free. Pay only the minimum and interest runs at 36–42% a year.",
-      "hi": "एक महीने के लिए मुफ़्त उधार। सिर्फ़ मिनिमम चुकाया तो 36–42% सालाना ब्याज।",
-      "te": "ఒక నెల ఉచిత అప్పు. కనీస మొత్తమే కడితే ఏడాదికి 36–42% వడ్డీ."
+      "en": "A card to buy now and pay next month. Pay the full bill on time and it's free. Pay only a little and the interest is about 40% a year.",
+      "hi": "अभी खरीदो, अगले महीने भरो वाला कार्ड। पूरा बिल समय पर भरो तो मुफ़्त। थोड़ा-थोड़ा भरो तो लगभग 40% सालाना ब्याज।",
+      "te": "ఇప్పుడు కొని వచ్చే నెల కట్టే కార్డు. పూర్తి బిల్లు టైమ్‌కి కడితే ఉచితం. కొంచెమే కడితే ఏడాదికి దాదాపు 40% వడ్డీ."
     }
   },
   "credit_score": {
@@ -298,9 +298,9 @@
   "mudra": {
     "name": { "en": "Mudra loan", "hi": "मुद्रा लोन", "te": "ముద్ర లోన్" },
     "short": {
-      "en": "A government-backed bank loan for small businesses, without collateral.",
-      "hi": "छोटे कारोबार के लिए सरकार समर्थित बैंक कर्ज़, बिना गिरवी।",
-      "te": "చిన్న వ్యాపారాలకు ప్రభుత్వ మద్దతున్న బ్యాంక్ రుణం, తాకట్టు లేకుండా."
+      "en": "A government-backed bank loan for small businesses. You don't have to pledge land or gold.",
+      "hi": "छोटे कारोबार के लिए सरकार-समर्थित बैंक लोन। ज़मीन या सोना गिरवी रखने की ज़रूरत नहीं।",
+      "te": "చిన్న వ్యాపారాలకు ప్రభుత్వ మద్దతుతో బ్యాంకు రుణం. భూమి గానీ బంగారం గానీ తాకట్టు పెట్టక్కర్లేదు."
     }
   },
   "money_mule": {
@@ -338,9 +338,9 @@
   "term_insurance": {
     "name": { "en": "term life insurance", "hi": "टर्म जीवन बीमा", "te": "టర్మ్ జీవిత బీమా" },
     "short": {
-      "en": "Pure life cover for a fixed period. Low premium, big cover, no money back.",
-      "hi": "तय अवधि के लिए सिर्फ़ जीवन कवर। कम प्रीमियम, बड़ा कवर, पैसा वापस नहीं।",
-      "te": "నిర్ణీత కాలానికి జీవిత బీమా మాత్రమే. తక్కువ ప్రీమియం, పెద్ద బీమా, డబ్బు వెనక్కి రాదు."
+      "en": "Life cover only: a small yearly payment, and a big payout to your family if you die. No money back if you live.",
+      "hi": "सिर्फ़ जीवन बीमा: हर साल छोटी रकम, और तुम्हारे न रहने पर परिवार को बड़ी रकम। जीवित रहे तो पैसा वापस नहीं।",
+      "te": "జీవిత బీమా మాత్రమే: ఏడాదికి చిన్న మొత్తం, నువ్వు లేకపోతే కుటుంబానికి పెద్ద మొత్తం. బతికుంటే డబ్బు వెనక్కి రాదు."
     }
   },
   "pmsby": {
@@ -410,9 +410,9 @@
   "ppf": {
     "name": { "en": "Public Provident Fund (PPF)", "hi": "पब्लिक प्रॉविडेंट फंड (PPF)", "te": "పబ్లిక్ ప్రావిడెంట్ ఫండ్ (PPF)" },
     "short": {
-      "en": "A 15-year government savings scheme, about 7% a year, tax-free.",
-      "hi": "15 साल की सरकारी बचत योजना, लगभग 7% सालाना, टैक्स-फ़्री।",
-      "te": "15 ఏళ్ల ప్రభుత్వ పొదుపు పథకం, ఏడాదికి సుమారు 7%, పన్ను లేదు."
+      "en": "A 15-year government savings account. Safe, about 7% a year, and no tax on what it earns.",
+      "hi": "15 साल का सरकारी बचत खाता। सुरक्षित, लगभग 7% सालाना, और कमाई पर कोई टैक्स नहीं।",
+      "te": "15 ఏళ్ల ప్రభుత్వ పొదుపు ఖాతా. భద్రం, ఏడాదికి దాదాపు 7%, సంపాదనపై పన్ను లేదు."
     }
   },
   "sukanya": {
@@ -426,17 +426,17 @@
   "sip": {
     "name": { "en": "SIP", "hi": "SIP", "te": "SIP" },
     "short": {
-      "en": "Systematic investment plan: putting a fixed amount into a fund every month.",
-      "hi": "सिस्टमैटिक इन्वेस्टमेंट प्लान: हर महीने फंड में तय रकम डालना।",
-      "te": "సిస్టమాటిక్ ఇన్వెస్ట్‌మెంట్ ప్లాన్: ప్రతి నెలా ఫండ్‌లో స్థిర మొత్తం వేయడం."
+      "en": "Putting a small fixed amount, like ₹500, into a fund every month, automatically.",
+      "hi": "हर महीने अपने-आप एक छोटी तय रकम, जैसे ₹500, किसी फंड में डालना।",
+      "te": "ప్రతి నెలా ఆటోమేటిక్‌గా ₹500 లాంటి చిన్న స్థిర మొత్తాన్ని ఒక ఫండ్‌లో వేయడం."
     }
   },
   "index_fund": {
     "name": { "en": "index fund", "hi": "इंडेक्स फंड", "te": "ఇండెక్స్ ఫండ్" },
     "short": {
-      "en": "A low-cost fund that buys a little of many big companies. It swings, but spreads risk.",
-      "hi": "कम खर्च वाला फंड जो कई बड़ी कंपनियों का थोड़ा-थोड़ा खरीदता है। ऊपर-नीचे होता है, पर जोखिम फैलाता है।",
-      "te": "చాలా పెద్ద కంపెనీల్లో కొంచెం కొంచెం కొనే తక్కువ ఖర్చు ఫండ్. ఊగుతుంది, కానీ రిస్క్‌ను పంచుతుంది."
+      "en": "A cheap fund that buys a little of India's biggest companies. It goes up and down, but your money is spread out.",
+      "hi": "एक सस्ता फंड जो भारत की सबसे बड़ी कंपनियों का थोड़ा-थोड़ा हिस्सा खरीदता है। ऊपर-नीचे होता है, पर पैसा बँटा रहता है।",
+      "te": "భారత్‌లోని పెద్ద కంపెనీల్లో కొంచెం కొంచెం కొనే చౌక ఫండ్. పెరుగుతూ తగ్గుతూ ఉంటుంది, కానీ డబ్బు పంచబడి ఉంటుంది."
     }
   },
   "diversification": {
@@ -458,9 +458,9 @@
   "mixed_plan": {
     "name": { "en": "insurance-cum-investment plan", "hi": "बीमा-सह-निवेश प्लान", "te": "బీమా-పెట్టుబడి ప్లాన్" },
     "short": {
-      "en": "A policy that mixes cover and savings. Usually low cover, high fees, long lock-in.",
-      "hi": "कवर और बचत मिलाने वाली पॉलिसी। आमतौर पर कम कवर, ज़्यादा फ़ीस, लंबा लॉक-इन।",
-      "te": "బీమా, పొదుపు కలిపిన పాలసీ. సాధారణంగా తక్కువ బీమా, ఎక్కువ ఫీజు, ఎక్కువ లాక్-ఇన్."
+      "en": "A policy that mixes insurance and savings. It usually gives little cover, takes big fees and locks your money for years.",
+      "hi": "बीमा और बचत को मिलाने वाली पॉलिसी। अक्सर कम कवर, ज़्यादा फ़ीस, और सालों तक पैसा बंद।",
+      "te": "బీమా, పొదుపు కలిపిన పాలసీ. సాధారణంగా తక్కువ కవర్, ఎక్కువ ఫీజు, ఏళ్ల తరబడి డబ్బు లాక్."
     }
   },
   "chit": {
@@ -490,9 +490,9 @@
   "hawala": {
     "name": { "en": "hawala (hundi)", "hi": "हवाला", "te": "హవాలా" },
     "short": {
-      "en": "Moving cash outside banks, without records. Illegal, and carriers get caught first.",
-      "hi": "बैंक के बाहर, बिना रिकॉर्ड पैसा भेजना। अवैध है, और ढोने वाले सबसे पहले पकड़े जाते हैं।",
-      "te": "బ్యాంకుల బయట, రికార్డు లేకుండా నగదు తరలించడం. అక్రమం, మోసేవాళ్లే ముందు దొరుకుతారు."
+      "en": "Sending cash secretly outside banks, with no record. It is illegal.",
+      "hi": "बिना रिकॉर्ड के, बैंक से बाहर चुपके से नकद भेजना। यह गैरकानूनी है।",
+      "te": "రికార్డు లేకుండా, బ్యాంకుల బయట రహస్యంగా నగదు పంపడం. ఇది చట్టవిరుద్ధం."
     }
   },
   "pahani": {
@@ -506,9 +506,9 @@
   "encumbrance": {
     "name": { "en": "encumbrance certificate (EC)", "hi": "भार प्रमाणपत्र (EC)", "te": "ఈసీ (భారపత్రం)" },
     "short": {
-      "en": "A paper from the registration office showing if land is already sold, mortgaged or disputed.",
-      "hi": "रजिस्ट्री दफ़्तर का कागज़ जो बताता है कि ज़मीन पहले से बिकी, गिरवी या विवाद में तो नहीं।",
-      "te": "భూమి ఇప్పటికే అమ్మారా, తాకట్టులో ఉందా, వివాదంలో ఉందా చూపించే రిజిస్ట్రేషన్ ఆఫీస్ కాగితం."
+      "en": "A government paper that shows if land is already sold, pledged for a loan or in a dispute. Check it before you buy.",
+      "hi": "एक सरकारी कागज़ जो बताता है कि ज़मीन पहले से बिकी, कर्ज़ में गिरवी या झगड़े में तो नहीं। खरीदने से पहले ज़रूर देखें।",
+      "te": "భూమి ఇప్పటికే అమ్మారా, అప్పుకు తాకట్టు పెట్టారా, గొడవలో ఉందా చూపించే ప్రభుత్వ కాగితం. కొనే ముందు తప్పక చూడు."
     }
   },
   "sale_deed": {
@@ -538,9 +538,9 @@
   "nps": {
     "name": { "en": "National Pension System (NPS)", "hi": "नेशनल पेंशन सिस्टम (NPS)", "te": "నేషనల్ పెన్షన్ సిస్టమ్ (NPS)" },
     "short": {
-      "en": "A long-term government-run pension account. You choose how much to add.",
-      "hi": "सरकार द्वारा चलाया लंबी अवधि का पेंशन खाता। कितना डालना है, आप तय करते हैं।",
-      "te": "ప్రభుత్వం నడిపే దీర్ఘకాల పెన్షన్ ఖాతా. ఎంత వేయాలో మీరే నిర్ణయిస్తారు."
+      "en": "A government pension account. Put in a little every month while you work, and get a pension after 60.",
+      "hi": "एक सरकारी पेंशन खाता। काम करते हुए हर महीने थोड़ा डालो, और 60 के बाद पेंशन पाओ।",
+      "te": "ప్రభుత్వ పెన్షన్ ఖాతా. పని చేస్తున్నప్పుడు ప్రతి నెలా కొంచెం వేయి, 60 తర్వాత పెన్షన్ పొందు."
     }
   },
   "nominee": {
@@ -554,9 +554,9 @@
   "kyc": {
     "name": { "en": "KYC", "hi": "KYC", "te": "KYC" },
     "short": {
-      "en": "Know Your Customer: ID papers the bank keeps. Update it at the branch, never through a link.",
-      "hi": "नो योर कस्टमर: बैंक के पास रखे पहचान के कागज़। ब्रांच में अपडेट करें, लिंक से कभी नहीं।",
-      "te": "నో యువర్ కస్టమర్: బ్యాంక్ దగ్గర ఉండే గుర్తింపు పత్రాలు. బ్రాంచ్‌లో అప్‌డేట్ చేయండి, లింక్ ద్వారా ఎప్పుడూ కాదు."
+      "en": "Your ID papers (like Aadhaar and PAN) kept by the bank. Update them only at the branch, never through a link.",
+      "hi": "बैंक के पास रखे तुम्हारे पहचान के कागज़ (जैसे आधार, PAN)। इन्हें सिर्फ़ शाखा में अपडेट करो, किसी लिंक से कभी नहीं।",
+      "te": "బ్యాంకు దగ్గర ఉండే నీ గుర్తింపు కాగితాలు (ఆధార్, PAN లాంటివి). బ్రాంచ్‌లోనే అప్‌డేట్ చేయి, లింక్ ద్వారా ఎప్పుడూ కాదు."
     }
   },
   "kalyana_lakshmi": {
@@ -578,41 +578,41 @@
   "share": {
     "name": { "en": "share", "hi": "शेयर", "te": "షేర్" },
     "short": {
-      "en": "A tiny piece of a company. Its price goes up and down with the business.",
-      "hi": "कंपनी का छोटा सा हिस्सा। कारोबार के साथ इसकी कीमत ऊपर-नीचे होती है।",
-      "te": "కంపెనీలో చిన్న భాగం. వ్యాపారంతో పాటు దీని ధర మారుతుంది."
+      "en": "A tiny piece of a company. When the company does well its price usually rises; when it does badly, it falls.",
+      "hi": "किसी कंपनी का एक छोटा हिस्सा। कंपनी अच्छा करे तो दाम अक्सर बढ़ता है; बुरा करे तो गिरता है।",
+      "te": "ఒక కంపెనీలో చిన్న భాగం. కంపెనీ బాగా చేస్తే ధర సాధారణంగా పెరుగుతుంది; బాగా చేయకపోతే పడిపోతుంది."
     }
   },
   "mutual_fund": {
     "name": { "en": "mutual fund", "hi": "म्यूचुअल फंड", "te": "మ్యూచువల్ ఫండ్" },
     "short": {
-      "en": "Many people's money pooled and spread across many shares or bonds by a fund manager.",
-      "hi": "कई लोगों का पैसा, जिसे फंड मैनेजर कई शेयरों या बॉन्ड में फैलाता है।",
-      "te": "చాలామంది డబ్బు, ఫండ్ మేనేజర్ దాన్ని చాలా షేర్లలో లేదా బాండ్లలో పంచుతాడు."
+      "en": "Many people put their money together, and an expert spreads it across many companies.",
+      "hi": "बहुत से लोग अपना पैसा मिलाते हैं, और एक जानकार उसे कई कंपनियों में बाँटता है।",
+      "te": "చాలా మంది తమ డబ్బును కలిపి పెడతారు, ఒక నిపుణుడు దాన్ని చాలా కంపెనీల్లో పంచుతాడు."
     }
   },
   "nav": {
     "name": { "en": "NAV", "hi": "NAV", "te": "NAV" },
     "short": {
-      "en": "Net asset value: the price of one unit of a fund today. Your money ÷ NAV = units.",
-      "hi": "नेट एसेट वैल्यू: आज फंड की एक यूनिट की कीमत। आपका पैसा ÷ NAV = यूनिट।",
-      "te": "నెట్ అసెట్ వాల్యూ: ఈ రోజు ఫండ్‌లో ఒక యూనిట్ ధర. మీ డబ్బు ÷ NAV = యూనిట్లు."
+      "en": "The price of one unit of a fund today. ₹1,000 at ₹100 a unit buys 10 units.",
+      "hi": "आज किसी फंड की एक यूनिट की कीमत। ₹100 प्रति यूनिट पर ₹1,000 से 10 यूनिट मिलती हैं।",
+      "te": "ఈరోజు ఒక ఫండ్ యూనిట్ ధర. యూనిట్ ₹100 అయితే ₹1,000కి 10 యూనిట్లు వస్తాయి."
     }
   },
   "expense_ratio": {
     "name": { "en": "expense ratio", "hi": "एक्सपेंस रेशियो", "te": "ఎక్స్‌పెన్స్ రేషియో" },
     "short": {
-      "en": "The yearly fee a fund takes from your money, like 0.2% or 1.8%.",
-      "hi": "फंड आपके पैसे से हर साल जो फ़ीस लेता है, जैसे 0.2% या 1.8%।",
-      "te": "ఫండ్ మీ డబ్బు నుంచి ఏడాదికి తీసుకునే ఫీజు, 0.2% లేదా 1.8% లాగా."
+      "en": "The yearly fee a fund cuts from your money. 0.2% is cheap; 1.8% eats a lot over the years.",
+      "hi": "फंड हर साल तुम्हारे पैसे से जो फ़ीस काटता है। 0.2% सस्ता है; 1.8% सालों में बहुत खा जाता है।",
+      "te": "ఫండ్ ప్రతి ఏడాది నీ డబ్బు నుంచి కోసే ఫీజు. 0.2% చౌక; 1.8% ఏళ్లు గడిచేకొద్దీ చాలా తినేస్తుంది."
     }
   },
   "debt_fund": {
     "name": { "en": "debt fund", "hi": "डेट फंड", "te": "డెట్ ఫండ్" },
     "short": {
-      "en": "A fund that lends money for interest. Steadier than shares, but not guaranteed.",
-      "hi": "फंड जो ब्याज पर पैसा उधार देता है। शेयरों से स्थिर, पर गारंटी नहीं।",
-      "te": "వడ్డీకి అప్పు ఇచ్చే ఫండ్. షేర్ల కంటే స్థిరం, కానీ హామీ లేదు."
+      "en": "A fund that lends money to companies or the government for interest. Calmer than shares, but not guaranteed.",
+      "hi": "एक फंड जो कंपनियों या सरकार को ब्याज पर उधार देता है। शेयरों से शांत, पर गारंटी नहीं।",
+      "te": "కంపెనీలకు లేదా ప్రభుత్వానికి వడ్డీకి అప్పిచ్చే ఫండ్. షేర్ల కంటే ప్రశాంతం, కానీ గ్యారంటీ లేదు."
     }
   },
   "brokerage": {
@@ -626,17 +626,17 @@
   "demat": {
     "name": { "en": "demat account", "hi": "डीमैट खाता", "te": "డీమ్యాట్ ఖాతా" },
     "short": {
-      "en": "An account that holds your shares electronically, in your own name.",
-      "hi": "खाता जो आपके शेयर आपके नाम पर इलेक्ट्रॉनिक रूप में रखता है।",
-      "te": "మీ షేర్లను మీ పేరు మీద ఎలక్ట్రానిక్‌గా ఉంచే ఖాతా."
+      "en": "An online account that keeps your shares safe, in your own name.",
+      "hi": "एक ऑनलाइन खाता जो तुम्हारे शेयर तुम्हारे नाम पर सुरक्षित रखता है।",
+      "te": "నీ షేర్లను నీ పేరు మీద భద్రంగా ఉంచే ఆన్‌లైన్ ఖాతా."
     }
   },
   "nfo": {
     "name": { "en": "NFO", "hi": "NFO", "te": "NFO" },
     "short": {
-      "en": "New Fund Offer: the first sale of a brand-new mutual fund, usually at ₹10 a unit. ₹10 is not \"cheap\": a unit's price says nothing about whether the fund is good.",
-      "hi": "न्यू फंड ऑफर: किसी नए म्यूचुअल फंड की पहली बिक्री, अक्सर ₹10 प्रति यूनिट पर। ₹10 \"सस्ता\" नहीं है: यूनिट की कीमत से पता नहीं चलता कि फंड अच्छा है या नहीं।",
-      "te": "న్యూ ఫండ్ ఆఫర్: కొత్త మ్యూచువల్ ఫండ్ మొదటి అమ్మకం, సాధారణంగా యూనిట్ ₹10కి. ₹10 అంటే \"చౌక\" కాదు: యూనిట్ ధర ఫండ్ మంచిదో కాదో చెప్పదు."
+      "en": "New Fund Offer: a new fund's first sale, at ₹10 a unit. ₹10 does not mean cheap or good.",
+      "hi": "न्यू फंड ऑफर: किसी नए फंड की पहली बिक्री, ₹10 प्रति यूनिट। ₹10 का मतलब सस्ता या अच्छा नहीं।",
+      "te": "న్యూ ఫండ్ ఆఫర్: కొత్త ఫండ్ మొదటి అమ్మకం, యూనిట్ ₹10. ₹10 అంటే చౌక అనీ మంచిదనీ కాదు."
     }
   }
 }

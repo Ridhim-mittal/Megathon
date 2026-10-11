@@ -37,9 +37,9 @@
         "te": "క్లాస్ ట్రెజరర్"
       },
       "text": {
-        "en": "{cast:teacher} hands you a fat envelope: ₹24,000, the whole class's farewell-trip fund. \"You're good with money, {player}. Keep it safe for two years.\"",
-        "hi": "{cast:teacher} आपको एक मोटा लिफ़ाफ़ा देती हैं: ₹24,000, पूरी क्लास का फ़ेयरवेल-ट्रिप फंड। \"तुम पैसों के मामले में होशियार हो, {player}। इसे दो साल सुरक्षित रखना।\"",
-        "te": "{cast:teacher} మీ చేతికి ఒక లావు కవరు ఇస్తారు: ₹24,000, క్లాస్ మొత్తం ఫేర్‌వెల్ ట్రిప్ ఫండ్. \"డబ్బు విషయంలో నువ్వు జాగ్రత్తగా ఉంటావు, {player}. రెండేళ్లు దీన్ని భద్రంగా ఉంచు.\""
+        "en": "{cast:teacher} hands you a fat envelope: ₹24,000, the class's **farewell-trip fund**. \"Keep it safe for two years, {player}.\"",
+        "hi": "{cast:teacher} आपको एक मोटा लिफ़ाफ़ा देती हैं: ₹24,000, पूरी क्लास का **विदाई-ट्रिप फंड**। \"इसे दो साल सँभालकर रखना, {player}।\"",
+        "te": "{cast:teacher} మీ చేతికి ఒక లావు కవరు ఇస్తుంది: ₹24,000, క్లాస్ మొత్తం **వీడ్కోలు-ట్రిప్ ఫండ్**. \"రెండేళ్లు జాగ్రత్తగా ఉంచు, {player}.\""
       },
       "choices": [
         {
@@ -68,7 +68,7 @@
             "hi": "ब्याज पर भी ब्याज मिलता है। यही [[chakravaddi]] है, और यह तब सबसे अच्छा काम करता है जब पैसा टिका रहे।",
             "te": "వడ్డీ మీద కూడా వడ్డీ వస్తుంది. అదే [[chakravaddi]], డబ్బు కదలకుండా ఉన్నప్పుడే అది బాగా పని చేస్తుంది."
           },
-          "next": "m1_call"
+          "next": "m1_trap"
         },
         {
           "id": "tin_box",
@@ -95,7 +95,7 @@
             "hi": "घर में रखा नकद कुछ नहीं कमाता और आसानी से खो सकता है, या मन ललचाए तो उसमें से 'उधार' लिया जा सकता है।",
             "te": "ఇంట్లో ఉన్న నగదు ఏమీ సంపాదించదు. పోగొట్టుకోవడం సులువు, ఆశ పుడితే 'కొంచెం అప్పు' తీసుకోవడం కూడా సులువే."
           },
-          "next": "m1_call"
+          "next": "m1_trap"
         },
         {
           "id": "chintu",
@@ -122,306 +122,13 @@
             "hi": "जिस पैसे की ज़िम्मेदारी आपकी है, उसे वहीं रहना चाहिए जहाँ उस पर आपका कंट्रोल हो, और जहाँ उसका रिकॉर्ड रहे।",
             "te": "మీ బాధ్యతలో ఉన్న డబ్బు మీ కంట్రోల్‌లో ఉండాలి, దానికి లెక్క (రికార్డ్) ఉండే చోట ఉండాలి."
           },
-          "next": "m1_call"
-        }
-      ]
-    },
-    {
-      "id": "m1_call",
-      "age": 15,
-      "location": "home",
-      "speaker": "headline",
-      "lesson": "L06",
-      "objective": {
-        "en": "Hurry home! Ammamma's phone won't stop ringing.",
-        "hi": "जल्दी घर चलें! अम्मम्मा का फ़ोन बजना बंद ही नहीं हो रहा।",
-        "te": "త్వరగా ఇంటికి! అమ్మమ్మ ఫోన్ మోగుతూనే ఉంది."
-      },
-      "title": {
-        "en": "\"Your pension will be BLOCKED\"",
-        "hi": "\"आपकी पेंशन BLOCK हो जाएगी\"",
-        "te": "\"మీ పెన్షన్ బ్లాక్ అవుతుంది\""
-      },
-      "text": {
-        "en": "A man shouts on Ammamma's phone: \"Bank KYC department! Pension BLOCKED in 2 minutes! Tell me the OTP!\" The SMS says: \"OTP 482913 to ADD BENEFICIARY. Do not share.\" Ammamma's hands shake.",
-        "hi": "अम्मम्मा के फ़ोन पर एक आदमी चिल्लाता है: \"बैंक KYC डिपार्टमेंट! 2 मिनट में पेंशन BLOCK! OTP बताइए!\" SMS में लिखा है: \"नया लाभार्थी जोड़ने के लिए OTP 482913। किसी को न बताएँ।\" अम्मम्मा के हाथ काँप रहे हैं।",
-        "te": "అమ్మమ్మ ఫోన్‌లో ఒకడు అరుస్తున్నాడు: \"బ్యాంక్ KYC డిపార్ట్‌మెంట్! 2 నిమిషాల్లో పెన్షన్ బ్లాక్! OTP చెప్పండి!\" SMSలో ఇలా ఉంది: \"OTP 482913: కొత్త బెనిఫిషియరీని జోడించడానికి. ఎవరికీ చెప్పకండి.\" అమ్మమ్మ చేతులు వణుకుతున్నాయి."
-      },
-      "timer": {
-        "seconds": 20,
-        "choice": "freeze"
-      },
-      "choices": [
-        {
-          "id": "read_otp",
-          "label": {
-            "en": "Read the OTP aloud. Save the pension!",
-            "hi": "OTP ज़ोर से पढ़ दें। पेंशन बचानी है!",
-            "te": "OTP గట్టిగా చదివి చెప్పండి. పెన్షన్ కాపాడండి!"
-          },
-          "quality": "bad",
-          "warn": {
-            "en": "Read the SMS again: \"Do not share.\" No bank, police or government office ever asks for an [[otp]]. An OTP is the key to the account.",
-            "hi": "SMS फिर से पढ़ें: \"किसी को न बताएँ।\" कोई बैंक, पुलिस या सरकारी दफ़्तर कभी [[otp]] नहीं माँगता। OTP खाते की चाबी है।",
-            "te": "SMS మళ్లీ చదవండి: \"ఎవరికీ చెప్పకండి.\" ఏ బ్యాంకూ, పోలీసులూ, ప్రభుత్వ ఆఫీసూ ఎప్పుడూ [[otp]] అడగవు. OTP అంటే అకౌంట్ తాళంచెవి."
-          },
-          "effects": {
-            "flags": {
-              "add": [
-                "shared_otp"
-              ]
-            }
-          },
-          "outcome": {
-            "en": "\"Thank you, madam,\" says the man, sweetly. The line goes dead. Then Ammamma's phone buzzes. And buzzes. And buzzes.",
-            "hi": "\"शुक्रिया, मैडम,\" आदमी मीठी आवाज़ में कहता है। लाइन कट जाती है। फिर अम्मम्मा का फ़ोन बजता है। फिर बजता है। फिर बजता है।",
-            "te": "\"థాంక్యూ మేడమ్,\" అని వాడు తియ్యగా అంటాడు. లైన్ కట్ అవుతుంది. తర్వాత అమ్మమ్మ ఫోన్ బజ్ అవుతుంది. మళ్లీ బజ్. మళ్లీ బజ్."
-          },
-          "why": {
-            "en": "Scammers create panic and a countdown so you can't think. The OTP was for adding THEIR account as a payee.",
-            "hi": "धोखेबाज़ घबराहट और उलटी गिनती पैदा करते हैं ताकि आप सोच न सकें। वह OTP उनका अपना खाता पैसे पाने वाले के तौर पर जोड़ने के लिए था।",
-            "te": "మోసగాళ్లు మీరు ఆలోచించలేనంత కంగారు, టైమ్ ఒత్తిడి సృష్టిస్తారు. ఆ OTP వాళ్ల సొంత అకౌంట్‌ను పేయీగా జోడించడానికే."
-          },
-          "next": "m1_drained"
-        },
-        {
-          "id": "hang_up",
-          "label": {
-            "en": "Hang up. Call the bank on the passbook number",
-            "hi": "फ़ोन काटें। पासबुक पर लिखे नंबर पर बैंक को फ़ोन करें",
-            "te": "ఫోన్ పెట్టేయండి. పాస్‌బుక్‌లోని నంబర్‌కు బ్యాంకుకు కాల్ చేయండి"
-          },
-          "quality": "good",
-          "effects": {
-            "flags": {
-              "add": [
-                "refused_otp"
-              ]
-            },
-            "meters": {
-              "family": 4
-            }
-          },
-          "outcome": {
-            "en": "The real bank says: \"We never ask for OTPs.\" That caller's number was already reported 300 times.",
-            "hi": "असली बैंक कहता है: \"हम कभी OTP नहीं माँगते।\" उस कॉल करने वाले के नंबर की पहले ही 300 बार शिकायत हो चुकी थी।",
-            "te": "అసలు బ్యాంకు చెబుతుంది: \"మేము ఎప్పుడూ OTP అడగం.\" ఆ కాలర్ నంబర్‌పై ఇప్పటికే 300 సార్లు ఫిర్యాదులు వచ్చాయి."
-          },
-          "why": {
-            "en": "Slow down, hang up, and call the official number yourself. Hanging up is always allowed.",
-            "hi": "रुकें, फ़ोन काटें, और ऑफ़िशियल नंबर पर खुद फ़ोन करें। फ़ोन काटने की इजाज़त हमेशा है।",
-            "te": "నెమ్మదించండి, ఫోన్ పెట్టేయండి, అధికారిక నంబర్‌కు మీరే కాల్ చేయండి. ఫోన్ పెట్టేయడం ఎప్పుడూ తప్పు కాదు."
-          },
-          "next": "m1_trap"
-        },
-        {
-          "id": "record",
-          "label": {
-            "en": "Keep him talking and secretly record the call",
-            "hi": "उसे बातों में उलझाए रखें और चुपके से कॉल रिकॉर्ड करें",
-            "te": "వాడిని మాట్లాడిస్తూ, రహస్యంగా కాల్ రికార్డ్ చేయండి"
-          },
-          "quality": "good",
-          "effects": {
-            "flags": {
-              "add": [
-                "refused_otp",
-                "evidence_call"
-              ]
-            },
-            "meters": {
-              "family": 4
-            },
-            "gyaan": 2
-          },
-          "outcome": {
-            "en": "He gets angry and slips: \"Prakash sir's office will block you!\" You save the recording. Then you hang up.",
-            "hi": "वह गुस्से में आ जाता है और उसके मुँह से निकल जाता है: \"प्रकाश सर का ऑफ़िस तुम्हें ब्लॉक कर देगा!\" आप रिकॉर्डिंग सेव कर लेते हैं। फिर फ़ोन काट देते हैं।",
-            "te": "వాడికి కోపం వచ్చి నోరు జారుతాడు: \"ప్రకాష్ సార్ ఆఫీస్ మిమ్మల్ని బ్లాక్ చేస్తుంది!\" మీరు రికార్డింగ్ సేవ్ చేస్తారు. తర్వాత ఫోన్ పెట్టేస్తారు."
-          },
-          "why": {
-            "en": "Never share the OTP, but evidence helps police catch the gang. Report numbers to [[helpline_1930]].",
-            "hi": "OTP कभी न बताएँ, पर सबूत से पुलिस गिरोह को पकड़ पाती है। ऐसे नंबरों की शिकायत [[helpline_1930]] पर करें।",
-            "te": "OTP ఎప్పుడూ చెప్పకండి, కానీ సాక్ష్యం ఉంటే పోలీసులు ముఠాను పట్టుకోగలరు. నంబర్లను [[helpline_1930]] నంబర్‌కు రిపోర్ట్ చేయండి."
-          },
-          "next": "m1_trap"
-        },
-        {
-          "id": "freeze",
-          "hidden": true,
-          "label": {
-            "en": "Freeze",
-            "hi": "डर से जम जाएँ",
-            "te": "బిత్తరపోయి నిలబడండి"
-          },
-          "quality": "bad",
-          "effects": {
-            "flags": {
-              "add": [
-                "shared_otp"
-              ]
-            }
-          },
-          "outcome": {
-            "en": "While you hesitate, Ammamma grabs the phone and reads the OTP herself. The line goes dead.",
-            "hi": "आप सोचते ही रह जाते हैं, और अम्मम्मा फ़ोन लेकर खुद OTP पढ़ देती हैं। लाइन कट जाती है।",
-            "te": "మీరు తటపటాయిస్తుంటే, అమ్మమ్మ ఫోన్ లాక్కుని OTP తనే చదివి చెప్పేస్తుంది. లైన్ కట్ అవుతుంది."
-          },
-          "why": {
-            "en": "The countdown is the trick. When someone rushes you about money, the safest move is to hang up.",
-            "hi": "उलटी गिनती ही असली चाल है। जब कोई पैसों के मामले में जल्दी मचाए, तो सबसे सुरक्षित कदम है फ़ोन काट देना।",
-            "te": "కౌంట్‌డౌనే అసలు ట్రిక్. డబ్బు విషయంలో ఎవరైనా తొందరపెడితే, ఫోన్ పెట్టేయడమే అన్నిటికంటే సేఫ్."
-          },
-          "next": "m1_drained"
-        }
-      ]
-    },
-    {
-      "id": "m1_drained",
-      "age": 15,
-      "location": "bank",
-      "speaker": "banker",
-      "lesson": "L09",
-      "objective": {
-        "en": "RUN to the bank! Report the fraud before the money disappears.",
-        "hi": "बैंक की तरफ़ भागें! पैसा गायब होने से पहले धोखे की रिपोर्ट करें।",
-        "te": "బ్యాంకుకు పరుగెత్తండి! డబ్బు మాయం కాకముందే మోసం గురించి రిపోర్ట్ చేయండి."
-      },
-      "rush": {
-        "seconds": 22,
-        "fail": "m1_too_late"
-      },
-      "title": {
-        "en": "The golden hour",
-        "hi": "सुनहरा घंटा",
-        "te": "బంగారు గంట"
-      },
-      "text": {
-        "en": "Three messages: ₹15,000 debited. ₹15,000 debited. ₹10,000 debited. Ammamma's whole pension saving. {cast:banker} grabs the phone: \"Call 1930 now! I'll freeze the account!\"",
-        "hi": "तीन मैसेज: ₹15,000 कटे। ₹15,000 कटे। ₹10,000 कटे। अम्मम्मा की पेंशन की पूरी बचत। {cast:banker} फ़ोन ले लेती हैं: \"अभी 1930 पर फ़ोन करो! मैं खाता फ़्रीज़ करती हूँ!\"",
-        "te": "మూడు మెసేజ్‌లు: ₹15,000 డెబిట్. ₹15,000 డెబిట్. ₹10,000 డెబిట్. అమ్మమ్మ పెన్షన్ పొదుపు మొత్తం. {cast:banker} ఫోన్ అందుకుంటుంది: \"ఇప్పుడే 1930కి కాల్ చేయి! నేను అకౌంట్ ఫ్రీజ్ చేస్తా!\""
-      },
-      "choices": [
-        {
-          "id": "report",
-          "label": {
-            "en": "Call [[helpline_1930]] and file a cyber-crime complaint",
-            "hi": "[[helpline_1930]] पर फ़ोन करें और साइबर-क्राइम शिकायत दर्ज करें",
-            "te": "[[helpline_1930]] నంబర్‌కు కాల్ చేసి సైబర్ క్రైమ్ ఫిర్యాదు ఇవ్వండి"
-          },
-          "quality": "good",
-          "effects": {
-            "flags": {
-              "add": [
-                "reported_1930"
-              ]
-            },
-            "meters": {
-              "family": -4
-            }
-          },
-          "outcome": {
-            "en": "₹25,000 is frozen in the scammer's account before it can be withdrawn. It comes back in four months. ₹15,000 is gone forever.",
-            "hi": "₹25,000 निकाले जाने से पहले ही धोखेबाज़ के खाते में फ़्रीज़ हो जाते हैं। चार महीने में वे वापस आ जाते हैं। ₹15,000 हमेशा के लिए चले गए।",
-            "te": "మోసగాడు డబ్బు తీసుకునేలోపే ₹25,000 వాడి అకౌంట్‌లోనే ఫ్రీజ్ అవుతుంది. నాలుగు నెలల్లో అది తిరిగి వస్తుంది. ₹15,000 మాత్రం శాశ్వతంగా పోయింది."
-          },
-          "why": {
-            "en": "Report within the first hour. Banks can freeze money that is still moving between accounts.",
-            "hi": "पहले घंटे के अंदर रिपोर्ट करें। जो पैसा अभी खातों के बीच घूम रहा है, बैंक उसे फ़्रीज़ कर सकते हैं।",
-            "te": "మొదటి గంటలోపే రిపోర్ట్ చేయండి. ఇంకా అకౌంట్ల మధ్య తిరుగుతున్న డబ్బును బ్యాంకులు ఫ్రీజ్ చేయగలవు."
-          },
-          "next": "m1_trap"
-        },
-        {
-          "id": "hide",
-          "label": {
-            "en": "Don't report it. It's too embarrassing",
-            "hi": "रिपोर्ट न करें। बहुत शर्म की बात है",
-            "te": "రిపోర్ట్ చేయకండి. చాలా సిగ్గుచేటు"
-          },
-          "quality": "bad",
-          "effects": {
-            "flags": {
-              "add": [
-                "ammamma_robbed"
-              ]
-            },
-            "meters": {
-              "family": -10
-            }
-          },
-          "outcome": {
-            "en": "Nobody reports it. The money is gone, and the same gang calls fifty more grandmothers this week.",
-            "hi": "कोई रिपोर्ट नहीं करता। पैसा चला गया, और वही गिरोह इस हफ़्ते पचास और दादी-नानियों को फ़ोन करता है।",
-            "te": "ఎవరూ రిపోర్ట్ చేయరు. డబ్బు పోయింది, అదే ముఠా ఈ వారం ఇంకో యాభై మంది అమ్మమ్మలకు కాల్ చేస్తుంది."
-          },
-          "why": {
-            "en": "Shame helps only the scammer. Reporting fast can freeze the money, and protects the next victim.",
-            "hi": "शर्म से सिर्फ़ धोखेबाज़ का फ़ायदा होता है। जल्दी रिपोर्ट करने से पैसा फ़्रीज़ हो सकता है, और अगला शिकार बच जाता है।",
-            "te": "సిగ్గుపడితే లాభం మోసగాడికే. వెంటనే రిపోర్ట్ చేస్తే డబ్బు ఫ్రీజ్ కావచ్చు, తర్వాత మోసపోయేవాళ్లనూ కాపాడొచ్చు."
-          },
-          "next": "m1_trap"
-        }
-      ]
-    },
-    {
-      "id": "m1_too_late",
-      "age": 15,
-      "location": "bank",
-      "speaker": "banker",
-      "objective": {
-        "en": "Too slow. Go to the bank anyway and file the complaint.",
-        "hi": "बहुत देर हो गई। फिर भी बैंक जाएँ और शिकायत दर्ज करें।",
-        "te": "చాలా ఆలస్యమైంది. అయినా బ్యాంకుకు వెళ్లి ఫిర్యాదు ఇవ్వండి."
-      },
-      "title": {
-        "en": "Too late",
-        "hi": "बहुत देर हो गई",
-        "te": "చాలా ఆలస్యం"
-      },
-      "text": {
-        "en": "By the time you reach the bank, the money has jumped through six accounts and been withdrawn at an ATM in another state. {cast:banker} files the complaint anyway.",
-        "hi": "जब तक आप बैंक पहुँचते हैं, पैसा छह खातों से होकर दूसरे राज्य के एक ATM से निकाला जा चुका है। {cast:banker} फिर भी शिकायत दर्ज करती हैं।",
-        "te": "మీరు బ్యాంకు చేరేసరికి, డబ్బు ఆరు అకౌంట్లు దాటి, వేరే రాష్ట్రంలోని ఒక ATMలో డ్రా అయిపోయింది. అయినా {cast:banker} ఫిర్యాదు నమోదు చేస్తుంది."
-      },
-      "choices": [
-        {
-          "id": "promise",
-          "label": {
-            "en": "Promise Ammamma you'll make it up to her, one day",
-            "hi": "अम्मम्मा से वादा करें कि एक दिन आप इसकी भरपाई करेंगे",
-            "te": "ఏదో ఒక రోజు ఈ నష్టం తీరుస్తానని అమ్మమ్మకు మాట ఇవ్వండి"
-          },
-          "quality": "ok",
-          "effects": {
-            "flags": {
-              "add": [
-                "ammamma_robbed",
-                "reported_1930"
-              ]
-            },
-            "meters": {
-              "family": -8,
-              "joy": -4
-            }
-          },
-          "outcome": {
-            "en": "Ammamma pats your head. \"Money comes and goes, kanna. Only don't let them fool you twice.\"",
-            "hi": "अम्मम्मा आपके सिर पर हाथ फेरती हैं। \"पैसा आता-जाता रहता है, कन्ना। बस उन्हें दोबारा तुझे बेवकूफ़ मत बनाने देना।\"",
-            "te": "అమ్మమ్మ మీ తల నిమురుతుంది. \"పైసలు వస్తయ్, పోతయ్ కన్నా. రెండోసారి మాత్రం వాళ్ల చేతిలో మోసపోకు.\""
-          },
-          "why": {
-            "en": "In cyber fraud, the first hour decides almost everything. Speed matters more than anything else.",
-            "hi": "साइबर धोखे में पहला घंटा लगभग सब कुछ तय करता है। रफ़्तार सबसे ज़्यादा मायने रखती है।",
-            "te": "సైబర్ మోసంలో దాదాపు అంతా మొదటి గంటలోనే తేలిపోతుంది. అన్నిటికంటే వేగమే ముఖ్యం."
-          },
           "next": "m1_trap"
         }
       ]
     },
     {
       "id": "m1_trap",
-      "age": 16,
+      "age": 15,
       "location": "square",
       "speaker": "tempter",
       "lesson": "L11",
@@ -436,9 +143,9 @@
         "te": "10 రోజుల్లో డబుల్"
       },
       "text": {
-        "en": "{cast:tempter} has a new phone, a gold chain and bigger sunglasses. \"Crypto, bro! Put ₹10,000 in my group, get ₹20,000 in 10 days. Your trip fund could become a Goa trip!\"",
-        "hi": "{cast:tempter} के पास नया फ़ोन, सोने की चेन और पहले से बड़ा काला चश्मा है। \"क्रिप्टो, ब्रो! मेरे ग्रुप में ₹10,000 डालो, 10 दिन में ₹20,000 पाओ। तुम्हारा ट्रिप फंड गोवा ट्रिप बन सकता है!\"",
-        "te": "{cast:tempter} దగ్గర కొత్త ఫోన్, బంగారు గొలుసు, ఇంకా పెద్ద నల్ల కళ్లద్దాలు. \"క్రిప్టో, బ్రో! నా గ్రూప్‌లో ₹10,000 వెయ్యి, 10 రోజుల్లో ₹20,000 తీస్కో. నీ ట్రిప్ ఫండ్ గోవా ట్రిప్ అయిపోతుంది!\""
+        "en": "A crowd at the square. {cast:tempter} flashes a **gold chain** and a new phone. \"Crypto, bro! Put ₹10,000 in my group, get **₹20,000 in 10 days**!\" His eyes land on your bag. \"That trip fund could be a **Goa trip**.\"",
+        "hi": "चौक पर भीड़ है। {cast:tempter} **सोने की चेन** और नया फ़ोन चमकाता है। \"क्रिप्टो, भाई! मेरे ग्रुप में ₹10,000 डालो, **10 दिन में ₹20,000** पाओ!\" उसकी नज़र आपके बैग पर टिकती है। \"वो ट्रिप फंड **गोवा ट्रिप** बन सकता है।\"",
+        "te": "చౌరస్తాలో గుంపు. {cast:tempter} **బంగారు గొలుసు**, కొత్త ఫోన్ మెరిపిస్తాడు. \"క్రిప్టో బ్రో! నా గ్రూపులో ₹10,000 వేయి, **10 రోజుల్లో ₹20,000** తీసుకో!\" వాడి చూపు మీ బ్యాగుపై పడుతుంది. \"ఆ ట్రిప్ ఫండ్ **గోవా ట్రిప్** అవ్వొచ్చు.\""
       },
       "choices": [
         {
@@ -614,9 +321,9 @@
         "te": "₹10,000 తక్కువ"
       },
       "text": {
-        "en": "The trip is in a year and ₹10,000 of your classmates' money is gone. {cast:teacher} is asking to see the fund 'just to check'.",
-        "hi": "ट्रिप एक साल बाद है और आपके सहपाठियों के ₹10,000 गायब हैं। {cast:teacher} फंड देखना चाहती हैं, 'बस चेक करने के लिए'।",
-        "te": "ట్రిప్‌కు ఇంకా ఒక్క ఏడాదే ఉంది, క్లాస్‌మేట్‌ల డబ్బులో ₹10,000 పోయింది. {cast:teacher} 'ఊరికే ఒకసారి చూద్దామని' ఫండ్ చూపించమంటున్నారు."
+        "en": "Prakash's number is **switched off**. ₹10,000 of your classmates' money is **gone**. In the corridor {cast:teacher} smiles: \"Bring the fund tomorrow, just to check.\" Your stomach drops.",
+        "hi": "प्रकाश का नंबर **बंद** है। सहपाठियों के ₹10,000 **डूब गए**। गलियारे में {cast:teacher} मुस्कुराती हैं: \"कल फंड ले आना, बस देखने के लिए।\" आपका दिल बैठ जाता है।",
+        "te": "ప్రకాష్ నంబర్ **స్విచ్ ఆఫ్**. క్లాస్‌మేట్ల ₹10,000 **పోయాయి**. కారిడార్‌లో {cast:teacher} నవ్వుతూ అంటుంది: \"రేపు ఫండ్ తీసుకురా, ఒకసారి చూద్దాం.\" మీ గుండె జారిపోతుంది."
       },
       "choices": [
         {
@@ -696,7 +403,7 @@
     },
     {
       "id": "m1_chintu",
-      "age": 17,
+      "age": 16,
       "location": "shop",
       "speaker": "friend",
       "lesson": "L07",
@@ -711,9 +418,9 @@
         "te": "చింటూ 'పక్కా గెలుపు'"
       },
       "text": {
-        "en": "Chintu pays ₹799 a month for his phone [[emi]], and he's been chasing losses on a [[betting_app]]. ₹6,000 of his father's money is gone. \"Lend me ₹3,000. Tonight's match is a sure win!\"",
-        "hi": "चिंटू अपने फ़ोन की [[emi]] के ₹799 महीना भरता है, और एक [[betting_app]] पर हारा पैसा वापस जीतने के चक्कर में है। उसके पिता के ₹6,000 जा चुके हैं। \"मुझे ₹3,000 उधार दे दे। आज रात का मैच पक्की जीत है!\"",
-        "te": "చింటూ తన ఫోన్ [[emi]]కి నెలకు ₹799 కడుతున్నాడు, పైగా ఒక [[betting_app]] లో పోయిన డబ్బు తిరిగి రాబట్టాలని ఆడుతూనే ఉన్నాడు. వాళ్ల నాన్న డబ్బు ₹6,000 పోయింది. \"నాకు ₹3,000 అప్పియ్యి. ఈ రాత్రి మ్యాచ్ పక్కా గెలుస్తాం!\""
+        "en": "Chintu pays **₹799 a month** for his phone [[emi]], and he's lost ₹6,000 on a [[betting_app]]. \"Lend me ₹3,000. Tonight's match is a **sure win**!\"",
+        "hi": "चिंटू अपने फ़ोन की [[emi]] के लिए **हर महीने ₹799** भरता है, और [[betting_app]] पर ₹6,000 हार चुका है। \"₹3,000 उधार दे। आज का मैच **पक्की जीत** है!\"",
+        "te": "చింటూ ఫోన్ [[emi]] కోసం **నెలకు ₹799** కడతాడు, [[betting_app]]లో ₹6,000 పోగొట్టుకున్నాడు. \"₹3,000 అప్పు ఇవ్వు. ఈ రాత్రి మ్యాచ్ **పక్కా గెలుపు**!\""
       },
       "choices": [
         {
@@ -742,7 +449,7 @@
             "hi": "जुए का नुकसान भरने के लिए उधार देना बस आदत को और बढ़ाता है। हारा पैसा वापस जीतने के चक्कर में ही ₹300 बढ़कर ₹30,000 बन जाते हैं।",
             "te": "జూదం నష్టం పూడ్చడానికి అప్పు ఇస్తే, అలవాటు ఇంకా పెరుగుతుంది. పోయింది రాబట్టాలని ఆడుతూ ఆడుతూనే ₹300 కాస్తా ₹30,000 అవుతుంది."
           },
-          "next": "m1_trip"
+          "next": "m1_call"
         },
         {
           "id": "help",
@@ -773,7 +480,7 @@
             "hi": "दोस्तों का दबाव दोनों तरफ़ काम करता है। एक दोस्त का 'बस कर' कहना कर्ज़ के चक्कर को जल्दी तोड़ सकता है।",
             "te": "స్నేహితుల ఒత్తిడి రెండు వైపులా పని చేస్తుంది. ఒక్క స్నేహితుడు 'ఆపు' అంటే చాలు, అప్పుల సుడిగుండం మొదట్లోనే ఆగిపోవచ్చు."
           },
-          "next": "m1_trip"
+          "next": "m1_call"
         },
         {
           "id": "bet_too",
@@ -809,13 +516,13 @@
             "hi": "बोनस और 'बस थोड़े से चूक गए' वाले पल इसलिए बनाए जाते हैं कि आप खेलते रहें। आखिर में हमेशा ऐप वाला ही जीतता है।",
             "te": "బోనస్‌లు, 'కొద్దిలో మిస్' అనిపించే ఆటలు మిమ్మల్ని ఆడిస్తూనే ఉండేలా తయారు చేస్తారు. చివరికి ఎప్పుడూ గెలిచేది యాప్ వాడే."
           },
-          "next": "m1_trip"
+          "next": "m1_call"
         }
       ]
     },
     {
       "id": "m1_chintu_fund",
-      "age": 17,
+      "age": 16,
       "location": "shop",
       "speaker": "friend",
       "lesson": "L07",
@@ -830,9 +537,9 @@
         "te": "ట్రిప్ ఫండ్ ఎక్కడ?"
       },
       "text": {
-        "en": "Chintu can't look at you. \"I only borrowed a little... to win it back.\" Of the ₹24,000, ₹8,000 is gone into a [[betting_app]]. The trip is in four months.",
-        "hi": "चिंटू आपसे नज़र नहीं मिला पाता। \"मैंने तो बस थोड़ा उधार लिया था... वापस जीतने के लिए।\" ₹24,000 में से ₹8,000 एक [[betting_app]] में डूब गए। ट्रिप चार महीने बाद है।",
-        "te": "చింటూ మీ కళ్లలోకి చూడలేకపోతున్నాడు. \"కొంచెమే తీసుకున్నా... తిరిగి గెలవడానికి.\" ₹24,000లో ₹8,000 ఒక [[betting_app]] లోకి పోయింది. ట్రిప్‌కు ఇంకా నాలుగు నెలలే ఉంది."
+        "en": "Chintu won't look at you. \"I only **borrowed a little**... to win it back.\" ₹8,000 of the trip fund has vanished into a [[betting_app]]. The trip is in **four months**.",
+        "hi": "चिंटू नज़र नहीं मिलाता। \"मैंने **बस थोड़ा उधार** लिया था... वापस जीतने के लिए।\" ट्रिप फंड के ₹8,000 एक [[betting_app]] में गायब हो गए। ट्रिप **चार महीने** में है।",
+        "te": "చింటూ మీ కళ్లలోకి చూడడు. \"**కొంచెమే అప్పు** తీసుకున్నా... తిరిగి గెలవడానికి.\" ట్రిప్ ఫండ్‌లో ₹8,000 ఒక [[betting_app]]లో మాయమయ్యాయి. ట్రిప్ **నాలుగు నెలల్లో**."
       },
       "choices": [
         {
@@ -861,7 +568,7 @@
             "hi": "पैसे देकर दोस्त को बचाने से असली समस्या छिप सकती है। किसी बड़े से बात करना अक्सर बेहतर होता है।",
             "te": "స్నేహితుడిని డబ్బుతో కాపాడితే అసలు సమస్య దాగిపోవచ్చు. పెద్దవాళ్లతో మాట్లాడటం సాధారణంగా మంచిది."
           },
-          "next": "m1_trip"
+          "next": "m1_call"
         },
         {
           "id": "tell_madam",
@@ -892,6 +599,299 @@
             "hi": "जल्दी बोला गया सच बाद के झूठ से सस्ता पड़ता है। बड़े लोग पैसों की समस्या बढ़ने से पहले सुलझाने में मदद कर सकते हैं।",
             "te": "తర్వాత చెప్పే అబద్ధం కంటే ముందే చెప్పే నిజం చౌక. డబ్బు సమస్యలు పెద్దవి కాకముందే పెద్దవాళ్లు సరిదిద్దడంలో సాయం చేయగలరు."
           },
+          "next": "m1_call"
+        }
+      ]
+    },
+    {
+      "id": "m1_call",
+      "age": 17,
+      "location": "home",
+      "speaker": "headline",
+      "lesson": "L06",
+      "objective": {
+        "en": "Hurry home! Ammamma's phone won't stop ringing.",
+        "hi": "जल्दी घर चलें! अम्मम्मा का फ़ोन बजना बंद ही नहीं हो रहा।",
+        "te": "త్వరగా ఇంటికి! అమ్మమ్మ ఫోన్ మోగుతూనే ఉంది."
+      },
+      "title": {
+        "en": "\"Your pension will be BLOCKED\"",
+        "hi": "\"आपकी पेंशन BLOCK हो जाएगी\"",
+        "te": "\"మీ పెన్షన్ బ్లాక్ అవుతుంది\""
+      },
+      "text": {
+        "en": "Ammamma's phone screams. A man barks: \"**Bank KYC department!** Pension **BLOCKED** in 2 minutes! Tell me the **OTP**!\" The SMS says: \"OTP 482913 to **ADD BENEFICIARY**. **Do not share.**\" Ammamma's hands shake.",
+        "hi": "अम्मम्मा का फ़ोन चीख रहा है। एक आदमी गरजता है: \"**बैंक KYC विभाग!** 2 मिनट में पेंशन **बंद**! **OTP** बताओ!\" SMS कहता है: \"OTP 482913 **लाभार्थी जोड़ने** के लिए। **किसी को न बताएँ।**\" अम्मम्मा के हाथ काँप रहे हैं।",
+        "te": "అమ్మమ్మ ఫోన్ అరుస్తోంది. ఒకడు గద్దిస్తాడు: \"**బ్యాంక్ KYC విభాగం!** 2 నిమిషాల్లో పెన్షన్ **బ్లాక్**! **OTP** చెప్పండి!\" SMS ఇలా ఉంది: \"OTP 482913 **బెనిఫిషియరీ జోడించడానికి**. **ఎవరికీ చెప్పొద్దు.**\" అమ్మమ్మ చేతులు వణుకుతున్నాయి."
+      },
+      "timer": {
+        "seconds": 20,
+        "choice": "freeze"
+      },
+      "choices": [
+        {
+          "id": "read_otp",
+          "label": {
+            "en": "Read the OTP aloud. Save the pension!",
+            "hi": "OTP ज़ोर से पढ़ दें। पेंशन बचानी है!",
+            "te": "OTP గట్టిగా చదివి చెప్పండి. పెన్షన్ కాపాడండి!"
+          },
+          "quality": "bad",
+          "warn": {
+            "en": "Read the SMS again: \"Do not share.\" No bank, police or government office ever asks for an [[otp]]. An OTP is the key to the account.",
+            "hi": "SMS फिर से पढ़ें: \"किसी को न बताएँ।\" कोई बैंक, पुलिस या सरकारी दफ़्तर कभी [[otp]] नहीं माँगता। OTP खाते की चाबी है।",
+            "te": "SMS మళ్లీ చదవండి: \"ఎవరికీ చెప్పకండి.\" ఏ బ్యాంకూ, పోలీసులూ, ప్రభుత్వ ఆఫీసూ ఎప్పుడూ [[otp]] అడగవు. OTP అంటే అకౌంట్ తాళంచెవి."
+          },
+          "effects": {
+            "flags": {
+              "add": [
+                "shared_otp"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "\"Thank you, madam,\" says the man, sweetly. The line goes dead. Then Ammamma's phone buzzes. And buzzes. And buzzes.",
+            "hi": "\"शुक्रिया, मैडम,\" आदमी मीठी आवाज़ में कहता है। लाइन कट जाती है। फिर अम्मम्मा का फ़ोन बजता है। फिर बजता है। फिर बजता है।",
+            "te": "\"థాంక్యూ మేడమ్,\" అని వాడు తియ్యగా అంటాడు. లైన్ కట్ అవుతుంది. తర్వాత అమ్మమ్మ ఫోన్ బజ్ అవుతుంది. మళ్లీ బజ్. మళ్లీ బజ్."
+          },
+          "why": {
+            "en": "Scammers create panic and a countdown so you can't think. The OTP was for adding THEIR account as a payee.",
+            "hi": "धोखेबाज़ घबराहट और उलटी गिनती पैदा करते हैं ताकि आप सोच न सकें। वह OTP उनका अपना खाता पैसे पाने वाले के तौर पर जोड़ने के लिए था।",
+            "te": "మోసగాళ్లు మీరు ఆలోచించలేనంత కంగారు, టైమ్ ఒత్తిడి సృష్టిస్తారు. ఆ OTP వాళ్ల సొంత అకౌంట్‌ను పేయీగా జోడించడానికే."
+          },
+          "next": "m1_drained"
+        },
+        {
+          "id": "hang_up",
+          "label": {
+            "en": "Hang up. Call the bank on the passbook number",
+            "hi": "फ़ोन काटें। पासबुक पर लिखे नंबर पर बैंक को फ़ोन करें",
+            "te": "ఫోన్ పెట్టేయండి. పాస్‌బుక్‌లోని నంబర్‌కు బ్యాంకుకు కాల్ చేయండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "refused_otp"
+              ]
+            },
+            "meters": {
+              "family": 4
+            }
+          },
+          "outcome": {
+            "en": "The real bank says: \"We never ask for OTPs.\" That caller's number was already reported 300 times.",
+            "hi": "असली बैंक कहता है: \"हम कभी OTP नहीं माँगते।\" उस कॉल करने वाले के नंबर की पहले ही 300 बार शिकायत हो चुकी थी।",
+            "te": "అసలు బ్యాంకు చెబుతుంది: \"మేము ఎప్పుడూ OTP అడగం.\" ఆ కాలర్ నంబర్‌పై ఇప్పటికే 300 సార్లు ఫిర్యాదులు వచ్చాయి."
+          },
+          "why": {
+            "en": "Slow down, hang up, and call the official number yourself. Hanging up is always allowed.",
+            "hi": "रुकें, फ़ोन काटें, और ऑफ़िशियल नंबर पर खुद फ़ोन करें। फ़ोन काटने की इजाज़त हमेशा है।",
+            "te": "నెమ్మదించండి, ఫోన్ పెట్టేయండి, అధికారిక నంబర్‌కు మీరే కాల్ చేయండి. ఫోన్ పెట్టేయడం ఎప్పుడూ తప్పు కాదు."
+          },
+          "next": "m1_trip"
+        },
+        {
+          "id": "record",
+          "label": {
+            "en": "Keep him talking and secretly record the call",
+            "hi": "उसे बातों में उलझाए रखें और चुपके से कॉल रिकॉर्ड करें",
+            "te": "వాడిని మాట్లాడిస్తూ, రహస్యంగా కాల్ రికార్డ్ చేయండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "refused_otp",
+                "evidence_call"
+              ]
+            },
+            "meters": {
+              "family": 4
+            },
+            "gyaan": 2
+          },
+          "outcome": {
+            "en": "He gets angry and slips: \"Prakash sir's office will block you!\" You save the recording. Then you hang up.",
+            "hi": "वह गुस्से में आ जाता है और उसके मुँह से निकल जाता है: \"प्रकाश सर का ऑफ़िस तुम्हें ब्लॉक कर देगा!\" आप रिकॉर्डिंग सेव कर लेते हैं। फिर फ़ोन काट देते हैं।",
+            "te": "వాడికి కోపం వచ్చి నోరు జారుతాడు: \"ప్రకాష్ సార్ ఆఫీస్ మిమ్మల్ని బ్లాక్ చేస్తుంది!\" మీరు రికార్డింగ్ సేవ్ చేస్తారు. తర్వాత ఫోన్ పెట్టేస్తారు."
+          },
+          "why": {
+            "en": "Never share the OTP, but evidence helps police catch the gang. Report numbers to [[helpline_1930]].",
+            "hi": "OTP कभी न बताएँ, पर सबूत से पुलिस गिरोह को पकड़ पाती है। ऐसे नंबरों की शिकायत [[helpline_1930]] पर करें।",
+            "te": "OTP ఎప్పుడూ చెప్పకండి, కానీ సాక్ష్యం ఉంటే పోలీసులు ముఠాను పట్టుకోగలరు. నంబర్లను [[helpline_1930]] నంబర్‌కు రిపోర్ట్ చేయండి."
+          },
+          "next": "m1_trip"
+        },
+        {
+          "id": "freeze",
+          "hidden": true,
+          "label": {
+            "en": "Freeze",
+            "hi": "डर से जम जाएँ",
+            "te": "బిత్తరపోయి నిలబడండి"
+          },
+          "quality": "bad",
+          "effects": {
+            "flags": {
+              "add": [
+                "shared_otp"
+              ]
+            }
+          },
+          "outcome": {
+            "en": "While you hesitate, Ammamma grabs the phone and reads the OTP herself. The line goes dead.",
+            "hi": "आप सोचते ही रह जाते हैं, और अम्मम्मा फ़ोन लेकर खुद OTP पढ़ देती हैं। लाइन कट जाती है।",
+            "te": "మీరు తటపటాయిస్తుంటే, అమ్మమ్మ ఫోన్ లాక్కుని OTP తనే చదివి చెప్పేస్తుంది. లైన్ కట్ అవుతుంది."
+          },
+          "why": {
+            "en": "The countdown is the trick. When someone rushes you about money, the safest move is to hang up.",
+            "hi": "उलटी गिनती ही असली चाल है। जब कोई पैसों के मामले में जल्दी मचाए, तो सबसे सुरक्षित कदम है फ़ोन काट देना।",
+            "te": "కౌంట్‌డౌనే అసలు ట్రిక్. డబ్బు విషయంలో ఎవరైనా తొందరపెడితే, ఫోన్ పెట్టేయడమే అన్నిటికంటే సేఫ్."
+          },
+          "next": "m1_drained"
+        }
+      ]
+    },
+    {
+      "id": "m1_drained",
+      "age": 17,
+      "location": "bank",
+      "speaker": "banker",
+      "lesson": "L09",
+      "objective": {
+        "en": "RUN to the bank! Report the fraud before the money disappears.",
+        "hi": "बैंक की तरफ़ भागें! पैसा गायब होने से पहले धोखे की रिपोर्ट करें।",
+        "te": "బ్యాంకుకు పరుగెత్తండి! డబ్బు మాయం కాకముందే మోసం గురించి రిపోర్ట్ చేయండి."
+      },
+      "rush": {
+        "seconds": 22,
+        "fail": "m1_too_late"
+      },
+      "title": {
+        "en": "The golden hour",
+        "hi": "सुनहरा घंटा",
+        "te": "బంగారు గంట"
+      },
+      "text": {
+        "en": "Ping. Ping. Ping. ₹15,000 debited. ₹15,000 debited. ₹10,000 debited. Ammamma's **whole pension saving**. {cast:banker} grabs the phone: \"Call **1930** now! The first hour is **golden**!\"",
+        "hi": "टिंग। टिंग। टिंग। ₹15,000 कटे। ₹15,000 कटे। ₹10,000 कटे। अम्मम्मा की **पूरी पेंशन बचत**। {cast:banker} फ़ोन छीनती हैं: \"अभी **1930** पर कॉल करो! पहला घंटा **सुनहरा** है!\"",
+        "te": "టింగ్. టింగ్. టింగ్. ₹15,000 కట్. ₹15,000 కట్. ₹10,000 కట్. అమ్మమ్మ **పెన్షన్ పొదుపు మొత్తం**. {cast:banker} ఫోన్ లాక్కుంటుంది: \"వెంటనే **1930**కి కాల్ చేయి! మొదటి గంట **బంగారం**!\""
+      },
+      "choices": [
+        {
+          "id": "report",
+          "label": {
+            "en": "Call [[helpline_1930]] and file a cyber-crime complaint",
+            "hi": "[[helpline_1930]] पर फ़ोन करें और साइबर-क्राइम शिकायत दर्ज करें",
+            "te": "[[helpline_1930]] నంబర్‌కు కాల్ చేసి సైబర్ క్రైమ్ ఫిర్యాదు ఇవ్వండి"
+          },
+          "quality": "good",
+          "effects": {
+            "flags": {
+              "add": [
+                "reported_1930"
+              ]
+            },
+            "meters": {
+              "family": -4
+            }
+          },
+          "outcome": {
+            "en": "₹25,000 is frozen in the scammer's account before it can be withdrawn. It comes back in four months. ₹15,000 is gone forever.",
+            "hi": "₹25,000 निकाले जाने से पहले ही धोखेबाज़ के खाते में फ़्रीज़ हो जाते हैं। चार महीने में वे वापस आ जाते हैं। ₹15,000 हमेशा के लिए चले गए।",
+            "te": "మోసగాడు డబ్బు తీసుకునేలోపే ₹25,000 వాడి అకౌంట్‌లోనే ఫ్రీజ్ అవుతుంది. నాలుగు నెలల్లో అది తిరిగి వస్తుంది. ₹15,000 మాత్రం శాశ్వతంగా పోయింది."
+          },
+          "why": {
+            "en": "Report within the first hour. Banks can freeze money that is still moving between accounts.",
+            "hi": "पहले घंटे के अंदर रिपोर्ट करें। जो पैसा अभी खातों के बीच घूम रहा है, बैंक उसे फ़्रीज़ कर सकते हैं।",
+            "te": "మొదటి గంటలోపే రిపోర్ట్ చేయండి. ఇంకా అకౌంట్ల మధ్య తిరుగుతున్న డబ్బును బ్యాంకులు ఫ్రీజ్ చేయగలవు."
+          },
+          "next": "m1_trip"
+        },
+        {
+          "id": "hide",
+          "label": {
+            "en": "Don't report it. It's too embarrassing",
+            "hi": "रिपोर्ट न करें। बहुत शर्म की बात है",
+            "te": "రిపోర్ట్ చేయకండి. చాలా సిగ్గుచేటు"
+          },
+          "quality": "bad",
+          "effects": {
+            "flags": {
+              "add": [
+                "ammamma_robbed"
+              ]
+            },
+            "meters": {
+              "family": -10
+            }
+          },
+          "outcome": {
+            "en": "Nobody reports it. The money is gone, and the same gang calls fifty more grandmothers this week.",
+            "hi": "कोई रिपोर्ट नहीं करता। पैसा चला गया, और वही गिरोह इस हफ़्ते पचास और दादी-नानियों को फ़ोन करता है।",
+            "te": "ఎవరూ రిపోర్ట్ చేయరు. డబ్బు పోయింది, అదే ముఠా ఈ వారం ఇంకో యాభై మంది అమ్మమ్మలకు కాల్ చేస్తుంది."
+          },
+          "why": {
+            "en": "Shame helps only the scammer. Reporting fast can freeze the money, and protects the next victim.",
+            "hi": "शर्म से सिर्फ़ धोखेबाज़ का फ़ायदा होता है। जल्दी रिपोर्ट करने से पैसा फ़्रीज़ हो सकता है, और अगला शिकार बच जाता है।",
+            "te": "సిగ్గుపడితే లాభం మోసగాడికే. వెంటనే రిపోర్ట్ చేస్తే డబ్బు ఫ్రీజ్ కావచ్చు, తర్వాత మోసపోయేవాళ్లనూ కాపాడొచ్చు."
+          },
+          "next": "m1_trip"
+        }
+      ]
+    },
+    {
+      "id": "m1_too_late",
+      "age": 17,
+      "location": "bank",
+      "speaker": "banker",
+      "objective": {
+        "en": "Too slow. Go to the bank anyway and file the complaint.",
+        "hi": "बहुत देर हो गई। फिर भी बैंक जाएँ और शिकायत दर्ज करें।",
+        "te": "చాలా ఆలస్యమైంది. అయినా బ్యాంకుకు వెళ్లి ఫిర్యాదు ఇవ్వండి."
+      },
+      "title": {
+        "en": "Too late",
+        "hi": "बहुत देर हो गई",
+        "te": "చాలా ఆలస్యం"
+      },
+      "text": {
+        "en": "**Too late.** The money has hopped through **six accounts** and left an ATM in another state. {cast:banker} files the complaint anyway, very quietly.",
+        "hi": "**बहुत देर हो गई।** पैसा **छह खातों** से कूदकर दूसरे राज्य के ATM से निकल चुका है। {cast:banker} फिर भी चुपचाप शिकायत दर्ज करती हैं।",
+        "te": "**చాలా ఆలస్యమైంది.** డబ్బు **ఆరు ఖాతాలు** దాటి వేరే రాష్ట్రంలో ATM నుంచి బయటకు పోయింది. {cast:banker} అయినా నిశ్శబ్దంగా ఫిర్యాదు రాస్తుంది."
+      },
+      "choices": [
+        {
+          "id": "promise",
+          "label": {
+            "en": "Promise Ammamma you'll make it up to her, one day",
+            "hi": "अम्मम्मा से वादा करें कि एक दिन आप इसकी भरपाई करेंगे",
+            "te": "ఏదో ఒక రోజు ఈ నష్టం తీరుస్తానని అమ్మమ్మకు మాట ఇవ్వండి"
+          },
+          "quality": "ok",
+          "effects": {
+            "flags": {
+              "add": [
+                "ammamma_robbed",
+                "reported_1930"
+              ]
+            },
+            "meters": {
+              "family": -8,
+              "joy": -4
+            }
+          },
+          "outcome": {
+            "en": "Ammamma pats your head. \"Money comes and goes, kanna. Only don't let them fool you twice.\"",
+            "hi": "अम्मम्मा आपके सिर पर हाथ फेरती हैं। \"पैसा आता-जाता रहता है, कन्ना। बस उन्हें दोबारा तुझे बेवकूफ़ मत बनाने देना।\"",
+            "te": "అమ్మమ్మ మీ తల నిమురుతుంది. \"పైసలు వస్తయ్, పోతయ్ కన్నా. రెండోసారి మాత్రం వాళ్ల చేతిలో మోసపోకు.\""
+          },
+          "why": {
+            "en": "In cyber fraud, the first hour decides almost everything. Speed matters more than anything else.",
+            "hi": "साइबर धोखे में पहला घंटा लगभग सब कुछ तय करता है। रफ़्तार सबसे ज़्यादा मायने रखती है।",
+            "te": "సైబర్ మోసంలో దాదాపు అంతా మొదటి గంటలోనే తేలిపోతుంది. అన్నిటికంటే వేగమే ముఖ్యం."
+          },
           "next": "m1_trip"
         }
       ]
@@ -912,9 +912,9 @@
         "te": "ఫేర్‌వెల్ రోజు"
       },
       "text": {
-        "en": "Forty classmates. One bus. {cast:teacher} asks you to count the trip fund in front of everyone. Ravi, at the back, whispers that he can't pay his ₹600 share.",
-        "hi": "चालीस सहपाठी। एक बस। {cast:teacher} आपसे सबके सामने ट्रिप फंड गिनने को कहती हैं। पीछे बैठा रवि धीरे से बताता है कि वह अपना ₹600 का हिस्सा नहीं भर सकता।",
-        "te": "నలభై మంది క్లాస్‌మేట్‌లు. ఒక్క బస్సు. అందరి ముందు ట్రిప్ ఫండ్ లెక్కపెట్టమని {cast:teacher} మిమ్మల్ని అడుగుతారు. వెనకాల కూర్చున్న రవి, తన వాటా ₹600 కట్టలేనని గుసగుసగా చెబుతాడు."
+        "en": "Farewell day! Forty classmates, one bus, balloons on the windows. {cast:teacher} asks you to **count the fund** in front of everyone. At the back, Ravi whispers he **can't pay his ₹600**.",
+        "hi": "विदाई का दिन! चालीस सहपाठी, एक बस, खिड़कियों पर गुब्बारे। {cast:teacher} सबके सामने **फंड गिनने** को कहती हैं। पीछे से रवि फुसफुसाता है कि वह **अपने ₹600 नहीं दे सकता**।",
+        "te": "వీడ్కోలు రోజు! నలభై మంది క్లాస్‌మేట్లు, ఒక బస్సు, కిటికీలకు బెలూన్లు. అందరి ముందు **ఫండ్ లెక్కపెట్టమని** {cast:teacher} అడుగుతుంది. వెనకాల రవి గుసగుసలాడతాడు: **తన ₹600 కట్టలేడని**."
       },
       "choices": [
         {

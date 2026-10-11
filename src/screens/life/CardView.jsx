@@ -21,7 +21,7 @@ import { select } from "../../ui/gameAdapter.js";
 import { DocumentViewer } from "../../ui/DocumentViewer.jsx";
 import { PixelPortrait as Portrait } from "../../ui/PixelPortrait.jsx";
 import { sounds } from "../../ui/sound.js";
-import { CHOICE_GAMES } from "../../ui/games/choiceGames.js";
+import { gameFor } from "../../ui/games/choiceGames.js";
 
 export const KIND_ICON = {
   lesson: BookOpen,
@@ -183,9 +183,9 @@ export function CardView({ life, dispatch }) {
                     </small>
                   )}
                   {/* Story mode: this choice is won by playing a mini-game. */}
-                  {CHOICE_GAMES[c.id] && !c.locked && (
+                  {gameFor(card.id, c.id) && !c.locked && (
                     <small className="choice-game">
-                      <Gamepad2 size={12} /> {t(`minigame.tag.${CHOICE_GAMES[c.id]}`)}
+                      <Gamepad2 size={12} /> {t(`minigame.tag.${gameFor(card.id, c.id)}`)}
                     </small>
                   )}
                   {c.unlockedBy && (
