@@ -36,7 +36,8 @@ export function SaveFirst({ life, dispatch, avatar = "boy" }) {
   const [level, setLevel] = useState(() => levelOf(rules, rules.suggested));
   const plans = useMemo(() => Object.fromEntries(SAVE_LEVELS.map((l) => [l.id, planFor(rules, l.share, ctx)])), [rules.monthlyIncome, rules.minNeeds, ctx.emergency]); // eslint-disable-line react-hooks/exhaustive-deps
   const jars = plans[level];
-  const fc = forecast(jars, { age: life.age, dream: hud.dream, ...ctx, income: rules.monthlyIncome });
+  const share = SAVE_LEVELS.find((l) => l.id === level).share;
+  const fc = forecast(jars, { age: life.age, dream: hud.dream, ...ctx, income: rules.monthlyIncome, share, storylineId: life.storylineId });
   const saved = (jars.emergency ?? 0) + (jars.goal ?? 0) + (jars.invest ?? 0);
   const dreamPos = fc.dreamAge == null ? 1 : Math.min(1, (fc.dreamAge - life.age) / Math.max(1, END_AGE - life.age));
 

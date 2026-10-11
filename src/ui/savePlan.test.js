@@ -19,11 +19,14 @@ test("every level is a valid jar split: adds up, in steps, needs at the minimum"
 });
 
 test("saving more means less fun, a nearer dream and more surprises covered", () => {
-  const dream = { reached: false, target: 5000, saved: 0 };
+  const dream = { reached: false, target: 250000, saved: 0 };
   const plans = SAVE_LEVELS.map((l) => planFor(child, l.share, { stage: "child" }));
-  const f = plans.map((j) => forecast(j, { age: 11, dream, stage: "child", income: 200 }));
+  const f = plans.map((j, i) => forecast(j, { age: 11, dream, stage: "child", income: 200, share: SAVE_LEVELS[i].share }));
+  // A house is decades away on pocket money, but saving a lot gets there by the late twenties.
+  assert.ok(f[2].dreamAge && f[2].dreamAge <= 32, `lots: ${f[2].dreamAge}`);
+  assert.ok(f[0].dreamAge == null || f[0].dreamAge > f[1].dreamAge);
   assert.ok(plans[0].wants > plans[1].wants && plans[1].wants > plans[2].wants);
-  assert.ok(f[0].dreamAge > f[2].dreamAge);
+  assert.ok(f[1].dreamAge > f[2].dreamAge);
   assert.ok(f[2].shields >= f[0].shields);
   assert.ok(f[0].fun > f[2].fun);
 });

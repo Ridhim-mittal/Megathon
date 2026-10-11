@@ -3,6 +3,7 @@
 // (enough for a few surprises), then the dream (and investments, once they open). Pure helpers:
 // SaveFirst.jsx draws them; the result goes to the engine's SET_BUDGET as an ordinary jar split.
 import { ASSUMPTIONS as A } from "../engine/assumptions.js";
+import { END_AGE, stageOf } from "../engine/curriculum.js";
 
 export const SAVE_LEVELS = [
   { id: "little", share: 0.1 },
@@ -37,12 +38,26 @@ export function planFor(rules, share, { emergency = 0, stage = "child", priceInd
 }
 
 // What a plan means: the dream's age, how many surprises the safety jar covers, fun per month.
-export function forecast(jars, { age, dream, emergency = 0, stage = "child", priceIndex = 1, income = 1 }) {
-  const perYear = ((jars.goal ?? 0) + (jars.invest ?? 0)) * 12;
+// The dream age assumes you keep saving the same share as your income grows with age (pocket
+// money now, a job later), from the engine's own wage table.
+export function forecast(jars, { age, dream, emergency = 0, stage = "child", priceIndex = 1, income = 1, share = 0, storylineId = "village" }) {
+  const nowShare = ((jars.goal ?? 0) + (jars.invest ?? 0)) / Math.max(1, income);
+  const wages = A.wages[storylineId] ?? A.wages.village;
   let dreamAge = null;
   if (dream.reached) dreamAge = age;
-  else if (perYear > 0) dreamAge = age + Math.ceil(Math.max(0, dream.target - dream.saved) / perYear);
-  const shields = Math.floor((emergency + (jars.emergency ?? 0) * 12) / Math.max(1, surpriseCost(stage, priceIndex)));
+  else if (nowShare > 0) {
+    let saved = dream.saved;
+    for (let a = age; a <= END_AGE; a++) {
+      // This year at today's split; later years the safety jar is full, so most savings go to the dream.
+      const monthly = a === age ? income : Math.max(income, wages[stageOf(a)] ?? income);
+      saved += monthly * 12 * (a === age ? nowShare : Math.max(nowShare, share * 0.8));
+      if (saved >= dream.target) {
+        dreamAge = a + 1;
+        break;
+      }
+    }
+  }
+  const shields = Math.round((emergency + (jars.emergency ?? 0) * 12) / Math.max(1, surpriseCost(stage, priceIndex)));
   const fun = Math.round(((jars.wants ?? 0) / Math.max(1, income)) * 10);
   return { dreamAge, shields, fun };
 }
