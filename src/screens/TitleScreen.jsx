@@ -1,16 +1,37 @@
 import React from "react";
-import { BookOpen, Building2, Gamepad2, Play, Sparkles, Sprout } from "lucide-react";
+import { ChevronRight, Sprout } from "lucide-react";
 import { useT } from "../i18n/index.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 import { HeroPicker } from "../ui/HeroPicker.jsx";
 import { ArcadeGame, ArcadeMenu } from "../ui/arcade/Arcade.jsx";
-import { PixelPortrait } from "../ui/PixelPortrait.jsx";
+import { PixelIcon } from "../ui/PixelIcon.jsx";
 
-// Continue and Start a new life sit side by side, the same size. A new life asks for your look and
-// name right here before the language and story.
-export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settings, picking, onPicking, hero }) {
+// Four big buttons, one under the other: New life, Continue, Arcade, How to play. A new life asks
+// for your look and name right here before the language and story.
+function TitleButton({ icon, label, hint, onClick, i }) {
+  return (
+    <button className="title-choice" onClick={onClick} aria-label={label} style={{ animationDelay: `${0.12 + i * 0.08}s` }}>
+      <span className="title-choice-tile" aria-hidden="true">
+        <PixelIcon name={icon} size={30} />
+      </span>
+      <span className="title-choice-text">
+        <strong>{label}</strong>
+        {hint && <small>{hint}</small>}
+      </span>
+      <ChevronRight className="title-choice-icon" size={22} aria-hidden="true" />
+    </button>
+  );
+}
+
+export function TitleScreen({ canContinue, onPlay, onNew, onHelp, settings, picking, onPicking, hero }) {
   const { t } = useT();
   const [arcade, setArcade] = React.useState(null); // null | "menu" | a game id
+  const buttons = [
+    { icon: "sprout", label: t("app.newLife"), hint: t("hero.newHint"), onClick: () => onPicking(true) },
+    canContinue && { icon: "resume", label: t("app.continue"), hint: hero?.name, onClick: onPlay },
+    { icon: "gamepad", label: t("arcade.title"), hint: t("app.arcadeHint"), onClick: () => setArcade("menu") },
+    { icon: "book", label: t("app.howTo"), hint: t("app.howToHint"), onClick: onHelp },
+  ].filter(Boolean);
   return (
     <div className="title-screen">
       <div className="title-vignette" />
@@ -25,45 +46,11 @@ export function TitleScreen({ canContinue, onPlay, onNew, onTown, onHelp, settin
           lakshyam<span>.</span>
         </h1>
         <p className="title-tagline">{t("app.tagline")}</p>
-        <div className={`title-actions ${canContinue ? "two" : "one"}`}>
-          {canContinue && (
-            <button className="title-choice continue" onClick={onPlay} aria-label={t("app.continue")}>
-              <span className="title-choice-face" aria-hidden="true">
-                <PixelPortrait role="player" avatar={hero?.avatar ?? "boy"} stage={hero?.stage ?? "child"} />
-              </span>
-              <span className="title-choice-text">
-                <strong>{t("app.continue")}</strong>
-                {hero?.name && <small>{hero.name}</small>}
-              </span>
-              <Play className="title-choice-icon" size={20} fill="currentColor" aria-hidden="true" />
-            </button>
-          )}
-          <button className="title-choice new" onClick={() => onPicking(true)} aria-label={canContinue ? t("app.newLife") : t("app.play")}>
-            <span className="title-choice-face pair" aria-hidden="true">
-              <PixelPortrait role="player" avatar="boy" stage="child" />
-              <PixelPortrait role="player" avatar="girl" stage="child" />
-            </span>
-            <span className="title-choice-text">
-              <strong>{canContinue ? t("app.newLife") : t("app.play")}</strong>
-              <small>{t("hero.newHint")}</small>
-            </span>
-            <Sparkles className="title-choice-icon" size={20} aria-hidden="true" />
-          </button>
-        </div>
-        <div className="title-extras">
-          <button className="title-game title-arcade-btn" onClick={() => setArcade("menu")}>
-            <Gamepad2 size={16} aria-hidden="true" /> {t("arcade.title")}
-          </button>
-          <button className="title-game town" onClick={onTown}>
-            <Building2 size={16} aria-hidden="true" /> {t("app.town")}
-          </button>
-        </div>
-        <button className="title-help title-howto" onClick={onHelp}>
-          <span className="title-howto-icon" aria-hidden="true">
-            <BookOpen size={18} />
-          </span>
-          {t("app.howToPlay")}
-        </button>
+        <nav className="title-actions" aria-label={t("app.menu")}>
+          {buttons.map((b, i) => (
+            <TitleButton key={b.icon} i={i} {...b} />
+          ))}
+        </nav>
       </div>
       {arcade && (
         <div className="dialog-layer title-arcade">

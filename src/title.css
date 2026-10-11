@@ -2,85 +2,81 @@
    Loaded after budget.css. */
 
 .title-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  width: min(380px, 100%);
   margin: 26px auto 0;
 }
+/* Every button looks the same: a green pixel plank with a cream icon tile. */
 .title-choice {
   position: relative;
   display: flex;
   align-items: center;
   gap: 14px;
-  width: 330px;
-  min-height: 92px;
-  padding: 12px 18px 12px 12px;
+  width: 100%;
+  min-height: 74px;
+  padding: 10px 16px 10px 10px;
+  overflow: hidden;
   text-align: left;
-  border-radius: 14px;
-  border: 3px solid;
+  color: #fffbe8;
+  background: #5f9e46;
+  border: 3px solid #2f4a26;
+  border-radius: 10px;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.12), 0 5px 0 #2f4a26, 0 12px 22px rgba(40, 60, 30, 0.22);
   font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
-  transition: transform 0.18s, box-shadow 0.18s;
+  cursor: pointer;
+  transition: transform 0.16s cubic-bezier(0.3, 1.6, 0.5, 1), box-shadow 0.16s, background 0.16s;
   animation: choice-pop 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) both;
 }
-.title-choice + .title-choice {
-  animation-delay: 0.1s;
+/* A soft shine sweeps across on hover. */
+.title-choice::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
 }
-.title-choice.continue {
-  background: #5f9e46;
-  border-color: #2f4a26;
-  color: #fffbe8;
-  box-shadow: 0 5px 0 #2f4a26, 0 14px 26px rgba(40, 60, 30, 0.25);
-}
-.title-choice.new {
-  background: #fff4d6;
-  border-color: var(--px-wood);
-  color: var(--px-ink);
-  box-shadow: 0 5px 0 var(--px-wood), 0 14px 26px rgba(40, 60, 30, 0.2);
-}
-.title-actions.one .title-choice.new {
-  background: #5f9e46;
-  border-color: #2f4a26;
-  color: #fffbe8;
-  box-shadow: 0 5px 0 #2f4a26, 0 14px 26px rgba(40, 60, 30, 0.25);
-}
-.title-choice:hover {
+.title-choice:hover,
+.title-choice:focus-visible {
+  background: #68a94e;
   transform: translateY(-3px);
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.12), 0 8px 0 #2f4a26, 0 16px 26px rgba(40, 60, 30, 0.26);
+  outline: none;
+}
+.title-choice:focus-visible {
+  outline: 3px solid #ffd84a;
+  outline-offset: 3px;
+}
+.title-choice:hover::after,
+.title-choice:focus-visible::after {
+  animation: title-shine 0.7s ease-out;
 }
 .title-choice:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #2f4a26;
+  transform: translateY(4px);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 1px 0 #2f4a26, 0 4px 10px rgba(40, 60, 30, 0.2);
 }
-.title-choice-face {
+.title-choice-tile {
   flex-shrink: 0;
-  width: 66px;
-  height: 66px;
   display: grid;
-  place-items: end center;
-  overflow: hidden;
-  border-radius: 50%;
-  background: #fffbe8;
-  border: 3px solid currentColor;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: #fff4d6;
+  border: 3px solid #2f4a26;
+  border-radius: 7px;
+  box-shadow: inset 0 -4px 0 #f0d9a8;
 }
-.title-choice.new .title-choice-face {
-  background: #e6f3d8;
-  border-color: var(--px-wood);
+.title-choice-tile .pixel-icon {
+  display: block;
 }
-.title-choice-face .pixel-portrait canvas {
-  width: 40px;
-  height: 60px;
-}
-.title-choice-face.pair {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 0;
-}
-.title-choice-face.pair .pixel-portrait canvas {
-  width: 30px;
-  height: 45px;
-}
-.title-choice:hover .title-choice-face .pixel-portrait {
-  animation: actor-hop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+.title-choice:hover .title-choice-tile .pixel-icon,
+.title-choice:focus-visible .title-choice-tile .pixel-icon {
+  animation: title-icon-hop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
 }
 .title-choice-text {
   flex: 1;
@@ -91,21 +87,33 @@
   font-size: 18px;
   font-weight: 800;
   line-height: 1.2;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 .title-choice-text small {
   font-size: 12.5px;
   font-weight: 600;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 .title-choice-icon {
   flex-shrink: 0;
-  opacity: 0.85;
+  opacity: 0.8;
+  transition: transform 0.2s;
 }
-.title-choice.new .title-choice-icon {
-  color: #e0a12f;
+.title-choice:hover .title-choice-icon {
+  transform: translateX(4px);
 }
-.title-actions + .title-help {
-  margin-top: 16px;
+@keyframes title-shine {
+  to {
+    left: 130%;
+  }
+}
+@keyframes title-icon-hop {
+  40% {
+    transform: translateY(-6px) rotate(-6deg);
+  }
+  70% {
+    transform: translateY(1px);
+  }
 }
 
 /* ---------- Who are you? ---------- */
@@ -345,13 +353,6 @@
 }
 
 @media (max-width: 680px) {
-  .title-actions.two {
-    flex-direction: column;
-    align-items: center;
-  }
-  .title-choice {
-    width: min(330px, 100%);
-  }
   .hero-look {
     width: 130px;
     height: 176px;
