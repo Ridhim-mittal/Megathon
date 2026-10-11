@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { I18nProvider } from "../i18n/index.jsx";
+import { loadLanguage } from "../i18n/packs.js";
+import { languageOf } from "../languages.js";
 import { MapCanvas } from "../ui/map/MapCanvas.jsx";
 import { createLife, glossary, goals, select, step, storyline } from "../ui/gameAdapter.js";
 import { loadEndings, loadLife, loadSettings, recordEnding, saveLife, saveSettings } from "../ui/persist.js";
@@ -127,7 +129,8 @@ export function App() {
   const i18n = useMemo(
     () => ({
       lang: settings.lang,
-      setLang: (lang) => setSettings((s) => ({ ...s, lang })),
+      // The language's pack downloads first, so the switch never shows half-English screens.
+      setLang: (lang) => loadLanguage(lang).then(() => setSettings((s) => ({ ...s, lang })), () => {}),
       playerName: life?.playerName || setup.playerName,
       cast: sl?.cast ?? {},
       glossary: glossary(),
@@ -179,7 +182,7 @@ export function App() {
 
   return (
     <I18nProvider value={i18n}>
-      <div className={`game-shell route-${route} lang-${settings.lang}`}>
+      <div className={`game-shell route-${route} lang-${settings.lang}${languageOf(settings.lang).complexScript ? " script-complex" : ""}`}>
         {route !== "life" && (
           <div className={`backdrop backdrop-${worldMode}`} aria-hidden="true">
             <MapCanvas active={false} avatar={life?.avatar ?? "boy"} stage={life?.stage ?? "child"} spawn={BACKDROP_SPAWN} labels={{}} markers={{}} />
@@ -203,7 +206,7 @@ export function App() {
             }}
           />
         )}
-        {route === "language" && <LanguageScreen {...common} onPick={(lang) => (i18n.setLang(lang), go("storyline"))} />}
+        {route === "language" && <LanguageScreen {...common} onPick={(lang) => i18n.setLang(lang).then(() => go("storyline"))} />}
         {route === "storyline" && (
           <StorylineScreen {...common} avatar={setup.avatar} onBack={() => go("language")} onPick={(id) => (setSetup((x) => ({ ...x, storylineId: id })), go("intro"))} />
         )}

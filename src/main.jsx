@@ -23,9 +23,14 @@ import "./minigames.css";
 import "./savefirst.css";
 import "./dev.css";
 import { App } from "./screens/App.jsx";
+import { loadLanguage } from "./i18n/packs.js";
+import { loadSettings } from "./ui/persist.js";
 
-createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+// The saved language's pack comes first, so the first screen is already in that language.
+const start = () =>
+  createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  );
+loadLanguage(loadSettings().lang).catch(() => {}).finally(start);

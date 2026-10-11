@@ -1,12 +1,16 @@
-import React from "react";
-import { LANGS, useT, withName } from "../i18n/index.jsx";
+import React, { useEffect } from "react";
+import { LANGS, langName, useT, withName } from "../i18n/index.jsx";
+import { loadLanguage } from "../i18n/packs.js";
+import { languageOf } from "../languages.js";
 import { Sheet, ScreenBar } from "../ui/Sheet.jsx";
 import { TopControls } from "../ui/Hud.jsx";
 
-const SAMPLE = { en: "Hello, kanna!", hi: "नमस्ते, कन्ना!", te: "నమస్తే, కన్నా!" };
-
 export function LanguageScreen({ settings, onPick, onMenu }) {
   const { t, playerName } = useT();
+  // Fetch the phone's own languages early, so picking one is instant.
+  useEffect(() => {
+    for (const code of navigator.languages ?? []) if (LANGS.includes(code.slice(0, 2))) loadLanguage(code.slice(0, 2)).catch(() => {});
+  }, []);
   return (
     <>
       <ScreenBar>
@@ -19,11 +23,12 @@ export function LanguageScreen({ settings, onPick, onMenu }) {
               key={l}
               className={`lang-card ${settings.lang === l ? "selected" : ""}`}
               lang={l}
+              onPointerDown={() => loadLanguage(l).catch(() => {})}
               onClick={() => onPick(l)}
               aria-pressed={settings.lang === l}
             >
-              <strong>{t(`lang.${l}`)}</strong>
-              <span>{withName(SAMPLE[l], playerName === "Kanna" ? "" : playerName)}</span>
+              <strong>{langName(t, l)}</strong>
+              <span>{withName(languageOf(l).hello, playerName === "Kanna" ? "" : playerName)}</span>
             </button>
           ))}
         </div>
