@@ -62,7 +62,8 @@ export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, on
     return () => window.removeEventListener("keydown", onKey);
   });
 
-  const title = app ? t(`phone.apps.${app}`) : t(`phone.apps.${APPS[sel].id}`);
+  // Home screen: the phone's own title (each icon has its name under it); in an app, the app's name.
+  const title = app ? t(`phone.apps.${app}`) : t("phone.open");
   return (
     <div className="phone-overlay gta" role="dialog" aria-label={t("phone.open")}>
       <div className="phone">
@@ -79,7 +80,7 @@ export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, on
             <i />
           </span>
         </div>
-        <div className={`phone-title app-${app ?? APPS[sel].id}`}>{title}</div>
+        <div className={`phone-title app-${app ?? "home"}`}>{title}</div>
         <div className={`phone-screen ${app ? "in-app" : "home"}`}>
           {!app && (
             <div className="app-grid">
@@ -94,6 +95,9 @@ export function PhoneLite({ life, dispatch, onClose, onNotification, onLearn, on
                   title={t(`phone.apps.${a.id}`)}
                 >
                   <a.icon size={30} />
+                  <span className="app-label" aria-hidden="true">
+                    {t(`phone.apps.${a.id}`)}
+                  </span>
                   {a.badge > 0 && <b className="badge">{a.badge}</b>}
                 </button>
               ))}
