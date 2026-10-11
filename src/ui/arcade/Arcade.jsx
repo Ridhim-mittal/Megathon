@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Calculator, CarFront, Egg, Flower2, Gamepad2, Heart, Lightbulb, PiggyBank, Rat, RotateCcw, FileSearch, ShieldBan, ShoppingBag, Snowflake, Star, Wallet, Weight, Wind, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calculator, CarFront, Flower2, Gamepad2, Lightbulb, Rat, RotateCcw, FileSearch, ShoppingBag, Snowflake, Star, Weight, Wind, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
 import { FIELD, GAMES, ballRadius, createGame, gameById, laneY, result, stepGame } from "./games.js";
-import { nextAd } from "./ads.js";
+import { maybeAd } from "./ads.js";
 import { AdInterstitial, ScamSite } from "./ScamAds.jsx";
 import { InsuranceRush } from "./InsuranceRush.jsx";
 import { PatangIntro, PatangMarket, PatangReport } from "./PatangMarket.jsx";
@@ -14,13 +14,11 @@ import { SWIPE_CONFIG } from "./swipeBazaarConfig.js";
 import { RatGuard } from "../games/RatGuard.jsx";
 import { InterestRace } from "../games/InterestRace.jsx";
 import { FinePrintHunter } from "../games/FinePrintHunter.jsx";
-import { SalarySplit } from "../games/SalarySplit.jsx";
-import { BasketJuggle } from "../games/BasketJuggle.jsx";
 import { SipGarden } from "../games/SipGarden.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
-export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind, priceSnake: Weight, swipeBazaar: ShoppingBag };
-const STARS = { jarDash: [60, 120, 170], scamSmash: [120, 260, 400], snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], patangMarket: [8000, 18000, 25000], priceSnake: [5, 12, 20], swipeBazaar: SWIPE_CONFIG.stars };
+export const GAME_ICON = { snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind, priceSnake: Weight, swipeBazaar: ShoppingBag };
+const STARS = { snowball: [400, 650, 850], insuranceRush: [600, 1500, 3000], patangMarket: [8000, 18000, 25000], priceSnake: [5, 12, 20], swipeBazaar: SWIPE_CONFIG.stars };
 export const starsFor = (id, score) => STARS[id].filter((x) => score >= x).length;
 
 // The story's mini-games, playable here as practice (mode "practice": no money moves).
@@ -28,8 +26,6 @@ const STORY_GAMES = [
   { id: "ratGuard", title: "ratguard.title", icon: Rat, Game: RatGuard },
   { id: "interest", title: "interest.title", icon: Calculator, Game: InterestRace },
   { id: "fineprint", title: "fineprint.title", icon: FileSearch, Game: FinePrintHunter },
-  { id: "salary", title: "salary.title", icon: Wallet, Game: SalarySplit },
-  { id: "baskets", title: "baskets.title", icon: Egg, Game: BasketJuggle },
   { id: "garden", title: "garden.title", icon: Flower2, Game: SipGarden },
 ];
 
@@ -65,7 +61,7 @@ export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
           );
         })}
         {STORY_GAMES.map((g) => (
-          <button key={g.id} className={`arcade-tile story-${g.id}`} onClick={() => setStory({ id: g.id, ad: nextAd() })}>
+          <button key={g.id} className={`arcade-tile story-${g.id}`} onClick={() => setStory({ id: g.id, ad: maybeAd() })}>
             <span className="arcade-icon" aria-hidden="true">
               <g.icon size={34} />
             </span>
@@ -107,8 +103,8 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
   const [final, setFinal] = useState(null);
   const [best, setBest] = useState(() => loadArcade()[gameId] ?? 0);
   const [round, setRound] = useState(0);
-  // One ad as the game starts; none after it ends or on "play again".
-  const [interstitial, setInterstitial] = useState(() => nextAd());
+  // Now and then an ad as the game starts (see maybeAd); none after it ends or on "play again".
+  const [interstitial, setInterstitial] = useState(() => maybeAd());
   const [scam, setScam] = useState(null);
   const Icon = GAME_ICON[gameId];
   const start = useRef(null);
@@ -205,9 +201,7 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
 
       {(stage === "count" || stage === "play") && (
         <div className="arcade-stage">
-          {gameId === "scamSmash" ? (
-            <ScamSmash key={round} running={stage === "play"} onEnd={finish} />
-          ) : gameId === "priceSnake" ? (
+          {gameId === "priceSnake" ? (
             <PriceSnake key={round} running={stage === "play"} onEnd={finish} />
           ) : gameId === "insuranceRush" ? (
             <InsuranceRush key={round} running={stage === "play"} onEnd={finish} />
@@ -233,7 +227,7 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
           {gameId !== "priceSnake" && (
             <>
               <p className="arcade-score">
-                <CountUp value={final.score} prefix={gameId === "scamSmash" || gameId === "insuranceRush" ? "" : "₹"} />
+                <CountUp value={final.score} prefix={gameId === "insuranceRush" ? "" : "₹"} />
                 {final.isNew && <span className="arcade-new">{t("arcade.newBest")}</span>}
               </p>
               <ul className="arcade-chips">
@@ -372,7 +366,7 @@ function SnowballIntro({ best, startRef, onStart }) {
 
 function HowTo({ gameId }) {
   const { t } = useT();
-  const keys = { jarDash: ["←", "→"], scamSmash: ["1", "…", "6"], snowball: ["↑", "↓"], insuranceRush: ["←", "→"], patangMarket: ["Space", "↑"] }[gameId];
+  const keys = { snowball: ["↑", "↓"], insuranceRush: ["←", "→"], patangMarket: ["Space", "↑"] }[gameId];
   return (
     <p className="arcade-howto">
       <span className="keys" aria-hidden="true">
@@ -463,7 +457,7 @@ function useLoop(running, stepFn) {
   }, [running]);
 }
 
-// ---------- Jar Dash and Snowball: drawn on a canvas ----------
+// ---------- Snowball: drawn on a canvas ----------
 function CanvasGame({ gameId, running, onEnd }) {
   const { t } = useT();
   const canvas = useRef(null);
@@ -478,9 +472,9 @@ function CanvasGame({ gameId, running, onEnd }) {
       setTimeout(() => onEnd(s), 350);
     }
     const ctx = canvas.current?.getContext("2d");
-    if (ctx) (gameId === "jarDash" ? drawJarDash : drawSnowball)(ctx, s, now);
+    if (ctx) drawSnowball(ctx, s, now);
     const left = Math.max(0, Math.ceil(gameById[gameId].seconds - s.time));
-    const score = gameId === "jarDash" ? s.score : s.value;
+    const score = s.value;
     if (left !== hud.left || score !== hud.score) setHud({ left, score });
   });
   return (
@@ -526,94 +520,6 @@ function pop(ctx, p, color) {
   ctx.textAlign = "center";
   ctx.fillText(p.text ?? (p.value > 0 ? `+₹${p.value}` : `−₹${-p.value}`), p.x, p.y - p.t * 30);
   ctx.globalAlpha = 1;
-}
-
-function drawJarDash(ctx, s, now) {
-  ctx.setTransform(2, 0, 0, 2, 0, 0);
-  const sky = ctx.createLinearGradient(0, 0, 0, FIELD.h);
-  sky.addColorStop(0, "#ffe9b8");
-  sky.addColorStop(1, "#fff7e4");
-  ctx.fillStyle = sky;
-  ctx.fillRect(0, 0, FIELD.w, FIELD.h);
-  // Shop shelves in the back.
-  ctx.fillStyle = "rgba(160, 110, 60, 0.18)";
-  for (let i = 0; i < 4; i++) ctx.fillRect(0, 40 + i * 44, FIELD.w, 6);
-  ctx.fillStyle = "#c9a46a";
-  ctx.fillRect(0, FIELD.h - 8, FIELD.w, 8);
-
-  for (const it of s.items) {
-    if (it.kind === "coin") coin(ctx, it.x, it.y, it.value >= 5 ? 11 : 9, `${it.value}`);
-    else spendItem(ctx, it, now);
-  }
-  // The jar: glass, with coins filling it up.
-  const jw = 54;
-  const jh = 40;
-  const shake = s.jar.shake ? Math.sin(now / 25) * 4 : 0;
-  const x = s.jar.x - jw / 2 + shake;
-  const y = FIELD.h - jh - 8;
-  const fill = Math.min(1, s.score / 200);
-  ctx.fillStyle = "rgba(190, 230, 240, 0.55)";
-  ctx.strokeStyle = "#5b8ea0";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(x, y, jw, jh, 8);
-  ctx.fill();
-  ctx.stroke();
-  ctx.fillStyle = "#f2c230";
-  ctx.beginPath();
-  ctx.roundRect(x + 4, y + jh - 4 - (jh - 10) * fill, jw - 8, (jh - 10) * fill + 1, 4);
-  ctx.fill();
-  ctx.fillStyle = "#8a5a2c";
-  ctx.fillRect(x + 6, y - 6, jw - 12, 7);
-  for (const p of s.pops) pop(ctx, { ...p, text: p.value > 0 ? `+₹${p.value}` : `−₹${-p.value}` }, p.value > 0 ? "#2f7d3a" : "#c0392b");
-}
-
-function spendItem(ctx, it, now) {
-  const x = it.x;
-  const y = it.y;
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.rotate(Math.sin(now / 200 + x) * 0.25);
-  if (it.kind === "sweet") {
-    ctx.fillStyle = "#ff7eb6";
-    ctx.beginPath();
-    ctx.ellipse(0, 0, 11, 7, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.moveTo(-11, 0);
-    ctx.lineTo(-18, -6);
-    ctx.lineTo(-18, 6);
-    ctx.moveTo(11, 0);
-    ctx.lineTo(18, -6);
-    ctx.lineTo(18, 6);
-    ctx.fill();
-  } else if (it.kind === "toy") {
-    ctx.fillStyle = "#e0453a";
-    ctx.beginPath();
-    ctx.arc(0, 0, 10, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = "#fff";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.arc(0, 0, 10, -0.6, 0.6);
-    ctx.stroke();
-  } else {
-    ctx.fillStyle = "#7d62b0";
-    ctx.beginPath();
-    ctx.roundRect(-14, -8, 28, 16, 6);
-    ctx.fill();
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(-9, -1, 7, 2);
-    ctx.fillRect(-6.5, -3.5, 2, 7);
-    ctx.beginPath();
-    ctx.arc(7, 0, 2.5, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  ctx.restore();
-  ctx.fillStyle = "#c0392b";
-  ctx.font = "800 10px system-ui, sans-serif";
-  ctx.textAlign = "center";
-  ctx.fillText("−₹10", x, y - 13);
 }
 
 // ---------- Snowball: a snowy hill, a cute snowball, coins, helpers and money traps ----------
@@ -952,75 +858,4 @@ function drawSnowball(ctx, s, now) {
     ctx.fillRect(FIELD.w - fx, fy, k % 3 ? 2 : 3, k % 3 ? 2 : 3);
   }
   for (const p of s.pops) pop(ctx, p, p.kind === "sale" ? "#c0392b" : p.kind === "interest" ? "#2a7fbf" : p.kind === "shield" ? "#3f8fd8" : "#2f7d3a");
-}
-
-// ---------- Scam Smash: six phones, built from buttons ----------
-function ScamSmash({ running, onEnd }) {
-  const { t } = useT();
-  const game = useRef(createGame("scamSmash"));
-  const ended = useRef(false);
-  const taps = useRef([]);
-  const [, setFrame] = useState(0);
-  useEffect(() => {
-    const onKey = (e) => {
-      if (/^[1-6]$/.test(e.key)) taps.current.push(Number(e.key) - 1);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-  useLoop(running, (dt) => {
-    const s = game.current;
-    if (dt > 0 && !ended.current) {
-      const input = { taps: taps.current };
-      taps.current = [];
-      if (stepGame(s, dt, input)) {
-        ended.current = true;
-        setTimeout(() => onEnd(s), 400);
-      }
-    }
-    setFrame((f) => (f + 1) % 1000000);
-  });
-  const s = game.current;
-  const left = Math.max(0, Math.ceil(gameById.scamSmash.seconds - s.time));
-  return (
-    <div className="arcade-field smash">
-      <div className="arcade-bar">
-        <span className="arcade-timer">
-          <i style={{ width: `${(left / gameById.scamSmash.seconds) * 100}%` }} />
-          <b>{left}</b>
-        </span>
-        <span className="arcade-hearts" aria-label={t("arcade.hearts", { n: s.hearts })}>
-          {[0, 1, 2].map((i) => (
-            <Heart key={i} size={18} className={i < s.hearts ? "on" : ""} />
-          ))}
-        </span>
-        <strong className="arcade-live">{s.score}</strong>
-      </div>
-      <div className="smash-grid">
-        {s.slots.map((m, i) => {
-          const flash = s.flashes.find((f) => f.slot === i);
-          return (
-            <button
-              key={i}
-              className={`smash-phone ${m ? "on" : ""} ${flash ? `flash-${flash.kind}` : ""}`}
-              onPointerDown={(e) => {
-                e.preventDefault();
-                if (m) taps.current.push(i);
-              }}
-              aria-label={m ? `${i + 1}: ${t(`arcade.msg.${m.msg}`)}` : `${i + 1}`}
-            >
-              <kbd>{i + 1}</kbd>
-              {m && (
-                <span className="smash-msg" key={m.id}>
-                  <span className="smash-text">{t(`arcade.msg.${m.msg}`)}</span>
-                  <i className="smash-life" style={{ width: `${(m.left / m.life) * 100}%` }} />
-                </span>
-              )}
-              {flash && <span className="smash-flash">{flash.kind === "good" ? "🛡️" : flash.kind === "bad" ? "💸" : "🙈"}</span>}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
 }
