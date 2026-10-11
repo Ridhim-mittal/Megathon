@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Calculator, CarFront, Flower2, Gamepad2, Lightbulb, Rat, RotateCcw, FileSearch, ShoppingBag, Snowflake, Waves, Weight, Wind, X } from "lucide-react";
+import { PixelIcon } from "../PixelIcon.jsx";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -49,7 +50,11 @@ export function ArcadeMenu({ onPick, onClose, avatar = "boy" }) {
           <X size={17} />
         </button>
       </header>
-      <p className="arcade-sub">{t("arcade.subtitle")}</p>
+      <p className="arcade-sub">
+        <PixelIcon name="gamepad" size={26} />
+        <span>{t("arcade.subtitle")}</span>
+        <PixelIcon name="star" size={22} />
+      </p>
       <div className="arcade-tiles all-games">
         {GAMES.map((g) => {
           const Icon = GAME_ICON[g.id];
