@@ -95,8 +95,9 @@ function Stars({ n, big = false }) {
   );
 }
 
-// One game, from its title card to the result.
-export function ArcadeGame({ gameId, onClose, onBack }) {
+// One game, from its title card to the result. With `story` ({ onWin, onGiveUp }) it unlocks a
+// story choice: one star wins it; otherwise "try again" or "pick another choice". No ads in the story.
+export function ArcadeGame({ gameId, onClose, onBack, story = null }) {
   const { t } = useT();
   const [stage, setStage] = useState("intro"); // intro | count | play | done
   const [count, setCount] = useState(3);
@@ -104,7 +105,7 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
   const [best, setBest] = useState(() => loadArcade()[gameId] ?? 0);
   const [round, setRound] = useState(0);
   // Now and then an ad as the game starts (see maybeAd); none after it ends or on "play again".
-  const [interstitial, setInterstitial] = useState(() => maybeAd());
+  const [interstitial, setInterstitial] = useState(() => (story ? null : maybeAd()));
   const [scam, setScam] = useState(null);
   const Icon = GAME_ICON[gameId];
   const start = useRef(null);
@@ -246,14 +247,18 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
             <Lightbulb size={20} aria-hidden="true" />
             <span>{t(`arcade.games.${gameId}.lesson`)}</span>
           </p>
-          <div className="action-row">
-            <button className="secondary-button" onClick={begin}>
-              <RotateCcw size={16} /> {t("arcade.again")}
-            </button>
-            <button ref={start} className="primary-button big" onClick={onBack ?? onClose}>
-              {t("arcade.done")} <ArrowRight size={18} />
-            </button>
-          </div>
+          {story ? (
+            <StoryVerdict won={starsFor(gameId, final.score) >= 1} startRef={start} onWin={story.onWin} onAgain={begin} onGiveUp={story.onGiveUp} />
+          ) : (
+            <div className="action-row">
+              <button className="secondary-button" onClick={begin}>
+                <RotateCcw size={16} /> {t("arcade.again")}
+              </button>
+              <button ref={start} className="primary-button big" onClick={onBack ?? onClose}>
+                {t("arcade.done")} <ArrowRight size={18} />
+              </button>
+            </div>
+          )}
         </div>
       )}
       {interstitial && <AdInterstitial ad={interstitial} onOpen={(a) => setScam(a.id)} onSkip={() => setInterstitial(null)} />}
@@ -266,6 +271,42 @@ export function ArcadeGame({ gameId, onClose, onBack }) {
           }}
         />
       )}
+    </div>
+  );
+}
+
+// The end of an arcade game played inside the story: did it unlock the choice?
+function StoryVerdict({ won, startRef, onWin, onAgain, onGiveUp }) {
+  const { t } = useT();
+  return (
+    <div className={`story-verdict ${won ? "won" : "lost"}`}>
+      <p>
+        <b>{won ? t("arcade.story.wonTitle") : t("arcade.story.lostTitle")}</b> {won ? t("arcade.story.won") : t("arcade.story.lost")}
+      </p>
+      <div className="action-row">
+        {won ? (
+          <span />
+        ) : (
+          <button className="text-button" onClick={onGiveUp}>
+            {t("arcade.story.other")}
+          </button>
+        )}
+        <button ref={startRef} className="primary-button big" onClick={won ? onWin : onAgain}>
+          {won ? t("arcade.story.go") : t("arcade.again")} {won ? <ArrowRight size={18} /> : <RotateCcw size={16} />}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// An arcade game as a story mini-game, on its own full-screen layer.
+export function ArcadeChoiceGame({ gameId, onWin, onClose, onGiveUp }) {
+  const { t } = useT();
+  return (
+    <div className="ir-layer" role="dialog" aria-modal="true" aria-label={t(`arcade.games.${gameId}.name`)}>
+      <section className="game-window window-arcade title-arcade">
+        <ArcadeGame gameId={gameId} onClose={onClose} story={{ onWin, onGiveUp: onGiveUp ?? onClose }} />
+      </section>
     </div>
   );
 }

@@ -86,17 +86,19 @@ test("prologue: follow the objective, live three scenes, reach an outcome and it
   await expect(page.locator(".hud-chapter")).toContainText("Childhood");
   await page.getByRole("button", { name: "Live this year" }).click();
 
-  // The objective says where to go; a trail on the map leads there.
+  // The objective says where to go; a trail on the map leads there. The badge names the lesson.
   const objective = page.locator(".objective");
+  await expect(objective).toContainText("jatara");
+  await expect(page.locator(".lesson-badge")).toContainText("Needs before wants");
+  await playScene(page, "notebook first");
+  await continueOutcome(page);
+
   await expect(objective).toContainText("Walk home. Ammamma is calling you.");
   await expect(objective.getByRole("button", { name: "Go to Home" })).toBeVisible();
-
   await playRatGuard(page, "bank");
   await expect(objective).toContainText("Kavitha akka");
+  await expect(page.locator(".lesson-badge")).toContainText("Bank beats the tin box");
   await playScene(page, "one for me");
-  await continueOutcome(page);
-  await expect(objective).toContainText("jatara");
-  await playScene(page, "notebook first");
   await continueOutcome(page);
 
   // The chapter's outcome, and the flowchart of what else could have happened.
@@ -116,15 +118,19 @@ test("a very bad choice flashes STOP; thinking again keeps the scene open", asyn
   await start(page);
   await toPrologue(page);
   await page.getByRole("button", { name: "Live this year" }).click();
+  await playScene(page, "notebook first");
+  await continueOutcome(page);
   await playRatGuard(page, "tin");
   await playScene(page, "Buy the steel box");
-  await continueOutcome(page);
-  await playScene(page, "notebook first");
   await continueOutcome(page);
   await page.getByRole("button", { name: "Next chapter" }).click();
   await page.getByRole("button", { name: "Begin" }).click();
   await page.getByRole("button", { name: "Live this year" }).click();
   await playScene(page, "Hide it at home");
+  await continueOutcome(page);
+  await playScene(page, "Walk away");
+  await continueOutcome(page);
+  await playScene(page, "Lend him");
   await continueOutcome(page);
 
   // The OTP call: a countdown, and a STOP before reading the OTP aloud.
@@ -175,7 +181,7 @@ test("the language can be switched at any time and Hindi/Telugu fit the layout",
   await page.getByRole("combobox", { name: "भाषा" }).selectOption("te");
   await expect(page.getByRole("heading", { name: "ప్రతి రూపాయికి ఒక ఇల్లు ఇవ్వండి" })).toBeVisible();
   await page.locator(".window-budget .primary-button").click();
-  await expect(page.locator(".objective")).toContainText("అమ్మమ్మ");
+  await expect(page.locator(".objective")).toContainText("జాతర");
 });
 
 test("progress is saved: the title offers Continue after a reload", async ({ page }) => {
@@ -188,7 +194,7 @@ test("progress is saved: the title offers Continue after a reload", async ({ pag
   await expect(page.getByRole("button", { name: "Start a new life" })).toBeVisible();
   await page.getByRole("button", { name: "Continue my life" }).click();
   await expect(page.locator(".hud-chapter")).toContainText("Age 11");
-  await expect(page.locator(".objective")).toContainText("Ammamma");
+  await expect(page.locator(".objective")).toContainText("jatara");
 });
 
 test("Ask Ammamma answers offline", async ({ page }) => {
