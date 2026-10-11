@@ -51,3 +51,14 @@ export function lostIn(adId, steps) {
   if (adId === "giveaway") return (steps.includes("delivery") ? c.delivery : 0) + (steps.includes("customs") ? c.customs : 0);
   return 0;
 }
+
+// A full-screen ad when a game opens: about one open in three, never the first game of a visit and
+// never twice in a row. Returns an ad, or null.
+let opens = 0;
+let lastHadAd = false;
+export function maybeAd(rng = Math.random) {
+  opens += 1;
+  const show = opens > 1 && !lastHadAd && rng() < 0.33;
+  lastHadAd = show;
+  return show ? nextAd(null, rng) : null;
+}

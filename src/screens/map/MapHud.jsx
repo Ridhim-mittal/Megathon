@@ -1,5 +1,5 @@
 import React from "react";
-import { Brain, Heart, Home, Landmark, Smartphone, Smile, TrendingDown, Users, Wallet } from "lucide-react";
+import { Brain, Heart, Home, Landmark, Pause, Smartphone, Smile, TrendingDown, Users, Wallet } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { TopControls } from "../../ui/Hud.jsx";
 import { Meter, Money } from "../../ui/Money.jsx";
@@ -7,7 +7,7 @@ import { Meter, Money } from "../../ui/Money.jsx";
 const METER_ICONS = { joy: Smile, health: Heart, family: Users, gyaan: Brain };
 
 // The top bar over the map: chapter and age, money, meters, dream, phone and controls.
-export function MapHud({ hud, chapter, goalTitle, settings, phone, onPhone, onAsk, onHelp, onMenu }) {
+export function MapHud({ hud, chapter, goalTitle, settings, phone, onPhone, onPause, onAsk, onHelp, onMenu }) {
   const { t, money } = useT();
   return (
     <header className="map-hud">
@@ -54,6 +54,11 @@ export function MapHud({ hud, chapter, goalTitle, settings, phone, onPhone, onAs
         <b>{hud.dream.reached ? "✓" : `${hud.dream.pct}%`}</b>
       </div>
       <div className="hud-right">
+        {onPause && (
+          <button className="hud-button pause-button" onClick={onPause} aria-label={`${t("pause.pause")} (T)`} title={`${t("pause.pause")} (T)`}>
+            <Pause size={19} />
+          </button>
+        )}
         <button
           className={`hud-button phone-button ${phone.unlocked ? "" : "locked"}`}
           onClick={onPhone}

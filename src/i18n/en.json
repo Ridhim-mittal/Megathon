@@ -373,7 +373,12 @@
       "fake": "Play to choose: Spot the fake",
       "salary": "Play to choose: Salary split",
       "baskets": "Play to choose: Basket juggle",
-      "garden": "Play to choose: SIP Garden"
+      "garden": "Play to choose: SIP Garden",
+      "snake": "Play to choose: Price Snake",
+      "snowball": "Play to choose: Savings Snowball",
+      "swipe": "Play to choose: Swipe Bazaar",
+      "patang": "Play to choose: Patang Market",
+      "rush": "Play to choose: Insurance Rush"
     }
   },
   "document": {
@@ -1056,13 +1061,8 @@
     "hearts": "{n} hearts left",
     "here": "Play here",
     "invite": "Mini-game here!",
-    "hint": "New: mini-games! Look for 🎮 at the post office, the village square and the bank.",
+    "hint": "New: mini-games! Look for 🎮 at the bank, or open the Arcade on your phone.",
     "stat": {
-      "caught": "🪙 Caught ₹{n}",
-      "spent": "🍬 Lost ₹{n} to impulse buys",
-      "blocked": "🛡️ {n} scams blocked",
-      "passed": "💸 {n} got through",
-      "mistakes": "🙈 {n} real messages blocked",
       "added": "🪙 Coins ₹{n}",
       "interest": "📈 Growth ₹{n}",
       "lost": "🛍️ Traps took ₹{n}",
@@ -1078,20 +1078,6 @@
       "emisLeft": "⛓️ {n} EMIs still running"
     },
     "games": {
-      "jarDash": {
-        "name": "Jar Dash",
-        "tag": "Catch coins, dodge spends",
-        "goal": "Fill your jar with coins. Dodge the sweets, toys and game top-ups!",
-        "how": "Move the jar with the arrow keys or the mouse.",
-        "lesson": "Small spends add up. Every impulse buy you dodge stays in your jar."
-      },
-      "scamSmash": {
-        "name": "Scam Smash",
-        "tag": "Block the scams",
-        "goal": "Messages pop up on six phones. Block the scams, let real messages through.",
-        "how": "Tap a phone or press its number to block it.",
-        "lesson": "A prize, a panic, an OTP or \"pay first\"? It's a scam. Block it."
-      },
       "snowball": {
         "name": "Savings Snowball",
         "tag": "Roll it bigger",
@@ -1127,21 +1113,6 @@
         "how": "Swipe with your finger or mouse to buy. Let things fall to say no. Press T or Space to think first.",
         "lesson": "Friends' approval fades fast. EMIs and loan-app debts don't. Pause and check the full price before you say yes."
       }
-    },
-    "msg": {
-      "prize": "🎁 You won ₹25 lakh!",
-      "otp": "🔑 Send me your OTP",
-      "kyc": "⚠️ KYC ends today! Click",
-      "tips": "📈 300% profit, join VIP",
-      "jobFee": "💼 Job! Pay ₹500 first",
-      "loanApp": "💸 Instant loan, no papers",
-      "refund": "↩️ Refund: enter UPI PIN",
-      "amma": "🍛 Amma: dinner at 8",
-      "salary": "🏦 Salary credited",
-      "exam": "📚 Exam moved to Monday",
-      "match": "🏏 Cricket at 5?",
-      "busTime": "🚌 Bus leaves at 7:30",
-      "bankReal": "🏦 Branch shut on Sunday"
     },
     "snow": {
       "lead": "Roll your savings snowball down the hill. Grab coins to make it bigger, and dodge the money traps!",
@@ -1481,8 +1452,6 @@
       "ratGuard": "Guard the savings",
       "interest": "Find the best interest",
       "fake": "Catch the fake adviser",
-      "salary": "Split your salary",
-      "baskets": "Spread your eggs",
       "garden": "Defend 4 investment lanes from thieves: spread your money"
     },
     "swipe": {
@@ -1620,78 +1589,15 @@
         "more": "…and {n} more payments"
       },
       "streak": "Saver streak ×{n}!"
+    },
+    "story": {
+      "wonTitle": "You did it!",
+      "won": "Your choice is unlocked.",
+      "lostTitle": "So close!",
+      "lost": "Get at least one star to unlock this choice.",
+      "go": "Continue the story",
+      "other": "Pick another choice"
     }
-  },
-  "salary": {
-    "ribbon": "First payday",
-    "title": "Salary Split",
-    "lead": "₹15,000 just arrived. Give every rupee a job before it slips away.",
-    "step1": "Coins fall one by one",
-    "step2": "Tap a jar (1, 2, 3) to drop each coin",
-    "step3": "Coins you miss land in Wants",
-    "rule": "Win: Save ₹3,000 and Needs ₹9,000 before the coins run out.",
-    "jar": {
-      "save": "Save",
-      "needs": "Needs",
-      "wants": "Wants"
-    },
-    "wonText": "Saved first, bills covered, and still some fun money. That's paying yourself first.",
-    "lostText": "Money without a job drifts into wants. Save first, then cover needs."
-  },
-  "baskets": {
-    "ribbon": "Family money plan",
-    "title": "Basket Juggle",
-    "lead": "Your savings are eggs. Storms are coming. Where will you put them?",
-    "step1": "Tap a basket (1, 2, 3) for each egg",
-    "step2": "Storms hit a random basket and break eggs",
-    "step3": "A basket with over half your eggs loses them all",
-    "rule": "Win: keep {need} of {total} eggs.",
-    "basket": {
-      "index": "Index fund",
-      "debt": "Debt fund",
-      "rd": "RD"
-    },
-    "storm": "Storm! {n} eggs broke.",
-    "stormAll": "Storm! The overloaded basket lost all {n} eggs.",
-    "heavy": "Too heavy!",
-    "storms": "Storms",
-    "cracked": "{n} eggs dropped",
-    "kept": "{n} of {total} eggs kept",
-    "wonText": "Spread out, no single storm could break you. That's diversification.",
-    "lostText": "Too many eggs in one basket, or too many dropped. Spread them out."
-  },
-  "fake": {
-    "ribbon": "The Telegram guru",
-    "title": "Spot the Fake",
-    "lead": "Is Lucky Prakash a real SEBI adviser? Compare his certificate with a real one.",
-    "step1": "Left: a real certificate",
-    "step2": "Tap the lines on his that are wrong",
-    "step3": "Wrong taps cost 3 seconds",
-    "rule": "Win: find {need} red flags.",
-    "found": "{n}/{total} found",
-    "score": "{n} of {total} red flags found",
-    "real": {
-      "head": "SEBI · Registered Investment Adviser",
-      "gov": "Government of India",
-      "name": "Adviser: R. Sharma",
-      "reg": "Reg. no. INA000012345",
-      "promise": "Investments carry market risk",
-      "address": "Office: Mumbai, India",
-      "fees": "Fees to the firm's bank account",
-      "valid": "Valid till 2031"
-    },
-    "fake": {
-      "head": "SEBI · Registred Investment Adviser",
-      "gov": "Goverment of India",
-      "name": "Adviser: Prakash K.",
-      "reg": "Reg. no. LUCKY-777-VIP",
-      "promise": "30% a month GUARANTEED",
-      "address": "Office: Dubai Marina",
-      "fees": "Fees to UPI luckyprakash@okbank",
-      "valid": "Valid till 2031"
-    },
-    "wonText": "Spelling mistakes, a fake number, guaranteed returns, a far-away office and a personal UPI: you caught him.",
-    "lostText": "Look for promises of guaranteed returns, odd registration numbers and personal UPI IDs."
   },
   "ratguard": {
     "title": "Rat Guard",
@@ -1874,5 +1780,133 @@
       "title": "Reach your big dream",
       "text": "Live from age 11 to 36. Play the mini-games in the Arcade any time."
     }
+  },
+  "fineprint": {
+    "ribbon": "Read before you sign",
+    "title": "Fine Print Hunter",
+    "lead": "QuickCash says \"only 1.5% a month\". The bank says 13% a year. Which is really cheaper?",
+    "step1": "Tap the hidden charges in the agreement",
+    "step2": "Work out what you really pay back",
+    "step3": "Pick the cheaper loan",
+    "rule": "Find {need} of {total} hidden charges and pick the cheaper loan.",
+    "wonText": "You read the fine print and chose the cheaper loan. Always ask: how much in hand, how much back?",
+    "lostText": "The ad looked cheap, but the fine print wasn't. Try again!",
+    "ad": "₹20,000 loan at ONLY 1.5% a month! No hidden charges!",
+    "phase": {
+      "find": "🔍 Find the hidden charges",
+      "total": "🧮 What do you really pay back?",
+      "compare": "⚖️ Which loan is cheaper?"
+    },
+    "clause": {
+      "amount": "Loan amount: ₹20,000.",
+      "fee": "Processing fee: 5% of the loan, taken before you get it.",
+      "rate": "Interest: 1.5% a month, on the full ₹20,000 every month.",
+      "tenure": "Repay in 12 monthly instalments.",
+      "insurance": "Loan insurance of ₹1,200 is added to your loan.",
+      "due": "Instalment due on the 5th of every month.",
+      "late": "Late payment: ₹100 for every day late.",
+      "prepay": "Closing the loan early: 4% charge.",
+      "care": "Customer care: 1800-000-000."
+    },
+    "totalQ": "In 12 months, how much will you pay QuickCash back?",
+    "right": "✅ Right! Every charge counts.",
+    "mistake": {
+      "ad": "❌ That's \"1.5%\" once. It's 1.5% every month for 12 months.",
+      "interestOnly": "❌ Close! You forgot the ₹1,200 insurance they added."
+    },
+    "r": {
+      "loan": "Loan",
+      "fee": "Fee taken first",
+      "interest": "1.5% × 12 months",
+      "insurance": "Insurance added"
+    },
+    "inHand": "In your hand",
+    "payBack": "You pay back",
+    "per100": "For every ₹100 you get, you pay back ₹{n}",
+    "next": "Compare with the bank",
+    "compareQ": "Pick the cheaper loan",
+    "quickTag": "1.5% a month, fees and insurance",
+    "bankName": "GramBank",
+    "bankTag": "{rate}% a year on what you still owe, {fee} fee",
+    "saved": "🎉 Right! The bank saves you {amount}.",
+    "pickedQuick": "❌ \"1.5%\" sounds small, but you pay back much more. Look at ₹ for every ₹100.",
+    "finish": "See result",
+    "score": "Charges found {n}/{total} · Bank saves {saved}"
+  },
+  "phoneTour": {
+    "hello": {
+      "title": "You got your own phone!",
+      "text": "A phone of your very own! It can make money smarter, or lose it faster. Let's see what's inside."
+    },
+    "messages": {
+      "title": "Messages",
+      "text": "Texts from family, friends and the bank. Scammers text too: never share an OTP or PIN."
+    },
+    "bank": {
+      "title": "Your bank",
+      "text": "See your savings, put money in or take it out, and watch interest add up."
+    },
+    "invest": {
+      "title": "Grow your money",
+      "text": "Start an RD, FD or SIP. Small amounts every month grow big over time."
+    },
+    "exchange": {
+      "title": "Practice share market",
+      "text": "Buy and sell shares at pretend prices. Learn the ups and downs before risking real money."
+    },
+    "arcade": {
+      "title": "Arcade",
+      "text": "All the mini-games in one place. Play any time you need a break."
+    },
+    "gyaan": {
+      "title": "Gyaan",
+      "text": "Every lesson you've unlocked, as quick picture cards with a quiz."
+    },
+    "ready": {
+      "title": "All set!",
+      "text": "Your phone is in the top bar. Open it whenever you like."
+    },
+    "keyHint": "opens it from anywhere on the map",
+    "skip": "Skip",
+    "show": "Show me",
+    "open": "Open my phone"
+  },
+  "lessonTag": {
+    "L01": "Needs before wants",
+    "L02": "Saving is a habit",
+    "L03": "Why prices keep rising",
+    "L04": "Bank beats the tin box",
+    "L05": "Money that grows itself",
+    "L06": "Never share your OTP",
+    "L07": "Friends, pressure and EMIs",
+    "L08": "Every choice has a cost",
+    "L09": "Pay safely with UPI",
+    "L10": "Study, work or both?",
+    "L11": "Easy money is a trap",
+    "L12": "Plan your first salary",
+    "L13": "Keep an emergency fund",
+    "L14": "Compare before you borrow",
+    "L15": "Never rent your account",
+    "L16": "Insurance that truly protects",
+    "L17": "Start investing early",
+    "L18": "Don't let spending balloon",
+    "L19": "Spread it, stay calm",
+    "L20": "Be ready for bad days",
+    "L21": "Watch fees and mis-selling",
+    "L22": "Too good to be true",
+    "L23": "Check papers before buying",
+    "L24": "Plan for old age"
+  },
+  "lessonBadge": {
+    "label": "Lesson",
+    "short": "Lesson"
+  },
+  "pause": {
+    "pause": "Pause",
+    "title": "Paused",
+    "text": "Take a breath. Time has stopped in the village, and every countdown waits for you.",
+    "resume": "Resume",
+    "menu": "Main menu",
+    "key": "pauses and resumes"
   }
 }

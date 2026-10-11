@@ -83,12 +83,13 @@ test("story mode: VISIT works only at the objective; locked choices can't be cho
   assert.equal(s.phase, "budget");
   s = E.step(s, { type: "ADVANCE" });
   assert.equal(s.phase, "map");
+  // The story opens at the jatara (needs vs wants), then the tin box at home.
   const o = E.select.story(s).objective;
-  assert.equal(o.location, "home");
+  assert.equal(o.location, "square");
   assert.ok(E.step(s, { type: "VISIT", location: "bank" }).error);
-  s = E.step(s, { type: "VISIT", location: "home" });
+  s = E.step(s, { type: "VISIT", location: "square" });
   assert.equal(s.phase, "card");
-  assert.equal(E.select.currentCard(s).id, "p_tin");
+  assert.equal(E.select.currentCard(s).id, "p_jatara");
 
   // Jump to the trap scene with the fund in the bank: investing it is locked.
   let t = E.createLife({ storylineId: "village", goalId: "house", seed: "locks", mode: "story" });
@@ -109,7 +110,7 @@ test("story mode: VISIT works only at the objective; locked choices can't be cho
 
 test("story mode: running out of time on a rush scene moves to its failure", () => {
   let s = E.createLife({ storylineId: "village", goalId: "house", seed: "rush", mode: "story" });
-  const want = { p_tin: "steel_box", p_shop: "buy_box", p_jatara: "save_all", m1_treasurer: "tin_box", m1_call: "read_otp" };
+  const want = { p_tin: "steel_box", p_shop: "buy_box", p_jatara: "save_all", m1_treasurer: "tin_box", m1_trap: "walk", m1_chintu: "help", m1_call: "read_otp" };
   for (let n = 0; n < 200 && !(s.phase === "map" && s.story.node === "m1_drained"); n++) {
     let a = { type: "ADVANCE" };
     if (s.phase === "map") a = { type: "VISIT", location: E.select.story(s).objective.location };
