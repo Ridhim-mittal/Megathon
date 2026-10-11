@@ -1454,7 +1454,8 @@
       "ratGuard": "Guard the savings",
       "interest": "Find the best interest",
       "fake": "Catch the fake adviser",
-      "garden": "Defend 4 investment lanes from thieves: spread your money"
+      "garden": "Defend 4 investment lanes from thieves: spread your money",
+      "flood": "Grab the papers before the flood"
     },
     "swipe": {
       "intro": {
@@ -1972,7 +1973,6 @@
     "eyebrow": "Before you choose",
     "play": "Play {game}",
     "understand": "to understand:",
-    "then": "Then: {scene}",
     "start": "Start the game",
     "skip": "Skip the game"
   },
@@ -1981,5 +1981,44 @@
     "title": "Black Monday!",
     "text": "Markets just fell 22% in a month. Your phone is buzzing with panic messages.",
     "open": "Open my phone"
+  },
+  "flood": {
+    "title": "Flood Rescue",
+    "ribbon": "Monsoon",
+    "monsoon": "Rains are coming",
+    "crop": "Nanna's crop",
+    "buy": "Insure the crop",
+    "covers": "covers {n}",
+    "skip": "Skip it",
+    "keep": "keep the money",
+    "then": "Then: grab {n} things before the water does!",
+    "hint": "Tap things to grab them!",
+    "water": "Water level",
+    "bag": "Your bag",
+    "cropLost": "Crop",
+    "repairs": "House",
+    "noClaim": "Not insured",
+    "tin": "Emergency tin",
+    "loan": "Loan {n}",
+    "empty": "Nothing saved",
+    "item": {
+      "policy": "Insurance policy",
+      "aadhaar": "Aadhaar",
+      "passbook": "Bank passbook",
+      "land": "Land papers",
+      "cash": "Emergency cash",
+      "tv": "TV",
+      "saree": "Silk saree",
+      "sweets": "Sweets",
+      "radio": "Radio"
+    },
+    "title_covered": "The crop money is back!",
+    "title_lostPapers": "Insured, but the papers floated away",
+    "title_noCover": "The crop is gone",
+    "lesson_covered": "Insurance turned a disaster into a delay.",
+    "lesson_lostPapers": "Keep your policy and ID safe, with a copy on your phone. The claim is slow without them.",
+    "lesson_noCover": "{premium} of crop insurance would have brought back {crop}.",
+    "continue": "Continue",
+    "again": "Play again"
   }
 }

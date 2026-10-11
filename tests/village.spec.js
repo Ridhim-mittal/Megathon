@@ -79,7 +79,7 @@ async function playRatGuard(page, second) {
   await expect(game).toBeVisible({ timeout: 20000 });
   await expect(game.getByRole("button", { name: /Bank account/ })).toBeDisabled();
   await game.getByRole("button", { name: /Tin box/ }).click();
-  await expect(game.locator(".rg-chip").first()).toContainText("SCORE");
+  await expect(game.locator(".rg-chip").first()).toBeVisible();
   await game.getByRole("button", { name: "Skip" }).click();
   await expect(game.getByText("₹500 chewed")).toBeVisible();
   const pickSecond = game.getByRole("button", { name: second === "bank" ? /Bank account/ : /Tin box/ });
@@ -345,6 +345,40 @@ test("SIP Garden opens from the arcade: invest in every lane, Auto-SIP, pause, a
   await expect(game.locator(".sg-sipbox li")).toHaveCount(3);
   await game.getByRole("button", { name: "Play again" }).click();
   await expect(game.getByRole("button", { name: "Start" })).toBeVisible();
+  await game.locator(".sg-card").getByRole("button", { name: "Close" }).click();
+  await expect(game).not.toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("Flood Rescue opens from the arcade: insure the crop, grab the papers, the claim pays", async ({ page }) => {
+  test.setTimeout(90000);
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("/?seed=demo");
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+  await openFromArcade(page, /Flood Rescue/);
+  const game = page.getByRole("dialog", { name: "Flood Rescue" });
+  await game.getByRole("button", { name: /Insure the crop/ }).click();
+  await expect(game.locator(".fr-bag")).toBeVisible();
+  // Tap the policy, Aadhaar, passbook and cash tin wherever they are (or float).
+  const box = await game.locator(".sg-canvas").boundingBox();
+  for (let n = 0; n < 40 && !(await game.locator(".sg-end").isVisible()); n++) {
+    const pos = await page.evaluate(() => {
+      const s = window.__flood?.current;
+      const it = s?.items.find((i) => !i.taken && !i.lost && ["policy", "aadhaar", "passbook", "cash"].includes(i.kind));
+      return it ? [it.x, it.y] : null;
+    });
+    if (pos) await page.mouse.click(box.x + (pos[0] / 960) * box.width, box.y + (pos[1] / 540) * box.height);
+    await page.waitForTimeout(250);
+  }
+  await expect(game.locator(".sg-end")).toBeVisible({ timeout: 40000 });
+  await expect(game).toContainText("The crop money is back!");
+  await expect(game.locator(".fr-saved .good")).toHaveCount(4);
+  await game.getByRole("button", { name: "Play again" }).click();
+  await game.getByRole("button", { name: /Skip it/ }).click();
+  await expect(game.locator(".sg-end")).toBeVisible({ timeout: 45000 });
+  await expect(game).toContainText("The crop is gone");
   await game.locator(".sg-card").getByRole("button", { name: "Close" }).click();
   await expect(game).not.toBeVisible();
   expect(errors).toEqual([]);

@@ -5,6 +5,7 @@ import { InterestRace } from "./InterestRace.jsx";
 import { SipGarden } from "./SipGarden.jsx";
 import { FinePrintHunter } from "./FinePrintHunter.jsx";
 import { RatGuard } from "./RatGuard.jsx";
+import { FloodRescue } from "./FloodRescue.jsx";
 import { ArcadeChoiceGame } from "../arcade/Arcade.jsx";
 
 export const PRE_GAMES = {
@@ -16,6 +17,7 @@ export const PRE_GAMES = {
   m3_insure: "rush", // First job, L16: insurance only helps while it's active
   m3_hospital: "fineprint", // First job, L14: read the loan papers
   m4_joint: "garden", // Family, L19/L21: spread your savings
+  m4_flood: "flood", // Family, L20: grab the papers before the water does; insured crops come back
   // Dream, L24 (m5_future): the chit fund / PPF game goes here when it is ready.
 };
 
@@ -29,6 +31,7 @@ export const GAME_NAME = {
   interest: "interest.title",
   fineprint: "fineprint.title",
   garden: "garden.title",
+  flood: "flood.title",
 };
 
 const arcade = (gameId) =>
@@ -40,6 +43,7 @@ export const GAME_COMPONENTS = {
   interest: InterestRace,
   fineprint: FinePrintHunter,
   garden: SipGarden,
+  flood: FloodRescue,
   snake: arcade("priceSnake"),
   snowball: arcade("snowball"),
   swipe: arcade("swipeBazaar"),
