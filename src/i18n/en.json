@@ -372,7 +372,8 @@
       "interest": "Play to choose: Interest race",
       "fake": "Play to choose: Spot the fake",
       "salary": "Play to choose: Salary split",
-      "baskets": "Play to choose: Basket juggle"
+      "baskets": "Play to choose: Basket juggle",
+      "garden": "Play to choose: SIP Garden"
     }
   },
   "document": {
@@ -602,7 +603,9 @@
     "deposits": "Safe deposits",
     "cash": "Cash to invest: {amount}",
     "noTicker": "Prices move once a year. This is a long-term game, not a casino.",
-    "badNews": "Bad news at age {ages}"
+    "badNews": "Bad news at age {ages}",
+    "select": "Open",
+    "back": "Back"
   },
   "instruments": {
     "sip_index": "Top-50 Index Fund",
@@ -1427,7 +1430,8 @@
       "interest": "Find the best interest",
       "fake": "Catch the fake adviser",
       "salary": "Split your salary",
-      "baskets": "Spread your eggs"
+      "baskets": "Spread your eggs",
+      "garden": "Defend 4 investment lanes from thieves: spread your money"
     }
   },
   "salary": {
@@ -1537,5 +1541,106 @@
     "best": "Best: {n}",
     "newBest": "New best!",
     "again": "Play again"
+  },
+  "garden": {
+    "title": "SIP Garden",
+    "ribbon": "Defend your portfolio",
+    "lead": "Thieves are coming down every investment lane for your savings. Keep money in all four lanes so every defender can fight back, and protect your vault for 5 years.",
+    "def": {
+      "equity": "Grows fastest, fires rockets. Wilts for a moment in a crash.",
+      "debt": "Steady shield cannon. Thieves steal half as fast here.",
+      "gold": "Gold cannon: hits inflation twice as hard.",
+      "fd": "Safe brick vault: pays a little interest, but inflation eats it."
+    },
+    "meet": "Meet the thieves",
+    "thief": {
+      "inflation": {
+        "name": "Inflation goblin",
+        "tip": "Slow, but in every lane, carrying away your money's value."
+      },
+      "debt": {
+        "name": "Debt goblin",
+        "tip": "Fast, dragging a loan's ball and chain."
+      },
+      "raccoon": {
+        "name": "Market-drop raccoon",
+        "tip": "Comes in the crash year, after your equity."
+      },
+      "scam": {
+        "name": "Scam shadow",
+        "tip": "Shots pass through. Tap it to report it, or it grabs 20% of a lane."
+      }
+    },
+    "step1": "Tap the coins and notes that fall ({n} each).",
+    "step2": "Tap a lane button (or its defender, or press 1–4) to invest {n}: the defender levels up.",
+    "step3": "Thieves come down every lane, so spread your money. Auto-SIP splits it equally every month.",
+    "lane": {
+      "equity": "Equity",
+      "debt": "Debt",
+      "gold": "Gold",
+      "fd": "Cash/FD"
+    },
+    "short": {
+      "equity": "EQUITY",
+      "debt": "DEBT",
+      "gold": "GOLD",
+      "fd": "CASH/FD"
+    },
+    "investIn": "Invest {n} in {lane}",
+    "worthLabel": "PORTFOLIO WORTH:",
+    "wave": "WAVE",
+    "yearOf": "Year {n}/{total}",
+    "stability": "STABILITY:",
+    "stab": {
+      "high": "HIGH",
+      "medium": "MEDIUM",
+      "low": "LOW"
+    },
+    "hearts": "Vault: {n} hearts left",
+    "lanesTitle": "INVESTMENT LANES",
+    "vault": "PORTFOLIO VAULT",
+    "cash": "Cash to invest: {n}",
+    "cashHint": "Money in hand: tap coins to get more",
+    "sipOn": "AUTO-SIP: ON",
+    "sipOff": "AUTO-SIP: OFF",
+    "sipSplit": "Equal split: {n} × 4 lanes, every month",
+    "pause": "Pause",
+    "resume": "Resume",
+    "paused": "Paused",
+    "start": "Start",
+    "notNow": "Choose something else",
+    "ready": "READY…",
+    "set": "SET…",
+    "go": "INVEST!",
+    "year": "Year {n}",
+    "huge": "A HUGE WAVE OF THIEVES!",
+    "crash": "MARKET DROP!",
+    "crashSub": "Equity wilts for a moment. Stay invested.",
+    "payday": "Salary bonus +{n}",
+    "sipShort": "Not enough cash for this month's SIP",
+    "vaultHit": "Vault broken! −₹300",
+    "reported": "REPORTED!",
+    "scammed": "SCAMMED!",
+    "levelUp": "LEVEL UP!",
+    "broke": "LANE EMPTY!",
+    "needMore": "NEED DIVERSIFICATION!",
+    "interest": "interest",
+    "wonRibbon": "Portfolio safe",
+    "lostRibbon": "Vault broken",
+    "wonTitle": "Your portfolio survived {n} years!",
+    "lostTitle": "The thieves broke into your vault",
+    "statWorth": "Portfolio worth",
+    "statGrowth": "Grew by itself",
+    "statStolen": "Stolen",
+    "statSpread": "Spread",
+    "youPut": "What you put in each lane",
+    "wonLesson": "Every lane had money, so every defender fought back. That's diversification: when one investment has a bad year, the others keep working, and what stays invested grows on itself.",
+    "lostLesson": "They got through the {lane} lane, where you had put only {n}. Thieves (and bad years) hit every kind of investment: spread your money.",
+    "sipNote": "Auto-SIP months: {n}. It invested for you without you lifting a finger.",
+    "continue": "Continue",
+    "tryAgain": "Try again",
+    "other": "Choose something else",
+    "again": "Play again",
+    "how": "Tap coins · tap a lane or press 1–4 to invest ₹100 · S: Auto-SIP · P: pause"
   }
 }

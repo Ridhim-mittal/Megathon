@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, BookOpen, Calculator, CarFront, Egg, Gamepad2, Heart, Lightbulb, PiggyBank, Rat, RotateCcw, ScanSearch, ShieldBan, Snowflake, Star, Wallet, Weight, Wind, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Calculator, CarFront, Egg, Flower2, Gamepad2, Heart, Lightbulb, PiggyBank, Rat, RotateCcw, ScanSearch, ShieldBan, Snowflake, Star, Wallet, Weight, Wind, X } from "lucide-react";
 import { useT } from "../../i18n/index.jsx";
 import { loadArcade, saveArcadeBest } from "../persist.js";
 import { sounds } from "../sound.js";
@@ -14,6 +14,7 @@ import { InterestRace } from "../games/InterestRace.jsx";
 import { SpotTheFake } from "../games/SpotTheFake.jsx";
 import { SalarySplit } from "../games/SalarySplit.jsx";
 import { BasketJuggle } from "../games/BasketJuggle.jsx";
+import { SipGarden } from "../games/SipGarden.jsx";
 
 // The arcade: three one-minute games with a tiny lesson each. Practice only, no money moves.
 export const GAME_ICON = { jarDash: PiggyBank, scamSmash: ShieldBan, snowball: Snowflake, insuranceRush: CarFront, patangMarket: Wind, priceSnake: Weight };
@@ -27,6 +28,7 @@ const STORY_GAMES = [
   { id: "fake", title: "fake.title", icon: ScanSearch, Game: SpotTheFake },
   { id: "salary", title: "salary.title", icon: Wallet, Game: SalarySplit },
   { id: "baskets", title: "baskets.title", icon: Egg, Game: BasketJuggle },
+  { id: "garden", title: "garden.title", icon: Flower2, Game: SipGarden },
 ];
 
 // Every mini-game in one place (the title's Arcade and the phone's Arcade app): the quick arcade
