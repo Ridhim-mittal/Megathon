@@ -73,10 +73,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
   const placeName = useCallback((id) => (story?.mission.placeNames?.[id] ? pick(story.mission.placeNames[id]) : t(`places.${id}`)), [story, pick, t]);
   // In the prologue, home is where Rat Guard can be played again.
   const ratsAtHome = story?.mission.id === "prologue";
-  const labels = useMemo(
-    () => Object.fromEntries(Object.keys(map.placeById).map((id) => [id, gameAtPlace(id) || (ratsAtHome && id === "home") ? `${placeName(id)} 🎮` : placeName(id)])),
-    [placeName, map, ratsAtHome],
-  );
+  const labels = useMemo(() => Object.fromEntries(Object.keys(map.placeById).map((id) => [id, placeName(id)])), [placeName, map]);
 
   const showIntro = phase === "budget" && story && introDone !== story.mission.id;
   const engineDialog = ["budget", "card", "outcome", "minigame", "chapterEnd"].includes(phase);
