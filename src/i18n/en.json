@@ -903,7 +903,48 @@
       }
     },
     "allDone": "You know how an exchange works: bids, asks, the spread, market and limit orders, the queue, slippage and news. Real investing is owning good businesses for years, not quick trades.",
-    "practice": "Practice money only: nothing here touches your real savings. Real exchanges work the same way, with millions of orders a second."
+    "practice": "Practice money only: nothing here touches your real savings. Real exchanges work the same way, with millions of orders a second.",
+    "guide": {
+      "priceNow": "Price now",
+      "progress": "Step {n} of {total}",
+      "sellers": "People selling",
+      "buyers": "People buying",
+      "lastDeal": "Last deal",
+      "gotIt": "Got it",
+      "buyN": "Buy {n} now",
+      "sellN": "Sell {n} now",
+      "waitAt": "Wait at {price}",
+      "moveCloser": "Too slow? Move closer by ₹1",
+      "next": "Next",
+      "openFull": "Open the full market",
+      "skip": "Skip to the full market",
+      "watching": "Watching the news…",
+      "fee": "Fee {fee}",
+      "inLine": "You're in line at {price}",
+      "ahead": "{n} shares before you",
+      "say": {
+        "meet": "👀 This is a market. Red: people selling. Green: people buying.",
+        "buy": "🛒 Want shares now? Buy from the cheapest seller.",
+        "wait": "⏳ Want it cheaper? Pick a price and wait in line.",
+        "big": "📦 Now buy a lot at once. Watch the price.",
+        "sell": "💰 Sell when the price is higher than you paid.",
+        "news": "📰 News changes prices. Let's watch!",
+        "done": "🏆 Well done! You know how a market works."
+      },
+      "after": {
+        "buy": "✅ Done! You paid the lowest seller's price.",
+        "queued": "🧍 You're in line. A seller will come to you.",
+        "filled": "🎉 A seller came to your price!",
+        "big": "📈 Big order, higher price. The cheap shares ran out.",
+        "sold": "💰 Sold! Higher than you paid = profit.",
+        "news": "📰 See? News made people buy or sell.",
+        "soldLoss": "📉 Sold lower than you paid = loss. Next time, wait for a higher price."
+      },
+      "recap1": "🛒 Buy now = cheapest seller's price",
+      "recap2": "⏳ Pick your price = wait in line",
+      "recap3": "📦 Buying a lot pushes the price up",
+      "recap4": "📰 News moves prices, so stay calm"
+    }
   },
   "story": {
     "walkTo": "Go to {place}",
