@@ -579,7 +579,9 @@
     "deposits": "Safe deposits",
     "cash": "Cash to invest: {amount}",
     "noTicker": "Prices move once a year. This is a long-term game, not a casino.",
-    "badNews": "Bad news at age {ages}"
+    "badNews": "Bad news at age {ages}",
+    "select": "Open",
+    "back": "Back"
   },
   "instruments": {
     "sip_index": "Top-50 Index Fund",

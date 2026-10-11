@@ -1744,3 +1744,203 @@
   margin: 0;
   font-size: 11.5px;
 }
+
+/* ---------- the phone, GTA-style: bottom-right, over the map ---------- */
+.phone-overlay.gta {
+  inset: auto 18px 18px auto;
+  padding: 0;
+  background: none;
+  display: block;
+  z-index: 8;
+}
+.gta .phone {
+  width: 268px;
+  height: min(470px, calc(100dvh - 90px));
+  background: #1a1a22;
+  border: 8px solid #2a2a33;
+  border-radius: 26px;
+  box-shadow:
+    0 0 0 2px #55556a,
+    inset 0 0 0 1px #000,
+    0 18px 40px rgba(0, 0, 0, 0.55);
+  animation: gta-phone-up 0.32s cubic-bezier(0.2, 1.15, 0.4, 1) both;
+  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
+}
+@keyframes gta-phone-up {
+  from {
+    transform: translateY(110%);
+  }
+}
+.gta .phone-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 4px;
+  background: #0d0d12;
+  color: #fff;
+  font: 700 12px "Manrope Variable", sans-serif;
+}
+.gta .phone-time {
+  margin-left: auto;
+}
+.phone-signal {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 11px;
+}
+.phone-signal i {
+  width: 3px;
+  background: #fff;
+}
+.phone-signal i:nth-child(1) {
+  height: 4px;
+}
+.phone-signal i:nth-child(2) {
+  height: 6px;
+}
+.phone-signal i:nth-child(3) {
+  height: 8px;
+}
+.phone-signal i:nth-child(4) {
+  height: 11px;
+}
+.phone-battery {
+  width: 20px;
+  height: 10px;
+  border: 1.5px solid #fff;
+  border-radius: 2px;
+  padding: 1px;
+  position: relative;
+}
+.phone-battery i {
+  display: block;
+  width: 75%;
+  height: 100%;
+  background: #fff;
+}
+.phone-title {
+  padding: 7px 10px;
+  text-align: center;
+  color: #fff;
+  font: 800 19px "Manrope Variable", sans-serif;
+  letter-spacing: 0.01em;
+  background: linear-gradient(#c7302a, #8f1d18);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: background 0.2s;
+}
+.phone-title.app-bank {
+  background: linear-gradient(#2f7f8a, #1c535b);
+}
+.phone-title.app-invest {
+  background: linear-gradient(#d98a3a, #9c5a1f);
+}
+.phone-title.app-exchange {
+  background: linear-gradient(#c94b3c, #85261c);
+}
+.phone-title.app-arcade {
+  background: linear-gradient(#3b82b8, #23557d);
+}
+.phone-title.app-gyaan {
+  background: linear-gradient(#8a6ccc, #5a3f99);
+}
+.phone-title.app-messages {
+  background: linear-gradient(#56a83c, #33702a);
+}
+.gta .phone-screen {
+  padding: 10px;
+}
+.gta .phone-screen.home {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 120, 200, 0.55), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(120, 80, 255, 0.5), transparent 60%),
+    linear-gradient(160deg, #3a1450, #1b0f2e);
+}
+.gta .phone-screen.in-app {
+  background: #f6f1e6;
+  color: var(--px-ink);
+}
+.gta .app-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 18px 4px;
+}
+.gta .app-icon {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 55%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
+}
+.gta .app-icon svg {
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.35));
+}
+.gta .app-messages {
+  background-color: #56a83c;
+}
+.gta .app-bank {
+  background-color: #2f7f8a;
+}
+.gta .app-invest {
+  background-color: #d98a3a;
+}
+.gta .app-exchange {
+  background-color: #c94b3c;
+}
+.gta .app-arcade {
+  background-color: #3b82b8;
+}
+.gta .app-gyaan {
+  background-color: #8a6ccc;
+}
+.gta .app-icon.selected {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 6px rgba(160, 110, 255, 0.85),
+    0 6px 12px rgba(0, 0, 0, 0.5);
+}
+.gta .app-icon .badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+}
+.phone-keys {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #0d0d12;
+  border-top: 1px solid #2c2c38;
+}
+.phone-keys button {
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.phone-keys button + button {
+  border-left: 1px solid #2c2c38;
+}
+.key-select {
+  color: #4cd964;
+}
+.key-select:disabled {
+  color: #3a5a40;
+  cursor: default;
+}
+.key-back {
+  color: #ff4d3d;
+}
+.phone-keys button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+}
+@media (max-width: 560px) {
+  .phone-overlay.gta {
+    inset: auto 8px 8px auto;
+  }
+}
