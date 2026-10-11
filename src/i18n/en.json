@@ -1132,7 +1132,6 @@
       "step3": "Dodge the traps: each one breaks off a piece",
       "grab": "Grab",
       "dodge": "Dodge",
-      "stars": "3 stars: {a} · {b} · {c}",
       "items": {
         "coin": {
           "name": "Coins",
@@ -1447,7 +1446,6 @@
       "step2": "Eat a +1 calendar: one year passes and the snake grows.",
       "step3": "Each year, a ₹100 bag of groceries costs 6% more. Watch the snake's weight go up.",
       "fact": "At 6% a year, prices double in about 12 years.",
-      "stars": "⭐ 5 years · ⭐⭐ 12 years · ⭐⭐⭐ 20 years",
       "best": "Best: {n} years",
       "headline": "{n} years later, the same bag of groceries costs {price}.",
       "headlineZero": "Eat a +1 calendar to make a year pass!",
@@ -1611,7 +1609,7 @@
       "wonTitle": "You did it!",
       "won": "Your choice is unlocked.",
       "lostTitle": "So close!",
-      "lost": "Get at least one star to unlock this choice.",
+      "lost": "Play again and do a little better to unlock this choice.",
       "go": "Continue the story",
       "other": "Pick another choice",
       "freeWonTitle": "Great play!",
