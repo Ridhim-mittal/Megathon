@@ -3,12 +3,13 @@ import { CandlestickChart, Check, FastForward, Newspaper, Pause, Play, X } from 
 import { useT } from "../../i18n/index.jsx";
 import { ASSUMPTIONS } from "../gameAdapter.js";
 import { account, available, cancel, checkOrder, createBook, levels, priceBand, queueAhead, submit, tick } from "./orderbook.js";
+import { GuidedExchange } from "./GuidedExchange.jsx";
 
 // The phone's practice exchange: a live order book with other traders, where the player places
 // market and limit orders with practice money and learns how prices are really made.
 
 const MISSIONS = ["read", "market", "limit", "limitFill", "slippage", "profit", "news"];
-const SPEEDS = [1100, 450];
+const SPEEDS = [5000, 1500]; // the market moves every 5 s (fast: 1.5 s), slow enough to follow
 
 // The session survives closing the phone (until the page reloads).
 let session = null;
@@ -29,6 +30,8 @@ export function StockExchange({ onClose, onLearn }) {
   const [speed, setSpeed] = useState(0);
   const [ticket, setTicket] = useState({ side: "buy", type: "market", qty: 5, price: book.bids[0]?.price ?? book.ltp });
   const [error, setError] = useState(null);
+  // First time: the guided steps; after finishing or skipping them, the full market.
+  const [guided, setGuided] = useState(!s.guideDone);
   const heading = useRef(null);
   useEffect(() => heading.current?.focus(), []);
 
@@ -41,7 +44,7 @@ export function StockExchange({ onClose, onLearn }) {
 
   // The other traders act on a timer.
   useEffect(() => {
-    if (!running) return undefined;
+    if (!running || guided) return undefined;
     const id = setInterval(() => {
       const r = tick(book);
       if (r.news) complete("news");
@@ -57,7 +60,7 @@ export function StockExchange({ onClose, onLearn }) {
       redraw();
     }, SPEEDS[speed]);
     return () => clearInterval(id);
-  }, [running, speed, book, complete, t]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [running, speed, book, complete, t, guided]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && onClose();
@@ -130,6 +133,18 @@ export function StockExchange({ onClose, onLearn }) {
     explain("info", t("exchange.explain.read", { bid: rs(bestBid), ask: rs(bestAsk), spread: rs(spread ?? 0) }));
     redraw();
   };
+
+  if (guided)
+    return (
+      <GuidedExchange
+        book={book}
+        onClose={onClose}
+        onFinish={() => {
+          s.guideDone = true;
+          setGuided(false);
+        }}
+      />
+    );
 
   const row = (l, side) => (
     <tr key={`${side}-${l.price}`} className={`ex-row ${side} ${l.mine ? "mine" : ""}`} onClick={() => pickPrice(l.price)} title={t("exchange.pickPrice")}>
