@@ -63,6 +63,9 @@ async function dismissSurprises(page) {
 async function playScene(page, label) {
   await dismissSurprises(page);
   await page.locator(".objective-go").click();
+  // Some scenes start with their mini-game ("Play X to understand Y"); these tests skip it.
+  await expect(page.locator(".card-view, .pregame").first()).toBeVisible({ timeout: 20000 });
+  if (await page.locator(".pregame").isVisible()) await page.getByRole("button", { name: "Skip the game" }).click();
   await expect(page.locator(".card-view")).toBeVisible({ timeout: 20000 });
   const choice = label ? page.locator(".choice:not(.locked)", { hasText: label }) : page.locator(".choice:not(.locked)").first();
   await choice.first().click();

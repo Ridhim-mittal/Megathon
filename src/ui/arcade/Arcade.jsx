@@ -248,7 +248,7 @@ export function ArcadeGame({ gameId, onClose, onBack, story = null }) {
             <span>{t(`arcade.games.${gameId}.lesson`)}</span>
           </p>
           {story ? (
-            <StoryVerdict won={starsFor(gameId, final.score) >= 1} startRef={start} onWin={story.onWin} onAgain={begin} onGiveUp={story.onGiveUp} />
+            <StoryVerdict won={starsFor(gameId, final.score) >= 1} free={story.free} startRef={start} onWin={story.onWin} onAgain={begin} onGiveUp={story.onGiveUp} />
           ) : (
             <div className="action-row">
               <button className="secondary-button" onClick={begin}>
@@ -276,8 +276,25 @@ export function ArcadeGame({ gameId, onClose, onBack, story = null }) {
 }
 
 // The end of an arcade game played inside the story: did it unlock the choice?
-function StoryVerdict({ won, startRef, onWin, onAgain, onGiveUp }) {
+function StoryVerdict({ won, free, startRef, onWin, onAgain, onGiveUp }) {
   const { t } = useT();
+  // Played before the question: win or lose, the story goes on.
+  if (free)
+    return (
+      <div className={`story-verdict ${won ? "won" : "lost"}`}>
+        <p>
+          <b>{won ? t("arcade.story.freeWonTitle") : t("arcade.story.freeLostTitle")}</b> {t("arcade.story.freeText")}
+        </p>
+        <div className="action-row">
+          <button className="secondary-button" onClick={onAgain}>
+            <RotateCcw size={16} /> {t("arcade.again")}
+          </button>
+          <button ref={startRef} className="primary-button big" onClick={onWin}>
+            {t("arcade.story.continue")} <ArrowRight size={18} />
+          </button>
+        </div>
+      </div>
+    );
   return (
     <div className={`story-verdict ${won ? "won" : "lost"}`}>
       <p>
@@ -300,12 +317,12 @@ function StoryVerdict({ won, startRef, onWin, onAgain, onGiveUp }) {
 }
 
 // An arcade game as a story mini-game, on its own full-screen layer.
-export function ArcadeChoiceGame({ gameId, onWin, onClose, onGiveUp }) {
+export function ArcadeChoiceGame({ gameId, mode = "story", onWin, onClose, onGiveUp }) {
   const { t } = useT();
   return (
     <div className="ir-layer" role="dialog" aria-modal="true" aria-label={t(`arcade.games.${gameId}.name`)}>
       <section className="game-window window-arcade title-arcade">
-        <ArcadeGame gameId={gameId} onClose={onClose} story={{ onWin, onGiveUp: onGiveUp ?? onClose }} />
+        <ArcadeGame gameId={gameId} onClose={onClose} story={{ onWin, onGiveUp: onGiveUp ?? onClose, free: mode === "practice" }} />
       </section>
     </div>
   );

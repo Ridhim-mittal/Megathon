@@ -1598,7 +1598,11 @@
       "lostTitle": "So close!",
       "lost": "Get at least one star to unlock this choice.",
       "go": "Continue the story",
-      "other": "Pick another choice"
+      "other": "Pick another choice",
+      "freeWonTitle": "Great play!",
+      "freeLostTitle": "Nice try!",
+      "freeText": "Now let's see what you choose.",
+      "continue": "Continue to the story"
     }
   },
   "ratguard": {
@@ -1952,5 +1956,13 @@
       "borrowed": "No safety money → loan"
     },
     "ok": "OK"
+  },
+  "pregame": {
+    "eyebrow": "Before you choose",
+    "play": "Play {game}",
+    "understand": "to understand:",
+    "then": "Then: {scene}",
+    "start": "Start the game",
+    "skip": "Skip the game"
   }
 }
