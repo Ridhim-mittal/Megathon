@@ -2360,7 +2360,7 @@
 .swipe-legend .kind-emi { border-color: #d9b240; background: #fff6d0; }
 .swipe-legend .kind-loan { border-color: #d77a72; background: #fdecea; }
 .swipe-legend .kind-coin { border-color: #6fb8c0; }
-.swipe-badge { font-size: 26px; line-height: 1; }
+.swipe-badge { display: grid; place-items: center; line-height: 1; }
 .swipe-tip { margin: 0; display: flex; gap: 6px; align-items: center; justify-content: center; font-size: 14px; }
 
 .swipe-field { gap: 8px; }
@@ -2390,31 +2390,63 @@
   inset: 0;
   overflow: auto;
   display: grid;
-  align-content: start;
-  gap: 8px;
-  padding: 12px 16px;
+  align-content: safe center;
+  gap: 12px;
+  padding: 14px 20px;
   border-radius: 10px;
-  background: rgba(255, 250, 238, 0.97);
+  background: #fffaee;
   border: 3px solid var(--px-wood, #8a5a2b);
 }
-.swipe-summary h3 { margin: 0; font-family: var(--px-font); font-size: 20px; }
-.swipe-summary h4 { margin: 0 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: #8a5a2b; }
-.swipe-sum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.swipe-bought { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; font-size: 13.5px; }
-.swipe-bought b { float: right; }
-.swipe-sum-nums { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; font-size: 13.5px; }
-.swipe-sum-nums dt { color: #6b5d45; }
-.swipe-sum-nums dd { margin: 0; text-align: right; font-weight: 800; }
-.swipe-sum-nums.wide { max-width: 460px; }
+.swipe-sum-head { display: grid; gap: 2px; text-align: center; }
+.swipe-sum-head > span { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #8a5a2b; }
+.swipe-sum-head h3 { margin: 0; font-size: 19px; font-weight: 800; line-height: 1.25; color: #3a2a18; }
+.swipe-sum-head h3.bad { color: #b4372f; }
+.swipe-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.swipe-tile { display: grid; justify-items: center; gap: 1px; padding: 6px 8px; border: 2px solid #ead9b0; border-radius: 12px; background: #fffaf0; line-height: 1.15; }
+.swipe-tile small { font-size: 11px; font-weight: 700; color: #7a6a50; text-align: center; }
+.swipe-tile b { display: inline-flex; align-items: center; gap: 5px; font-size: 18px; font-variant-numeric: tabular-nums; color: #3a2a18; }
+.swipe-tile.good { border-color: #c6e6ad; background: #f5fbef; }
+.swipe-tile.good b { color: #23784a; }
+.swipe-tile.bad { border-color: #f1b9b1; background: #fdeeec; }
+.swipe-tile.bad b { color: #b4372f; }
+.swipe-sum-row { display: flex; align-items: center; gap: 10px; min-height: 34px; }
+.swipe-sum-label { flex: none; width: 92px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: #8a5a2b; }
+.swipe-needs, .swipe-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.swipe-need { position: relative; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; border: 2px solid #ead9b0; background: #fffaf0; }
+.swipe-need i { position: absolute; right: -5px; bottom: -5px; display: grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; font-style: normal; font-size: 11px; font-weight: 900; color: #fff; }
+.swipe-need.paid { border-color: #8cc07a; }
+.swipe-need.paid i { background: #23784a; }
+.swipe-need.missed { border-color: #d77a72; background: #fdeeec; }
+.swipe-need.missed i { background: #b4372f; }
+.swipe-need.none { opacity: 0.45; }
+.swipe-chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 4px; border-radius: 999px; border: 2px solid #f0b06a; background: #fff0dc; font-size: 13px; font-weight: 700; color: #7a4512; }
+.swipe-chip.emi { border-color: #b79be6; background: #f1eafc; color: #5a3d99; }
 .swipe-summary .bad { color: #b4372f; }
 .swipe-summary .good, .swipe-good { color: #23784a; font-weight: 700; }
-.swipe-good { margin: 6px 0 0; font-size: 13.5px; }
-.swipe-next { margin: 0; padding: 6px 10px; border-radius: 8px; background: #e5f4f1; font-size: 13.5px; }
-.swipe-next.bad { background: #f8d9d4; color: #8a2a22; }
-.swipe-takeaway { margin: 0; padding: 10px 12px; border-radius: 10px; background: #fff3c9; border: 2px solid #e2b93b; font-size: 16px; font-weight: 800; }
-.swipe-summary .primary-button { justify-self: end; }
+.swipe-good { font-size: 13.5px; }
+.swipe-nextbar { display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: 4px 10px; padding: 8px 10px; border-radius: 10px; background: #eef7f4; }
+.swipe-nextbar.bad { background: #fbe4e0; }
+.swipe-nextbar small { grid-column: 2; font-size: 12.5px; color: #4f4536; }
+.swipe-nextbar.bad small { color: #8a2a22; }
+.swipe-bar { position: relative; display: flex; height: 14px; border-radius: 7px; background: #e3d8bf; overflow: visible; }
+.swipe-bar i { display: block; height: 100%; }
+.swipe-bar i:first-child { border-radius: 7px 0 0 7px; }
+.swipe-bar i:last-of-type { border-radius: 0 7px 7px 0; }
+.swipe-bar i.emi { background: #8a63d2; }
+.swipe-bar i.fine { background: #e0663f; }
+.swipe-bar i.left { background: #4caf6a; }
+.swipe-bar em { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; background: #3a2a18; }
+.swipe-sum-foot { margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; font-size: 13px; font-weight: 700; color: #6b5d45; }
+.swipe-summary .primary-button { justify-self: center; }
+.pixel-icon { image-rendering: pixelated; vertical-align: middle; flex: none; }
+.swipe-examples { display: inline-flex; gap: 3px; vertical-align: middle; }
+.swipe-chains .pixel-icon { margin: -2px 0; }
 @media (max-width: 640px) {
-  .swipe-legend, .swipe-sum-grid { grid-template-columns: 1fr; }
+  .swipe-legend { grid-template-columns: 1fr; }
+  .swipe-tiles { grid-template-columns: 1fr 1fr; }
+  .swipe-sum-row { flex-wrap: wrap; }
+  .swipe-nextbar { grid-template-columns: 1fr; }
+  .swipe-nextbar small { grid-column: 1; }
 }
 /* Swipe Bazaar juice: HUD reactions */
 .swipe-hud { padding: 6px 8px; border-radius: 12px; background: rgba(255, 250, 238, 0.85); border: 2px solid #ead9b0; }

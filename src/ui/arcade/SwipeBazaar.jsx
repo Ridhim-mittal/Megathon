@@ -3,9 +3,10 @@ import { ArrowRight, Brain, Link2, PiggyBank } from "lucide-react";
 import { useT, formatMoney } from "../../i18n/index.jsx";
 import { sounds } from "../sound.js";
 import { SWIPE_CONFIG as C } from "./swipeBazaarConfig.js";
+import { spriteFor, spriteId, spriteUrl } from "./swipeSprites.js";
 
 // Swipe Bazaar (lesson: peer pressure & borrowing). Things are tossed up from the bazaar in waves. Swiping one
-// BUYS or ACCEPTS it; letting it fall means saying NO. Six months, a fixed income each month.
+// BUYS or ACCEPTS it; letting it fall means saying NO. Three months, a fixed income each month.
 // Needs should be paid, wants cost money now, "pay later" items chain an EMI to your wallet,
 // loan apps hand you cash and then come after you, and savings coins build a combo.
 //
@@ -46,11 +47,11 @@ function segDist(px, py, ax, ay, bx, by) {
 export function SwipeBazaarIntro({ best, startRef, onStart }) {
   const { t } = useT();
   const rows = [
-    ["need", "🍚", C.needs.map((n) => n.icon).join(" ")],
-    ["want", "👟", C.wants.map((n) => n.icon).join(" ")],
-    ["emi", "📱", C.emiItems.map((n) => n.icon).join(" ")],
-    ["loan", "⚠️", "💸"],
-    ["coin", "🪙", "🪙"],
+    ["need", "food", C.needs.map((n) => n.id)],
+    ["want", "sneakers", C.wants.map((n) => n.id)],
+    ["emi", "phone", C.emiItems.map((n) => n.id)],
+    ["loan", "loan", []],
+    ["coin", "coin", []],
   ];
   return (
     <div className="swipe-intro">
@@ -58,9 +59,16 @@ export function SwipeBazaarIntro({ best, startRef, onStart }) {
       <ul className="swipe-legend">
         {rows.map(([k, icon, examples]) => (
           <li key={k} className={`kind-${k}`}>
-            <span className="swipe-badge" aria-hidden="true">{icon}</span>
+            <span className="swipe-badge">
+              <PixelIcon id={icon} size={34} />
+            </span>
             <span>
-              <b>{t(`arcade.swipe.intro.${k}.name`)}</b> <small aria-hidden="true">{examples}</small>
+              <b>{t(`arcade.swipe.intro.${k}.name`)}</b>{" "}
+              <small className="swipe-examples">
+                {examples.filter((id) => id !== icon).map((id) => (
+                  <PixelIcon key={id} id={id} size={18} />
+                ))}
+              </small>
               <br />
               {t(`arcade.swipe.intro.${k}.what`)}
             </span>
@@ -94,7 +102,7 @@ export function SwipeBazaar({ running, onEnd }) {
   const [screen, setScreen] = useState({ kind: "play" }); // play | month | final
 
   // One month's bookkeeping.
-  const freshLog = () => ({ bought: [], paidNeeds: 0, paidWants: 0, emiPaid: 0, fees: 0, saved: 0, needsPaid: 0, needsMissed: 0, saidNo: 0, extraCommitted: 0, loanCash: 0 });
+  const freshLog = () => ({ bought: [], needs: {}, paidNeeds: 0, paidWants: 0, emiPaid: 0, fees: 0, saved: 0, needsPaid: 0, needsMissed: 0, saidNo: 0, extraCommitted: 0, loanCash: 0 });
 
   useEffect(() => {
     const tr = (k, v) => tRef.current(`arcade.swipe.${k}`, v);
@@ -320,12 +328,14 @@ export function SwipeBazaar({ running, onEnd }) {
           g.cash -= d.price;
           g.log.paidNeeds += d.price;
           g.log.needsPaid += 1;
+          g.log.needs[d.id] = "paid";
           g.totals.needsPaid += 1;
           float(tr("float.paid", { amount: money(d.price) }), it.x, it.y, "#23784a");
           sounds.coin?.();
         } else {
           it.missed = true;
           g.log.needsMissed += 1;
+          g.log.needs[d.id] = "missed";
           g.totals.needsMissed += 1;
           g.fines += C.needFine;
           float(tr("float.cantAfford"), it.x, it.y, "#b4372f");
@@ -336,7 +346,7 @@ export function SwipeBazaar({ running, onEnd }) {
           g.cash -= d.price;
           g.status = Math.min(100, g.status + d.status);
           g.log.paidWants += d.price;
-          g.log.bought.push({ icon: d.icon, name, price: d.price });
+          g.log.bought.push({ id: d.id, name, price: d.price });
           g.totals.wants += d.price;
           g.combo = 0;
           float(`−${money(d.price)}`, it.x, it.y, "#d66a12");
@@ -350,7 +360,7 @@ export function SwipeBazaar({ running, onEnd }) {
         const total = d.monthly * d.months;
         g.emis.push({ id: d.id, kind: "emi", icon: d.icon, monthly: d.monthly, monthsLeft: d.months, overdue: 0, sticker: d.price, total, paid: 0 });
         g.status = Math.min(100, g.status + d.status);
-        g.log.bought.push({ icon: d.icon, name, price: 0, emi: d.monthly, months: d.months });
+        g.log.bought.push({ id: d.id, name, price: 0, emi: d.monthly, months: d.months });
         g.log.extraCommitted += total - d.price;
         g.totals.extraPaid += total - d.price;
         g.totals.emiBought.push({ id: d.id, name, sticker: d.price, total, month: g.month });
@@ -364,7 +374,7 @@ export function SwipeBazaar({ running, onEnd }) {
         g.emis.push({ id: "loan", kind: "loan", icon: "💸", monthly: d.monthly, monthsLeft: d.months, overdue: 0, sticker: d.cash, total: d.monthly * d.months, paid: 0 });
         g.status = Math.min(100, g.status + d.status);
         g.log.loanCash += got;
-        g.log.bought.push({ icon: "💸", name, price: 0, emi: d.monthly, months: d.months, loan: true });
+        g.log.bought.push({ id: "loan", name, price: 0, emi: d.monthly, months: d.months, loan: true });
         g.log.extraCommitted += d.monthly * d.months - got;
         g.totals.extraPaid += d.monthly * d.months - got;
         g.totals.loans += 1;
@@ -421,6 +431,7 @@ export function SwipeBazaar({ running, onEnd }) {
     const fell = (it) => {
       if (it.kind === "need") {
         g.log.needsMissed += 1;
+        g.log.needs[it.def.id] = "missed";
         g.totals.needsMissed += 1;
         g.fines += C.needFine;
         float(tr("float.needMissed", { item: tr(`items.${it.def.id}`) }), it.x, FH - 44, "#b4372f", "stamp");
@@ -486,6 +497,15 @@ export function SwipeBazaar({ running, onEnd }) {
         status: Math.round(g.status),
         bestCombo: g.bestCombo,
         saidNo: T.saidNo,
+        bought: Object.values(
+          g.months
+            .flatMap((m) => m.log.bought)
+            .reduce((acc, b) => {
+              const k = (acc[b.id] ??= { id: b.id, name: b.name, n: 0, emi: Boolean(b.emi) });
+              k.n += 1;
+              return acc;
+            }, {}),
+        ),
         takeaway,
       };
     };
@@ -727,7 +747,7 @@ export function SwipeBazaar({ running, onEnd }) {
               ).map((e) => (
                 <span key={e.id} className={e.late ? "late" : ""} title={tr(`items.${e.id}`)}>
                   <Link2 size={13} aria-hidden="true" />
-                  {e.icon}
+                  <PixelIcon id={e.id} size={18} />
                   {e.n > 1 && `×${e.n}`}
                 </span>
               ))}
@@ -762,51 +782,96 @@ export function SwipeBazaar({ running, onEnd }) {
 }
 
 // ---------- summaries ----------
+
+// An item's pixel art as an image (decorative: the text next to it names the item).
+export function PixelIcon({ id, size = 20 }) {
+  const src = spriteUrl(id);
+  if (!src) return null;
+  return <img className="pixel-icon" src={src} width={size} height={size} alt="" aria-hidden="true" />;
+}
+
+function Tile({ label, value, tone = "", icon }) {
+  return (
+    <div className={`swipe-tile ${tone}`}>
+      <small>{label}</small>
+      <b>
+        {icon && <PixelIcon id={icon} size={20} />}
+        {value}
+      </b>
+    </div>
+  );
+}
+
 function MonthSummary({ r, onNext }) {
   const { t } = useT();
   const tr = (k, v) => t(`arcade.swipe.${k}`, v);
   const btn = useRef(null);
   useEffect(() => btn.current?.focus(), []);
   const L = r.log;
-  const paid = L.paidNeeds + L.paidWants + L.emiPaid + L.fees;
+  const spent = L.paidNeeds + L.paidWants + L.emiPaid + L.fees;
+  const emis = r.owedMonthly + r.overdue;
+  const squeezed = r.nextLeft < r.needsTotal;
+  // One line that says what mattered most this month.
+  const headline = squeezed
+    ? tr("sum.headSqueeze")
+    : L.needsMissed
+      ? tr("sum.headMissed", { n: L.needsMissed })
+      : emis
+        ? tr("sum.headEmi", { amount: money(emis) })
+        : tr("sum.headGood", { saved: money(r.savings), no: L.saidNo });
+  const part = (x) => `${Math.max(0, (x / C.income) * 100)}%`;
   return (
     <div className="swipe-summary" role="dialog" aria-label={tr("sum.title", { n: r.month })}>
-      <h3>{tr("sum.title", { n: r.month })}</h3>
-      <div className="swipe-sum-grid">
-        <div>
-          <h4>{tr("sum.bought")}</h4>
-          {L.bought.length ? (
-            <ul className="swipe-bought">
-              {L.bought.map((b, i) => (
-                <li key={i}>
-                  <span aria-hidden="true">{b.icon}</span> {b.name} <b>{b.emi ? tr("sum.emiLine", { emi: money(b.emi), months: b.months }) : money(b.price)}</b>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="quiet">{tr("sum.nothing")}</p>
-          )}
-          {L.saidNo > 0 && <p className="swipe-good">{tr("sum.saidNo", { n: L.saidNo })}</p>}
-        </div>
-        <dl className="swipe-sum-nums">
-          <dt>{tr("sum.paid")}</dt>
-          <dd>{money(paid)}</dd>
-          <dt>{tr("sum.emiPaid")}</dt>
-          <dd>{money(L.emiPaid)}</dd>
-          <dt>{tr("sum.extra")}</dt>
-          <dd className={L.extraCommitted ? "bad" : ""}>{money(L.extraCommitted)}</dd>
-          <dt>{tr("sum.needs")}</dt>
-          <dd className={L.needsMissed ? "bad" : "good"}>{tr("sum.needsVal", { paid: L.needsPaid, missed: L.needsMissed })}</dd>
-          <dt>{tr("sum.saved")}</dt>
-          <dd className="good">{money(r.savings)}</dd>
-          <dt>{tr("sum.status")}</dt>
-          <dd>{r.status} / 100</dd>
-        </dl>
+      <header className="swipe-sum-head">
+        <span>{tr("sum.month", { n: r.month, total: C.rounds })}</span>
+        <h3 className={squeezed || L.needsMissed ? "bad" : ""}>{headline}</h3>
+      </header>
+      <div className="swipe-tiles">
+        <Tile label={tr("sum.saved")} value={money(r.savings)} tone="good" icon="coin" />
+        <Tile label={tr("sum.spent")} value={money(spent)} />
+        <Tile label={tr("sum.emiMonth")} value={money(emis)} tone={emis ? "bad" : ""} />
+        <Tile label={tr("sum.status")} value={`${r.status}/100`} />
       </div>
-      <p className={`swipe-next${r.nextLeft < r.needsTotal ? " bad" : ""}`}>
-        {tr("sum.next", { income: money(C.income), emis: money(r.owedMonthly + r.overdue), fines: money(r.fines), left: money(r.nextLeft), needs: money(r.needsTotal) })}
-        {r.nextLeft < r.needsTotal && <b> {tr("sum.squeeze")}</b>}
-      </p>
+      <div className="swipe-sum-row">
+        <span className="swipe-sum-label">{tr("sum.needs")}</span>
+        <span className="swipe-needs">
+          {C.needs.map((n) => (
+            <span key={n.id} className={`swipe-need ${L.needs[n.id] ?? "none"}`} title={tr(`items.${n.id}`)}>
+              <PixelIcon id={n.id} size={26} />
+              <i aria-hidden="true">{L.needs[n.id] === "paid" ? "✓" : L.needs[n.id] === "missed" ? "✗" : ""}</i>
+              <span className="sr-only">{tr(`items.${n.id}`)}</span>
+            </span>
+          ))}
+        </span>
+      </div>
+      <div className="swipe-sum-row">
+        <span className="swipe-sum-label">{tr("sum.bought")}</span>
+        {L.bought.length ? (
+          <span className="swipe-chips">
+            {L.bought.map((b, i) => (
+              <span key={i} className={`swipe-chip ${b.emi ? "emi" : ""}`} title={b.name}>
+                <PixelIcon id={b.id} size={20} />
+                {b.emi ? tr("sum.emiChip", { emi: money(b.emi) }) : money(b.price)}
+              </span>
+            ))}
+          </span>
+        ) : (
+          <span className="swipe-good">{tr("sum.nothing")}</span>
+        )}
+      </div>
+      <div className={`swipe-nextbar ${squeezed ? "bad" : ""}`}>
+        <span className="swipe-sum-label">{tr("sum.nextTitle", { income: money(C.income) })}</span>
+        <span className="swipe-bar" aria-hidden="true">
+          {r.owedMonthly + r.overdue > 0 && <i className="emi" style={{ width: part(emis) }} />}
+          {r.fines > 0 && <i className="fine" style={{ width: part(r.fines) }} />}
+          <i className="left" style={{ width: part(r.nextLeft) }} />
+          <em style={{ left: part(Math.min(C.income, emis + r.fines + r.needsTotal)) }} />
+        </span>
+        <small>
+          {tr("sum.nextLine", { emis: money(emis), fines: money(r.fines), left: money(Math.max(0, r.nextLeft)), needs: money(r.needsTotal) })}
+          {squeezed && <b> {tr("sum.squeeze")}</b>}
+        </small>
+      </div>
       <button ref={btn} className="primary-button big" onClick={onNext}>
         {tr("sum.continue", { n: r.month + 1 })} <ArrowRight size={18} />
       </button>
@@ -819,26 +884,39 @@ function FinalSummary({ r, onDone }) {
   const tr = (k, v) => t(`arcade.swipe.${k}`, v);
   const btn = useRef(null);
   useEffect(() => btn.current?.focus(), []);
+  const needsTotal = C.needs.length * C.rounds;
   return (
-    <div className="swipe-summary final" role="dialog" aria-label={tr("final.title")}>
-      <h3>{tr("final.title")}</h3>
-      <p className="swipe-takeaway">{r.takeaway}</p>
-      <dl className="swipe-sum-nums wide">
-        <dt>{tr("final.saved")}</dt>
-        <dd className="good">{money(r.saved)}</dd>
-        <dt>{tr("final.cash")}</dt>
-        <dd>{money(r.cash)}</dd>
-        <dt>{tr("final.owed")}</dt>
-        <dd className={r.owed ? "bad" : ""}>{money(r.owed)}</dd>
-        <dt>{tr("final.extra")}</dt>
-        <dd className={r.extraPaid ? "bad" : ""}>{money(r.extraPaid)}</dd>
-        <dt>{tr("final.fees")}</dt>
-        <dd className={r.lateFees ? "bad" : ""}>{money(r.lateFees)}</dd>
-        <dt>{tr("final.needs")}</dt>
-        <dd className={r.needsMissed ? "bad" : "good"}>{tr("sum.needsVal", { paid: r.needsPaid, missed: r.needsMissed })}</dd>
-        <dt>{tr("final.status")}</dt>
-        <dd>{r.status} / 100</dd>
-      </dl>
+    <div className="swipe-summary final" role="dialog" aria-label={tr("final.title", { n: C.rounds })}>
+      <header className="swipe-sum-head">
+        <span>{tr("final.title", { n: C.rounds })}</span>
+        <h3>{r.takeaway}</h3>
+      </header>
+      <div className="swipe-tiles">
+        <Tile label={tr("final.saved")} value={money(r.saved)} tone="good" icon="coin" />
+        <Tile label={tr("final.cash")} value={money(r.cash)} />
+        <Tile label={tr("final.owed")} value={money(r.owed)} tone={r.owed ? "bad" : ""} />
+        <Tile label={tr("final.extra")} value={money(r.extraPaid)} tone={r.extraPaid ? "bad" : ""} />
+      </div>
+      <div className="swipe-sum-row">
+        <span className="swipe-sum-label">{tr("final.bought")}</span>
+        {r.bought.length ? (
+          <span className="swipe-chips">
+            {r.bought.map((b) => (
+              <span key={b.id} className={`swipe-chip ${b.emi ? "emi" : ""}`} title={b.name}>
+                <PixelIcon id={b.id} size={20} />
+                {b.n > 1 ? `×${b.n}` : b.name}
+              </span>
+            ))}
+          </span>
+        ) : (
+          <span className="swipe-good">{tr("sum.nothing")}</span>
+        )}
+      </div>
+      <p className="swipe-sum-foot">
+        <span className={r.needsMissed ? "bad" : "good"}>{tr("final.needsLine", { paid: r.needsPaid, total: needsTotal })}</span>
+        <span className={r.lateFees ? "bad" : ""}>{tr("final.feesLine", { amount: money(r.lateFees) })}</span>
+        <span>{tr("final.statusLine", { n: r.status })}</span>
+      </p>
       <button ref={btn} className="primary-button big" onClick={onDone}>
         {tr("final.score")} <ArrowRight size={18} />
       </button>
@@ -962,6 +1040,16 @@ function drawBall(ctx, kind, def, x, y, r, now, clipSide, angle, rot = 0) {
     ctx.clip();
     ctx.rotate(-angle);
   }
+  ctx.imageSmoothingEnabled = false;
+  if (kind === "coin") {
+    // The coin sprite is the whole item (its art fills 14 of its 16 pixels).
+    const size = (r * 2 * 16) / 14;
+    ctx.rotate(rot * 0.25);
+    const img = spriteFor("coin");
+    if (img) ctx.drawImage(img, -size / 2, -size / 2, size, size);
+    ctx.restore();
+    return;
+  }
   // Body: soft fill, crisp ring, a highlight in the top-left.
   ctx.fillStyle = st.fill;
   ctx.strokeStyle = st.ring;
@@ -994,20 +1082,11 @@ function drawBall(ctx, kind, def, x, y, r, now, clipSide, angle, rot = 0) {
     ctx.fillRect(-7 * tw - 3, -2, 14 * tw + 6, 4);
     ctx.restore();
   }
-  if (kind === "coin") {
-    ctx.fillStyle = "#7a4f00";
-    ctx.font = `800 ${Math.round(r * 1.05)}px system-ui, sans-serif`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText("₹", 0, 1);
-  } else {
-    ctx.rotate(rot * 0.25);
-    ctx.font = `${Math.round(r * 1.05)}px system-ui, "Noto Color Emoji", sans-serif`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "#2b2238";
-    ctx.fillText(kind === "loan" ? "💸" : def.icon, 0, 2);
-  }
+  // The item's pixel art, a little tilted as it spins.
+  ctx.rotate(rot * 0.25);
+  const img = spriteFor(spriteId(kind, def));
+  const size = Math.round(r * 1.45);
+  if (img) ctx.drawImage(img, -size / 2, -size / 2, size, size);
   ctx.restore();
 }
 
@@ -1149,14 +1228,10 @@ function draw(ctx, g, now, t) {
     const x = lerp(f.x, f.tx, e);
     const y = lerp(f.y, f.ty, e) - Math.sin(k * Math.PI) * 50;
     if (f.kind === "coin") {
-      const r = lerp(14, 8, k);
-      ctx.fillStyle = "#ffd24a";
-      ctx.strokeStyle = "#b07a12";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
+      const size = lerp(30, 16, k);
+      const img = spriteFor("coin");
+      ctx.imageSmoothingEnabled = false;
+      if (img) ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
     } else {
       ctx.strokeStyle = "#8a2a22";
       ctx.lineWidth = 3;

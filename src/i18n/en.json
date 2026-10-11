@@ -1104,7 +1104,7 @@
       "swipeBazaar": {
         "name": "Swipe Bazaar",
         "tag": "Swipe to buy. Let it fall to say no.",
-        "goal": "Six months, ₹3,000 a month. Swipe to buy, let things fall to say no. Pay your needs, save, and don't get chained by EMIs.",
+        "goal": "Three months, ₹3,000 a month. Swipe to buy, let things fall to say no. Pay your needs, save, and don't get chained by EMIs.",
         "how": "Swipe with your finger or mouse to buy. Let things fall to say no. Press T or Space to think first.",
         "lesson": "Friends' approval fades fast. EMIs and loan-app debts don't. Pause and check the full price before you say yes."
       }
@@ -1545,30 +1545,34 @@
       "sum": {
         "title": "Month {n} done",
         "bought": "You bought",
-        "emiLine": "{emi}/month × {months}",
         "nothing": "Nothing. Nice restraint!",
-        "saidNo": "You said no {n} times.",
-        "paid": "Paid this month",
-        "emiPaid": "EMIs paid",
-        "extra": "Extra you signed up for (interest and fees)",
         "needs": "Needs",
-        "needsVal": "{paid} paid, {missed} missed",
         "saved": "Savings",
         "status": "Status",
-        "next": "Next month: {income} income − {emis} EMIs − {fines} fines = {left} left. Needs cost {needs}.",
         "squeeze": "You won't be able to pay all your needs!",
-        "continue": "Start month {n}"
+        "continue": "Start month {n}",
+        "month": "Month {n} of {total}",
+        "headGood": "You saved {saved} and said no {no} times.",
+        "headEmi": "EMIs will take {amount} of next month's money.",
+        "headMissed": "You missed {n} needs. Fines come next month.",
+        "headSqueeze": "Next month you can't pay for all your needs.",
+        "spent": "Spent",
+        "emiMonth": "EMIs a month",
+        "emiChip": "{emi}/mo",
+        "nextTitle": "Next month's {income}",
+        "nextLine": "EMIs {emis} · fines {fines} · {left} left. Needs cost {needs}."
       },
       "final": {
-        "title": "Six months later",
+        "title": "After {n} months",
         "saved": "Savings",
         "cash": "Cash left",
         "owed": "EMIs still to pay",
         "extra": "Extra over the sticker price",
-        "fees": "Late fees and fines",
-        "needs": "Needs",
-        "status": "Status with friends now",
-        "score": "See my score"
+        "score": "See my score",
+        "bought": "What you bought",
+        "needsLine": "Needs paid {paid}/{total}",
+        "feesLine": "Late fees and fines {amount}",
+        "statusLine": "Status with friends {n}/100"
       },
       "take": {
         "emi": "You paid {extra} extra for a {item} your friends stopped talking about by week 2.",

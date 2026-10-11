@@ -4,7 +4,7 @@
 // The idea: swiping an item BUYS or ACCEPTS it; letting it fall means saying NO.
 
 export const SWIPE_CONFIG = {
-  rounds: 6, // one round = one month
+  rounds: 3, // one round = one month
   monthSeconds: 26, // play time per month
   income: 3000, // pocket money / part-time pay at the start of each month
 
@@ -43,7 +43,7 @@ export const SWIPE_CONFIG = {
   // clusters, fans, quick streams and crossing throws. The next wave comes once the screen has
   // (mostly) cleared. Difficulty builds over the whole game, not per month.
   waves: {
-    rampWaves: 36, // waves until full difficulty (roughly the whole game)
+    rampWaves: 18, // waves until full difficulty (roughly the whole game)
     size: [1, 6], // most items in one wave, first wave → full difficulty
     gap: [1.0, 0.35], // pause after a wave clears, in seconds
     maxWait: 3.4, // start the next wave anyway if items are still up this long after the last toss
@@ -69,5 +69,5 @@ export const SWIPE_CONFIG = {
   friendBubbleChance: 0.75, // chance a tempting item comes with a friend's push
 
   // Final score = savings + cash − EMI still owed − fines. Stars at these scores.
-  stars: [1500, 4000, 7000],
+  stars: [900, 2200, 3600],
 };
