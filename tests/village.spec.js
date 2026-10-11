@@ -289,6 +289,39 @@ test("the title can jump straight to the town of the first job without touching 
   expect(await page.evaluate(() => window.localStorage.getItem("lakshyam.life"))).toBeNull();
 });
 
+test("SIP Garden opens from the arcade: invest in every lane, Auto-SIP, pause, and a report at the end", async ({ page }) => {
+  test.setTimeout(150000);
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("/?seed=demo&speed=16");
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+  await openFromArcade(page, /SIP Garden/);
+  const game = page.getByRole("dialog", { name: "SIP Garden" });
+  await expect(game.getByRole("heading", { name: "SIP Garden" })).toBeVisible();
+  await expect(game.locator(".sg-cast.thieves li")).toHaveCount(4);
+  await game.getByRole("button", { name: "Start" }).click();
+  await expect(game.locator(".sg-cash")).toContainText("₹300");
+  await game.getByRole("button", { name: "Invest ₹100 in Equity" }).click();
+  await game.getByRole("button", { name: "Invest ₹100 in Debt" }).click();
+  await page.keyboard.press("3");
+  await expect(game.locator(".sg-lane").first()).toContainText("₹200");
+  await game.getByRole("button", { name: /Auto-SIP: OFF/i }).click();
+  await expect(game.getByRole("button", { name: /Auto-SIP: ON/i })).toBeVisible();
+  await game.getByRole("button", { name: "Pause" }).click();
+  await expect(game.getByText("Paused")).toBeVisible();
+  await game.locator(".sg-paused").getByRole("button", { name: "Resume" }).click();
+  // Five years later (sped up): won or lost, the report shows where the money went.
+  await expect(game.locator(".sg-end")).toBeVisible({ timeout: 120000 });
+  await expect(game.locator(".sg-bars li")).toHaveCount(4);
+  await expect(game.locator(".sg-stats")).toContainText("Portfolio worth");
+  await game.getByRole("button", { name: "Play again" }).click();
+  await expect(game.getByRole("button", { name: "Start" })).toBeVisible();
+  await game.locator(".sg-card").getByRole("button", { name: "Close" }).click();
+  await expect(game).not.toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test("the price snake opens from the arcade, and a crash shows how prices grew", async ({ page }) => {
   await page.goto("/?seed=demo");
   await page.evaluate(() => window.localStorage.clear());
