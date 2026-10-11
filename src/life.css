@@ -1180,13 +1180,13 @@
 .gloss-chip {
   display: inline;
   font: inherit;
-  font-weight: 650;
-  color: #6c5a8e;
-  background: #efe9f7;
+  font-weight: 800;
+  color: inherit;
+  background: none;
   border: 0;
-  border-bottom: 2px dotted #a596c4;
-  border-radius: 5px 5px 2px 2px;
-  padding: 0 4px;
+  border-bottom: 2px dotted #b9a98c; /* still tappable: the dotted line hints at a definition */
+  border-radius: 0;
+  padding: 0;
   cursor: help;
 }
 .gloss-pop,

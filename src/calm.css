@@ -1579,9 +1579,6 @@
 .rt-key {
   font-weight: 800;
   color: #2f2416;
-  background: linear-gradient(transparent 60%, rgba(255, 210, 90, 0.55) 60%);
-  border-radius: 2px;
-  padding: 0 1px;
 }
 
 /* ---------- Lesson badge at the top: number + a few words ---------- */
