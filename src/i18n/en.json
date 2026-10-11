@@ -1918,7 +1918,10 @@
     "text": "Take a breath. Time has stopped in the village, and every countdown waits for you.",
     "resume": "Resume",
     "menu": "Main menu",
-    "key": "pauses and resumes"
+    "key": "pauses and resumes",
+    "soundOn": "Sound: on",
+    "soundOff": "Sound: off",
+    "help": "How to play"
   },
   "save": {
     "title": "Save first?",
@@ -1960,7 +1963,11 @@
       "dream": "Dream money gone!",
       "borrowed": "No safety money → loan"
     },
-    "ok": "OK"
+    "ok": "OK",
+    "howTitle": "How this works",
+    "how1": "Pick how much to save",
+    "how2": "Safety jar fills first, then your dream",
+    "how3": "The rest is fun money"
   },
   "pregame": {
     "eyebrow": "Before you choose",

@@ -1745,66 +1745,129 @@
   place-items: center;
   padding: 16px;
   background: rgba(28, 38, 20, 0.5);
-  backdrop-filter: blur(4px);
   animation: fade-in 0.2s ease both;
 }
 .pause-card {
-  width: min(360px, 100%);
-  display: grid;
-  justify-items: center;
-  gap: 10px;
-  padding: 26px 24px 18px;
-  text-align: center;
-  border-radius: 24px;
-  border: 3px solid #e7d6ac;
-  background: #fffdf6;
-  box-shadow: 0 6px 0 #e0c992, 0 20px 50px rgba(37, 49, 34, 0.3);
-  font-family: "Manrope Variable", "Noto Sans Devanagari Variable", "Noto Sans Telugu Variable", sans-serif;
-  animation: page-in 0.4s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+  position: relative;
+  width: min(340px, 100%);
+  padding: 34px 18px 18px;
+  background: var(--px-paper);
+  color: var(--px-ink);
+  border: 4px solid var(--px-wood);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 3px var(--px-paper-edge), 0 6px 0 rgba(40, 25, 10, 0.45);
+  animation: page-in 0.35s cubic-bezier(0.2, 1.3, 0.4, 1) both;
 }
-.pause-icon {
-  display: grid;
-  place-items: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  color: #fff;
-  background: #e0a33c;
-  box-shadow: 0 4px 0 #b9821f;
-  animation: pin-bob 2s ease-in-out infinite;
-}
-.pause-card h2 {
-  margin: 4px 0 0;
+.pause-ribbon {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin: 0;
+  padding: 6px 26px;
+  transform: translateX(-50%);
   font-family: var(--px-font);
-  font-size: 26px;
-  color: #3a2a18;
+  font-size: 22px;
+  color: #fff8de;
+  background: var(--px-green);
+  border: 3px solid var(--px-green-dark);
+  border-radius: 6px;
+  box-shadow: 0 4px 0 rgba(40, 25, 10, 0.35);
+  white-space: nowrap;
 }
-.pause-card p {
-  margin: 0 0 6px;
-  font-size: 14.5px;
-  line-height: 1.5;
-  color: #5a4a30;
+.pause-list {
+  display: grid;
+  gap: 8px;
 }
-.pause-card .primary-button {
-  justify-content: center;
-  min-width: 200px;
-}
-.pause-key {
-  display: inline-flex;
+.pause-row {
+  display: flex;
   align-items: center;
-  gap: 6px;
-  color: #8a7a5a;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 14px;
+  font: inherit;
+  font-family: var(--px-font);
+  font-size: 17px;
+  text-align: left;
+  color: var(--px-ink);
+  background: #fffaf0;
+  border: 3px solid #d9c391;
+  border-radius: 6px;
+  box-shadow: 0 3px 0 #c9b07a;
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.12s;
 }
-.pause-key kbd {
+.pause-row span {
+  flex: 1;
+}
+.pause-row:hover,
+.pause-row:focus-visible {
+  transform: translateX(3px);
+  border-color: var(--px-green);
+  box-shadow: inset 5px 0 0 var(--px-green), 0 3px 0 #c9b07a;
+  outline: none;
+}
+.pause-row:active {
+  transform: translate(3px, 2px);
+  box-shadow: inset 5px 0 0 var(--px-green), 0 1px 0 #c9b07a;
+}
+.pause-row.go {
+  color: #fff8de;
+  background: var(--px-green);
+  border-color: var(--px-green-dark);
+  box-shadow: 0 3px 0 var(--px-green-dark);
+}
+.pause-row.go:hover,
+.pause-row.go:focus-visible {
+  box-shadow: 0 3px 0 var(--px-green-dark);
+  border-color: var(--px-green-dark);
+}
+.pause-row.quiet {
+  font-size: 15px;
+  color: #7a6a4f;
+}
+.pause-card .pause-ribbon,
+.pause-card .pause-row {
+  font-family: var(--px-font);
+}
+.pause-row kbd {
   display: grid;
   place-items: center;
   width: 24px;
   height: 24px;
-  border-radius: 6px;
-  border: 2px solid #3a2a18;
-  background: #fff;
+  border-radius: 4px;
+  font-family: "DM Sans Variable", sans-serif;
+  font-size: 13px;
   font-weight: 800;
-  box-shadow: 0 2px 0 #3a2a18;
+  color: var(--px-ink);
+  background: #fff8de;
+  border: 2px solid var(--px-green-dark);
+}
+.pause-switch {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 4px;
+  background: #d6cbb0;
+  border: 2px solid #b8a67e;
+}
+.pause-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: #fff;
+  border: 1px solid #b8a67e;
+  transition: left 0.15s;
+}
+.pause-switch.on {
+  background: #8fd56f;
+  border-color: var(--px-green-dark);
+}
+.pause-switch.on::after {
+  left: 18px;
 }
 
 /* ---------- Before the question: "Play X to understand Y" ---------- */

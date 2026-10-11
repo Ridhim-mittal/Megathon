@@ -359,7 +359,7 @@ export function StoryScreen({ life, dispatch, settings, onHelp, onMenu, toast, o
         onPause={() => setPaused(true)}
         lessonId={showIntro ? null : lessonId}
       />
-      {paused && <PauseCard onResume={() => setPaused(false)} onMenu={onMenu} />}
+      {paused && <PauseCard settings={settings} onResume={() => setPaused(false)} onMenu={onMenu} onHelp={onHelp} />}
       {phase === "map" && !overlay && story && (
         <ObjectiveTracker
           story={story}
